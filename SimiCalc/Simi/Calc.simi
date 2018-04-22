@@ -1,0 +1,11 @@
+class Calc:
+    def compute(left, op, right):
+        when op:
+            '+': return left + right
+            '-': return left - right
+            '*': return left * right
+            '/': return left / right
+            else: return nil
+        end
+    end
+end
