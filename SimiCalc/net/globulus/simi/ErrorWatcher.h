@@ -13,25 +13,36 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiErrorWatcher
 
-#if !defined (NetGlobulusSimiErrorWatcher_) && (INCLUDE_ALL_NetGlobulusSimiErrorWatcher || defined(INCLUDE_NetGlobulusSimiErrorWatcher))
-#define NetGlobulusSimiErrorWatcher_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
-@class NetGlobulusSimiRuntimeError;
+#if !defined (SMErrorWatcher_) && (INCLUDE_ALL_NetGlobulusSimiErrorWatcher || defined(INCLUDE_SMErrorWatcher))
+#define SMErrorWatcher_
 
-@protocol NetGlobulusSimiErrorWatcher < JavaObject >
+@class SMRuntimeError;
+
+@protocol SMErrorWatcher < JavaObject >
 
 - (void)reportWithInt:(jint)line
          withNSString:(NSString *)where
          withNSString:(NSString *)message;
 
-- (void)runtimeErrorWithNetGlobulusSimiRuntimeError:(NetGlobulusSimiRuntimeError *)error;
+- (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiErrorWatcher)
+J2OBJC_EMPTY_STATIC_INIT(SMErrorWatcher)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiErrorWatcher)
+J2OBJC_TYPE_LITERAL_HEADER(SMErrorWatcher)
+
+#define NetGlobulusSimiErrorWatcher SMErrorWatcher
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiErrorWatcher")

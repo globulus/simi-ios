@@ -12,140 +12,151 @@
 #define INCLUDE_ALL_NetGlobulusSimiGenerateAst 1
 #endif
 #undef RESTRICT_NetGlobulusSimiGenerateAst
-#ifdef INCLUDE_NetGlobulusSimiGenerateAst_Cruller
-#define INCLUDE_NetGlobulusSimiGenerateAst_Pastry 1
+#ifdef INCLUDE_SMGenerateAst_Cruller
+#define INCLUDE_SMGenerateAst_Pastry 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiGenerateAst_Beignet
-#define INCLUDE_NetGlobulusSimiGenerateAst_Pastry 1
+#ifdef INCLUDE_SMGenerateAst_Beignet
+#define INCLUDE_SMGenerateAst_Pastry 1
 #endif
 
-#if !defined (NetGlobulusSimiGenerateAst_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_NetGlobulusSimiGenerateAst))
-#define NetGlobulusSimiGenerateAst_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMGenerateAst_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_SMGenerateAst))
+#define SMGenerateAst_
 
 @class IOSObjectArray;
 
-@interface NetGlobulusSimiGenerateAst : NSObject
+@interface SMGenerateAst : NSObject
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 + (void)mainWithNSStringArray:(IOSObjectArray *)args;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiGenerateAst)
+J2OBJC_EMPTY_STATIC_INIT(SMGenerateAst)
 
-FOUNDATION_EXPORT void NetGlobulusSimiGenerateAst_init(NetGlobulusSimiGenerateAst *self);
+FOUNDATION_EXPORT void SMGenerateAst_init(SMGenerateAst *self);
 
-FOUNDATION_EXPORT NetGlobulusSimiGenerateAst *new_NetGlobulusSimiGenerateAst_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMGenerateAst *new_SMGenerateAst_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiGenerateAst *create_NetGlobulusSimiGenerateAst_init(void);
+FOUNDATION_EXPORT SMGenerateAst *create_SMGenerateAst_init(void);
 
-FOUNDATION_EXPORT void NetGlobulusSimiGenerateAst_mainWithNSStringArray_(IOSObjectArray *args);
+FOUNDATION_EXPORT void SMGenerateAst_mainWithNSStringArray_(IOSObjectArray *args);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiGenerateAst)
+J2OBJC_TYPE_LITERAL_HEADER(SMGenerateAst)
+
+@compatibility_alias NetGlobulusSimiGenerateAst SMGenerateAst;
 
 #endif
 
-#if !defined (NetGlobulusSimiGenerateAst_PastryVisitor_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_NetGlobulusSimiGenerateAst_PastryVisitor))
-#define NetGlobulusSimiGenerateAst_PastryVisitor_
+#if !defined (SMGenerateAst_PastryVisitor_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_SMGenerateAst_PastryVisitor))
+#define SMGenerateAst_PastryVisitor_
 
-@class NetGlobulusSimiGenerateAst_Beignet;
-@class NetGlobulusSimiGenerateAst_Cruller;
+@class SMGenerateAst_Beignet;
+@class SMGenerateAst_Cruller;
 
-@protocol NetGlobulusSimiGenerateAst_PastryVisitor < JavaObject >
+@protocol SMGenerateAst_PastryVisitor < JavaObject >
 
-- (void)visitBeignetWithNetGlobulusSimiGenerateAst_Beignet:(NetGlobulusSimiGenerateAst_Beignet *)beignet;
+- (void)visitBeignetWithSMGenerateAst_Beignet:(SMGenerateAst_Beignet *)beignet;
 
-- (void)visitCrullerWithNetGlobulusSimiGenerateAst_Cruller:(NetGlobulusSimiGenerateAst_Cruller *)cruller;
+- (void)visitCrullerWithSMGenerateAst_Cruller:(SMGenerateAst_Cruller *)cruller;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiGenerateAst_PastryVisitor)
+J2OBJC_EMPTY_STATIC_INIT(SMGenerateAst_PastryVisitor)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiGenerateAst_PastryVisitor)
+J2OBJC_TYPE_LITERAL_HEADER(SMGenerateAst_PastryVisitor)
 
 #endif
 
-#if !defined (NetGlobulusSimiGenerateAst_Pastry_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_NetGlobulusSimiGenerateAst_Pastry))
-#define NetGlobulusSimiGenerateAst_Pastry_
+#if !defined (SMGenerateAst_Pastry_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_SMGenerateAst_Pastry))
+#define SMGenerateAst_Pastry_
 
-@class NetGlobulusSimiGenerateAst;
-@protocol NetGlobulusSimiGenerateAst_PastryVisitor;
+@class SMGenerateAst;
+@protocol SMGenerateAst_PastryVisitor;
 
-@interface NetGlobulusSimiGenerateAst_Pastry : NSObject
+@interface SMGenerateAst_Pastry : NSObject
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiGenerateAst:(NetGlobulusSimiGenerateAst *)outer$;
+- (instancetype __nonnull)initWithSMGenerateAst:(SMGenerateAst *)outer$;
 
-- (void)acceptWithNetGlobulusSimiGenerateAst_PastryVisitor:(id<NetGlobulusSimiGenerateAst_PastryVisitor>)visitor;
+- (void)acceptWithSMGenerateAst_PastryVisitor:(id<SMGenerateAst_PastryVisitor>)visitor;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiGenerateAst_Pastry)
+J2OBJC_EMPTY_STATIC_INIT(SMGenerateAst_Pastry)
 
-FOUNDATION_EXPORT void NetGlobulusSimiGenerateAst_Pastry_initWithNetGlobulusSimiGenerateAst_(NetGlobulusSimiGenerateAst_Pastry *self, NetGlobulusSimiGenerateAst *outer$);
+FOUNDATION_EXPORT void SMGenerateAst_Pastry_initWithSMGenerateAst_(SMGenerateAst_Pastry *self, SMGenerateAst *outer$);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiGenerateAst_Pastry)
+J2OBJC_TYPE_LITERAL_HEADER(SMGenerateAst_Pastry)
 
 #endif
 
-#if !defined (NetGlobulusSimiGenerateAst_Beignet_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_NetGlobulusSimiGenerateAst_Beignet))
-#define NetGlobulusSimiGenerateAst_Beignet_
+#if !defined (SMGenerateAst_Beignet_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_SMGenerateAst_Beignet))
+#define SMGenerateAst_Beignet_
 
-@class NetGlobulusSimiGenerateAst;
-@protocol NetGlobulusSimiGenerateAst_PastryVisitor;
+@class SMGenerateAst;
+@protocol SMGenerateAst_PastryVisitor;
 
-@interface NetGlobulusSimiGenerateAst_Beignet : NetGlobulusSimiGenerateAst_Pastry
+@interface SMGenerateAst_Beignet : SMGenerateAst_Pastry
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiGenerateAst:(NetGlobulusSimiGenerateAst *)outer$;
+- (instancetype __nonnull)initWithSMGenerateAst:(SMGenerateAst *)outer$;
 
-- (void)acceptWithNetGlobulusSimiGenerateAst_PastryVisitor:(id<NetGlobulusSimiGenerateAst_PastryVisitor>)visitor;
+- (void)acceptWithSMGenerateAst_PastryVisitor:(id<SMGenerateAst_PastryVisitor>)visitor;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiGenerateAst_Beignet)
+J2OBJC_EMPTY_STATIC_INIT(SMGenerateAst_Beignet)
 
-FOUNDATION_EXPORT void NetGlobulusSimiGenerateAst_Beignet_initWithNetGlobulusSimiGenerateAst_(NetGlobulusSimiGenerateAst_Beignet *self, NetGlobulusSimiGenerateAst *outer$);
+FOUNDATION_EXPORT void SMGenerateAst_Beignet_initWithSMGenerateAst_(SMGenerateAst_Beignet *self, SMGenerateAst *outer$);
 
-FOUNDATION_EXPORT NetGlobulusSimiGenerateAst_Beignet *new_NetGlobulusSimiGenerateAst_Beignet_initWithNetGlobulusSimiGenerateAst_(NetGlobulusSimiGenerateAst *outer$) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMGenerateAst_Beignet *new_SMGenerateAst_Beignet_initWithSMGenerateAst_(SMGenerateAst *outer$) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiGenerateAst_Beignet *create_NetGlobulusSimiGenerateAst_Beignet_initWithNetGlobulusSimiGenerateAst_(NetGlobulusSimiGenerateAst *outer$);
+FOUNDATION_EXPORT SMGenerateAst_Beignet *create_SMGenerateAst_Beignet_initWithSMGenerateAst_(SMGenerateAst *outer$);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiGenerateAst_Beignet)
+J2OBJC_TYPE_LITERAL_HEADER(SMGenerateAst_Beignet)
 
 #endif
 
-#if !defined (NetGlobulusSimiGenerateAst_Cruller_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_NetGlobulusSimiGenerateAst_Cruller))
-#define NetGlobulusSimiGenerateAst_Cruller_
+#if !defined (SMGenerateAst_Cruller_) && (INCLUDE_ALL_NetGlobulusSimiGenerateAst || defined(INCLUDE_SMGenerateAst_Cruller))
+#define SMGenerateAst_Cruller_
 
-@class NetGlobulusSimiGenerateAst;
-@protocol NetGlobulusSimiGenerateAst_PastryVisitor;
+@class SMGenerateAst;
+@protocol SMGenerateAst_PastryVisitor;
 
-@interface NetGlobulusSimiGenerateAst_Cruller : NetGlobulusSimiGenerateAst_Pastry
+@interface SMGenerateAst_Cruller : SMGenerateAst_Pastry
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiGenerateAst:(NetGlobulusSimiGenerateAst *)outer$;
+- (instancetype __nonnull)initWithSMGenerateAst:(SMGenerateAst *)outer$;
 
-- (void)acceptWithNetGlobulusSimiGenerateAst_PastryVisitor:(id<NetGlobulusSimiGenerateAst_PastryVisitor>)visitor;
+- (void)acceptWithSMGenerateAst_PastryVisitor:(id<SMGenerateAst_PastryVisitor>)visitor;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiGenerateAst_Cruller)
+J2OBJC_EMPTY_STATIC_INIT(SMGenerateAst_Cruller)
 
-FOUNDATION_EXPORT void NetGlobulusSimiGenerateAst_Cruller_initWithNetGlobulusSimiGenerateAst_(NetGlobulusSimiGenerateAst_Cruller *self, NetGlobulusSimiGenerateAst *outer$);
+FOUNDATION_EXPORT void SMGenerateAst_Cruller_initWithSMGenerateAst_(SMGenerateAst_Cruller *self, SMGenerateAst *outer$);
 
-FOUNDATION_EXPORT NetGlobulusSimiGenerateAst_Cruller *new_NetGlobulusSimiGenerateAst_Cruller_initWithNetGlobulusSimiGenerateAst_(NetGlobulusSimiGenerateAst *outer$) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMGenerateAst_Cruller *new_SMGenerateAst_Cruller_initWithSMGenerateAst_(SMGenerateAst *outer$) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiGenerateAst_Cruller *create_NetGlobulusSimiGenerateAst_Cruller_initWithNetGlobulusSimiGenerateAst_(NetGlobulusSimiGenerateAst *outer$);
+FOUNDATION_EXPORT SMGenerateAst_Cruller *create_SMGenerateAst_Cruller_initWithSMGenerateAst_(SMGenerateAst *outer$);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiGenerateAst_Cruller)
+J2OBJC_TYPE_LITERAL_HEADER(SMGenerateAst_Cruller)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiGenerateAst")

@@ -13,23 +13,28 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSparseArray
 
-#if !defined (NetGlobulusSimiSparseArray_) && (INCLUDE_ALL_NetGlobulusSimiSparseArray || defined(INCLUDE_NetGlobulusSimiSparseArray))
-#define NetGlobulusSimiSparseArray_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
-@interface NetGlobulusSimiSparseArray : NSObject < NSCopying >
+#if !defined (SMSparseArray_) && (INCLUDE_ALL_NetGlobulusSimiSparseArray || defined(INCLUDE_SMSparseArray))
+#define SMSparseArray_
+
+@interface SMSparseArray : NSObject < NSCopying >
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
-- (instancetype)initWithInt:(jint)initialCapacity;
+- (instancetype __nonnull)initWithInt:(jint)initialCapacity;
 
 - (void)appendWithInt:(jint)key
                withId:(id)value;
 
 - (void)clear;
 
-- (NetGlobulusSimiSparseArray *)java_clone;
+- (SMSparseArray *)java_clone;
 
 - (void)delete__WithInt:(jint)key;
 
@@ -64,26 +69,32 @@
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiSparseArray)
+J2OBJC_STATIC_INIT(SMSparseArray)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSparseArray_init(NetGlobulusSimiSparseArray *self);
+FOUNDATION_EXPORT void SMSparseArray_init(SMSparseArray *self);
 
-FOUNDATION_EXPORT NetGlobulusSimiSparseArray *new_NetGlobulusSimiSparseArray_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSparseArray *new_SMSparseArray_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSparseArray *create_NetGlobulusSimiSparseArray_init(void);
+FOUNDATION_EXPORT SMSparseArray *create_SMSparseArray_init(void);
 
-FOUNDATION_EXPORT void NetGlobulusSimiSparseArray_initWithInt_(NetGlobulusSimiSparseArray *self, jint initialCapacity);
+FOUNDATION_EXPORT void SMSparseArray_initWithInt_(SMSparseArray *self, jint initialCapacity);
 
-FOUNDATION_EXPORT NetGlobulusSimiSparseArray *new_NetGlobulusSimiSparseArray_initWithInt_(jint initialCapacity) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSparseArray *new_SMSparseArray_initWithInt_(jint initialCapacity) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSparseArray *create_NetGlobulusSimiSparseArray_initWithInt_(jint initialCapacity);
+FOUNDATION_EXPORT SMSparseArray *create_SMSparseArray_initWithInt_(jint initialCapacity);
 
-FOUNDATION_EXPORT jint NetGlobulusSimiSparseArray_idealByteArraySizeWithInt_(jint need);
+FOUNDATION_EXPORT jint SMSparseArray_idealByteArraySizeWithInt_(jint need);
 
-FOUNDATION_EXPORT jint NetGlobulusSimiSparseArray_idealIntArraySizeWithInt_(jint need);
+FOUNDATION_EXPORT jint SMSparseArray_idealIntArraySizeWithInt_(jint need);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSparseArray)
+J2OBJC_TYPE_LITERAL_HEADER(SMSparseArray)
+
+@compatibility_alias NetGlobulusSimiSparseArray SMSparseArray;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSparseArray")

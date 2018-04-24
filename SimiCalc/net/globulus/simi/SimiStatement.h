@@ -13,17 +13,28 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiStatement
 
-#if !defined (NetGlobulusSimiSimiStatement_) && (INCLUDE_ALL_NetGlobulusSimiSimiStatement || defined(INCLUDE_NetGlobulusSimiSimiStatement))
-#define NetGlobulusSimiSimiStatement_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
-@protocol NetGlobulusSimiSimiStatement < JavaObject >
+#if !defined (SMSimiStatement_) && (INCLUDE_ALL_NetGlobulusSimiSimiStatement || defined(INCLUDE_SMSimiStatement))
+#define SMSimiStatement_
+
+@protocol SMSimiStatement < JavaObject >
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiStatement)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiStatement)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiStatement)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiStatement)
+
+#define NetGlobulusSimiSimiStatement SMSimiStatement
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiStatement")

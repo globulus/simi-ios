@@ -19,7 +19,7 @@
     // Override point for customization after application launch.
     
     [SMActiveSimi setImportResolverWithSMActiveSimi_ImportResolver:self];
-    [SMActiveSimi load__WithNSStringArray:[IOSObjectArray arrayWithNSArray:@[@"Calc.simi"] type:[IOSClass classForIosName:@"NSString"]]];
+    [SMActiveSimi load__WithNSStringArray:[IOSObjectArray arrayWithNSArray:@[@"Calc.simi", @"RedditStats.simi"] type:[IOSClass classForIosName:@"NSString"]]];
     
     
     return YES;

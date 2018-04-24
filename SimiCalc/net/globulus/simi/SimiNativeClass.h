@@ -13,12 +13,17 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiNativeClass
 
-#if !defined (NetGlobulusSimiSimiNativeClass_) && (INCLUDE_ALL_NetGlobulusSimiSimiNativeClass || defined(INCLUDE_NetGlobulusSimiSimiNativeClass))
-#define NetGlobulusSimiSimiNativeClass_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiNativeClass_) && (INCLUDE_ALL_NetGlobulusSimiSimiNativeClass || defined(INCLUDE_SMSimiNativeClass))
+#define SMSimiNativeClass_
 
 @protocol JavaUtilMap;
 
-@interface NetGlobulusSimiSimiNativeClass : NSObject {
+@interface SMSimiNativeClass : NSObject {
  @public
   NSString *name_;
   id<JavaUtilMap> methods_;
@@ -26,28 +31,34 @@
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNSString:(NSString *)name
-                 withJavaUtilMap:(id<JavaUtilMap>)methods;
+- (instancetype __nonnull)initWithNSString:(NSString *)name
+                           withJavaUtilMap:(id<JavaUtilMap>)methods;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiNativeClass)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiNativeClass)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiNativeClass, name_, NSString *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiNativeClass, methods_, id<JavaUtilMap>)
+J2OBJC_FIELD_SETTER(SMSimiNativeClass, name_, NSString *)
+J2OBJC_FIELD_SETTER(SMSimiNativeClass, methods_, id<JavaUtilMap>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NetGlobulusSimiSimiNativeClass *self, NSString *name, id<JavaUtilMap> methods);
+FOUNDATION_EXPORT void SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMSimiNativeClass *self, NSString *name, id<JavaUtilMap> methods);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiNativeClass *new_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NSString *name, id<JavaUtilMap> methods) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiNativeClass *new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(NSString *name, id<JavaUtilMap> methods) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiNativeClass *create_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NSString *name, id<JavaUtilMap> methods);
+FOUNDATION_EXPORT SMSimiNativeClass *create_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(NSString *name, id<JavaUtilMap> methods);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiNativeClass)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiNativeClass)
+
+@compatibility_alias NetGlobulusSimiSimiNativeClass SMSimiNativeClass;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiNativeClass")

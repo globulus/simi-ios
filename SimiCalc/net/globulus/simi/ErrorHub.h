@@ -13,43 +13,54 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiErrorHub
 
-#if !defined (NetGlobulusSimiErrorHub_) && (INCLUDE_ALL_NetGlobulusSimiErrorHub || defined(INCLUDE_NetGlobulusSimiErrorHub))
-#define NetGlobulusSimiErrorHub_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
-@class NetGlobulusSimiRuntimeError;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiErrorWatcher;
+#if !defined (SMErrorHub_) && (INCLUDE_ALL_NetGlobulusSimiErrorHub || defined(INCLUDE_SMErrorHub))
+#define SMErrorHub_
 
-@interface NetGlobulusSimiErrorHub : NSObject
+@class SMRuntimeError;
+@class SMToken;
+@protocol SMErrorWatcher;
+
+@interface SMErrorHub : NSObject
 
 #pragma mark Package-Private
 
-- (void)addWatcherWithNetGlobulusSimiErrorWatcher:(id<NetGlobulusSimiErrorWatcher>)watcher;
+- (void)addWatcherWithSMErrorWatcher:(id<SMErrorWatcher>)watcher;
 
 - (void)errorWithInt:(jint)line
         withNSString:(NSString *)message;
 
-- (void)errorWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)token
-                         withNSString:(NSString *)message;
+- (void)errorWithSMToken:(SMToken *)token
+            withNSString:(NSString *)message;
 
-- (void)removeWatcherWithNetGlobulusSimiErrorWatcher:(id<NetGlobulusSimiErrorWatcher>)watcher;
+- (void)removeWatcherWithSMErrorWatcher:(id<SMErrorWatcher>)watcher;
 
 - (void)reportWithInt:(jint)line
          withNSString:(NSString *)where
          withNSString:(NSString *)message;
 
-- (void)runtimeErrorWithNetGlobulusSimiRuntimeError:(NetGlobulusSimiRuntimeError *)error;
+- (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error;
 
-+ (NetGlobulusSimiErrorHub *)sharedInstance;
++ (SMErrorHub *)sharedInstance;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiErrorHub)
+J2OBJC_STATIC_INIT(SMErrorHub)
 
-FOUNDATION_EXPORT NetGlobulusSimiErrorHub *NetGlobulusSimiErrorHub_sharedInstance(void);
+FOUNDATION_EXPORT SMErrorHub *SMErrorHub_sharedInstance(void);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiErrorHub)
+J2OBJC_TYPE_LITERAL_HEADER(SMErrorHub)
+
+@compatibility_alias NetGlobulusSimiErrorHub SMErrorHub;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiErrorHub")

@@ -13,17 +13,22 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiToken
 
-#if !defined (NetGlobulusSimiToken_) && (INCLUDE_ALL_NetGlobulusSimiToken || defined(INCLUDE_NetGlobulusSimiToken))
-#define NetGlobulusSimiToken_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
-@class NetGlobulusSimiSimiValue;
-@class NetGlobulusSimiTokenType;
+#if !defined (SMToken_) && (INCLUDE_ALL_NetGlobulusSimiToken || defined(INCLUDE_SMToken))
+#define SMToken_
 
-@interface NetGlobulusSimiToken : NSObject {
+@class SMSimiValue;
+@class SMTokenType;
+
+@interface SMToken : NSObject {
  @public
-  NetGlobulusSimiTokenType *type_;
+  SMTokenType *type_;
   NSString *lexeme_;
-  NetGlobulusSimiSimiValue *literal_;
+  SMSimiValue *literal_;
   jint line_;
 }
 
@@ -33,43 +38,49 @@
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type
-                                    withNSString:(NSString *)lexeme
-                    withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)literal
-                                         withInt:(jint)line;
+- (instancetype __nonnull)initWithSMTokenType:(SMTokenType *)type
+                                 withNSString:(NSString *)lexeme
+                              withSMSimiValue:(SMSimiValue *)literal
+                                      withInt:(jint)line;
 
-+ (NetGlobulusSimiToken *)namedWithNSString:(NSString *)name;
++ (SMToken *)namedWithNSString:(NSString *)name;
 
-+ (NetGlobulusSimiToken *)nativeCallWithNSString:(NSString *)name;
++ (SMToken *)nativeCallWithNSString:(NSString *)name;
 
-+ (NetGlobulusSimiToken *)self__;
++ (SMToken *)self__;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiToken)
+J2OBJC_EMPTY_STATIC_INIT(SMToken)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiToken, type_, NetGlobulusSimiTokenType *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiToken, lexeme_, NSString *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiToken, literal_, NetGlobulusSimiSimiValue *)
+J2OBJC_FIELD_SETTER(SMToken, type_, SMTokenType *)
+J2OBJC_FIELD_SETTER(SMToken, lexeme_, NSString *)
+J2OBJC_FIELD_SETTER(SMToken, literal_, SMSimiValue *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(NetGlobulusSimiToken *self, NetGlobulusSimiTokenType *type, NSString *lexeme, NetGlobulusSimiSimiValue *literal, jint line);
+FOUNDATION_EXPORT void SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMToken *self, SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line);
 
-FOUNDATION_EXPORT NetGlobulusSimiToken *new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(NetGlobulusSimiTokenType *type, NSString *lexeme, NetGlobulusSimiSimiValue *literal, jint line) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMToken *new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiToken *create_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(NetGlobulusSimiTokenType *type, NSString *lexeme, NetGlobulusSimiSimiValue *literal, jint line);
+FOUNDATION_EXPORT SMToken *create_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line);
 
-FOUNDATION_EXPORT NetGlobulusSimiToken *NetGlobulusSimiToken_self__(void);
+FOUNDATION_EXPORT SMToken *SMToken_self__(void);
 
-FOUNDATION_EXPORT NetGlobulusSimiToken *NetGlobulusSimiToken_nativeCallWithNSString_(NSString *name);
+FOUNDATION_EXPORT SMToken *SMToken_nativeCallWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT NetGlobulusSimiToken *NetGlobulusSimiToken_namedWithNSString_(NSString *name);
+FOUNDATION_EXPORT SMToken *SMToken_namedWithNSString_(NSString *name);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiToken)
+J2OBJC_TYPE_LITERAL_HEADER(SMToken)
+
+@compatibility_alias NetGlobulusSimiToken SMToken;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiToken")

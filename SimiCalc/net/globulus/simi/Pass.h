@@ -13,39 +13,50 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiPass
 
-#if !defined (NetGlobulusSimiPass_) && (INCLUDE_ALL_NetGlobulusSimiPass || defined(INCLUDE_NetGlobulusSimiPass))
-#define NetGlobulusSimiPass_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMPass_) && (INCLUDE_ALL_NetGlobulusSimiPass || defined(INCLUDE_SMPass))
+#define SMPass_
 
 #define RESTRICT_NetGlobulusSimiSimiValue 1
-#define INCLUDE_NetGlobulusSimiSimiValue 1
+#define INCLUDE_SMSimiValue 1
 #include "SimiValue.h"
 
-@interface NetGlobulusSimiPass : NetGlobulusSimiSimiValue
+@interface SMPass : SMSimiValue
 
 #pragma mark Public
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_;
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o;
+- (jint)compareToWithId:(SMSimiValue *)o;
 
-- (NetGlobulusSimiSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
+- (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
 #pragma mark Package-Private
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiPass)
+J2OBJC_EMPTY_STATIC_INIT(SMPass)
 
-FOUNDATION_EXPORT void NetGlobulusSimiPass_init(NetGlobulusSimiPass *self);
+FOUNDATION_EXPORT void SMPass_init(SMPass *self);
 
-FOUNDATION_EXPORT NetGlobulusSimiPass *new_NetGlobulusSimiPass_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMPass *new_SMPass_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiPass *create_NetGlobulusSimiPass_init(void);
+FOUNDATION_EXPORT SMPass *create_SMPass_init(void);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiPass)
+J2OBJC_TYPE_LITERAL_HEADER(SMPass)
+
+@compatibility_alias NetGlobulusSimiPass SMPass;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiPass")

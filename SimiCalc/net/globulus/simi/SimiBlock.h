@@ -13,12 +13,17 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiBlock
 
-#if !defined (NetGlobulusSimiSimiBlock_) && (INCLUDE_ALL_NetGlobulusSimiSimiBlock || defined(INCLUDE_NetGlobulusSimiSimiBlock))
-#define NetGlobulusSimiSimiBlock_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiBlock_) && (INCLUDE_ALL_NetGlobulusSimiSimiBlock || defined(INCLUDE_SMSimiBlock))
+#define SMSimiBlock_
 
 @protocol JavaUtilList;
 
-@protocol NetGlobulusSimiSimiBlock < JavaObject >
+@protocol SMSimiBlock < JavaObject >
 
 - (id<JavaUtilList>)getStatements;
 
@@ -26,10 +31,16 @@
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiBlock)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiBlock)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiBlock)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiBlock)
+
+#define NetGlobulusSimiSimiBlock SMSimiBlock
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiBlock")

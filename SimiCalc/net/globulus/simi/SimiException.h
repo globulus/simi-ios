@@ -13,71 +13,82 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiException
 
-#if !defined (NetGlobulusSimiSimiException_) && (INCLUDE_ALL_NetGlobulusSimiSimiException || defined(INCLUDE_NetGlobulusSimiSimiException))
-#define NetGlobulusSimiSimiException_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiException_) && (INCLUDE_ALL_NetGlobulusSimiSimiException || defined(INCLUDE_SMSimiException))
+#define SMSimiException_
 
 #define RESTRICT_JavaLangRuntimeException 1
 #define INCLUDE_JavaLangRuntimeException 1
 #include "java/lang/RuntimeException.h"
 
 #define RESTRICT_NetGlobulusSimiSimiObject 1
-#define INCLUDE_NetGlobulusSimiSimiObject 1
+#define INCLUDE_SMSimiObject 1
 #include "SimiObject.h"
 
 @class JavaLangThrowable;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiSimiClass;
-@protocol NetGlobulusSimiSimiEnvironment;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMSimiClass;
+@protocol SMSimiEnvironment;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiSimiException : JavaLangRuntimeException < NetGlobulusSimiSimiObject >
+@interface SMSimiException : JavaLangRuntimeException < SMSimiObject >
 
 #pragma mark Public
 
-- (instancetype)initWithNetGlobulusSimiSimiClass:(id<NetGlobulusSimiSimiClass>)clazz
-                                    withNSString:(NSString *)message;
+- (instancetype __nonnull)initWithSMSimiClass:(id<SMSimiClass>)clazz
+                                 withNSString:(NSString *)message;
 
-- (id<NetGlobulusSimiSimiObject>)cloneWithBoolean:(jboolean)mutable_;
+- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
 
-- (id<NetGlobulusSimiSimiProperty>)getWithNSString:(NSString *)key
-                withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment;
+- (id<SMSimiProperty>)getWithNSString:(NSString *)key
+                withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
-- (id<NetGlobulusSimiSimiClass>)getSimiClass;
+- (id<SMSimiClass>)getSimiClass;
 
 - (void)setWithNSString:(NSString *)key
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)value
-withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment;
+     withSMSimiProperty:(id<SMSimiProperty>)value
+  withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
 - (id<JavaUtilList>)values;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
-- (instancetype)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1
-                     withBoolean:(jboolean)arg2
-                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1
+                               withBoolean:(jboolean)arg2
+                               withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiException)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiException)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_(NetGlobulusSimiSimiException *self, id<NetGlobulusSimiSimiClass> clazz, NSString *message);
+FOUNDATION_EXPORT void SMSimiException_initWithSMSimiClass_withNSString_(SMSimiException *self, id<SMSimiClass> clazz, NSString *message);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiException *new_NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_(id<NetGlobulusSimiSimiClass> clazz, NSString *message) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiException *new_SMSimiException_initWithSMSimiClass_withNSString_(id<SMSimiClass> clazz, NSString *message) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiException *create_NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_(id<NetGlobulusSimiSimiClass> clazz, NSString *message);
+FOUNDATION_EXPORT SMSimiException *create_SMSimiException_initWithSMSimiClass_withNSString_(id<SMSimiClass> clazz, NSString *message);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiException)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiException)
+
+@compatibility_alias NetGlobulusSimiSimiException SMSimiException;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiException")

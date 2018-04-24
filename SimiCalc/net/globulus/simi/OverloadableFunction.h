@@ -13,10 +13,15 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiOverloadableFunction
 
-#if !defined (NetGlobulusSimiOverloadableFunction_) && (INCLUDE_ALL_NetGlobulusSimiOverloadableFunction || defined(INCLUDE_NetGlobulusSimiOverloadableFunction))
-#define NetGlobulusSimiOverloadableFunction_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
-@interface NetGlobulusSimiOverloadableFunction : NSObject {
+#if !defined (SMOverloadableFunction_) && (INCLUDE_ALL_NetGlobulusSimiOverloadableFunction || defined(INCLUDE_SMOverloadableFunction))
+#define SMOverloadableFunction_
+
+@interface SMOverloadableFunction : NSObject {
  @public
   NSString *name_;
   jint arity_;
@@ -30,27 +35,33 @@
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)arity;
+- (instancetype __nonnull)initWithNSString:(NSString *)name
+                                   withInt:(jint)arity;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiOverloadableFunction)
+J2OBJC_EMPTY_STATIC_INIT(SMOverloadableFunction)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiOverloadableFunction, name_, NSString *)
+J2OBJC_FIELD_SETTER(SMOverloadableFunction, name_, NSString *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiOverloadableFunction *self, NSString *name, jint arity);
+FOUNDATION_EXPORT void SMOverloadableFunction_initWithNSString_withInt_(SMOverloadableFunction *self, NSString *name, jint arity);
 
-FOUNDATION_EXPORT NetGlobulusSimiOverloadableFunction *new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NSString *name, jint arity) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMOverloadableFunction *new_SMOverloadableFunction_initWithNSString_withInt_(NSString *name, jint arity) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiOverloadableFunction *create_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NSString *name, jint arity);
+FOUNDATION_EXPORT SMOverloadableFunction *create_SMOverloadableFunction_initWithNSString_withInt_(NSString *name, jint arity);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiOverloadableFunction)
+J2OBJC_TYPE_LITERAL_HEADER(SMOverloadableFunction)
+
+@compatibility_alias NetGlobulusSimiOverloadableFunction SMOverloadableFunction;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiOverloadableFunction")

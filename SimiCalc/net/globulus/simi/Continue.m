@@ -7,11 +7,11 @@
 #include "java/lang/RuntimeException.h"
 #include "Continue.h"
 
-@implementation NetGlobulusSimiContinue
+@implementation SMContinue
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiContinue_init(self);
+- (instancetype __nonnull)init {
+  SMContinue_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -25,22 +25,22 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   #pragma clang diagnostic pop
-  static const J2ObjcClassInfo _NetGlobulusSimiContinue = { "Continue", "net.globulus.simi", NULL, methods, NULL, 7, 0x0, 1, 0, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiContinue;
+  static const J2ObjcClassInfo _SMContinue = { "Continue", "net.globulus.simi", NULL, methods, NULL, 7, 0x0, 1, 0, -1, -1, -1, -1, -1 };
+  return &_SMContinue;
 }
 
 @end
 
-void NetGlobulusSimiContinue_init(NetGlobulusSimiContinue *self) {
+void SMContinue_init(SMContinue *self) {
   JavaLangRuntimeException_init(self);
 }
 
-NetGlobulusSimiContinue *new_NetGlobulusSimiContinue_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiContinue, init)
+SMContinue *new_SMContinue_init() {
+  J2OBJC_NEW_IMPL(SMContinue, init)
 }
 
-NetGlobulusSimiContinue *create_NetGlobulusSimiContinue_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiContinue, init)
+SMContinue *create_SMContinue_init() {
+  J2OBJC_CREATE_IMPL(SMContinue, init)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiContinue)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMContinue)

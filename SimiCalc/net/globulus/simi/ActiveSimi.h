@@ -13,98 +13,117 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiActiveSimi
 
-#if !defined (NetGlobulusSimiActiveSimi_) && (INCLUDE_ALL_NetGlobulusSimiActiveSimi || defined(INCLUDE_NetGlobulusSimiActiveSimi))
-#define NetGlobulusSimiActiveSimi_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMActiveSimi_) && (INCLUDE_ALL_NetGlobulusSimiActiveSimi || defined(INCLUDE_SMActiveSimi))
+#define SMActiveSimi_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiSimiClassImpl;
-@protocol NetGlobulusSimiActiveSimi_Callback;
-@protocol NetGlobulusSimiActiveSimi_ImportResolver;
-@protocol NetGlobulusSimiSimiProperty;
+@class SMSimiClassImpl;
+@protocol SMActiveSimi_Callback;
+@protocol SMActiveSimi_ImportResolver;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiActiveSimi : NSObject
+@interface SMActiveSimi : NSObject
+
++ (jboolean)hadError;
+
++ (void)setHadError:(jboolean)value;
+
++ (jboolean)hadRuntimeError;
+
++ (void)setHadRuntimeError:(jboolean)value;
 
 #pragma mark Public
 
-+ (id<NetGlobulusSimiSimiProperty>)evalWithNSString:(NSString *)className_
-                                       withNSString:(NSString *)methodName
-               withNetGlobulusSimiSimiPropertyArray:(IOSObjectArray *)params;
++ (id<SMSimiProperty>)evalWithNSString:(NSString *)className_
+                          withNSString:(NSString *)methodName
+               withSMSimiPropertyArray:(IOSObjectArray *)params;
 
-+ (void)evalAsyncWithNetGlobulusSimiActiveSimi_Callback:(id<NetGlobulusSimiActiveSimi_Callback>)callback
-                                           withNSString:(NSString *)className_
-                                           withNSString:(NSString *)methodName
-                   withNetGlobulusSimiSimiPropertyArray:(IOSObjectArray *)params;
++ (void)evalAsyncWithSMActiveSimi_Callback:(id<SMActiveSimi_Callback>)callback
+                              withNSString:(NSString *)className_
+                              withNSString:(NSString *)methodName
+                   withSMSimiPropertyArray:(IOSObjectArray *)params;
 
 + (void)load__WithNSStringArray:(IOSObjectArray *)files;
 
-+ (void)setImportResolverWithNetGlobulusSimiActiveSimi_ImportResolver:(id<NetGlobulusSimiActiveSimi_ImportResolver>)ir;
++ (void)setImportResolverWithSMActiveSimi_ImportResolver:(id<SMActiveSimi_ImportResolver>)ir;
 
 #pragma mark Package-Private
 
-+ (NetGlobulusSimiSimiClassImpl *)getObjectClass;
++ (SMSimiClassImpl *)getObjectClass;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiActiveSimi)
+J2OBJC_STATIC_INIT(SMActiveSimi)
 
-inline jboolean NetGlobulusSimiActiveSimi_get_hadError(void);
-inline jboolean NetGlobulusSimiActiveSimi_set_hadError(jboolean value);
-inline jboolean *NetGlobulusSimiActiveSimi_getRef_hadError(void);
+inline jboolean SMActiveSimi_get_hadError(void);
+inline jboolean SMActiveSimi_set_hadError(jboolean value);
+inline jboolean *SMActiveSimi_getRef_hadError(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean NetGlobulusSimiActiveSimi_hadError;
-J2OBJC_STATIC_FIELD_PRIMITIVE(NetGlobulusSimiActiveSimi, hadError, jboolean)
+FOUNDATION_EXPORT jboolean SMActiveSimi_hadError;
+J2OBJC_STATIC_FIELD_PRIMITIVE(SMActiveSimi, hadError, jboolean)
 
-inline jboolean NetGlobulusSimiActiveSimi_get_hadRuntimeError(void);
-inline jboolean NetGlobulusSimiActiveSimi_set_hadRuntimeError(jboolean value);
-inline jboolean *NetGlobulusSimiActiveSimi_getRef_hadRuntimeError(void);
+inline jboolean SMActiveSimi_get_hadRuntimeError(void);
+inline jboolean SMActiveSimi_set_hadRuntimeError(jboolean value);
+inline jboolean *SMActiveSimi_getRef_hadRuntimeError(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean NetGlobulusSimiActiveSimi_hadRuntimeError;
-J2OBJC_STATIC_FIELD_PRIMITIVE(NetGlobulusSimiActiveSimi, hadRuntimeError, jboolean)
+FOUNDATION_EXPORT jboolean SMActiveSimi_hadRuntimeError;
+J2OBJC_STATIC_FIELD_PRIMITIVE(SMActiveSimi, hadRuntimeError, jboolean)
 
-FOUNDATION_EXPORT void NetGlobulusSimiActiveSimi_load__WithNSStringArray_(IOSObjectArray *files);
+FOUNDATION_EXPORT void SMActiveSimi_load__WithNSStringArray_(IOSObjectArray *files);
 
-FOUNDATION_EXPORT id<NetGlobulusSimiSimiProperty> NetGlobulusSimiActiveSimi_evalWithNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(NSString *className_, NSString *methodName, IOSObjectArray *params);
+FOUNDATION_EXPORT id<SMSimiProperty> SMActiveSimi_evalWithNSString_withNSString_withSMSimiPropertyArray_(NSString *className_, NSString *methodName, IOSObjectArray *params);
 
-FOUNDATION_EXPORT void NetGlobulusSimiActiveSimi_evalAsyncWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(id<NetGlobulusSimiActiveSimi_Callback> callback, NSString *className_, NSString *methodName, IOSObjectArray *params);
+FOUNDATION_EXPORT void SMActiveSimi_evalAsyncWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(id<SMActiveSimi_Callback> callback, NSString *className_, NSString *methodName, IOSObjectArray *params);
 
-FOUNDATION_EXPORT void NetGlobulusSimiActiveSimi_setImportResolverWithNetGlobulusSimiActiveSimi_ImportResolver_(id<NetGlobulusSimiActiveSimi_ImportResolver> ir);
+FOUNDATION_EXPORT void SMActiveSimi_setImportResolverWithSMActiveSimi_ImportResolver_(id<SMActiveSimi_ImportResolver> ir);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiClassImpl *NetGlobulusSimiActiveSimi_getObjectClass(void);
+FOUNDATION_EXPORT SMSimiClassImpl *SMActiveSimi_getObjectClass(void);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiActiveSimi)
+J2OBJC_TYPE_LITERAL_HEADER(SMActiveSimi)
+
+@compatibility_alias NetGlobulusSimiActiveSimi SMActiveSimi;
 
 #endif
 
-#if !defined (NetGlobulusSimiActiveSimi_ImportResolver_) && (INCLUDE_ALL_NetGlobulusSimiActiveSimi || defined(INCLUDE_NetGlobulusSimiActiveSimi_ImportResolver))
-#define NetGlobulusSimiActiveSimi_ImportResolver_
+#if !defined (SMActiveSimi_ImportResolver_) && (INCLUDE_ALL_NetGlobulusSimiActiveSimi || defined(INCLUDE_SMActiveSimi_ImportResolver))
+#define SMActiveSimi_ImportResolver_
 
-@protocol NetGlobulusSimiActiveSimi_ImportResolver < JavaObject >
+@protocol SMActiveSimi_ImportResolver < JavaObject >
 
 - (NSString *)readFileWithNSString:(NSString *)fileName;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiActiveSimi_ImportResolver)
+J2OBJC_EMPTY_STATIC_INIT(SMActiveSimi_ImportResolver)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiActiveSimi_ImportResolver)
+J2OBJC_TYPE_LITERAL_HEADER(SMActiveSimi_ImportResolver)
 
 #endif
 
-#if !defined (NetGlobulusSimiActiveSimi_Callback_) && (INCLUDE_ALL_NetGlobulusSimiActiveSimi || defined(INCLUDE_NetGlobulusSimiActiveSimi_Callback))
-#define NetGlobulusSimiActiveSimi_Callback_
+#if !defined (SMActiveSimi_Callback_) && (INCLUDE_ALL_NetGlobulusSimiActiveSimi || defined(INCLUDE_SMActiveSimi_Callback))
+#define SMActiveSimi_Callback_
 
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMSimiProperty;
 
-@protocol NetGlobulusSimiActiveSimi_Callback < JavaObject >
+@protocol SMActiveSimi_Callback < JavaObject >
 
-- (void)doneWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)result;
+- (void)doneWithSMSimiProperty:(id<SMSimiProperty>)result;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiActiveSimi_Callback)
+J2OBJC_EMPTY_STATIC_INIT(SMActiveSimi_Callback)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiActiveSimi_Callback)
+J2OBJC_TYPE_LITERAL_HEADER(SMActiveSimi_Callback)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiActiveSimi")

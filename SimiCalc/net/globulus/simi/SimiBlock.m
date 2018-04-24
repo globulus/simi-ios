@@ -6,11 +6,11 @@
 #include "J2ObjC_source.h"
 #include "SimiBlock.h"
 
-@interface NetGlobulusSimiSimiBlock : NSObject
+@interface SMSimiBlock : NSObject
 
 @end
 
-@implementation NetGlobulusSimiSimiBlock
+@implementation SMSimiBlock
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
@@ -24,10 +24,10 @@
   methods[1].selector = @selector(yieldWithInt:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "()Ljava/util/List<+LSimiStatement;>;", "yield", "I" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiBlock = { "SimiBlock", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiBlock;
+  static const J2ObjcClassInfo _SMSimiBlock = { "SimiBlock", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
+  return &_SMSimiBlock;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiBlock)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMSimiBlock)

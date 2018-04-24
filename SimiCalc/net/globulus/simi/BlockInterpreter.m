@@ -6,38 +6,38 @@
 #include "J2ObjC_source.h"
 #include "BlockInterpreter.h"
 
-@interface NetGlobulusSimiBlockInterpreter : NSObject
+@interface SMBlockInterpreter : NSObject
 
 @end
 
-@implementation NetGlobulusSimiBlockInterpreter
+@implementation SMBlockInterpreter
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "V", 0x401, 0, 1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x401, 2, 3, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiEnvironment;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x401, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LSMSimiEnvironment;", 0x401, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x401, 4, 5, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiObject;", 0x401, 6, 7, -1, 8, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiObject;", 0x401, 9, 10, -1, 11, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiObject;", 0x401, 12, 13, -1, 14, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x401, 6, 7, -1, 8, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x401, 9, 10, -1, 11, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x401, 12, 13, -1, 14, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(executeBlockWithNetGlobulusSimiSimiBlock:withNetGlobulusSimiSimiEnvironment:withInt:);
+  methods[0].selector = @selector(executeBlockWithSMSimiBlock:withSMSimiEnvironment:withInt:);
   methods[1].selector = @selector(getGlobalWithNSString:);
   methods[2].selector = @selector(getEnvironment);
-  methods[3].selector = @selector(raiseExceptionWithNetGlobulusSimiSimiException:);
+  methods[3].selector = @selector(raiseExceptionWithSMSimiException:);
   methods[4].selector = @selector(newObjectWithBoolean:withJavaUtilLinkedHashMap:);
   methods[5].selector = @selector(newArrayWithBoolean:withJavaUtilArrayList:);
-  methods[6].selector = @selector(newInstanceWithNetGlobulusSimiSimiClass:withJavaUtilLinkedHashMap:);
+  methods[6].selector = @selector(newInstanceWithSMSimiClass:withJavaUtilLinkedHashMap:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "executeBlock", "LNetGlobulusSimiSimiBlock;LNetGlobulusSimiSimiEnvironment;I", "getGlobal", "LNSString;", "raiseException", "LNetGlobulusSimiSimiException;", "newObject", "ZLJavaUtilLinkedHashMap;", "(ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "newArray", "ZLJavaUtilArrayList;", "(ZLjava/util/ArrayList<LSimiValue;>;)LSimiObject;", "newInstance", "LNetGlobulusSimiSimiClass;LJavaUtilLinkedHashMap;", "(LSimiClass;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBlockInterpreter = { "BlockInterpreter", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 7, 0, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiBlockInterpreter;
+  static const void *ptrTable[] = { "executeBlock", "LSMSimiBlock;LSMSimiEnvironment;I", "getGlobal", "LNSString;", "raiseException", "LSMSimiException;", "newObject", "ZLJavaUtilLinkedHashMap;", "(ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "newArray", "ZLJavaUtilArrayList;", "(ZLjava/util/ArrayList<LSimiValue;>;)LSimiObject;", "newInstance", "LSMSimiClass;LJavaUtilLinkedHashMap;", "(LSimiClass;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;" };
+  static const J2ObjcClassInfo _SMBlockInterpreter = { "BlockInterpreter", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 7, 0, -1, -1, -1, -1, -1 };
+  return &_SMBlockInterpreter;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiBlockInterpreter)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMBlockInterpreter)

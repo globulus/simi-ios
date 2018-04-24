@@ -12,24 +12,29 @@
 #define INCLUDE_ALL_NetGlobulusSimiSimiValue 1
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiValue
-#ifdef INCLUDE_NetGlobulusSimiSimiValue_Callable
-#define INCLUDE_NetGlobulusSimiSimiValue 1
+#ifdef INCLUDE_SMSimiValue_Callable
+#define INCLUDE_SMSimiValue 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiSimiValue_Object
-#define INCLUDE_NetGlobulusSimiSimiValue 1
+#ifdef INCLUDE_SMSimiValue_Object
+#define INCLUDE_SMSimiValue 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiSimiValue_Number
-#define INCLUDE_NetGlobulusSimiSimiValue 1
+#ifdef INCLUDE_SMSimiValue_Number
+#define INCLUDE_SMSimiValue 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiSimiValue_String
-#define INCLUDE_NetGlobulusSimiSimiValue 1
+#ifdef INCLUDE_SMSimiValue_String
+#define INCLUDE_SMSimiValue 1
 #endif
 
-#if !defined (NetGlobulusSimiSimiValue_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_NetGlobulusSimiSimiValue))
-#define NetGlobulusSimiSimiValue_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiValue_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_SMSimiValue))
+#define SMSimiValue_
 
 #define RESTRICT_NetGlobulusSimiSimiProperty 1
-#define INCLUDE_NetGlobulusSimiSimiProperty 1
+#define INCLUDE_SMSimiProperty 1
 #include "SimiProperty.h"
 
 #define RESTRICT_JavaLangComparable 1
@@ -38,64 +43,66 @@
 
 @class JavaLangDouble;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiSimiCallable;
-@protocol NetGlobulusSimiSimiObject;
+@protocol SMSimiCallable;
+@protocol SMSimiObject;
 
-@interface NetGlobulusSimiSimiValue : NSObject < NetGlobulusSimiSimiProperty, JavaLangComparable >
+@interface SMSimiValue : NSObject < SMSimiProperty, JavaLangComparable >
 
 #pragma mark Public
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_;
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
-- (NetGlobulusSimiSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
+- (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
 - (id<JavaUtilList>)getAnnotations;
 
-- (id<NetGlobulusSimiSimiCallable>)getCallable;
+- (id<SMSimiCallable>)getCallable;
 
 - (JavaLangDouble *)getNumber;
 
-- (id<NetGlobulusSimiSimiObject>)getObject;
+- (id<SMSimiObject>)getObject;
 
 - (NSString *)getString;
 
-- (NetGlobulusSimiSimiValue *)getValue;
+- (SMSimiValue *)getValue;
 
-- (void)setValueWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value;
+- (void)setValueWithSMSimiValue:(SMSimiValue *)value;
 
 #pragma mark Protected
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiValue)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiValue)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiValue_init(NetGlobulusSimiSimiValue *self);
+FOUNDATION_EXPORT void SMSimiValue_init(SMSimiValue *self);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue)
+
+@compatibility_alias NetGlobulusSimiSimiValue SMSimiValue;
 
 #endif
 
-#if !defined (NetGlobulusSimiSimiValue_String_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_NetGlobulusSimiSimiValue_String))
-#define NetGlobulusSimiSimiValue_String_
+#if !defined (SMSimiValue_String_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_SMSimiValue_String))
+#define SMSimiValue_String_
 
-@class NetGlobulusSimiSimiValue;
+@class SMSimiValue;
 
-@interface NetGlobulusSimiSimiValue_String : NetGlobulusSimiSimiValue {
+@interface SMSimiValue_String : SMSimiValue {
  @public
   NSString *value_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithNSString:(NSString *)value;
+- (instancetype __nonnull)initWithNSString:(NSString *)value;
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_;
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o;
+- (jint)compareToWithId:(SMSimiValue *)o;
 
-- (NetGlobulusSimiSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
+- (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
 - (jboolean)isEqual:(id)obj;
 
@@ -103,45 +110,49 @@ J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue)
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiValue_String)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiValue_String)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiValue_String, value_, NSString *)
+J2OBJC_FIELD_SETTER(SMSimiValue_String, value_, NSString *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiValue_String_initWithNSString_(NetGlobulusSimiSimiValue_String *self, NSString *value);
+FOUNDATION_EXPORT void SMSimiValue_String_initWithNSString_(SMSimiValue_String *self, NSString *value);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_String *new_NetGlobulusSimiSimiValue_String_initWithNSString_(NSString *value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiValue_String *new_SMSimiValue_String_initWithNSString_(NSString *value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_String *create_NetGlobulusSimiSimiValue_String_initWithNSString_(NSString *value);
+FOUNDATION_EXPORT SMSimiValue_String *create_SMSimiValue_String_initWithNSString_(NSString *value);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue_String)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_String)
 
 #endif
 
-#if !defined (NetGlobulusSimiSimiValue_Number_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_NetGlobulusSimiSimiValue_Number))
-#define NetGlobulusSimiSimiValue_Number_
+#if !defined (SMSimiValue_Number_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_SMSimiValue_Number))
+#define SMSimiValue_Number_
 
-@class NetGlobulusSimiSimiValue;
+@class SMSimiValue;
 
-@interface NetGlobulusSimiSimiValue_Number : NetGlobulusSimiSimiValue {
+@interface SMSimiValue_Number : SMSimiValue {
  @public
   jdouble value_;
 }
 
++ (SMSimiValue_Number *)TRUE_;
+
++ (SMSimiValue_Number *)FALSE_;
+
 #pragma mark Public
 
-- (instancetype)initWithBoolean:(jboolean)value;
+- (instancetype __nonnull)initWithBoolean:(jboolean)value;
 
-- (instancetype)initWithDouble:(jdouble)value;
+- (instancetype __nonnull)initWithDouble:(jdouble)value;
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_;
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o;
+- (jint)compareToWithId:(SMSimiValue *)o;
 
-- (NetGlobulusSimiSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
+- (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
 - (jboolean)isEqual:(id)obj;
 
@@ -149,58 +160,58 @@ J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue_String)
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiSimiValue_Number)
+J2OBJC_STATIC_INIT(SMSimiValue_Number)
 
-inline NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_get_TRUE(void);
+inline SMSimiValue_Number *SMSimiValue_Number_get_TRUE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_TRUE;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiSimiValue_Number, TRUE, NetGlobulusSimiSimiValue_Number *)
+FOUNDATION_EXPORT SMSimiValue_Number *SMSimiValue_Number_TRUE;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiValue_Number, TRUE, SMSimiValue_Number *)
 
-inline NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_get_FALSE(void);
+inline SMSimiValue_Number *SMSimiValue_Number_get_FALSE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_FALSE;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiSimiValue_Number, FALSE, NetGlobulusSimiSimiValue_Number *)
+FOUNDATION_EXPORT SMSimiValue_Number *SMSimiValue_Number_FALSE;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiValue_Number, FALSE, SMSimiValue_Number *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiValue_Number_initWithDouble_(NetGlobulusSimiSimiValue_Number *self, jdouble value);
+FOUNDATION_EXPORT void SMSimiValue_Number_initWithDouble_(SMSimiValue_Number *self, jdouble value);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Number *new_NetGlobulusSimiSimiValue_Number_initWithDouble_(jdouble value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiValue_Number *new_SMSimiValue_Number_initWithDouble_(jdouble value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Number *create_NetGlobulusSimiSimiValue_Number_initWithDouble_(jdouble value);
+FOUNDATION_EXPORT SMSimiValue_Number *create_SMSimiValue_Number_initWithDouble_(jdouble value);
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiValue_Number_initWithBoolean_(NetGlobulusSimiSimiValue_Number *self, jboolean value);
+FOUNDATION_EXPORT void SMSimiValue_Number_initWithBoolean_(SMSimiValue_Number *self, jboolean value);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Number *new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(jboolean value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiValue_Number *new_SMSimiValue_Number_initWithBoolean_(jboolean value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Number *create_NetGlobulusSimiSimiValue_Number_initWithBoolean_(jboolean value);
+FOUNDATION_EXPORT SMSimiValue_Number *create_SMSimiValue_Number_initWithBoolean_(jboolean value);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue_Number)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_Number)
 
 #endif
 
-#if !defined (NetGlobulusSimiSimiValue_Object_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_NetGlobulusSimiSimiValue_Object))
-#define NetGlobulusSimiSimiValue_Object_
+#if !defined (SMSimiValue_Object_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_SMSimiValue_Object))
+#define SMSimiValue_Object_
 
-@class NetGlobulusSimiSimiValue;
-@protocol NetGlobulusSimiSimiObject;
+@class SMSimiValue;
+@protocol SMSimiObject;
 
-@interface NetGlobulusSimiSimiValue_Object : NetGlobulusSimiSimiValue {
+@interface SMSimiValue_Object : SMSimiValue {
  @public
-  id<NetGlobulusSimiSimiObject> value_;
+  id<SMSimiObject> value_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)value;
+- (instancetype __nonnull)initWithSMSimiObject:(id<SMSimiObject>)value;
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_;
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o;
+- (jint)compareToWithId:(SMSimiValue *)o;
 
-- (NetGlobulusSimiSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
+- (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
 - (jboolean)isEqual:(id)obj;
 
@@ -208,80 +219,80 @@ J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue_Number)
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiValue_Object)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiValue_Object)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiValue_Object, value_, id<NetGlobulusSimiSimiObject>)
+J2OBJC_FIELD_SETTER(SMSimiValue_Object, value_, id<SMSimiObject>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiValue_Object *self, id<NetGlobulusSimiSimiObject> value);
+FOUNDATION_EXPORT void SMSimiValue_Object_initWithSMSimiObject_(SMSimiValue_Object *self, id<SMSimiObject> value);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Object *new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(id<NetGlobulusSimiSimiObject> value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiValue_Object *new_SMSimiValue_Object_initWithSMSimiObject_(id<SMSimiObject> value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Object *create_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(id<NetGlobulusSimiSimiObject> value);
+FOUNDATION_EXPORT SMSimiValue_Object *create_SMSimiValue_Object_initWithSMSimiObject_(id<SMSimiObject> value);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue_Object)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_Object)
 
 #endif
 
-#if !defined (NetGlobulusSimiSimiValue_Callable_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_NetGlobulusSimiSimiValue_Callable))
-#define NetGlobulusSimiSimiValue_Callable_
+#if !defined (SMSimiValue_Callable_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_SMSimiValue_Callable))
+#define SMSimiValue_Callable_
 
-@class NetGlobulusSimiSimiValue;
-@protocol NetGlobulusSimiSimiCallable;
-@protocol NetGlobulusSimiSimiObject;
+@class SMSimiValue;
+@protocol SMSimiCallable;
+@protocol SMSimiObject;
 
-@interface NetGlobulusSimiSimiValue_Callable : NetGlobulusSimiSimiValue {
+@interface SMSimiValue_Callable : SMSimiValue {
  @public
-  id<NetGlobulusSimiSimiCallable> value_;
+  id<SMSimiCallable> value_;
   NSString *name_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithNetGlobulusSimiSimiCallable:(id<NetGlobulusSimiSimiCallable>)value
-                                       withNSString:(NSString *)name
-                      withNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)instance;
+- (instancetype __nonnull)initWithSMSimiCallable:(id<SMSimiCallable>)value
+                                    withNSString:(NSString *)name
+                                withSMSimiObject:(id<SMSimiObject>)instance;
 
-- (void)bindWithNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)instance;
+- (void)bindWithSMSimiObject:(id<SMSimiObject>)instance;
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_;
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o;
+- (jint)compareToWithId:(SMSimiValue *)o;
 
-- (NetGlobulusSimiSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
+- (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
 - (jboolean)isEqual:(id)obj;
 
-- (id<NetGlobulusSimiSimiObject>)getInstance;
+- (id<SMSimiObject>)getInstance;
 
 - (NSString *)description;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiValue_Callable)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiValue_Callable)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiValue_Callable, value_, id<NetGlobulusSimiSimiCallable>)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiValue_Callable, name_, NSString *)
+J2OBJC_FIELD_SETTER(SMSimiValue_Callable, value_, id<SMSimiCallable>)
+J2OBJC_FIELD_SETTER(SMSimiValue_Callable, name_, NSString *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiValue_Callable *self, id<NetGlobulusSimiSimiCallable> value, NSString *name, id<NetGlobulusSimiSimiObject> instance);
+FOUNDATION_EXPORT void SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(SMSimiValue_Callable *self, id<SMSimiCallable> value, NSString *name, id<SMSimiObject> instance);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Callable *new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(id<NetGlobulusSimiSimiCallable> value, NSString *name, id<NetGlobulusSimiSimiObject> instance) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiValue_Callable *new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(id<SMSimiCallable> value, NSString *name, id<SMSimiObject> instance) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_Callable *create_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(id<NetGlobulusSimiSimiCallable> value, NSString *name, id<NetGlobulusSimiSimiObject> instance);
+FOUNDATION_EXPORT SMSimiValue_Callable *create_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(id<SMSimiCallable> value, NSString *name, id<SMSimiObject> instance);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue_Callable)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_Callable)
 
 #endif
 
-#if !defined (NetGlobulusSimiSimiValue_IncompatibleValuesException_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_NetGlobulusSimiSimiValue_IncompatibleValuesException))
-#define NetGlobulusSimiSimiValue_IncompatibleValuesException_
+#if !defined (SMSimiValue_IncompatibleValuesException_) && (INCLUDE_ALL_NetGlobulusSimiSimiValue || defined(INCLUDE_SMSimiValue_IncompatibleValuesException))
+#define SMSimiValue_IncompatibleValuesException_
 
 #define RESTRICT_JavaLangRuntimeException 1
 #define INCLUDE_JavaLangRuntimeException 1
@@ -290,41 +301,45 @@ J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue_Callable)
 @class IOSClass;
 @class JavaLangThrowable;
 
-@interface NetGlobulusSimiSimiValue_IncompatibleValuesException : JavaLangRuntimeException
+@interface SMSimiValue_IncompatibleValuesException : JavaLangRuntimeException
 
 #pragma mark Package-Private
 
-- (instancetype)initWithIOSClass:(IOSClass *)value
-                    withIOSClass:(IOSClass *)expected;
+- (instancetype __nonnull)initWithIOSClass:(IOSClass *)value
+                              withIOSClass:(IOSClass *)expected;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
-- (instancetype)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1
-                     withBoolean:(jboolean)arg2
-                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1
+                               withBoolean:(jboolean)arg2
+                               withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiValue_IncompatibleValuesException)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiValue_IncompatibleValuesException)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(NetGlobulusSimiSimiValue_IncompatibleValuesException *self, IOSClass *value, IOSClass *expected);
+FOUNDATION_EXPORT void SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(SMSimiValue_IncompatibleValuesException *self, IOSClass *value, IOSClass *expected);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_IncompatibleValuesException *new_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(IOSClass *value, IOSClass *expected) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiValue_IncompatibleValuesException *new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(IOSClass *value, IOSClass *expected) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiValue_IncompatibleValuesException *create_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(IOSClass *value, IOSClass *expected);
+FOUNDATION_EXPORT SMSimiValue_IncompatibleValuesException *create_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(IOSClass *value, IOSClass *expected);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiValue_IncompatibleValuesException)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_IncompatibleValuesException)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiValue")

@@ -12,53 +12,61 @@
 #define INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl 1
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiObjectImpl
-#ifdef INCLUDE_NetGlobulusSimiSimiObjectImpl_Array
-#define INCLUDE_NetGlobulusSimiSimiObjectImpl 1
+#ifdef INCLUDE_SMSimiObjectImpl_InitiallyEmpty
+#define INCLUDE_SMSimiObjectImpl 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiSimiObjectImpl_Dictionary
-#define INCLUDE_NetGlobulusSimiSimiObjectImpl 1
+#ifdef INCLUDE_SMSimiObjectImpl_Array
+#define INCLUDE_SMSimiObjectImpl 1
+#endif
+#ifdef INCLUDE_SMSimiObjectImpl_Dictionary
+#define INCLUDE_SMSimiObjectImpl 1
 #endif
 
-#if !defined (NetGlobulusSimiSimiObjectImpl_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_NetGlobulusSimiSimiObjectImpl))
-#define NetGlobulusSimiSimiObjectImpl_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiObjectImpl_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_SMSimiObjectImpl))
+#define SMSimiObjectImpl_
 
 #define RESTRICT_NetGlobulusSimiSimiObject 1
-#define INCLUDE_NetGlobulusSimiSimiObject 1
+#define INCLUDE_SMSimiObject 1
 #include "SimiObject.h"
 
 @class JavaLangInteger;
 @class JavaUtilArrayList;
 @class JavaUtilLinkedHashMap;
-@class NetGlobulusSimiEnvironment;
-@class NetGlobulusSimiInterpreter;
-@class NetGlobulusSimiSimiClassImpl;
-@class NetGlobulusSimiSimiObjectImpl_Array;
-@class NetGlobulusSimiSimiObjectImpl_Dictionary;
-@class NetGlobulusSimiSimiValue;
-@class NetGlobulusSimiToken;
+@class SMEnvironment;
+@class SMInterpreter;
+@class SMSimiClassImpl;
+@class SMSimiObjectImpl_Array;
+@class SMSimiObjectImpl_Dictionary;
+@class SMSimiValue;
+@class SMToken;
 @protocol JavaUtilComparator;
 @protocol JavaUtilIterator;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiSimiClass;
-@protocol NetGlobulusSimiSimiEnvironment;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMSimiClass;
+@protocol SMSimiEnvironment;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiSimiObjectImpl : NSObject < NetGlobulusSimiSimiObject > {
+@interface SMSimiObjectImpl : NSObject < SMSimiObject > {
  @public
-  NetGlobulusSimiSimiClassImpl *clazz_;
+  SMSimiClassImpl *clazz_;
   jboolean immutable_;
 }
 
 #pragma mark Public
 
-- (id<NetGlobulusSimiSimiProperty>)getWithNSString:(NSString *)key
-                withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment;
+- (id<SMSimiProperty>)getWithNSString:(NSString *)key
+                withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
-- (id<NetGlobulusSimiSimiClass>)getSimiClass;
+- (id<SMSimiClass>)getSimiClass;
 
 - (void)setWithNSString:(NSString *)key
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop
-withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment;
+     withSMSimiProperty:(id<SMSimiProperty>)prop
+  withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
 - (NSString *)description;
 
@@ -66,63 +74,63 @@ withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environme
 
 #pragma mark Package-Private
 
-- (void)addAllWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)other;
+- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other;
 
-- (void)appendWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)elem;
+- (void)appendWithSMSimiProperty:(id<SMSimiProperty>)elem;
 
-- (void)appendImplWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)elem;
+- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem;
 
-- (NetGlobulusSimiSimiObjectImpl_Array *)asArray;
+- (SMSimiObjectImpl_Array *)asArray;
 
-- (NetGlobulusSimiSimiObjectImpl_Dictionary *)asDictionary;
+- (SMSimiObjectImpl_Dictionary *)asDictionary;
 
-- (id<NetGlobulusSimiSimiProperty>)bindWithNSString:(NSString *)key
-                    withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop;
+- (id<SMSimiProperty>)bindWithNSString:(NSString *)key
+                    withSMSimiProperty:(id<SMSimiProperty>)prop;
 
-- (void)checkMutabilityWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-                 withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)environment;
+- (void)checkMutabilityWithSMToken:(SMToken *)name
+                 withSMEnvironment:(SMEnvironment *)environment;
 
-- (void)clearWithNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)environment;
+- (void)clearWithSMEnvironment:(SMEnvironment *)environment;
 
 - (void)clearImpl;
 
-- (jboolean)containsWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)object
-                        withNetGlobulusSimiToken:(NetGlobulusSimiToken *)at;
+- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
+                        withSMToken:(SMToken *)at;
 
-+ (NetGlobulusSimiSimiObjectImpl *)decomposedPairWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)objectClass
-                                                     withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)key
-                                                     withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value;
++ (SMSimiObjectImpl *)decomposedPairWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass
+                                        withSMSimiValue:(SMSimiValue *)key
+                                        withSMSimiValue:(SMSimiValue *)value;
 
-+ (NetGlobulusSimiSimiObjectImpl *)emptyWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)clazz
-                                                             withBoolean:(jboolean)immutable;
++ (SMSimiObjectImpl *)emptyWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
+                                   withBoolean:(jboolean)immutable;
 
-- (NetGlobulusSimiSimiObjectImpl *)enumerateWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)objectClass;
+- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
 
-+ (NetGlobulusSimiSimiObjectImpl *)fromArrayWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)clazz
-                                                                 withBoolean:(jboolean)immutable
-                                                       withJavaUtilArrayList:(JavaUtilArrayList *)fields;
++ (SMSimiObjectImpl *)fromArrayWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
+                                       withBoolean:(jboolean)immutable
+                             withJavaUtilArrayList:(JavaUtilArrayList *)fields;
 
-+ (NetGlobulusSimiSimiObjectImpl *)fromMapWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)clazz
-                                                               withBoolean:(jboolean)immutable
-                                                 withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props;
++ (SMSimiObjectImpl *)fromMapWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
+                                     withBoolean:(jboolean)immutable
+                       withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props;
 
-- (id<NetGlobulusSimiSimiProperty>)getWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-                                           withJavaLangInteger:(JavaLangInteger *)arity
-                                withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)environment;
+- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
+                 withJavaLangInteger:(JavaLangInteger *)arity
+                   withSMEnvironment:(SMEnvironment *)environment;
 
-- (id<NetGlobulusSimiSimiProperty>)getFromClassWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-                                                    withJavaLangInteger:(JavaLangInteger *)arity
-                                         withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)environment;
+- (id<SMSimiProperty>)getFromClassWithSMToken:(SMToken *)name
+                          withJavaLangInteger:(JavaLangInteger *)arity
+                            withSMEnvironment:(SMEnvironment *)environment;
 
-+ (id<NetGlobulusSimiSimiObject>)getOrConvertObjectWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop
-                                                    withNetGlobulusSimiInterpreter:(NetGlobulusSimiInterpreter *)interpreter;
++ (id<SMSimiObject>)getOrConvertObjectWithSMSimiProperty:(id<SMSimiProperty>)prop
+                                       withSMInterpreter:(SMInterpreter *)interpreter;
 
-- (NetGlobulusSimiSimiValue *)indexOfWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value;
+- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value;
 
-+ (NetGlobulusSimiSimiObjectImpl *)instanceWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)clazz
-                                                  withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props;
++ (SMSimiObjectImpl *)instanceWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
+                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props;
 
-- (jboolean)isWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)clazz;
+- (jboolean)isWithSMSimiClassImpl:(SMSimiClassImpl *)clazz;
 
 - (jboolean)isArray;
 
@@ -136,113 +144,115 @@ withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environme
 
 - (jint)length;
 
-- (jboolean)matchesWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)other
-                                    withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
+- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
+                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
 
-+ (NetGlobulusSimiSimiObjectImpl *)pairWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)objectClass
-                                                           withNSString:(NSString *)key
-                                        withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop;
++ (SMSimiObjectImpl *)pairWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass
+                                 withNSString:(NSString *)key
+                           withSMSimiProperty:(id<SMSimiProperty>)prop;
 
 - (NSString *)printFields;
 
-- (NetGlobulusSimiSimiObjectImpl *)reversed;
+- (SMSimiObjectImpl *)reversed;
 
-- (void)setWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-    withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop
-     withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)environment;
+- (void)setWithSMToken:(SMToken *)name
+    withSMSimiProperty:(id<SMSimiProperty>)prop
+     withSMEnvironment:(SMEnvironment *)environment;
 
 - (void)setFieldWithNSString:(NSString *)key
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop;
+          withSMSimiProperty:(id<SMSimiProperty>)prop;
 
-- (NetGlobulusSimiSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
+- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
 
-- (jboolean)valuesMatchWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)a
-                       withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)b;
+- (jboolean)valuesMatchWithSMSimiProperty:(id<SMSimiProperty>)a
+                       withSMSimiProperty:(id<SMSimiProperty>)b;
 
-- (jboolean)valuesMatchWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)a
-                       withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)b;
+- (jboolean)valuesMatchWithSMSimiValue:(SMSimiValue *)a
+                       withSMSimiValue:(SMSimiValue *)b;
 
-- (NetGlobulusSimiSimiObjectImpl *)zipWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)objectClass;
+- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiObjectImpl)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiObjectImpl, clazz_, NetGlobulusSimiSimiClassImpl *)
+J2OBJC_FIELD_SETTER(SMSimiObjectImpl, clazz_, SMSimiClassImpl *)
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl *NetGlobulusSimiSimiObjectImpl_instanceWithNetGlobulusSimiSimiClassImpl_withJavaUtilLinkedHashMap_(NetGlobulusSimiSimiClassImpl *clazz, JavaUtilLinkedHashMap *props);
+FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_instanceWithSMSimiClassImpl_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, JavaUtilLinkedHashMap *props);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl *NetGlobulusSimiSimiObjectImpl_pairWithNetGlobulusSimiSimiClassImpl_withNSString_withNetGlobulusSimiSimiProperty_(NetGlobulusSimiSimiClassImpl *objectClass, NSString *key, id<NetGlobulusSimiSimiProperty> prop);
+FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_pairWithSMSimiClassImpl_withNSString_withSMSimiProperty_(SMSimiClassImpl *objectClass, NSString *key, id<SMSimiProperty> prop);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl *NetGlobulusSimiSimiObjectImpl_decomposedPairWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiValue_withNetGlobulusSimiSimiValue_(NetGlobulusSimiSimiClassImpl *objectClass, NetGlobulusSimiSimiValue *key, NetGlobulusSimiSimiValue *value);
+FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(SMSimiClassImpl *objectClass, SMSimiValue *key, SMSimiValue *value);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl *NetGlobulusSimiSimiObjectImpl_fromMapWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *props);
+FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *props);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl *NetGlobulusSimiSimiObjectImpl_fromArrayWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
+FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl *NetGlobulusSimiSimiObjectImpl_emptyWithNetGlobulusSimiSimiClassImpl_withBoolean_(NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable);
+FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_emptyWithSMSimiClassImpl_withBoolean_(SMSimiClassImpl *clazz, jboolean immutable);
 
-FOUNDATION_EXPORT id<NetGlobulusSimiSimiObject> NetGlobulusSimiSimiObjectImpl_getOrConvertObjectWithNetGlobulusSimiSimiProperty_withNetGlobulusSimiInterpreter_(id<NetGlobulusSimiSimiProperty> prop, NetGlobulusSimiInterpreter *interpreter);
+FOUNDATION_EXPORT id<SMSimiObject> SMSimiObjectImpl_getOrConvertObjectWithSMSimiProperty_withSMInterpreter_(id<SMSimiProperty> prop, SMInterpreter *interpreter);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiObjectImpl)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl)
+
+@compatibility_alias NetGlobulusSimiSimiObjectImpl SMSimiObjectImpl;
 
 #endif
 
-#if !defined (NetGlobulusSimiSimiObjectImpl_Dictionary_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_NetGlobulusSimiSimiObjectImpl_Dictionary))
-#define NetGlobulusSimiSimiObjectImpl_Dictionary_
+#if !defined (SMSimiObjectImpl_Dictionary_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_SMSimiObjectImpl_Dictionary))
+#define SMSimiObjectImpl_Dictionary_
 
 @class JavaLangInteger;
 @class JavaUtilArrayList;
 @class JavaUtilLinkedHashMap;
-@class NetGlobulusSimiEnvironment;
-@class NetGlobulusSimiSimiClassImpl;
-@class NetGlobulusSimiSimiObjectImpl;
-@class NetGlobulusSimiSimiObjectImpl_Array;
-@class NetGlobulusSimiSimiValue;
-@class NetGlobulusSimiToken;
+@class SMEnvironment;
+@class SMSimiClassImpl;
+@class SMSimiObjectImpl;
+@class SMSimiObjectImpl_Array;
+@class SMSimiValue;
+@class SMToken;
 @protocol JavaUtilComparator;
 @protocol JavaUtilIterator;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiSimiObject;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMSimiObject;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiSimiObjectImpl_Dictionary : NetGlobulusSimiSimiObjectImpl {
+@interface SMSimiObjectImpl_Dictionary : SMSimiObjectImpl {
  @public
   JavaUtilLinkedHashMap *fields_;
 }
 
 #pragma mark Public
 
-- (id<NetGlobulusSimiSimiObject>)cloneWithBoolean:(jboolean)mutable_;
+- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
 
 - (JavaUtilArrayList *)values;
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)clazz
-                                         withBoolean:(jboolean)immutable
-                           withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)fields;
+- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
+                                      withBoolean:(jboolean)immutable
+                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)fields;
 
-- (void)addAllWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)other;
+- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other;
 
-- (void)appendImplWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)elem;
+- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem;
 
-- (NetGlobulusSimiSimiObjectImpl_Array *)asArray;
+- (SMSimiObjectImpl_Array *)asArray;
 
-- (NetGlobulusSimiSimiObjectImpl_Dictionary *)asDictionary;
+- (SMSimiObjectImpl_Dictionary *)asDictionary;
 
 - (void)clearImpl;
 
-- (jboolean)containsWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)object
-                        withNetGlobulusSimiToken:(NetGlobulusSimiToken *)at;
+- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
+                        withSMToken:(SMToken *)at;
 
-- (NetGlobulusSimiSimiObjectImpl *)enumerateWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)objectClass;
+- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
 
-- (id<NetGlobulusSimiSimiProperty>)getWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-                                           withJavaLangInteger:(JavaLangInteger *)arity
-                                withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)environment;
+- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
+                 withJavaLangInteger:(JavaLangInteger *)arity
+                   withSMEnvironment:(SMEnvironment *)environment;
 
-- (NetGlobulusSimiSimiValue *)indexOfWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value;
+- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value;
 
 - (jboolean)isArray;
 
@@ -252,90 +262,90 @@ J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiObjectImpl)
 
 - (jint)length;
 
-- (jboolean)matchesWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)other
-                                    withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
+- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
+                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
 
 - (NSString *)printFields;
 
-- (NetGlobulusSimiSimiObjectImpl *)reversed;
+- (SMSimiObjectImpl *)reversed;
 
 - (void)setFieldWithNSString:(NSString *)key
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop;
+          withSMSimiProperty:(id<SMSimiProperty>)prop;
 
-- (NetGlobulusSimiSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
+- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
 
-- (NetGlobulusSimiSimiObjectImpl *)zipWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)objectClass;
+- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiObjectImpl_Dictionary)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Dictionary)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiObjectImpl_Dictionary, fields_, JavaUtilLinkedHashMap *)
+J2OBJC_FIELD_SETTER(SMSimiObjectImpl_Dictionary, fields_, JavaUtilLinkedHashMap *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiObjectImpl_Dictionary_initWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(NetGlobulusSimiSimiObjectImpl_Dictionary *self, NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields);
+FOUNDATION_EXPORT void SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiObjectImpl_Dictionary *self, SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl_Dictionary *new_NetGlobulusSimiSimiObjectImpl_Dictionary_initWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiObjectImpl_Dictionary *new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl_Dictionary *create_NetGlobulusSimiSimiObjectImpl_Dictionary_initWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields);
+FOUNDATION_EXPORT SMSimiObjectImpl_Dictionary *create_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiObjectImpl_Dictionary)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_Dictionary)
 
 #endif
 
-#if !defined (NetGlobulusSimiSimiObjectImpl_Array_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_NetGlobulusSimiSimiObjectImpl_Array))
-#define NetGlobulusSimiSimiObjectImpl_Array_
+#if !defined (SMSimiObjectImpl_Array_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_SMSimiObjectImpl_Array))
+#define SMSimiObjectImpl_Array_
 
 @class JavaLangInteger;
 @class JavaUtilArrayList;
-@class NetGlobulusSimiEnvironment;
-@class NetGlobulusSimiSimiClassImpl;
-@class NetGlobulusSimiSimiObjectImpl;
-@class NetGlobulusSimiSimiObjectImpl_Dictionary;
-@class NetGlobulusSimiSimiValue;
-@class NetGlobulusSimiToken;
+@class SMEnvironment;
+@class SMSimiClassImpl;
+@class SMSimiObjectImpl;
+@class SMSimiObjectImpl_Dictionary;
+@class SMSimiValue;
+@class SMToken;
 @protocol JavaUtilComparator;
 @protocol JavaUtilIterator;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiSimiObject;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMSimiObject;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiSimiObjectImpl_Array : NetGlobulusSimiSimiObjectImpl {
+@interface SMSimiObjectImpl_Array : SMSimiObjectImpl {
  @public
   JavaUtilArrayList *fields_;
 }
 
 #pragma mark Public
 
-- (id<NetGlobulusSimiSimiObject>)cloneWithBoolean:(jboolean)mutable_;
+- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
 
 - (JavaUtilArrayList *)values;
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)clazz
-                                         withBoolean:(jboolean)immutable
-                               withJavaUtilArrayList:(JavaUtilArrayList *)fields;
+- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
+                                      withBoolean:(jboolean)immutable
+                            withJavaUtilArrayList:(JavaUtilArrayList *)fields;
 
-- (void)addAllWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)other;
+- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other;
 
-- (void)appendImplWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)elem;
+- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem;
 
-- (NetGlobulusSimiSimiObjectImpl_Array *)asArray;
+- (SMSimiObjectImpl_Array *)asArray;
 
-- (NetGlobulusSimiSimiObjectImpl_Dictionary *)asDictionary;
+- (SMSimiObjectImpl_Dictionary *)asDictionary;
 
 - (void)clearImpl;
 
-- (jboolean)containsWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)object
-                        withNetGlobulusSimiToken:(NetGlobulusSimiToken *)at;
+- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
+                        withSMToken:(SMToken *)at;
 
-- (NetGlobulusSimiSimiObjectImpl *)enumerateWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)objectClass;
+- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
 
-- (id<NetGlobulusSimiSimiProperty>)getWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-                                           withJavaLangInteger:(JavaLangInteger *)arity
-                                withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)environment;
+- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
+                 withJavaLangInteger:(JavaLangInteger *)arity
+                   withSMEnvironment:(SMEnvironment *)environment;
 
-- (NetGlobulusSimiSimiValue *)indexOfWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value;
+- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value;
 
 - (jboolean)isArray;
 
@@ -345,34 +355,117 @@ J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiObjectImpl_Dictionary)
 
 - (jint)length;
 
-- (jboolean)matchesWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)other
-                                    withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
+- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
+                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
 
 - (NSString *)printFields;
 
-- (NetGlobulusSimiSimiObjectImpl *)reversed;
+- (SMSimiObjectImpl *)reversed;
 
 - (void)setFieldWithNSString:(NSString *)key
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop;
+          withSMSimiProperty:(id<SMSimiProperty>)prop;
 
-- (NetGlobulusSimiSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
+- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
 
-- (NetGlobulusSimiSimiObjectImpl *)zipWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)objectClass;
+- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiObjectImpl_Array)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Array)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiObjectImpl_Array, fields_, JavaUtilArrayList *)
+J2OBJC_FIELD_SETTER(SMSimiObjectImpl_Array, fields_, JavaUtilArrayList *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiObjectImpl_Array_initWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiSimiObjectImpl_Array *self, NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
+FOUNDATION_EXPORT void SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiObjectImpl_Array *self, SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl_Array *new_NetGlobulusSimiSimiObjectImpl_Array_initWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiObjectImpl_Array *new_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiObjectImpl_Array *create_NetGlobulusSimiSimiObjectImpl_Array_initWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
+FOUNDATION_EXPORT SMSimiObjectImpl_Array *create_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiObjectImpl_Array)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_Array)
 
 #endif
 
+#if !defined (SMSimiObjectImpl_InitiallyEmpty_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_SMSimiObjectImpl_InitiallyEmpty))
+#define SMSimiObjectImpl_InitiallyEmpty_
+
+@class JavaLangInteger;
+@class JavaUtilArrayList;
+@class SMEnvironment;
+@class SMSimiClassImpl;
+@class SMSimiObjectImpl;
+@class SMSimiObjectImpl_Array;
+@class SMSimiObjectImpl_Dictionary;
+@class SMSimiValue;
+@class SMToken;
+@protocol JavaUtilComparator;
+@protocol JavaUtilIterator;
+@protocol JavaUtilList;
+@protocol SMSimiObject;
+@protocol SMSimiProperty;
+
+@interface SMSimiObjectImpl_InitiallyEmpty : SMSimiObjectImpl
+
+#pragma mark Public
+
+- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
+
+- (JavaUtilArrayList *)values;
+
+#pragma mark Package-Private
+
+- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other;
+
+- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem;
+
+- (SMSimiObjectImpl_Array *)asArray;
+
+- (SMSimiObjectImpl_Dictionary *)asDictionary;
+
+- (void)clearImpl;
+
+- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
+                        withSMToken:(SMToken *)at;
+
+- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
+
+- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
+                 withJavaLangInteger:(JavaLangInteger *)arity
+                   withSMEnvironment:(SMEnvironment *)environment;
+
+- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value;
+
+- (jboolean)isArray;
+
+- (id<JavaUtilIterator>)iterate;
+
+- (JavaUtilArrayList *)keys;
+
+- (jint)length;
+
+- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
+                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
+
+- (NSString *)printFields;
+
+- (SMSimiObjectImpl *)reversed;
+
+- (void)setFieldWithNSString:(NSString *)key
+          withSMSimiProperty:(id<SMSimiProperty>)prop;
+
+- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
+
+- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_InitiallyEmpty)
+
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_InitiallyEmpty)
+
+#endif
+
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl")

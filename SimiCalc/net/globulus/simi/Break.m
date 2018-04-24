@@ -7,11 +7,11 @@
 #include "java/lang/RuntimeException.h"
 #include "Break.h"
 
-@implementation NetGlobulusSimiBreak
+@implementation SMBreak
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBreak_init(self);
+- (instancetype __nonnull)init {
+  SMBreak_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -25,22 +25,22 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   #pragma clang diagnostic pop
-  static const J2ObjcClassInfo _NetGlobulusSimiBreak = { "Break", "net.globulus.simi", NULL, methods, NULL, 7, 0x0, 1, 0, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiBreak;
+  static const J2ObjcClassInfo _SMBreak = { "Break", "net.globulus.simi", NULL, methods, NULL, 7, 0x0, 1, 0, -1, -1, -1, -1, -1 };
+  return &_SMBreak;
 }
 
 @end
 
-void NetGlobulusSimiBreak_init(NetGlobulusSimiBreak *self) {
+void SMBreak_init(SMBreak *self) {
   JavaLangRuntimeException_init(self);
 }
 
-NetGlobulusSimiBreak *new_NetGlobulusSimiBreak_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBreak, init)
+SMBreak *new_SMBreak_init() {
+  J2OBJC_NEW_IMPL(SMBreak, init)
 }
 
-NetGlobulusSimiBreak *create_NetGlobulusSimiBreak_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBreak, init)
+SMBreak *create_SMBreak_init() {
+  J2OBJC_CREATE_IMPL(SMBreak, init)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiBreak)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMBreak)

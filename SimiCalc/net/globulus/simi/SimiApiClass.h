@@ -13,22 +13,27 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiApiClass
 
-#if !defined (NetGlobulusSimiSimiApiClass_) && (INCLUDE_ALL_NetGlobulusSimiSimiApiClass || defined(INCLUDE_NetGlobulusSimiSimiApiClass))
-#define NetGlobulusSimiSimiApiClass_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiApiClass_) && (INCLUDE_ALL_NetGlobulusSimiSimiApiClass || defined(INCLUDE_SMSimiApiClass))
+#define SMSimiApiClass_
 
 @class IOSObjectArray;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiBlockInterpreter;
-@protocol NetGlobulusSimiSimiObject;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMBlockInterpreter;
+@protocol SMSimiObject;
+@protocol SMSimiProperty;
 
-@protocol NetGlobulusSimiSimiApiClass < JavaObject >
+@protocol SMSimiApiClass < JavaObject >
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNSString:(NSString *)className_
-                                       withNSString:(NSString *)methodName
-                      withNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)self_
-                withNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                   withJavaUtilList:(id<JavaUtilList>)args;
+- (id<SMSimiProperty>)callWithNSString:(NSString *)className_
+                          withNSString:(NSString *)methodName
+                      withSMSimiObject:(id<SMSimiObject>)self_
+                withSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                      withJavaUtilList:(id<JavaUtilList>)args;
 
 - (IOSObjectArray *)classNames;
 
@@ -36,10 +41,16 @@
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiApiClass)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiApiClass)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiApiClass)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiApiClass)
+
+#define NetGlobulusSimiSimiApiClass SMSimiApiClass
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiApiClass")

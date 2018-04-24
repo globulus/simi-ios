@@ -46,9 +46,9 @@ The Šimi interpreter was converted to Objective-C using [J2ObjC tool](https://d
     id<SMSimiProperty> left = [SMSimiMapper toSimiPropertyWithId:[[JavaLangDouble alloc] initWithDouble:[[self.txtLeft text] doubleValue]]];
     id<SMSimiProperty> right = [SMSimiMapper toSimiPropertyWithId:[[JavaLangDouble alloc] initWithDouble:[[self.txtRIght text] doubleValue]]];
     id<SMSimiProperty> op = [SMSimiMapper toSimiPropertyWithId:[self.segOp titleForSegmentAtIndex:[self.segOp selectedSegmentIndex]]];
-    id<SMSimiProperty> prop = [SMActiveSimi evalWithNSString:@"Calc" withNSString:@"compute" withSMSimiPropertyArray:[IOSObjectArray arrayWithNSArray:@[left, op, right] type:SMSimiProperty_class_()]];
+    id<SMSimiProperty> prop = [SMActiveSimi evalWithNSString:@"Calc" withNSString:@"compute" withSMSimiPropertyArray:[IOSObjectArray arrayWithProps:left, op, right, nil]];
     [self.lblResult setText:[NSString stringWithFormat:@"Result is: %@", prop]];
 }
 ...
 ```
-7. You can use static methods in *SMSimiMapper* class to convert iOS values, arrays and dictionaries to Šimi ones.
+7. You can use static methods in *SMSimiMapper* class to convert iOS values, arrays and dictionaries to Šimi ones. There's also an IOSObjectArray+Simi extension that allows for simple adding of Šimi props to ISOObjectArray (needed by SMActiveSimi methods), as well as a ConversionUtil class that maps Java lists/sets/maps to NSArray/NSDictionary.

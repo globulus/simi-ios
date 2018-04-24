@@ -16,21 +16,21 @@
 #include "Token.h"
 #include "TokenType.h"
 
-@interface NetGlobulusSimiExpr_Visitor : NSObject
+@interface SMExpr_Visitor : NSObject
 
 @end
 
-@implementation NetGlobulusSimiExpr
+@implementation SMExpr
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiExpr_init(self);
+- (instancetype __nonnull)init {
+  SMExpr_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
@@ -45,22 +45,22 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiExpr_Visitor;LNetGlobulusSimiExpr_Block;LNetGlobulusSimiExpr_Annotations;LNetGlobulusSimiExpr_Assign;LNetGlobulusSimiExpr_ObjectDecomp;LNetGlobulusSimiExpr_Binary;LNetGlobulusSimiExpr_Call;LNetGlobulusSimiExpr_Get;LNetGlobulusSimiExpr_Grouping;LNetGlobulusSimiExpr_Gu;LNetGlobulusSimiExpr_Literal;LNetGlobulusSimiExpr_Logical;LNetGlobulusSimiExpr_Set;LNetGlobulusSimiExpr_Super;LNetGlobulusSimiExpr_Self;LNetGlobulusSimiExpr_Unary;LNetGlobulusSimiExpr_Variable;LNetGlobulusSimiExpr_ObjectLiteral;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr = { "Expr", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x400, 2, 0, -1, 3, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr;
+  static const void *ptrTable[] = { "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr_Visitor;LSMExpr_Block;LSMExpr_Annotations;LSMExpr_Assign;LSMExpr_ObjectDecomp;LSMExpr_Binary;LSMExpr_Call;LSMExpr_Get;LSMExpr_Grouping;LSMExpr_Gu;LSMExpr_Literal;LSMExpr_Logical;LSMExpr_Set;LSMExpr_Super;LSMExpr_Self;LSMExpr_Unary;LSMExpr_Variable;LSMExpr_ObjectLiteral;" };
+  static const J2ObjcClassInfo _SMExpr = { "Expr", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x400, 2, 0, -1, 3, -1, -1, -1 };
+  return &_SMExpr;
 }
 
 @end
 
-void NetGlobulusSimiExpr_init(NetGlobulusSimiExpr *self) {
+void SMExpr_init(SMExpr *self) {
   NSObject_init(self);
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr)
 
-@implementation NetGlobulusSimiExpr_Visitor
+@implementation SMExpr_Visitor
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
@@ -84,50 +84,50 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(visitAnnotationsExprWithNetGlobulusSimiExpr_Annotations:);
-  methods[1].selector = @selector(visitAssignExprWithNetGlobulusSimiExpr_Assign:);
-  methods[2].selector = @selector(visitBinaryExprWithNetGlobulusSimiExpr_Binary:);
-  methods[3].selector = @selector(visitBlockExprWithNetGlobulusSimiExpr_Block:withBoolean:withBoolean:);
-  methods[4].selector = @selector(visitCallExprWithNetGlobulusSimiExpr_Call:);
-  methods[5].selector = @selector(visitGetExprWithNetGlobulusSimiExpr_Get:);
-  methods[6].selector = @selector(visitGroupingExprWithNetGlobulusSimiExpr_Grouping:);
-  methods[7].selector = @selector(visitGuExprWithNetGlobulusSimiExpr_Gu:);
-  methods[8].selector = @selector(visitLiteralExprWithNetGlobulusSimiExpr_Literal:);
-  methods[9].selector = @selector(visitLogicalExprWithNetGlobulusSimiExpr_Logical:);
-  methods[10].selector = @selector(visitSetExprWithNetGlobulusSimiExpr_Set:);
-  methods[11].selector = @selector(visitSuperExprWithNetGlobulusSimiExpr_Super:);
-  methods[12].selector = @selector(visitSelfExprWithNetGlobulusSimiExpr_Self:);
-  methods[13].selector = @selector(visitUnaryExprWithNetGlobulusSimiExpr_Unary:);
-  methods[14].selector = @selector(visitVariableExprWithNetGlobulusSimiExpr_Variable:);
-  methods[15].selector = @selector(visitObjectLiteralExprWithNetGlobulusSimiExpr_ObjectLiteral:);
+  methods[0].selector = @selector(visitAnnotationsExprWithSMExpr_Annotations:);
+  methods[1].selector = @selector(visitAssignExprWithSMExpr_Assign:);
+  methods[2].selector = @selector(visitBinaryExprWithSMExpr_Binary:);
+  methods[3].selector = @selector(visitBlockExprWithSMExpr_Block:withBoolean:withBoolean:);
+  methods[4].selector = @selector(visitCallExprWithSMExpr_Call:);
+  methods[5].selector = @selector(visitGetExprWithSMExpr_Get:);
+  methods[6].selector = @selector(visitGroupingExprWithSMExpr_Grouping:);
+  methods[7].selector = @selector(visitGuExprWithSMExpr_Gu:);
+  methods[8].selector = @selector(visitLiteralExprWithSMExpr_Literal:);
+  methods[9].selector = @selector(visitLogicalExprWithSMExpr_Logical:);
+  methods[10].selector = @selector(visitSetExprWithSMExpr_Set:);
+  methods[11].selector = @selector(visitSuperExprWithSMExpr_Super:);
+  methods[12].selector = @selector(visitSelfExprWithSMExpr_Self:);
+  methods[13].selector = @selector(visitUnaryExprWithSMExpr_Unary:);
+  methods[14].selector = @selector(visitVariableExprWithSMExpr_Variable:);
+  methods[15].selector = @selector(visitObjectLiteralExprWithSMExpr_ObjectLiteral:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "visitAnnotationsExpr", "LNetGlobulusSimiExpr_Annotations;", "(LExpr$Annotations;)TR;", "visitAssignExpr", "LNetGlobulusSimiExpr_Assign;", "(LExpr$Assign;)TR;", "visitBinaryExpr", "LNetGlobulusSimiExpr_Binary;", "(LExpr$Binary;)TR;", "visitBlockExpr", "LNetGlobulusSimiExpr_Block;ZZ", "(LExpr$Block;ZZ)TR;", "visitCallExpr", "LNetGlobulusSimiExpr_Call;", "(LExpr$Call;)TR;", "visitGetExpr", "LNetGlobulusSimiExpr_Get;", "(LExpr$Get;)TR;", "visitGroupingExpr", "LNetGlobulusSimiExpr_Grouping;", "(LExpr$Grouping;)TR;", "visitGuExpr", "LNetGlobulusSimiExpr_Gu;", "(LExpr$Gu;)TR;", "visitLiteralExpr", "LNetGlobulusSimiExpr_Literal;", "(LExpr$Literal;)TR;", "visitLogicalExpr", "LNetGlobulusSimiExpr_Logical;", "(LExpr$Logical;)TR;", "visitSetExpr", "LNetGlobulusSimiExpr_Set;", "(LExpr$Set;)TR;", "visitSuperExpr", "LNetGlobulusSimiExpr_Super;", "(LExpr$Super;)TR;", "visitSelfExpr", "LNetGlobulusSimiExpr_Self;", "(LExpr$Self;)TR;", "visitUnaryExpr", "LNetGlobulusSimiExpr_Unary;", "(LExpr$Unary;)TR;", "visitVariableExpr", "LNetGlobulusSimiExpr_Variable;", "(LExpr$Variable;)TR;", "visitObjectLiteralExpr", "LNetGlobulusSimiExpr_ObjectLiteral;", "(LExpr$ObjectLiteral;)TR;", "LNetGlobulusSimiExpr;", "<R:Ljava/lang/Object;>Ljava/lang/Object;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Visitor = { "Visitor", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 16, 0, 48, -1, -1, 49, -1 };
-  return &_NetGlobulusSimiExpr_Visitor;
+  static const void *ptrTable[] = { "visitAnnotationsExpr", "LSMExpr_Annotations;", "(LExpr$Annotations;)TR;", "visitAssignExpr", "LSMExpr_Assign;", "(LExpr$Assign;)TR;", "visitBinaryExpr", "LSMExpr_Binary;", "(LExpr$Binary;)TR;", "visitBlockExpr", "LSMExpr_Block;ZZ", "(LExpr$Block;ZZ)TR;", "visitCallExpr", "LSMExpr_Call;", "(LExpr$Call;)TR;", "visitGetExpr", "LSMExpr_Get;", "(LExpr$Get;)TR;", "visitGroupingExpr", "LSMExpr_Grouping;", "(LExpr$Grouping;)TR;", "visitGuExpr", "LSMExpr_Gu;", "(LExpr$Gu;)TR;", "visitLiteralExpr", "LSMExpr_Literal;", "(LExpr$Literal;)TR;", "visitLogicalExpr", "LSMExpr_Logical;", "(LExpr$Logical;)TR;", "visitSetExpr", "LSMExpr_Set;", "(LExpr$Set;)TR;", "visitSuperExpr", "LSMExpr_Super;", "(LExpr$Super;)TR;", "visitSelfExpr", "LSMExpr_Self;", "(LExpr$Self;)TR;", "visitUnaryExpr", "LSMExpr_Unary;", "(LExpr$Unary;)TR;", "visitVariableExpr", "LSMExpr_Variable;", "(LExpr$Variable;)TR;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "(LExpr$ObjectLiteral;)TR;", "LSMExpr;", "<R:Ljava/lang/Object;>Ljava/lang/Object;" };
+  static const J2ObjcClassInfo _SMExpr_Visitor = { "Visitor", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 16, 0, 48, -1, -1, 49, -1 };
+  return &_SMExpr_Visitor;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Visitor)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
 
-@implementation NetGlobulusSimiExpr_Block
+@implementation SMExpr_Block
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)declaration
-                            withJavaUtilList:(id<JavaUtilList>)params
-                            withJavaUtilList:(id<JavaUtilList>)statements {
-  NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(self, declaration, params, statements);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)declaration
+                         withJavaUtilList:(id<JavaUtilList>)params
+                         withJavaUtilList:(id<JavaUtilList>)statements {
+  SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(self, declaration, params, statements);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
   jboolean newScope = (((IOSObjectArray *) nil_chk(params))->size_ < 1) ? true : [((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(IOSObjectArray_Get(params, 0), [JavaLangBoolean class]))) booleanValue];
   jboolean execute = (params->size_ < 2) ? true : [((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(IOSObjectArray_Get(params, 1), [JavaLangBoolean class]))) booleanValue];
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitBlockExprWithNetGlobulusSimiExpr_Block:self withBoolean:newScope withBoolean:execute];
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitBlockExprWithSMExpr_Block:self withBoolean:newScope withBoolean:execute];
 }
 
 - (jboolean)isNative {
-  return ((NetGlobulusSimiToken *) nil_chk(declaration_))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, NATIVE);
+  return ((SMToken *) nil_chk(declaration_))->type_ == JreLoadEnum(SMTokenType, NATIVE);
 }
 
 - (id<JavaUtilList>)getStatements {
@@ -142,15 +142,15 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Visitor)
   if ([((id<JavaUtilList>) nil_chk(statements_)) size] != 1) {
     return false;
   }
-  NetGlobulusSimiStmt *stmt = [statements_ getWithInt:0];
-  if (!([stmt isKindOfClass:[NetGlobulusSimiStmt_Expression class]])) {
+  SMStmt *stmt = [statements_ getWithInt:0];
+  if (!([stmt isKindOfClass:[SMStmt_Expression class]])) {
     return false;
   }
-  NetGlobulusSimiStmt_Expression *expr = (NetGlobulusSimiStmt_Expression *) cast_chk(stmt, [NetGlobulusSimiStmt_Expression class]);
-  if (!([((NetGlobulusSimiStmt_Expression *) nil_chk(expr))->expression_ isKindOfClass:[NetGlobulusSimiExpr_Literal class]])) {
+  SMStmt_Expression *expr = (SMStmt_Expression *) cast_chk(stmt, [SMStmt_Expression class]);
+  if (!([((SMStmt_Expression *) nil_chk(expr))->expression_ isKindOfClass:[SMExpr_Literal class]])) {
     return false;
   }
-  return [((NetGlobulusSimiExpr_Literal *) nil_chk(((NetGlobulusSimiExpr_Literal *) cast_chk(expr->expression_, [NetGlobulusSimiExpr_Literal class]))))->value_ isKindOfClass:[NetGlobulusSimiPass class]];
+  return [((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(expr->expression_, [SMExpr_Literal class]))))->value_ isKindOfClass:[SMPass class]];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -165,52 +165,52 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Visitor)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withJavaUtilList:withJavaUtilList:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withJavaUtilList:withJavaUtilList:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(isNative);
   methods[3].selector = @selector(getStatements);
   methods[4].selector = @selector(yieldWithInt:);
   methods[5].selector = @selector(isEmpty);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "declaration_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "declaration_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "params_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 8, -1 },
     { "statements_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 9, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LToken;>;Ljava/util/List<LStmt;>;)V", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<+LSimiStatement;>;", "yield", "I", "Ljava/util/List<LToken;>;", "Ljava/util/List<LStmt;>;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Block = { "Block", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 3, 10, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Block;
+  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LToken;>;Ljava/util/List<LStmt;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<+LSimiStatement;>;", "yield", "I", "Ljava/util/List<LToken;>;", "Ljava/util/List<LStmt;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Block = { "Block", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 3, 10, -1, -1, -1, -1 };
+  return &_SMExpr_Block;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiExpr_Block *self, NetGlobulusSimiToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMExpr_Block *self, SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
+  SMExpr_init(self);
   self->declaration_ = declaration;
   self->params_ = params;
   self->statements_ = statements;
 }
 
-NetGlobulusSimiExpr_Block *new_NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Block, initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_, declaration, params, statements)
+SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
+  J2OBJC_NEW_IMPL(SMExpr_Block, initWithSMToken_withJavaUtilList_withJavaUtilList_, declaration, params, statements)
 }
 
-NetGlobulusSimiExpr_Block *create_NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Block, initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_, declaration, params, statements)
+SMExpr_Block *create_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
+  J2OBJC_CREATE_IMPL(SMExpr_Block, initWithSMToken_withJavaUtilList_withJavaUtilList_, declaration, params, statements)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Block)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Block)
 
-@implementation NetGlobulusSimiExpr_Annotations
+@implementation SMExpr_Annotations
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tokens {
-  NetGlobulusSimiExpr_Annotations_initWithJavaUtilList_(self, tokens);
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tokens {
+  SMExpr_Annotations_initWithJavaUtilList_(self, tokens);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitAnnotationsExprWithNetGlobulusSimiExpr_Annotations:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitAnnotationsExprWithSMExpr_Annotations:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -222,45 +222,45 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Block)
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaUtilList:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "tokens_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
   };
-  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LToken;>;)V", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LToken;>;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Annotations = { "Annotations", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 6, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Annotations;
+  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LToken;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LToken;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Annotations = { "Annotations", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 6, -1, -1, -1, -1 };
+  return &_SMExpr_Annotations;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Annotations_initWithJavaUtilList_(NetGlobulusSimiExpr_Annotations *self, id<JavaUtilList> tokens) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Annotations_initWithJavaUtilList_(SMExpr_Annotations *self, id<JavaUtilList> tokens) {
+  SMExpr_init(self);
   self->tokens_ = tokens;
 }
 
-NetGlobulusSimiExpr_Annotations *new_NetGlobulusSimiExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Annotations, initWithJavaUtilList_, tokens)
+SMExpr_Annotations *new_SMExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) {
+  J2OBJC_NEW_IMPL(SMExpr_Annotations, initWithJavaUtilList_, tokens)
 }
 
-NetGlobulusSimiExpr_Annotations *create_NetGlobulusSimiExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Annotations, initWithJavaUtilList_, tokens)
+SMExpr_Annotations *create_SMExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) {
+  J2OBJC_CREATE_IMPL(SMExpr_Annotations, initWithJavaUtilList_, tokens)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Annotations)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Annotations)
 
-@implementation NetGlobulusSimiExpr_Assign
+@implementation SMExpr_Assign
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)value
-                            withJavaUtilList:(id<JavaUtilList>)annotations {
-  NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(self, name, value, annotations);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)name
+                               withSMExpr:(SMExpr *)value
+                         withJavaUtilList:(id<JavaUtilList>)annotations {
+  SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(self, name, value, annotations);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitAssignExprWithNetGlobulusSimiExpr_Assign:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitAssignExprWithSMExpr_Assign:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -271,50 +271,50 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Annotations)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiExpr:withJavaUtilList:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMExpr:withJavaUtilList:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "name_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "value_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiExpr;LJavaUtilList;", "(LToken;LExpr;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LStmt$Annotation;>;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Assign = { "Assign", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Assign;
+  static const void *ptrTable[] = { "LSMToken;LSMExpr;LJavaUtilList;", "(LToken;LExpr;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LStmt$Annotation;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Assign = { "Assign", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
+  return &_SMExpr_Assign;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(NetGlobulusSimiExpr_Assign *self, NetGlobulusSimiToken *name, NetGlobulusSimiExpr *value, id<JavaUtilList> annotations) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMExpr_Assign *self, SMToken *name, SMExpr *value, id<JavaUtilList> annotations) {
+  SMExpr_init(self);
   self->name_ = name;
   self->value_ = value;
   self->annotations_ = annotations;
 }
 
-NetGlobulusSimiExpr_Assign *new_NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(NetGlobulusSimiToken *name, NetGlobulusSimiExpr *value, id<JavaUtilList> annotations) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Assign, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_, name, value, annotations)
+SMExpr_Assign *new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMExpr *value, id<JavaUtilList> annotations) {
+  J2OBJC_NEW_IMPL(SMExpr_Assign, initWithSMToken_withSMExpr_withJavaUtilList_, name, value, annotations)
 }
 
-NetGlobulusSimiExpr_Assign *create_NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(NetGlobulusSimiToken *name, NetGlobulusSimiExpr *value, id<JavaUtilList> annotations) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Assign, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_, name, value, annotations)
+SMExpr_Assign *create_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMExpr *value, id<JavaUtilList> annotations) {
+  J2OBJC_CREATE_IMPL(SMExpr_Assign, initWithSMToken_withSMExpr_withJavaUtilList_, name, value, annotations)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Assign)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Assign)
 
-@implementation NetGlobulusSimiExpr_ObjectDecomp
+@implementation SMExpr_ObjectDecomp
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)assigns {
-  NetGlobulusSimiExpr_ObjectDecomp_initWithJavaUtilList_(self, assigns);
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)assigns {
+  SMExpr_ObjectDecomp_initWithJavaUtilList_(self, assigns);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
   id value = nil;
-  for (NetGlobulusSimiExpr_Assign * __strong assign in nil_chk(assigns_)) {
-    value = [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitAssignExprWithNetGlobulusSimiExpr_Assign:assign];
+  for (SMExpr_Assign * __strong assign in nil_chk(assigns_)) {
+    value = [((id<SMExpr_Visitor>) nil_chk(visitor)) visitAssignExprWithSMExpr_Assign:assign];
   }
   return value;
 }
@@ -328,45 +328,45 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Assign)
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaUtilList:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "assigns_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
   };
-  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LExpr$Assign;>;)V", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr$Assign;>;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_ObjectDecomp = { "ObjectDecomp", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 6, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_ObjectDecomp;
+  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LExpr$Assign;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr$Assign;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_ObjectDecomp = { "ObjectDecomp", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 6, -1, -1, -1, -1 };
+  return &_SMExpr_ObjectDecomp;
 }
 
 @end
 
-void NetGlobulusSimiExpr_ObjectDecomp_initWithJavaUtilList_(NetGlobulusSimiExpr_ObjectDecomp *self, id<JavaUtilList> assigns) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_ObjectDecomp_initWithJavaUtilList_(SMExpr_ObjectDecomp *self, id<JavaUtilList> assigns) {
+  SMExpr_init(self);
   self->assigns_ = assigns;
 }
 
-NetGlobulusSimiExpr_ObjectDecomp *new_NetGlobulusSimiExpr_ObjectDecomp_initWithJavaUtilList_(id<JavaUtilList> assigns) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_ObjectDecomp, initWithJavaUtilList_, assigns)
+SMExpr_ObjectDecomp *new_SMExpr_ObjectDecomp_initWithJavaUtilList_(id<JavaUtilList> assigns) {
+  J2OBJC_NEW_IMPL(SMExpr_ObjectDecomp, initWithJavaUtilList_, assigns)
 }
 
-NetGlobulusSimiExpr_ObjectDecomp *create_NetGlobulusSimiExpr_ObjectDecomp_initWithJavaUtilList_(id<JavaUtilList> assigns) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_ObjectDecomp, initWithJavaUtilList_, assigns)
+SMExpr_ObjectDecomp *create_SMExpr_ObjectDecomp_initWithJavaUtilList_(id<JavaUtilList> assigns) {
+  J2OBJC_CREATE_IMPL(SMExpr_ObjectDecomp, initWithJavaUtilList_, assigns)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_ObjectDecomp)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_ObjectDecomp)
 
-@implementation NetGlobulusSimiExpr_Binary
+@implementation SMExpr_Binary
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)left
-                   withNetGlobulusSimiToken:(NetGlobulusSimiToken *)operator_
-                    withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)right {
-  NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(self, left, operator_, right);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)left
+                             withSMToken:(SMToken *)operator_
+                              withSMExpr:(SMExpr *)right {
+  SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(self, left, operator_, right);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitBinaryExprWithNetGlobulusSimiExpr_Binary:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitBinaryExprWithSMExpr_Binary:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -377,50 +377,50 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_ObjectDecomp)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:withNetGlobulusSimiToken:withNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:withSMToken:withSMExpr:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "left_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "operator__", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, 4, -1, -1, -1 },
-    { "right_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "left_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "operator__", "LSMToken;", .constantValue.asLong = 0, 0x10, 4, -1, -1, -1 },
+    { "right_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;LNetGlobulusSimiToken;LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "operator", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Binary = { "Binary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 5, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Binary;
+  static const void *ptrTable[] = { "LSMExpr;LSMToken;LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "operator", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Binary = { "Binary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 5, -1, -1, -1, -1 };
+  return &_SMExpr_Binary;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Binary *self, NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(SMExpr_Binary *self, SMExpr *left, SMToken *operator_, SMExpr *right) {
+  SMExpr_init(self);
   self->left_ = left;
   self->operator__ = operator_;
   self->right_ = right;
 }
 
-NetGlobulusSimiExpr_Binary *new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Binary, initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_, left, operator_, right)
+SMExpr_Binary *new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(SMExpr *left, SMToken *operator_, SMExpr *right) {
+  J2OBJC_NEW_IMPL(SMExpr_Binary, initWithSMExpr_withSMToken_withSMExpr_, left, operator_, right)
 }
 
-NetGlobulusSimiExpr_Binary *create_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Binary, initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_, left, operator_, right)
+SMExpr_Binary *create_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(SMExpr *left, SMToken *operator_, SMExpr *right) {
+  J2OBJC_CREATE_IMPL(SMExpr_Binary, initWithSMExpr_withSMToken_withSMExpr_, left, operator_, right)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Binary)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Binary)
 
-@implementation NetGlobulusSimiExpr_Call
+@implementation SMExpr_Call
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)callee
-                   withNetGlobulusSimiToken:(NetGlobulusSimiToken *)paren
-                           withJavaUtilList:(id<JavaUtilList>)arguments {
-  NetGlobulusSimiExpr_Call_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_(self, callee, paren, arguments);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)callee
+                             withSMToken:(SMToken *)paren
+                        withJavaUtilList:(id<JavaUtilList>)arguments {
+  SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(self, callee, paren, arguments);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitCallExprWithNetGlobulusSimiExpr_Call:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitCallExprWithSMExpr_Call:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -431,51 +431,51 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Binary)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:withNetGlobulusSimiToken:withJavaUtilList:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:withSMToken:withJavaUtilList:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "callee_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "paren_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "callee_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "paren_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "arguments_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;LNetGlobulusSimiToken;LJavaUtilList;", "(LExpr;LToken;Ljava/util/List<LExpr;>;)V", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr;>;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Call = { "Call", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Call;
+  static const void *ptrTable[] = { "LSMExpr;LSMToken;LJavaUtilList;", "(LExpr;LToken;Ljava/util/List<LExpr;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Call = { "Call", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
+  return &_SMExpr_Call;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Call_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_(NetGlobulusSimiExpr_Call *self, NetGlobulusSimiExpr *callee, NetGlobulusSimiToken *paren, id<JavaUtilList> arguments) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(SMExpr_Call *self, SMExpr *callee, SMToken *paren, id<JavaUtilList> arguments) {
+  SMExpr_init(self);
   self->callee_ = callee;
   self->paren_ = paren;
   self->arguments_ = arguments;
 }
 
-NetGlobulusSimiExpr_Call *new_NetGlobulusSimiExpr_Call_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_(NetGlobulusSimiExpr *callee, NetGlobulusSimiToken *paren, id<JavaUtilList> arguments) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Call, initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_, callee, paren, arguments)
+SMExpr_Call *new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(SMExpr *callee, SMToken *paren, id<JavaUtilList> arguments) {
+  J2OBJC_NEW_IMPL(SMExpr_Call, initWithSMExpr_withSMToken_withJavaUtilList_, callee, paren, arguments)
 }
 
-NetGlobulusSimiExpr_Call *create_NetGlobulusSimiExpr_Call_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_(NetGlobulusSimiExpr *callee, NetGlobulusSimiToken *paren, id<JavaUtilList> arguments) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Call, initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_, callee, paren, arguments)
+SMExpr_Call *create_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(SMExpr *callee, SMToken *paren, id<JavaUtilList> arguments) {
+  J2OBJC_CREATE_IMPL(SMExpr_Call, initWithSMExpr_withSMToken_withJavaUtilList_, callee, paren, arguments)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Call)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Call)
 
-@implementation NetGlobulusSimiExpr_Get
+@implementation SMExpr_Get
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)origin
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)object
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)name
-                         withJavaLangInteger:(JavaLangInteger *)arity {
-  NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(self, origin, object, name, arity);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)origin
+                               withSMExpr:(SMExpr *)object
+                               withSMExpr:(SMExpr *)name
+                      withJavaLangInteger:(JavaLangInteger *)arity {
+  SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(self, origin, object, name, arity);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitGetExprWithNetGlobulusSimiExpr_Get:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitGetExprWithSMExpr_Get:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -486,50 +486,50 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Call)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiExpr:withNetGlobulusSimiExpr:withJavaLangInteger:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMExpr:withSMExpr:withJavaLangInteger:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "origin_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "object_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "name_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "origin_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "object_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "name_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "arity_", "LJavaLangInteger;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiExpr;LNetGlobulusSimiExpr;LJavaLangInteger;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Get = { "Get", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 4, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Get;
+  static const void *ptrTable[] = { "LSMToken;LSMExpr;LSMExpr;LJavaLangInteger;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Get = { "Get", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 4, 4, -1, -1, -1, -1 };
+  return &_SMExpr_Get;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(NetGlobulusSimiExpr_Get *self, NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, JavaLangInteger *arity) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(SMExpr_Get *self, SMToken *origin, SMExpr *object, SMExpr *name, JavaLangInteger *arity) {
+  SMExpr_init(self);
   self->origin_ = origin;
   self->object_ = object;
   self->name_ = name;
   self->arity_ = arity;
 }
 
-NetGlobulusSimiExpr_Get *new_NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, JavaLangInteger *arity) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Get, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_, origin, object, name, arity)
+SMExpr_Get *new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(SMToken *origin, SMExpr *object, SMExpr *name, JavaLangInteger *arity) {
+  J2OBJC_NEW_IMPL(SMExpr_Get, initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_, origin, object, name, arity)
 }
 
-NetGlobulusSimiExpr_Get *create_NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, JavaLangInteger *arity) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Get, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_, origin, object, name, arity)
+SMExpr_Get *create_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(SMToken *origin, SMExpr *object, SMExpr *name, JavaLangInteger *arity) {
+  J2OBJC_CREATE_IMPL(SMExpr_Get, initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_, origin, object, name, arity)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Get)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Get)
 
-@implementation NetGlobulusSimiExpr_Grouping
+@implementation SMExpr_Grouping
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)expression {
-  NetGlobulusSimiExpr_Grouping_initWithNetGlobulusSimiExpr_(self, expression);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)expression {
+  SMExpr_Grouping_initWithSMExpr_(self, expression);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitGroupingExprWithNetGlobulusSimiExpr_Grouping:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitGroupingExprWithSMExpr_Grouping:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -540,44 +540,44 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Get)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "expression_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "expression_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Grouping = { "Grouping", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 0, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Grouping;
+  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;" };
+  static const J2ObjcClassInfo _SMExpr_Grouping = { "Grouping", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 0, -1, -1, -1, -1 };
+  return &_SMExpr_Grouping;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Grouping_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Grouping *self, NetGlobulusSimiExpr *expression) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Grouping_initWithSMExpr_(SMExpr_Grouping *self, SMExpr *expression) {
+  SMExpr_init(self);
   self->expression_ = expression;
 }
 
-NetGlobulusSimiExpr_Grouping *new_NetGlobulusSimiExpr_Grouping_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expression) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Grouping, initWithNetGlobulusSimiExpr_, expression)
+SMExpr_Grouping *new_SMExpr_Grouping_initWithSMExpr_(SMExpr *expression) {
+  J2OBJC_NEW_IMPL(SMExpr_Grouping, initWithSMExpr_, expression)
 }
 
-NetGlobulusSimiExpr_Grouping *create_NetGlobulusSimiExpr_Grouping_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expression) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Grouping, initWithNetGlobulusSimiExpr_, expression)
+SMExpr_Grouping *create_SMExpr_Grouping_initWithSMExpr_(SMExpr *expression) {
+  J2OBJC_CREATE_IMPL(SMExpr_Grouping, initWithSMExpr_, expression)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Grouping)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Grouping)
 
-@implementation NetGlobulusSimiExpr_Gu
+@implementation SMExpr_Gu
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)expr {
-  NetGlobulusSimiExpr_Gu_initWithNetGlobulusSimiExpr_(self, expr);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)expr {
+  SMExpr_Gu_initWithSMExpr_(self, expr);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitGuExprWithNetGlobulusSimiExpr_Gu:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitGuExprWithSMExpr_Gu:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -588,44 +588,44 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Grouping)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "expr_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "expr_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Gu = { "Gu", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 0, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Gu;
+  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;" };
+  static const J2ObjcClassInfo _SMExpr_Gu = { "Gu", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 0, -1, -1, -1, -1 };
+  return &_SMExpr_Gu;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Gu_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Gu *self, NetGlobulusSimiExpr *expr) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Gu_initWithSMExpr_(SMExpr_Gu *self, SMExpr *expr) {
+  SMExpr_init(self);
   self->expr_ = expr;
 }
 
-NetGlobulusSimiExpr_Gu *new_NetGlobulusSimiExpr_Gu_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expr) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Gu, initWithNetGlobulusSimiExpr_, expr)
+SMExpr_Gu *new_SMExpr_Gu_initWithSMExpr_(SMExpr *expr) {
+  J2OBJC_NEW_IMPL(SMExpr_Gu, initWithSMExpr_, expr)
 }
 
-NetGlobulusSimiExpr_Gu *create_NetGlobulusSimiExpr_Gu_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expr) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Gu, initWithNetGlobulusSimiExpr_, expr)
+SMExpr_Gu *create_SMExpr_Gu_initWithSMExpr_(SMExpr *expr) {
+  J2OBJC_CREATE_IMPL(SMExpr_Gu, initWithSMExpr_, expr)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Gu)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Gu)
 
-@implementation NetGlobulusSimiExpr_Literal
+@implementation SMExpr_Literal
 
-- (instancetype)initWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value {
-  NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(self, value);
+- (instancetype __nonnull)initWithSMSimiValue:(SMSimiValue *)value {
+  SMExpr_Literal_initWithSMSimiValue_(self, value);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitLiteralExprWithNetGlobulusSimiExpr_Literal:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitLiteralExprWithSMExpr_Literal:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -636,46 +636,46 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Gu)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiSimiValue:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMSimiValue:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "value_", "LNetGlobulusSimiSimiValue;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "value_", "LSMSimiValue;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiSimiValue;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Literal = { "Literal", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Literal;
+  static const void *ptrTable[] = { "LSMSimiValue;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Literal = { "Literal", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  return &_SMExpr_Literal;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(NetGlobulusSimiExpr_Literal *self, NetGlobulusSimiSimiValue *value) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Literal_initWithSMSimiValue_(SMExpr_Literal *self, SMSimiValue *value) {
+  SMExpr_init(self);
   self->value_ = value;
 }
 
-NetGlobulusSimiExpr_Literal *new_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(NetGlobulusSimiSimiValue *value) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Literal, initWithNetGlobulusSimiSimiValue_, value)
+SMExpr_Literal *new_SMExpr_Literal_initWithSMSimiValue_(SMSimiValue *value) {
+  J2OBJC_NEW_IMPL(SMExpr_Literal, initWithSMSimiValue_, value)
 }
 
-NetGlobulusSimiExpr_Literal *create_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(NetGlobulusSimiSimiValue *value) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Literal, initWithNetGlobulusSimiSimiValue_, value)
+SMExpr_Literal *create_SMExpr_Literal_initWithSMSimiValue_(SMSimiValue *value) {
+  J2OBJC_CREATE_IMPL(SMExpr_Literal, initWithSMSimiValue_, value)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Literal)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Literal)
 
-@implementation NetGlobulusSimiExpr_Logical
+@implementation SMExpr_Logical
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)left
-                   withNetGlobulusSimiToken:(NetGlobulusSimiToken *)operator_
-                    withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)right {
-  NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(self, left, operator_, right);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)left
+                             withSMToken:(SMToken *)operator_
+                              withSMExpr:(SMExpr *)right {
+  SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(self, left, operator_, right);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitLogicalExprWithNetGlobulusSimiExpr_Logical:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitLogicalExprWithSMExpr_Logical:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -686,51 +686,51 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Literal)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:withNetGlobulusSimiToken:withNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:withSMToken:withSMExpr:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "left_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "operator__", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, 4, -1, -1, -1 },
-    { "right_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "left_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "operator__", "LSMToken;", .constantValue.asLong = 0, 0x10, 4, -1, -1, -1 },
+    { "right_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;LNetGlobulusSimiToken;LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "operator", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Logical = { "Logical", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 5, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Logical;
+  static const void *ptrTable[] = { "LSMExpr;LSMToken;LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "operator", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Logical = { "Logical", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 5, -1, -1, -1, -1 };
+  return &_SMExpr_Logical;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Logical *self, NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(SMExpr_Logical *self, SMExpr *left, SMToken *operator_, SMExpr *right) {
+  SMExpr_init(self);
   self->left_ = left;
   self->operator__ = operator_;
   self->right_ = right;
 }
 
-NetGlobulusSimiExpr_Logical *new_NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Logical, initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_, left, operator_, right)
+SMExpr_Logical *new_SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(SMExpr *left, SMToken *operator_, SMExpr *right) {
+  J2OBJC_NEW_IMPL(SMExpr_Logical, initWithSMExpr_withSMToken_withSMExpr_, left, operator_, right)
 }
 
-NetGlobulusSimiExpr_Logical *create_NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Logical, initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_, left, operator_, right)
+SMExpr_Logical *create_SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(SMExpr *left, SMToken *operator_, SMExpr *right) {
+  J2OBJC_CREATE_IMPL(SMExpr_Logical, initWithSMExpr_withSMToken_withSMExpr_, left, operator_, right)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Logical)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Logical)
 
-@implementation NetGlobulusSimiExpr_Set
+@implementation SMExpr_Set
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)origin
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)object
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)name
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)value {
-  NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(self, origin, object, name, value);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)origin
+                               withSMExpr:(SMExpr *)object
+                               withSMExpr:(SMExpr *)name
+                               withSMExpr:(SMExpr *)value {
+  SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(self, origin, object, name, value);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitSetExprWithNetGlobulusSimiExpr_Set:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitSetExprWithSMExpr_Set:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -741,53 +741,53 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Logical)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiExpr:withNetGlobulusSimiExpr:withNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMExpr:withSMExpr:withSMExpr:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "origin_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "object_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "name_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "value_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "origin_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "object_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "name_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiExpr;LNetGlobulusSimiExpr;LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Set = { "Set", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 4, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Set;
+  static const void *ptrTable[] = { "LSMToken;LSMExpr;LSMExpr;LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Set = { "Set", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 4, 4, -1, -1, -1, -1 };
+  return &_SMExpr_Set;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Set *self, NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, NetGlobulusSimiExpr *value) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(SMExpr_Set *self, SMToken *origin, SMExpr *object, SMExpr *name, SMExpr *value) {
+  SMExpr_init(self);
   self->origin_ = origin;
   self->object_ = object;
   self->name_ = name;
   self->value_ = value;
 }
 
-NetGlobulusSimiExpr_Set *new_NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, NetGlobulusSimiExpr *value) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Set, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_, origin, object, name, value)
+SMExpr_Set *new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(SMToken *origin, SMExpr *object, SMExpr *name, SMExpr *value) {
+  J2OBJC_NEW_IMPL(SMExpr_Set, initWithSMToken_withSMExpr_withSMExpr_withSMExpr_, origin, object, name, value)
 }
 
-NetGlobulusSimiExpr_Set *create_NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, NetGlobulusSimiExpr *value) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Set, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_, origin, object, name, value)
+SMExpr_Set *create_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(SMToken *origin, SMExpr *object, SMExpr *name, SMExpr *value) {
+  J2OBJC_CREATE_IMPL(SMExpr_Set, initWithSMToken_withSMExpr_withSMExpr_withSMExpr_, origin, object, name, value)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Set)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Set)
 
-@implementation NetGlobulusSimiExpr_Super
+@implementation SMExpr_Super
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)keyword
-                    withNetGlobulusSimiToken:(NetGlobulusSimiToken *)superclass_
-                    withNetGlobulusSimiToken:(NetGlobulusSimiToken *)method
-                         withJavaLangInteger:(JavaLangInteger *)arity {
-  NetGlobulusSimiExpr_Super_initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_(self, keyword, superclass_, method, arity);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword
+                              withSMToken:(SMToken *)superclass_
+                              withSMToken:(SMToken *)method
+                      withJavaLangInteger:(JavaLangInteger *)arity {
+  SMExpr_Super_initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_(self, keyword, superclass_, method, arity);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitSuperExprWithNetGlobulusSimiExpr_Super:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitSuperExprWithSMExpr_Super:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -798,50 +798,50 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Set)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiToken:withNetGlobulusSimiToken:withJavaLangInteger:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMToken:withSMToken:withJavaLangInteger:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "keyword_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "superclass__", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, 4, -1, -1, -1 },
-    { "method_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "superclass__", "LSMToken;", .constantValue.asLong = 0, 0x10, 4, -1, -1, -1 },
+    { "method_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "arity_", "LJavaLangInteger;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiToken;LNetGlobulusSimiToken;LJavaLangInteger;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "superclass", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Super = { "Super", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 4, 5, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Super;
+  static const void *ptrTable[] = { "LSMToken;LSMToken;LSMToken;LJavaLangInteger;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "superclass", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Super = { "Super", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 4, 5, -1, -1, -1, -1 };
+  return &_SMExpr_Super;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Super_initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_(NetGlobulusSimiExpr_Super *self, NetGlobulusSimiToken *keyword, NetGlobulusSimiToken *superclass_, NetGlobulusSimiToken *method, JavaLangInteger *arity) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Super_initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_(SMExpr_Super *self, SMToken *keyword, SMToken *superclass_, SMToken *method, JavaLangInteger *arity) {
+  SMExpr_init(self);
   self->keyword_ = keyword;
   self->superclass__ = superclass_;
   self->method_ = method;
   self->arity_ = arity;
 }
 
-NetGlobulusSimiExpr_Super *new_NetGlobulusSimiExpr_Super_initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_(NetGlobulusSimiToken *keyword, NetGlobulusSimiToken *superclass_, NetGlobulusSimiToken *method, JavaLangInteger *arity) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Super, initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_, keyword, superclass_, method, arity)
+SMExpr_Super *new_SMExpr_Super_initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_(SMToken *keyword, SMToken *superclass_, SMToken *method, JavaLangInteger *arity) {
+  J2OBJC_NEW_IMPL(SMExpr_Super, initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_, keyword, superclass_, method, arity)
 }
 
-NetGlobulusSimiExpr_Super *create_NetGlobulusSimiExpr_Super_initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_(NetGlobulusSimiToken *keyword, NetGlobulusSimiToken *superclass_, NetGlobulusSimiToken *method, JavaLangInteger *arity) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Super, initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_, keyword, superclass_, method, arity)
+SMExpr_Super *create_SMExpr_Super_initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_(SMToken *keyword, SMToken *superclass_, SMToken *method, JavaLangInteger *arity) {
+  J2OBJC_CREATE_IMPL(SMExpr_Super, initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_, keyword, superclass_, method, arity)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Super)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Super)
 
-@implementation NetGlobulusSimiExpr_Self
+@implementation SMExpr_Self
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)keyword {
-  NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(self, keyword);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword {
+  SMExpr_Self_initWithSMToken_(self, keyword);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitSelfExprWithNetGlobulusSimiExpr_Self:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitSelfExprWithSMExpr_Self:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -852,45 +852,45 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Super)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "keyword_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Self = { "Self", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Self;
+  static const void *ptrTable[] = { "LSMToken;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Self = { "Self", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  return &_SMExpr_Self;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(NetGlobulusSimiExpr_Self *self, NetGlobulusSimiToken *keyword) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Self_initWithSMToken_(SMExpr_Self *self, SMToken *keyword) {
+  SMExpr_init(self);
   self->keyword_ = keyword;
 }
 
-NetGlobulusSimiExpr_Self *new_NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *keyword) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Self, initWithNetGlobulusSimiToken_, keyword)
+SMExpr_Self *new_SMExpr_Self_initWithSMToken_(SMToken *keyword) {
+  J2OBJC_NEW_IMPL(SMExpr_Self, initWithSMToken_, keyword)
 }
 
-NetGlobulusSimiExpr_Self *create_NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *keyword) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Self, initWithNetGlobulusSimiToken_, keyword)
+SMExpr_Self *create_SMExpr_Self_initWithSMToken_(SMToken *keyword) {
+  J2OBJC_CREATE_IMPL(SMExpr_Self, initWithSMToken_, keyword)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Self)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Self)
 
-@implementation NetGlobulusSimiExpr_Unary
+@implementation SMExpr_Unary
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)operator_
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)right {
-  NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(self, operator_, right);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)operator_
+                               withSMExpr:(SMExpr *)right {
+  SMExpr_Unary_initWithSMToken_withSMExpr_(self, operator_, right);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitUnaryExprWithNetGlobulusSimiExpr_Unary:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitUnaryExprWithSMExpr_Unary:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -901,46 +901,46 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Self)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMExpr:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "operator__", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, 4, -1, -1, -1 },
-    { "right_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "operator__", "LSMToken;", .constantValue.asLong = 0, 0x10, 4, -1, -1, -1 },
+    { "right_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "operator", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Unary = { "Unary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 5, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Unary;
+  static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "operator", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Unary = { "Unary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 5, -1, -1, -1, -1 };
+  return &_SMExpr_Unary;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Unary *self, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Unary_initWithSMToken_withSMExpr_(SMExpr_Unary *self, SMToken *operator_, SMExpr *right) {
+  SMExpr_init(self);
   self->operator__ = operator_;
   self->right_ = right;
 }
 
-NetGlobulusSimiExpr_Unary *new_NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Unary, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_, operator_, right)
+SMExpr_Unary *new_SMExpr_Unary_initWithSMToken_withSMExpr_(SMToken *operator_, SMExpr *right) {
+  J2OBJC_NEW_IMPL(SMExpr_Unary, initWithSMToken_withSMExpr_, operator_, right)
 }
 
-NetGlobulusSimiExpr_Unary *create_NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Unary, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_, operator_, right)
+SMExpr_Unary *create_SMExpr_Unary_initWithSMToken_withSMExpr_(SMToken *operator_, SMExpr *right) {
+  J2OBJC_CREATE_IMPL(SMExpr_Unary, initWithSMToken_withSMExpr_, operator_, right)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Unary)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Unary)
 
-@implementation NetGlobulusSimiExpr_Variable
+@implementation SMExpr_Variable
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name {
-  NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(self, name);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)name {
+  SMExpr_Variable_initWithSMToken_(self, name);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitVariableExprWithNetGlobulusSimiExpr_Variable:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitVariableExprWithSMExpr_Variable:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -951,46 +951,46 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Unary)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "name_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_Variable = { "Variable", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_Variable;
+  static const void *ptrTable[] = { "LSMToken;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Variable = { "Variable", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  return &_SMExpr_Variable;
 }
 
 @end
 
-void NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiExpr_Variable *self, NetGlobulusSimiToken *name) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_Variable_initWithSMToken_(SMExpr_Variable *self, SMToken *name) {
+  SMExpr_init(self);
   self->name_ = name;
 }
 
-NetGlobulusSimiExpr_Variable *new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *name) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_Variable, initWithNetGlobulusSimiToken_, name)
+SMExpr_Variable *new_SMExpr_Variable_initWithSMToken_(SMToken *name) {
+  J2OBJC_NEW_IMPL(SMExpr_Variable, initWithSMToken_, name)
 }
 
-NetGlobulusSimiExpr_Variable *create_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *name) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_Variable, initWithNetGlobulusSimiToken_, name)
+SMExpr_Variable *create_SMExpr_Variable_initWithSMToken_(SMToken *name) {
+  J2OBJC_CREATE_IMPL(SMExpr_Variable, initWithSMToken_, name)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Variable)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Variable)
 
-@implementation NetGlobulusSimiExpr_ObjectLiteral
+@implementation SMExpr_ObjectLiteral
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)opener
-                            withJavaUtilList:(id<JavaUtilList>)props
-                                 withBoolean:(jboolean)isDictionary {
-  NetGlobulusSimiExpr_ObjectLiteral_initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_(self, opener, props, isDictionary);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)opener
+                         withJavaUtilList:(id<JavaUtilList>)props
+                              withBoolean:(jboolean)isDictionary {
+  SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(self, opener, props, isDictionary);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<NetGlobulusSimiExpr_Visitor>) nil_chk(visitor)) visitObjectLiteralExprWithNetGlobulusSimiExpr_ObjectLiteral:self];
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params {
+  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitObjectLiteralExprWithSMExpr_ObjectLiteral:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1001,34 +1001,34 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_Variable)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withJavaUtilList:withBoolean:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiExpr_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withJavaUtilList:withBoolean:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "opener_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "opener_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "props_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
     { "isDictionary_", "Z", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LJavaUtilList;Z", "(LToken;Ljava/util/List<LExpr;>;Z)V", "accept", "LNetGlobulusSimiExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr;>;", "LNetGlobulusSimiExpr;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiExpr_ObjectLiteral = { "ObjectLiteral", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiExpr_ObjectLiteral;
+  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;Z", "(LToken;Ljava/util/List<LExpr;>;Z)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_ObjectLiteral = { "ObjectLiteral", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
+  return &_SMExpr_ObjectLiteral;
 }
 
 @end
 
-void NetGlobulusSimiExpr_ObjectLiteral_initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_(NetGlobulusSimiExpr_ObjectLiteral *self, NetGlobulusSimiToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
-  NetGlobulusSimiExpr_init(self);
+void SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMExpr_ObjectLiteral *self, SMToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
+  SMExpr_init(self);
   self->opener_ = opener;
   self->props_ = props;
   self->isDictionary_ = isDictionary;
 }
 
-NetGlobulusSimiExpr_ObjectLiteral *new_NetGlobulusSimiExpr_ObjectLiteral_initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_(NetGlobulusSimiToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiExpr_ObjectLiteral, initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_, opener, props, isDictionary)
+SMExpr_ObjectLiteral *new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
+  J2OBJC_NEW_IMPL(SMExpr_ObjectLiteral, initWithSMToken_withJavaUtilList_withBoolean_, opener, props, isDictionary)
 }
 
-NetGlobulusSimiExpr_ObjectLiteral *create_NetGlobulusSimiExpr_ObjectLiteral_initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_(NetGlobulusSimiToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiExpr_ObjectLiteral, initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_, opener, props, isDictionary)
+SMExpr_ObjectLiteral *create_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
+  J2OBJC_CREATE_IMPL(SMExpr_ObjectLiteral, initWithSMToken_withJavaUtilList_withBoolean_, opener, props, isDictionary)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiExpr_ObjectLiteral)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_ObjectLiteral)

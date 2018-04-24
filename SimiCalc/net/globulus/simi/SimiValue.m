@@ -15,41 +15,41 @@
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
-@interface NetGlobulusSimiSimiValue_Callable () {
+@interface SMSimiValue_Callable () {
  @public
-  id<NetGlobulusSimiSimiObject> instance_;
+  id<SMSimiObject> instance_;
 }
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiValue_Callable, instance_, id<NetGlobulusSimiSimiObject>)
+J2OBJC_FIELD_SETTER(SMSimiValue_Callable, instance_, id<SMSimiObject>)
 
-@implementation NetGlobulusSimiSimiValue
+@implementation SMSimiValue
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiSimiValue_init(self);
+- (instancetype __nonnull)init {
+  SMSimiValue_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (NetGlobulusSimiSimiValue *)copy__ {
+- (SMSimiValue *)copy__ {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
 }
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
 }
 
-- (NetGlobulusSimiSimiValue *)getValue {
+- (SMSimiValue *)getValue {
   return self;
 }
 
-- (void)setValueWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value {
+- (void)setValueWithSMSimiValue:(SMSimiValue *)value {
   @throw new_JavaLangUnsupportedOperationException_initWithNSString_(@"Can't set value of SimiValue!");
 }
 
@@ -58,45 +58,45 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (NSString *)getString {
-  if ([self isKindOfClass:[NetGlobulusSimiSimiValue_String class]]) {
-    return ((NetGlobulusSimiSimiValue_String *) cast_chk(self, [NetGlobulusSimiSimiValue_String class]))->value_;
+  if ([self isKindOfClass:[SMSimiValue_String class]]) {
+    return ((SMSimiValue_String *) cast_chk(self, [SMSimiValue_String class]))->value_;
   }
-  @throw new_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], NetGlobulusSimiSimiValue_String_class_());
+  @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], SMSimiValue_String_class_());
 }
 
 - (JavaLangDouble *)getNumber {
-  if ([self isKindOfClass:[NetGlobulusSimiSimiValue_Number class]]) {
-    return JavaLangDouble_valueOfWithDouble_(((NetGlobulusSimiSimiValue_Number *) cast_chk(self, [NetGlobulusSimiSimiValue_Number class]))->value_);
+  if ([self isKindOfClass:[SMSimiValue_Number class]]) {
+    return JavaLangDouble_valueOfWithDouble_(((SMSimiValue_Number *) cast_chk(self, [SMSimiValue_Number class]))->value_);
   }
-  @throw new_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], NetGlobulusSimiSimiValue_Number_class_());
+  @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], SMSimiValue_Number_class_());
 }
 
-- (id<NetGlobulusSimiSimiObject>)getObject {
-  if ([self isKindOfClass:[NetGlobulusSimiSimiValue_Object class]]) {
-    return ((NetGlobulusSimiSimiValue_Object *) cast_chk(self, [NetGlobulusSimiSimiValue_Object class]))->value_;
+- (id<SMSimiObject>)getObject {
+  if ([self isKindOfClass:[SMSimiValue_Object class]]) {
+    return ((SMSimiValue_Object *) cast_chk(self, [SMSimiValue_Object class]))->value_;
   }
-  @throw new_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], NetGlobulusSimiSimiValue_Object_class_());
+  @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], SMSimiValue_Object_class_());
 }
 
-- (id<NetGlobulusSimiSimiCallable>)getCallable {
-  if ([self isKindOfClass:[NetGlobulusSimiSimiValue_Callable class]]) {
-    return ((NetGlobulusSimiSimiValue_Callable *) cast_chk(self, [NetGlobulusSimiSimiValue_Callable class]))->value_;
+- (id<SMSimiCallable>)getCallable {
+  if ([self isKindOfClass:[SMSimiValue_Callable class]]) {
+    return ((SMSimiValue_Callable *) cast_chk(self, [SMSimiValue_Callable class]))->value_;
   }
-  @throw new_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], NetGlobulusSimiSimiValue_Callable_class_());
+  @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], SMSimiValue_Callable_class_());
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x401, 0, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x401, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x401, 0, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x401, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 5, -1, -1 },
     { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LJavaLangDouble;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiCallable;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiCallable;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -105,30 +105,30 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[1].selector = @selector(copy__);
   methods[2].selector = @selector(cloneWithBoolean:);
   methods[3].selector = @selector(getValue);
-  methods[4].selector = @selector(setValueWithNetGlobulusSimiSimiValue:);
+  methods[4].selector = @selector(setValueWithSMSimiValue:);
   methods[5].selector = @selector(getAnnotations);
   methods[6].selector = @selector(getString);
   methods[7].selector = @selector(getNumber);
   methods[8].selector = @selector(getObject);
   methods[9].selector = @selector(getCallable);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "copy", "clone", "Z", "setValue", "LNetGlobulusSimiSimiValue;", "()Ljava/util/List<LSimiObject;>;", "LNetGlobulusSimiSimiValue_String;LNetGlobulusSimiSimiValue_Number;LNetGlobulusSimiSimiValue_Object;LNetGlobulusSimiSimiValue_Callable;LNetGlobulusSimiSimiValue_IncompatibleValuesException;", "Ljava/lang/Object;LSimiProperty;Ljava/lang/Comparable<LSimiValue;>;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiValue = { "SimiValue", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x401, 10, 0, -1, 6, -1, 7, -1 };
-  return &_NetGlobulusSimiSimiValue;
+  static const void *ptrTable[] = { "copy", "clone", "Z", "setValue", "LSMSimiValue;", "()Ljava/util/List<LSimiObject;>;", "LSMSimiValue_String;LSMSimiValue_Number;LSMSimiValue_Object;LSMSimiValue_Callable;LSMSimiValue_IncompatibleValuesException;", "Ljava/lang/Object;LSimiProperty;Ljava/lang/Comparable<LSimiValue;>;" };
+  static const J2ObjcClassInfo _SMSimiValue = { "SimiValue", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x401, 10, 0, -1, 6, -1, 7, -1 };
+  return &_SMSimiValue;
 }
 
 @end
 
-void NetGlobulusSimiSimiValue_init(NetGlobulusSimiSimiValue *self) {
+void SMSimiValue_init(SMSimiValue *self) {
   NSObject_init(self);
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue)
 
-@implementation NetGlobulusSimiSimiValue_String
+@implementation SMSimiValue_String
 
-- (instancetype)initWithNSString:(NSString *)value {
-  NetGlobulusSimiSimiValue_String_initWithNSString_(self, value);
+- (instancetype __nonnull)initWithNSString:(NSString *)value {
+  SMSimiValue_String_initWithNSString_(self, value);
   return self;
 }
 
@@ -137,26 +137,26 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue)
 }
 
 - (jboolean)isEqual:(id)obj {
-  if (obj == nil || !([obj isKindOfClass:[NetGlobulusSimiSimiValue_String class]])) {
+  if (obj == nil || !([obj isKindOfClass:[SMSimiValue_String class]])) {
     return false;
   }
-  return [((NSString *) nil_chk(value_)) isEqual:((NetGlobulusSimiSimiValue_String *) cast_chk(obj, [NetGlobulusSimiSimiValue_String class]))->value_];
+  return [((NSString *) nil_chk(value_)) isEqual:((SMSimiValue_String *) cast_chk(obj, [SMSimiValue_String class]))->value_];
 }
 
-- (NetGlobulusSimiSimiValue *)copy__ {
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_(value_);
+- (SMSimiValue *)copy__ {
+  return new_SMSimiValue_String_initWithNSString_(value_);
 }
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
   return [self copy__];
 }
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o {
-  (void) cast_chk(o, [NetGlobulusSimiSimiValue class]);
-  if (!([o isKindOfClass:[NetGlobulusSimiSimiValue_String class]])) {
-    @throw new_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], [((NetGlobulusSimiSimiValue *) nil_chk(o)) java_getClass]);
+- (jint)compareToWithId:(SMSimiValue *)o {
+  (void) cast_chk(o, [SMSimiValue class]);
+  if (!([o isKindOfClass:[SMSimiValue_String class]])) {
+    @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], [((SMSimiValue *) nil_chk(o)) java_getClass]);
   }
-  return [((NSString *) nil_chk(self->value_)) compareToWithId:((NetGlobulusSimiSimiValue_String *) nil_chk(((NetGlobulusSimiSimiValue_String *) cast_chk(o, [NetGlobulusSimiSimiValue_String class]))))->value_];
+  return [((NSString *) nil_chk(self->value_)) compareToWithId:((SMSimiValue_String *) nil_chk(((SMSimiValue_String *) cast_chk(o, [SMSimiValue_String class]))))->value_];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -164,8 +164,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue)
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, 2, 3, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 4, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 4, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 7, 8, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -181,42 +181,50 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue)
   static const J2ObjcFieldInfo fields[] = {
     { "value_", "LNSString;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNSString;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "compareTo", "LNetGlobulusSimiSimiValue;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiValue_String = { "String", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 8, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiValue_String;
+  static const void *ptrTable[] = { "LNSString;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "compareTo", "LSMSimiValue;" };
+  static const J2ObjcClassInfo _SMSimiValue_String = { "String", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 8, -1, -1, -1, -1 };
+  return &_SMSimiValue_String;
 }
 
 @end
 
-void NetGlobulusSimiSimiValue_String_initWithNSString_(NetGlobulusSimiSimiValue_String *self, NSString *value) {
-  NetGlobulusSimiSimiValue_init(self);
+void SMSimiValue_String_initWithNSString_(SMSimiValue_String *self, NSString *value) {
+  SMSimiValue_init(self);
   self->value_ = value;
 }
 
-NetGlobulusSimiSimiValue_String *new_NetGlobulusSimiSimiValue_String_initWithNSString_(NSString *value) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiValue_String, initWithNSString_, value)
+SMSimiValue_String *new_SMSimiValue_String_initWithNSString_(NSString *value) {
+  J2OBJC_NEW_IMPL(SMSimiValue_String, initWithNSString_, value)
 }
 
-NetGlobulusSimiSimiValue_String *create_NetGlobulusSimiSimiValue_String_initWithNSString_(NSString *value) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiValue_String, initWithNSString_, value)
+SMSimiValue_String *create_SMSimiValue_String_initWithNSString_(NSString *value) {
+  J2OBJC_CREATE_IMPL(SMSimiValue_String, initWithNSString_, value)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_String)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_String)
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiSimiValue_Number)
+J2OBJC_INITIALIZED_DEFN(SMSimiValue_Number)
 
-NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_TRUE;
-NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_FALSE;
+SMSimiValue_Number *SMSimiValue_Number_TRUE;
+SMSimiValue_Number *SMSimiValue_Number_FALSE;
 
-@implementation NetGlobulusSimiSimiValue_Number
+@implementation SMSimiValue_Number
 
-- (instancetype)initWithDouble:(jdouble)value {
-  NetGlobulusSimiSimiValue_Number_initWithDouble_(self, value);
++ (SMSimiValue_Number *)TRUE_ {
+  return SMSimiValue_Number_TRUE;
+}
+
++ (SMSimiValue_Number *)FALSE_ {
+  return SMSimiValue_Number_FALSE;
+}
+
+- (instancetype __nonnull)initWithDouble:(jdouble)value {
+  SMSimiValue_Number_initWithDouble_(self, value);
   return self;
 }
 
-- (instancetype)initWithBoolean:(jboolean)value {
-  NetGlobulusSimiSimiValue_Number_initWithBoolean_(self, value);
+- (instancetype __nonnull)initWithBoolean:(jboolean)value {
+  SMSimiValue_Number_initWithBoolean_(self, value);
   return self;
 }
 
@@ -229,26 +237,26 @@ NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_FALSE;
 }
 
 - (jboolean)isEqual:(id)obj {
-  if (obj == nil || !([obj isKindOfClass:[NetGlobulusSimiSimiValue_Number class]])) {
+  if (obj == nil || !([obj isKindOfClass:[SMSimiValue_Number class]])) {
     return false;
   }
-  return JavaLangDouble_compareWithDouble_withDouble_(value_, ((NetGlobulusSimiSimiValue_Number *) cast_chk(obj, [NetGlobulusSimiSimiValue_Number class]))->value_) == 0;
+  return JavaLangDouble_compareWithDouble_withDouble_(value_, ((SMSimiValue_Number *) cast_chk(obj, [SMSimiValue_Number class]))->value_) == 0;
 }
 
-- (NetGlobulusSimiSimiValue *)copy__ {
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_(value_);
+- (SMSimiValue *)copy__ {
+  return new_SMSimiValue_Number_initWithDouble_(value_);
 }
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
   return [self copy__];
 }
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o {
-  (void) cast_chk(o, [NetGlobulusSimiSimiValue class]);
-  if (!([o isKindOfClass:[NetGlobulusSimiSimiValue_Number class]])) {
-    @throw new_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], [((NetGlobulusSimiSimiValue *) nil_chk(o)) java_getClass]);
+- (jint)compareToWithId:(SMSimiValue *)o {
+  (void) cast_chk(o, [SMSimiValue class]);
+  if (!([o isKindOfClass:[SMSimiValue_Number class]])) {
+    @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], [((SMSimiValue *) nil_chk(o)) java_getClass]);
   }
-  return JavaLangDouble_compareWithDouble_withDouble_(self->value_, ((NetGlobulusSimiSimiValue_Number *) nil_chk(((NetGlobulusSimiSimiValue_Number *) cast_chk(o, [NetGlobulusSimiSimiValue_Number class]))))->value_);
+  return JavaLangDouble_compareWithDouble_withDouble_(self->value_, ((SMSimiValue_Number *) nil_chk(((SMSimiValue_Number *) cast_chk(o, [SMSimiValue_Number class]))))->value_);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -257,8 +265,8 @@ NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_FALSE;
     { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 2, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 5, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 6, 1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 5, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 6, 1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 7, 8, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -274,77 +282,77 @@ NetGlobulusSimiSimiValue_Number *NetGlobulusSimiSimiValue_Number_FALSE;
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "value_", "D", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
-    { "TRUE", "LNetGlobulusSimiSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 9, -1, -1 },
-    { "FALSE", "LNetGlobulusSimiSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 10, -1, -1 },
+    { "TRUE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 9, -1, -1 },
+    { "FALSE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 10, -1, -1 },
   };
-  static const void *ptrTable[] = { "D", "Z", "toString", "equals", "LNSObject;", "copy", "clone", "compareTo", "LNetGlobulusSimiSimiValue;", &NetGlobulusSimiSimiValue_Number_TRUE, &NetGlobulusSimiSimiValue_Number_FALSE };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiValue_Number = { "Number", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 7, 3, 8, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiValue_Number;
+  static const void *ptrTable[] = { "D", "Z", "toString", "equals", "LNSObject;", "copy", "clone", "compareTo", "LSMSimiValue;", &SMSimiValue_Number_TRUE, &SMSimiValue_Number_FALSE };
+  static const J2ObjcClassInfo _SMSimiValue_Number = { "Number", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 7, 3, 8, -1, -1, -1, -1 };
+  return &_SMSimiValue_Number;
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiSimiValue_Number class]) {
-    NetGlobulusSimiSimiValue_Number_TRUE = new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(true);
-    NetGlobulusSimiSimiValue_Number_FALSE = new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(false);
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiSimiValue_Number)
+  if (self == [SMSimiValue_Number class]) {
+    SMSimiValue_Number_TRUE = new_SMSimiValue_Number_initWithBoolean_(true);
+    SMSimiValue_Number_FALSE = new_SMSimiValue_Number_initWithBoolean_(false);
+    J2OBJC_SET_INITIALIZED(SMSimiValue_Number)
   }
 }
 
 @end
 
-void NetGlobulusSimiSimiValue_Number_initWithDouble_(NetGlobulusSimiSimiValue_Number *self, jdouble value) {
-  NetGlobulusSimiSimiValue_init(self);
+void SMSimiValue_Number_initWithDouble_(SMSimiValue_Number *self, jdouble value) {
+  SMSimiValue_init(self);
   self->value_ = value;
 }
 
-NetGlobulusSimiSimiValue_Number *new_NetGlobulusSimiSimiValue_Number_initWithDouble_(jdouble value) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiValue_Number, initWithDouble_, value)
+SMSimiValue_Number *new_SMSimiValue_Number_initWithDouble_(jdouble value) {
+  J2OBJC_NEW_IMPL(SMSimiValue_Number, initWithDouble_, value)
 }
 
-NetGlobulusSimiSimiValue_Number *create_NetGlobulusSimiSimiValue_Number_initWithDouble_(jdouble value) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiValue_Number, initWithDouble_, value)
+SMSimiValue_Number *create_SMSimiValue_Number_initWithDouble_(jdouble value) {
+  J2OBJC_CREATE_IMPL(SMSimiValue_Number, initWithDouble_, value)
 }
 
-void NetGlobulusSimiSimiValue_Number_initWithBoolean_(NetGlobulusSimiSimiValue_Number *self, jboolean value) {
-  NetGlobulusSimiSimiValue_init(self);
+void SMSimiValue_Number_initWithBoolean_(SMSimiValue_Number *self, jboolean value) {
+  SMSimiValue_init(self);
   self->value_ = value ? 1 : 0;
 }
 
-NetGlobulusSimiSimiValue_Number *new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(jboolean value) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiValue_Number, initWithBoolean_, value)
+SMSimiValue_Number *new_SMSimiValue_Number_initWithBoolean_(jboolean value) {
+  J2OBJC_NEW_IMPL(SMSimiValue_Number, initWithBoolean_, value)
 }
 
-NetGlobulusSimiSimiValue_Number *create_NetGlobulusSimiSimiValue_Number_initWithBoolean_(jboolean value) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiValue_Number, initWithBoolean_, value)
+SMSimiValue_Number *create_SMSimiValue_Number_initWithBoolean_(jboolean value) {
+  J2OBJC_CREATE_IMPL(SMSimiValue_Number, initWithBoolean_, value)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_Number)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Number)
 
-@implementation NetGlobulusSimiSimiValue_Object
+@implementation SMSimiValue_Object
 
-- (instancetype)initWithNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)value {
-  NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(self, value);
+- (instancetype __nonnull)initWithSMSimiObject:(id<SMSimiObject>)value {
+  SMSimiValue_Object_initWithSMSimiObject_(self, value);
   return self;
 }
 
 - (NSString *)description {
-  return [((id<NetGlobulusSimiSimiObject>) nil_chk(value_)) description];
+  return [((id<SMSimiObject>) nil_chk(value_)) description];
 }
 
 - (jboolean)isEqual:(id)obj {
   return self == obj;
 }
 
-- (NetGlobulusSimiSimiValue *)copy__ {
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(value_);
+- (SMSimiValue *)copy__ {
+  return new_SMSimiValue_Object_initWithSMSimiObject_(value_);
 }
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_([((id<NetGlobulusSimiSimiObject>) nil_chk(value_)) cloneWithBoolean:mutable_]);
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((id<SMSimiObject>) nil_chk(value_)) cloneWithBoolean:mutable_]);
 }
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o {
-  (void) cast_chk(o, [NetGlobulusSimiSimiValue class]);
+- (jint)compareToWithId:(SMSimiValue *)o {
+  (void) cast_chk(o, [SMSimiValue class]);
   @throw new_JavaLangRuntimeException_initWithNSString_(@"Unable to compare objects by default, implement in subclass!");
 }
 
@@ -353,14 +361,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_Number)
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, 2, 3, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 4, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 4, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 7, 8, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiSimiObject:);
+  methods[0].selector = @selector(initWithSMSimiObject:);
   methods[1].selector = @selector(description);
   methods[2].selector = @selector(isEqual:);
   methods[3].selector = @selector(copy__);
@@ -368,65 +376,65 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_Number)
   methods[5].selector = @selector(compareToWithId:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "value_", "LNetGlobulusSimiSimiObject;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "value_", "LSMSimiObject;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiSimiObject;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "compareTo", "LNetGlobulusSimiSimiValue;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiValue_Object = { "Object", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 8, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiValue_Object;
+  static const void *ptrTable[] = { "LSMSimiObject;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "compareTo", "LSMSimiValue;" };
+  static const J2ObjcClassInfo _SMSimiValue_Object = { "Object", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 8, -1, -1, -1, -1 };
+  return &_SMSimiValue_Object;
 }
 
 @end
 
-void NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiValue_Object *self, id<NetGlobulusSimiSimiObject> value) {
-  NetGlobulusSimiSimiValue_init(self);
+void SMSimiValue_Object_initWithSMSimiObject_(SMSimiValue_Object *self, id<SMSimiObject> value) {
+  SMSimiValue_init(self);
   self->value_ = value;
 }
 
-NetGlobulusSimiSimiValue_Object *new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(id<NetGlobulusSimiSimiObject> value) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiValue_Object, initWithNetGlobulusSimiSimiObject_, value)
+SMSimiValue_Object *new_SMSimiValue_Object_initWithSMSimiObject_(id<SMSimiObject> value) {
+  J2OBJC_NEW_IMPL(SMSimiValue_Object, initWithSMSimiObject_, value)
 }
 
-NetGlobulusSimiSimiValue_Object *create_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(id<NetGlobulusSimiSimiObject> value) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiValue_Object, initWithNetGlobulusSimiSimiObject_, value)
+SMSimiValue_Object *create_SMSimiValue_Object_initWithSMSimiObject_(id<SMSimiObject> value) {
+  J2OBJC_CREATE_IMPL(SMSimiValue_Object, initWithSMSimiObject_, value)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_Object)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Object)
 
-@implementation NetGlobulusSimiSimiValue_Callable
+@implementation SMSimiValue_Callable
 
-- (instancetype)initWithNetGlobulusSimiSimiCallable:(id<NetGlobulusSimiSimiCallable>)value
-                                       withNSString:(NSString *)name
-                      withNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)instance {
-  NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(self, value, name, instance);
+- (instancetype __nonnull)initWithSMSimiCallable:(id<SMSimiCallable>)value
+                                    withNSString:(NSString *)name
+                                withSMSimiObject:(id<SMSimiObject>)instance {
+  SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(self, value, name, instance);
   return self;
 }
 
 - (NSString *)description {
-  return [((id<NetGlobulusSimiSimiCallable>) nil_chk(value_)) description];
+  return [((id<SMSimiCallable>) nil_chk(value_)) description];
 }
 
 - (jboolean)isEqual:(id)obj {
   return self == obj;
 }
 
-- (NetGlobulusSimiSimiValue *)copy__ {
-  return new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(value_, name_, instance_);
+- (SMSimiValue *)copy__ {
+  return new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(value_, name_, instance_);
 }
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
   return [self copy__];
 }
 
-- (id<NetGlobulusSimiSimiObject>)getInstance {
+- (id<SMSimiObject>)getInstance {
   return instance_;
 }
 
-- (void)bindWithNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)instance {
+- (void)bindWithSMSimiObject:(id<SMSimiObject>)instance {
   self->instance_ = instance;
 }
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o {
-  (void) cast_chk(o, [NetGlobulusSimiSimiValue class]);
+- (jint)compareToWithId:(SMSimiValue *)o {
+  (void) cast_chk(o, [SMSimiValue class]);
   @throw new_JavaLangRuntimeException_initWithNSString_(@"Unable to compare callables!");
 }
 
@@ -435,58 +443,58 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_Object)
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, 2, 3, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 4, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 5, 6, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiObject;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 4, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 7, 8, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 9, 10, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiSimiCallable:withNSString:withNetGlobulusSimiSimiObject:);
+  methods[0].selector = @selector(initWithSMSimiCallable:withNSString:withSMSimiObject:);
   methods[1].selector = @selector(description);
   methods[2].selector = @selector(isEqual:);
   methods[3].selector = @selector(copy__);
   methods[4].selector = @selector(cloneWithBoolean:);
   methods[5].selector = @selector(getInstance);
-  methods[6].selector = @selector(bindWithNetGlobulusSimiSimiObject:);
+  methods[6].selector = @selector(bindWithSMSimiObject:);
   methods[7].selector = @selector(compareToWithId:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "value_", "LNetGlobulusSimiSimiCallable;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "value_", "LSMSimiCallable;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
     { "name_", "LNSString;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
-    { "instance_", "LNetGlobulusSimiSimiObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "instance_", "LSMSimiObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiSimiCallable;LNSString;LNetGlobulusSimiSimiObject;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "bind", "LNetGlobulusSimiSimiObject;", "compareTo", "LNetGlobulusSimiSimiValue;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiValue_Callable = { "Callable", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 8, 3, 10, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiValue_Callable;
+  static const void *ptrTable[] = { "LSMSimiCallable;LNSString;LSMSimiObject;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "bind", "LSMSimiObject;", "compareTo", "LSMSimiValue;" };
+  static const J2ObjcClassInfo _SMSimiValue_Callable = { "Callable", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 8, 3, 10, -1, -1, -1, -1 };
+  return &_SMSimiValue_Callable;
 }
 
 @end
 
-void NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiValue_Callable *self, id<NetGlobulusSimiSimiCallable> value, NSString *name, id<NetGlobulusSimiSimiObject> instance) {
-  NetGlobulusSimiSimiValue_init(self);
+void SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(SMSimiValue_Callable *self, id<SMSimiCallable> value, NSString *name, id<SMSimiObject> instance) {
+  SMSimiValue_init(self);
   self->value_ = value;
   self->name_ = name;
   self->instance_ = instance;
 }
 
-NetGlobulusSimiSimiValue_Callable *new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(id<NetGlobulusSimiSimiCallable> value, NSString *name, id<NetGlobulusSimiSimiObject> instance) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiValue_Callable, initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_, value, name, instance)
+SMSimiValue_Callable *new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(id<SMSimiCallable> value, NSString *name, id<SMSimiObject> instance) {
+  J2OBJC_NEW_IMPL(SMSimiValue_Callable, initWithSMSimiCallable_withNSString_withSMSimiObject_, value, name, instance)
 }
 
-NetGlobulusSimiSimiValue_Callable *create_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(id<NetGlobulusSimiSimiCallable> value, NSString *name, id<NetGlobulusSimiSimiObject> instance) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiValue_Callable, initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_, value, name, instance)
+SMSimiValue_Callable *create_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(id<SMSimiCallable> value, NSString *name, id<SMSimiObject> instance) {
+  J2OBJC_CREATE_IMPL(SMSimiValue_Callable, initWithSMSimiCallable_withNSString_withSMSimiObject_, value, name, instance)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_Callable)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Callable)
 
-@implementation NetGlobulusSimiSimiValue_IncompatibleValuesException
+@implementation SMSimiValue_IncompatibleValuesException
 
-- (instancetype)initWithIOSClass:(IOSClass *)value
-                    withIOSClass:(IOSClass *)expected {
-  NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(self, value, expected);
+- (instancetype __nonnull)initWithIOSClass:(IOSClass *)value
+                              withIOSClass:(IOSClass *)expected {
+  SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(self, value, expected);
   return self;
 }
 
@@ -499,23 +507,23 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_Callable)
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithIOSClass:withIOSClass:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LIOSClass;LIOSClass;", "(Ljava/lang/Class<+LSimiValue;>;Ljava/lang/Class<+LSimiValue;>;)V", "LNetGlobulusSimiSimiValue;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiValue_IncompatibleValuesException = { "IncompatibleValuesException", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x9, 1, 0, 2, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiValue_IncompatibleValuesException;
+  static const void *ptrTable[] = { "LIOSClass;LIOSClass;", "(Ljava/lang/Class<+LSimiValue;>;Ljava/lang/Class<+LSimiValue;>;)V", "LSMSimiValue;" };
+  static const J2ObjcClassInfo _SMSimiValue_IncompatibleValuesException = { "IncompatibleValuesException", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x9, 1, 0, 2, -1, -1, -1, -1 };
+  return &_SMSimiValue_IncompatibleValuesException;
 }
 
 @end
 
-void NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(NetGlobulusSimiSimiValue_IncompatibleValuesException *self, IOSClass *value, IOSClass *expected) {
+void SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(SMSimiValue_IncompatibleValuesException *self, IOSClass *value, IOSClass *expected) {
   JavaLangRuntimeException_initWithNSString_(self, JreStrcat("$$$$", @"Incompatible types, expected ", [((IOSClass *) nil_chk(expected)) getSimpleName], @", got ", [((IOSClass *) nil_chk(value)) getSimpleName]));
 }
 
-NetGlobulusSimiSimiValue_IncompatibleValuesException *new_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(IOSClass *value, IOSClass *expected) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiValue_IncompatibleValuesException, initWithIOSClass_withIOSClass_, value, expected)
+SMSimiValue_IncompatibleValuesException *new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(IOSClass *value, IOSClass *expected) {
+  J2OBJC_NEW_IMPL(SMSimiValue_IncompatibleValuesException, initWithIOSClass_withIOSClass_, value, expected)
 }
 
-NetGlobulusSimiSimiValue_IncompatibleValuesException *create_NetGlobulusSimiSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(IOSClass *value, IOSClass *expected) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiValue_IncompatibleValuesException, initWithIOSClass_withIOSClass_, value, expected)
+SMSimiValue_IncompatibleValuesException *create_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_(IOSClass *value, IOSClass *expected) {
+  J2OBJC_CREATE_IMPL(SMSimiValue_IncompatibleValuesException, initWithIOSClass_withIOSClass_, value, expected)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiValue_IncompatibleValuesException)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_IncompatibleValuesException)

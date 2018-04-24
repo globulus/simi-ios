@@ -13,13 +13,13 @@
 #include "java/lang/annotation/Target.h"
 #include "SimiJavaClass.h"
 
-@interface NetGlobulusSimiSimiJavaClass : NSObject
+@interface SMSimiJavaClass : NSObject
 
 @end
 
-__attribute__((unused)) static IOSObjectArray *NetGlobulusSimiSimiJavaClass__Annotations$0(void);
+__attribute__((unused)) static IOSObjectArray *SMSimiJavaClass__Annotations$0(void);
 
-@implementation NetGlobulusSimiSimiJavaClass
+@implementation SMSimiJavaClass
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
@@ -30,15 +30,15 @@ __attribute__((unused)) static IOSObjectArray *NetGlobulusSimiSimiJavaClass__Ann
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(name);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { (void *)&NetGlobulusSimiSimiJavaClass__Annotations$0 };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiJavaClass = { "SimiJavaClass", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x2609, 1, 0, -1, -1, -1, -1, 0 };
-  return &_NetGlobulusSimiSimiJavaClass;
+  static const void *ptrTable[] = { (void *)&SMSimiJavaClass__Annotations$0 };
+  static const J2ObjcClassInfo _SMSimiJavaClass = { "SimiJavaClass", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x2609, 1, 0, -1, -1, -1, -1, 0 };
+  return &_SMSimiJavaClass;
 }
 
 @end
 
-IOSObjectArray *NetGlobulusSimiSimiJavaClass__Annotations$0() {
+IOSObjectArray *SMSimiJavaClass__Annotations$0() {
   return [IOSObjectArray newArrayWithObjects:(id[]){ create_JavaLangAnnotationTarget([IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(JavaLangAnnotationElementType, TYPE) } count:1 type:JavaLangAnnotationElementType_class_()]), create_JavaLangAnnotationRetention(JreLoadEnum(JavaLangAnnotationRetentionPolicy, SOURCE)) } count:2 type:JavaLangAnnotationAnnotation_class_()];
 }
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiJavaClass)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMSimiJavaClass)

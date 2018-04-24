@@ -8,11 +8,11 @@
 #include "RuntimeError.h"
 #include "Token.h"
 
-@implementation NetGlobulusSimiRuntimeError
+@implementation SMRuntimeError
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)token
-                                withNSString:(NSString *)message {
-  NetGlobulusSimiRuntimeError_initWithNetGlobulusSimiToken_withNSString_(self, token, message);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)token
+                             withNSString:(NSString *)message {
+  SMRuntimeError_initWithSMToken_withNSString_(self, token, message);
   return self;
 }
 
@@ -23,29 +23,29 @@
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNSString:);
+  methods[0].selector = @selector(initWithSMToken:withNSString:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "token_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "token_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNSString;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiRuntimeError = { "RuntimeError", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 1, 1, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiRuntimeError;
+  static const void *ptrTable[] = { "LSMToken;LNSString;" };
+  static const J2ObjcClassInfo _SMRuntimeError = { "RuntimeError", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 1, 1, -1, -1, -1, -1, -1 };
+  return &_SMRuntimeError;
 }
 
 @end
 
-void NetGlobulusSimiRuntimeError_initWithNetGlobulusSimiToken_withNSString_(NetGlobulusSimiRuntimeError *self, NetGlobulusSimiToken *token, NSString *message) {
+void SMRuntimeError_initWithSMToken_withNSString_(SMRuntimeError *self, SMToken *token, NSString *message) {
   JavaLangRuntimeException_initWithNSString_(self, message);
   self->token_ = token;
 }
 
-NetGlobulusSimiRuntimeError *new_NetGlobulusSimiRuntimeError_initWithNetGlobulusSimiToken_withNSString_(NetGlobulusSimiToken *token, NSString *message) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiRuntimeError, initWithNetGlobulusSimiToken_withNSString_, token, message)
+SMRuntimeError *new_SMRuntimeError_initWithSMToken_withNSString_(SMToken *token, NSString *message) {
+  J2OBJC_NEW_IMPL(SMRuntimeError, initWithSMToken_withNSString_, token, message)
 }
 
-NetGlobulusSimiRuntimeError *create_NetGlobulusSimiRuntimeError_initWithNetGlobulusSimiToken_withNSString_(NetGlobulusSimiToken *token, NSString *message) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiRuntimeError, initWithNetGlobulusSimiToken_withNSString_, token, message)
+SMRuntimeError *create_SMRuntimeError_initWithSMToken_withNSString_(SMToken *token, NSString *message) {
+  J2OBJC_CREATE_IMPL(SMRuntimeError, initWithSMToken_withNSString_, token, message)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiRuntimeError)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMRuntimeError)

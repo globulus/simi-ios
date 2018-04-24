@@ -17,37 +17,37 @@
 #include "Token.h"
 #include "Yield.h"
 
-@interface NetGlobulusSimiBlockImpl () {
+@interface SMBlockImpl () {
  @public
   JavaLangInteger *lastStatement_;
-  NetGlobulusSimiEnvironment *lastClosure_;
+  SMEnvironment *lastClosure_;
 }
 
 - (void)clearYield;
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiBlockImpl, lastStatement_, JavaLangInteger *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiBlockImpl, lastClosure_, NetGlobulusSimiEnvironment *)
+J2OBJC_FIELD_SETTER(SMBlockImpl, lastStatement_, JavaLangInteger *)
+J2OBJC_FIELD_SETTER(SMBlockImpl, lastClosure_, SMEnvironment *)
 
-__attribute__((unused)) static void NetGlobulusSimiBlockImpl_clearYield(NetGlobulusSimiBlockImpl *self);
+__attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
 
-@implementation NetGlobulusSimiBlockImpl
+@implementation SMBlockImpl
 
-- (instancetype)initWithNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)declaration
-                   withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)closure {
-  NetGlobulusSimiBlockImpl_initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_(self, declaration, closure);
+- (instancetype __nonnull)initWithSMExpr_Block:(SMExpr_Block *)declaration
+                             withSMEnvironment:(SMEnvironment *)closure {
+  SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(self, declaration, closure);
   return self;
 }
 
-- (NetGlobulusSimiBlockImpl *)bindWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)instance {
-  NetGlobulusSimiEnvironment *environment = new_NetGlobulusSimiEnvironment_initWithNetGlobulusSimiEnvironment_(closure_);
-  [environment assignWithNetGlobulusSimiToken:NetGlobulusSimiToken_self__() withNetGlobulusSimiSimiProperty:new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(instance) withBoolean:false];
-  return new_NetGlobulusSimiBlockImpl_initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_(declaration_, environment);
+- (SMBlockImpl *)bindWithSMSimiObjectImpl:(SMSimiObjectImpl *)instance {
+  SMEnvironment *environment = new_SMEnvironment_initWithSMEnvironment_(closure_);
+  [environment assignWithSMToken:SMToken_self__() withSMSimiProperty:new_SMSimiValue_Object_initWithSMSimiObject_(instance) withBoolean:false];
+  return new_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(declaration_, environment);
 }
 
 - (jboolean)isNative {
-  return [((NetGlobulusSimiExpr_Block *) nil_chk(declaration_)) isNative];
+  return [((SMExpr_Block *) nil_chk(declaration_)) isNative];
 }
 
 - (void)yieldWithInt:(jint)index {
@@ -56,7 +56,7 @@ __attribute__((unused)) static void NetGlobulusSimiBlockImpl_clearYield(NetGlobu
 }
 
 - (void)clearYield {
-  NetGlobulusSimiBlockImpl_clearYield(self);
+  SMBlockImpl_clearYield(self);
 }
 
 - (NSString *)description {
@@ -64,23 +64,23 @@ __attribute__((unused)) static void NetGlobulusSimiBlockImpl_clearYield(NetGlobu
 }
 
 - (jint)arity {
-  return [((id<JavaUtilList>) nil_chk(((NetGlobulusSimiExpr_Block *) nil_chk(declaration_))->params_)) size];
+  return [((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(declaration_))->params_)) size];
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiEnvironment *environment = new_NetGlobulusSimiEnvironment_initWithNetGlobulusSimiEnvironment_(lastClosure_ != nil ? lastClosure_ : closure_);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMEnvironment *environment = new_SMEnvironment_initWithSMEnvironment_(lastClosure_ != nil ? lastClosure_ : closure_);
   if (arguments != nil) {
-    for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(((NetGlobulusSimiExpr_Block *) nil_chk(declaration_))->params_)) size]; i++) {
-      [environment defineWithNSString:((NetGlobulusSimiToken *) nil_chk([declaration_->params_ getWithInt:i]))->lexeme_ withNetGlobulusSimiSimiProperty:[arguments getWithInt:i]];
+    for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(declaration_))->params_)) size]; i++) {
+      [environment defineWithNSString:((SMToken *) nil_chk([declaration_->params_ getWithInt:i]))->lexeme_ withSMSimiProperty:[arguments getWithInt:i]];
     }
   }
   @try {
-    [((id<NetGlobulusSimiBlockInterpreter>) nil_chk(interpreter)) executeBlockWithNetGlobulusSimiSimiBlock:self withNetGlobulusSimiSimiEnvironment:environment withInt:(lastStatement_ != nil) ? [((JavaLangInteger *) nil_chk(lastStatement_)) intValue] : 0];
+    [((id<SMBlockInterpreter>) nil_chk(interpreter)) executeBlockWithSMSimiBlock:self withSMSimiEnvironment:environment withInt:(lastStatement_ != nil) ? [((JavaLangInteger *) nil_chk(lastStatement_)) intValue] : 0];
   }
-  @catch (NetGlobulusSimiReturn *returnValue) {
-    NetGlobulusSimiBlockImpl_clearYield(self);
+  @catch (SMReturn *returnValue) {
+    SMBlockImpl_clearYield(self);
     if (rethrow) {
       @throw returnValue;
     }
@@ -88,77 +88,77 @@ __attribute__((unused)) static void NetGlobulusSimiBlockImpl_clearYield(NetGlobu
       return returnValue->prop_;
     }
   }
-  @catch (NetGlobulusSimiYield *yield) {
+  @catch (SMYield *yield) {
     if (rethrow) {
-      @throw new_NetGlobulusSimiYield_initWithNetGlobulusSimiSimiProperty_withBoolean_(yield->prop_, true);
+      @throw new_SMYield_initWithSMSimiProperty_withBoolean_(yield->prop_, true);
     }
     else {
       return yield->prop_;
     }
   }
-  NetGlobulusSimiBlockImpl_clearYield(self);
+  SMBlockImpl_clearYield(self);
   return nil;
 }
 
 - (id<JavaUtilList>)getStatements {
-  return [((NetGlobulusSimiExpr_Block *) nil_chk(declaration_)) getStatements];
+  return [((SMExpr_Block *) nil_chk(declaration_)) getStatements];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiBlockImpl;", 0x0, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LSMBlockImpl;", 0x0, 1, 2, -1, -1, -1, -1 },
     { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 6, 7, -1, 8, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 6, 7, -1, 8, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 9, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr_Block:withNetGlobulusSimiEnvironment:);
-  methods[1].selector = @selector(bindWithNetGlobulusSimiSimiObjectImpl:);
+  methods[0].selector = @selector(initWithSMExpr_Block:withSMEnvironment:);
+  methods[1].selector = @selector(bindWithSMSimiObjectImpl:);
   methods[2].selector = @selector(isNative);
   methods[3].selector = @selector(yieldWithInt:);
   methods[4].selector = @selector(clearYield);
   methods[5].selector = @selector(description);
   methods[6].selector = @selector(arity);
-  methods[7].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[7].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   methods[8].selector = @selector(getStatements);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "declaration_", "LNetGlobulusSimiExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "closure_", "LNetGlobulusSimiEnvironment;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "declaration_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "closure_", "LSMEnvironment;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "lastStatement_", "LJavaLangInteger;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "lastClosure_", "LNetGlobulusSimiEnvironment;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "lastClosure_", "LSMEnvironment;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr_Block;LNetGlobulusSimiEnvironment;", "bind", "LNetGlobulusSimiSimiObjectImpl;", "yield", "I", "toString", "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "()Ljava/util/List<+LSimiStatement;>;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBlockImpl = { "BlockImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 9, 4, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiBlockImpl;
+  static const void *ptrTable[] = { "LSMExpr_Block;LSMEnvironment;", "bind", "LSMSimiObjectImpl;", "yield", "I", "toString", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "()Ljava/util/List<+LSimiStatement;>;" };
+  static const J2ObjcClassInfo _SMBlockImpl = { "BlockImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 9, 4, -1, -1, -1, -1, -1 };
+  return &_SMBlockImpl;
 }
 
 @end
 
-void NetGlobulusSimiBlockImpl_initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_(NetGlobulusSimiBlockImpl *self, NetGlobulusSimiExpr_Block *declaration, NetGlobulusSimiEnvironment *closure) {
+void SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMBlockImpl *self, SMExpr_Block *declaration, SMEnvironment *closure) {
   NSObject_init(self);
   self->declaration_ = declaration;
   self->closure_ = closure;
 }
 
-NetGlobulusSimiBlockImpl *new_NetGlobulusSimiBlockImpl_initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_(NetGlobulusSimiExpr_Block *declaration, NetGlobulusSimiEnvironment *closure) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBlockImpl, initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_, declaration, closure)
+SMBlockImpl *new_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMExpr_Block *declaration, SMEnvironment *closure) {
+  J2OBJC_NEW_IMPL(SMBlockImpl, initWithSMExpr_Block_withSMEnvironment_, declaration, closure)
 }
 
-NetGlobulusSimiBlockImpl *create_NetGlobulusSimiBlockImpl_initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_(NetGlobulusSimiExpr_Block *declaration, NetGlobulusSimiEnvironment *closure) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBlockImpl, initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_, declaration, closure)
+SMBlockImpl *create_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMExpr_Block *declaration, SMEnvironment *closure) {
+  J2OBJC_CREATE_IMPL(SMBlockImpl, initWithSMExpr_Block_withSMEnvironment_, declaration, closure)
 }
 
-void NetGlobulusSimiBlockImpl_clearYield(NetGlobulusSimiBlockImpl *self) {
+void SMBlockImpl_clearYield(SMBlockImpl *self) {
   self->lastStatement_ = nil;
   self->lastClosure_ = nil;
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiBlockImpl)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMBlockImpl)

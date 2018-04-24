@@ -11,60 +11,60 @@
 #include "SimiMethod.h"
 #include "SimiProperty.h"
 
-@implementation NetGlobulusSimiSimiMethod
+@implementation SMSimiMethod
 
-- (instancetype)initWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)clazz
-                     withNetGlobulusSimiSimiFunction:(NetGlobulusSimiSimiFunction *)function {
-  NetGlobulusSimiSimiMethod_initWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiFunction_(self, clazz, function);
+- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
+                               withSMSimiFunction:(SMSimiFunction *)function {
+  SMSimiMethod_initWithSMSimiClassImpl_withSMSimiFunction_(self, clazz, function);
   return self;
 }
 
 - (jint)arity {
-  return [((NetGlobulusSimiSimiFunction *) nil_chk(function_)) arity];
+  return [((SMSimiFunction *) nil_chk(function_)) arity];
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return [((NetGlobulusSimiSimiFunction *) nil_chk(function_)) callWithNetGlobulusSimiBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:rethrow];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return [((SMSimiFunction *) nil_chk(function_)) callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:rethrow];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 1, 2, -1, 3, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiSimiClassImpl:withNetGlobulusSimiSimiFunction:);
+  methods[0].selector = @selector(initWithSMSimiClassImpl:withSMSimiFunction:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "clazz_", "LNetGlobulusSimiSimiClassImpl;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "function_", "LNetGlobulusSimiSimiFunction;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "function_", "LSMSimiFunction;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiSimiClassImpl;LNetGlobulusSimiSimiFunction;", "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiMethod = { "SimiMethod", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 3, 2, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiMethod;
+  static const void *ptrTable[] = { "LSMSimiClassImpl;LSMSimiFunction;", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;" };
+  static const J2ObjcClassInfo _SMSimiMethod = { "SimiMethod", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 3, 2, -1, -1, -1, -1, -1 };
+  return &_SMSimiMethod;
 }
 
 @end
 
-void NetGlobulusSimiSimiMethod_initWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiFunction_(NetGlobulusSimiSimiMethod *self, NetGlobulusSimiSimiClassImpl *clazz, NetGlobulusSimiSimiFunction *function) {
+void SMSimiMethod_initWithSMSimiClassImpl_withSMSimiFunction_(SMSimiMethod *self, SMSimiClassImpl *clazz, SMSimiFunction *function) {
   NSObject_init(self);
   self->clazz_ = clazz;
   self->function_ = function;
 }
 
-NetGlobulusSimiSimiMethod *new_NetGlobulusSimiSimiMethod_initWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiFunction_(NetGlobulusSimiSimiClassImpl *clazz, NetGlobulusSimiSimiFunction *function) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiMethod, initWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiFunction_, clazz, function)
+SMSimiMethod *new_SMSimiMethod_initWithSMSimiClassImpl_withSMSimiFunction_(SMSimiClassImpl *clazz, SMSimiFunction *function) {
+  J2OBJC_NEW_IMPL(SMSimiMethod, initWithSMSimiClassImpl_withSMSimiFunction_, clazz, function)
 }
 
-NetGlobulusSimiSimiMethod *create_NetGlobulusSimiSimiMethod_initWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiFunction_(NetGlobulusSimiSimiClassImpl *clazz, NetGlobulusSimiSimiFunction *function) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiMethod, initWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiFunction_, clazz, function)
+SMSimiMethod *create_SMSimiMethod_initWithSMSimiClassImpl_withSMSimiFunction_(SMSimiClassImpl *clazz, SMSimiFunction *function) {
+  J2OBJC_CREATE_IMPL(SMSimiMethod, initWithSMSimiClassImpl_withSMSimiFunction_, clazz, function)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiMethod)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiMethod)

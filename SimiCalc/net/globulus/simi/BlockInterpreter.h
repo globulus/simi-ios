@@ -13,45 +13,56 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiBlockInterpreter
 
-#if !defined (NetGlobulusSimiBlockInterpreter_) && (INCLUDE_ALL_NetGlobulusSimiBlockInterpreter || defined(INCLUDE_NetGlobulusSimiBlockInterpreter))
-#define NetGlobulusSimiBlockInterpreter_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMBlockInterpreter_) && (INCLUDE_ALL_NetGlobulusSimiBlockInterpreter || defined(INCLUDE_SMBlockInterpreter))
+#define SMBlockInterpreter_
 
 @class JavaUtilArrayList;
 @class JavaUtilLinkedHashMap;
-@class NetGlobulusSimiSimiException;
-@protocol NetGlobulusSimiSimiBlock;
-@protocol NetGlobulusSimiSimiClass;
-@protocol NetGlobulusSimiSimiEnvironment;
-@protocol NetGlobulusSimiSimiObject;
-@protocol NetGlobulusSimiSimiProperty;
+@class SMSimiException;
+@protocol SMSimiBlock;
+@protocol SMSimiClass;
+@protocol SMSimiEnvironment;
+@protocol SMSimiObject;
+@protocol SMSimiProperty;
 
-@protocol NetGlobulusSimiBlockInterpreter < JavaObject >
+@protocol SMBlockInterpreter < JavaObject >
 
-- (void)executeBlockWithNetGlobulusSimiSimiBlock:(id<NetGlobulusSimiSimiBlock>)block
-              withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment
-                                         withInt:(jint)startAt;
+- (void)executeBlockWithSMSimiBlock:(id<SMSimiBlock>)block
+              withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
+                            withInt:(jint)startAt;
 
-- (id<NetGlobulusSimiSimiProperty>)getGlobalWithNSString:(NSString *)name;
+- (id<SMSimiProperty>)getGlobalWithNSString:(NSString *)name;
 
-- (id<NetGlobulusSimiSimiEnvironment>)getEnvironment;
+- (id<SMSimiEnvironment>)getEnvironment;
 
-- (void)raiseExceptionWithNetGlobulusSimiSimiException:(NetGlobulusSimiSimiException *)e;
+- (void)raiseExceptionWithSMSimiException:(SMSimiException *)e;
 
-- (id<NetGlobulusSimiSimiObject>)newObjectWithBoolean:(jboolean)immutable
-                            withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props OBJC_METHOD_FAMILY_NONE;
+- (id<SMSimiObject>)newObjectWithBoolean:(jboolean)immutable
+               withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props OBJC_METHOD_FAMILY_NONE;
 
-- (id<NetGlobulusSimiSimiObject>)newArrayWithBoolean:(jboolean)immutable
-                               withJavaUtilArrayList:(JavaUtilArrayList *)props OBJC_METHOD_FAMILY_NONE;
+- (id<SMSimiObject>)newArrayWithBoolean:(jboolean)immutable
+                  withJavaUtilArrayList:(JavaUtilArrayList *)props OBJC_METHOD_FAMILY_NONE;
 
-- (id<NetGlobulusSimiSimiObject>)newInstanceWithNetGlobulusSimiSimiClass:(id<NetGlobulusSimiSimiClass>)clazz
-                                               withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props OBJC_METHOD_FAMILY_NONE;
+- (id<SMSimiObject>)newInstanceWithSMSimiClass:(id<SMSimiClass>)clazz
+                     withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props OBJC_METHOD_FAMILY_NONE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBlockInterpreter)
+J2OBJC_EMPTY_STATIC_INIT(SMBlockInterpreter)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiBlockInterpreter)
+J2OBJC_TYPE_LITERAL_HEADER(SMBlockInterpreter)
+
+#define NetGlobulusSimiBlockInterpreter SMBlockInterpreter
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiBlockInterpreter")

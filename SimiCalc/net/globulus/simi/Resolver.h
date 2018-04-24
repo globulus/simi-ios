@@ -18,145 +18,147 @@
 #pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
 
-#if !defined (NetGlobulusSimiResolver_) && (INCLUDE_ALL_NetGlobulusSimiResolver || defined(INCLUDE_NetGlobulusSimiResolver))
-#define NetGlobulusSimiResolver_
+#if !defined (SMResolver_) && (INCLUDE_ALL_NetGlobulusSimiResolver || defined(INCLUDE_SMResolver))
+#define SMResolver_
 
 #define RESTRICT_NetGlobulusSimiExpr 1
-#define INCLUDE_NetGlobulusSimiExpr_Visitor 1
+#define INCLUDE_SMExpr_Visitor 1
 #include "Expr.h"
 
 #define RESTRICT_NetGlobulusSimiStmt 1
-#define INCLUDE_NetGlobulusSimiStmt_Visitor 1
+#define INCLUDE_SMStmt_Visitor 1
 #include "Stmt.h"
 
 @class JavaLangVoid;
-@class NetGlobulusSimiExpr_Annotations;
-@class NetGlobulusSimiExpr_Assign;
-@class NetGlobulusSimiExpr_Binary;
-@class NetGlobulusSimiExpr_Block;
-@class NetGlobulusSimiExpr_Call;
-@class NetGlobulusSimiExpr_Get;
-@class NetGlobulusSimiExpr_Grouping;
-@class NetGlobulusSimiExpr_Gu;
-@class NetGlobulusSimiExpr_Literal;
-@class NetGlobulusSimiExpr_Logical;
-@class NetGlobulusSimiExpr_ObjectLiteral;
-@class NetGlobulusSimiExpr_Self;
-@class NetGlobulusSimiExpr_Set;
-@class NetGlobulusSimiExpr_Super;
-@class NetGlobulusSimiExpr_Unary;
-@class NetGlobulusSimiExpr_Variable;
-@class NetGlobulusSimiInterpreter;
-@class NetGlobulusSimiStmt_Annotation;
-@class NetGlobulusSimiStmt_Break;
-@class NetGlobulusSimiStmt_Class;
-@class NetGlobulusSimiStmt_Continue;
-@class NetGlobulusSimiStmt_Elsif;
-@class NetGlobulusSimiStmt_Expression;
-@class NetGlobulusSimiStmt_For;
-@class NetGlobulusSimiStmt_Function;
-@class NetGlobulusSimiStmt_If;
-@class NetGlobulusSimiStmt_Print;
-@class NetGlobulusSimiStmt_Rescue;
-@class NetGlobulusSimiStmt_Return;
-@class NetGlobulusSimiStmt_While;
-@class NetGlobulusSimiStmt_Yield;
+@class SMExpr_Annotations;
+@class SMExpr_Assign;
+@class SMExpr_Binary;
+@class SMExpr_Block;
+@class SMExpr_Call;
+@class SMExpr_Get;
+@class SMExpr_Grouping;
+@class SMExpr_Gu;
+@class SMExpr_Literal;
+@class SMExpr_Logical;
+@class SMExpr_ObjectLiteral;
+@class SMExpr_Self;
+@class SMExpr_Set;
+@class SMExpr_Super;
+@class SMExpr_Unary;
+@class SMExpr_Variable;
+@class SMInterpreter;
+@class SMStmt_Annotation;
+@class SMStmt_Break;
+@class SMStmt_Class;
+@class SMStmt_Continue;
+@class SMStmt_Elsif;
+@class SMStmt_Expression;
+@class SMStmt_For;
+@class SMStmt_Function;
+@class SMStmt_If;
+@class SMStmt_Print;
+@class SMStmt_Rescue;
+@class SMStmt_Return;
+@class SMStmt_While;
+@class SMStmt_Yield;
 @protocol JavaUtilList;
 @protocol JavaUtilSet;
 
-@interface NetGlobulusSimiResolver : NSObject < NetGlobulusSimiExpr_Visitor, NetGlobulusSimiStmt_Visitor > {
+@interface SMResolver : NSObject < SMExpr_Visitor, SMStmt_Visitor > {
  @public
   id<JavaUtilSet> globalScope_;
 }
 
 #pragma mark Public
 
-- (JavaLangVoid *)visitAnnotationsExprWithNetGlobulusSimiExpr_Annotations:(NetGlobulusSimiExpr_Annotations *)expr;
+- (JavaLangVoid *)visitAnnotationsExprWithSMExpr_Annotations:(SMExpr_Annotations *)expr;
 
-- (JavaLangVoid *)visitAnnotationStmtWithNetGlobulusSimiStmt_Annotation:(NetGlobulusSimiStmt_Annotation *)stmt;
+- (JavaLangVoid *)visitAnnotationStmtWithSMStmt_Annotation:(SMStmt_Annotation *)stmt;
 
-- (JavaLangVoid *)visitAssignExprWithNetGlobulusSimiExpr_Assign:(NetGlobulusSimiExpr_Assign *)expr;
+- (JavaLangVoid *)visitAssignExprWithSMExpr_Assign:(SMExpr_Assign *)expr;
 
-- (JavaLangVoid *)visitBinaryExprWithNetGlobulusSimiExpr_Binary:(NetGlobulusSimiExpr_Binary *)expr;
+- (JavaLangVoid *)visitBinaryExprWithSMExpr_Binary:(SMExpr_Binary *)expr;
 
-- (JavaLangVoid *)visitBlockExprWithNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)stmt
-                                                  withBoolean:(jboolean)newScope
-                                                  withBoolean:(jboolean)execute;
+- (JavaLangVoid *)visitBlockExprWithSMExpr_Block:(SMExpr_Block *)stmt
+                                     withBoolean:(jboolean)newScope
+                                     withBoolean:(jboolean)execute;
 
-- (JavaLangVoid *)visitBreakStmtWithNetGlobulusSimiStmt_Break:(NetGlobulusSimiStmt_Break *)stmt;
+- (JavaLangVoid *)visitBreakStmtWithSMStmt_Break:(SMStmt_Break *)stmt;
 
-- (JavaLangVoid *)visitCallExprWithNetGlobulusSimiExpr_Call:(NetGlobulusSimiExpr_Call *)expr;
+- (JavaLangVoid *)visitCallExprWithSMExpr_Call:(SMExpr_Call *)expr;
 
-- (JavaLangVoid *)visitClassStmtWithNetGlobulusSimiStmt_Class:(NetGlobulusSimiStmt_Class *)stmt
-                                                  withBoolean:(jboolean)addToEnv;
+- (JavaLangVoid *)visitClassStmtWithSMStmt_Class:(SMStmt_Class *)stmt
+                                     withBoolean:(jboolean)addToEnv;
 
-- (JavaLangVoid *)visitContinueStmtWithNetGlobulusSimiStmt_Continue:(NetGlobulusSimiStmt_Continue *)stmt;
+- (JavaLangVoid *)visitContinueStmtWithSMStmt_Continue:(SMStmt_Continue *)stmt;
 
-- (JavaLangVoid *)visitElsifStmtWithNetGlobulusSimiStmt_Elsif:(NetGlobulusSimiStmt_Elsif *)stmt;
+- (JavaLangVoid *)visitElsifStmtWithSMStmt_Elsif:(SMStmt_Elsif *)stmt;
 
-- (JavaLangVoid *)visitExpressionStmtWithNetGlobulusSimiStmt_Expression:(NetGlobulusSimiStmt_Expression *)stmt;
+- (JavaLangVoid *)visitExpressionStmtWithSMStmt_Expression:(SMStmt_Expression *)stmt;
 
-- (JavaLangVoid *)visitForStmtWithNetGlobulusSimiStmt_For:(NetGlobulusSimiStmt_For *)stmt;
+- (JavaLangVoid *)visitForStmtWithSMStmt_For:(SMStmt_For *)stmt;
 
-- (JavaLangVoid *)visitFunctionStmtWithNetGlobulusSimiStmt_Function:(NetGlobulusSimiStmt_Function *)stmt;
+- (JavaLangVoid *)visitFunctionStmtWithSMStmt_Function:(SMStmt_Function *)stmt;
 
-- (JavaLangVoid *)visitGetExprWithNetGlobulusSimiExpr_Get:(NetGlobulusSimiExpr_Get *)expr;
+- (JavaLangVoid *)visitGetExprWithSMExpr_Get:(SMExpr_Get *)expr;
 
-- (JavaLangVoid *)visitGroupingExprWithNetGlobulusSimiExpr_Grouping:(NetGlobulusSimiExpr_Grouping *)expr;
+- (JavaLangVoid *)visitGroupingExprWithSMExpr_Grouping:(SMExpr_Grouping *)expr;
 
-- (JavaLangVoid *)visitGuExprWithNetGlobulusSimiExpr_Gu:(NetGlobulusSimiExpr_Gu *)expr;
+- (JavaLangVoid *)visitGuExprWithSMExpr_Gu:(SMExpr_Gu *)expr;
 
-- (JavaLangVoid *)visitIfStmtWithNetGlobulusSimiStmt_If:(NetGlobulusSimiStmt_If *)stmt;
+- (JavaLangVoid *)visitIfStmtWithSMStmt_If:(SMStmt_If *)stmt;
 
-- (JavaLangVoid *)visitLiteralExprWithNetGlobulusSimiExpr_Literal:(NetGlobulusSimiExpr_Literal *)expr;
+- (JavaLangVoid *)visitLiteralExprWithSMExpr_Literal:(SMExpr_Literal *)expr;
 
-- (JavaLangVoid *)visitLogicalExprWithNetGlobulusSimiExpr_Logical:(NetGlobulusSimiExpr_Logical *)expr;
+- (JavaLangVoid *)visitLogicalExprWithSMExpr_Logical:(SMExpr_Logical *)expr;
 
-- (JavaLangVoid *)visitObjectLiteralExprWithNetGlobulusSimiExpr_ObjectLiteral:(NetGlobulusSimiExpr_ObjectLiteral *)expr;
+- (JavaLangVoid *)visitObjectLiteralExprWithSMExpr_ObjectLiteral:(SMExpr_ObjectLiteral *)expr;
 
-- (JavaLangVoid *)visitPrintStmtWithNetGlobulusSimiStmt_Print:(NetGlobulusSimiStmt_Print *)stmt;
+- (JavaLangVoid *)visitPrintStmtWithSMStmt_Print:(SMStmt_Print *)stmt;
 
-- (JavaLangVoid *)visitRescueStmtWithNetGlobulusSimiStmt_Rescue:(NetGlobulusSimiStmt_Rescue *)stmt;
+- (JavaLangVoid *)visitRescueStmtWithSMStmt_Rescue:(SMStmt_Rescue *)stmt;
 
-- (JavaLangVoid *)visitReturnStmtWithNetGlobulusSimiStmt_Return:(NetGlobulusSimiStmt_Return *)stmt;
+- (JavaLangVoid *)visitReturnStmtWithSMStmt_Return:(SMStmt_Return *)stmt;
 
-- (JavaLangVoid *)visitSelfExprWithNetGlobulusSimiExpr_Self:(NetGlobulusSimiExpr_Self *)expr;
+- (JavaLangVoid *)visitSelfExprWithSMExpr_Self:(SMExpr_Self *)expr;
 
-- (JavaLangVoid *)visitSetExprWithNetGlobulusSimiExpr_Set:(NetGlobulusSimiExpr_Set *)expr;
+- (JavaLangVoid *)visitSetExprWithSMExpr_Set:(SMExpr_Set *)expr;
 
-- (JavaLangVoid *)visitSuperExprWithNetGlobulusSimiExpr_Super:(NetGlobulusSimiExpr_Super *)expr;
+- (JavaLangVoid *)visitSuperExprWithSMExpr_Super:(SMExpr_Super *)expr;
 
-- (JavaLangVoid *)visitUnaryExprWithNetGlobulusSimiExpr_Unary:(NetGlobulusSimiExpr_Unary *)expr;
+- (JavaLangVoid *)visitUnaryExprWithSMExpr_Unary:(SMExpr_Unary *)expr;
 
-- (JavaLangVoid *)visitVariableExprWithNetGlobulusSimiExpr_Variable:(NetGlobulusSimiExpr_Variable *)expr;
+- (JavaLangVoid *)visitVariableExprWithSMExpr_Variable:(SMExpr_Variable *)expr;
 
-- (JavaLangVoid *)visitWhileStmtWithNetGlobulusSimiStmt_While:(NetGlobulusSimiStmt_While *)stmt;
+- (JavaLangVoid *)visitWhileStmtWithSMStmt_While:(SMStmt_While *)stmt;
 
-- (JavaLangVoid *)visitYieldStmtWithNetGlobulusSimiStmt_Yield:(NetGlobulusSimiStmt_Yield *)stmt;
+- (JavaLangVoid *)visitYieldStmtWithSMStmt_Yield:(SMStmt_Yield *)stmt;
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiInterpreter:(NetGlobulusSimiInterpreter *)interpreter;
+- (instancetype __nonnull)initWithSMInterpreter:(SMInterpreter *)interpreter;
 
 - (void)resolveWithJavaUtilList:(id<JavaUtilList>)statements;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiResolver)
+J2OBJC_EMPTY_STATIC_INIT(SMResolver)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiResolver, globalScope_, id<JavaUtilSet>)
+J2OBJC_FIELD_SETTER(SMResolver, globalScope_, id<JavaUtilSet>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiResolver_initWithNetGlobulusSimiInterpreter_(NetGlobulusSimiResolver *self, NetGlobulusSimiInterpreter *interpreter);
+FOUNDATION_EXPORT void SMResolver_initWithSMInterpreter_(SMResolver *self, SMInterpreter *interpreter);
 
-FOUNDATION_EXPORT NetGlobulusSimiResolver *new_NetGlobulusSimiResolver_initWithNetGlobulusSimiInterpreter_(NetGlobulusSimiInterpreter *interpreter) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMResolver *new_SMResolver_initWithSMInterpreter_(SMInterpreter *interpreter) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiResolver *create_NetGlobulusSimiResolver_initWithNetGlobulusSimiInterpreter_(NetGlobulusSimiInterpreter *interpreter);
+FOUNDATION_EXPORT SMResolver *create_SMResolver_initWithSMInterpreter_(SMInterpreter *interpreter);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiResolver)
+J2OBJC_TYPE_LITERAL_HEADER(SMResolver)
+
+@compatibility_alias NetGlobulusSimiResolver SMResolver;
 
 #endif
 

@@ -13,24 +13,24 @@
 #include "java/lang/annotation/Target.h"
 #include "SimiJavaGlobal.h"
 
-@interface NetGlobulusSimiSimiJavaGlobal : NSObject
+@interface SMSimiJavaGlobal : NSObject
 
 @end
 
-__attribute__((unused)) static IOSObjectArray *NetGlobulusSimiSimiJavaGlobal__Annotations$0(void);
+__attribute__((unused)) static IOSObjectArray *SMSimiJavaGlobal__Annotations$0(void);
 
-@implementation NetGlobulusSimiSimiJavaGlobal
+@implementation SMSimiJavaGlobal
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const void *ptrTable[] = { (void *)&NetGlobulusSimiSimiJavaGlobal__Annotations$0 };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiJavaGlobal = { "SimiJavaGlobal", "net.globulus.simi", ptrTable, NULL, NULL, 7, 0x2609, 0, 0, -1, -1, -1, -1, 0 };
-  return &_NetGlobulusSimiSimiJavaGlobal;
+  static const void *ptrTable[] = { (void *)&SMSimiJavaGlobal__Annotations$0 };
+  static const J2ObjcClassInfo _SMSimiJavaGlobal = { "SimiJavaGlobal", "net.globulus.simi", ptrTable, NULL, NULL, 7, 0x2609, 0, 0, -1, -1, -1, -1, 0 };
+  return &_SMSimiJavaGlobal;
 }
 
 @end
 
-IOSObjectArray *NetGlobulusSimiSimiJavaGlobal__Annotations$0() {
+IOSObjectArray *SMSimiJavaGlobal__Annotations$0() {
   return [IOSObjectArray newArrayWithObjects:(id[]){ create_JavaLangAnnotationTarget([IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(JavaLangAnnotationElementType, METHOD) } count:1 type:JavaLangAnnotationElementType_class_()]), create_JavaLangAnnotationRetention(JreLoadEnum(JavaLangAnnotationRetentionPolicy, SOURCE)) } count:2 type:JavaLangAnnotationAnnotation_class_()];
 }
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiJavaGlobal)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMSimiJavaGlobal)

@@ -20,169 +20,169 @@
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
-@interface NetGlobulusSimiStmt_Visitor : NSObject
+@interface SMStmt_Visitor : NSObject
 
 @end
 
-@interface NetGlobulusSimiStmt_BlockStmt : NSObject
+@interface SMStmt_BlockStmt : NSObject
 
 @end
 
-@interface NetGlobulusSimiStmt_Elsif_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
+@interface SMStmt_Elsif_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
 
-- (jboolean)testWithId:(NetGlobulusSimiStmt *)s;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiStmt_Elsif_$Lambda$1)
-
-inline NetGlobulusSimiStmt_Elsif_$Lambda$1 *NetGlobulusSimiStmt_Elsif_$Lambda$1_get_instance(void);
-static NetGlobulusSimiStmt_Elsif_$Lambda$1 *NetGlobulusSimiStmt_Elsif_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiStmt_Elsif_$Lambda$1, instance, NetGlobulusSimiStmt_Elsif_$Lambda$1 *)
-
-__attribute__((unused)) static void NetGlobulusSimiStmt_Elsif_$Lambda$1_init(NetGlobulusSimiStmt_Elsif_$Lambda$1 *self);
-
-__attribute__((unused)) static NetGlobulusSimiStmt_Elsif_$Lambda$1 *new_NetGlobulusSimiStmt_Elsif_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiStmt_Elsif_$Lambda$1 *create_NetGlobulusSimiStmt_Elsif_$Lambda$1_init(void);
-
-@interface NetGlobulusSimiStmt_Elsif_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(NetGlobulusSimiStmt *)s;
+- (jboolean)testWithId:(SMStmt *)s;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiStmt_Elsif_$Lambda$2)
+J2OBJC_STATIC_INIT(SMStmt_Elsif_$Lambda$1)
 
-inline NetGlobulusSimiStmt_Elsif_$Lambda$2 *NetGlobulusSimiStmt_Elsif_$Lambda$2_get_instance(void);
-static NetGlobulusSimiStmt_Elsif_$Lambda$2 *NetGlobulusSimiStmt_Elsif_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiStmt_Elsif_$Lambda$2, instance, NetGlobulusSimiStmt_Elsif_$Lambda$2 *)
+inline SMStmt_Elsif_$Lambda$1 *SMStmt_Elsif_$Lambda$1_get_instance(void);
+static SMStmt_Elsif_$Lambda$1 *SMStmt_Elsif_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_Elsif_$Lambda$1, instance, SMStmt_Elsif_$Lambda$1 *)
 
-__attribute__((unused)) static void NetGlobulusSimiStmt_Elsif_$Lambda$2_init(NetGlobulusSimiStmt_Elsif_$Lambda$2 *self);
+__attribute__((unused)) static void SMStmt_Elsif_$Lambda$1_init(SMStmt_Elsif_$Lambda$1 *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt_Elsif_$Lambda$2 *new_NetGlobulusSimiStmt_Elsif_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMStmt_Elsif_$Lambda$1 *new_SMStmt_Elsif_$Lambda$1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiStmt_Elsif_$Lambda$2 *create_NetGlobulusSimiStmt_Elsif_$Lambda$2_init(void);
+__attribute__((unused)) static SMStmt_Elsif_$Lambda$1 *create_SMStmt_Elsif_$Lambda$1_init(void);
 
-@interface NetGlobulusSimiStmt_If_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
+@interface SMStmt_Elsif_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
-- (jboolean)testWithId:(NetGlobulusSimiStmt *)s;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiStmt_If_$Lambda$1)
-
-inline NetGlobulusSimiStmt_If_$Lambda$1 *NetGlobulusSimiStmt_If_$Lambda$1_get_instance(void);
-static NetGlobulusSimiStmt_If_$Lambda$1 *NetGlobulusSimiStmt_If_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiStmt_If_$Lambda$1, instance, NetGlobulusSimiStmt_If_$Lambda$1 *)
-
-__attribute__((unused)) static void NetGlobulusSimiStmt_If_$Lambda$1_init(NetGlobulusSimiStmt_If_$Lambda$1 *self);
-
-__attribute__((unused)) static NetGlobulusSimiStmt_If_$Lambda$1 *new_NetGlobulusSimiStmt_If_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiStmt_If_$Lambda$1 *create_NetGlobulusSimiStmt_If_$Lambda$1_init(void);
-
-@interface NetGlobulusSimiStmt_If_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(NetGlobulusSimiStmt *)s;
+- (id)applyWithId:(SMStmt *)s;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiStmt_If_$Lambda$2)
+J2OBJC_STATIC_INIT(SMStmt_Elsif_$Lambda$2)
 
-inline NetGlobulusSimiStmt_If_$Lambda$2 *NetGlobulusSimiStmt_If_$Lambda$2_get_instance(void);
-static NetGlobulusSimiStmt_If_$Lambda$2 *NetGlobulusSimiStmt_If_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiStmt_If_$Lambda$2, instance, NetGlobulusSimiStmt_If_$Lambda$2 *)
+inline SMStmt_Elsif_$Lambda$2 *SMStmt_Elsif_$Lambda$2_get_instance(void);
+static SMStmt_Elsif_$Lambda$2 *SMStmt_Elsif_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_Elsif_$Lambda$2, instance, SMStmt_Elsif_$Lambda$2 *)
 
-__attribute__((unused)) static void NetGlobulusSimiStmt_If_$Lambda$2_init(NetGlobulusSimiStmt_If_$Lambda$2 *self);
+__attribute__((unused)) static void SMStmt_Elsif_$Lambda$2_init(SMStmt_Elsif_$Lambda$2 *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt_If_$Lambda$2 *new_NetGlobulusSimiStmt_If_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMStmt_Elsif_$Lambda$2 *new_SMStmt_Elsif_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiStmt_If_$Lambda$2 *create_NetGlobulusSimiStmt_If_$Lambda$2_init(void);
+__attribute__((unused)) static SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init(void);
 
-@interface NetGlobulusSimiStmt_While_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
+@interface SMStmt_If_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
 
-- (jboolean)testWithId:(NetGlobulusSimiStmt *)s;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiStmt_While_$Lambda$1)
-
-inline NetGlobulusSimiStmt_While_$Lambda$1 *NetGlobulusSimiStmt_While_$Lambda$1_get_instance(void);
-static NetGlobulusSimiStmt_While_$Lambda$1 *NetGlobulusSimiStmt_While_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiStmt_While_$Lambda$1, instance, NetGlobulusSimiStmt_While_$Lambda$1 *)
-
-__attribute__((unused)) static void NetGlobulusSimiStmt_While_$Lambda$1_init(NetGlobulusSimiStmt_While_$Lambda$1 *self);
-
-__attribute__((unused)) static NetGlobulusSimiStmt_While_$Lambda$1 *new_NetGlobulusSimiStmt_While_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiStmt_While_$Lambda$1 *create_NetGlobulusSimiStmt_While_$Lambda$1_init(void);
-
-@interface NetGlobulusSimiStmt_While_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(NetGlobulusSimiStmt *)s;
+- (jboolean)testWithId:(SMStmt *)s;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiStmt_While_$Lambda$2)
+J2OBJC_STATIC_INIT(SMStmt_If_$Lambda$1)
 
-inline NetGlobulusSimiStmt_While_$Lambda$2 *NetGlobulusSimiStmt_While_$Lambda$2_get_instance(void);
-static NetGlobulusSimiStmt_While_$Lambda$2 *NetGlobulusSimiStmt_While_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiStmt_While_$Lambda$2, instance, NetGlobulusSimiStmt_While_$Lambda$2 *)
+inline SMStmt_If_$Lambda$1 *SMStmt_If_$Lambda$1_get_instance(void);
+static SMStmt_If_$Lambda$1 *SMStmt_If_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_If_$Lambda$1, instance, SMStmt_If_$Lambda$1 *)
 
-__attribute__((unused)) static void NetGlobulusSimiStmt_While_$Lambda$2_init(NetGlobulusSimiStmt_While_$Lambda$2 *self);
+__attribute__((unused)) static void SMStmt_If_$Lambda$1_init(SMStmt_If_$Lambda$1 *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt_While_$Lambda$2 *new_NetGlobulusSimiStmt_While_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMStmt_If_$Lambda$1 *new_SMStmt_If_$Lambda$1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiStmt_While_$Lambda$2 *create_NetGlobulusSimiStmt_While_$Lambda$2_init(void);
+__attribute__((unused)) static SMStmt_If_$Lambda$1 *create_SMStmt_If_$Lambda$1_init(void);
 
-@interface NetGlobulusSimiStmt_For_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
+@interface SMStmt_If_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
-- (jboolean)testWithId:(NetGlobulusSimiStmt *)s;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiStmt_For_$Lambda$1)
-
-inline NetGlobulusSimiStmt_For_$Lambda$1 *NetGlobulusSimiStmt_For_$Lambda$1_get_instance(void);
-static NetGlobulusSimiStmt_For_$Lambda$1 *NetGlobulusSimiStmt_For_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiStmt_For_$Lambda$1, instance, NetGlobulusSimiStmt_For_$Lambda$1 *)
-
-__attribute__((unused)) static void NetGlobulusSimiStmt_For_$Lambda$1_init(NetGlobulusSimiStmt_For_$Lambda$1 *self);
-
-__attribute__((unused)) static NetGlobulusSimiStmt_For_$Lambda$1 *new_NetGlobulusSimiStmt_For_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiStmt_For_$Lambda$1 *create_NetGlobulusSimiStmt_For_$Lambda$1_init(void);
-
-@interface NetGlobulusSimiStmt_For_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(NetGlobulusSimiStmt *)s;
+- (id)applyWithId:(SMStmt *)s;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiStmt_For_$Lambda$2)
+J2OBJC_STATIC_INIT(SMStmt_If_$Lambda$2)
 
-inline NetGlobulusSimiStmt_For_$Lambda$2 *NetGlobulusSimiStmt_For_$Lambda$2_get_instance(void);
-static NetGlobulusSimiStmt_For_$Lambda$2 *NetGlobulusSimiStmt_For_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiStmt_For_$Lambda$2, instance, NetGlobulusSimiStmt_For_$Lambda$2 *)
+inline SMStmt_If_$Lambda$2 *SMStmt_If_$Lambda$2_get_instance(void);
+static SMStmt_If_$Lambda$2 *SMStmt_If_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_If_$Lambda$2, instance, SMStmt_If_$Lambda$2 *)
 
-__attribute__((unused)) static void NetGlobulusSimiStmt_For_$Lambda$2_init(NetGlobulusSimiStmt_For_$Lambda$2 *self);
+__attribute__((unused)) static void SMStmt_If_$Lambda$2_init(SMStmt_If_$Lambda$2 *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt_For_$Lambda$2 *new_NetGlobulusSimiStmt_For_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMStmt_If_$Lambda$2 *new_SMStmt_If_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiStmt_For_$Lambda$2 *create_NetGlobulusSimiStmt_For_$Lambda$2_init(void);
+__attribute__((unused)) static SMStmt_If_$Lambda$2 *create_SMStmt_If_$Lambda$2_init(void);
 
-@implementation NetGlobulusSimiStmt
+@interface SMStmt_While_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
+
+- (jboolean)testWithId:(SMStmt *)s;
+
+@end
+
+J2OBJC_STATIC_INIT(SMStmt_While_$Lambda$1)
+
+inline SMStmt_While_$Lambda$1 *SMStmt_While_$Lambda$1_get_instance(void);
+static SMStmt_While_$Lambda$1 *SMStmt_While_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_While_$Lambda$1, instance, SMStmt_While_$Lambda$1 *)
+
+__attribute__((unused)) static void SMStmt_While_$Lambda$1_init(SMStmt_While_$Lambda$1 *self);
+
+__attribute__((unused)) static SMStmt_While_$Lambda$1 *new_SMStmt_While_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_While_$Lambda$1 *create_SMStmt_While_$Lambda$1_init(void);
+
+@interface SMStmt_While_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(SMStmt *)s;
+
+@end
+
+J2OBJC_STATIC_INIT(SMStmt_While_$Lambda$2)
+
+inline SMStmt_While_$Lambda$2 *SMStmt_While_$Lambda$2_get_instance(void);
+static SMStmt_While_$Lambda$2 *SMStmt_While_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_While_$Lambda$2, instance, SMStmt_While_$Lambda$2 *)
+
+__attribute__((unused)) static void SMStmt_While_$Lambda$2_init(SMStmt_While_$Lambda$2 *self);
+
+__attribute__((unused)) static SMStmt_While_$Lambda$2 *new_SMStmt_While_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init(void);
+
+@interface SMStmt_For_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
+
+- (jboolean)testWithId:(SMStmt *)s;
+
+@end
+
+J2OBJC_STATIC_INIT(SMStmt_For_$Lambda$1)
+
+inline SMStmt_For_$Lambda$1 *SMStmt_For_$Lambda$1_get_instance(void);
+static SMStmt_For_$Lambda$1 *SMStmt_For_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_For_$Lambda$1, instance, SMStmt_For_$Lambda$1 *)
+
+__attribute__((unused)) static void SMStmt_For_$Lambda$1_init(SMStmt_For_$Lambda$1 *self);
+
+__attribute__((unused)) static SMStmt_For_$Lambda$1 *new_SMStmt_For_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_For_$Lambda$1 *create_SMStmt_For_$Lambda$1_init(void);
+
+@interface SMStmt_For_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(SMStmt *)s;
+
+@end
+
+J2OBJC_STATIC_INIT(SMStmt_For_$Lambda$2)
+
+inline SMStmt_For_$Lambda$2 *SMStmt_For_$Lambda$2_get_instance(void);
+static SMStmt_For_$Lambda$2 *SMStmt_For_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_For_$Lambda$2, instance, SMStmt_For_$Lambda$2 *)
+
+__attribute__((unused)) static void SMStmt_For_$Lambda$2_init(SMStmt_For_$Lambda$2 *self);
+
+__attribute__((unused)) static SMStmt_For_$Lambda$2 *new_SMStmt_For_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_For_$Lambda$2 *create_SMStmt_For_$Lambda$2_init(void);
+
+@implementation SMStmt
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiStmt_init(self);
+- (instancetype __nonnull)init {
+  SMStmt_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
@@ -197,22 +197,22 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt_Visitor;LNetGlobulusSimiStmt_BlockStmt;LNetGlobulusSimiStmt_Annotation;LNetGlobulusSimiStmt_Break;LNetGlobulusSimiStmt_Class;LNetGlobulusSimiStmt_Continue;LNetGlobulusSimiStmt_Expression;LNetGlobulusSimiStmt_Function;LNetGlobulusSimiStmt_Elsif;LNetGlobulusSimiStmt_If;LNetGlobulusSimiStmt_Print;LNetGlobulusSimiStmt_Rescue;LNetGlobulusSimiStmt_Return;LNetGlobulusSimiStmt_While;LNetGlobulusSimiStmt_For;LNetGlobulusSimiStmt_Yield;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt = { "Stmt", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x400, 2, 0, -1, 3, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt;
+  static const void *ptrTable[] = { "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt_Visitor;LSMStmt_BlockStmt;LSMStmt_Annotation;LSMStmt_Break;LSMStmt_Class;LSMStmt_Continue;LSMStmt_Expression;LSMStmt_Function;LSMStmt_Elsif;LSMStmt_If;LSMStmt_Print;LSMStmt_Rescue;LSMStmt_Return;LSMStmt_While;LSMStmt_For;LSMStmt_Yield;" };
+  static const J2ObjcClassInfo _SMStmt = { "Stmt", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x400, 2, 0, -1, 3, -1, -1, -1 };
+  return &_SMStmt;
 }
 
 @end
 
-void NetGlobulusSimiStmt_init(NetGlobulusSimiStmt *self) {
+void SMStmt_init(SMStmt *self) {
   NSObject_init(self);
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt)
 
-@implementation NetGlobulusSimiStmt_Visitor
+@implementation SMStmt_Visitor
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
@@ -234,31 +234,31 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(visitAnnotationStmtWithNetGlobulusSimiStmt_Annotation:);
-  methods[1].selector = @selector(visitBreakStmtWithNetGlobulusSimiStmt_Break:);
-  methods[2].selector = @selector(visitClassStmtWithNetGlobulusSimiStmt_Class:withBoolean:);
-  methods[3].selector = @selector(visitContinueStmtWithNetGlobulusSimiStmt_Continue:);
-  methods[4].selector = @selector(visitElsifStmtWithNetGlobulusSimiStmt_Elsif:);
-  methods[5].selector = @selector(visitExpressionStmtWithNetGlobulusSimiStmt_Expression:);
-  methods[6].selector = @selector(visitFunctionStmtWithNetGlobulusSimiStmt_Function:);
-  methods[7].selector = @selector(visitForStmtWithNetGlobulusSimiStmt_For:);
-  methods[8].selector = @selector(visitIfStmtWithNetGlobulusSimiStmt_If:);
-  methods[9].selector = @selector(visitPrintStmtWithNetGlobulusSimiStmt_Print:);
-  methods[10].selector = @selector(visitRescueStmtWithNetGlobulusSimiStmt_Rescue:);
-  methods[11].selector = @selector(visitReturnStmtWithNetGlobulusSimiStmt_Return:);
-  methods[12].selector = @selector(visitWhileStmtWithNetGlobulusSimiStmt_While:);
-  methods[13].selector = @selector(visitYieldStmtWithNetGlobulusSimiStmt_Yield:);
+  methods[0].selector = @selector(visitAnnotationStmtWithSMStmt_Annotation:);
+  methods[1].selector = @selector(visitBreakStmtWithSMStmt_Break:);
+  methods[2].selector = @selector(visitClassStmtWithSMStmt_Class:withBoolean:);
+  methods[3].selector = @selector(visitContinueStmtWithSMStmt_Continue:);
+  methods[4].selector = @selector(visitElsifStmtWithSMStmt_Elsif:);
+  methods[5].selector = @selector(visitExpressionStmtWithSMStmt_Expression:);
+  methods[6].selector = @selector(visitFunctionStmtWithSMStmt_Function:);
+  methods[7].selector = @selector(visitForStmtWithSMStmt_For:);
+  methods[8].selector = @selector(visitIfStmtWithSMStmt_If:);
+  methods[9].selector = @selector(visitPrintStmtWithSMStmt_Print:);
+  methods[10].selector = @selector(visitRescueStmtWithSMStmt_Rescue:);
+  methods[11].selector = @selector(visitReturnStmtWithSMStmt_Return:);
+  methods[12].selector = @selector(visitWhileStmtWithSMStmt_While:);
+  methods[13].selector = @selector(visitYieldStmtWithSMStmt_Yield:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "visitAnnotationStmt", "LNetGlobulusSimiStmt_Annotation;", "(LStmt$Annotation;)TR;", "visitBreakStmt", "LNetGlobulusSimiStmt_Break;", "(LStmt$Break;)TR;", "visitClassStmt", "LNetGlobulusSimiStmt_Class;Z", "(LStmt$Class;Z)TR;", "visitContinueStmt", "LNetGlobulusSimiStmt_Continue;", "(LStmt$Continue;)TR;", "visitElsifStmt", "LNetGlobulusSimiStmt_Elsif;", "(LStmt$Elsif;)TR;", "visitExpressionStmt", "LNetGlobulusSimiStmt_Expression;", "(LStmt$Expression;)TR;", "visitFunctionStmt", "LNetGlobulusSimiStmt_Function;", "(LStmt$Function;)TR;", "visitForStmt", "LNetGlobulusSimiStmt_For;", "(LStmt$For;)TR;", "visitIfStmt", "LNetGlobulusSimiStmt_If;", "(LStmt$If;)TR;", "visitPrintStmt", "LNetGlobulusSimiStmt_Print;", "(LStmt$Print;)TR;", "visitRescueStmt", "LNetGlobulusSimiStmt_Rescue;", "(LStmt$Rescue;)TR;", "visitReturnStmt", "LNetGlobulusSimiStmt_Return;", "(LStmt$Return;)TR;", "visitWhileStmt", "LNetGlobulusSimiStmt_While;", "(LStmt$While;)TR;", "visitYieldStmt", "LNetGlobulusSimiStmt_Yield;", "(LStmt$Yield;)TR;", "LNetGlobulusSimiStmt;", "<R:Ljava/lang/Object;>Ljava/lang/Object;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Visitor = { "Visitor", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 14, 0, 42, -1, -1, 43, -1 };
-  return &_NetGlobulusSimiStmt_Visitor;
+  static const void *ptrTable[] = { "visitAnnotationStmt", "LSMStmt_Annotation;", "(LStmt$Annotation;)TR;", "visitBreakStmt", "LSMStmt_Break;", "(LStmt$Break;)TR;", "visitClassStmt", "LSMStmt_Class;Z", "(LStmt$Class;Z)TR;", "visitContinueStmt", "LSMStmt_Continue;", "(LStmt$Continue;)TR;", "visitElsifStmt", "LSMStmt_Elsif;", "(LStmt$Elsif;)TR;", "visitExpressionStmt", "LSMStmt_Expression;", "(LStmt$Expression;)TR;", "visitFunctionStmt", "LSMStmt_Function;", "(LStmt$Function;)TR;", "visitForStmt", "LSMStmt_For;", "(LStmt$For;)TR;", "visitIfStmt", "LSMStmt_If;", "(LStmt$If;)TR;", "visitPrintStmt", "LSMStmt_Print;", "(LStmt$Print;)TR;", "visitRescueStmt", "LSMStmt_Rescue;", "(LStmt$Rescue;)TR;", "visitReturnStmt", "LSMStmt_Return;", "(LStmt$Return;)TR;", "visitWhileStmt", "LSMStmt_While;", "(LStmt$While;)TR;", "visitYieldStmt", "LSMStmt_Yield;", "(LStmt$Yield;)TR;", "LSMStmt;", "<R:Ljava/lang/Object;>Ljava/lang/Object;" };
+  static const J2ObjcClassInfo _SMStmt_Visitor = { "Visitor", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 14, 0, 42, -1, -1, 43, -1 };
+  return &_SMStmt_Visitor;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Visitor)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMStmt_Visitor)
 
-@implementation NetGlobulusSimiStmt_BlockStmt
+@implementation SMStmt_BlockStmt
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
@@ -269,25 +269,25 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Visitor)
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getChildren);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "()Ljava/util/List<LStmt$BlockStmt;>;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_BlockStmt = { "BlockStmt", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 1, 0, 1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_BlockStmt;
+  static const void *ptrTable[] = { "()Ljava/util/List<LStmt$BlockStmt;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_BlockStmt = { "BlockStmt", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 1, 0, 1, -1, -1, -1, -1 };
+  return &_SMStmt_BlockStmt;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_BlockStmt)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMStmt_BlockStmt)
 
-@implementation NetGlobulusSimiStmt_Annotation
+@implementation SMStmt_Annotation
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)expr {
-  NetGlobulusSimiStmt_Annotation_initWithNetGlobulusSimiExpr_(self, expr);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)expr {
+  SMStmt_Annotation_initWithSMExpr_(self, expr);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitAnnotationStmtWithNetGlobulusSimiStmt_Annotation:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitAnnotationStmtWithSMStmt_Annotation:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -298,44 +298,44 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_BlockStmt)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "expr_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "expr_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Annotation = { "Annotation", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Annotation;
+  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Annotation = { "Annotation", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  return &_SMStmt_Annotation;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Annotation_initWithNetGlobulusSimiExpr_(NetGlobulusSimiStmt_Annotation *self, NetGlobulusSimiExpr *expr) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Annotation_initWithSMExpr_(SMStmt_Annotation *self, SMExpr *expr) {
+  SMStmt_init(self);
   self->expr_ = expr;
 }
 
-NetGlobulusSimiStmt_Annotation *new_NetGlobulusSimiStmt_Annotation_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expr) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Annotation, initWithNetGlobulusSimiExpr_, expr)
+SMStmt_Annotation *new_SMStmt_Annotation_initWithSMExpr_(SMExpr *expr) {
+  J2OBJC_NEW_IMPL(SMStmt_Annotation, initWithSMExpr_, expr)
 }
 
-NetGlobulusSimiStmt_Annotation *create_NetGlobulusSimiStmt_Annotation_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expr) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Annotation, initWithNetGlobulusSimiExpr_, expr)
+SMStmt_Annotation *create_SMStmt_Annotation_initWithSMExpr_(SMExpr *expr) {
+  J2OBJC_CREATE_IMPL(SMStmt_Annotation, initWithSMExpr_, expr)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Annotation)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Annotation)
 
-@implementation NetGlobulusSimiStmt_Break
+@implementation SMStmt_Break
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name {
-  NetGlobulusSimiStmt_Break_initWithNetGlobulusSimiToken_(self, name);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)name {
+  SMStmt_Break_initWithSMToken_(self, name);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitBreakStmtWithNetGlobulusSimiStmt_Break:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitBreakStmtWithSMStmt_Break:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -346,53 +346,53 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Annotation)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "name_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Break = { "Break", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Break;
+  static const void *ptrTable[] = { "LSMToken;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Break = { "Break", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  return &_SMStmt_Break;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Break_initWithNetGlobulusSimiToken_(NetGlobulusSimiStmt_Break *self, NetGlobulusSimiToken *name) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Break_initWithSMToken_(SMStmt_Break *self, SMToken *name) {
+  SMStmt_init(self);
   self->name_ = name;
 }
 
-NetGlobulusSimiStmt_Break *new_NetGlobulusSimiStmt_Break_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *name) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Break, initWithNetGlobulusSimiToken_, name)
+SMStmt_Break *new_SMStmt_Break_initWithSMToken_(SMToken *name) {
+  J2OBJC_NEW_IMPL(SMStmt_Break, initWithSMToken_, name)
 }
 
-NetGlobulusSimiStmt_Break *create_NetGlobulusSimiStmt_Break_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *name) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Break, initWithNetGlobulusSimiToken_, name)
+SMStmt_Break *create_SMStmt_Break_initWithSMToken_(SMToken *name) {
+  J2OBJC_CREATE_IMPL(SMStmt_Break, initWithSMToken_, name)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Break)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Break)
 
-@implementation NetGlobulusSimiStmt_Class
+@implementation SMStmt_Class
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-                            withJavaUtilList:(id<JavaUtilList>)superclasses
-                            withJavaUtilList:(id<JavaUtilList>)constants
-                            withJavaUtilList:(id<JavaUtilList>)innerClasses
-                            withJavaUtilList:(id<JavaUtilList>)methods
-                            withJavaUtilList:(id<JavaUtilList>)annotations {
-  NetGlobulusSimiStmt_Class_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(self, name, superclasses, constants, innerClasses, methods, annotations);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)name
+                         withJavaUtilList:(id<JavaUtilList>)superclasses
+                         withJavaUtilList:(id<JavaUtilList>)constants
+                         withJavaUtilList:(id<JavaUtilList>)innerClasses
+                         withJavaUtilList:(id<JavaUtilList>)methods
+                         withJavaUtilList:(id<JavaUtilList>)annotations {
+  SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(self, name, superclasses, constants, innerClasses, methods, annotations);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
   jboolean addToEnv = true;
   if (args != nil && args->size_ > 0) {
     addToEnv = [((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(IOSObjectArray_Get(args, 0), [JavaLangBoolean class]))) booleanValue];
   }
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitClassStmtWithNetGlobulusSimiStmt_Class:self withBoolean:addToEnv];
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitClassStmtWithSMStmt_Class:self withBoolean:addToEnv];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -403,26 +403,26 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Break)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withJavaUtilList:withJavaUtilList:withJavaUtilList:withJavaUtilList:withJavaUtilList:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withJavaUtilList:withJavaUtilList:withJavaUtilList:withJavaUtilList:withJavaUtilList:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "name_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "superclasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
     { "constants_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 6, -1 },
     { "innerClasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
     { "methods_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 8, -1 },
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 9, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LExpr$Assign;>;Ljava/util/List<LStmt$Class;>;Ljava/util/List<LStmt$Function;>;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr;>;", "Ljava/util/List<LExpr$Assign;>;", "Ljava/util/List<LStmt$Class;>;", "Ljava/util/List<LStmt$Function;>;", "Ljava/util/List<LStmt$Annotation;>;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Class = { "Class", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 6, 10, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Class;
+  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LExpr$Assign;>;Ljava/util/List<LStmt$Class;>;Ljava/util/List<LStmt$Function;>;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr;>;", "Ljava/util/List<LExpr$Assign;>;", "Ljava/util/List<LStmt$Class;>;", "Ljava/util/List<LStmt$Function;>;", "Ljava/util/List<LStmt$Annotation;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Class = { "Class", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 6, 10, -1, -1, -1, -1 };
+  return &_SMStmt_Class;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Class_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiStmt_Class *self, NetGlobulusSimiToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMStmt_Class *self, SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations) {
+  SMStmt_init(self);
   self->name_ = name;
   self->superclasses_ = superclasses;
   self->constants_ = constants;
@@ -431,26 +431,26 @@ void NetGlobulusSimiStmt_Class_initWithNetGlobulusSimiToken_withJavaUtilList_wit
   self->annotations_ = annotations;
 }
 
-NetGlobulusSimiStmt_Class *new_NetGlobulusSimiStmt_Class_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Class, initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_, name, superclasses, constants, innerClasses, methods, annotations)
+SMStmt_Class *new_SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations) {
+  J2OBJC_NEW_IMPL(SMStmt_Class, initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_, name, superclasses, constants, innerClasses, methods, annotations)
 }
 
-NetGlobulusSimiStmt_Class *create_NetGlobulusSimiStmt_Class_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Class, initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_, name, superclasses, constants, innerClasses, methods, annotations)
+SMStmt_Class *create_SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations) {
+  J2OBJC_CREATE_IMPL(SMStmt_Class, initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_, name, superclasses, constants, innerClasses, methods, annotations)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Class)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Class)
 
-@implementation NetGlobulusSimiStmt_Continue
+@implementation SMStmt_Continue
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name {
-  NetGlobulusSimiStmt_Continue_initWithNetGlobulusSimiToken_(self, name);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)name {
+  SMStmt_Continue_initWithSMToken_(self, name);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitContinueStmtWithNetGlobulusSimiStmt_Continue:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitContinueStmtWithSMStmt_Continue:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -461,44 +461,44 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Class)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "name_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Continue = { "Continue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Continue;
+  static const void *ptrTable[] = { "LSMToken;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Continue = { "Continue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  return &_SMStmt_Continue;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Continue_initWithNetGlobulusSimiToken_(NetGlobulusSimiStmt_Continue *self, NetGlobulusSimiToken *name) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Continue_initWithSMToken_(SMStmt_Continue *self, SMToken *name) {
+  SMStmt_init(self);
   self->name_ = name;
 }
 
-NetGlobulusSimiStmt_Continue *new_NetGlobulusSimiStmt_Continue_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *name) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Continue, initWithNetGlobulusSimiToken_, name)
+SMStmt_Continue *new_SMStmt_Continue_initWithSMToken_(SMToken *name) {
+  J2OBJC_NEW_IMPL(SMStmt_Continue, initWithSMToken_, name)
 }
 
-NetGlobulusSimiStmt_Continue *create_NetGlobulusSimiStmt_Continue_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *name) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Continue, initWithNetGlobulusSimiToken_, name)
+SMStmt_Continue *create_SMStmt_Continue_initWithSMToken_(SMToken *name) {
+  J2OBJC_CREATE_IMPL(SMStmt_Continue, initWithSMToken_, name)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Continue)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Continue)
 
-@implementation NetGlobulusSimiStmt_Expression
+@implementation SMStmt_Expression
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)expression {
-  NetGlobulusSimiStmt_Expression_initWithNetGlobulusSimiExpr_(self, expression);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)expression {
+  SMStmt_Expression_initWithSMExpr_(self, expression);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitExpressionStmtWithNetGlobulusSimiStmt_Expression:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitExpressionStmtWithSMStmt_Expression:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -509,46 +509,46 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Continue)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "expression_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "expression_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Expression = { "Expression", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Expression;
+  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Expression = { "Expression", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  return &_SMStmt_Expression;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Expression_initWithNetGlobulusSimiExpr_(NetGlobulusSimiStmt_Expression *self, NetGlobulusSimiExpr *expression) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Expression_initWithSMExpr_(SMStmt_Expression *self, SMExpr *expression) {
+  SMStmt_init(self);
   self->expression_ = expression;
 }
 
-NetGlobulusSimiStmt_Expression *new_NetGlobulusSimiStmt_Expression_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expression) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Expression, initWithNetGlobulusSimiExpr_, expression)
+SMStmt_Expression *new_SMStmt_Expression_initWithSMExpr_(SMExpr *expression) {
+  J2OBJC_NEW_IMPL(SMStmt_Expression, initWithSMExpr_, expression)
 }
 
-NetGlobulusSimiStmt_Expression *create_NetGlobulusSimiStmt_Expression_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expression) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Expression, initWithNetGlobulusSimiExpr_, expression)
+SMStmt_Expression *create_SMStmt_Expression_initWithSMExpr_(SMExpr *expression) {
+  J2OBJC_CREATE_IMPL(SMStmt_Expression, initWithSMExpr_, expression)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Expression)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Expression)
 
-@implementation NetGlobulusSimiStmt_Function
+@implementation SMStmt_Function
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-               withNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)block
-                            withJavaUtilList:(id<JavaUtilList>)annotations {
-  NetGlobulusSimiStmt_Function_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_withJavaUtilList_(self, name, block, annotations);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)name
+                         withSMExpr_Block:(SMExpr_Block *)block
+                         withJavaUtilList:(id<JavaUtilList>)annotations {
+  SMStmt_Function_initWithSMToken_withSMExpr_Block_withJavaUtilList_(self, name, block, annotations);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitFunctionStmtWithNetGlobulusSimiStmt_Function:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitFunctionStmtWithSMStmt_Function:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -559,53 +559,53 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Expression)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiExpr_Block:withJavaUtilList:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMExpr_Block:withJavaUtilList:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "name_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "block_", "LNetGlobulusSimiExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "block_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiExpr_Block;LJavaUtilList;", "(LToken;LExpr$Block;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LStmt$Annotation;>;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Function = { "Function", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Function;
+  static const void *ptrTable[] = { "LSMToken;LSMExpr_Block;LJavaUtilList;", "(LToken;LExpr$Block;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LStmt$Annotation;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Function = { "Function", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
+  return &_SMStmt_Function;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Function_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_withJavaUtilList_(NetGlobulusSimiStmt_Function *self, NetGlobulusSimiToken *name, NetGlobulusSimiExpr_Block *block, id<JavaUtilList> annotations) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Function_initWithSMToken_withSMExpr_Block_withJavaUtilList_(SMStmt_Function *self, SMToken *name, SMExpr_Block *block, id<JavaUtilList> annotations) {
+  SMStmt_init(self);
   self->name_ = name;
   self->block_ = block;
   self->annotations_ = annotations;
 }
 
-NetGlobulusSimiStmt_Function *new_NetGlobulusSimiStmt_Function_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_withJavaUtilList_(NetGlobulusSimiToken *name, NetGlobulusSimiExpr_Block *block, id<JavaUtilList> annotations) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Function, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_withJavaUtilList_, name, block, annotations)
+SMStmt_Function *new_SMStmt_Function_initWithSMToken_withSMExpr_Block_withJavaUtilList_(SMToken *name, SMExpr_Block *block, id<JavaUtilList> annotations) {
+  J2OBJC_NEW_IMPL(SMStmt_Function, initWithSMToken_withSMExpr_Block_withJavaUtilList_, name, block, annotations)
 }
 
-NetGlobulusSimiStmt_Function *create_NetGlobulusSimiStmt_Function_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_withJavaUtilList_(NetGlobulusSimiToken *name, NetGlobulusSimiExpr_Block *block, id<JavaUtilList> annotations) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Function, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_withJavaUtilList_, name, block, annotations)
+SMStmt_Function *create_SMStmt_Function_initWithSMToken_withSMExpr_Block_withJavaUtilList_(SMToken *name, SMExpr_Block *block, id<JavaUtilList> annotations) {
+  J2OBJC_CREATE_IMPL(SMStmt_Function, initWithSMToken_withSMExpr_Block_withJavaUtilList_, name, block, annotations)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Function)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Function)
 
-@implementation NetGlobulusSimiStmt_Elsif
+@implementation SMStmt_Elsif
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)condition
-              withNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)thenBranch {
-  NetGlobulusSimiStmt_Elsif_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(self, condition, thenBranch);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)condition
+                        withSMExpr_Block:(SMExpr_Block *)thenBranch {
+  SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(self, condition, thenBranch);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitElsifStmtWithNetGlobulusSimiStmt_Elsif:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitElsifStmtWithSMStmt_Elsif:self];
 }
 
 - (id<JavaUtilList>)getChildren {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((NetGlobulusSimiExpr_Block *) nil_chk(thenBranch_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(NetGlobulusSimiStmt_Elsif_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiStmt_Elsif_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(thenBranch_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_Elsif_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_Elsif_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -617,43 +617,43 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Function)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:withNetGlobulusSimiExpr_Block:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:withSMExpr_Block:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(getChildren);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "condition_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "thenBranch_", "LNetGlobulusSimiExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "condition_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "thenBranch_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;LNetGlobulusSimiExpr_Block;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Elsif = { "Elsif", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 5, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Elsif;
+  static const void *ptrTable[] = { "LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Elsif = { "Elsif", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 5, -1, -1, -1, -1 };
+  return &_SMStmt_Elsif;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Elsif_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiStmt_Elsif *self, NetGlobulusSimiExpr *condition, NetGlobulusSimiExpr_Block *thenBranch) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(SMStmt_Elsif *self, SMExpr *condition, SMExpr_Block *thenBranch) {
+  SMStmt_init(self);
   self->condition_ = condition;
   self->thenBranch_ = thenBranch;
 }
 
-NetGlobulusSimiStmt_Elsif *new_NetGlobulusSimiStmt_Elsif_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiExpr *condition, NetGlobulusSimiExpr_Block *thenBranch) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Elsif, initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_, condition, thenBranch)
+SMStmt_Elsif *new_SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(SMExpr *condition, SMExpr_Block *thenBranch) {
+  J2OBJC_NEW_IMPL(SMStmt_Elsif, initWithSMExpr_withSMExpr_Block_, condition, thenBranch)
 }
 
-NetGlobulusSimiStmt_Elsif *create_NetGlobulusSimiStmt_Elsif_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiExpr *condition, NetGlobulusSimiExpr_Block *thenBranch) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Elsif, initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_, condition, thenBranch)
+SMStmt_Elsif *create_SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(SMExpr *condition, SMExpr_Block *thenBranch) {
+  J2OBJC_CREATE_IMPL(SMStmt_Elsif, initWithSMExpr_withSMExpr_Block_, condition, thenBranch)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Elsif)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Elsif)
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_Elsif_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMStmt_Elsif_$Lambda$1)
 
-@implementation NetGlobulusSimiStmt_Elsif_$Lambda$1
+@implementation SMStmt_Elsif_$Lambda$1
 
-- (jboolean)testWithId:(NetGlobulusSimiStmt *)s {
-  return [NetGlobulusSimiStmt_BlockStmt_class_() isInstance:s];
+- (jboolean)testWithId:(SMStmt *)s {
+  return [SMStmt_BlockStmt_class_() isInstance:s];
 }
 
 - (id<JavaUtilFunctionPredicate>)and__WithJavaUtilFunctionPredicate:(id<JavaUtilFunctionPredicate>)arg0 {
@@ -669,32 +669,32 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_Elsif_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiStmt_Elsif_$Lambda$1 class]) {
-    NetGlobulusSimiStmt_Elsif_$Lambda$1_instance = new_NetGlobulusSimiStmt_Elsif_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiStmt_Elsif_$Lambda$1)
+  if (self == [SMStmt_Elsif_$Lambda$1 class]) {
+    SMStmt_Elsif_$Lambda$1_instance = new_SMStmt_Elsif_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_Elsif_$Lambda$1)
   }
 }
 
 @end
 
-void NetGlobulusSimiStmt_Elsif_$Lambda$1_init(NetGlobulusSimiStmt_Elsif_$Lambda$1 *self) {
+void SMStmt_Elsif_$Lambda$1_init(SMStmt_Elsif_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiStmt_Elsif_$Lambda$1 *new_NetGlobulusSimiStmt_Elsif_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Elsif_$Lambda$1, init)
+SMStmt_Elsif_$Lambda$1 *new_SMStmt_Elsif_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMStmt_Elsif_$Lambda$1, init)
 }
 
-NetGlobulusSimiStmt_Elsif_$Lambda$1 *create_NetGlobulusSimiStmt_Elsif_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Elsif_$Lambda$1, init)
+SMStmt_Elsif_$Lambda$1 *create_SMStmt_Elsif_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_Elsif_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_Elsif_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMStmt_Elsif_$Lambda$2)
 
-@implementation NetGlobulusSimiStmt_Elsif_$Lambda$2
+@implementation SMStmt_Elsif_$Lambda$2
 
-- (id)applyWithId:(NetGlobulusSimiStmt *)s {
-  return (id<NetGlobulusSimiStmt_BlockStmt>) cast_check(s, NetGlobulusSimiStmt_BlockStmt_class_());
+- (id)applyWithId:(SMStmt *)s {
+  return (id<SMStmt_BlockStmt>) cast_check(s, SMStmt_BlockStmt_class_());
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -706,38 +706,38 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_Elsif_$Lambda$2)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiStmt_Elsif_$Lambda$2 class]) {
-    NetGlobulusSimiStmt_Elsif_$Lambda$2_instance = new_NetGlobulusSimiStmt_Elsif_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiStmt_Elsif_$Lambda$2)
+  if (self == [SMStmt_Elsif_$Lambda$2 class]) {
+    SMStmt_Elsif_$Lambda$2_instance = new_SMStmt_Elsif_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_Elsif_$Lambda$2)
   }
 }
 
 @end
 
-void NetGlobulusSimiStmt_Elsif_$Lambda$2_init(NetGlobulusSimiStmt_Elsif_$Lambda$2 *self) {
+void SMStmt_Elsif_$Lambda$2_init(SMStmt_Elsif_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiStmt_Elsif_$Lambda$2 *new_NetGlobulusSimiStmt_Elsif_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Elsif_$Lambda$2, init)
+SMStmt_Elsif_$Lambda$2 *new_SMStmt_Elsif_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMStmt_Elsif_$Lambda$2, init)
 }
 
-NetGlobulusSimiStmt_Elsif_$Lambda$2 *create_NetGlobulusSimiStmt_Elsif_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Elsif_$Lambda$2, init)
+SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_Elsif_$Lambda$2, init)
 }
 
-@implementation NetGlobulusSimiStmt_If
+@implementation SMStmt_If
 
-- (instancetype)initWithNetGlobulusSimiStmt_Elsif:(NetGlobulusSimiStmt_Elsif *)ifstmt
-                                 withJavaUtilList:(id<JavaUtilList>)elsifs
-                    withNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)elseBranch {
-  NetGlobulusSimiStmt_If_initWithNetGlobulusSimiStmt_Elsif_withJavaUtilList_withNetGlobulusSimiExpr_Block_(self, ifstmt, elsifs, elseBranch);
+- (instancetype __nonnull)initWithSMStmt_Elsif:(SMStmt_Elsif *)ifstmt
+                              withJavaUtilList:(id<JavaUtilList>)elsifs
+                              withSMExpr_Block:(SMExpr_Block *)elseBranch {
+  SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(self, ifstmt, elsifs, elseBranch);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitIfStmtWithNetGlobulusSimiStmt_If:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitIfStmtWithSMStmt_If:self];
 }
 
 - (id<JavaUtilList>)getChildren {
@@ -745,7 +745,7 @@ NetGlobulusSimiStmt_Elsif_$Lambda$2 *create_NetGlobulusSimiStmt_Elsif_$Lambda$2_
   [children addWithId:ifstmt_];
   [children addAllWithJavaUtilCollection:elsifs_];
   if (elseBranch_ != nil) {
-    [children addAllWithJavaUtilCollection:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(elseBranch_->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(NetGlobulusSimiStmt_If_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiStmt_If_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()]];
+    [children addAllWithJavaUtilCollection:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(elseBranch_->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_If_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_If_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()]];
   }
   return children;
 }
@@ -759,45 +759,45 @@ NetGlobulusSimiStmt_Elsif_$Lambda$2 *create_NetGlobulusSimiStmt_Elsif_$Lambda$2_
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiStmt_Elsif:withJavaUtilList:withNetGlobulusSimiExpr_Block:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMStmt_Elsif:withJavaUtilList:withSMExpr_Block:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(getChildren);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "ifstmt_", "LNetGlobulusSimiStmt_Elsif;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "ifstmt_", "LSMStmt_Elsif;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "elsifs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 6, -1 },
-    { "elseBranch_", "LNetGlobulusSimiExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "elseBranch_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiStmt_Elsif;LJavaUtilList;LNetGlobulusSimiExpr_Block;", "(LStmt$Elsif;Ljava/util/List<LStmt$Elsif;>;LExpr$Block;)V", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "Ljava/util/List<LStmt$Elsif;>;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_If = { "If", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 3, 7, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_If;
+  static const void *ptrTable[] = { "LSMStmt_Elsif;LJavaUtilList;LSMExpr_Block;", "(LStmt$Elsif;Ljava/util/List<LStmt$Elsif;>;LExpr$Block;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "Ljava/util/List<LStmt$Elsif;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_If = { "If", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 3, 7, -1, -1, -1, -1 };
+  return &_SMStmt_If;
 }
 
 @end
 
-void NetGlobulusSimiStmt_If_initWithNetGlobulusSimiStmt_Elsif_withJavaUtilList_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiStmt_If *self, NetGlobulusSimiStmt_Elsif *ifstmt, id<JavaUtilList> elsifs, NetGlobulusSimiExpr_Block *elseBranch) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(SMStmt_If *self, SMStmt_Elsif *ifstmt, id<JavaUtilList> elsifs, SMExpr_Block *elseBranch) {
+  SMStmt_init(self);
   self->ifstmt_ = ifstmt;
   self->elsifs_ = elsifs;
   self->elseBranch_ = elseBranch;
 }
 
-NetGlobulusSimiStmt_If *new_NetGlobulusSimiStmt_If_initWithNetGlobulusSimiStmt_Elsif_withJavaUtilList_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiStmt_Elsif *ifstmt, id<JavaUtilList> elsifs, NetGlobulusSimiExpr_Block *elseBranch) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_If, initWithNetGlobulusSimiStmt_Elsif_withJavaUtilList_withNetGlobulusSimiExpr_Block_, ifstmt, elsifs, elseBranch)
+SMStmt_If *new_SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(SMStmt_Elsif *ifstmt, id<JavaUtilList> elsifs, SMExpr_Block *elseBranch) {
+  J2OBJC_NEW_IMPL(SMStmt_If, initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_, ifstmt, elsifs, elseBranch)
 }
 
-NetGlobulusSimiStmt_If *create_NetGlobulusSimiStmt_If_initWithNetGlobulusSimiStmt_Elsif_withJavaUtilList_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiStmt_Elsif *ifstmt, id<JavaUtilList> elsifs, NetGlobulusSimiExpr_Block *elseBranch) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_If, initWithNetGlobulusSimiStmt_Elsif_withJavaUtilList_withNetGlobulusSimiExpr_Block_, ifstmt, elsifs, elseBranch)
+SMStmt_If *create_SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(SMStmt_Elsif *ifstmt, id<JavaUtilList> elsifs, SMExpr_Block *elseBranch) {
+  J2OBJC_CREATE_IMPL(SMStmt_If, initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_, ifstmt, elsifs, elseBranch)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_If)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_If)
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_If_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMStmt_If_$Lambda$1)
 
-@implementation NetGlobulusSimiStmt_If_$Lambda$1
+@implementation SMStmt_If_$Lambda$1
 
-- (jboolean)testWithId:(NetGlobulusSimiStmt *)s {
-  return [NetGlobulusSimiStmt_BlockStmt_class_() isInstance:s];
+- (jboolean)testWithId:(SMStmt *)s {
+  return [SMStmt_BlockStmt_class_() isInstance:s];
 }
 
 - (id<JavaUtilFunctionPredicate>)and__WithJavaUtilFunctionPredicate:(id<JavaUtilFunctionPredicate>)arg0 {
@@ -813,32 +813,32 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_If_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiStmt_If_$Lambda$1 class]) {
-    NetGlobulusSimiStmt_If_$Lambda$1_instance = new_NetGlobulusSimiStmt_If_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiStmt_If_$Lambda$1)
+  if (self == [SMStmt_If_$Lambda$1 class]) {
+    SMStmt_If_$Lambda$1_instance = new_SMStmt_If_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_If_$Lambda$1)
   }
 }
 
 @end
 
-void NetGlobulusSimiStmt_If_$Lambda$1_init(NetGlobulusSimiStmt_If_$Lambda$1 *self) {
+void SMStmt_If_$Lambda$1_init(SMStmt_If_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiStmt_If_$Lambda$1 *new_NetGlobulusSimiStmt_If_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_If_$Lambda$1, init)
+SMStmt_If_$Lambda$1 *new_SMStmt_If_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMStmt_If_$Lambda$1, init)
 }
 
-NetGlobulusSimiStmt_If_$Lambda$1 *create_NetGlobulusSimiStmt_If_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_If_$Lambda$1, init)
+SMStmt_If_$Lambda$1 *create_SMStmt_If_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_If_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_If_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMStmt_If_$Lambda$2)
 
-@implementation NetGlobulusSimiStmt_If_$Lambda$2
+@implementation SMStmt_If_$Lambda$2
 
-- (id)applyWithId:(NetGlobulusSimiStmt *)s {
-  return (id<NetGlobulusSimiStmt_BlockStmt>) cast_check(s, NetGlobulusSimiStmt_BlockStmt_class_());
+- (id)applyWithId:(SMStmt *)s {
+  return (id<SMStmt_BlockStmt>) cast_check(s, SMStmt_BlockStmt_class_());
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -850,36 +850,36 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_If_$Lambda$2)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiStmt_If_$Lambda$2 class]) {
-    NetGlobulusSimiStmt_If_$Lambda$2_instance = new_NetGlobulusSimiStmt_If_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiStmt_If_$Lambda$2)
+  if (self == [SMStmt_If_$Lambda$2 class]) {
+    SMStmt_If_$Lambda$2_instance = new_SMStmt_If_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_If_$Lambda$2)
   }
 }
 
 @end
 
-void NetGlobulusSimiStmt_If_$Lambda$2_init(NetGlobulusSimiStmt_If_$Lambda$2 *self) {
+void SMStmt_If_$Lambda$2_init(SMStmt_If_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiStmt_If_$Lambda$2 *new_NetGlobulusSimiStmt_If_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_If_$Lambda$2, init)
+SMStmt_If_$Lambda$2 *new_SMStmt_If_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMStmt_If_$Lambda$2, init)
 }
 
-NetGlobulusSimiStmt_If_$Lambda$2 *create_NetGlobulusSimiStmt_If_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_If_$Lambda$2, init)
+SMStmt_If_$Lambda$2 *create_SMStmt_If_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_If_$Lambda$2, init)
 }
 
-@implementation NetGlobulusSimiStmt_Print
+@implementation SMStmt_Print
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)expression {
-  NetGlobulusSimiStmt_Print_initWithNetGlobulusSimiExpr_(self, expression);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)expression {
+  SMStmt_Print_initWithSMExpr_(self, expression);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitPrintStmtWithNetGlobulusSimiStmt_Print:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitPrintStmtWithSMStmt_Print:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -890,45 +890,45 @@ NetGlobulusSimiStmt_If_$Lambda$2 *create_NetGlobulusSimiStmt_If_$Lambda$2_init()
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "expression_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "expression_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Print = { "Print", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Print;
+  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Print = { "Print", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  return &_SMStmt_Print;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Print_initWithNetGlobulusSimiExpr_(NetGlobulusSimiStmt_Print *self, NetGlobulusSimiExpr *expression) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Print_initWithSMExpr_(SMStmt_Print *self, SMExpr *expression) {
+  SMStmt_init(self);
   self->expression_ = expression;
 }
 
-NetGlobulusSimiStmt_Print *new_NetGlobulusSimiStmt_Print_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expression) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Print, initWithNetGlobulusSimiExpr_, expression)
+SMStmt_Print *new_SMStmt_Print_initWithSMExpr_(SMExpr *expression) {
+  J2OBJC_NEW_IMPL(SMStmt_Print, initWithSMExpr_, expression)
 }
 
-NetGlobulusSimiStmt_Print *create_NetGlobulusSimiStmt_Print_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expression) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Print, initWithNetGlobulusSimiExpr_, expression)
+SMStmt_Print *create_SMStmt_Print_initWithSMExpr_(SMExpr *expression) {
+  J2OBJC_CREATE_IMPL(SMStmt_Print, initWithSMExpr_, expression)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Print)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Print)
 
-@implementation NetGlobulusSimiStmt_Rescue
+@implementation SMStmt_Rescue
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)keyword
-               withNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)block {
-  NetGlobulusSimiStmt_Rescue_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_(self, keyword, block);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword
+                         withSMExpr_Block:(SMExpr_Block *)block {
+  SMStmt_Rescue_initWithSMToken_withSMExpr_Block_(self, keyword, block);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitRescueStmtWithNetGlobulusSimiStmt_Rescue:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitRescueStmtWithSMStmt_Rescue:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -939,47 +939,47 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Print)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiExpr_Block:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMExpr_Block:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "keyword_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "block_", "LNetGlobulusSimiExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "block_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiExpr_Block;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Rescue = { "Rescue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Rescue;
+  static const void *ptrTable[] = { "LSMToken;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Rescue = { "Rescue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
+  return &_SMStmt_Rescue;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Rescue_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiStmt_Rescue *self, NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr_Block *block) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Rescue_initWithSMToken_withSMExpr_Block_(SMStmt_Rescue *self, SMToken *keyword, SMExpr_Block *block) {
+  SMStmt_init(self);
   self->keyword_ = keyword;
   self->block_ = block;
 }
 
-NetGlobulusSimiStmt_Rescue *new_NetGlobulusSimiStmt_Rescue_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr_Block *block) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Rescue, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_, keyword, block)
+SMStmt_Rescue *new_SMStmt_Rescue_initWithSMToken_withSMExpr_Block_(SMToken *keyword, SMExpr_Block *block) {
+  J2OBJC_NEW_IMPL(SMStmt_Rescue, initWithSMToken_withSMExpr_Block_, keyword, block)
 }
 
-NetGlobulusSimiStmt_Rescue *create_NetGlobulusSimiStmt_Rescue_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr_Block *block) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Rescue, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_, keyword, block)
+SMStmt_Rescue *create_SMStmt_Rescue_initWithSMToken_withSMExpr_Block_(SMToken *keyword, SMExpr_Block *block) {
+  J2OBJC_CREATE_IMPL(SMStmt_Rescue, initWithSMToken_withSMExpr_Block_, keyword, block)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Rescue)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Rescue)
 
-@implementation NetGlobulusSimiStmt_Return
+@implementation SMStmt_Return
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)keyword
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)value {
-  NetGlobulusSimiStmt_Return_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(self, keyword, value);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword
+                               withSMExpr:(SMExpr *)value {
+  SMStmt_Return_initWithSMToken_withSMExpr_(self, keyword, value);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitReturnStmtWithNetGlobulusSimiStmt_Return:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitReturnStmtWithSMStmt_Return:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -990,51 +990,51 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Rescue)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMExpr:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "keyword_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "value_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Return = { "Return", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Return;
+  static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Return = { "Return", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
+  return &_SMStmt_Return;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Return_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiStmt_Return *self, NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr *value) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Return_initWithSMToken_withSMExpr_(SMStmt_Return *self, SMToken *keyword, SMExpr *value) {
+  SMStmt_init(self);
   self->keyword_ = keyword;
   self->value_ = value;
 }
 
-NetGlobulusSimiStmt_Return *new_NetGlobulusSimiStmt_Return_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr *value) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Return, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_, keyword, value)
+SMStmt_Return *new_SMStmt_Return_initWithSMToken_withSMExpr_(SMToken *keyword, SMExpr *value) {
+  J2OBJC_NEW_IMPL(SMStmt_Return, initWithSMToken_withSMExpr_, keyword, value)
 }
 
-NetGlobulusSimiStmt_Return *create_NetGlobulusSimiStmt_Return_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr *value) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Return, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_, keyword, value)
+SMStmt_Return *create_SMStmt_Return_initWithSMToken_withSMExpr_(SMToken *keyword, SMExpr *value) {
+  J2OBJC_CREATE_IMPL(SMStmt_Return, initWithSMToken_withSMExpr_, keyword, value)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Return)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Return)
 
-@implementation NetGlobulusSimiStmt_While
+@implementation SMStmt_While
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)condition
-              withNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)body {
-  NetGlobulusSimiStmt_While_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(self, condition, body);
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)condition
+                        withSMExpr_Block:(SMExpr_Block *)body {
+  SMStmt_While_initWithSMExpr_withSMExpr_Block_(self, condition, body);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitWhileStmtWithNetGlobulusSimiStmt_While:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitWhileStmtWithSMStmt_While:self];
 }
 
 - (id<JavaUtilList>)getChildren {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((NetGlobulusSimiExpr_Block *) nil_chk(body_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(NetGlobulusSimiStmt_While_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiStmt_While_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(body_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_While_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_While_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1046,43 +1046,43 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Return)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr:withNetGlobulusSimiExpr_Block:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr:withSMExpr_Block:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(getChildren);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "condition_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "body_", "LNetGlobulusSimiExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "condition_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "body_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr;LNetGlobulusSimiExpr_Block;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_While = { "While", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 5, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_While;
+  static const void *ptrTable[] = { "LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_While = { "While", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 5, -1, -1, -1, -1 };
+  return &_SMStmt_While;
 }
 
 @end
 
-void NetGlobulusSimiStmt_While_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiStmt_While *self, NetGlobulusSimiExpr *condition, NetGlobulusSimiExpr_Block *body) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_While_initWithSMExpr_withSMExpr_Block_(SMStmt_While *self, SMExpr *condition, SMExpr_Block *body) {
+  SMStmt_init(self);
   self->condition_ = condition;
   self->body_ = body;
 }
 
-NetGlobulusSimiStmt_While *new_NetGlobulusSimiStmt_While_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiExpr *condition, NetGlobulusSimiExpr_Block *body) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_While, initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_, condition, body)
+SMStmt_While *new_SMStmt_While_initWithSMExpr_withSMExpr_Block_(SMExpr *condition, SMExpr_Block *body) {
+  J2OBJC_NEW_IMPL(SMStmt_While, initWithSMExpr_withSMExpr_Block_, condition, body)
 }
 
-NetGlobulusSimiStmt_While *create_NetGlobulusSimiStmt_While_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiExpr *condition, NetGlobulusSimiExpr_Block *body) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_While, initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_, condition, body)
+SMStmt_While *create_SMStmt_While_initWithSMExpr_withSMExpr_Block_(SMExpr *condition, SMExpr_Block *body) {
+  J2OBJC_CREATE_IMPL(SMStmt_While, initWithSMExpr_withSMExpr_Block_, condition, body)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_While)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_While)
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_While_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMStmt_While_$Lambda$1)
 
-@implementation NetGlobulusSimiStmt_While_$Lambda$1
+@implementation SMStmt_While_$Lambda$1
 
-- (jboolean)testWithId:(NetGlobulusSimiStmt *)s {
-  return [NetGlobulusSimiStmt_BlockStmt_class_() isInstance:s];
+- (jboolean)testWithId:(SMStmt *)s {
+  return [SMStmt_BlockStmt_class_() isInstance:s];
 }
 
 - (id<JavaUtilFunctionPredicate>)and__WithJavaUtilFunctionPredicate:(id<JavaUtilFunctionPredicate>)arg0 {
@@ -1098,32 +1098,32 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_While_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiStmt_While_$Lambda$1 class]) {
-    NetGlobulusSimiStmt_While_$Lambda$1_instance = new_NetGlobulusSimiStmt_While_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiStmt_While_$Lambda$1)
+  if (self == [SMStmt_While_$Lambda$1 class]) {
+    SMStmt_While_$Lambda$1_instance = new_SMStmt_While_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_While_$Lambda$1)
   }
 }
 
 @end
 
-void NetGlobulusSimiStmt_While_$Lambda$1_init(NetGlobulusSimiStmt_While_$Lambda$1 *self) {
+void SMStmt_While_$Lambda$1_init(SMStmt_While_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiStmt_While_$Lambda$1 *new_NetGlobulusSimiStmt_While_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_While_$Lambda$1, init)
+SMStmt_While_$Lambda$1 *new_SMStmt_While_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMStmt_While_$Lambda$1, init)
 }
 
-NetGlobulusSimiStmt_While_$Lambda$1 *create_NetGlobulusSimiStmt_While_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_While_$Lambda$1, init)
+SMStmt_While_$Lambda$1 *create_SMStmt_While_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_While_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_While_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMStmt_While_$Lambda$2)
 
-@implementation NetGlobulusSimiStmt_While_$Lambda$2
+@implementation SMStmt_While_$Lambda$2
 
-- (id)applyWithId:(NetGlobulusSimiStmt *)s {
-  return (id<NetGlobulusSimiStmt_BlockStmt>) cast_check(s, NetGlobulusSimiStmt_BlockStmt_class_());
+- (id)applyWithId:(SMStmt *)s {
+  return (id<SMStmt_BlockStmt>) cast_check(s, SMStmt_BlockStmt_class_());
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -1135,42 +1135,42 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_While_$Lambda$2)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiStmt_While_$Lambda$2 class]) {
-    NetGlobulusSimiStmt_While_$Lambda$2_instance = new_NetGlobulusSimiStmt_While_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiStmt_While_$Lambda$2)
+  if (self == [SMStmt_While_$Lambda$2 class]) {
+    SMStmt_While_$Lambda$2_instance = new_SMStmt_While_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_While_$Lambda$2)
   }
 }
 
 @end
 
-void NetGlobulusSimiStmt_While_$Lambda$2_init(NetGlobulusSimiStmt_While_$Lambda$2 *self) {
+void SMStmt_While_$Lambda$2_init(SMStmt_While_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiStmt_While_$Lambda$2 *new_NetGlobulusSimiStmt_While_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_While_$Lambda$2, init)
+SMStmt_While_$Lambda$2 *new_SMStmt_While_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMStmt_While_$Lambda$2, init)
 }
 
-NetGlobulusSimiStmt_While_$Lambda$2 *create_NetGlobulusSimiStmt_While_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_While_$Lambda$2, init)
+SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_While_$Lambda$2, init)
 }
 
-@implementation NetGlobulusSimiStmt_For
+@implementation SMStmt_For
 
-- (instancetype)initWithNetGlobulusSimiExpr_Variable:(NetGlobulusSimiExpr_Variable *)var
-                             withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)iterable
-                       withNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)body {
-  NetGlobulusSimiStmt_For_initWithNetGlobulusSimiExpr_Variable_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(self, var, iterable, body);
+- (instancetype __nonnull)initWithSMExpr_Variable:(SMExpr_Variable *)var
+                                       withSMExpr:(SMExpr *)iterable
+                                 withSMExpr_Block:(SMExpr_Block *)body {
+  SMStmt_For_initWithSMExpr_Variable_withSMExpr_withSMExpr_Block_(self, var, iterable, body);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitForStmtWithNetGlobulusSimiStmt_For:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitForStmtWithSMStmt_For:self];
 }
 
 - (id<JavaUtilList>)getChildren {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((NetGlobulusSimiExpr_Block *) nil_chk(body_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(NetGlobulusSimiStmt_For_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiStmt_For_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(body_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_For_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_For_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1182,45 +1182,45 @@ NetGlobulusSimiStmt_While_$Lambda$2 *create_NetGlobulusSimiStmt_While_$Lambda$2_
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiExpr_Variable:withNetGlobulusSimiExpr:withNetGlobulusSimiExpr_Block:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMExpr_Variable:withSMExpr:withSMExpr_Block:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(getChildren);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "var_", "LNetGlobulusSimiExpr_Variable;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "iterable_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "body_", "LNetGlobulusSimiExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "var_", "LSMExpr_Variable;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iterable_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "body_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiExpr_Variable;LNetGlobulusSimiExpr;LNetGlobulusSimiExpr_Block;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_For = { "For", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 3, 5, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_For;
+  static const void *ptrTable[] = { "LSMExpr_Variable;LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_For = { "For", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 3, 5, -1, -1, -1, -1 };
+  return &_SMStmt_For;
 }
 
 @end
 
-void NetGlobulusSimiStmt_For_initWithNetGlobulusSimiExpr_Variable_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiStmt_For *self, NetGlobulusSimiExpr_Variable *var, NetGlobulusSimiExpr *iterable, NetGlobulusSimiExpr_Block *body) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_For_initWithSMExpr_Variable_withSMExpr_withSMExpr_Block_(SMStmt_For *self, SMExpr_Variable *var, SMExpr *iterable, SMExpr_Block *body) {
+  SMStmt_init(self);
   self->var_ = var;
   self->iterable_ = iterable;
   self->body_ = body;
 }
 
-NetGlobulusSimiStmt_For *new_NetGlobulusSimiStmt_For_initWithNetGlobulusSimiExpr_Variable_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiExpr_Variable *var, NetGlobulusSimiExpr *iterable, NetGlobulusSimiExpr_Block *body) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_For, initWithNetGlobulusSimiExpr_Variable_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_, var, iterable, body)
+SMStmt_For *new_SMStmt_For_initWithSMExpr_Variable_withSMExpr_withSMExpr_Block_(SMExpr_Variable *var, SMExpr *iterable, SMExpr_Block *body) {
+  J2OBJC_NEW_IMPL(SMStmt_For, initWithSMExpr_Variable_withSMExpr_withSMExpr_Block_, var, iterable, body)
 }
 
-NetGlobulusSimiStmt_For *create_NetGlobulusSimiStmt_For_initWithNetGlobulusSimiExpr_Variable_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiExpr_Variable *var, NetGlobulusSimiExpr *iterable, NetGlobulusSimiExpr_Block *body) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_For, initWithNetGlobulusSimiExpr_Variable_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_, var, iterable, body)
+SMStmt_For *create_SMStmt_For_initWithSMExpr_Variable_withSMExpr_withSMExpr_Block_(SMExpr_Variable *var, SMExpr *iterable, SMExpr_Block *body) {
+  J2OBJC_CREATE_IMPL(SMStmt_For, initWithSMExpr_Variable_withSMExpr_withSMExpr_Block_, var, iterable, body)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_For)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_For)
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_For_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMStmt_For_$Lambda$1)
 
-@implementation NetGlobulusSimiStmt_For_$Lambda$1
+@implementation SMStmt_For_$Lambda$1
 
-- (jboolean)testWithId:(NetGlobulusSimiStmt *)s {
-  return [NetGlobulusSimiStmt_BlockStmt_class_() isInstance:s];
+- (jboolean)testWithId:(SMStmt *)s {
+  return [SMStmt_BlockStmt_class_() isInstance:s];
 }
 
 - (id<JavaUtilFunctionPredicate>)and__WithJavaUtilFunctionPredicate:(id<JavaUtilFunctionPredicate>)arg0 {
@@ -1236,32 +1236,32 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_For_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiStmt_For_$Lambda$1 class]) {
-    NetGlobulusSimiStmt_For_$Lambda$1_instance = new_NetGlobulusSimiStmt_For_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiStmt_For_$Lambda$1)
+  if (self == [SMStmt_For_$Lambda$1 class]) {
+    SMStmt_For_$Lambda$1_instance = new_SMStmt_For_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_For_$Lambda$1)
   }
 }
 
 @end
 
-void NetGlobulusSimiStmt_For_$Lambda$1_init(NetGlobulusSimiStmt_For_$Lambda$1 *self) {
+void SMStmt_For_$Lambda$1_init(SMStmt_For_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiStmt_For_$Lambda$1 *new_NetGlobulusSimiStmt_For_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_For_$Lambda$1, init)
+SMStmt_For_$Lambda$1 *new_SMStmt_For_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMStmt_For_$Lambda$1, init)
 }
 
-NetGlobulusSimiStmt_For_$Lambda$1 *create_NetGlobulusSimiStmt_For_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_For_$Lambda$1, init)
+SMStmt_For_$Lambda$1 *create_SMStmt_For_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_For_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_For_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMStmt_For_$Lambda$2)
 
-@implementation NetGlobulusSimiStmt_For_$Lambda$2
+@implementation SMStmt_For_$Lambda$2
 
-- (id)applyWithId:(NetGlobulusSimiStmt *)s {
-  return (id<NetGlobulusSimiStmt_BlockStmt>) cast_check(s, NetGlobulusSimiStmt_BlockStmt_class_());
+- (id)applyWithId:(SMStmt *)s {
+  return (id<SMStmt_BlockStmt>) cast_check(s, SMStmt_BlockStmt_class_());
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -1273,37 +1273,37 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiStmt_For_$Lambda$2)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiStmt_For_$Lambda$2 class]) {
-    NetGlobulusSimiStmt_For_$Lambda$2_instance = new_NetGlobulusSimiStmt_For_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiStmt_For_$Lambda$2)
+  if (self == [SMStmt_For_$Lambda$2 class]) {
+    SMStmt_For_$Lambda$2_instance = new_SMStmt_For_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_For_$Lambda$2)
   }
 }
 
 @end
 
-void NetGlobulusSimiStmt_For_$Lambda$2_init(NetGlobulusSimiStmt_For_$Lambda$2 *self) {
+void SMStmt_For_$Lambda$2_init(SMStmt_For_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiStmt_For_$Lambda$2 *new_NetGlobulusSimiStmt_For_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_For_$Lambda$2, init)
+SMStmt_For_$Lambda$2 *new_SMStmt_For_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMStmt_For_$Lambda$2, init)
 }
 
-NetGlobulusSimiStmt_For_$Lambda$2 *create_NetGlobulusSimiStmt_For_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_For_$Lambda$2, init)
+SMStmt_For_$Lambda$2 *create_SMStmt_For_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_For_$Lambda$2, init)
 }
 
-@implementation NetGlobulusSimiStmt_Yield
+@implementation SMStmt_Yield
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)keyword
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)value {
-  NetGlobulusSimiStmt_Yield_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(self, keyword, value);
+- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword
+                               withSMExpr:(SMExpr *)value {
+  SMStmt_Yield_initWithSMToken_withSMExpr_(self, keyword, value);
   return self;
 }
 
-- (id)acceptWithNetGlobulusSimiStmt_Visitor:(id<NetGlobulusSimiStmt_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)args {
-  return [((id<NetGlobulusSimiStmt_Visitor>) nil_chk(visitor)) visitYieldStmtWithNetGlobulusSimiStmt_Yield:self];
+- (id)acceptWithSMStmt_Visitor:(id<SMStmt_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitYieldStmtWithSMStmt_Yield:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1314,32 +1314,32 @@ NetGlobulusSimiStmt_For_$Lambda$2 *create_NetGlobulusSimiStmt_For_$Lambda$2_init
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiToken:withNetGlobulusSimiExpr:);
-  methods[1].selector = @selector(acceptWithNetGlobulusSimiStmt_Visitor:withNSObjectArray:);
+  methods[0].selector = @selector(initWithSMToken:withSMExpr:);
+  methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "keyword_", "LNetGlobulusSimiToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "value_", "LNetGlobulusSimiExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiToken;LNetGlobulusSimiExpr;", "accept", "LNetGlobulusSimiStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LNetGlobulusSimiStmt;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiStmt_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiStmt_Yield;
+  static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
+  return &_SMStmt_Yield;
 }
 
 @end
 
-void NetGlobulusSimiStmt_Yield_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiStmt_Yield *self, NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr *value) {
-  NetGlobulusSimiStmt_init(self);
+void SMStmt_Yield_initWithSMToken_withSMExpr_(SMStmt_Yield *self, SMToken *keyword, SMExpr *value) {
+  SMStmt_init(self);
   self->keyword_ = keyword;
   self->value_ = value;
 }
 
-NetGlobulusSimiStmt_Yield *new_NetGlobulusSimiStmt_Yield_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr *value) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiStmt_Yield, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_, keyword, value)
+SMStmt_Yield *new_SMStmt_Yield_initWithSMToken_withSMExpr_(SMToken *keyword, SMExpr *value) {
+  J2OBJC_NEW_IMPL(SMStmt_Yield, initWithSMToken_withSMExpr_, keyword, value)
 }
 
-NetGlobulusSimiStmt_Yield *create_NetGlobulusSimiStmt_Yield_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *keyword, NetGlobulusSimiExpr *value) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiStmt_Yield, initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_, keyword, value)
+SMStmt_Yield *create_SMStmt_Yield_initWithSMToken_withSMExpr_(SMToken *keyword, SMExpr *value) {
+  J2OBJC_CREATE_IMPL(SMStmt_Yield, initWithSMToken_withSMExpr_, keyword, value)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiStmt_Yield)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Yield)

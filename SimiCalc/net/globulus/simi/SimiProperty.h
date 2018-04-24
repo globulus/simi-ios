@@ -13,28 +13,39 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiProperty
 
-#if !defined (NetGlobulusSimiSimiProperty_) && (INCLUDE_ALL_NetGlobulusSimiSimiProperty || defined(INCLUDE_NetGlobulusSimiSimiProperty))
-#define NetGlobulusSimiSimiProperty_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
-@class NetGlobulusSimiSimiValue;
+#if !defined (SMSimiProperty_) && (INCLUDE_ALL_NetGlobulusSimiSimiProperty || defined(INCLUDE_SMSimiProperty))
+#define SMSimiProperty_
+
+@class SMSimiValue;
 @protocol JavaUtilList;
 
-@protocol NetGlobulusSimiSimiProperty < JavaObject >
+@protocol SMSimiProperty < JavaObject >
 
-- (NetGlobulusSimiSimiValue *)getValue;
+- (SMSimiValue *)getValue;
 
-- (void)setValueWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value;
+- (void)setValueWithSMSimiValue:(SMSimiValue *)value;
 
 - (id<JavaUtilList>)getAnnotations;
 
-- (id<NetGlobulusSimiSimiProperty>)cloneWithBoolean:(jboolean)mutable_;
+- (id<SMSimiProperty>)cloneWithBoolean:(jboolean)mutable_;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiProperty)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiProperty)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiProperty)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiProperty)
+
+#define NetGlobulusSimiSimiProperty SMSimiProperty
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiProperty")

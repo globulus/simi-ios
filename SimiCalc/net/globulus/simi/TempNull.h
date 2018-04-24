@@ -13,36 +13,49 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiTempNull
 
-#if !defined (NetGlobulusSimiTempNull_) && (INCLUDE_ALL_NetGlobulusSimiTempNull || defined(INCLUDE_NetGlobulusSimiTempNull))
-#define NetGlobulusSimiTempNull_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMTempNull_) && (INCLUDE_ALL_NetGlobulusSimiTempNull || defined(INCLUDE_SMTempNull))
+#define SMTempNull_
 
 #define RESTRICT_NetGlobulusSimiSimiValue 1
-#define INCLUDE_NetGlobulusSimiSimiValue 1
+#define INCLUDE_SMSimiValue 1
 #include "SimiValue.h"
 
-@interface NetGlobulusSimiTempNull : NetGlobulusSimiSimiValue
+@interface SMTempNull : SMSimiValue
+
++ (SMTempNull *)INSTANCE;
 
 #pragma mark Public
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_;
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o;
+- (jint)compareToWithId:(SMSimiValue *)o;
 
-- (NetGlobulusSimiSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
+- (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
 - (NSString *)description;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiTempNull)
+J2OBJC_STATIC_INIT(SMTempNull)
 
-inline NetGlobulusSimiTempNull *NetGlobulusSimiTempNull_get_INSTANCE(void);
+inline SMTempNull *SMTempNull_get_INSTANCE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT NetGlobulusSimiTempNull *NetGlobulusSimiTempNull_INSTANCE;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiTempNull, INSTANCE, NetGlobulusSimiTempNull *)
+FOUNDATION_EXPORT SMTempNull *SMTempNull_INSTANCE;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMTempNull, INSTANCE, SMTempNull *)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiTempNull)
+J2OBJC_TYPE_LITERAL_HEADER(SMTempNull)
+
+@compatibility_alias NetGlobulusSimiTempNull SMTempNull;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiTempNull")

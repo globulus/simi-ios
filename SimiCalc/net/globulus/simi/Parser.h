@@ -13,35 +13,46 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiParser
 
-#if !defined (NetGlobulusSimiParser_) && (INCLUDE_ALL_NetGlobulusSimiParser || defined(INCLUDE_NetGlobulusSimiParser))
-#define NetGlobulusSimiParser_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMParser_) && (INCLUDE_ALL_NetGlobulusSimiParser || defined(INCLUDE_SMParser))
+#define SMParser_
 
 @protocol JavaUtilList;
 
-@interface NetGlobulusSimiParser : NSObject
+@interface SMParser : NSObject
 
 #pragma mark Package-Private
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tokens;
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tokens;
 
 - (id<JavaUtilList>)parse;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiParser)
+J2OBJC_EMPTY_STATIC_INIT(SMParser)
 
-FOUNDATION_EXPORT void NetGlobulusSimiParser_initWithJavaUtilList_(NetGlobulusSimiParser *self, id<JavaUtilList> tokens);
+FOUNDATION_EXPORT void SMParser_initWithJavaUtilList_(SMParser *self, id<JavaUtilList> tokens);
 
-FOUNDATION_EXPORT NetGlobulusSimiParser *new_NetGlobulusSimiParser_initWithJavaUtilList_(id<JavaUtilList> tokens) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMParser *new_SMParser_initWithJavaUtilList_(id<JavaUtilList> tokens) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiParser *create_NetGlobulusSimiParser_initWithJavaUtilList_(id<JavaUtilList> tokens);
+FOUNDATION_EXPORT SMParser *create_SMParser_initWithJavaUtilList_(id<JavaUtilList> tokens);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiParser)
+J2OBJC_TYPE_LITERAL_HEADER(SMParser)
+
+@compatibility_alias NetGlobulusSimiParser SMParser;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiParser")

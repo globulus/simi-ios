@@ -14,42 +14,42 @@
 #include "SimiProperty.h"
 #include "SimiValue.h"
 
-@interface NetGlobulusSimiSimiException () {
+@interface SMSimiException () {
  @public
-  id<NetGlobulusSimiSimiClass> clazz_;
+  id<SMSimiClass> clazz_;
 }
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiException, clazz_, id<NetGlobulusSimiSimiClass>)
+J2OBJC_FIELD_SETTER(SMSimiException, clazz_, id<SMSimiClass>)
 
-@implementation NetGlobulusSimiSimiException
+@implementation SMSimiException
 
-- (instancetype)initWithNetGlobulusSimiSimiClass:(id<NetGlobulusSimiSimiClass>)clazz
-                                    withNSString:(NSString *)message {
-  NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_(self, clazz, message);
+- (instancetype __nonnull)initWithSMSimiClass:(id<SMSimiClass>)clazz
+                                 withNSString:(NSString *)message {
+  SMSimiException_initWithSMSimiClass_withNSString_(self, clazz, message);
   return self;
 }
 
-- (id<NetGlobulusSimiSimiClass>)getSimiClass {
+- (id<SMSimiClass>)getSimiClass {
   return clazz_;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)getWithNSString:(NSString *)key
-                withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment {
+- (id<SMSimiProperty>)getWithNSString:(NSString *)key
+                withSMSimiEnvironment:(id<SMSimiEnvironment>)environment {
   if ([((NSString *) nil_chk(key)) isEqual:@"message"]) {
-    return new_NetGlobulusSimiSimiValue_String_initWithNSString_([self getMessage]);
+    return new_SMSimiValue_String_initWithNSString_([self getMessage]);
   }
   return nil;
 }
 
 - (void)setWithNSString:(NSString *)key
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)value
-withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment {
+     withSMSimiProperty:(id<SMSimiProperty>)value
+  withSMSimiEnvironment:(id<SMSimiEnvironment>)environment {
   @throw new_JavaLangAssertionError_init();
 }
 
-- (id<NetGlobulusSimiSimiObject>)cloneWithBoolean:(jboolean)mutable_ {
+- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_ {
   return self;
 }
 
@@ -60,43 +60,43 @@ withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environme
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiClass;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LSMSimiClass;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 1, 2, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiObject;", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 7, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiSimiClass:withNSString:);
+  methods[0].selector = @selector(initWithSMSimiClass:withNSString:);
   methods[1].selector = @selector(getSimiClass);
-  methods[2].selector = @selector(getWithNSString:withNetGlobulusSimiSimiEnvironment:);
-  methods[3].selector = @selector(setWithNSString:withNetGlobulusSimiSimiProperty:withNetGlobulusSimiSimiEnvironment:);
+  methods[2].selector = @selector(getWithNSString:withSMSimiEnvironment:);
+  methods[3].selector = @selector(setWithNSString:withSMSimiProperty:withSMSimiEnvironment:);
   methods[4].selector = @selector(cloneWithBoolean:);
   methods[5].selector = @selector(values);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "clazz_", "LNetGlobulusSimiSimiClass;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "clazz_", "LSMSimiClass;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiSimiClass;LNSString;", "get", "LNSString;LNetGlobulusSimiSimiEnvironment;", "set", "LNSString;LNetGlobulusSimiSimiProperty;LNetGlobulusSimiSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiException = { "SimiException", "net.globulus.simi", ptrTable, methods, fields, 7, 0x11, 6, 1, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiException;
+  static const void *ptrTable[] = { "LSMSimiClass;LNSString;", "get", "LNSString;LSMSimiEnvironment;", "set", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;" };
+  static const J2ObjcClassInfo _SMSimiException = { "SimiException", "net.globulus.simi", ptrTable, methods, fields, 7, 0x11, 6, 1, -1, -1, -1, -1, -1 };
+  return &_SMSimiException;
 }
 
 @end
 
-void NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_(NetGlobulusSimiSimiException *self, id<NetGlobulusSimiSimiClass> clazz, NSString *message) {
+void SMSimiException_initWithSMSimiClass_withNSString_(SMSimiException *self, id<SMSimiClass> clazz, NSString *message) {
   JavaLangRuntimeException_initWithNSString_(self, message);
   self->clazz_ = clazz;
 }
 
-NetGlobulusSimiSimiException *new_NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_(id<NetGlobulusSimiSimiClass> clazz, NSString *message) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiException, initWithNetGlobulusSimiSimiClass_withNSString_, clazz, message)
+SMSimiException *new_SMSimiException_initWithSMSimiClass_withNSString_(id<SMSimiClass> clazz, NSString *message) {
+  J2OBJC_NEW_IMPL(SMSimiException, initWithSMSimiClass_withNSString_, clazz, message)
 }
 
-NetGlobulusSimiSimiException *create_NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_(id<NetGlobulusSimiSimiClass> clazz, NSString *message) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiException, initWithNetGlobulusSimiSimiClass_withNSString_, clazz, message)
+SMSimiException *create_SMSimiException_initWithSMSimiClass_withNSString_(id<SMSimiClass> clazz, NSString *message) {
+  J2OBJC_CREATE_IMPL(SMSimiException, initWithSMSimiClass_withNSString_, clazz, message)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiException)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiException)

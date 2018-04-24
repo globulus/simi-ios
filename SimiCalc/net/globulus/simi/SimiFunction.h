@@ -13,23 +13,28 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiFunction
 
-#if !defined (NetGlobulusSimiSimiFunction_) && (INCLUDE_ALL_NetGlobulusSimiSimiFunction || defined(INCLUDE_NetGlobulusSimiSimiFunction))
-#define NetGlobulusSimiSimiFunction_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiFunction_) && (INCLUDE_ALL_NetGlobulusSimiSimiFunction || defined(INCLUDE_SMSimiFunction))
+#define SMSimiFunction_
 
 #define RESTRICT_NetGlobulusSimiSimiCallable 1
-#define INCLUDE_NetGlobulusSimiSimiCallable 1
+#define INCLUDE_SMSimiCallable 1
 #include "SimiCallable.h"
 
-@class NetGlobulusSimiEnvironment;
-@class NetGlobulusSimiSimiObjectImpl;
-@class NetGlobulusSimiStmt_Function;
+@class SMEnvironment;
+@class SMSimiObjectImpl;
+@class SMStmt_Function;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiBlockInterpreter;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMBlockInterpreter;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiSimiFunction : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMSimiFunction : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiStmt_Function *declaration_;
+  SMStmt_Function *declaration_;
   jboolean isNative_;
   id<JavaUtilList> annotations_;
 }
@@ -38,41 +43,47 @@
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 - (NSString *)description;
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiStmt_Function:(NetGlobulusSimiStmt_Function *)declaration
-                      withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)closure
-                                         withBoolean:(jboolean)isInitializer
-                                         withBoolean:(jboolean)isNative
-                                    withJavaUtilList:(id<JavaUtilList>)annotations;
+- (instancetype __nonnull)initWithSMStmt_Function:(SMStmt_Function *)declaration
+                                withSMEnvironment:(SMEnvironment *)closure
+                                      withBoolean:(jboolean)isInitializer
+                                      withBoolean:(jboolean)isNative
+                                 withJavaUtilList:(id<JavaUtilList>)annotations;
 
-- (NetGlobulusSimiSimiFunction *)bindWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)instance;
+- (SMSimiFunction *)bindWithSMSimiObjectImpl:(SMSimiObjectImpl *)instance;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiFunction)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiFunction)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiFunction, declaration_, NetGlobulusSimiStmt_Function *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiFunction, annotations_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMSimiFunction, declaration_, SMStmt_Function *)
+J2OBJC_FIELD_SETTER(SMSimiFunction, annotations_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiFunction_initWithNetGlobulusSimiStmt_Function_withNetGlobulusSimiEnvironment_withBoolean_withBoolean_withJavaUtilList_(NetGlobulusSimiSimiFunction *self, NetGlobulusSimiStmt_Function *declaration, NetGlobulusSimiEnvironment *closure, jboolean isInitializer, jboolean isNative, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT void SMSimiFunction_initWithSMStmt_Function_withSMEnvironment_withBoolean_withBoolean_withJavaUtilList_(SMSimiFunction *self, SMStmt_Function *declaration, SMEnvironment *closure, jboolean isInitializer, jboolean isNative, id<JavaUtilList> annotations);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiFunction *new_NetGlobulusSimiSimiFunction_initWithNetGlobulusSimiStmt_Function_withNetGlobulusSimiEnvironment_withBoolean_withBoolean_withJavaUtilList_(NetGlobulusSimiStmt_Function *declaration, NetGlobulusSimiEnvironment *closure, jboolean isInitializer, jboolean isNative, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiFunction *new_SMSimiFunction_initWithSMStmt_Function_withSMEnvironment_withBoolean_withBoolean_withJavaUtilList_(SMStmt_Function *declaration, SMEnvironment *closure, jboolean isInitializer, jboolean isNative, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiFunction *create_NetGlobulusSimiSimiFunction_initWithNetGlobulusSimiStmt_Function_withNetGlobulusSimiEnvironment_withBoolean_withBoolean_withJavaUtilList_(NetGlobulusSimiStmt_Function *declaration, NetGlobulusSimiEnvironment *closure, jboolean isInitializer, jboolean isNative, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT SMSimiFunction *create_SMSimiFunction_initWithSMStmt_Function_withSMEnvironment_withBoolean_withBoolean_withJavaUtilList_(SMStmt_Function *declaration, SMEnvironment *closure, jboolean isInitializer, jboolean isNative, id<JavaUtilList> annotations);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiFunction)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiFunction)
+
+@compatibility_alias NetGlobulusSimiSimiFunction SMSimiFunction;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiFunction")

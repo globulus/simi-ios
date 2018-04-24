@@ -7,11 +7,11 @@
 #include "java/util/Map.h"
 #include "SimiNativeClass.h"
 
-@implementation NetGlobulusSimiSimiNativeClass
+@implementation SMSimiNativeClass
 
-- (instancetype)initWithNSString:(NSString *)name
-                 withJavaUtilMap:(id<JavaUtilMap>)methods {
-  NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(self, name, methods);
+- (instancetype __nonnull)initWithNSString:(NSString *)name
+                           withJavaUtilMap:(id<JavaUtilMap>)methods {
+  SMSimiNativeClass_initWithNSString_withJavaUtilMap_(self, name, methods);
   return self;
 }
 
@@ -29,24 +29,24 @@
     { "methods_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x10, -1, -1, 2, -1 },
   };
   static const void *ptrTable[] = { "LNSString;LJavaUtilMap;", "(Ljava/lang/String;Ljava/util/Map<LOverloadableFunction;LSimiCallable;>;)V", "Ljava/util/Map<LOverloadableFunction;LSimiCallable;>;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiNativeClass = { "SimiNativeClass", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 1, 2, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiNativeClass;
+  static const J2ObjcClassInfo _SMSimiNativeClass = { "SimiNativeClass", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 1, 2, -1, -1, -1, -1, -1 };
+  return &_SMSimiNativeClass;
 }
 
 @end
 
-void NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NetGlobulusSimiSimiNativeClass *self, NSString *name, id<JavaUtilMap> methods) {
+void SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMSimiNativeClass *self, NSString *name, id<JavaUtilMap> methods) {
   NSObject_init(self);
   self->name_ = name;
   self->methods_ = methods;
 }
 
-NetGlobulusSimiSimiNativeClass *new_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NSString *name, id<JavaUtilMap> methods) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiNativeClass, initWithNSString_withJavaUtilMap_, name, methods)
+SMSimiNativeClass *new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(NSString *name, id<JavaUtilMap> methods) {
+  J2OBJC_NEW_IMPL(SMSimiNativeClass, initWithNSString_withJavaUtilMap_, name, methods)
 }
 
-NetGlobulusSimiSimiNativeClass *create_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NSString *name, id<JavaUtilMap> methods) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiNativeClass, initWithNSString_withJavaUtilMap_, name, methods)
+SMSimiNativeClass *create_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(NSString *name, id<JavaUtilMap> methods) {
+  J2OBJC_CREATE_IMPL(SMSimiNativeClass, initWithNSString_withJavaUtilMap_, name, methods)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiNativeClass)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiNativeClass)

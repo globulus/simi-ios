@@ -23,7 +23,7 @@
 #include "SimiObject.h"
 #include "SimiProperty.h"
 
-@interface NetGlobulusSimiNativeModulesManager () {
+@interface SMNativeModulesManager () {
  @public
   id<JavaUtilMap> classes_;
   id<JavaUtilMap> globals_;
@@ -31,18 +31,18 @@
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiNativeModulesManager, classes_, id<JavaUtilMap>)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiNativeModulesManager, globals_, id<JavaUtilMap>)
+J2OBJC_FIELD_SETTER(SMNativeModulesManager, classes_, id<JavaUtilMap>)
+J2OBJC_FIELD_SETTER(SMNativeModulesManager, globals_, id<JavaUtilMap>)
 
-inline NSString *NetGlobulusSimiNativeModulesManager_get_API_CLASS(void);
-static NSString *NetGlobulusSimiNativeModulesManager_API_CLASS = @"net.globulus.simi.api.JavaApi";
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiNativeModulesManager, API_CLASS, NSString *)
+inline NSString *SMNativeModulesManager_get_API_CLASS(void);
+static NSString *SMNativeModulesManager_API_CLASS = @"net.globulus.simi.api.JavaApi";
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMNativeModulesManager, API_CLASS, NSString *)
 
-@implementation NetGlobulusSimiNativeModulesManager
+@implementation SMNativeModulesManager
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiNativeModulesManager_init(self);
+- (instancetype __nonnull)init {
+  SMNativeModulesManager_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -50,9 +50,9 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)loadJarWithJavaNetURL:(JavaNetURL *)url {
   JavaLangClassLoader *loader = JavaNetURLClassLoader_newInstanceWithJavaNetURLArray_withJavaLangClassLoader_([IOSObjectArray newArrayWithObjects:(id[]){ url } count:1 type:JavaNetURL_class_()], [[self java_getClass] getClassLoader]);
   @try {
-    id<NetGlobulusSimiSimiApiClass> apiClass = (id<NetGlobulusSimiSimiApiClass>) cast_check([((IOSClass *) nil_chk(IOSClass_forName_initialize_classLoader_(NetGlobulusSimiNativeModulesManager_API_CLASS, true, loader))) newInstance], NetGlobulusSimiSimiApiClass_class_());
+    id<SMSimiApiClass> apiClass = (id<SMSimiApiClass>) cast_check([((IOSClass *) nil_chk(IOSClass_forName_initialize_classLoader_(SMNativeModulesManager_API_CLASS, true, loader))) newInstance], SMSimiApiClass_class_());
     {
-      IOSObjectArray *a__ = [((id<NetGlobulusSimiSimiApiClass>) nil_chk(apiClass)) classNames];
+      IOSObjectArray *a__ = [((id<SMSimiApiClass>) nil_chk(apiClass)) classNames];
       NSString * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
       NSString * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
@@ -81,21 +81,21 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNSString:(NSString *)className_
-                                       withNSString:(NSString *)methodName
-                      withNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)self_
-                     withNetGlobulusSimiInterpreter:(NetGlobulusSimiInterpreter *)interpreter
-                                   withJavaUtilList:(id<JavaUtilList>)args {
-  if ([((NSString *) nil_chk(className_)) isEqual:NetGlobulusSimiConstants_CLASS_GLOBALS]) {
-    id<NetGlobulusSimiSimiApiClass> apiClass = [((id<JavaUtilMap>) nil_chk(globals_)) getWithId:methodName];
+- (id<SMSimiProperty>)callWithNSString:(NSString *)className_
+                          withNSString:(NSString *)methodName
+                      withSMSimiObject:(id<SMSimiObject>)self_
+                     withSMInterpreter:(SMInterpreter *)interpreter
+                      withJavaUtilList:(id<JavaUtilList>)args {
+  if ([((NSString *) nil_chk(className_)) isEqual:SMConstants_CLASS_GLOBALS]) {
+    id<SMSimiApiClass> apiClass = [((id<JavaUtilMap>) nil_chk(globals_)) getWithId:methodName];
     if (apiClass != nil) {
-      return [apiClass callWithNSString:className_ withNSString:methodName withNetGlobulusSimiSimiObject:self_ withNetGlobulusSimiBlockInterpreter:interpreter withJavaUtilList:args];
+      return [apiClass callWithNSString:className_ withNSString:methodName withSMSimiObject:self_ withSMBlockInterpreter:interpreter withJavaUtilList:args];
     }
   }
   else {
-    id<NetGlobulusSimiSimiApiClass> apiClass = [((id<JavaUtilMap>) nil_chk(classes_)) getWithId:className_];
+    id<SMSimiApiClass> apiClass = [((id<JavaUtilMap>) nil_chk(classes_)) getWithId:className_];
     if (apiClass != nil) {
-      return [apiClass callWithNSString:className_ withNSString:methodName withNetGlobulusSimiSimiObject:self_ withNetGlobulusSimiBlockInterpreter:interpreter withJavaUtilList:args];
+      return [apiClass callWithNSString:className_ withNSString:methodName withSMSimiObject:self_ withSMBlockInterpreter:interpreter withJavaUtilList:args];
     }
   }
   @throw new_JavaLangIllegalArgumentException_init();
@@ -105,39 +105,39 @@ J2OBJC_IGNORE_DESIGNATED_END
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x0, 2, 3, 4, 5, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x0, 2, 3, 4, 5, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(loadJarWithJavaNetURL:);
-  methods[2].selector = @selector(callWithNSString:withNSString:withNetGlobulusSimiSimiObject:withNetGlobulusSimiInterpreter:withJavaUtilList:);
+  methods[2].selector = @selector(callWithNSString:withNSString:withSMSimiObject:withSMInterpreter:withJavaUtilList:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "API_CLASS", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 6, -1, -1 },
     { "classes_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 7, -1 },
     { "globals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 7, -1 },
   };
-  static const void *ptrTable[] = { "loadJar", "LJavaNetURL;", "call", "LNSString;LNSString;LNetGlobulusSimiSimiObject;LNetGlobulusSimiInterpreter;LJavaUtilList;", "LJavaLangIllegalArgumentException;", "(Ljava/lang/String;Ljava/lang/String;LSimiObject;LInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", &NetGlobulusSimiNativeModulesManager_API_CLASS, "Ljava/util/Map<Ljava/lang/String;LSimiApiClass;>;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiNativeModulesManager = { "NativeModulesManager", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 3, 3, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiNativeModulesManager;
+  static const void *ptrTable[] = { "loadJar", "LJavaNetURL;", "call", "LNSString;LNSString;LSMSimiObject;LSMInterpreter;LJavaUtilList;", "LJavaLangIllegalArgumentException;", "(Ljava/lang/String;Ljava/lang/String;LSimiObject;LInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", &SMNativeModulesManager_API_CLASS, "Ljava/util/Map<Ljava/lang/String;LSimiApiClass;>;" };
+  static const J2ObjcClassInfo _SMNativeModulesManager = { "NativeModulesManager", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 3, 3, -1, -1, -1, -1, -1 };
+  return &_SMNativeModulesManager;
 }
 
 @end
 
-void NetGlobulusSimiNativeModulesManager_init(NetGlobulusSimiNativeModulesManager *self) {
+void SMNativeModulesManager_init(SMNativeModulesManager *self) {
   NSObject_init(self);
   self->classes_ = new_JavaUtilHashMap_init();
   self->globals_ = new_JavaUtilHashMap_init();
 }
 
-NetGlobulusSimiNativeModulesManager *new_NetGlobulusSimiNativeModulesManager_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiNativeModulesManager, init)
+SMNativeModulesManager *new_SMNativeModulesManager_init() {
+  J2OBJC_NEW_IMPL(SMNativeModulesManager, init)
 }
 
-NetGlobulusSimiNativeModulesManager *create_NetGlobulusSimiNativeModulesManager_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiNativeModulesManager, init)
+SMNativeModulesManager *create_SMNativeModulesManager_init() {
+  J2OBJC_CREATE_IMPL(SMNativeModulesManager, init)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiNativeModulesManager)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMNativeModulesManager)

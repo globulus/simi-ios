@@ -13,8 +13,13 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiBreak
 
-#if !defined (NetGlobulusSimiBreak_) && (INCLUDE_ALL_NetGlobulusSimiBreak || defined(INCLUDE_NetGlobulusSimiBreak))
-#define NetGlobulusSimiBreak_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMBreak_) && (INCLUDE_ALL_NetGlobulusSimiBreak || defined(INCLUDE_SMBreak))
+#define SMBreak_
 
 #define RESTRICT_JavaLangRuntimeException 1
 #define INCLUDE_JavaLangRuntimeException 1
@@ -22,38 +27,44 @@
 
 @class JavaLangThrowable;
 
-@interface NetGlobulusSimiBreak : JavaLangRuntimeException
+@interface SMBreak : JavaLangRuntimeException
 
 #pragma mark Package-Private
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1
-                     withBoolean:(jboolean)arg2
-                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1
+                               withBoolean:(jboolean)arg2
+                               withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBreak)
+J2OBJC_EMPTY_STATIC_INIT(SMBreak)
 
-FOUNDATION_EXPORT void NetGlobulusSimiBreak_init(NetGlobulusSimiBreak *self);
+FOUNDATION_EXPORT void SMBreak_init(SMBreak *self);
 
-FOUNDATION_EXPORT NetGlobulusSimiBreak *new_NetGlobulusSimiBreak_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMBreak *new_SMBreak_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiBreak *create_NetGlobulusSimiBreak_init(void);
+FOUNDATION_EXPORT SMBreak *create_SMBreak_init(void);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiBreak)
+J2OBJC_TYPE_LITERAL_HEADER(SMBreak)
+
+@compatibility_alias NetGlobulusSimiBreak SMBreak;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiBreak")

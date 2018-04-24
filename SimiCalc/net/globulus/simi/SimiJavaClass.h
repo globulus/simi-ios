@@ -13,21 +13,32 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiJavaClass
 
-#if !defined (NetGlobulusSimiSimiJavaClass_) && (INCLUDE_ALL_NetGlobulusSimiSimiJavaClass || defined(INCLUDE_NetGlobulusSimiSimiJavaClass))
-#define NetGlobulusSimiSimiJavaClass_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiJavaClass_) && (INCLUDE_ALL_NetGlobulusSimiSimiJavaClass || defined(INCLUDE_SMSimiJavaClass))
+#define SMSimiJavaClass_
 
 #define RESTRICT_JavaLangAnnotationAnnotation 1
 #define INCLUDE_JavaLangAnnotationAnnotation 1
 #include "java/lang/annotation/Annotation.h"
 
-@protocol NetGlobulusSimiSimiJavaClass < JavaLangAnnotationAnnotation >
+@protocol SMSimiJavaClass < JavaLangAnnotationAnnotation >
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiJavaClass)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiJavaClass)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiJavaClass)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiJavaClass)
+
+#define NetGlobulusSimiSimiJavaClass SMSimiJavaClass
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiJavaClass")

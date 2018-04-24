@@ -6,46 +6,134 @@
 #include "J2ObjC_source.h"
 #include "Constants.h"
 
-@interface NetGlobulusSimiConstants ()
+@interface SMConstants ()
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
-__attribute__((unused)) static void NetGlobulusSimiConstants_init(NetGlobulusSimiConstants *self);
+__attribute__((unused)) static void SMConstants_init(SMConstants *self);
 
-__attribute__((unused)) static NetGlobulusSimiConstants *new_NetGlobulusSimiConstants_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMConstants *new_SMConstants_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiConstants *create_NetGlobulusSimiConstants_init(void);
+__attribute__((unused)) static SMConstants *create_SMConstants_init(void);
 
-NSString *NetGlobulusSimiConstants_MUTABLE = @"$";
-NSString *NetGlobulusSimiConstants_PRIVATE = @"_";
-NSString *NetGlobulusSimiConstants_IMPLICIT = @"#";
-NSString *NetGlobulusSimiConstants_INIT = @"init";
-NSString *NetGlobulusSimiConstants_SELF = @"self";
-NSString *NetGlobulusSimiConstants_SUPER = @"super";
-NSString *NetGlobulusSimiConstants_KEY = @"key";
-NSString *NetGlobulusSimiConstants_VALUE = @"value";
-NSString *NetGlobulusSimiConstants_ITERATE = @"iterate";
-NSString *NetGlobulusSimiConstants_NEXT = @"next";
-NSString *NetGlobulusSimiConstants_HAS = @"has";
-NSString *NetGlobulusSimiConstants_EQUALS = @"equals";
-NSString *NetGlobulusSimiConstants_COMPARE_TO = @"compareTo";
-NSString *NetGlobulusSimiConstants_TO_STRING = @"toString";
-NSString *NetGlobulusSimiConstants_RAISE = @"raise";
-NSString *NetGlobulusSimiConstants_CLASS_OBJECT = @"$Object";
-NSString *NetGlobulusSimiConstants_CLASS_STRING = @"$String";
-NSString *NetGlobulusSimiConstants_CLASS_NUMBER = @"$Number";
-NSString *NetGlobulusSimiConstants_CLASS_CLASS = @"Class";
-NSString *NetGlobulusSimiConstants_CLASS_EXCEPTION = @"Exception";
-NSString *NetGlobulusSimiConstants_CLASS_GLOBALS = @"Globals";
-NSString *NetGlobulusSimiConstants_EXCEPTION_NUMBER_FORMAT = @"NumberFormatException";
+NSString *SMConstants_MUTABLE = @"$";
+NSString *SMConstants_PRIVATE = @"_";
+NSString *SMConstants_IMPLICIT = @"#";
+NSString *SMConstants_INIT = @"init";
+NSString *SMConstants_SELF = @"self";
+NSString *SMConstants_SUPER = @"super";
+NSString *SMConstants_KEY = @"key";
+NSString *SMConstants_VALUE = @"value";
+NSString *SMConstants_ITERATE = @"iterate";
+NSString *SMConstants_NEXT = @"next";
+NSString *SMConstants_HAS = @"has";
+NSString *SMConstants_EQUALS = @"equals";
+NSString *SMConstants_COMPARE_TO = @"compareTo";
+NSString *SMConstants_TO_STRING = @"toString";
+NSString *SMConstants_RAISE = @"raise";
+NSString *SMConstants_CLASS_OBJECT = @"$Object";
+NSString *SMConstants_CLASS_STRING = @"$String";
+NSString *SMConstants_CLASS_NUMBER = @"$Number";
+NSString *SMConstants_CLASS_CLASS = @"Class";
+NSString *SMConstants_CLASS_EXCEPTION = @"Exception";
+NSString *SMConstants_CLASS_GLOBALS = @"Globals";
+NSString *SMConstants_EXCEPTION_NUMBER_FORMAT = @"NumberFormatException";
 
-@implementation NetGlobulusSimiConstants
+@implementation SMConstants
+
++ (NSString *)MUTABLE {
+  return SMConstants_MUTABLE;
+}
+
++ (NSString *)PRIVATE {
+  return SMConstants_PRIVATE;
+}
+
++ (NSString *)IMPLICIT {
+  return SMConstants_IMPLICIT;
+}
+
++ (NSString *)INIT {
+  return SMConstants_INIT;
+}
+
++ (NSString *)SELF {
+  return SMConstants_SELF;
+}
+
++ (NSString *)SUPER {
+  return SMConstants_SUPER;
+}
+
++ (NSString *)KEY {
+  return SMConstants_KEY;
+}
+
++ (NSString *)VALUE {
+  return SMConstants_VALUE;
+}
+
++ (NSString *)ITERATE {
+  return SMConstants_ITERATE;
+}
+
++ (NSString *)NEXT {
+  return SMConstants_NEXT;
+}
+
++ (NSString *)HAS {
+  return SMConstants_HAS;
+}
+
++ (NSString *)EQUALS {
+  return SMConstants_EQUALS;
+}
+
++ (NSString *)COMPARE_TO {
+  return SMConstants_COMPARE_TO;
+}
+
++ (NSString *)TO_STRING {
+  return SMConstants_TO_STRING;
+}
+
++ (NSString *)RAISE {
+  return SMConstants_RAISE;
+}
+
++ (NSString *)CLASS_OBJECT {
+  return SMConstants_CLASS_OBJECT;
+}
+
++ (NSString *)CLASS_STRING {
+  return SMConstants_CLASS_STRING;
+}
+
++ (NSString *)CLASS_NUMBER {
+  return SMConstants_CLASS_NUMBER;
+}
+
++ (NSString *)CLASS_CLASS {
+  return SMConstants_CLASS_CLASS;
+}
+
++ (NSString *)CLASS_EXCEPTION {
+  return SMConstants_CLASS_EXCEPTION;
+}
+
++ (NSString *)CLASS_GLOBALS {
+  return SMConstants_CLASS_GLOBALS;
+}
+
++ (NSString *)EXCEPTION_NUMBER_FORMAT {
+  return SMConstants_EXCEPTION_NUMBER_FORMAT;
+}
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiConstants_init(self);
+- (instancetype __nonnull)init {
+  SMConstants_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -83,23 +171,23 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "CLASS_GLOBALS", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
     { "EXCEPTION_NUMBER_FORMAT", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
   };
-  static const void *ptrTable[] = { &NetGlobulusSimiConstants_MUTABLE, &NetGlobulusSimiConstants_PRIVATE, &NetGlobulusSimiConstants_IMPLICIT, &NetGlobulusSimiConstants_INIT, &NetGlobulusSimiConstants_SELF, &NetGlobulusSimiConstants_SUPER, &NetGlobulusSimiConstants_KEY, &NetGlobulusSimiConstants_VALUE, &NetGlobulusSimiConstants_ITERATE, &NetGlobulusSimiConstants_NEXT, &NetGlobulusSimiConstants_HAS, &NetGlobulusSimiConstants_EQUALS, &NetGlobulusSimiConstants_COMPARE_TO, &NetGlobulusSimiConstants_TO_STRING, &NetGlobulusSimiConstants_RAISE, &NetGlobulusSimiConstants_CLASS_OBJECT, &NetGlobulusSimiConstants_CLASS_STRING, &NetGlobulusSimiConstants_CLASS_NUMBER, &NetGlobulusSimiConstants_CLASS_CLASS, &NetGlobulusSimiConstants_CLASS_EXCEPTION, &NetGlobulusSimiConstants_CLASS_GLOBALS, &NetGlobulusSimiConstants_EXCEPTION_NUMBER_FORMAT };
-  static const J2ObjcClassInfo _NetGlobulusSimiConstants = { "Constants", "net.globulus.simi", ptrTable, methods, fields, 7, 0x10, 1, 22, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiConstants;
+  static const void *ptrTable[] = { &SMConstants_MUTABLE, &SMConstants_PRIVATE, &SMConstants_IMPLICIT, &SMConstants_INIT, &SMConstants_SELF, &SMConstants_SUPER, &SMConstants_KEY, &SMConstants_VALUE, &SMConstants_ITERATE, &SMConstants_NEXT, &SMConstants_HAS, &SMConstants_EQUALS, &SMConstants_COMPARE_TO, &SMConstants_TO_STRING, &SMConstants_RAISE, &SMConstants_CLASS_OBJECT, &SMConstants_CLASS_STRING, &SMConstants_CLASS_NUMBER, &SMConstants_CLASS_CLASS, &SMConstants_CLASS_EXCEPTION, &SMConstants_CLASS_GLOBALS, &SMConstants_EXCEPTION_NUMBER_FORMAT };
+  static const J2ObjcClassInfo _SMConstants = { "Constants", "net.globulus.simi", ptrTable, methods, fields, 7, 0x10, 1, 22, -1, -1, -1, -1, -1 };
+  return &_SMConstants;
 }
 
 @end
 
-void NetGlobulusSimiConstants_init(NetGlobulusSimiConstants *self) {
+void SMConstants_init(SMConstants *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiConstants *new_NetGlobulusSimiConstants_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiConstants, init)
+SMConstants *new_SMConstants_init() {
+  J2OBJC_NEW_IMPL(SMConstants, init)
 }
 
-NetGlobulusSimiConstants *create_NetGlobulusSimiConstants_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiConstants, init)
+SMConstants *create_SMConstants_init() {
+  J2OBJC_CREATE_IMPL(SMConstants, init)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiConstants)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMConstants)

@@ -17,7 +17,7 @@
 #include "Token.h"
 #include "TokenType.h"
 
-@interface NetGlobulusSimiScanner () {
+@interface SMScanner () {
  @public
   NSString *source_;
   id<JavaUtilList> tokens_;
@@ -35,9 +35,9 @@
 - (NSString *)escapedStringWithInt:(jint)start
                            withInt:(jint)stop;
 
-- (NSString *)keywordStringWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type;
+- (NSString *)keywordStringWithSMTokenType:(SMTokenType *)type;
 
-- (jboolean)matchPeekWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type;
+- (jboolean)matchPeekWithSMTokenType:(SMTokenType *)type;
 
 - (jboolean)matchWithChar:(jchar)expected;
 
@@ -59,162 +59,162 @@
 
 - (jchar)advance;
 
-- (void)addTokenWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type;
+- (void)addTokenWithSMTokenType:(SMTokenType *)type;
 
-- (void)addTokenWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type
-                withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)literal;
+- (void)addTokenWithSMTokenType:(SMTokenType *)type
+                withSMSimiValue:(SMSimiValue *)literal;
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiScanner, source_, NSString *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiScanner, tokens_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMScanner, source_, NSString *)
+J2OBJC_FIELD_SETTER(SMScanner, tokens_, id<JavaUtilList>)
 
-inline id<JavaUtilMap> NetGlobulusSimiScanner_get_keywords(void);
-static id<JavaUtilMap> NetGlobulusSimiScanner_keywords;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiScanner, keywords, id<JavaUtilMap>)
+inline id<JavaUtilMap> SMScanner_get_keywords(void);
+static id<JavaUtilMap> SMScanner_keywords;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMScanner, keywords, id<JavaUtilMap>)
 
-__attribute__((unused)) static void NetGlobulusSimiScanner_scanToken(NetGlobulusSimiScanner *self);
+__attribute__((unused)) static void SMScanner_scanToken(SMScanner *self);
 
-__attribute__((unused)) static void NetGlobulusSimiScanner_identifier(NetGlobulusSimiScanner *self);
+__attribute__((unused)) static void SMScanner_identifier(SMScanner *self);
 
-__attribute__((unused)) static void NetGlobulusSimiScanner_number(NetGlobulusSimiScanner *self);
+__attribute__((unused)) static void SMScanner_number(SMScanner *self);
 
-__attribute__((unused)) static NSString *NetGlobulusSimiScanner_escapedStringWithInt_withInt_(NetGlobulusSimiScanner *self, jint start, jint stop);
+__attribute__((unused)) static NSString *SMScanner_escapedStringWithInt_withInt_(SMScanner *self, jint start, jint stop);
 
-__attribute__((unused)) static NSString *NetGlobulusSimiScanner_keywordStringWithNetGlobulusSimiTokenType_(NetGlobulusSimiScanner *self, NetGlobulusSimiTokenType *type);
+__attribute__((unused)) static NSString *SMScanner_keywordStringWithSMTokenType_(SMScanner *self, SMTokenType *type);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiScanner_matchPeekWithNetGlobulusSimiTokenType_(NetGlobulusSimiScanner *self, NetGlobulusSimiTokenType *type);
+__attribute__((unused)) static jboolean SMScanner_matchPeekWithSMTokenType_(SMScanner *self, SMTokenType *type);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiScanner_matchWithChar_(NetGlobulusSimiScanner *self, jchar expected);
+__attribute__((unused)) static jboolean SMScanner_matchWithChar_(SMScanner *self, jchar expected);
 
-__attribute__((unused)) static jchar NetGlobulusSimiScanner_peek(NetGlobulusSimiScanner *self);
+__attribute__((unused)) static jchar SMScanner_peek(SMScanner *self);
 
-__attribute__((unused)) static jchar NetGlobulusSimiScanner_peekNext(NetGlobulusSimiScanner *self);
+__attribute__((unused)) static jchar SMScanner_peekNext(SMScanner *self);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiScanner_isAlphaWithChar_(NetGlobulusSimiScanner *self, jchar c);
+__attribute__((unused)) static jboolean SMScanner_isAlphaWithChar_(SMScanner *self, jchar c);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiScanner_isAlphaNumericWithChar_(NetGlobulusSimiScanner *self, jchar c);
+__attribute__((unused)) static jboolean SMScanner_isAlphaNumericWithChar_(SMScanner *self, jchar c);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiScanner_isDigitWithChar_(NetGlobulusSimiScanner *self, jchar c);
+__attribute__((unused)) static jboolean SMScanner_isDigitWithChar_(SMScanner *self, jchar c);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiScanner_isDigitOrUnderscoreWithChar_(NetGlobulusSimiScanner *self, jchar c);
+__attribute__((unused)) static jboolean SMScanner_isDigitOrUnderscoreWithChar_(SMScanner *self, jchar c);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiScanner_isStringDelimWithChar_(NetGlobulusSimiScanner *self, jchar c);
+__attribute__((unused)) static jboolean SMScanner_isStringDelimWithChar_(SMScanner *self, jchar c);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiScanner_isAtEnd(NetGlobulusSimiScanner *self);
+__attribute__((unused)) static jboolean SMScanner_isAtEnd(SMScanner *self);
 
-__attribute__((unused)) static jchar NetGlobulusSimiScanner_advance(NetGlobulusSimiScanner *self);
+__attribute__((unused)) static jchar SMScanner_advance(SMScanner *self);
 
-__attribute__((unused)) static void NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(NetGlobulusSimiScanner *self, NetGlobulusSimiTokenType *type);
+__attribute__((unused)) static void SMScanner_addTokenWithSMTokenType_(SMScanner *self, SMTokenType *type);
 
-__attribute__((unused)) static void NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_withNetGlobulusSimiSimiValue_(NetGlobulusSimiScanner *self, NetGlobulusSimiTokenType *type, NetGlobulusSimiSimiValue *literal);
+__attribute__((unused)) static void SMScanner_addTokenWithSMTokenType_withSMSimiValue_(SMScanner *self, SMTokenType *type, SMSimiValue *literal);
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiScanner)
+J2OBJC_INITIALIZED_DEFN(SMScanner)
 
-@implementation NetGlobulusSimiScanner
+@implementation SMScanner
 
-- (instancetype)initWithNSString:(NSString *)source {
-  NetGlobulusSimiScanner_initWithNSString_(self, source);
+- (instancetype __nonnull)initWithNSString:(NSString *)source {
+  SMScanner_initWithNSString_(self, source);
   return self;
 }
 
 - (id<JavaUtilList>)scanTokensWithBoolean:(jboolean)addEof {
-  while (!NetGlobulusSimiScanner_isAtEnd(self)) {
+  while (!SMScanner_isAtEnd(self)) {
     start_ = current_;
-    NetGlobulusSimiScanner_scanToken(self);
+    SMScanner_scanToken(self);
   }
   if (addEof) {
-    [((id<JavaUtilList>) nil_chk(tokens_)) addWithId:new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(JreLoadEnum(NetGlobulusSimiTokenType, EOF), @"", nil, line_)];
+    [((id<JavaUtilList>) nil_chk(tokens_)) addWithId:new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, EOF), @"", nil, line_)];
   }
   return tokens_;
 }
 
 - (void)scanToken {
-  NetGlobulusSimiScanner_scanToken(self);
+  SMScanner_scanToken(self);
 }
 
 - (void)identifier {
-  NetGlobulusSimiScanner_identifier(self);
+  SMScanner_identifier(self);
 }
 
 - (void)number {
-  NetGlobulusSimiScanner_number(self);
+  SMScanner_number(self);
 }
 
 - (void)stringWithChar:(jchar)opener {
-  while (NetGlobulusSimiScanner_peek(self) != opener && !NetGlobulusSimiScanner_isAtEnd(self)) {
-    if (NetGlobulusSimiScanner_peek(self) == 0x000a) line_++;
-    NetGlobulusSimiScanner_advance(self);
+  while (SMScanner_peek(self) != opener && !SMScanner_isAtEnd(self)) {
+    if (SMScanner_peek(self) == 0x000a) line_++;
+    SMScanner_advance(self);
   }
-  if (NetGlobulusSimiScanner_isAtEnd(self)) {
-    [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithInt:line_ withNSString:@"Unterminated string."];
+  if (SMScanner_isAtEnd(self)) {
+    [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithInt:line_ withNSString:@"Unterminated string."];
     return;
   }
-  NetGlobulusSimiScanner_advance(self);
-  NSString *value = NetGlobulusSimiScanner_escapedStringWithInt_withInt_(self, start_ + 1, current_ - 1);
-  NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_withNetGlobulusSimiSimiValue_(self, JreLoadEnum(NetGlobulusSimiTokenType, STRING), new_NetGlobulusSimiSimiValue_String_initWithNSString_(value));
+  SMScanner_advance(self);
+  NSString *value = SMScanner_escapedStringWithInt_withInt_(self, start_ + 1, current_ - 1);
+  SMScanner_addTokenWithSMTokenType_withSMSimiValue_(self, JreLoadEnum(SMTokenType, STRING), new_SMSimiValue_String_initWithNSString_(value));
 }
 
 - (NSString *)escapedStringWithInt:(jint)start
                            withInt:(jint)stop {
-  return NetGlobulusSimiScanner_escapedStringWithInt_withInt_(self, start, stop);
+  return SMScanner_escapedStringWithInt_withInt_(self, start, stop);
 }
 
-- (NSString *)keywordStringWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type {
-  return NetGlobulusSimiScanner_keywordStringWithNetGlobulusSimiTokenType_(self, type);
+- (NSString *)keywordStringWithSMTokenType:(SMTokenType *)type {
+  return SMScanner_keywordStringWithSMTokenType_(self, type);
 }
 
-- (jboolean)matchPeekWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type {
-  return NetGlobulusSimiScanner_matchPeekWithNetGlobulusSimiTokenType_(self, type);
+- (jboolean)matchPeekWithSMTokenType:(SMTokenType *)type {
+  return SMScanner_matchPeekWithSMTokenType_(self, type);
 }
 
 - (jboolean)matchWithChar:(jchar)expected {
-  return NetGlobulusSimiScanner_matchWithChar_(self, expected);
+  return SMScanner_matchWithChar_(self, expected);
 }
 
 - (jchar)peek {
-  return NetGlobulusSimiScanner_peek(self);
+  return SMScanner_peek(self);
 }
 
 - (jchar)peekNext {
-  return NetGlobulusSimiScanner_peekNext(self);
+  return SMScanner_peekNext(self);
 }
 
 - (jboolean)isAlphaWithChar:(jchar)c {
-  return NetGlobulusSimiScanner_isAlphaWithChar_(self, c);
+  return SMScanner_isAlphaWithChar_(self, c);
 }
 
 - (jboolean)isAlphaNumericWithChar:(jchar)c {
-  return NetGlobulusSimiScanner_isAlphaNumericWithChar_(self, c);
+  return SMScanner_isAlphaNumericWithChar_(self, c);
 }
 
 - (jboolean)isDigitWithChar:(jchar)c {
-  return NetGlobulusSimiScanner_isDigitWithChar_(self, c);
+  return SMScanner_isDigitWithChar_(self, c);
 }
 
 - (jboolean)isDigitOrUnderscoreWithChar:(jchar)c {
-  return NetGlobulusSimiScanner_isDigitOrUnderscoreWithChar_(self, c);
+  return SMScanner_isDigitOrUnderscoreWithChar_(self, c);
 }
 
 - (jboolean)isStringDelimWithChar:(jchar)c {
-  return NetGlobulusSimiScanner_isStringDelimWithChar_(self, c);
+  return SMScanner_isStringDelimWithChar_(self, c);
 }
 
 - (jboolean)isAtEnd {
-  return NetGlobulusSimiScanner_isAtEnd(self);
+  return SMScanner_isAtEnd(self);
 }
 
 - (jchar)advance {
-  return NetGlobulusSimiScanner_advance(self);
+  return SMScanner_advance(self);
 }
 
-- (void)addTokenWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type {
-  NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, type);
+- (void)addTokenWithSMTokenType:(SMTokenType *)type {
+  SMScanner_addTokenWithSMTokenType_(self, type);
 }
 
-- (void)addTokenWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type
-                withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)literal {
-  NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_withNetGlobulusSimiSimiValue_(self, type, literal);
+- (void)addTokenWithSMTokenType:(SMTokenType *)type
+                withSMSimiValue:(SMSimiValue *)literal {
+  SMScanner_addTokenWithSMTokenType_withSMSimiValue_(self, type, literal);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -251,8 +251,8 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiScanner)
   methods[4].selector = @selector(number);
   methods[5].selector = @selector(stringWithChar:);
   methods[6].selector = @selector(escapedStringWithInt:withInt:);
-  methods[7].selector = @selector(keywordStringWithNetGlobulusSimiTokenType:);
-  methods[8].selector = @selector(matchPeekWithNetGlobulusSimiTokenType:);
+  methods[7].selector = @selector(keywordStringWithSMTokenType:);
+  methods[8].selector = @selector(matchPeekWithSMTokenType:);
   methods[9].selector = @selector(matchWithChar:);
   methods[10].selector = @selector(peek);
   methods[11].selector = @selector(peekNext);
@@ -263,8 +263,8 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiScanner)
   methods[16].selector = @selector(isStringDelimWithChar:);
   methods[17].selector = @selector(isAtEnd);
   methods[18].selector = @selector(advance);
-  methods[19].selector = @selector(addTokenWithNetGlobulusSimiTokenType:);
-  methods[20].selector = @selector(addTokenWithNetGlobulusSimiTokenType:withNetGlobulusSimiSimiValue:);
+  methods[19].selector = @selector(addTokenWithSMTokenType:);
+  methods[20].selector = @selector(addTokenWithSMTokenType:withSMSimiValue:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keywords", "LJavaUtilMap;", .constantValue.asLong = 0, 0x1a, -1, 19, 20, -1 },
@@ -274,52 +274,52 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiScanner)
     { "current_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "line_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNSString;", "scanTokens", "Z", "(Z)Ljava/util/List<LToken;>;", "string", "C", "escapedString", "II", "keywordString", "LNetGlobulusSimiTokenType;", "matchPeek", "match", "isAlpha", "isAlphaNumeric", "isDigit", "isDigitOrUnderscore", "isStringDelim", "addToken", "LNetGlobulusSimiTokenType;LNetGlobulusSimiSimiValue;", &NetGlobulusSimiScanner_keywords, "Ljava/util/Map<Ljava/lang/String;LTokenType;>;", "Ljava/util/List<LToken;>;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiScanner = { "Scanner", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 21, 6, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiScanner;
+  static const void *ptrTable[] = { "LNSString;", "scanTokens", "Z", "(Z)Ljava/util/List<LToken;>;", "string", "C", "escapedString", "II", "keywordString", "LSMTokenType;", "matchPeek", "match", "isAlpha", "isAlphaNumeric", "isDigit", "isDigitOrUnderscore", "isStringDelim", "addToken", "LSMTokenType;LSMSimiValue;", &SMScanner_keywords, "Ljava/util/Map<Ljava/lang/String;LTokenType;>;", "Ljava/util/List<LToken;>;" };
+  static const J2ObjcClassInfo _SMScanner = { "Scanner", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 21, 6, -1, -1, -1, -1, -1 };
+  return &_SMScanner;
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiScanner class]) {
+  if (self == [SMScanner class]) {
     {
-      NetGlobulusSimiScanner_keywords = new_JavaUtilHashMap_init();
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"and" withId:JreLoadEnum(NetGlobulusSimiTokenType, AND)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"break" withId:JreLoadEnum(NetGlobulusSimiTokenType, BREAK)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"class" withId:JreLoadEnum(NetGlobulusSimiTokenType, CLASS)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"continue" withId:JreLoadEnum(NetGlobulusSimiTokenType, CONTINUE)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"def" withId:JreLoadEnum(NetGlobulusSimiTokenType, DEF)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"end" withId:JreLoadEnum(NetGlobulusSimiTokenType, END)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"else" withId:JreLoadEnum(NetGlobulusSimiTokenType, ELSE)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"elsif" withId:JreLoadEnum(NetGlobulusSimiTokenType, ELSIF)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"false" withId:JreLoadEnum(NetGlobulusSimiTokenType, FALSE)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"for" withId:JreLoadEnum(NetGlobulusSimiTokenType, FOR)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"gu" withId:JreLoadEnum(NetGlobulusSimiTokenType, GU)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"if" withId:JreLoadEnum(NetGlobulusSimiTokenType, IF)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"import" withId:JreLoadEnum(NetGlobulusSimiTokenType, IMPORT)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"in" withId:JreLoadEnum(NetGlobulusSimiTokenType, IN)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"is" withId:JreLoadEnum(NetGlobulusSimiTokenType, IS)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"native" withId:JreLoadEnum(NetGlobulusSimiTokenType, NATIVE)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"nil" withId:JreLoadEnum(NetGlobulusSimiTokenType, NIL)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"not" withId:JreLoadEnum(NetGlobulusSimiTokenType, NOT)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"or" withId:JreLoadEnum(NetGlobulusSimiTokenType, OR)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"pass" withId:JreLoadEnum(NetGlobulusSimiTokenType, PASS)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"print" withId:JreLoadEnum(NetGlobulusSimiTokenType, PRINT)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"rescue" withId:JreLoadEnum(NetGlobulusSimiTokenType, RESCUE)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"return" withId:JreLoadEnum(NetGlobulusSimiTokenType, RETURN)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:NetGlobulusSimiConstants_SELF withId:JreLoadEnum(NetGlobulusSimiTokenType, SELF)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:NetGlobulusSimiConstants_SUPER withId:JreLoadEnum(NetGlobulusSimiTokenType, SUPER)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"true" withId:JreLoadEnum(NetGlobulusSimiTokenType, TRUE)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"when" withId:JreLoadEnum(NetGlobulusSimiTokenType, WHEN)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"while" withId:JreLoadEnum(NetGlobulusSimiTokenType, WHILE)];
-      (void) [NetGlobulusSimiScanner_keywords putWithId:@"yield" withId:JreLoadEnum(NetGlobulusSimiTokenType, YIELD)];
+      SMScanner_keywords = new_JavaUtilHashMap_init();
+      (void) [SMScanner_keywords putWithId:@"and" withId:JreLoadEnum(SMTokenType, AND)];
+      (void) [SMScanner_keywords putWithId:@"break" withId:JreLoadEnum(SMTokenType, BREAK)];
+      (void) [SMScanner_keywords putWithId:@"class" withId:JreLoadEnum(SMTokenType, CLASS)];
+      (void) [SMScanner_keywords putWithId:@"continue" withId:JreLoadEnum(SMTokenType, CONTINUE)];
+      (void) [SMScanner_keywords putWithId:@"def" withId:JreLoadEnum(SMTokenType, DEF)];
+      (void) [SMScanner_keywords putWithId:@"end" withId:JreLoadEnum(SMTokenType, END)];
+      (void) [SMScanner_keywords putWithId:@"else" withId:JreLoadEnum(SMTokenType, ELSE)];
+      (void) [SMScanner_keywords putWithId:@"elsif" withId:JreLoadEnum(SMTokenType, ELSIF)];
+      (void) [SMScanner_keywords putWithId:@"false" withId:JreLoadEnum(SMTokenType, FALSE)];
+      (void) [SMScanner_keywords putWithId:@"for" withId:JreLoadEnum(SMTokenType, FOR)];
+      (void) [SMScanner_keywords putWithId:@"gu" withId:JreLoadEnum(SMTokenType, GU)];
+      (void) [SMScanner_keywords putWithId:@"if" withId:JreLoadEnum(SMTokenType, IF)];
+      (void) [SMScanner_keywords putWithId:@"import" withId:JreLoadEnum(SMTokenType, IMPORT)];
+      (void) [SMScanner_keywords putWithId:@"in" withId:JreLoadEnum(SMTokenType, IN)];
+      (void) [SMScanner_keywords putWithId:@"is" withId:JreLoadEnum(SMTokenType, IS)];
+      (void) [SMScanner_keywords putWithId:@"native" withId:JreLoadEnum(SMTokenType, NATIVE)];
+      (void) [SMScanner_keywords putWithId:@"nil" withId:JreLoadEnum(SMTokenType, NIL)];
+      (void) [SMScanner_keywords putWithId:@"not" withId:JreLoadEnum(SMTokenType, NOT)];
+      (void) [SMScanner_keywords putWithId:@"or" withId:JreLoadEnum(SMTokenType, OR)];
+      (void) [SMScanner_keywords putWithId:@"pass" withId:JreLoadEnum(SMTokenType, PASS)];
+      (void) [SMScanner_keywords putWithId:@"print" withId:JreLoadEnum(SMTokenType, PRINT)];
+      (void) [SMScanner_keywords putWithId:@"rescue" withId:JreLoadEnum(SMTokenType, RESCUE)];
+      (void) [SMScanner_keywords putWithId:@"return" withId:JreLoadEnum(SMTokenType, RETURN)];
+      (void) [SMScanner_keywords putWithId:SMConstants_SELF withId:JreLoadEnum(SMTokenType, SELF)];
+      (void) [SMScanner_keywords putWithId:SMConstants_SUPER withId:JreLoadEnum(SMTokenType, SUPER)];
+      (void) [SMScanner_keywords putWithId:@"true" withId:JreLoadEnum(SMTokenType, TRUE)];
+      (void) [SMScanner_keywords putWithId:@"when" withId:JreLoadEnum(SMTokenType, WHEN)];
+      (void) [SMScanner_keywords putWithId:@"while" withId:JreLoadEnum(SMTokenType, WHILE)];
+      (void) [SMScanner_keywords putWithId:@"yield" withId:JreLoadEnum(SMTokenType, YIELD)];
     }
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiScanner)
+    J2OBJC_SET_INITIALIZED(SMScanner)
   }
 }
 
 @end
 
-void NetGlobulusSimiScanner_initWithNSString_(NetGlobulusSimiScanner *self, NSString *source) {
+void SMScanner_initWithNSString_(SMScanner *self, NSString *source) {
   NSObject_init(self);
   self->tokens_ = new_JavaUtilArrayList_init();
   self->start_ = 0;
@@ -328,137 +328,137 @@ void NetGlobulusSimiScanner_initWithNSString_(NetGlobulusSimiScanner *self, NSSt
   self->source_ = source;
 }
 
-NetGlobulusSimiScanner *new_NetGlobulusSimiScanner_initWithNSString_(NSString *source) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiScanner, initWithNSString_, source)
+SMScanner *new_SMScanner_initWithNSString_(NSString *source) {
+  J2OBJC_NEW_IMPL(SMScanner, initWithNSString_, source)
 }
 
-NetGlobulusSimiScanner *create_NetGlobulusSimiScanner_initWithNSString_(NSString *source) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiScanner, initWithNSString_, source)
+SMScanner *create_SMScanner_initWithNSString_(NSString *source) {
+  J2OBJC_CREATE_IMPL(SMScanner, initWithNSString_, source)
 }
 
-void NetGlobulusSimiScanner_scanToken(NetGlobulusSimiScanner *self) {
-  jchar c = NetGlobulusSimiScanner_advance(self);
+void SMScanner_scanToken(SMScanner *self) {
+  jchar c = SMScanner_advance(self);
   switch (c) {
     case '(':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN));
     break;
     case ')':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN));
     break;
     case '[':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, LEFT_BRACKET));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_BRACKET));
     break;
     case ']':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_BRACKET));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_BRACKET));
     break;
     case ',':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, COMMA));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, COMMA));
     break;
     case '.':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, DOT));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOT));
     break;
     case ':':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, COLON));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, COLON));
     break;
     case '@':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, SELF));
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, DOT));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, SELF));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOT));
     break;
     case '?':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, NetGlobulusSimiScanner_matchWithChar_(self, '?') ? JreLoadEnum(NetGlobulusSimiTokenType, QUESTION_QUESTION) : JreLoadEnum(NetGlobulusSimiTokenType, QUESTION));
+    SMScanner_addTokenWithSMTokenType_(self, SMScanner_matchWithChar_(self, '?') ? JreLoadEnum(SMTokenType, QUESTION_QUESTION) : JreLoadEnum(SMTokenType, QUESTION));
     break;
     case '=':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, NetGlobulusSimiScanner_matchWithChar_(self, '=') ? JreLoadEnum(NetGlobulusSimiTokenType, EQUAL_EQUAL) : JreLoadEnum(NetGlobulusSimiTokenType, EQUAL));
+    SMScanner_addTokenWithSMTokenType_(self, SMScanner_matchWithChar_(self, '=') ? JreLoadEnum(SMTokenType, EQUAL_EQUAL) : JreLoadEnum(SMTokenType, EQUAL));
     break;
     case '<':
     {
-      if (NetGlobulusSimiScanner_matchWithChar_(self, '>')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, LESS_GREATER));
+      if (SMScanner_matchWithChar_(self, '>')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LESS_GREATER));
       }
-      else if (NetGlobulusSimiScanner_matchWithChar_(self, '=')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, LESS_EQUAL));
+      else if (SMScanner_matchWithChar_(self, '=')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LESS_EQUAL));
       }
       else {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, LESS));
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LESS));
       }
     }
     break;
     case '!':
     {
-      if (NetGlobulusSimiScanner_matchWithChar_(self, '!')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, BANG_BANG));
+      if (SMScanner_matchWithChar_(self, '!')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, BANG_BANG));
       }
-      else if (NetGlobulusSimiScanner_matchWithChar_(self, '=')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, BANG_EQUAL));
+      else if (SMScanner_matchWithChar_(self, '=')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, BANG_EQUAL));
       }
       else {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, BANG));
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, BANG));
       }
     }
     break;
     case '>':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, NetGlobulusSimiScanner_matchWithChar_(self, '=') ? JreLoadEnum(NetGlobulusSimiTokenType, GREATER_EQUAL) : JreLoadEnum(NetGlobulusSimiTokenType, GREATER));
+    SMScanner_addTokenWithSMTokenType_(self, SMScanner_matchWithChar_(self, '=') ? JreLoadEnum(SMTokenType, GREATER_EQUAL) : JreLoadEnum(SMTokenType, GREATER));
     break;
     case '+':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, NetGlobulusSimiScanner_matchWithChar_(self, '=') ? JreLoadEnum(NetGlobulusSimiTokenType, PLUS_EQUAL) : JreLoadEnum(NetGlobulusSimiTokenType, PLUS));
+    SMScanner_addTokenWithSMTokenType_(self, SMScanner_matchWithChar_(self, '=') ? JreLoadEnum(SMTokenType, PLUS_EQUAL) : JreLoadEnum(SMTokenType, PLUS));
     break;
     case '-':
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, NetGlobulusSimiScanner_matchWithChar_(self, '=') ? JreLoadEnum(NetGlobulusSimiTokenType, MINUS_EQUAL) : JreLoadEnum(NetGlobulusSimiTokenType, MINUS));
+    SMScanner_addTokenWithSMTokenType_(self, SMScanner_matchWithChar_(self, '=') ? JreLoadEnum(SMTokenType, MINUS_EQUAL) : JreLoadEnum(SMTokenType, MINUS));
     break;
     case '/':
     {
-      if (NetGlobulusSimiScanner_matchWithChar_(self, '/')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, SLASH_SLASH));
+      if (SMScanner_matchWithChar_(self, '/')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, SLASH_SLASH));
       }
-      else if (NetGlobulusSimiScanner_matchWithChar_(self, '=')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, SLASH_EQUAL));
+      else if (SMScanner_matchWithChar_(self, '=')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, SLASH_EQUAL));
       }
       else {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, SLASH));
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, SLASH));
       }
     }
     break;
     case '*':
     {
-      if (NetGlobulusSimiScanner_matchWithChar_(self, '*')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, STAR_STAR));
+      if (SMScanner_matchWithChar_(self, '*')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, STAR_STAR));
       }
-      else if (NetGlobulusSimiScanner_matchWithChar_(self, '=')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, STAR_EQUAL));
+      else if (SMScanner_matchWithChar_(self, '=')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, STAR_EQUAL));
       }
       else {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, STAR));
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, STAR));
       }
     }
     break;
     case '%':
     {
-      if (NetGlobulusSimiScanner_matchWithChar_(self, '%')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, MOD_MOD));
+      if (SMScanner_matchWithChar_(self, '%')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, MOD_MOD));
       }
-      else if (NetGlobulusSimiScanner_matchWithChar_(self, '=')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, MOD_EQUAL));
+      else if (SMScanner_matchWithChar_(self, '=')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, MOD_EQUAL));
       }
       else {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, MOD));
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, MOD));
       }
     }
     break;
     case '$':
     {
-      if (NetGlobulusSimiScanner_matchWithChar_(self, '[')) {
-        NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, DOLLAR_LEFT_BRACKET));
+      if (SMScanner_matchWithChar_(self, '[')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET));
       }
       else {
-        NetGlobulusSimiScanner_identifier(self);
+        SMScanner_identifier(self);
       }
     }
     break;
     case '#':
-    while (NetGlobulusSimiScanner_peek(self) != 0x000a && !NetGlobulusSimiScanner_isAtEnd(self)) NetGlobulusSimiScanner_advance(self);
+    while (SMScanner_peek(self) != 0x000a && !SMScanner_isAtEnd(self)) SMScanner_advance(self);
     break;
     case '\\':
-    if (NetGlobulusSimiScanner_matchWithChar_(self, 0x000a)) {
+    if (SMScanner_matchWithChar_(self, 0x000a)) {
       self->line_++;
     }
     break;
@@ -468,78 +468,78 @@ void NetGlobulusSimiScanner_scanToken(NetGlobulusSimiScanner *self) {
     break;
     case 0x000a:
     self->line_++;
-    NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE));
+    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, NEWLINE));
     break;
     default:
-    if (NetGlobulusSimiScanner_isStringDelimWithChar_(self, c)) {
+    if (SMScanner_isStringDelimWithChar_(self, c)) {
       [self stringWithChar:c];
     }
-    else if (NetGlobulusSimiScanner_isDigitWithChar_(self, c)) {
-      NetGlobulusSimiScanner_number(self);
+    else if (SMScanner_isDigitWithChar_(self, c)) {
+      SMScanner_number(self);
     }
-    else if (NetGlobulusSimiScanner_isAlphaWithChar_(self, c)) {
-      NetGlobulusSimiScanner_identifier(self);
+    else if (SMScanner_isAlphaWithChar_(self, c)) {
+      SMScanner_identifier(self);
     }
     else {
-      [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithInt:self->line_ withNSString:@"Unexpected character."];
+      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithInt:self->line_ withNSString:@"Unexpected character."];
     }
     break;
   }
 }
 
-void NetGlobulusSimiScanner_identifier(NetGlobulusSimiScanner *self) {
-  while (NetGlobulusSimiScanner_isAlphaNumericWithChar_(self, NetGlobulusSimiScanner_peek(self))) NetGlobulusSimiScanner_advance(self);
+void SMScanner_identifier(SMScanner *self) {
+  while (SMScanner_isAlphaNumericWithChar_(self, SMScanner_peek(self))) SMScanner_advance(self);
   NSString *text = [((NSString *) nil_chk(self->source_)) java_substring:self->start_ endIndex:self->current_];
-  NetGlobulusSimiTokenType *type = [((id<JavaUtilMap>) nil_chk(NetGlobulusSimiScanner_keywords)) getWithId:text];
-  if (type == JreLoadEnum(NetGlobulusSimiTokenType, NOT) && NetGlobulusSimiScanner_matchPeekWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, IN))) {
-    type = JreLoadEnum(NetGlobulusSimiTokenType, NOTIN);
+  SMTokenType *type = [((id<JavaUtilMap>) nil_chk(SMScanner_keywords)) getWithId:text];
+  if (type == JreLoadEnum(SMTokenType, NOT) && SMScanner_matchPeekWithSMTokenType_(self, JreLoadEnum(SMTokenType, IN))) {
+    type = JreLoadEnum(SMTokenType, NOTIN);
   }
-  else if (type == JreLoadEnum(NetGlobulusSimiTokenType, IS) && NetGlobulusSimiScanner_matchPeekWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, NOT))) {
-    type = JreLoadEnum(NetGlobulusSimiTokenType, ISNOT);
+  else if (type == JreLoadEnum(SMTokenType, IS) && SMScanner_matchPeekWithSMTokenType_(self, JreLoadEnum(SMTokenType, NOT))) {
+    type = JreLoadEnum(SMTokenType, ISNOT);
   }
   else if (type == nil) {
-    type = JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER);
+    type = JreLoadEnum(SMTokenType, IDENTIFIER);
   }
-  NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(self, type);
+  SMScanner_addTokenWithSMTokenType_(self, type);
 }
 
-void NetGlobulusSimiScanner_number(NetGlobulusSimiScanner *self) {
-  while (NetGlobulusSimiScanner_isDigitOrUnderscoreWithChar_(self, NetGlobulusSimiScanner_peek(self))) NetGlobulusSimiScanner_advance(self);
-  if (NetGlobulusSimiScanner_peek(self) == '.' && NetGlobulusSimiScanner_isDigitWithChar_(self, NetGlobulusSimiScanner_peekNext(self))) {
-    NetGlobulusSimiScanner_advance(self);
-    while (NetGlobulusSimiScanner_isDigitOrUnderscoreWithChar_(self, NetGlobulusSimiScanner_peek(self))) NetGlobulusSimiScanner_advance(self);
+void SMScanner_number(SMScanner *self) {
+  while (SMScanner_isDigitOrUnderscoreWithChar_(self, SMScanner_peek(self))) SMScanner_advance(self);
+  if (SMScanner_peek(self) == '.' && SMScanner_isDigitWithChar_(self, SMScanner_peekNext(self))) {
+    SMScanner_advance(self);
+    while (SMScanner_isDigitOrUnderscoreWithChar_(self, SMScanner_peek(self))) SMScanner_advance(self);
   }
-  if (NetGlobulusSimiScanner_peek(self) == 'e' || NetGlobulusSimiScanner_peek(self) == 'E') {
-    if (NetGlobulusSimiScanner_isDigitWithChar_(self, NetGlobulusSimiScanner_peekNext(self))) {
-      NetGlobulusSimiScanner_advance(self);
+  if (SMScanner_peek(self) == 'e' || SMScanner_peek(self) == 'E') {
+    if (SMScanner_isDigitWithChar_(self, SMScanner_peekNext(self))) {
+      SMScanner_advance(self);
     }
-    else if (NetGlobulusSimiScanner_peekNext(self) == '+' || NetGlobulusSimiScanner_peekNext(self) == '-') {
-      NetGlobulusSimiScanner_advance(self);
-      NetGlobulusSimiScanner_advance(self);
+    else if (SMScanner_peekNext(self) == '+' || SMScanner_peekNext(self) == '-') {
+      SMScanner_advance(self);
+      SMScanner_advance(self);
     }
     else {
-      [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithInt:self->line_ withNSString:@"Expected a digit or + or - after E!"];
+      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithInt:self->line_ withNSString:@"Expected a digit or + or - after E!"];
     }
-    while (NetGlobulusSimiScanner_isDigitOrUnderscoreWithChar_(self, NetGlobulusSimiScanner_peek(self))) NetGlobulusSimiScanner_advance(self);
+    while (SMScanner_isDigitOrUnderscoreWithChar_(self, SMScanner_peek(self))) SMScanner_advance(self);
   }
-  NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_withNetGlobulusSimiSimiValue_(self, JreLoadEnum(NetGlobulusSimiTokenType, NUMBER), new_NetGlobulusSimiSimiValue_Number_initWithDouble_(JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([((NSString *) nil_chk(self->source_)) java_substring:self->start_ endIndex:self->current_])) java_replace:@"_" withSequence:@""])));
+  SMScanner_addTokenWithSMTokenType_withSMSimiValue_(self, JreLoadEnum(SMTokenType, NUMBER), new_SMSimiValue_Number_initWithDouble_(JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([((NSString *) nil_chk(self->source_)) java_substring:self->start_ endIndex:self->current_])) java_replace:@"_" withSequence:@""])));
 }
 
-NSString *NetGlobulusSimiScanner_escapedStringWithInt_withInt_(NetGlobulusSimiScanner *self, jint start, jint stop) {
+NSString *SMScanner_escapedStringWithInt_withInt_(SMScanner *self, jint start, jint stop) {
   return [((NSString *) nil_chk([((NSString *) nil_chk([((NSString *) nil_chk(self->source_)) java_substring:start endIndex:stop])) java_replace:@"\\n" withSequence:@"\n"])) java_replace:@"\\t" withSequence:@"\t"];
 }
 
-NSString *NetGlobulusSimiScanner_keywordStringWithNetGlobulusSimiTokenType_(NetGlobulusSimiScanner *self, NetGlobulusSimiTokenType *type) {
-  for (NSString * __strong s in nil_chk([((id<JavaUtilMap>) nil_chk(NetGlobulusSimiScanner_keywords)) keySet])) {
-    if ([NetGlobulusSimiScanner_keywords getWithId:s] == type) {
+NSString *SMScanner_keywordStringWithSMTokenType_(SMScanner *self, SMTokenType *type) {
+  for (NSString * __strong s in nil_chk([((id<JavaUtilMap>) nil_chk(SMScanner_keywords)) keySet])) {
+    if ([SMScanner_keywords getWithId:s] == type) {
       return s;
     }
   }
   return nil;
 }
 
-jboolean NetGlobulusSimiScanner_matchPeekWithNetGlobulusSimiTokenType_(NetGlobulusSimiScanner *self, NetGlobulusSimiTokenType *type) {
-  NSString *keyword = NetGlobulusSimiScanner_keywordStringWithNetGlobulusSimiTokenType_(self, type);
+jboolean SMScanner_matchPeekWithSMTokenType_(SMScanner *self, SMTokenType *type) {
+  NSString *keyword = SMScanner_keywordStringWithSMTokenType_(self, type);
   if (keyword == nil) {
     return false;
   }
@@ -552,59 +552,59 @@ jboolean NetGlobulusSimiScanner_matchPeekWithNetGlobulusSimiTokenType_(NetGlobul
   return false;
 }
 
-jboolean NetGlobulusSimiScanner_matchWithChar_(NetGlobulusSimiScanner *self, jchar expected) {
-  if (NetGlobulusSimiScanner_isAtEnd(self)) return false;
+jboolean SMScanner_matchWithChar_(SMScanner *self, jchar expected) {
+  if (SMScanner_isAtEnd(self)) return false;
   if ([((NSString *) nil_chk(self->source_)) charAtWithInt:self->current_] != expected) return false;
   self->current_++;
   return true;
 }
 
-jchar NetGlobulusSimiScanner_peek(NetGlobulusSimiScanner *self) {
-  if (NetGlobulusSimiScanner_isAtEnd(self)) return 0x0000;
+jchar SMScanner_peek(SMScanner *self) {
+  if (SMScanner_isAtEnd(self)) return 0x0000;
   return [((NSString *) nil_chk(self->source_)) charAtWithInt:self->current_];
 }
 
-jchar NetGlobulusSimiScanner_peekNext(NetGlobulusSimiScanner *self) {
+jchar SMScanner_peekNext(SMScanner *self) {
   if (self->current_ + 1 >= [((NSString *) nil_chk(self->source_)) java_length]) return 0x0000;
   return [self->source_ charAtWithInt:self->current_ + 1];
 }
 
-jboolean NetGlobulusSimiScanner_isAlphaWithChar_(NetGlobulusSimiScanner *self, jchar c) {
+jboolean SMScanner_isAlphaWithChar_(SMScanner *self, jchar c) {
   return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_' || c == '$';
 }
 
-jboolean NetGlobulusSimiScanner_isAlphaNumericWithChar_(NetGlobulusSimiScanner *self, jchar c) {
-  return NetGlobulusSimiScanner_isAlphaWithChar_(self, c) || NetGlobulusSimiScanner_isDigitWithChar_(self, c);
+jboolean SMScanner_isAlphaNumericWithChar_(SMScanner *self, jchar c) {
+  return SMScanner_isAlphaWithChar_(self, c) || SMScanner_isDigitWithChar_(self, c);
 }
 
-jboolean NetGlobulusSimiScanner_isDigitWithChar_(NetGlobulusSimiScanner *self, jchar c) {
+jboolean SMScanner_isDigitWithChar_(SMScanner *self, jchar c) {
   return c >= '0' && c <= '9';
 }
 
-jboolean NetGlobulusSimiScanner_isDigitOrUnderscoreWithChar_(NetGlobulusSimiScanner *self, jchar c) {
-  return NetGlobulusSimiScanner_isDigitWithChar_(self, c) || c == '_';
+jboolean SMScanner_isDigitOrUnderscoreWithChar_(SMScanner *self, jchar c) {
+  return SMScanner_isDigitWithChar_(self, c) || c == '_';
 }
 
-jboolean NetGlobulusSimiScanner_isStringDelimWithChar_(NetGlobulusSimiScanner *self, jchar c) {
+jboolean SMScanner_isStringDelimWithChar_(SMScanner *self, jchar c) {
   return c == '"' || c == '\'';
 }
 
-jboolean NetGlobulusSimiScanner_isAtEnd(NetGlobulusSimiScanner *self) {
+jboolean SMScanner_isAtEnd(SMScanner *self) {
   return self->current_ >= [((NSString *) nil_chk(self->source_)) java_length];
 }
 
-jchar NetGlobulusSimiScanner_advance(NetGlobulusSimiScanner *self) {
+jchar SMScanner_advance(SMScanner *self) {
   self->current_++;
   return [((NSString *) nil_chk(self->source_)) charAtWithInt:self->current_ - 1];
 }
 
-void NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_(NetGlobulusSimiScanner *self, NetGlobulusSimiTokenType *type) {
-  NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_withNetGlobulusSimiSimiValue_(self, type, nil);
+void SMScanner_addTokenWithSMTokenType_(SMScanner *self, SMTokenType *type) {
+  SMScanner_addTokenWithSMTokenType_withSMSimiValue_(self, type, nil);
 }
 
-void NetGlobulusSimiScanner_addTokenWithNetGlobulusSimiTokenType_withNetGlobulusSimiSimiValue_(NetGlobulusSimiScanner *self, NetGlobulusSimiTokenType *type, NetGlobulusSimiSimiValue *literal) {
+void SMScanner_addTokenWithSMTokenType_withSMSimiValue_(SMScanner *self, SMTokenType *type, SMSimiValue *literal) {
   NSString *text = [((NSString *) nil_chk(self->source_)) java_substring:self->start_ endIndex:self->current_];
-  [((id<JavaUtilList>) nil_chk(self->tokens_)) addWithId:new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(type, text, literal, self->line_)];
+  [((id<JavaUtilList>) nil_chk(self->tokens_)) addWithId:new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(type, text, literal, self->line_)];
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiScanner)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMScanner)

@@ -6,17 +6,17 @@
 #include "J2ObjC_source.h"
 #include "SimiStatement.h"
 
-@interface NetGlobulusSimiSimiStatement : NSObject
+@interface SMSimiStatement : NSObject
 
 @end
 
-@implementation NetGlobulusSimiSimiStatement
+@implementation SMSimiStatement
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiStatement = { "SimiStatement", "net.globulus.simi", NULL, NULL, NULL, 7, 0x609, 0, 0, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiStatement;
+  static const J2ObjcClassInfo _SMSimiStatement = { "SimiStatement", "net.globulus.simi", NULL, NULL, NULL, 7, 0x609, 0, 0, -1, -1, -1, -1, -1 };
+  return &_SMSimiStatement;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiStatement)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMSimiStatement)

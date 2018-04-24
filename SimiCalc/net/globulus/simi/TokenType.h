@@ -18,8 +18,8 @@
 #pragma GCC diagnostic ignored "-Wnullability-completeness"
 #endif
 
-#if !defined (NetGlobulusSimiTokenType_) && (INCLUDE_ALL_NetGlobulusSimiTokenType || defined(INCLUDE_NetGlobulusSimiTokenType))
-#define NetGlobulusSimiTokenType_
+#if !defined (SMTokenType_) && (INCLUDE_ALL_NetGlobulusSimiTokenType || defined(INCLUDE_SMTokenType))
+#define SMTokenType_
 
 #define RESTRICT_JavaLangEnum 1
 #define INCLUDE_JavaLangEnum 1
@@ -27,307 +27,451 @@
 
 @class IOSObjectArray;
 
-typedef NS_ENUM(NSUInteger, NetGlobulusSimiTokenType_Enum) {
-  NetGlobulusSimiTokenType_Enum_LEFT_PAREN = 0,
-  NetGlobulusSimiTokenType_Enum_RIGHT_PAREN = 1,
-  NetGlobulusSimiTokenType_Enum_LEFT_BRACKET = 2,
-  NetGlobulusSimiTokenType_Enum_RIGHT_BRACKET = 3,
-  NetGlobulusSimiTokenType_Enum_COMMA = 4,
-  NetGlobulusSimiTokenType_Enum_DOT = 5,
-  NetGlobulusSimiTokenType_Enum_COLON = 6,
-  NetGlobulusSimiTokenType_Enum_NEWLINE = 7,
-  NetGlobulusSimiTokenType_Enum_BANG = 8,
-  NetGlobulusSimiTokenType_Enum_BANG_BANG = 9,
-  NetGlobulusSimiTokenType_Enum_BANG_EQUAL = 10,
-  NetGlobulusSimiTokenType_Enum_EQUAL = 11,
-  NetGlobulusSimiTokenType_Enum_EQUAL_EQUAL = 12,
-  NetGlobulusSimiTokenType_Enum_GREATER = 13,
-  NetGlobulusSimiTokenType_Enum_GREATER_EQUAL = 14,
-  NetGlobulusSimiTokenType_Enum_LESS = 15,
-  NetGlobulusSimiTokenType_Enum_LESS_EQUAL = 16,
-  NetGlobulusSimiTokenType_Enum_LESS_GREATER = 17,
-  NetGlobulusSimiTokenType_Enum_PLUS = 18,
-  NetGlobulusSimiTokenType_Enum_PLUS_EQUAL = 19,
-  NetGlobulusSimiTokenType_Enum_MINUS = 20,
-  NetGlobulusSimiTokenType_Enum_MINUS_EQUAL = 21,
-  NetGlobulusSimiTokenType_Enum_STAR = 22,
-  NetGlobulusSimiTokenType_Enum_STAR_STAR = 23,
-  NetGlobulusSimiTokenType_Enum_STAR_EQUAL = 24,
-  NetGlobulusSimiTokenType_Enum_SLASH = 25,
-  NetGlobulusSimiTokenType_Enum_SLASH_SLASH = 26,
-  NetGlobulusSimiTokenType_Enum_SLASH_EQUAL = 27,
-  NetGlobulusSimiTokenType_Enum_MOD = 28,
-  NetGlobulusSimiTokenType_Enum_MOD_MOD = 29,
-  NetGlobulusSimiTokenType_Enum_MOD_EQUAL = 30,
-  NetGlobulusSimiTokenType_Enum_DOLLAR_LEFT_BRACKET = 31,
-  NetGlobulusSimiTokenType_Enum_QUESTION = 32,
-  NetGlobulusSimiTokenType_Enum_QUESTION_QUESTION = 33,
-  NetGlobulusSimiTokenType_Enum_IDENTIFIER = 34,
-  NetGlobulusSimiTokenType_Enum_STRING = 35,
-  NetGlobulusSimiTokenType_Enum_NUMBER = 36,
-  NetGlobulusSimiTokenType_Enum_AND = 37,
-  NetGlobulusSimiTokenType_Enum_BREAK = 38,
-  NetGlobulusSimiTokenType_Enum_CLASS = 39,
-  NetGlobulusSimiTokenType_Enum_CONTINUE = 40,
-  NetGlobulusSimiTokenType_Enum_ELSE = 41,
-  NetGlobulusSimiTokenType_Enum_FALSE = 42,
-  NetGlobulusSimiTokenType_Enum_DEF = 43,
-  NetGlobulusSimiTokenType_Enum_FOR = 44,
-  NetGlobulusSimiTokenType_Enum_RESCUE = 45,
-  NetGlobulusSimiTokenType_Enum_IF = 46,
-  NetGlobulusSimiTokenType_Enum_NIL = 47,
-  NetGlobulusSimiTokenType_Enum_OR = 48,
-  NetGlobulusSimiTokenType_Enum_PRINT = 49,
-  NetGlobulusSimiTokenType_Enum_RETURN = 50,
-  NetGlobulusSimiTokenType_Enum_SUPER = 51,
-  NetGlobulusSimiTokenType_Enum_SELF = 52,
-  NetGlobulusSimiTokenType_Enum_TRUE = 53,
-  NetGlobulusSimiTokenType_Enum_WHILE = 54,
-  NetGlobulusSimiTokenType_Enum_PASS = 55,
-  NetGlobulusSimiTokenType_Enum_IN = 56,
-  NetGlobulusSimiTokenType_Enum_IS = 57,
-  NetGlobulusSimiTokenType_Enum_NOT = 58,
-  NetGlobulusSimiTokenType_Enum_ELSIF = 59,
-  NetGlobulusSimiTokenType_Enum_END = 60,
-  NetGlobulusSimiTokenType_Enum_ISNOT = 61,
-  NetGlobulusSimiTokenType_Enum_NOTIN = 62,
-  NetGlobulusSimiTokenType_Enum_NATIVE = 63,
-  NetGlobulusSimiTokenType_Enum_IMPORT = 64,
-  NetGlobulusSimiTokenType_Enum_YIELD = 65,
-  NetGlobulusSimiTokenType_Enum_WHEN = 66,
-  NetGlobulusSimiTokenType_Enum_GU = 67,
-  NetGlobulusSimiTokenType_Enum_EOF = 68,
+typedef NS_ENUM(NSUInteger, SMTokenType_Enum) {
+  SMTokenType_Enum_LEFT_PAREN = 0,
+  SMTokenType_Enum_RIGHT_PAREN = 1,
+  SMTokenType_Enum_LEFT_BRACKET = 2,
+  SMTokenType_Enum_RIGHT_BRACKET = 3,
+  SMTokenType_Enum_COMMA = 4,
+  SMTokenType_Enum_DOT = 5,
+  SMTokenType_Enum_COLON = 6,
+  SMTokenType_Enum_NEWLINE = 7,
+  SMTokenType_Enum_BANG = 8,
+  SMTokenType_Enum_BANG_BANG = 9,
+  SMTokenType_Enum_BANG_EQUAL = 10,
+  SMTokenType_Enum_EQUAL = 11,
+  SMTokenType_Enum_EQUAL_EQUAL = 12,
+  SMTokenType_Enum_GREATER = 13,
+  SMTokenType_Enum_GREATER_EQUAL = 14,
+  SMTokenType_Enum_LESS = 15,
+  SMTokenType_Enum_LESS_EQUAL = 16,
+  SMTokenType_Enum_LESS_GREATER = 17,
+  SMTokenType_Enum_PLUS = 18,
+  SMTokenType_Enum_PLUS_EQUAL = 19,
+  SMTokenType_Enum_MINUS = 20,
+  SMTokenType_Enum_MINUS_EQUAL = 21,
+  SMTokenType_Enum_STAR = 22,
+  SMTokenType_Enum_STAR_STAR = 23,
+  SMTokenType_Enum_STAR_EQUAL = 24,
+  SMTokenType_Enum_SLASH = 25,
+  SMTokenType_Enum_SLASH_SLASH = 26,
+  SMTokenType_Enum_SLASH_EQUAL = 27,
+  SMTokenType_Enum_MOD = 28,
+  SMTokenType_Enum_MOD_MOD = 29,
+  SMTokenType_Enum_MOD_EQUAL = 30,
+  SMTokenType_Enum_DOLLAR_LEFT_BRACKET = 31,
+  SMTokenType_Enum_QUESTION = 32,
+  SMTokenType_Enum_QUESTION_QUESTION = 33,
+  SMTokenType_Enum_IDENTIFIER = 34,
+  SMTokenType_Enum_STRING = 35,
+  SMTokenType_Enum_NUMBER = 36,
+  SMTokenType_Enum_AND = 37,
+  SMTokenType_Enum_BREAK = 38,
+  SMTokenType_Enum_CLASS = 39,
+  SMTokenType_Enum_CONTINUE = 40,
+  SMTokenType_Enum_ELSE = 41,
+  SMTokenType_Enum_FALSE = 42,
+  SMTokenType_Enum_DEF = 43,
+  SMTokenType_Enum_FOR = 44,
+  SMTokenType_Enum_RESCUE = 45,
+  SMTokenType_Enum_IF = 46,
+  SMTokenType_Enum_NIL = 47,
+  SMTokenType_Enum_OR = 48,
+  SMTokenType_Enum_PRINT = 49,
+  SMTokenType_Enum_RETURN = 50,
+  SMTokenType_Enum_SUPER = 51,
+  SMTokenType_Enum_SELF = 52,
+  SMTokenType_Enum_TRUE = 53,
+  SMTokenType_Enum_WHILE = 54,
+  SMTokenType_Enum_PASS = 55,
+  SMTokenType_Enum_IN = 56,
+  SMTokenType_Enum_IS = 57,
+  SMTokenType_Enum_NOT = 58,
+  SMTokenType_Enum_ELSIF = 59,
+  SMTokenType_Enum_END = 60,
+  SMTokenType_Enum_ISNOT = 61,
+  SMTokenType_Enum_NOTIN = 62,
+  SMTokenType_Enum_NATIVE = 63,
+  SMTokenType_Enum_IMPORT = 64,
+  SMTokenType_Enum_YIELD = 65,
+  SMTokenType_Enum_WHEN = 66,
+  SMTokenType_Enum_GU = 67,
+  SMTokenType_Enum_EOF = 68,
 };
 
-@interface NetGlobulusSimiTokenType : JavaLangEnum
+@interface SMTokenType : JavaLangEnum
+
++ (SMTokenType * __nonnull)LEFT_PAREN;
+
++ (SMTokenType * __nonnull)RIGHT_PAREN;
+
++ (SMTokenType * __nonnull)LEFT_BRACKET;
+
++ (SMTokenType * __nonnull)RIGHT_BRACKET;
+
++ (SMTokenType * __nonnull)COMMA;
+
++ (SMTokenType * __nonnull)DOT;
+
++ (SMTokenType * __nonnull)COLON;
+
++ (SMTokenType * __nonnull)NEWLINE;
+
++ (SMTokenType * __nonnull)BANG;
+
++ (SMTokenType * __nonnull)BANG_BANG;
+
++ (SMTokenType * __nonnull)BANG_EQUAL;
+
++ (SMTokenType * __nonnull)EQUAL;
+
++ (SMTokenType * __nonnull)EQUAL_EQUAL;
+
++ (SMTokenType * __nonnull)GREATER;
+
++ (SMTokenType * __nonnull)GREATER_EQUAL;
+
++ (SMTokenType * __nonnull)LESS;
+
++ (SMTokenType * __nonnull)LESS_EQUAL;
+
++ (SMTokenType * __nonnull)LESS_GREATER;
+
++ (SMTokenType * __nonnull)PLUS;
+
++ (SMTokenType * __nonnull)PLUS_EQUAL;
+
++ (SMTokenType * __nonnull)MINUS;
+
++ (SMTokenType * __nonnull)MINUS_EQUAL;
+
++ (SMTokenType * __nonnull)STAR;
+
++ (SMTokenType * __nonnull)STAR_STAR;
+
++ (SMTokenType * __nonnull)STAR_EQUAL;
+
++ (SMTokenType * __nonnull)SLASH;
+
++ (SMTokenType * __nonnull)SLASH_SLASH;
+
++ (SMTokenType * __nonnull)SLASH_EQUAL;
+
++ (SMTokenType * __nonnull)MOD;
+
++ (SMTokenType * __nonnull)MOD_MOD;
+
++ (SMTokenType * __nonnull)MOD_EQUAL;
+
++ (SMTokenType * __nonnull)DOLLAR_LEFT_BRACKET;
+
++ (SMTokenType * __nonnull)QUESTION;
+
++ (SMTokenType * __nonnull)QUESTION_QUESTION;
+
++ (SMTokenType * __nonnull)IDENTIFIER;
+
++ (SMTokenType * __nonnull)STRING;
+
++ (SMTokenType * __nonnull)NUMBER;
+
++ (SMTokenType * __nonnull)AND;
+
++ (SMTokenType * __nonnull)BREAK;
+
++ (SMTokenType * __nonnull)CLASS;
+
++ (SMTokenType * __nonnull)CONTINUE;
+
++ (SMTokenType * __nonnull)ELSE;
+
++ (SMTokenType * __nonnull)FALSE_;
+
++ (SMTokenType * __nonnull)DEF;
+
++ (SMTokenType * __nonnull)FOR;
+
++ (SMTokenType * __nonnull)RESCUE;
+
++ (SMTokenType * __nonnull)IF;
+
++ (SMTokenType * __nonnull)NIL;
+
++ (SMTokenType * __nonnull)OR;
+
++ (SMTokenType * __nonnull)PRINT;
+
++ (SMTokenType * __nonnull)RETURN;
+
++ (SMTokenType * __nonnull)SUPER;
+
++ (SMTokenType * __nonnull)SELF;
+
++ (SMTokenType * __nonnull)TRUE_;
+
++ (SMTokenType * __nonnull)WHILE;
+
++ (SMTokenType * __nonnull)PASS;
+
++ (SMTokenType * __nonnull)IN;
+
++ (SMTokenType * __nonnull)IS;
+
++ (SMTokenType * __nonnull)NOT;
+
++ (SMTokenType * __nonnull)ELSIF;
+
++ (SMTokenType * __nonnull)END;
+
++ (SMTokenType * __nonnull)ISNOT;
+
++ (SMTokenType * __nonnull)NOTIN;
+
++ (SMTokenType * __nonnull)NATIVE;
+
++ (SMTokenType * __nonnull)IMPORT;
+
++ (SMTokenType * __nonnull)YIELD;
+
++ (SMTokenType * __nonnull)WHEN;
+
++ (SMTokenType * __nonnull)GU;
+
++ (SMTokenType * __nonnull)EOF_;
 
 #pragma mark Public
 
-+ (NetGlobulusSimiTokenType *)valueOfWithNSString:(NSString *)name;
++ (SMTokenType *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
+#pragma mark Package-Private
+
+- (SMTokenType_Enum)toNSEnum;
+
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiTokenType)
+J2OBJC_STATIC_INIT(SMTokenType)
 
 /*! INTERNAL ONLY - Use enum accessors declared below. */
-FOUNDATION_EXPORT NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_values_[];
+FOUNDATION_EXPORT SMTokenType *SMTokenType_values_[];
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_LEFT_PAREN(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, LEFT_PAREN)
+inline SMTokenType *SMTokenType_get_LEFT_PAREN(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, LEFT_PAREN)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_RIGHT_PAREN(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, RIGHT_PAREN)
+inline SMTokenType *SMTokenType_get_RIGHT_PAREN(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, RIGHT_PAREN)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_LEFT_BRACKET(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, LEFT_BRACKET)
+inline SMTokenType *SMTokenType_get_LEFT_BRACKET(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, LEFT_BRACKET)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_RIGHT_BRACKET(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, RIGHT_BRACKET)
+inline SMTokenType *SMTokenType_get_RIGHT_BRACKET(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, RIGHT_BRACKET)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_COMMA(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, COMMA)
+inline SMTokenType *SMTokenType_get_COMMA(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, COMMA)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_DOT(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, DOT)
+inline SMTokenType *SMTokenType_get_DOT(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, DOT)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_COLON(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, COLON)
+inline SMTokenType *SMTokenType_get_COLON(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, COLON)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_NEWLINE(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, NEWLINE)
+inline SMTokenType *SMTokenType_get_NEWLINE(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, NEWLINE)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_BANG(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, BANG)
+inline SMTokenType *SMTokenType_get_BANG(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, BANG)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_BANG_BANG(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, BANG_BANG)
+inline SMTokenType *SMTokenType_get_BANG_BANG(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, BANG_BANG)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_BANG_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, BANG_EQUAL)
+inline SMTokenType *SMTokenType_get_BANG_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, BANG_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, EQUAL)
+inline SMTokenType *SMTokenType_get_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_EQUAL_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, EQUAL_EQUAL)
+inline SMTokenType *SMTokenType_get_EQUAL_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, EQUAL_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_GREATER(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, GREATER)
+inline SMTokenType *SMTokenType_get_GREATER(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, GREATER)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_GREATER_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, GREATER_EQUAL)
+inline SMTokenType *SMTokenType_get_GREATER_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, GREATER_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_LESS(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, LESS)
+inline SMTokenType *SMTokenType_get_LESS(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, LESS)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_LESS_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, LESS_EQUAL)
+inline SMTokenType *SMTokenType_get_LESS_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, LESS_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_LESS_GREATER(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, LESS_GREATER)
+inline SMTokenType *SMTokenType_get_LESS_GREATER(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, LESS_GREATER)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_PLUS(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, PLUS)
+inline SMTokenType *SMTokenType_get_PLUS(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, PLUS)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_PLUS_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, PLUS_EQUAL)
+inline SMTokenType *SMTokenType_get_PLUS_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, PLUS_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_MINUS(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, MINUS)
+inline SMTokenType *SMTokenType_get_MINUS(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, MINUS)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_MINUS_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, MINUS_EQUAL)
+inline SMTokenType *SMTokenType_get_MINUS_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, MINUS_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_STAR(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, STAR)
+inline SMTokenType *SMTokenType_get_STAR(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, STAR)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_STAR_STAR(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, STAR_STAR)
+inline SMTokenType *SMTokenType_get_STAR_STAR(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, STAR_STAR)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_STAR_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, STAR_EQUAL)
+inline SMTokenType *SMTokenType_get_STAR_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, STAR_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_SLASH(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, SLASH)
+inline SMTokenType *SMTokenType_get_SLASH(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, SLASH)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_SLASH_SLASH(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, SLASH_SLASH)
+inline SMTokenType *SMTokenType_get_SLASH_SLASH(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, SLASH_SLASH)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_SLASH_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, SLASH_EQUAL)
+inline SMTokenType *SMTokenType_get_SLASH_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, SLASH_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_MOD(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, MOD)
+inline SMTokenType *SMTokenType_get_MOD(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, MOD)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_MOD_MOD(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, MOD_MOD)
+inline SMTokenType *SMTokenType_get_MOD_MOD(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, MOD_MOD)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_MOD_EQUAL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, MOD_EQUAL)
+inline SMTokenType *SMTokenType_get_MOD_EQUAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, MOD_EQUAL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_DOLLAR_LEFT_BRACKET(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, DOLLAR_LEFT_BRACKET)
+inline SMTokenType *SMTokenType_get_DOLLAR_LEFT_BRACKET(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, DOLLAR_LEFT_BRACKET)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_QUESTION(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, QUESTION)
+inline SMTokenType *SMTokenType_get_QUESTION(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, QUESTION)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_QUESTION_QUESTION(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, QUESTION_QUESTION)
+inline SMTokenType *SMTokenType_get_QUESTION_QUESTION(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, QUESTION_QUESTION)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_IDENTIFIER(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, IDENTIFIER)
+inline SMTokenType *SMTokenType_get_IDENTIFIER(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, IDENTIFIER)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_STRING(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, STRING)
+inline SMTokenType *SMTokenType_get_STRING(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, STRING)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_NUMBER(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, NUMBER)
+inline SMTokenType *SMTokenType_get_NUMBER(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, NUMBER)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_AND(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, AND)
+inline SMTokenType *SMTokenType_get_AND(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, AND)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_BREAK(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, BREAK)
+inline SMTokenType *SMTokenType_get_BREAK(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, BREAK)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_CLASS(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, CLASS)
+inline SMTokenType *SMTokenType_get_CLASS(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, CLASS)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_CONTINUE(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, CONTINUE)
+inline SMTokenType *SMTokenType_get_CONTINUE(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, CONTINUE)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_ELSE(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, ELSE)
+inline SMTokenType *SMTokenType_get_ELSE(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, ELSE)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_FALSE(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, FALSE)
+inline SMTokenType *SMTokenType_get_FALSE(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, FALSE)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_DEF(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, DEF)
+inline SMTokenType *SMTokenType_get_DEF(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, DEF)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_FOR(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, FOR)
+inline SMTokenType *SMTokenType_get_FOR(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, FOR)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_RESCUE(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, RESCUE)
+inline SMTokenType *SMTokenType_get_RESCUE(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, RESCUE)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_IF(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, IF)
+inline SMTokenType *SMTokenType_get_IF(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, IF)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_NIL(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, NIL)
+inline SMTokenType *SMTokenType_get_NIL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, NIL)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_OR(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, OR)
+inline SMTokenType *SMTokenType_get_OR(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, OR)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_PRINT(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, PRINT)
+inline SMTokenType *SMTokenType_get_PRINT(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, PRINT)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_RETURN(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, RETURN)
+inline SMTokenType *SMTokenType_get_RETURN(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, RETURN)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_SUPER(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, SUPER)
+inline SMTokenType *SMTokenType_get_SUPER(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, SUPER)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_SELF(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, SELF)
+inline SMTokenType *SMTokenType_get_SELF(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, SELF)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_TRUE(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, TRUE)
+inline SMTokenType *SMTokenType_get_TRUE(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, TRUE)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_WHILE(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, WHILE)
+inline SMTokenType *SMTokenType_get_WHILE(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, WHILE)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_PASS(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, PASS)
+inline SMTokenType *SMTokenType_get_PASS(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, PASS)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_IN(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, IN)
+inline SMTokenType *SMTokenType_get_IN(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, IN)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_IS(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, IS)
+inline SMTokenType *SMTokenType_get_IS(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, IS)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_NOT(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, NOT)
+inline SMTokenType *SMTokenType_get_NOT(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, NOT)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_ELSIF(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, ELSIF)
+inline SMTokenType *SMTokenType_get_ELSIF(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, ELSIF)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_END(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, END)
+inline SMTokenType *SMTokenType_get_END(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, END)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_ISNOT(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, ISNOT)
+inline SMTokenType *SMTokenType_get_ISNOT(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, ISNOT)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_NOTIN(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, NOTIN)
+inline SMTokenType *SMTokenType_get_NOTIN(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, NOTIN)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_NATIVE(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, NATIVE)
+inline SMTokenType *SMTokenType_get_NATIVE(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, NATIVE)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_IMPORT(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, IMPORT)
+inline SMTokenType *SMTokenType_get_IMPORT(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, IMPORT)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_YIELD(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, YIELD)
+inline SMTokenType *SMTokenType_get_YIELD(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, YIELD)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_WHEN(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, WHEN)
+inline SMTokenType *SMTokenType_get_WHEN(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, WHEN)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_GU(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, GU)
+inline SMTokenType *SMTokenType_get_GU(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, GU)
 
-inline NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_get_EOF(void);
-J2OBJC_ENUM_CONSTANT(NetGlobulusSimiTokenType, EOF)
+inline SMTokenType *SMTokenType_get_EOF(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, EOF)
 
-FOUNDATION_EXPORT IOSObjectArray *NetGlobulusSimiTokenType_values(void);
+FOUNDATION_EXPORT IOSObjectArray *SMTokenType_values(void);
 
-FOUNDATION_EXPORT NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_valueOfWithNSString_(NSString *name);
+FOUNDATION_EXPORT SMTokenType *SMTokenType_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT NetGlobulusSimiTokenType *NetGlobulusSimiTokenType_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT SMTokenType *SMTokenType_fromOrdinal(NSUInteger ordinal);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiTokenType)
+J2OBJC_TYPE_LITERAL_HEADER(SMTokenType)
+
+@compatibility_alias NetGlobulusSimiTokenType SMTokenType;
 
 #endif
 

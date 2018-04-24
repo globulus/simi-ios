@@ -13,57 +13,68 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiYield
 
-#if !defined (NetGlobulusSimiYield_) && (INCLUDE_ALL_NetGlobulusSimiYield || defined(INCLUDE_NetGlobulusSimiYield))
-#define NetGlobulusSimiYield_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMYield_) && (INCLUDE_ALL_NetGlobulusSimiYield || defined(INCLUDE_SMYield))
+#define SMYield_
 
 #define RESTRICT_JavaLangRuntimeException 1
 #define INCLUDE_JavaLangRuntimeException 1
 #include "java/lang/RuntimeException.h"
 
 @class JavaLangThrowable;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiYield : JavaLangRuntimeException {
+@interface SMYield : JavaLangRuntimeException {
  @public
-  id<NetGlobulusSimiSimiProperty> prop_;
+  id<SMSimiProperty> prop_;
   jboolean rethrown_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop
-                                        withBoolean:(jboolean)rethrown;
+- (instancetype __nonnull)initWithSMSimiProperty:(id<SMSimiProperty>)prop
+                                     withBoolean:(jboolean)rethrown;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
-- (instancetype)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1
-                     withBoolean:(jboolean)arg2
-                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1
+                               withBoolean:(jboolean)arg2
+                               withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiYield)
+J2OBJC_EMPTY_STATIC_INIT(SMYield)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiYield, prop_, id<NetGlobulusSimiSimiProperty>)
+J2OBJC_FIELD_SETTER(SMYield, prop_, id<SMSimiProperty>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiYield_initWithNetGlobulusSimiSimiProperty_withBoolean_(NetGlobulusSimiYield *self, id<NetGlobulusSimiSimiProperty> prop, jboolean rethrown);
+FOUNDATION_EXPORT void SMYield_initWithSMSimiProperty_withBoolean_(SMYield *self, id<SMSimiProperty> prop, jboolean rethrown);
 
-FOUNDATION_EXPORT NetGlobulusSimiYield *new_NetGlobulusSimiYield_initWithNetGlobulusSimiSimiProperty_withBoolean_(id<NetGlobulusSimiSimiProperty> prop, jboolean rethrown) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMYield *new_SMYield_initWithSMSimiProperty_withBoolean_(id<SMSimiProperty> prop, jboolean rethrown) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiYield *create_NetGlobulusSimiYield_initWithNetGlobulusSimiSimiProperty_withBoolean_(id<NetGlobulusSimiSimiProperty> prop, jboolean rethrown);
+FOUNDATION_EXPORT SMYield *create_SMYield_initWithSMSimiProperty_withBoolean_(id<SMSimiProperty> prop, jboolean rethrown);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiYield)
+J2OBJC_TYPE_LITERAL_HEADER(SMYield)
+
+@compatibility_alias NetGlobulusSimiYield SMYield;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiYield")

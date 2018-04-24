@@ -8,10 +8,10 @@
 #include "Return.h"
 #include "SimiProperty.h"
 
-@implementation NetGlobulusSimiReturn
+@implementation SMReturn
 
-- (instancetype)initWithNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop {
-  NetGlobulusSimiReturn_initWithNetGlobulusSimiSimiProperty_(self, prop);
+- (instancetype __nonnull)initWithSMSimiProperty:(id<SMSimiProperty>)prop {
+  SMReturn_initWithSMSimiProperty_(self, prop);
   return self;
 }
 
@@ -22,29 +22,29 @@
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiSimiProperty:);
+  methods[0].selector = @selector(initWithSMSimiProperty:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "prop_", "LNetGlobulusSimiSimiProperty;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "prop_", "LSMSimiProperty;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiSimiProperty;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiReturn = { "Return", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 1, 1, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiReturn;
+  static const void *ptrTable[] = { "LSMSimiProperty;" };
+  static const J2ObjcClassInfo _SMReturn = { "Return", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 1, 1, -1, -1, -1, -1, -1 };
+  return &_SMReturn;
 }
 
 @end
 
-void NetGlobulusSimiReturn_initWithNetGlobulusSimiSimiProperty_(NetGlobulusSimiReturn *self, id<NetGlobulusSimiSimiProperty> prop) {
+void SMReturn_initWithSMSimiProperty_(SMReturn *self, id<SMSimiProperty> prop) {
   JavaLangRuntimeException_initWithNSString_withJavaLangThrowable_withBoolean_withBoolean_(self, nil, nil, false, false);
   self->prop_ = prop;
 }
 
-NetGlobulusSimiReturn *new_NetGlobulusSimiReturn_initWithNetGlobulusSimiSimiProperty_(id<NetGlobulusSimiSimiProperty> prop) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiReturn, initWithNetGlobulusSimiSimiProperty_, prop)
+SMReturn *new_SMReturn_initWithSMSimiProperty_(id<SMSimiProperty> prop) {
+  J2OBJC_NEW_IMPL(SMReturn, initWithSMSimiProperty_, prop)
 }
 
-NetGlobulusSimiReturn *create_NetGlobulusSimiReturn_initWithNetGlobulusSimiSimiProperty_(id<NetGlobulusSimiSimiProperty> prop) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiReturn, initWithNetGlobulusSimiSimiProperty_, prop)
+SMReturn *create_SMReturn_initWithSMSimiProperty_(id<SMSimiProperty> prop) {
+  J2OBJC_CREATE_IMPL(SMReturn, initWithSMSimiProperty_, prop)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiReturn)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMReturn)

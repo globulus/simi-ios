@@ -58,2117 +58,2117 @@
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
-@interface NetGlobulusSimiBaseClassesNativeImpl () {
+@interface SMBaseClassesNativeImpl () {
  @public
   id<JavaUtilMap> classes_;
 }
 
-- (NetGlobulusSimiSimiNativeClass *)getObjectClass;
+- (SMSimiNativeClass *)getObjectClass;
 
-- (NetGlobulusSimiSimiNativeClass *)getStringClass;
+- (SMSimiNativeClass *)getStringClass;
 
-- (NetGlobulusSimiSimiNativeClass *)getNumberClass;
+- (SMSimiNativeClass *)getNumberClass;
 
-- (NetGlobulusSimiSimiNativeClass *)getExceptionClass;
+- (SMSimiNativeClass *)getExceptionClass;
 
-- (NetGlobulusSimiSimiNativeClass *)getGlobalsClass;
+- (SMSimiNativeClass *)getGlobalsClass;
 
-- (NetGlobulusSimiSimiClassImpl *)getObjectClassWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter;
+- (SMSimiClassImpl *)getObjectClassWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter;
 
-- (NetGlobulusSimiSimiValue *)sortWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                     withJavaUtilList:(id<JavaUtilList>)arguments
-                                      withNetGlobulusSimiSimiCallable:(id<NetGlobulusSimiSimiCallable>)comparator;
+- (SMSimiValue *)sortWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withJavaUtilList:(id<JavaUtilList>)arguments
+                         withSMSimiCallable:(id<SMSimiCallable>)comparator;
 
-- (NetGlobulusSimiSimiValue *)prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                                       withJavaUtilList:(id<JavaUtilList>)arguments;
+- (SMSimiValue *)prepareValueNativeCallWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                             withJavaUtilList:(id<JavaUtilList>)arguments;
 
-- (NetGlobulusSimiSimiValue *)doMathWithJavaUtilList:(id<JavaUtilList>)arguments
-                      withJavaUtilFunctionBiFunction:(id<JavaUtilFunctionBiFunction>)op;
+- (SMSimiValue *)doMathWithJavaUtilList:(id<JavaUtilList>)arguments
+         withJavaUtilFunctionBiFunction:(id<JavaUtilFunctionBiFunction>)op;
 
-- (NetGlobulusSimiSimiValue *)doMathWithJavaUtilList:(id<JavaUtilList>)arguments
-                        withJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)op;
+- (SMSimiValue *)doMathWithJavaUtilList:(id<JavaUtilList>)arguments
+           withJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)op;
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiBaseClassesNativeImpl, classes_, id<JavaUtilMap>)
+J2OBJC_FIELD_SETTER(SMBaseClassesNativeImpl, classes_, id<JavaUtilMap>)
 
-__attribute__((unused)) static NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getObjectClass(NetGlobulusSimiBaseClassesNativeImpl *self);
+__attribute__((unused)) static SMSimiNativeClass *SMBaseClassesNativeImpl_getObjectClass(SMBaseClassesNativeImpl *self);
 
-__attribute__((unused)) static NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getStringClass(NetGlobulusSimiBaseClassesNativeImpl *self);
+__attribute__((unused)) static SMSimiNativeClass *SMBaseClassesNativeImpl_getStringClass(SMBaseClassesNativeImpl *self);
 
-__attribute__((unused)) static NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getNumberClass(NetGlobulusSimiBaseClassesNativeImpl *self);
+__attribute__((unused)) static SMSimiNativeClass *SMBaseClassesNativeImpl_getNumberClass(SMBaseClassesNativeImpl *self);
 
-__attribute__((unused)) static NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getExceptionClass(NetGlobulusSimiBaseClassesNativeImpl *self);
+__attribute__((unused)) static SMSimiNativeClass *SMBaseClassesNativeImpl_getExceptionClass(SMBaseClassesNativeImpl *self);
 
-__attribute__((unused)) static NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getGlobalsClass(NetGlobulusSimiBaseClassesNativeImpl *self);
+__attribute__((unused)) static SMSimiNativeClass *SMBaseClassesNativeImpl_getGlobalsClass(SMBaseClassesNativeImpl *self);
 
-__attribute__((unused)) static NetGlobulusSimiSimiClassImpl *NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(NetGlobulusSimiBaseClassesNativeImpl *self, id<NetGlobulusSimiBlockInterpreter> interpreter);
+__attribute__((unused)) static SMSimiClassImpl *SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(SMBaseClassesNativeImpl *self, id<SMBlockInterpreter> interpreter);
 
-__attribute__((unused)) static NetGlobulusSimiSimiValue *NetGlobulusSimiBaseClassesNativeImpl_sortWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_withNetGlobulusSimiSimiCallable_(NetGlobulusSimiBaseClassesNativeImpl *self, id<NetGlobulusSimiBlockInterpreter> interpreter, id<JavaUtilList> arguments, id<NetGlobulusSimiSimiCallable> comparator);
+__attribute__((unused)) static SMSimiValue *SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(SMBaseClassesNativeImpl *self, id<SMBlockInterpreter> interpreter, id<JavaUtilList> arguments, id<SMSimiCallable> comparator);
 
-__attribute__((unused)) static NetGlobulusSimiSimiValue *NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(NetGlobulusSimiBaseClassesNativeImpl *self, id<NetGlobulusSimiBlockInterpreter> interpreter, id<JavaUtilList> arguments);
+__attribute__((unused)) static SMSimiValue *SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(SMBaseClassesNativeImpl *self, id<SMBlockInterpreter> interpreter, id<JavaUtilList> arguments);
 
-__attribute__((unused)) static NetGlobulusSimiSimiValue *NetGlobulusSimiBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(NetGlobulusSimiBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionBiFunction> op);
+__attribute__((unused)) static SMSimiValue *SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(SMBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionBiFunction> op);
 
-__attribute__((unused)) static NetGlobulusSimiSimiValue *NetGlobulusSimiBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(NetGlobulusSimiBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionFunction> op);
+__attribute__((unused)) static SMSimiValue *SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(SMBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionFunction> op);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_1 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_1 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_1)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_1_init(NetGlobulusSimiBaseClassesNativeImpl_1 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_1_init(SMBaseClassesNativeImpl_1 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_1 *new_NetGlobulusSimiBaseClassesNativeImpl_1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_1 *new_SMBaseClassesNativeImpl_1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_1 *create_NetGlobulusSimiBaseClassesNativeImpl_1_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_1 *create_SMBaseClassesNativeImpl_1_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_2 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_2 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_2)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_2)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_2_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_2 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_2 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_2 *new_NetGlobulusSimiBaseClassesNativeImpl_2_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_2 *new_SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_2 *create_NetGlobulusSimiBaseClassesNativeImpl_2_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_2 *create_SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_3 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_3 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_3)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_3)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_3_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_3 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_3 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_3 *new_NetGlobulusSimiBaseClassesNativeImpl_3_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_3 *new_SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_3 *create_NetGlobulusSimiBaseClassesNativeImpl_3_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_3 *create_SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_4 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_4 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_4)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_4)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_4_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_4 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_4 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_4 *new_NetGlobulusSimiBaseClassesNativeImpl_4_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_4 *new_SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_4 *create_NetGlobulusSimiBaseClassesNativeImpl_4_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_4 *create_SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_5 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_5 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_5)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_5)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_5_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_5 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_5 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_5 *new_NetGlobulusSimiBaseClassesNativeImpl_5_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_5 *new_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_5 *create_NetGlobulusSimiBaseClassesNativeImpl_5_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_5 *create_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_6 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_6 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_6)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_6)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_6_init(NetGlobulusSimiBaseClassesNativeImpl_6 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_6_init(SMBaseClassesNativeImpl_6 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_6 *new_NetGlobulusSimiBaseClassesNativeImpl_6_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_6 *new_SMBaseClassesNativeImpl_6_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_6 *create_NetGlobulusSimiBaseClassesNativeImpl_6_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_6 *create_SMBaseClassesNativeImpl_6_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_7 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_7 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_7)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_7)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_7_init(NetGlobulusSimiBaseClassesNativeImpl_7 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_7_init(SMBaseClassesNativeImpl_7 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_7 *new_NetGlobulusSimiBaseClassesNativeImpl_7_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_7 *new_SMBaseClassesNativeImpl_7_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_7 *create_NetGlobulusSimiBaseClassesNativeImpl_7_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_7 *create_SMBaseClassesNativeImpl_7_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_8 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_8 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_8)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_8)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_8_init(NetGlobulusSimiBaseClassesNativeImpl_8 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_8_init(SMBaseClassesNativeImpl_8 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_8 *new_NetGlobulusSimiBaseClassesNativeImpl_8_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_8 *new_SMBaseClassesNativeImpl_8_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_8 *create_NetGlobulusSimiBaseClassesNativeImpl_8_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_8 *create_SMBaseClassesNativeImpl_8_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_9 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_9 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_9)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_9)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_9_init(NetGlobulusSimiBaseClassesNativeImpl_9 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_9_init(SMBaseClassesNativeImpl_9 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_9 *new_NetGlobulusSimiBaseClassesNativeImpl_9_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_9 *new_SMBaseClassesNativeImpl_9_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_9 *create_NetGlobulusSimiBaseClassesNativeImpl_9_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_9 *create_SMBaseClassesNativeImpl_9_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_10 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_10 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_10)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_10)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_10_init(NetGlobulusSimiBaseClassesNativeImpl_10 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_10_init(SMBaseClassesNativeImpl_10 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_10 *new_NetGlobulusSimiBaseClassesNativeImpl_10_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_10 *new_SMBaseClassesNativeImpl_10_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_10 *create_NetGlobulusSimiBaseClassesNativeImpl_10_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_10 *create_SMBaseClassesNativeImpl_10_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_11 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_11 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_11)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_11)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_11_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_11 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_11 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_11 *new_NetGlobulusSimiBaseClassesNativeImpl_11_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_11 *new_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_11 *create_NetGlobulusSimiBaseClassesNativeImpl_11_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_12 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_12 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_12)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_12)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_12_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_12 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_12 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_12 *new_NetGlobulusSimiBaseClassesNativeImpl_12_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_12 *new_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_12 *create_NetGlobulusSimiBaseClassesNativeImpl_12_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_12 *create_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_13 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_13 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_13)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_13)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_13_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_13 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_13 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_13 *new_NetGlobulusSimiBaseClassesNativeImpl_13_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_13 *new_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_13 *create_NetGlobulusSimiBaseClassesNativeImpl_13_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_13 *create_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_14 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_14 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_14)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_14)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_14_init(NetGlobulusSimiBaseClassesNativeImpl_14 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_14_init(SMBaseClassesNativeImpl_14 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_14 *new_NetGlobulusSimiBaseClassesNativeImpl_14_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_14 *new_SMBaseClassesNativeImpl_14_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_14 *create_NetGlobulusSimiBaseClassesNativeImpl_14_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_14 *create_SMBaseClassesNativeImpl_14_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_15 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_15 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_15)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_15)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_15_init(NetGlobulusSimiBaseClassesNativeImpl_15 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_15_init(SMBaseClassesNativeImpl_15 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_15 *new_NetGlobulusSimiBaseClassesNativeImpl_15_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_15 *new_SMBaseClassesNativeImpl_15_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_15 *create_NetGlobulusSimiBaseClassesNativeImpl_15_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_15 *create_SMBaseClassesNativeImpl_15_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_16 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_16 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_16)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_16)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_16_init(NetGlobulusSimiBaseClassesNativeImpl_16 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_16_init(SMBaseClassesNativeImpl_16 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_16 *new_NetGlobulusSimiBaseClassesNativeImpl_16_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_16 *new_SMBaseClassesNativeImpl_16_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_16 *create_NetGlobulusSimiBaseClassesNativeImpl_16_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_16 *create_SMBaseClassesNativeImpl_16_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_17 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_17 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_17)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_17)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_17_init(NetGlobulusSimiBaseClassesNativeImpl_17 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_17_init(SMBaseClassesNativeImpl_17 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_17 *new_NetGlobulusSimiBaseClassesNativeImpl_17_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_17 *new_SMBaseClassesNativeImpl_17_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_17 *create_NetGlobulusSimiBaseClassesNativeImpl_17_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_17 *create_SMBaseClassesNativeImpl_17_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_18 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_18 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_18)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_18)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_18_init(NetGlobulusSimiBaseClassesNativeImpl_18 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_18_init(SMBaseClassesNativeImpl_18 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_18 *new_NetGlobulusSimiBaseClassesNativeImpl_18_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_18 *new_SMBaseClassesNativeImpl_18_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_18 *create_NetGlobulusSimiBaseClassesNativeImpl_18_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_18 *create_SMBaseClassesNativeImpl_18_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_19 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_19 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_19)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_19)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_19_init(NetGlobulusSimiBaseClassesNativeImpl_19 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_19_init(SMBaseClassesNativeImpl_19 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_19 *new_NetGlobulusSimiBaseClassesNativeImpl_19_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_19 *new_SMBaseClassesNativeImpl_19_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_19 *create_NetGlobulusSimiBaseClassesNativeImpl_19_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_19 *create_SMBaseClassesNativeImpl_19_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_19_1 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_19_1 : NSObject < SMSimiCallable > {
  @public
   id<JavaUtilIterator> val$iterator_;
 }
 
-- (instancetype)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0;
+- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_19_1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_19_1)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(NetGlobulusSimiBaseClassesNativeImpl_19_1 *self, id<JavaUtilIterator> capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_19_1 *self, id<JavaUtilIterator> capture$0);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_19_1 *new_NetGlobulusSimiBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_19_1 *new_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_19_1 *create_NetGlobulusSimiBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_19_1 *create_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_20 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_20 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_20)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_20)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_20_init(NetGlobulusSimiBaseClassesNativeImpl_20 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_20_init(SMBaseClassesNativeImpl_20 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_20 *new_NetGlobulusSimiBaseClassesNativeImpl_20_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_20 *new_SMBaseClassesNativeImpl_20_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_20 *create_NetGlobulusSimiBaseClassesNativeImpl_20_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_20 *create_SMBaseClassesNativeImpl_20_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_21 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_21 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_21)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_21)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_21_init(NetGlobulusSimiBaseClassesNativeImpl_21 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_21_init(SMBaseClassesNativeImpl_21 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_21 *new_NetGlobulusSimiBaseClassesNativeImpl_21_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_21 *new_SMBaseClassesNativeImpl_21_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_21 *create_NetGlobulusSimiBaseClassesNativeImpl_21_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_21 *create_SMBaseClassesNativeImpl_21_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_22 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_22 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_22)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_22)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_22_init(NetGlobulusSimiBaseClassesNativeImpl_22 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_22_init(SMBaseClassesNativeImpl_22 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_22 *new_NetGlobulusSimiBaseClassesNativeImpl_22_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_22 *new_SMBaseClassesNativeImpl_22_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_22 *create_NetGlobulusSimiBaseClassesNativeImpl_22_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_22 *create_SMBaseClassesNativeImpl_22_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_23 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_23 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_23)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_23)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_23_init(NetGlobulusSimiBaseClassesNativeImpl_23 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_23_init(SMBaseClassesNativeImpl_23 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_23 *new_NetGlobulusSimiBaseClassesNativeImpl_23_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_23 *new_SMBaseClassesNativeImpl_23_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_23 *create_NetGlobulusSimiBaseClassesNativeImpl_23_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_23 *create_SMBaseClassesNativeImpl_23_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_24 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_24 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_24)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_24)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_24_init(NetGlobulusSimiBaseClassesNativeImpl_24 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_24_init(SMBaseClassesNativeImpl_24 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_24 *new_NetGlobulusSimiBaseClassesNativeImpl_24_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_24 *new_SMBaseClassesNativeImpl_24_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_24 *create_NetGlobulusSimiBaseClassesNativeImpl_24_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_24 *create_SMBaseClassesNativeImpl_24_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_25 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_25 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_25)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_25)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_25_init(NetGlobulusSimiBaseClassesNativeImpl_25 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_25_init(SMBaseClassesNativeImpl_25 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_25 *new_NetGlobulusSimiBaseClassesNativeImpl_25_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_25 *new_SMBaseClassesNativeImpl_25_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_25 *create_NetGlobulusSimiBaseClassesNativeImpl_25_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_25 *create_SMBaseClassesNativeImpl_25_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_25_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(NetGlobulusSimiSimiValue *)a;
+- (id)applyWithId:(SMSimiValue *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_25_$Lambda$1)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1, instance, NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *)
+inline SMBaseClassesNativeImpl_25_$Lambda$1 *SMBaseClassesNativeImpl_25_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_25_$Lambda$1 *SMBaseClassesNativeImpl_25_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_25_$Lambda$1, instance, SMBaseClassesNativeImpl_25_$Lambda$1 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_init(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_25_$Lambda$1_init(SMBaseClassesNativeImpl_25_$Lambda$1 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_25_$Lambda$1 *new_SMBaseClassesNativeImpl_25_$Lambda$1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_25_$Lambda$1 *create_SMBaseClassesNativeImpl_25_$Lambda$1_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_26 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_26 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_26)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_26)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_26_init(NetGlobulusSimiBaseClassesNativeImpl_26 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_init(SMBaseClassesNativeImpl_26 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26 *new_NetGlobulusSimiBaseClassesNativeImpl_26_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_26 *new_SMBaseClassesNativeImpl_26_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26 *create_NetGlobulusSimiBaseClassesNativeImpl_26_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_26 *create_SMBaseClassesNativeImpl_26_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_26_1 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_26_1 : NSObject < SMSimiCallable > {
  @public
   JavaUtilLinkedHashMap *val$fields_;
   NSString *val$param_;
   id<JavaUtilList> val$initArgs_;
-  NetGlobulusSimiSimiValue *val$objectValue_;
+  SMSimiValue *val$objectValue_;
 }
 
-- (instancetype)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$0
-                                 withNSString:(NSString *)capture$1
-                             withJavaUtilList:(id<JavaUtilList>)capture$2
-                 withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)capture$3;
+- (instancetype __nonnull)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$0
+                                           withNSString:(NSString *)capture$1
+                                       withJavaUtilList:(id<JavaUtilList>)capture$2
+                                        withSMSimiValue:(SMSimiValue *)capture$3;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_26_1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_26_1)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_(NetGlobulusSimiBaseClassesNativeImpl_26_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, NetGlobulusSimiSimiValue *capture$3);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_26_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_1 *new_NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, NetGlobulusSimiSimiValue *capture$3) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_1 *new_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_1 *create_NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, NetGlobulusSimiSimiValue *capture$3);
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_1 *create_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_26_2 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_26_2 : NSObject < SMSimiCallable > {
  @public
   id<JavaUtilSet> val$params_;
   id<JavaUtilSet> val$constructors_;
   JavaUtilLinkedHashMap *val$fields_;
-  NetGlobulusSimiSimiClassImpl *val$clazz_;
+  SMSimiClassImpl *val$clazz_;
   id<JavaUtilList> val$initArgs_;
 }
 
-- (instancetype)initWithJavaUtilSet:(id<JavaUtilSet>)capture$0
-                    withJavaUtilSet:(id<JavaUtilSet>)capture$1
-          withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$2
-   withNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)capture$3
-                   withJavaUtilList:(id<JavaUtilList>)capture$4;
+- (instancetype __nonnull)initWithJavaUtilSet:(id<JavaUtilSet>)capture$0
+                              withJavaUtilSet:(id<JavaUtilSet>)capture$1
+                    withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$2
+                          withSMSimiClassImpl:(SMSimiClassImpl *)capture$3
+                             withJavaUtilList:(id<JavaUtilList>)capture$4;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_26_2)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_26_2)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_(NetGlobulusSimiBaseClassesNativeImpl_26_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, NetGlobulusSimiSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_26_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_2 *new_NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, NetGlobulusSimiSimiClassImpl *capture$3, id<JavaUtilList> capture$4) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_2 *new_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_2 *create_NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, NetGlobulusSimiSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_2 *create_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1 : NSObject < JavaUtilFunctionToIntFunction > {
+@interface SMBaseClassesNativeImpl_26_2_$Lambda$1 : NSObject < JavaUtilFunctionToIntFunction > {
  @public
   jint val$size_;
 }
 
-- (jint)applyAsIntWithId:(NetGlobulusSimiSimiFunction *)f;
+- (jint)applyAsIntWithId:(SMSimiFunction *)f;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_26_2_$Lambda$1)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1 *self, jint capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_26_2_$Lambda$1 *self, jint capture$0);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_2_$Lambda$1 *new_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_2_$Lambda$1 *create_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_26_2_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(NetGlobulusSimiToken *)t;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2, instance, NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_init(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *new_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *create_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(NetGlobulusSimiSimiFunction *)f;
+- (id)applyWithId:(SMToken *)t;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_2_$Lambda$2)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1, instance, NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *)
+inline SMBaseClassesNativeImpl_26_2_$Lambda$2 *SMBaseClassesNativeImpl_26_2_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_26_2_$Lambda$2 *SMBaseClassesNativeImpl_26_2_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_2_$Lambda$2, instance, SMBaseClassesNativeImpl_26_2_$Lambda$2 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_init(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_2_$Lambda$2_init(SMBaseClassesNativeImpl_26_2_$Lambda$2 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_2_$Lambda$2 *new_SMBaseClassesNativeImpl_26_2_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_2_$Lambda$2 *create_SMBaseClassesNativeImpl_26_2_$Lambda$2_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_26_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(SMSimiFunction *)f;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_$Lambda$1)
+
+inline SMBaseClassesNativeImpl_26_$Lambda$1 *SMBaseClassesNativeImpl_26_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_26_$Lambda$1 *SMBaseClassesNativeImpl_26_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_$Lambda$1, instance, SMBaseClassesNativeImpl_26_$Lambda$1 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_$Lambda$1_init(SMBaseClassesNativeImpl_26_$Lambda$1 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *new_SMBaseClassesNativeImpl_26_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBaseClassesNativeImpl_26_$Lambda$1_init(void);
+
+@interface SMBaseClassesNativeImpl_26_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(id<JavaUtilList>)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_$Lambda$2)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2, instance, NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *)
+inline SMBaseClassesNativeImpl_26_$Lambda$2 *SMBaseClassesNativeImpl_26_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_26_$Lambda$2 *SMBaseClassesNativeImpl_26_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_$Lambda$2, instance, SMBaseClassesNativeImpl_26_$Lambda$2 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_init(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_$Lambda$2_init(SMBaseClassesNativeImpl_26_$Lambda$2 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$2 *new_SMBaseClassesNativeImpl_26_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *create_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$2 *create_SMBaseClassesNativeImpl_26_$Lambda$2_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_26_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(NetGlobulusSimiToken *)t;
+- (id)applyWithId:(SMToken *)t;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_$Lambda$3)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3, instance, NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *)
+inline SMBaseClassesNativeImpl_26_$Lambda$3 *SMBaseClassesNativeImpl_26_$Lambda$3_get_instance(void);
+static SMBaseClassesNativeImpl_26_$Lambda$3 *SMBaseClassesNativeImpl_26_$Lambda$3_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_$Lambda$3, instance, SMBaseClassesNativeImpl_26_$Lambda$3 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_init(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_$Lambda$3_init(SMBaseClassesNativeImpl_26_$Lambda$3 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$3 *new_SMBaseClassesNativeImpl_26_$Lambda$3_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *create_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$3 *create_SMBaseClassesNativeImpl_26_$Lambda$3_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_27 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_27 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_27)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_27_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_27 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_27 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_27 *new_NetGlobulusSimiBaseClassesNativeImpl_27_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_27 *new_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_27 *create_NetGlobulusSimiBaseClassesNativeImpl_27_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_27 *create_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_28 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_28 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_28)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_28)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_28_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_28 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_28 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_28 *new_NetGlobulusSimiBaseClassesNativeImpl_28_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_28 *new_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_28 *create_NetGlobulusSimiBaseClassesNativeImpl_28_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_29 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_29 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_29)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_29)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_29_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_29 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_29 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_29 *new_NetGlobulusSimiBaseClassesNativeImpl_29_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_29 *new_SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_29 *create_NetGlobulusSimiBaseClassesNativeImpl_29_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_29 *create_SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_30 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_30 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_30)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_30)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_30_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_30 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_30 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_30 *new_NetGlobulusSimiBaseClassesNativeImpl_30_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_30 *new_SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_30 *create_NetGlobulusSimiBaseClassesNativeImpl_30_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_30 *create_SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_31 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_31 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_31)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_31)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_31_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_31 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_31 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_31 *new_NetGlobulusSimiBaseClassesNativeImpl_31_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_31 *new_SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_31 *create_NetGlobulusSimiBaseClassesNativeImpl_31_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_31 *create_SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_32 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_32 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_32)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_32)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_32_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_32 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_32 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_32 *new_NetGlobulusSimiBaseClassesNativeImpl_32_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_32 *new_SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_32 *create_NetGlobulusSimiBaseClassesNativeImpl_32_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_32 *create_SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_33 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_33 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_33)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_33)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_33_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_33 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_33 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_33 *new_NetGlobulusSimiBaseClassesNativeImpl_33_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_33 *new_SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_33 *create_NetGlobulusSimiBaseClassesNativeImpl_33_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_33 *create_SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_34 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_34 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_34)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_34)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_34_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_34 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_34 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_34 *new_NetGlobulusSimiBaseClassesNativeImpl_34_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_34 *new_SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_34 *create_NetGlobulusSimiBaseClassesNativeImpl_34_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_34 *create_SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_35 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_35 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_35)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_35)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_35_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_35 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_35 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_35 *new_NetGlobulusSimiBaseClassesNativeImpl_35_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_35 *new_SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_35 *create_NetGlobulusSimiBaseClassesNativeImpl_35_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_35 *create_SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_36 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_36 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_36)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_36)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_36_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_36 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_36 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_36 *new_NetGlobulusSimiBaseClassesNativeImpl_36_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_36 *new_SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_36 *create_NetGlobulusSimiBaseClassesNativeImpl_36_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_36 *create_SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_37 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_37 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_37)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_37)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_37_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_37 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_37 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_37 *new_NetGlobulusSimiBaseClassesNativeImpl_37_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_37 *new_SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_37 *create_NetGlobulusSimiBaseClassesNativeImpl_37_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_37 *create_SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_37_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(NSString *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_37_$Lambda$1)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1, instance, NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *)
+inline SMBaseClassesNativeImpl_37_$Lambda$1 *SMBaseClassesNativeImpl_37_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_37_$Lambda$1 *SMBaseClassesNativeImpl_37_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_37_$Lambda$1, instance, SMBaseClassesNativeImpl_37_$Lambda$1 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_init(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_37_$Lambda$1_init(SMBaseClassesNativeImpl_37_$Lambda$1 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_37_$Lambda$1 *new_SMBaseClassesNativeImpl_37_$Lambda$1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_37_$Lambda$1 *create_SMBaseClassesNativeImpl_37_$Lambda$1_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 : NSObject < JavaUtilFunctionSupplier >
+@interface SMBaseClassesNativeImpl_37_$Lambda$2 : NSObject < JavaUtilFunctionSupplier >
 
 - (id)get;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_37_$Lambda$2)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2, instance, NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *)
+inline SMBaseClassesNativeImpl_37_$Lambda$2 *SMBaseClassesNativeImpl_37_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_37_$Lambda$2 *SMBaseClassesNativeImpl_37_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_37_$Lambda$2, instance, SMBaseClassesNativeImpl_37_$Lambda$2 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_init(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_37_$Lambda$2_init(SMBaseClassesNativeImpl_37_$Lambda$2 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *new_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_37_$Lambda$2 *new_SMBaseClassesNativeImpl_37_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *create_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_37_$Lambda$2 *create_SMBaseClassesNativeImpl_37_$Lambda$2_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_38 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_38 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_38)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_38)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_38_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_38 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_38 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_38 *new_NetGlobulusSimiBaseClassesNativeImpl_38_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_38 *new_SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_38 *create_NetGlobulusSimiBaseClassesNativeImpl_38_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_38 *create_SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_39 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_39 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_39)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_39)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_39_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_39 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_39 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_39 *new_NetGlobulusSimiBaseClassesNativeImpl_39_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_39 *new_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_39 *create_NetGlobulusSimiBaseClassesNativeImpl_39_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_39 *create_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_40 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_40 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_40)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_40)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_40_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_40 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_40 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_40 *new_NetGlobulusSimiBaseClassesNativeImpl_40_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_40 *new_SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_40 *create_NetGlobulusSimiBaseClassesNativeImpl_40_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_40 *create_SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_41 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_41 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_41)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_41)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_41_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_41 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_41 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_41 *new_NetGlobulusSimiBaseClassesNativeImpl_41_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_41 *new_SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_41 *create_NetGlobulusSimiBaseClassesNativeImpl_41_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_41 *create_SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_42 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_42 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_42)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_42)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_42_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_42 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_42 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_42 *new_NetGlobulusSimiBaseClassesNativeImpl_42_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_42 *new_SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_42 *create_NetGlobulusSimiBaseClassesNativeImpl_42_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_42 *create_SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_43 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_43 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 - (jboolean)isAlphaWithChar:(jchar)c;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_43)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_43)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_43_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_43 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_43 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_43 *new_NetGlobulusSimiBaseClassesNativeImpl_43_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_43 *new_SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_43 *create_NetGlobulusSimiBaseClassesNativeImpl_43_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_43 *create_SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiBaseClassesNativeImpl_43_isAlphaWithChar_(NetGlobulusSimiBaseClassesNativeImpl_43 *self, jchar c);
+__attribute__((unused)) static jboolean SMBaseClassesNativeImpl_43_isAlphaWithChar_(SMBaseClassesNativeImpl_43 *self, jchar c);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_44 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_44 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 - (jboolean)isDigitWithChar:(jchar)c;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_44)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_44)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_44_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_44 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_44 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_44 *new_NetGlobulusSimiBaseClassesNativeImpl_44_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_44 *new_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_44 *create_NetGlobulusSimiBaseClassesNativeImpl_44_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_44 *create_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiBaseClassesNativeImpl_44_isDigitWithChar_(NetGlobulusSimiBaseClassesNativeImpl_44 *self, jchar c);
+__attribute__((unused)) static jboolean SMBaseClassesNativeImpl_44_isDigitWithChar_(SMBaseClassesNativeImpl_44 *self, jchar c);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_45 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_45 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_45)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_45)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_45_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_45 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_45 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_45 *new_NetGlobulusSimiBaseClassesNativeImpl_45_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_45 *new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_45 *create_NetGlobulusSimiBaseClassesNativeImpl_45_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_45 *create_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_45_1 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_45_1 : NSObject < SMSimiCallable > {
  @public
   JavaTextStringCharacterIterator *val$iterator_;
 }
 
-- (instancetype)initWithJavaTextStringCharacterIterator:(JavaTextStringCharacterIterator *)capture$0;
+- (instancetype __nonnull)initWithJavaTextStringCharacterIterator:(JavaTextStringCharacterIterator *)capture$0;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_45_1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_45_1)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(NetGlobulusSimiBaseClassesNativeImpl_45_1 *self, JavaTextStringCharacterIterator *capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(SMBaseClassesNativeImpl_45_1 *self, JavaTextStringCharacterIterator *capture$0);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_45_1 *new_NetGlobulusSimiBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_45_1 *new_SMBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_45_1 *create_NetGlobulusSimiBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_45_1 *create_SMBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_46 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_46 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_46)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_46)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_46_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_46 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_46 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_46 *new_NetGlobulusSimiBaseClassesNativeImpl_46_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_46 *new_SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_46 *create_NetGlobulusSimiBaseClassesNativeImpl_46_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_46 *create_SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_47 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_47 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_47)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_47)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_47_init(NetGlobulusSimiBaseClassesNativeImpl_47 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_47_init(SMBaseClassesNativeImpl_47 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_47 *new_NetGlobulusSimiBaseClassesNativeImpl_47_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_47 *new_SMBaseClassesNativeImpl_47_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_47 *create_NetGlobulusSimiBaseClassesNativeImpl_47_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_47 *create_SMBaseClassesNativeImpl_47_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_48 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_48 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_48)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_48)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_48_init(NetGlobulusSimiBaseClassesNativeImpl_48 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_48_init(SMBaseClassesNativeImpl_48 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_48 *new_NetGlobulusSimiBaseClassesNativeImpl_48_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_48 *new_SMBaseClassesNativeImpl_48_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_48 *create_NetGlobulusSimiBaseClassesNativeImpl_48_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_48 *create_SMBaseClassesNativeImpl_48_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_49 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_49 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_49)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_49)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_49_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_49 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_49_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_49 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_49 *new_NetGlobulusSimiBaseClassesNativeImpl_49_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_49 *new_SMBaseClassesNativeImpl_49_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_49 *create_NetGlobulusSimiBaseClassesNativeImpl_49_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_49 *create_SMBaseClassesNativeImpl_49_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_50 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_50 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_50)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_50)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_50_init(NetGlobulusSimiBaseClassesNativeImpl_50 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_50_init(SMBaseClassesNativeImpl_50 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_50 *new_NetGlobulusSimiBaseClassesNativeImpl_50_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_50 *new_SMBaseClassesNativeImpl_50_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_50 *create_NetGlobulusSimiBaseClassesNativeImpl_50_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_50_1 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_50_1 : NSObject < SMSimiCallable > {
  @public
   JavaLangStringBuilder *val$sb_;
-  NetGlobulusSimiSimiValue *val$objectValue_;
+  SMSimiValue *val$objectValue_;
 }
 
-- (instancetype)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0
-                 withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)capture$1;
+- (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0
+                                        withSMSimiValue:(SMSimiValue *)capture$1;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_50_1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_50_1)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_(NetGlobulusSimiBaseClassesNativeImpl_50_1 *self, JavaLangStringBuilder *capture$0, NetGlobulusSimiSimiValue *capture$1);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withSMSimiValue_(SMBaseClassesNativeImpl_50_1 *self, JavaLangStringBuilder *capture$0, SMSimiValue *capture$1);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_50_1 *new_NetGlobulusSimiBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_(JavaLangStringBuilder *capture$0, NetGlobulusSimiSimiValue *capture$1) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_50_1 *new_SMBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_50_1 *create_NetGlobulusSimiBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_(JavaLangStringBuilder *capture$0, NetGlobulusSimiSimiValue *capture$1);
+__attribute__((unused)) static SMBaseClassesNativeImpl_50_1 *create_SMBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_50_2 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_50_2 : NSObject < SMSimiCallable > {
  @public
   JavaLangStringBuilder *val$sb_;
 }
 
-- (instancetype)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0;
+- (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_50_2)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_50_2)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(NetGlobulusSimiBaseClassesNativeImpl_50_2 *self, JavaLangStringBuilder *capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(SMBaseClassesNativeImpl_50_2 *self, JavaLangStringBuilder *capture$0);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_50_2 *new_NetGlobulusSimiBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_50_2 *new_SMBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_50_2 *create_NetGlobulusSimiBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_50_2 *create_SMBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_51 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_51 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_51)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_51)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_51_init(NetGlobulusSimiBaseClassesNativeImpl_51 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_51_init(SMBaseClassesNativeImpl_51 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_51 *new_NetGlobulusSimiBaseClassesNativeImpl_51_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_51 *new_SMBaseClassesNativeImpl_51_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_51 *create_NetGlobulusSimiBaseClassesNativeImpl_51_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_51 *create_SMBaseClassesNativeImpl_51_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_52 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_52 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_52)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_52)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_52_init(NetGlobulusSimiBaseClassesNativeImpl_52 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_52_init(SMBaseClassesNativeImpl_52 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_52 *new_NetGlobulusSimiBaseClassesNativeImpl_52_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_52 *new_SMBaseClassesNativeImpl_52_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_52 *create_NetGlobulusSimiBaseClassesNativeImpl_52_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_52 *create_SMBaseClassesNativeImpl_52_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_53 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_53 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_53)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_53)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_53_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_53 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_53_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_53 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_53 *new_NetGlobulusSimiBaseClassesNativeImpl_53_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_53 *new_SMBaseClassesNativeImpl_53_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_53 *create_NetGlobulusSimiBaseClassesNativeImpl_53_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_53 *create_SMBaseClassesNativeImpl_53_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_54 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_54 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_54)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_54)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_54_init(NetGlobulusSimiBaseClassesNativeImpl_54 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_54_init(SMBaseClassesNativeImpl_54 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_54 *new_NetGlobulusSimiBaseClassesNativeImpl_54_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_54 *new_SMBaseClassesNativeImpl_54_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_54 *create_NetGlobulusSimiBaseClassesNativeImpl_54_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_54 *create_SMBaseClassesNativeImpl_54_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_55 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_55 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
   id<JavaUtilMap_Entry> val$binary_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$
-                                       withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
+                                    withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_55)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_55)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_55_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl_55 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_55 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_55 *new_NetGlobulusSimiBaseClassesNativeImpl_55_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_55 *new_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_55 *create_NetGlobulusSimiBaseClassesNativeImpl_55_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_55 *create_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_56 : NSObject < NetGlobulusSimiSimiCallable > {
+@interface SMBaseClassesNativeImpl_56 : NSObject < SMSimiCallable > {
  @public
-  NetGlobulusSimiBaseClassesNativeImpl *this$0_;
+  SMBaseClassesNativeImpl *this$0_;
   id<JavaUtilMap_Entry> val$unary_;
 }
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$
-                                       withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
+                                    withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_56)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_56)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_56_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl_56 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_56 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_56 *new_NetGlobulusSimiBaseClassesNativeImpl_56_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_56 *new_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_56 *create_NetGlobulusSimiBaseClassesNativeImpl_56_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_57 : NSObject < NetGlobulusSimiSimiCallable >
+@interface SMBaseClassesNativeImpl_57 : NSObject < SMSimiCallable >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_57)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_57)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_57_init(NetGlobulusSimiBaseClassesNativeImpl_57 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_57_init(SMBaseClassesNativeImpl_57 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_57 *new_NetGlobulusSimiBaseClassesNativeImpl_57_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_57 *new_SMBaseClassesNativeImpl_57_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_57 *create_NetGlobulusSimiBaseClassesNativeImpl_57_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 : NSObject < JavaUtilFunctionBiFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$1 : NSObject < JavaUtilFunctionBiFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a
            withId:(JavaLangDouble *)b;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$1)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *)
+inline SMBaseClassesNativeImpl_$Lambda$1 *SMBaseClassesNativeImpl_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$1 *SMBaseClassesNativeImpl_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$1, instance, SMBaseClassesNativeImpl_$Lambda$1 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$1_init(SMBaseClassesNativeImpl_$Lambda$1 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$1 *new_SMBaseClassesNativeImpl_$Lambda$1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$1 *create_SMBaseClassesNativeImpl_$Lambda$1_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 : NSObject < JavaUtilFunctionBiFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a
-           withId:(JavaLangDouble *)b;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 : NSObject < JavaUtilFunctionBiFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$2 : NSObject < JavaUtilFunctionBiFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a
            withId:(JavaLangDouble *)b;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$2)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *)
+inline SMBaseClassesNativeImpl_$Lambda$2 *SMBaseClassesNativeImpl_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$2 *SMBaseClassesNativeImpl_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$2, instance, SMBaseClassesNativeImpl_$Lambda$2 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$2_init(SMBaseClassesNativeImpl_$Lambda$2 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$2 *new_SMBaseClassesNativeImpl_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$2 *create_SMBaseClassesNativeImpl_$Lambda$2_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 : NSObject < JavaUtilFunctionBiFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a
-           withId:(JavaLangDouble *)b;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 : NSObject < JavaUtilFunctionBiFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$3 : NSObject < JavaUtilFunctionBiFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a
            withId:(JavaLangDouble *)b;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$3)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *)
+inline SMBaseClassesNativeImpl_$Lambda$3 *SMBaseClassesNativeImpl_$Lambda$3_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$3 *SMBaseClassesNativeImpl_$Lambda$3_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$3, instance, SMBaseClassesNativeImpl_$Lambda$3 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$3_init(SMBaseClassesNativeImpl_$Lambda$3 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$3 *new_SMBaseClassesNativeImpl_$Lambda$3_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$3 *create_SMBaseClassesNativeImpl_$Lambda$3_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$4 : NSObject < JavaUtilFunctionBiFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a
+           withId:(JavaLangDouble *)b;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$4)
+
+inline SMBaseClassesNativeImpl_$Lambda$4 *SMBaseClassesNativeImpl_$Lambda$4_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$4 *SMBaseClassesNativeImpl_$Lambda$4_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$4, instance, SMBaseClassesNativeImpl_$Lambda$4 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$4_init(SMBaseClassesNativeImpl_$Lambda$4 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$4 *new_SMBaseClassesNativeImpl_$Lambda$4_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$4 *create_SMBaseClassesNativeImpl_$Lambda$4_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$5 : NSObject < JavaUtilFunctionBiFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a
+           withId:(JavaLangDouble *)b;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$5)
+
+inline SMBaseClassesNativeImpl_$Lambda$5 *SMBaseClassesNativeImpl_$Lambda$5_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$5 *SMBaseClassesNativeImpl_$Lambda$5_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$5, instance, SMBaseClassesNativeImpl_$Lambda$5 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$5_init(SMBaseClassesNativeImpl_$Lambda$5 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$5 *new_SMBaseClassesNativeImpl_$Lambda$5_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$5 *create_SMBaseClassesNativeImpl_$Lambda$5_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$6 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$6)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *)
+inline SMBaseClassesNativeImpl_$Lambda$6 *SMBaseClassesNativeImpl_$Lambda$6_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$6 *SMBaseClassesNativeImpl_$Lambda$6_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$6, instance, SMBaseClassesNativeImpl_$Lambda$6 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$6_init(SMBaseClassesNativeImpl_$Lambda$6 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$6 *new_SMBaseClassesNativeImpl_$Lambda$6_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$6 *create_SMBaseClassesNativeImpl_$Lambda$6_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$7 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$7)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *)
+inline SMBaseClassesNativeImpl_$Lambda$7 *SMBaseClassesNativeImpl_$Lambda$7_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$7 *SMBaseClassesNativeImpl_$Lambda$7_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$7, instance, SMBaseClassesNativeImpl_$Lambda$7 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$7_init(SMBaseClassesNativeImpl_$Lambda$7 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$7 *new_SMBaseClassesNativeImpl_$Lambda$7_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$7 *create_SMBaseClassesNativeImpl_$Lambda$7_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$8 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$8)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *)
+inline SMBaseClassesNativeImpl_$Lambda$8 *SMBaseClassesNativeImpl_$Lambda$8_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$8 *SMBaseClassesNativeImpl_$Lambda$8_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$8, instance, SMBaseClassesNativeImpl_$Lambda$8 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$8_init(SMBaseClassesNativeImpl_$Lambda$8 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$8 *new_SMBaseClassesNativeImpl_$Lambda$8_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$8 *create_SMBaseClassesNativeImpl_$Lambda$8_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$9 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$9)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *)
+inline SMBaseClassesNativeImpl_$Lambda$9 *SMBaseClassesNativeImpl_$Lambda$9_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$9 *SMBaseClassesNativeImpl_$Lambda$9_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$9, instance, SMBaseClassesNativeImpl_$Lambda$9 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$9_init(SMBaseClassesNativeImpl_$Lambda$9 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$9 *new_SMBaseClassesNativeImpl_$Lambda$9_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$9 *create_SMBaseClassesNativeImpl_$Lambda$9_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$10 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$10)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *)
+inline SMBaseClassesNativeImpl_$Lambda$10 *SMBaseClassesNativeImpl_$Lambda$10_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$10 *SMBaseClassesNativeImpl_$Lambda$10_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$10, instance, SMBaseClassesNativeImpl_$Lambda$10 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$10_init(SMBaseClassesNativeImpl_$Lambda$10 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$10 *new_SMBaseClassesNativeImpl_$Lambda$10_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$10 *create_SMBaseClassesNativeImpl_$Lambda$10_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$11 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$11)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *)
+inline SMBaseClassesNativeImpl_$Lambda$11 *SMBaseClassesNativeImpl_$Lambda$11_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$11 *SMBaseClassesNativeImpl_$Lambda$11_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$11, instance, SMBaseClassesNativeImpl_$Lambda$11 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$11_init(SMBaseClassesNativeImpl_$Lambda$11 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$11 *new_SMBaseClassesNativeImpl_$Lambda$11_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$11 *create_SMBaseClassesNativeImpl_$Lambda$11_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$12 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$12)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *)
+inline SMBaseClassesNativeImpl_$Lambda$12 *SMBaseClassesNativeImpl_$Lambda$12_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$12 *SMBaseClassesNativeImpl_$Lambda$12_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$12, instance, SMBaseClassesNativeImpl_$Lambda$12 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$12_init(SMBaseClassesNativeImpl_$Lambda$12 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$12 *new_SMBaseClassesNativeImpl_$Lambda$12_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$12 *create_SMBaseClassesNativeImpl_$Lambda$12_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$13 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$13)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *)
+inline SMBaseClassesNativeImpl_$Lambda$13 *SMBaseClassesNativeImpl_$Lambda$13_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$13 *SMBaseClassesNativeImpl_$Lambda$13_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$13, instance, SMBaseClassesNativeImpl_$Lambda$13 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$13_init(SMBaseClassesNativeImpl_$Lambda$13 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$13 *new_SMBaseClassesNativeImpl_$Lambda$13_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$13 *create_SMBaseClassesNativeImpl_$Lambda$13_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$14 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$14)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *)
+inline SMBaseClassesNativeImpl_$Lambda$14 *SMBaseClassesNativeImpl_$Lambda$14_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$14 *SMBaseClassesNativeImpl_$Lambda$14_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$14, instance, SMBaseClassesNativeImpl_$Lambda$14 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$14_init(SMBaseClassesNativeImpl_$Lambda$14 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$14 *new_SMBaseClassesNativeImpl_$Lambda$14_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$14 *create_SMBaseClassesNativeImpl_$Lambda$14_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$15 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$15)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *)
+inline SMBaseClassesNativeImpl_$Lambda$15 *SMBaseClassesNativeImpl_$Lambda$15_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$15 *SMBaseClassesNativeImpl_$Lambda$15_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$15, instance, SMBaseClassesNativeImpl_$Lambda$15 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$15_init(SMBaseClassesNativeImpl_$Lambda$15 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$15 *new_SMBaseClassesNativeImpl_$Lambda$15_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$15 *create_SMBaseClassesNativeImpl_$Lambda$15_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(JavaLangDouble *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25)
-
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *)
-
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *self);
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_init(void);
-
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$16 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(JavaLangDouble *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$16)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *)
+inline SMBaseClassesNativeImpl_$Lambda$16 *SMBaseClassesNativeImpl_$Lambda$16_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$16 *SMBaseClassesNativeImpl_$Lambda$16_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$16, instance, SMBaseClassesNativeImpl_$Lambda$16 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$16_init(SMBaseClassesNativeImpl_$Lambda$16 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$16 *new_SMBaseClassesNativeImpl_$Lambda$16_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$16 *create_SMBaseClassesNativeImpl_$Lambda$16_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27 : NSObject < JavaUtilComparator > {
+@interface SMBaseClassesNativeImpl_$Lambda$17 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$17)
+
+inline SMBaseClassesNativeImpl_$Lambda$17 *SMBaseClassesNativeImpl_$Lambda$17_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$17 *SMBaseClassesNativeImpl_$Lambda$17_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$17, instance, SMBaseClassesNativeImpl_$Lambda$17 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$17_init(SMBaseClassesNativeImpl_$Lambda$17 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$17 *new_SMBaseClassesNativeImpl_$Lambda$17_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$17 *create_SMBaseClassesNativeImpl_$Lambda$17_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$18 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$18)
+
+inline SMBaseClassesNativeImpl_$Lambda$18 *SMBaseClassesNativeImpl_$Lambda$18_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$18 *SMBaseClassesNativeImpl_$Lambda$18_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$18, instance, SMBaseClassesNativeImpl_$Lambda$18 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$18_init(SMBaseClassesNativeImpl_$Lambda$18 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$18 *new_SMBaseClassesNativeImpl_$Lambda$18_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$18 *create_SMBaseClassesNativeImpl_$Lambda$18_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$19 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$19)
+
+inline SMBaseClassesNativeImpl_$Lambda$19 *SMBaseClassesNativeImpl_$Lambda$19_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$19 *SMBaseClassesNativeImpl_$Lambda$19_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$19, instance, SMBaseClassesNativeImpl_$Lambda$19 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$19_init(SMBaseClassesNativeImpl_$Lambda$19 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$19 *new_SMBaseClassesNativeImpl_$Lambda$19_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$19 *create_SMBaseClassesNativeImpl_$Lambda$19_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$20 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$20)
+
+inline SMBaseClassesNativeImpl_$Lambda$20 *SMBaseClassesNativeImpl_$Lambda$20_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$20 *SMBaseClassesNativeImpl_$Lambda$20_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$20, instance, SMBaseClassesNativeImpl_$Lambda$20 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$20_init(SMBaseClassesNativeImpl_$Lambda$20 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$20 *new_SMBaseClassesNativeImpl_$Lambda$20_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$20 *create_SMBaseClassesNativeImpl_$Lambda$20_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$21 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$21)
+
+inline SMBaseClassesNativeImpl_$Lambda$21 *SMBaseClassesNativeImpl_$Lambda$21_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$21 *SMBaseClassesNativeImpl_$Lambda$21_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$21, instance, SMBaseClassesNativeImpl_$Lambda$21 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$21_init(SMBaseClassesNativeImpl_$Lambda$21 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$21 *new_SMBaseClassesNativeImpl_$Lambda$21_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$21 *create_SMBaseClassesNativeImpl_$Lambda$21_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$22 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$22)
+
+inline SMBaseClassesNativeImpl_$Lambda$22 *SMBaseClassesNativeImpl_$Lambda$22_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$22 *SMBaseClassesNativeImpl_$Lambda$22_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$22, instance, SMBaseClassesNativeImpl_$Lambda$22 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$22_init(SMBaseClassesNativeImpl_$Lambda$22 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$22 *new_SMBaseClassesNativeImpl_$Lambda$22_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$22 *create_SMBaseClassesNativeImpl_$Lambda$22_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$23 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$23)
+
+inline SMBaseClassesNativeImpl_$Lambda$23 *SMBaseClassesNativeImpl_$Lambda$23_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$23 *SMBaseClassesNativeImpl_$Lambda$23_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$23, instance, SMBaseClassesNativeImpl_$Lambda$23 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$23_init(SMBaseClassesNativeImpl_$Lambda$23 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$23 *new_SMBaseClassesNativeImpl_$Lambda$23_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$23 *create_SMBaseClassesNativeImpl_$Lambda$23_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$24 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$24)
+
+inline SMBaseClassesNativeImpl_$Lambda$24 *SMBaseClassesNativeImpl_$Lambda$24_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$24 *SMBaseClassesNativeImpl_$Lambda$24_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$24, instance, SMBaseClassesNativeImpl_$Lambda$24 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$24_init(SMBaseClassesNativeImpl_$Lambda$24 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$24 *new_SMBaseClassesNativeImpl_$Lambda$24_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$24 *create_SMBaseClassesNativeImpl_$Lambda$24_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$25 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$25)
+
+inline SMBaseClassesNativeImpl_$Lambda$25 *SMBaseClassesNativeImpl_$Lambda$25_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$25 *SMBaseClassesNativeImpl_$Lambda$25_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$25, instance, SMBaseClassesNativeImpl_$Lambda$25 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$25_init(SMBaseClassesNativeImpl_$Lambda$25 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$25 *new_SMBaseClassesNativeImpl_$Lambda$25_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$25 *create_SMBaseClassesNativeImpl_$Lambda$25_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$26 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(JavaLangDouble *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$26)
+
+inline SMBaseClassesNativeImpl_$Lambda$26 *SMBaseClassesNativeImpl_$Lambda$26_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$26 *SMBaseClassesNativeImpl_$Lambda$26_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$26, instance, SMBaseClassesNativeImpl_$Lambda$26 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$26_init(SMBaseClassesNativeImpl_$Lambda$26 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$26 *new_SMBaseClassesNativeImpl_$Lambda$26_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$26 *create_SMBaseClassesNativeImpl_$Lambda$26_init(void);
+
+@interface SMBaseClassesNativeImpl_$Lambda$27 : NSObject < JavaUtilComparator > {
  @public
-  id<NetGlobulusSimiSimiCallable> val$comparator_;
-  id<NetGlobulusSimiBlockInterpreter> val$interpreter_;
+  id<SMSimiCallable> val$comparator_;
+  id<SMBlockInterpreter> val$interpreter_;
 }
 
-- (jint)compareWithId:(NetGlobulusSimiSimiValue *)o1
-               withId:(NetGlobulusSimiSimiValue *)o2;
+- (jint)compareWithId:(SMSimiValue *)o1
+               withId:(SMSimiValue *)o2;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$27)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27 *self, id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(SMBaseClassesNativeImpl_$Lambda$27 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_(id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$27 *new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_(id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$27 *create_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_$Lambda$28 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(id<JavaUtilMap_Entry>)a;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$28)
 
-inline NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_get_instance(void);
-static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28, instance, NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *)
+inline SMBaseClassesNativeImpl_$Lambda$28 *SMBaseClassesNativeImpl_$Lambda$28_get_instance(void);
+static SMBaseClassesNativeImpl_$Lambda$28 *SMBaseClassesNativeImpl_$Lambda$28_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$28, instance, SMBaseClassesNativeImpl_$Lambda$28 *)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$28_init(SMBaseClassesNativeImpl_$Lambda$28 *self);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$28 *new_SMBaseClassesNativeImpl_$Lambda$28_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$28 *create_SMBaseClassesNativeImpl_$Lambda$28_init(void);
 
-@interface NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29 : NSObject < JavaUtilComparator > {
+@interface SMBaseClassesNativeImpl_$Lambda$29 : NSObject < JavaUtilComparator > {
  @public
-  id<NetGlobulusSimiSimiCallable> val$comparator_;
-  id<NetGlobulusSimiBlockInterpreter> val$interpreter_;
-  NetGlobulusSimiSimiClassImpl *val$objectClass_;
+  id<SMSimiCallable> val$comparator_;
+  id<SMBlockInterpreter> val$interpreter_;
+  SMSimiClassImpl *val$objectClass_;
 }
 
 - (jint)compareWithId:(id<JavaUtilMap_Entry>)o1
@@ -2176,93 +2176,93 @@ __attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$29)
 
-__attribute__((unused)) static void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29 *self, id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1, NetGlobulusSimiSimiClassImpl *capture$2);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(SMBaseClassesNativeImpl_$Lambda$29 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2);
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_(id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1, NetGlobulusSimiSimiClassImpl *capture$2) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$29 *new_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_(id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1, NetGlobulusSimiSimiClassImpl *capture$2);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$29 *create_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2);
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl
+@implementation SMBaseClassesNativeImpl
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (NetGlobulusSimiSimiNativeClass *)getObjectClass {
-  return NetGlobulusSimiBaseClassesNativeImpl_getObjectClass(self);
+- (SMSimiNativeClass *)getObjectClass {
+  return SMBaseClassesNativeImpl_getObjectClass(self);
 }
 
-- (NetGlobulusSimiSimiNativeClass *)getStringClass {
-  return NetGlobulusSimiBaseClassesNativeImpl_getStringClass(self);
+- (SMSimiNativeClass *)getStringClass {
+  return SMBaseClassesNativeImpl_getStringClass(self);
 }
 
-- (NetGlobulusSimiSimiNativeClass *)getNumberClass {
-  return NetGlobulusSimiBaseClassesNativeImpl_getNumberClass(self);
+- (SMSimiNativeClass *)getNumberClass {
+  return SMBaseClassesNativeImpl_getNumberClass(self);
 }
 
-- (NetGlobulusSimiSimiNativeClass *)getExceptionClass {
-  return NetGlobulusSimiBaseClassesNativeImpl_getExceptionClass(self);
+- (SMSimiNativeClass *)getExceptionClass {
+  return SMBaseClassesNativeImpl_getExceptionClass(self);
 }
 
-- (NetGlobulusSimiSimiNativeClass *)getGlobalsClass {
-  return NetGlobulusSimiBaseClassesNativeImpl_getGlobalsClass(self);
+- (SMSimiNativeClass *)getGlobalsClass {
+  return SMBaseClassesNativeImpl_getGlobalsClass(self);
 }
 
-- (NetGlobulusSimiSimiClassImpl *)getObjectClassWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter {
-  return NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(self, interpreter);
+- (SMSimiClassImpl *)getObjectClassWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter {
+  return SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(self, interpreter);
 }
 
-- (NetGlobulusSimiSimiValue *)sortWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                     withJavaUtilList:(id<JavaUtilList>)arguments
-                                      withNetGlobulusSimiSimiCallable:(id<NetGlobulusSimiSimiCallable>)comparator {
-  return NetGlobulusSimiBaseClassesNativeImpl_sortWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_withNetGlobulusSimiSimiCallable_(self, interpreter, arguments, comparator);
+- (SMSimiValue *)sortWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withJavaUtilList:(id<JavaUtilList>)arguments
+                         withSMSimiCallable:(id<SMSimiCallable>)comparator {
+  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(self, interpreter, arguments, comparator);
 }
 
-- (NetGlobulusSimiSimiValue *)prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                                       withJavaUtilList:(id<JavaUtilList>)arguments {
-  return NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(self, interpreter, arguments);
+- (SMSimiValue *)prepareValueNativeCallWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                             withJavaUtilList:(id<JavaUtilList>)arguments {
+  return SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(self, interpreter, arguments);
 }
 
-- (NetGlobulusSimiSimiValue *)doMathWithJavaUtilList:(id<JavaUtilList>)arguments
-                      withJavaUtilFunctionBiFunction:(id<JavaUtilFunctionBiFunction>)op {
-  return NetGlobulusSimiBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(self, arguments, op);
+- (SMSimiValue *)doMathWithJavaUtilList:(id<JavaUtilList>)arguments
+         withJavaUtilFunctionBiFunction:(id<JavaUtilFunctionBiFunction>)op {
+  return SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(self, arguments, op);
 }
 
-- (NetGlobulusSimiSimiValue *)doMathWithJavaUtilList:(id<JavaUtilList>)arguments
-                        withJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)op {
-  return NetGlobulusSimiBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(self, arguments, op);
+- (SMSimiValue *)doMathWithJavaUtilList:(id<JavaUtilList>)arguments
+           withJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)op {
+  return SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(self, arguments, op);
 }
 
-- (NetGlobulusSimiSimiNativeClass *)getWithNSString:(NSString *)className_ {
+- (SMSimiNativeClass *)getWithNSString:(NSString *)className_ {
   return [((id<JavaUtilMap>) nil_chk(classes_)) getWithId:className_];
 }
 
-- (id<NetGlobulusSimiSimiCallable>)getWithNSString:(NSString *)className_
-                                      withNSString:(NSString *)methodName
-                                           withInt:(jint)arity {
-  return [((id<JavaUtilMap>) nil_chk(((NetGlobulusSimiSimiNativeClass *) nil_chk([self getWithNSString:className_]))->methods_)) getWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(methodName, arity)];
+- (id<SMSimiCallable>)getWithNSString:(NSString *)className_
+                         withNSString:(NSString *)methodName
+                              withInt:(jint)arity {
+  return [((id<JavaUtilMap>) nil_chk(((SMSimiNativeClass *) nil_chk([self getWithNSString:className_]))->methods_)) getWithId:new_SMOverloadableFunction_initWithNSString_withInt_(methodName, arity)];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiClassImpl;", 0x2, 0, 1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x2, 2, 3, -1, 4, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x2, 5, 6, -1, 7, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x2, 8, 9, -1, 10, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x2, 8, 11, -1, 12, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiNativeClass;", 0x0, 13, 14, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiCallable;", 0x0, 13, 15, -1, -1, -1, -1 },
+    { NULL, "LSMSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiNativeClass;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiClassImpl;", 0x2, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x2, 2, 3, -1, 4, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x2, 5, 6, -1, 7, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x2, 8, 9, -1, 10, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x2, 8, 11, -1, 12, -1, -1 },
+    { NULL, "LSMSimiNativeClass;", 0x0, 13, 14, -1, -1, -1, -1 },
+    { NULL, "LSMSimiCallable;", 0x0, 13, 15, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -2273,9 +2273,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[3].selector = @selector(getNumberClass);
   methods[4].selector = @selector(getExceptionClass);
   methods[5].selector = @selector(getGlobalsClass);
-  methods[6].selector = @selector(getObjectClassWithNetGlobulusSimiBlockInterpreter:);
-  methods[7].selector = @selector(sortWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withNetGlobulusSimiSimiCallable:);
-  methods[8].selector = @selector(prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:);
+  methods[6].selector = @selector(getObjectClassWithSMBlockInterpreter:);
+  methods[7].selector = @selector(sortWithSMBlockInterpreter:withJavaUtilList:withSMSimiCallable:);
+  methods[8].selector = @selector(prepareValueNativeCallWithSMBlockInterpreter:withJavaUtilList:);
   methods[9].selector = @selector(doMathWithJavaUtilList:withJavaUtilFunctionBiFunction:);
   methods[10].selector = @selector(doMathWithJavaUtilList:withJavaUtilFunctionFunction:);
   methods[11].selector = @selector(getWithNSString:);
@@ -2284,208 +2284,208 @@ J2OBJC_IGNORE_DESIGNATED_END
   static const J2ObjcFieldInfo fields[] = {
     { "classes_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 16, -1 },
   };
-  static const void *ptrTable[] = { "getObjectClass", "LNetGlobulusSimiBlockInterpreter;", "sort", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;LNetGlobulusSimiSimiCallable;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;LSimiCallable;)LSimiValue;", "prepareValueNativeCall", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiValue;", "doMath", "LJavaUtilList;LJavaUtilFunctionBiFunction;", "(Ljava/util/List<LSimiProperty;>;Ljava/util/function/BiFunction<Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;>;)LSimiValue;", "LJavaUtilList;LJavaUtilFunctionFunction;", "(Ljava/util/List<LSimiProperty;>;Ljava/util/function/Function<Ljava/lang/Double;Ljava/lang/Double;>;)LSimiValue;", "get", "LNSString;", "LNSString;LNSString;I", "Ljava/util/Map<Ljava/lang/String;LSimiNativeClass;>;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl = { "BaseClassesNativeImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 13, 1, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl;
+  static const void *ptrTable[] = { "getObjectClass", "LSMBlockInterpreter;", "sort", "LSMBlockInterpreter;LJavaUtilList;LSMSimiCallable;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;LSimiCallable;)LSimiValue;", "prepareValueNativeCall", "LSMBlockInterpreter;LJavaUtilList;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiValue;", "doMath", "LJavaUtilList;LJavaUtilFunctionBiFunction;", "(Ljava/util/List<LSimiProperty;>;Ljava/util/function/BiFunction<Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;>;)LSimiValue;", "LJavaUtilList;LJavaUtilFunctionFunction;", "(Ljava/util/List<LSimiProperty;>;Ljava/util/function/Function<Ljava/lang/Double;Ljava/lang/Double;>;)LSimiValue;", "get", "LNSString;", "LNSString;LNSString;I", "Ljava/util/Map<Ljava/lang/String;LSimiNativeClass;>;" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl = { "BaseClassesNativeImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 13, 1, -1, -1, -1, -1, -1 };
+  return &_SMBaseClassesNativeImpl;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_init(NetGlobulusSimiBaseClassesNativeImpl *self) {
+void SMBaseClassesNativeImpl_init(SMBaseClassesNativeImpl *self) {
   NSObject_init(self);
   self->classes_ = new_JavaUtilHashMap_init();
-  (void) [self->classes_ putWithId:NetGlobulusSimiConstants_CLASS_OBJECT withId:NetGlobulusSimiBaseClassesNativeImpl_getObjectClass(self)];
-  (void) [((id<JavaUtilMap>) nil_chk(self->classes_)) putWithId:NetGlobulusSimiConstants_CLASS_STRING withId:NetGlobulusSimiBaseClassesNativeImpl_getStringClass(self)];
-  (void) [((id<JavaUtilMap>) nil_chk(self->classes_)) putWithId:NetGlobulusSimiConstants_CLASS_NUMBER withId:NetGlobulusSimiBaseClassesNativeImpl_getNumberClass(self)];
-  (void) [((id<JavaUtilMap>) nil_chk(self->classes_)) putWithId:NetGlobulusSimiConstants_CLASS_EXCEPTION withId:NetGlobulusSimiBaseClassesNativeImpl_getExceptionClass(self)];
-  (void) [((id<JavaUtilMap>) nil_chk(self->classes_)) putWithId:NetGlobulusSimiConstants_CLASS_GLOBALS withId:NetGlobulusSimiBaseClassesNativeImpl_getGlobalsClass(self)];
+  (void) [self->classes_ putWithId:SMConstants_CLASS_OBJECT withId:SMBaseClassesNativeImpl_getObjectClass(self)];
+  (void) [((id<JavaUtilMap>) nil_chk(self->classes_)) putWithId:SMConstants_CLASS_STRING withId:SMBaseClassesNativeImpl_getStringClass(self)];
+  (void) [((id<JavaUtilMap>) nil_chk(self->classes_)) putWithId:SMConstants_CLASS_NUMBER withId:SMBaseClassesNativeImpl_getNumberClass(self)];
+  (void) [((id<JavaUtilMap>) nil_chk(self->classes_)) putWithId:SMConstants_CLASS_EXCEPTION withId:SMBaseClassesNativeImpl_getExceptionClass(self)];
+  (void) [((id<JavaUtilMap>) nil_chk(self->classes_)) putWithId:SMConstants_CLASS_GLOBALS withId:SMBaseClassesNativeImpl_getGlobalsClass(self)];
 }
 
-NetGlobulusSimiBaseClassesNativeImpl *new_NetGlobulusSimiBaseClassesNativeImpl_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl, init)
+SMBaseClassesNativeImpl *new_SMBaseClassesNativeImpl_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl *create_NetGlobulusSimiBaseClassesNativeImpl_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl, init)
+SMBaseClassesNativeImpl *create_SMBaseClassesNativeImpl_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl, init)
 }
 
-NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getObjectClass(NetGlobulusSimiBaseClassesNativeImpl *self) {
+SMSimiNativeClass *SMBaseClassesNativeImpl_getObjectClass(SMBaseClassesNativeImpl *self) {
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"len", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_1_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"keys", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_2_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"values", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_3_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"enumerate", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_4_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"zip", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_5_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"append", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_6_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"addAll", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_7_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"clear", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_8_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"indexOf", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_9_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"reversed", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_10_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"sorted", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_11_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"sorted", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_12_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"uniques", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_13_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"clone", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_14_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"clone", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_15_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"isMutable", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_16_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"isArray", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_17_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"class", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_18_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_ITERATE, 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_19_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_HAS, 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_20_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_EQUALS, 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_21_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_COMPARE_TO, 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_22_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_TO_STRING, 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_23_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"matches", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_24_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"matches", 2) withId:new_NetGlobulusSimiBaseClassesNativeImpl_25_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_26_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"array", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_27_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"array", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_28_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"array", 2) withId:new_NetGlobulusSimiBaseClassesNativeImpl_29_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  return new_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NetGlobulusSimiConstants_CLASS_OBJECT, methods);
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"len", 0) withId:new_SMBaseClassesNativeImpl_1_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"keys", 0) withId:new_SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"values", 0) withId:new_SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"enumerate", 0) withId:new_SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"zip", 0) withId:new_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"append", 1) withId:new_SMBaseClassesNativeImpl_6_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"addAll", 1) withId:new_SMBaseClassesNativeImpl_7_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clear", 0) withId:new_SMBaseClassesNativeImpl_8_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"indexOf", 1) withId:new_SMBaseClassesNativeImpl_9_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"reversed", 0) withId:new_SMBaseClassesNativeImpl_10_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 0) withId:new_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 1) withId:new_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"uniques", 0) withId:new_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 0) withId:new_SMBaseClassesNativeImpl_14_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 1) withId:new_SMBaseClassesNativeImpl_15_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isMutable", 0) withId:new_SMBaseClassesNativeImpl_16_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isArray", 0) withId:new_SMBaseClassesNativeImpl_17_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"class", 0) withId:new_SMBaseClassesNativeImpl_18_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_ITERATE, 0) withId:new_SMBaseClassesNativeImpl_19_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_HAS, 1) withId:new_SMBaseClassesNativeImpl_20_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_21_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_22_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_TO_STRING, 0) withId:new_SMBaseClassesNativeImpl_23_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 1) withId:new_SMBaseClassesNativeImpl_24_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 2) withId:new_SMBaseClassesNativeImpl_25_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_SMBaseClassesNativeImpl_26_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 0) withId:new_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 1) withId:new_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 2) withId:new_SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(self)];
+  return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_OBJECT, methods);
 }
 
-NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getStringClass(NetGlobulusSimiBaseClassesNativeImpl *self) {
+SMSimiNativeClass *SMBaseClassesNativeImpl_getStringClass(SMBaseClassesNativeImpl *self) {
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"len", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_30_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"endsWith", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_31_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"format", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_32_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"indexOf", 2) withId:new_NetGlobulusSimiBaseClassesNativeImpl_33_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"lastIndexOf", 2) withId:new_NetGlobulusSimiBaseClassesNativeImpl_34_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"removing", 2) withId:new_NetGlobulusSimiBaseClassesNativeImpl_35_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"replacing", 2) withId:new_NetGlobulusSimiBaseClassesNativeImpl_36_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"split", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_37_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"startsWith", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_38_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"substring", 2) withId:new_NetGlobulusSimiBaseClassesNativeImpl_39_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"lowerCased", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_40_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"upperCased", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_41_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"trim", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_42_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"isAlpha", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_43_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"isDigit", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_44_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_ITERATE, 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_45_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_HAS, 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_46_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_EQUALS, 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_47_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_COMPARE_TO, 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_48_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"toNumber", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_49_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_50_init()];
-  return new_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NetGlobulusSimiConstants_CLASS_STRING, methods);
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"len", 0) withId:new_SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"endsWith", 1) withId:new_SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"format", 1) withId:new_SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"indexOf", 2) withId:new_SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"lastIndexOf", 2) withId:new_SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"removing", 2) withId:new_SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"replacing", 2) withId:new_SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"split", 1) withId:new_SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"startsWith", 1) withId:new_SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"substring", 2) withId:new_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"lowerCased", 0) withId:new_SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"upperCased", 0) withId:new_SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"trim", 0) withId:new_SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isAlpha", 0) withId:new_SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isDigit", 0) withId:new_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_ITERATE, 0) withId:new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_HAS, 1) withId:new_SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_47_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_48_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"toNumber", 0) withId:new_SMBaseClassesNativeImpl_49_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_SMBaseClassesNativeImpl_50_init()];
+  return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_STRING, methods);
 }
 
-NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getNumberClass(NetGlobulusSimiBaseClassesNativeImpl *self) {
+SMSimiNativeClass *SMBaseClassesNativeImpl_getNumberClass(SMBaseClassesNativeImpl *self) {
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_EQUALS, 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_51_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_COMPARE_TO, 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_52_init()];
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_TO_STRING, 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_53_initWithNetGlobulusSimiBaseClassesNativeImpl_(self)];
-  return new_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NetGlobulusSimiConstants_CLASS_NUMBER, methods);
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_51_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_52_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_TO_STRING, 0) withId:new_SMBaseClassesNativeImpl_53_initWithSMBaseClassesNativeImpl_(self)];
+  return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_NUMBER, methods);
 }
 
-NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getExceptionClass(NetGlobulusSimiBaseClassesNativeImpl *self) {
+SMSimiNativeClass *SMBaseClassesNativeImpl_getExceptionClass(SMBaseClassesNativeImpl *self) {
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiConstants_RAISE, 0) withId:new_NetGlobulusSimiBaseClassesNativeImpl_54_init()];
-  return new_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NetGlobulusSimiConstants_CLASS_EXCEPTION, methods);
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_RAISE, 0) withId:new_SMBaseClassesNativeImpl_54_init()];
+  return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_EXCEPTION, methods);
 }
 
-NetGlobulusSimiSimiNativeClass *NetGlobulusSimiBaseClassesNativeImpl_getGlobalsClass(NetGlobulusSimiBaseClassesNativeImpl *self) {
+SMSimiNativeClass *SMBaseClassesNativeImpl_getGlobalsClass(SMBaseClassesNativeImpl *self) {
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
   id<JavaUtilMap> binaries = new_JavaUtilHashMap_init();
-  (void) [binaries putWithId:@"pow" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1, instance)];
-  (void) [binaries putWithId:@"min" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2, instance)];
-  (void) [binaries putWithId:@"max" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3, instance)];
-  (void) [binaries putWithId:@"atan2" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4, instance)];
-  (void) [binaries putWithId:@"hypot" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5, instance)];
+  (void) [binaries putWithId:@"pow" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$1, instance)];
+  (void) [binaries putWithId:@"min" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$2, instance)];
+  (void) [binaries putWithId:@"max" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$3, instance)];
+  (void) [binaries putWithId:@"atan2" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$4, instance)];
+  (void) [binaries putWithId:@"hypot" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$5, instance)];
   for (id<JavaUtilMap_Entry> __strong binary in nil_chk([binaries entrySet])) {
-    (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_([((id<JavaUtilMap_Entry>) nil_chk(binary)) getKey], 2) withId:new_NetGlobulusSimiBaseClassesNativeImpl_55_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, binary)];
+    (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_([((id<JavaUtilMap_Entry>) nil_chk(binary)) getKey], 2) withId:new_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, binary)];
   }
   id<JavaUtilMap> unaries = new_JavaUtilHashMap_init();
-  (void) [unaries putWithId:@"abs" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6, instance)];
-  (void) [unaries putWithId:@"acos" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7, instance)];
-  (void) [unaries putWithId:@"asin" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8, instance)];
-  (void) [unaries putWithId:@"atan" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9, instance)];
-  (void) [unaries putWithId:@"cbrt" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10, instance)];
-  (void) [unaries putWithId:@"ceil" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11, instance)];
-  (void) [unaries putWithId:@"cos" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12, instance)];
-  (void) [unaries putWithId:@"cosh" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13, instance)];
-  (void) [unaries putWithId:@"exp" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14, instance)];
-  (void) [unaries putWithId:@"floor" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15, instance)];
-  (void) [unaries putWithId:@"log" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16, instance)];
-  (void) [unaries putWithId:@"log10" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17, instance)];
-  (void) [unaries putWithId:@"log1p" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18, instance)];
-  (void) [unaries putWithId:@"signum" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19, instance)];
-  (void) [unaries putWithId:@"sin" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20, instance)];
-  (void) [unaries putWithId:@"sinh" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21, instance)];
-  (void) [unaries putWithId:@"sqrt" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22, instance)];
-  (void) [unaries putWithId:@"tan" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23, instance)];
-  (void) [unaries putWithId:@"tanh" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24, instance)];
-  (void) [unaries putWithId:@"toDegrees" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25, instance)];
-  (void) [unaries putWithId:@"toRadians" withId:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26, instance)];
+  (void) [unaries putWithId:@"abs" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$6, instance)];
+  (void) [unaries putWithId:@"acos" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$7, instance)];
+  (void) [unaries putWithId:@"asin" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$8, instance)];
+  (void) [unaries putWithId:@"atan" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$9, instance)];
+  (void) [unaries putWithId:@"cbrt" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$10, instance)];
+  (void) [unaries putWithId:@"ceil" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$11, instance)];
+  (void) [unaries putWithId:@"cos" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$12, instance)];
+  (void) [unaries putWithId:@"cosh" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$13, instance)];
+  (void) [unaries putWithId:@"exp" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$14, instance)];
+  (void) [unaries putWithId:@"floor" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$15, instance)];
+  (void) [unaries putWithId:@"log" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$16, instance)];
+  (void) [unaries putWithId:@"log10" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$17, instance)];
+  (void) [unaries putWithId:@"log1p" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$18, instance)];
+  (void) [unaries putWithId:@"signum" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$19, instance)];
+  (void) [unaries putWithId:@"sin" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$20, instance)];
+  (void) [unaries putWithId:@"sinh" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$21, instance)];
+  (void) [unaries putWithId:@"sqrt" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$22, instance)];
+  (void) [unaries putWithId:@"tan" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$23, instance)];
+  (void) [unaries putWithId:@"tanh" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$24, instance)];
+  (void) [unaries putWithId:@"toDegrees" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$25, instance)];
+  (void) [unaries putWithId:@"toRadians" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$26, instance)];
   for (id<JavaUtilMap_Entry> __strong unary in nil_chk([unaries entrySet])) {
-    (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_([((id<JavaUtilMap_Entry>) nil_chk(unary)) getKey], 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_56_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, unary)];
+    (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_([((id<JavaUtilMap_Entry>) nil_chk(unary)) getKey], 1) withId:new_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, unary)];
   }
-  (void) [methods putWithId:new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(@"round", 1) withId:new_NetGlobulusSimiBaseClassesNativeImpl_57_init()];
-  return new_NetGlobulusSimiSimiNativeClass_initWithNSString_withJavaUtilMap_(NetGlobulusSimiConstants_CLASS_GLOBALS, methods);
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"round", 1) withId:new_SMBaseClassesNativeImpl_57_init()];
+  return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_GLOBALS, methods);
 }
 
-NetGlobulusSimiSimiClassImpl *NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(NetGlobulusSimiBaseClassesNativeImpl *self, id<NetGlobulusSimiBlockInterpreter> interpreter) {
-  return (NetGlobulusSimiSimiClassImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<NetGlobulusSimiBlockInterpreter>) nil_chk(interpreter)) getGlobalWithNSString:NetGlobulusSimiConstants_CLASS_OBJECT])) getValue])) getObject], [NetGlobulusSimiSimiClassImpl class]);
+SMSimiClassImpl *SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(SMBaseClassesNativeImpl *self, id<SMBlockInterpreter> interpreter) {
+  return (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getGlobalWithNSString:SMConstants_CLASS_OBJECT])) getValue])) getObject], [SMSimiClassImpl class]);
 }
 
-NetGlobulusSimiSimiValue *NetGlobulusSimiBaseClassesNativeImpl_sortWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_withNetGlobulusSimiSimiCallable_(NetGlobulusSimiBaseClassesNativeImpl *self, id<NetGlobulusSimiBlockInterpreter> interpreter, id<JavaUtilList> arguments, id<NetGlobulusSimiSimiCallable> comparator) {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  NetGlobulusSimiSimiClassImpl *objectClass = NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(self, interpreter);
-  if ([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) isArray]) {
+SMSimiValue *SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(SMBaseClassesNativeImpl *self, id<SMBlockInterpreter> interpreter, id<JavaUtilList> arguments, id<SMSimiCallable> comparator) {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  SMSimiClassImpl *objectClass = SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(self, interpreter);
+  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
     id<JavaUtilComparator> nativeComparator;
     if (comparator == nil) {
       nativeComparator = JavaUtilComparator_naturalOrder();
     }
     else {
-      nativeComparator = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_(comparator, interpreter);
+      nativeComparator = new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(comparator, interpreter);
     }
-    return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_([self_ sortedWithJavaUtilComparator:nativeComparator]);
+    return new_SMSimiValue_Object_initWithSMSimiObject_([self_ sortedWithJavaUtilComparator:nativeComparator]);
   }
   else {
     id<JavaUtilComparator> nativeComparator;
     if (comparator == nil) {
-      nativeComparator = JavaUtilComparator_comparingWithJavaUtilFunctionFunction_(JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28, instance));
+      nativeComparator = JavaUtilComparator_comparingWithJavaUtilFunctionFunction_(JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$28, instance));
     }
     else {
-      nativeComparator = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_(comparator, interpreter, objectClass);
+      nativeComparator = new_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(comparator, interpreter, objectClass);
     }
-    return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_([self_ sortedWithJavaUtilComparator:nativeComparator]);
+    return new_SMSimiValue_Object_initWithSMSimiObject_([self_ sortedWithJavaUtilComparator:nativeComparator]);
   }
 }
 
-NetGlobulusSimiSimiValue *NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(NetGlobulusSimiBaseClassesNativeImpl *self, id<NetGlobulusSimiBlockInterpreter> interpreter, id<JavaUtilList> arguments) {
-  id<NetGlobulusSimiSimiProperty> arg0 = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk(arg0)) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  id<NetGlobulusSimiSimiEnvironment> environment = [((id<NetGlobulusSimiBlockInterpreter>) nil_chk(interpreter)) getEnvironment];
-  id<NetGlobulusSimiSimiProperty> oldSelf = [((id<NetGlobulusSimiSimiEnvironment>) nil_chk(environment)) tryGetWithNSString:NetGlobulusSimiConstants_SELF];
-  [environment defineWithNSString:NetGlobulusSimiConstants_SELF withNetGlobulusSimiSimiProperty:arg0];
-  NetGlobulusSimiSimiValue *value = [((id<NetGlobulusSimiSimiProperty>) nil_chk([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) getWithNSString:NetGlobulusSimiConstants_PRIVATE withNetGlobulusSimiSimiEnvironment:environment])) getValue];
+SMSimiValue *SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(SMBaseClassesNativeImpl *self, id<SMBlockInterpreter> interpreter, id<JavaUtilList> arguments) {
+  id<SMSimiProperty> arg0 = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(arg0)) getValue])) getObject], [SMSimiObjectImpl class]);
+  id<SMSimiEnvironment> environment = [((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment];
+  id<SMSimiProperty> oldSelf = [((id<SMSimiEnvironment>) nil_chk(environment)) tryGetWithNSString:SMConstants_SELF];
+  [environment defineWithNSString:SMConstants_SELF withSMSimiProperty:arg0];
+  SMSimiValue *value = [((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(self_)) getWithNSString:SMConstants_PRIVATE withSMSimiEnvironment:environment])) getValue];
   if (oldSelf != nil) {
-    [environment defineWithNSString:NetGlobulusSimiConstants_SELF withNetGlobulusSimiSimiProperty:oldSelf];
+    [environment defineWithNSString:SMConstants_SELF withSMSimiProperty:oldSelf];
   }
   else {
-    [environment defineWithNSString:NetGlobulusSimiConstants_SELF withNetGlobulusSimiSimiProperty:nil];
+    [environment defineWithNSString:SMConstants_SELF withSMSimiProperty:nil];
   }
   return value;
 }
 
-NetGlobulusSimiSimiValue *NetGlobulusSimiBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(NetGlobulusSimiBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionBiFunction> op) {
-  jdouble a = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
-  jdouble b = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) doubleValue];
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([((id<JavaUtilFunctionBiFunction>) nil_chk(op)) applyWithId:JavaLangDouble_valueOfWithDouble_(a) withId:JavaLangDouble_valueOfWithDouble_(b)])) doubleValue]);
+SMSimiValue *SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(SMBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionBiFunction> op) {
+  jdouble a = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
+  jdouble b = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) doubleValue];
+  return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([((id<JavaUtilFunctionBiFunction>) nil_chk(op)) applyWithId:JavaLangDouble_valueOfWithDouble_(a) withId:JavaLangDouble_valueOfWithDouble_(b)])) doubleValue]);
 }
 
-NetGlobulusSimiSimiValue *NetGlobulusSimiBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(NetGlobulusSimiBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionFunction> op) {
-  jdouble a = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([((id<JavaUtilFunctionFunction>) nil_chk(op)) applyWithId:JavaLangDouble_valueOfWithDouble_(a)])) doubleValue]);
+SMSimiValue *SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(SMBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionFunction> op) {
+  jdouble a = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
+  return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([((id<JavaUtilFunctionFunction>) nil_chk(op)) applyWithId:JavaLangDouble_valueOfWithDouble_(a)])) doubleValue]);
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiBaseClassesNativeImpl)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMBaseClassesNativeImpl)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_1
+@implementation SMBaseClassesNativeImpl_1
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_1_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_1_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -2494,49 +2494,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) length]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Number_initWithDouble_([((SMSimiObjectImpl *) nil_chk(self_)) length]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_1;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_1;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_1_init(NetGlobulusSimiBaseClassesNativeImpl_1 *self) {
+void SMBaseClassesNativeImpl_1_init(SMBaseClassesNativeImpl_1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_1 *new_NetGlobulusSimiBaseClassesNativeImpl_1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_1, init)
+SMBaseClassesNativeImpl_1 *new_SMBaseClassesNativeImpl_1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_1, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_1 *create_NetGlobulusSimiBaseClassesNativeImpl_1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_1, init)
+SMBaseClassesNativeImpl_1 *create_SMBaseClassesNativeImpl_1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_1, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_2
+@implementation SMBaseClassesNativeImpl_2
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_2_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -2544,53 +2544,53 @@ NetGlobulusSimiBaseClassesNativeImpl_1 *create_NetGlobulusSimiBaseClassesNativeI
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_fromArrayWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(this$0_, interpreter), true, [((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) keys]));
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, [((SMSimiObjectImpl *) nil_chk(self_)) keys]));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_2;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_2;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_2_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_2 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_2 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_2 *new_NetGlobulusSimiBaseClassesNativeImpl_2_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_2, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_2 *new_SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_2, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_2 *create_NetGlobulusSimiBaseClassesNativeImpl_2_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_2, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_2 *create_SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_2, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_3
+@implementation SMBaseClassesNativeImpl_3
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_3_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -2598,53 +2598,53 @@ NetGlobulusSimiBaseClassesNativeImpl_2 *create_NetGlobulusSimiBaseClassesNativeI
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_fromArrayWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(this$0_, interpreter), true, [((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) values]));
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, [((SMSimiObjectImpl *) nil_chk(self_)) values]));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_3 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_3;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_3 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_3;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_3_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_3 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_3 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_3 *new_NetGlobulusSimiBaseClassesNativeImpl_3_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_3, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_3 *new_SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_3, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_3 *create_NetGlobulusSimiBaseClassesNativeImpl_3_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_3, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_3 *create_SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_3, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_4
+@implementation SMBaseClassesNativeImpl_4
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_4_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -2652,53 +2652,53 @@ NetGlobulusSimiBaseClassesNativeImpl_3 *create_NetGlobulusSimiBaseClassesNativeI
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) enumerateWithNetGlobulusSimiSimiClassImpl:NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(this$0_, interpreter)]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) enumerateWithSMSimiClassImpl:SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter)]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_4 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_4;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_4 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_4;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_4_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_4 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_4 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_4 *new_NetGlobulusSimiBaseClassesNativeImpl_4_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_4, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_4 *new_SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_4, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_4 *create_NetGlobulusSimiBaseClassesNativeImpl_4_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_4, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_4 *create_SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_4, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_5
+@implementation SMBaseClassesNativeImpl_5
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_5_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -2706,54 +2706,54 @@ NetGlobulusSimiBaseClassesNativeImpl_4 *create_NetGlobulusSimiBaseClassesNativeI
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) zipWithNetGlobulusSimiSimiClassImpl:NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(this$0_, interpreter)]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) zipWithSMSimiClassImpl:SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter)]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_5 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_5;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_5 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_5;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_5_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_5 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_5 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_5 *new_NetGlobulusSimiBaseClassesNativeImpl_5_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_5, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_5 *new_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_5, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_5 *create_NetGlobulusSimiBaseClassesNativeImpl_5_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_5, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_5 *create_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_5, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_6
+@implementation SMBaseClassesNativeImpl_6
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_6_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_6_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -2762,11 +2762,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  [((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) appendWithNetGlobulusSimiSimiProperty:[arguments getWithInt:1]];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  [((SMSimiObjectImpl *) nil_chk(self_)) appendWithSMSimiProperty:[arguments getWithInt:1]];
   return [arguments getWithInt:0];
 }
 
@@ -2774,39 +2774,39 @@ J2OBJC_IGNORE_DESIGNATED_END
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_6 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_6;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_6 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_6;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_6_init(NetGlobulusSimiBaseClassesNativeImpl_6 *self) {
+void SMBaseClassesNativeImpl_6_init(SMBaseClassesNativeImpl_6 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_6 *new_NetGlobulusSimiBaseClassesNativeImpl_6_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_6, init)
+SMBaseClassesNativeImpl_6 *new_SMBaseClassesNativeImpl_6_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_6, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_6 *create_NetGlobulusSimiBaseClassesNativeImpl_6_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_6, init)
+SMBaseClassesNativeImpl_6 *create_SMBaseClassesNativeImpl_6_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_6, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_7
+@implementation SMBaseClassesNativeImpl_7
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_7_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_7_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -2815,12 +2815,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  NetGlobulusSimiSimiObjectImpl *obj = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  [((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) addAllWithNetGlobulusSimiSimiObjectImpl:obj];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  SMSimiObjectImpl *obj = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  [((SMSimiObjectImpl *) nil_chk(self_)) addAllWithSMSimiObjectImpl:obj];
   return [arguments getWithInt:0];
 }
 
@@ -2828,39 +2828,39 @@ J2OBJC_IGNORE_DESIGNATED_END
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_7 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_7;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_7 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_7;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_7_init(NetGlobulusSimiBaseClassesNativeImpl_7 *self) {
+void SMBaseClassesNativeImpl_7_init(SMBaseClassesNativeImpl_7 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_7 *new_NetGlobulusSimiBaseClassesNativeImpl_7_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_7, init)
+SMBaseClassesNativeImpl_7 *new_SMBaseClassesNativeImpl_7_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_7, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_7 *create_NetGlobulusSimiBaseClassesNativeImpl_7_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_7, init)
+SMBaseClassesNativeImpl_7 *create_SMBaseClassesNativeImpl_7_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_7, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_8
+@implementation SMBaseClassesNativeImpl_8
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_8_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_8_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -2869,11 +2869,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  [((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) clearWithNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *) cast_chk([((id<NetGlobulusSimiBlockInterpreter>) nil_chk(interpreter)) getEnvironment], [NetGlobulusSimiEnvironment class])];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  [((SMSimiObjectImpl *) nil_chk(self_)) clearWithSMEnvironment:(SMEnvironment *) cast_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment], [SMEnvironment class])];
   return nil;
 }
 
@@ -2881,39 +2881,39 @@ J2OBJC_IGNORE_DESIGNATED_END
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_8 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_8;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_8 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_8;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_8_init(NetGlobulusSimiBaseClassesNativeImpl_8 *self) {
+void SMBaseClassesNativeImpl_8_init(SMBaseClassesNativeImpl_8 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_8 *new_NetGlobulusSimiBaseClassesNativeImpl_8_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_8, init)
+SMBaseClassesNativeImpl_8 *new_SMBaseClassesNativeImpl_8_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_8, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_8 *create_NetGlobulusSimiBaseClassesNativeImpl_8_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_8, init)
+SMBaseClassesNativeImpl_8 *create_SMBaseClassesNativeImpl_8_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_8, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_9
+@implementation SMBaseClassesNativeImpl_9
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_9_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_9_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -2922,51 +2922,51 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  NetGlobulusSimiSimiValue *value = [((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue];
-  return [((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) indexOfWithNetGlobulusSimiSimiValue:value];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  SMSimiValue *value = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue];
+  return [((SMSimiObjectImpl *) nil_chk(self_)) indexOfWithSMSimiValue:value];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_9 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_9;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_9 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_9;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_9_init(NetGlobulusSimiBaseClassesNativeImpl_9 *self) {
+void SMBaseClassesNativeImpl_9_init(SMBaseClassesNativeImpl_9 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_9 *new_NetGlobulusSimiBaseClassesNativeImpl_9_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_9, init)
+SMBaseClassesNativeImpl_9 *new_SMBaseClassesNativeImpl_9_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_9, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_9 *create_NetGlobulusSimiBaseClassesNativeImpl_9_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_9, init)
+SMBaseClassesNativeImpl_9 *create_SMBaseClassesNativeImpl_9_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_9, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_10
+@implementation SMBaseClassesNativeImpl_10
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_10_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_10_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -2975,49 +2975,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) reversed]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) reversed]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_10 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_10;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_10 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_10;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_10_init(NetGlobulusSimiBaseClassesNativeImpl_10 *self) {
+void SMBaseClassesNativeImpl_10_init(SMBaseClassesNativeImpl_10 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_10 *new_NetGlobulusSimiBaseClassesNativeImpl_10_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_10, init)
+SMBaseClassesNativeImpl_10 *new_SMBaseClassesNativeImpl_10_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_10, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_10 *create_NetGlobulusSimiBaseClassesNativeImpl_10_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_10, init)
+SMBaseClassesNativeImpl_10 *create_SMBaseClassesNativeImpl_10_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_10, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_11
+@implementation SMBaseClassesNativeImpl_11
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_11_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -3025,52 +3025,52 @@ NetGlobulusSimiBaseClassesNativeImpl_10 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return NetGlobulusSimiBaseClassesNativeImpl_sortWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_withNetGlobulusSimiSimiCallable_(this$0_, interpreter, arguments, nil);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, nil);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_11 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_11;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_11 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_11;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_11_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_11 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_11 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_11 *new_NetGlobulusSimiBaseClassesNativeImpl_11_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_11, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_11 *new_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_11, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_11 *create_NetGlobulusSimiBaseClassesNativeImpl_11_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_11, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_11, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_12
+@implementation SMBaseClassesNativeImpl_12
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_12_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -3078,53 +3078,53 @@ NetGlobulusSimiBaseClassesNativeImpl_11 *create_NetGlobulusSimiBaseClassesNative
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  id<NetGlobulusSimiSimiCallable> comparator = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getCallable];
-  return NetGlobulusSimiBaseClassesNativeImpl_sortWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_withNetGlobulusSimiSimiCallable_(this$0_, interpreter, arguments, comparator);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  id<SMSimiCallable> comparator = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getCallable];
+  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, comparator);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_12 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_12;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_12 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_12;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_12_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_12 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_12 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_12 *new_NetGlobulusSimiBaseClassesNativeImpl_12_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_12, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_12 *new_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_12, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_12 *create_NetGlobulusSimiBaseClassesNativeImpl_12_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_12, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_12 *create_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_12, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_13
+@implementation SMBaseClassesNativeImpl_13
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_13_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -3132,12 +3132,12 @@ NetGlobulusSimiBaseClassesNativeImpl_12 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  if ([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) isArray]) {
-    return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_fromArrayWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(this$0_, interpreter), self_->immutable_, new_JavaUtilArrayList_initWithJavaUtilCollection_([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([self_ values])) stream])) distinct])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()])));
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
+    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), self_->immutable_, new_JavaUtilArrayList_initWithJavaUtilCollection_([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([self_ values])) stream])) distinct])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()])));
   }
   return [arguments getWithInt:0];
 }
@@ -3146,43 +3146,43 @@ NetGlobulusSimiBaseClassesNativeImpl_12 *create_NetGlobulusSimiBaseClassesNative
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_13 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_13;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_13 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_13;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_13_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_13 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_13 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_13 *new_NetGlobulusSimiBaseClassesNativeImpl_13_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_13, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_13 *new_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_13, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_13 *create_NetGlobulusSimiBaseClassesNativeImpl_13_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_13, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_13 *create_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_13, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_14
+@implementation SMBaseClassesNativeImpl_14
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_14_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_14_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3191,50 +3191,50 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:false]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:false]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_14 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_14;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_14 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_14;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_14_init(NetGlobulusSimiBaseClassesNativeImpl_14 *self) {
+void SMBaseClassesNativeImpl_14_init(SMBaseClassesNativeImpl_14 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_14 *new_NetGlobulusSimiBaseClassesNativeImpl_14_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_14, init)
+SMBaseClassesNativeImpl_14 *new_SMBaseClassesNativeImpl_14_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_14, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_14 *create_NetGlobulusSimiBaseClassesNativeImpl_14_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_14, init)
+SMBaseClassesNativeImpl_14 *create_SMBaseClassesNativeImpl_14_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_14, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_15
+@implementation SMBaseClassesNativeImpl_15
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_15_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_15_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3243,51 +3243,51 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  jboolean mutable_ = NetGlobulusSimiInterpreter_isTruthyWithNetGlobulusSimiSimiProperty_([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]);
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:mutable_]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  jboolean mutable_ = SMInterpreter_isTruthyWithSMSimiProperty_([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:mutable_]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_15 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_15;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_15 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_15;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_15_init(NetGlobulusSimiBaseClassesNativeImpl_15 *self) {
+void SMBaseClassesNativeImpl_15_init(SMBaseClassesNativeImpl_15 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_15 *new_NetGlobulusSimiBaseClassesNativeImpl_15_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_15, init)
+SMBaseClassesNativeImpl_15 *new_SMBaseClassesNativeImpl_15_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_15, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_15 *create_NetGlobulusSimiBaseClassesNativeImpl_15_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_15, init)
+SMBaseClassesNativeImpl_15 *create_SMBaseClassesNativeImpl_15_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_15, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_16
+@implementation SMBaseClassesNativeImpl_16
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_16_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_16_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3296,49 +3296,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(!((NetGlobulusSimiSimiObjectImpl *) nil_chk(((NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]))))->immutable_);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithBoolean_(!((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]))))->immutable_);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_16 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_16;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_16 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_16;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_16_init(NetGlobulusSimiBaseClassesNativeImpl_16 *self) {
+void SMBaseClassesNativeImpl_16_init(SMBaseClassesNativeImpl_16 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_16 *new_NetGlobulusSimiBaseClassesNativeImpl_16_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_16, init)
+SMBaseClassesNativeImpl_16 *new_SMBaseClassesNativeImpl_16_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_16, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_16 *create_NetGlobulusSimiBaseClassesNativeImpl_16_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_16, init)
+SMBaseClassesNativeImpl_16 *create_SMBaseClassesNativeImpl_16_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_16, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_17
+@implementation SMBaseClassesNativeImpl_17
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_17_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_17_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3347,49 +3347,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(((NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class])))) isArray]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class])))) isArray]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_17 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_17;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_17 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_17;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_17_init(NetGlobulusSimiBaseClassesNativeImpl_17 *self) {
+void SMBaseClassesNativeImpl_17_init(SMBaseClassesNativeImpl_17 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_17 *new_NetGlobulusSimiBaseClassesNativeImpl_17_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_17, init)
+SMBaseClassesNativeImpl_17 *new_SMBaseClassesNativeImpl_17_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_17, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_17 *create_NetGlobulusSimiBaseClassesNativeImpl_17_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_17, init)
+SMBaseClassesNativeImpl_17 *create_SMBaseClassesNativeImpl_17_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_17, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_18
+@implementation SMBaseClassesNativeImpl_18
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_18_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_18_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3398,54 +3398,54 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  id<NetGlobulusSimiSimiObject> self_ = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject];
-  id<NetGlobulusSimiSimiClass> clazz = [((id<NetGlobulusSimiSimiObject>) nil_chk(self_)) getSimiClass];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  id<SMSimiObject> self_ = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject];
+  id<SMSimiClass> clazz = [((id<SMSimiObject>) nil_chk(self_)) getSimiClass];
   if (clazz == nil) {
     return nil;
   }
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(clazz);
+  return new_SMSimiValue_Object_initWithSMSimiObject_(clazz);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_18 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_18;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_18 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_18;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_18_init(NetGlobulusSimiBaseClassesNativeImpl_18 *self) {
+void SMBaseClassesNativeImpl_18_init(SMBaseClassesNativeImpl_18 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_18 *new_NetGlobulusSimiBaseClassesNativeImpl_18_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_18, init)
+SMBaseClassesNativeImpl_18 *new_SMBaseClassesNativeImpl_18_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_18, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_18 *create_NetGlobulusSimiBaseClassesNativeImpl_18_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_18, init)
+SMBaseClassesNativeImpl_18 *create_SMBaseClassesNativeImpl_18_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_18, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_19
+@implementation SMBaseClassesNativeImpl_19
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_19_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_19_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3454,53 +3454,53 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  jboolean isArray = [((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) isArray];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  jboolean isArray = [((SMSimiObjectImpl *) nil_chk(self_)) isArray];
   id<JavaUtilIterator> iterator = [self_ iterate];
   JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  (void) [fields putWithId:NetGlobulusSimiConstants_NEXT withId:new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(new_NetGlobulusSimiBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(iterator), nil, nil)];
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(new_NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
+  (void) [fields putWithId:SMConstants_NEXT withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(iterator), nil, nil)];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_19 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_19;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_19 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_19;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_19_init(NetGlobulusSimiBaseClassesNativeImpl_19 *self) {
+void SMBaseClassesNativeImpl_19_init(SMBaseClassesNativeImpl_19 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_19 *new_NetGlobulusSimiBaseClassesNativeImpl_19_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_19, init)
+SMBaseClassesNativeImpl_19 *new_SMBaseClassesNativeImpl_19_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_19, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_19 *create_NetGlobulusSimiBaseClassesNativeImpl_19_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_19, init)
+SMBaseClassesNativeImpl_19 *create_SMBaseClassesNativeImpl_19_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_19, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_19_1
+@implementation SMBaseClassesNativeImpl_19_1
 
-- (instancetype)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0 {
-  NetGlobulusSimiBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(self, capture$0);
+- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0 {
+  SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(self, capture$0);
   return self;
 }
 
@@ -3508,11 +3508,11 @@ NetGlobulusSimiBaseClassesNativeImpl_19 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
   if ([((id<JavaUtilIterator>) nil_chk(val$iterator_)) hasNext]) {
-    return (id<NetGlobulusSimiSimiProperty>) cast_check([val$iterator_ next], NetGlobulusSimiSimiProperty_class_());
+    return (id<SMSimiProperty>) cast_check([val$iterator_ next], SMSimiProperty_class_());
   }
   return nil;
 }
@@ -3521,43 +3521,43 @@ NetGlobulusSimiBaseClassesNativeImpl_19 *create_NetGlobulusSimiBaseClassesNative
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaUtilIterator:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$iterator_", "LJavaUtilIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Iterator<*>;", "LNetGlobulusSimiBaseClassesNativeImpl_19;", "callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_19_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 4, -1, 5, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_19_1;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Iterator<*>;", "LSMBaseClassesNativeImpl_19;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_19_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 4, -1, 5, -1, -1 };
+  return &_SMBaseClassesNativeImpl_19_1;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(NetGlobulusSimiBaseClassesNativeImpl_19_1 *self, id<JavaUtilIterator> capture$0) {
+void SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_19_1 *self, id<JavaUtilIterator> capture$0) {
   self->val$iterator_ = capture$0;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_19_1 *new_NetGlobulusSimiBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_19_1, initWithJavaUtilIterator_, capture$0)
+SMBaseClassesNativeImpl_19_1 *new_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_19_1, initWithJavaUtilIterator_, capture$0)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_19_1 *create_NetGlobulusSimiBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_19_1, initWithJavaUtilIterator_, capture$0)
+SMBaseClassesNativeImpl_19_1 *create_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_19_1, initWithJavaUtilIterator_, capture$0)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_20
+@implementation SMBaseClassesNativeImpl_20
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_20_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_20_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3566,50 +3566,50 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) containsWithNetGlobulusSimiSimiValue:[((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue] withNetGlobulusSimiToken:NetGlobulusSimiToken_nativeCallWithNSString_(NetGlobulusSimiConstants_HAS)]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) containsWithSMSimiValue:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue] withSMToken:SMToken_nativeCallWithNSString_(SMConstants_HAS)]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_20 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_20;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_20 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_20;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_20_init(NetGlobulusSimiBaseClassesNativeImpl_20 *self) {
+void SMBaseClassesNativeImpl_20_init(SMBaseClassesNativeImpl_20 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_20 *new_NetGlobulusSimiBaseClassesNativeImpl_20_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_20, init)
+SMBaseClassesNativeImpl_20 *new_SMBaseClassesNativeImpl_20_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_20, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_20 *create_NetGlobulusSimiBaseClassesNativeImpl_20_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_20, init)
+SMBaseClassesNativeImpl_20 *create_SMBaseClassesNativeImpl_20_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_20, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_21
+@implementation SMBaseClassesNativeImpl_21
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_21_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_21_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3618,49 +3618,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_21 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_21;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_21 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_21;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_21_init(NetGlobulusSimiBaseClassesNativeImpl_21 *self) {
+void SMBaseClassesNativeImpl_21_init(SMBaseClassesNativeImpl_21 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_21 *new_NetGlobulusSimiBaseClassesNativeImpl_21_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_21, init)
+SMBaseClassesNativeImpl_21 *new_SMBaseClassesNativeImpl_21_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_21, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_21 *create_NetGlobulusSimiBaseClassesNativeImpl_21_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_21, init)
+SMBaseClassesNativeImpl_21 *create_SMBaseClassesNativeImpl_21_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_21, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_22
+@implementation SMBaseClassesNativeImpl_22
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_22_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_22_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3669,49 +3669,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_22 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_22;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_22 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_22;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_22_init(NetGlobulusSimiBaseClassesNativeImpl_22 *self) {
+void SMBaseClassesNativeImpl_22_init(SMBaseClassesNativeImpl_22 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_22 *new_NetGlobulusSimiBaseClassesNativeImpl_22_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_22, init)
+SMBaseClassesNativeImpl_22 *new_SMBaseClassesNativeImpl_22_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_22, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_22 *create_NetGlobulusSimiBaseClassesNativeImpl_22_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_22, init)
+SMBaseClassesNativeImpl_22 *create_SMBaseClassesNativeImpl_22_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_22, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_23
+@implementation SMBaseClassesNativeImpl_23
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_23_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_23_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3720,49 +3720,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((id<NetGlobulusSimiSimiObject>) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject])) description]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_String_initWithNSString_([((id<SMSimiObject>) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject])) description]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_23 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_23;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_23 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_23;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_23_init(NetGlobulusSimiBaseClassesNativeImpl_23 *self) {
+void SMBaseClassesNativeImpl_23_init(SMBaseClassesNativeImpl_23 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_23 *new_NetGlobulusSimiBaseClassesNativeImpl_23_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_23, init)
+SMBaseClassesNativeImpl_23 *new_SMBaseClassesNativeImpl_23_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_23, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_23 *create_NetGlobulusSimiBaseClassesNativeImpl_23_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_23, init)
+SMBaseClassesNativeImpl_23 *create_SMBaseClassesNativeImpl_23_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_23, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_24
+@implementation SMBaseClassesNativeImpl_24
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_24_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_24_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3771,51 +3771,51 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  NetGlobulusSimiSimiObjectImpl *other = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) matchesWithNetGlobulusSimiSimiObjectImpl:other withJavaUtilList:nil]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:nil]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_24 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_24;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_24 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_24;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_24_init(NetGlobulusSimiBaseClassesNativeImpl_24 *self) {
+void SMBaseClassesNativeImpl_24_init(SMBaseClassesNativeImpl_24 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_24 *new_NetGlobulusSimiBaseClassesNativeImpl_24_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_24, init)
+SMBaseClassesNativeImpl_24 *new_SMBaseClassesNativeImpl_24_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_24, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_24 *create_NetGlobulusSimiBaseClassesNativeImpl_24_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_24, init)
+SMBaseClassesNativeImpl_24 *create_SMBaseClassesNativeImpl_24_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_24, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_25
+@implementation SMBaseClassesNativeImpl_25
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_25_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_25_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3824,53 +3824,53 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 2;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  NetGlobulusSimiSimiObjectImpl *other = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  id<JavaUtilList> fieldsToMatch = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([((NetGlobulusSimiSimiObjectImpl *) nil_chk(((NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class])))) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) matchesWithNetGlobulusSimiSimiObjectImpl:other withJavaUtilList:fieldsToMatch]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  id<JavaUtilList> fieldsToMatch = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getObject], [SMSimiObjectImpl class])))) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_25_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:fieldsToMatch]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_25 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_25;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_25 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_25;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_25_init(NetGlobulusSimiBaseClassesNativeImpl_25 *self) {
+void SMBaseClassesNativeImpl_25_init(SMBaseClassesNativeImpl_25 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_25 *new_NetGlobulusSimiBaseClassesNativeImpl_25_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_25, init)
+SMBaseClassesNativeImpl_25 *new_SMBaseClassesNativeImpl_25_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_25, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_25 *create_NetGlobulusSimiBaseClassesNativeImpl_25_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_25, init)
+SMBaseClassesNativeImpl_25 *create_SMBaseClassesNativeImpl_25_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_25, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_25_$Lambda$1)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1
+@implementation SMBaseClassesNativeImpl_25_$Lambda$1
 
-- (id)applyWithId:(NetGlobulusSimiSimiValue *)a {
-  return [((NetGlobulusSimiSimiValue *) nil_chk(a)) getString];
+- (id)applyWithId:(SMSimiValue *)a {
+  return [((SMSimiValue *) nil_chk(a)) getString];
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -3882,31 +3882,31 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_instance = new_NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1)
+  if (self == [SMBaseClassesNativeImpl_25_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_25_$Lambda$1_instance = new_SMBaseClassesNativeImpl_25_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_25_$Lambda$1)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_init(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *self) {
+void SMBaseClassesNativeImpl_25_$Lambda$1_init(SMBaseClassesNativeImpl_25_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1, init)
+SMBaseClassesNativeImpl_25_$Lambda$1 *new_SMBaseClassesNativeImpl_25_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_25_$Lambda$1, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_25_$Lambda$1, init)
+SMBaseClassesNativeImpl_25_$Lambda$1 *create_SMBaseClassesNativeImpl_25_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_25_$Lambda$1, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_26
+@implementation SMBaseClassesNativeImpl_26
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_26_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_26_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3915,20 +3915,20 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiClassImpl *clazz = (NetGlobulusSimiSimiClassImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiClassImpl class]);
-  id<JavaUtilSet> constructors = [((NetGlobulusSimiSimiClassImpl *) nil_chk(clazz)) getConstructors];
-  id<JavaUtilSet> params = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(constructors)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1, instance)])) flatMapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toSet()];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiClassImpl *clazz = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiClassImpl class]);
+  id<JavaUtilSet> constructors = [((SMSimiClassImpl *) nil_chk(clazz)) getConstructors];
+  id<JavaUtilSet> params = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(constructors)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_$Lambda$1, instance)])) flatMapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_$Lambda$2, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toSet()];
   JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  NetGlobulusSimiSimiNativeObject *object = new_NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
-  NetGlobulusSimiSimiValue *objectValue = new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(object);
+  SMSimiNativeObject *object = new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
+  SMSimiValue *objectValue = new_SMSimiValue_Object_initWithSMSimiObject_(object);
   id<JavaUtilList> initArgs = new_JavaUtilArrayList_init();
   for (NSString * __strong param in nil_chk(params)) {
-    (void) [fields putWithId:param withId:new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(new_NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_(fields, param, initArgs, objectValue), param, object)];
+    (void) [fields putWithId:param withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(fields, param, initArgs, objectValue), param, object)];
   }
-  (void) [fields putWithId:@"build" withId:new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(new_NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_(params, constructors, fields, clazz, initArgs), @"build", object)];
+  (void) [fields putWithId:@"build" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(params, constructors, fields, clazz, initArgs), @"build", object)];
   return objectValue;
 }
 
@@ -3936,41 +3936,41 @@ J2OBJC_IGNORE_DESIGNATED_END
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_26 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_26;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_26 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_26;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_26_init(NetGlobulusSimiBaseClassesNativeImpl_26 *self) {
+void SMBaseClassesNativeImpl_26_init(SMBaseClassesNativeImpl_26 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26 *new_NetGlobulusSimiBaseClassesNativeImpl_26_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26, init)
+SMBaseClassesNativeImpl_26 *new_SMBaseClassesNativeImpl_26_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26 *create_NetGlobulusSimiBaseClassesNativeImpl_26_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26, init)
+SMBaseClassesNativeImpl_26 *create_SMBaseClassesNativeImpl_26_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_26_1
+@implementation SMBaseClassesNativeImpl_26_1
 
-- (instancetype)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$0
-                                 withNSString:(NSString *)capture$1
-                             withJavaUtilList:(id<JavaUtilList>)capture$2
-                 withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)capture$3 {
-  NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_(self, capture$0, capture$1, capture$2, capture$3);
+- (instancetype __nonnull)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$0
+                                           withNSString:(NSString *)capture$1
+                                       withJavaUtilList:(id<JavaUtilList>)capture$2
+                                        withSMSimiValue:(SMSimiValue *)capture$3 {
+  SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(self, capture$0, capture$1, capture$2, capture$3);
   return self;
 }
 
@@ -3978,11 +3978,11 @@ NetGlobulusSimiBaseClassesNativeImpl_26 *create_NetGlobulusSimiBaseClassesNative
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  id<NetGlobulusSimiSimiProperty> arg = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
-  (void) [((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) putWithId:JreStrcat("$$", NetGlobulusSimiConstants_PRIVATE, val$param_) withId:arg];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  id<SMSimiProperty> arg = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
+  (void) [((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) putWithId:JreStrcat("$$", SMConstants_PRIVATE, val$param_) withId:arg];
   [((id<JavaUtilList>) nil_chk(val$initArgs_)) addWithId:arg];
   return val$objectValue_;
 }
@@ -3991,29 +3991,29 @@ NetGlobulusSimiBaseClassesNativeImpl_26 *create_NetGlobulusSimiBaseClassesNative
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaUtilLinkedHashMap:withNSString:withJavaUtilList:withNetGlobulusSimiSimiValue:);
+  methods[0].selector = @selector(initWithJavaUtilLinkedHashMap:withNSString:withJavaUtilList:withSMSimiValue:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
     { "val$param_", "LNSString;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$initArgs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x1012, -1, -1, 4, -1 },
-    { "val$objectValue_", "LNetGlobulusSimiSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "val$objectValue_", "LSMSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LNetGlobulusSimiBaseClassesNativeImpl_26;", "callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_26_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 4, 5, -1, 6, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_26_1;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_26;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_26_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 4, 5, -1, 6, -1, -1 };
+  return &_SMBaseClassesNativeImpl_26_1;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_(NetGlobulusSimiBaseClassesNativeImpl_26_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, NetGlobulusSimiSimiValue *capture$3) {
+void SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_26_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
   self->val$fields_ = capture$0;
   self->val$param_ = capture$1;
   self->val$initArgs_ = capture$2;
@@ -4021,22 +4021,22 @@ void NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_wit
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_1 *new_NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, NetGlobulusSimiSimiValue *capture$3) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_, capture$0, capture$1, capture$2, capture$3)
+SMBaseClassesNativeImpl_26_1 *new_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_1 *create_NetGlobulusSimiBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, NetGlobulusSimiSimiValue *capture$3) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withNetGlobulusSimiSimiValue_, capture$0, capture$1, capture$2, capture$3)
+SMBaseClassesNativeImpl_26_1 *create_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_26_2
+@implementation SMBaseClassesNativeImpl_26_2
 
-- (instancetype)initWithJavaUtilSet:(id<JavaUtilSet>)capture$0
-                    withJavaUtilSet:(id<JavaUtilSet>)capture$1
-          withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$2
-   withNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)capture$3
-                   withJavaUtilList:(id<JavaUtilList>)capture$4 {
-  NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_(self, capture$0, capture$1, capture$2, capture$3, capture$4);
+- (instancetype __nonnull)initWithJavaUtilSet:(id<JavaUtilSet>)capture$0
+                              withJavaUtilSet:(id<JavaUtilSet>)capture$1
+                    withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$2
+                          withSMSimiClassImpl:(SMSimiClassImpl *)capture$3
+                             withJavaUtilList:(id<JavaUtilList>)capture$4 {
+  SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(self, capture$0, capture$1, capture$2, capture$3, capture$4);
   return self;
 }
 
@@ -4044,50 +4044,50 @@ NetGlobulusSimiBaseClassesNativeImpl_26_1 *create_NetGlobulusSimiBaseClassesNati
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
   jint size = [((id<JavaUtilSet>) nil_chk(val$params_)) size];
-  JavaUtilOptional *closest = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(val$constructors_)) stream])) minWithJavaUtilComparator:JavaUtilComparator_comparingIntWithJavaUtilFunctionToIntFunction_(new_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(size))];
+  JavaUtilOptional *closest = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(val$constructors_)) stream])) minWithJavaUtilComparator:JavaUtilComparator_comparingIntWithJavaUtilFunctionToIntFunction_(new_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(size))];
   if ([((JavaUtilOptional *) nil_chk(closest)) isPresent]) {
-    id<JavaUtilList> closestParams = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((NetGlobulusSimiExpr_Block *) nil_chk(((NetGlobulusSimiStmt_Function *) nil_chk(((NetGlobulusSimiSimiFunction *) nil_chk([closest get]))->declaration_))->block_))->params_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+    id<JavaUtilList> closestParams = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk([closest get]))->declaration_))->block_))->params_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_2_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
     id<JavaUtilList> args = new_JavaUtilArrayList_init();
     for (NSString * __strong param in nil_chk(closestParams)) {
-      [args addWithId:[((id<NetGlobulusSimiSimiProperty>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) getWithId:JreStrcat("$$", NetGlobulusSimiConstants_PRIVATE, param)])) getValue]];
+      [args addWithId:[((id<SMSimiProperty>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) getWithId:JreStrcat("$$", SMConstants_PRIVATE, param)])) getValue]];
     }
-    return [((NetGlobulusSimiSimiClassImpl *) nil_chk(val$clazz_)) init__WithNetGlobulusSimiBlockInterpreter:interpreter withJavaUtilList:args];
+    return [((SMSimiClassImpl *) nil_chk(val$clazz_)) init__WithSMBlockInterpreter:interpreter withJavaUtilList:args];
   }
-  return [((NetGlobulusSimiSimiClassImpl *) nil_chk(val$clazz_)) init__WithNetGlobulusSimiBlockInterpreter:interpreter withJavaUtilList:val$initArgs_];
+  return [((SMSimiClassImpl *) nil_chk(val$clazz_)) init__WithSMBlockInterpreter:interpreter withJavaUtilList:val$initArgs_];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaUtilSet:withJavaUtilSet:withJavaUtilLinkedHashMap:withNetGlobulusSimiSimiClassImpl:withJavaUtilList:);
+  methods[0].selector = @selector(initWithJavaUtilSet:withJavaUtilSet:withJavaUtilLinkedHashMap:withSMSimiClassImpl:withJavaUtilList:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$params_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
     { "val$constructors_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x1012, -1, -1, 4, -1 },
     { "val$fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x1012, -1, -1, 5, -1 },
-    { "val$clazz_", "LNetGlobulusSimiSimiClassImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "val$clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$initArgs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x1012, -1, -1, 6, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Set<LSimiFunction;>;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LNetGlobulusSimiBaseClassesNativeImpl_26;", "callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_26_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 5, 7, -1, 8, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_26_2;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Set<LSimiFunction;>;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_26;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_26_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 5, 7, -1, 8, -1, -1 };
+  return &_SMBaseClassesNativeImpl_26_2;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_(NetGlobulusSimiBaseClassesNativeImpl_26_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, NetGlobulusSimiSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+void SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_26_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
   self->val$params_ = capture$0;
   self->val$constructors_ = capture$1;
   self->val$fields_ = capture$2;
@@ -4096,78 +4096,41 @@ void NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilS
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_2 *new_NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, NetGlobulusSimiSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
+SMBaseClassesNativeImpl_26_2 *new_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_2 *create_NetGlobulusSimiBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, NetGlobulusSimiSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withNetGlobulusSimiSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
+SMBaseClassesNativeImpl_26_2 *create_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1
+@implementation SMBaseClassesNativeImpl_26_2_$Lambda$1
 
-- (jint)applyAsIntWithId:(NetGlobulusSimiSimiFunction *)f {
-  return JavaLangMath_absWithInt_([((NetGlobulusSimiSimiFunction *) nil_chk(f)) arity] - val$size_);
+- (jint)applyAsIntWithId:(SMSimiFunction *)f {
+  return JavaLangMath_absWithInt_([((SMSimiFunction *) nil_chk(f)) arity] - val$size_);
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1 *self, jint capture$0) {
+void SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_26_2_$Lambda$1 *self, jint capture$0) {
   self->val$size_ = capture$0;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1, initWithInt_, capture$0)
+SMBaseClassesNativeImpl_26_2_$Lambda$1 *new_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_2_$Lambda$1, initWithInt_, capture$0)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$1, initWithInt_, capture$0)
+SMBaseClassesNativeImpl_26_2_$Lambda$1 *create_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_2_$Lambda$1, initWithInt_, capture$0)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_2_$Lambda$2)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2
+@implementation SMBaseClassesNativeImpl_26_2_$Lambda$2
 
-- (id)applyWithId:(NetGlobulusSimiToken *)t {
-  return ((NetGlobulusSimiToken *) nil_chk(t))->lexeme_;
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_instance = new_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2)
-  }
-}
-
-@end
-
-void NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_init(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *self) {
-  NSObject_init(self);
-}
-
-NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *new_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2, init)
-}
-
-NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2 *create_NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_2_$Lambda$2, init)
-}
-
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1)
-
-@implementation NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1
-
-- (id)applyWithId:(NetGlobulusSimiSimiFunction *)f {
-  return ((NetGlobulusSimiExpr_Block *) nil_chk(((NetGlobulusSimiStmt_Function *) nil_chk(((NetGlobulusSimiSimiFunction *) nil_chk(f))->declaration_))->block_))->params_;
+- (id)applyWithId:(SMToken *)t {
+  return ((SMToken *) nil_chk(t))->lexeme_;
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -4179,29 +4142,66 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_instance = new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1)
+  if (self == [SMBaseClassesNativeImpl_26_2_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_26_2_$Lambda$2_instance = new_SMBaseClassesNativeImpl_26_2_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_2_$Lambda$2)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_init(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *self) {
+void SMBaseClassesNativeImpl_26_2_$Lambda$2_init(SMBaseClassesNativeImpl_26_2_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1, init)
+SMBaseClassesNativeImpl_26_2_$Lambda$2 *new_SMBaseClassesNativeImpl_26_2_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_2_$Lambda$2, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$1, init)
+SMBaseClassesNativeImpl_26_2_$Lambda$2 *create_SMBaseClassesNativeImpl_26_2_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_2_$Lambda$2, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$1)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2
+@implementation SMBaseClassesNativeImpl_26_$Lambda$1
+
+- (id)applyWithId:(SMSimiFunction *)f {
+  return ((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk(f))->declaration_))->block_))->params_;
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_26_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_26_$Lambda$1_instance = new_SMBaseClassesNativeImpl_26_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_$Lambda$1)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_26_$Lambda$1_init(SMBaseClassesNativeImpl_26_$Lambda$1 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_26_$Lambda$1 *new_SMBaseClassesNativeImpl_26_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_$Lambda$1, init)
+}
+
+SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBaseClassesNativeImpl_26_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_$Lambda$1, init)
+}
+
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$2)
+
+@implementation SMBaseClassesNativeImpl_26_$Lambda$2
 
 - (id)applyWithId:(id<JavaUtilList>)a {
   return [((id<JavaUtilList>) nil_chk(a)) stream];
@@ -4216,32 +4216,32 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_instance = new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2)
+  if (self == [SMBaseClassesNativeImpl_26_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_26_$Lambda$2_instance = new_SMBaseClassesNativeImpl_26_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_$Lambda$2)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_init(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *self) {
+void SMBaseClassesNativeImpl_26_$Lambda$2_init(SMBaseClassesNativeImpl_26_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2, init)
+SMBaseClassesNativeImpl_26_$Lambda$2 *new_SMBaseClassesNativeImpl_26_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_$Lambda$2, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2 *create_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$2, init)
+SMBaseClassesNativeImpl_26_$Lambda$2 *create_SMBaseClassesNativeImpl_26_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_$Lambda$2, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$3)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3
+@implementation SMBaseClassesNativeImpl_26_$Lambda$3
 
-- (id)applyWithId:(NetGlobulusSimiToken *)t {
-  return ((NetGlobulusSimiToken *) nil_chk(t))->lexeme_;
+- (id)applyWithId:(SMToken *)t {
+  return ((SMToken *) nil_chk(t))->lexeme_;
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -4253,30 +4253,30 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_instance = new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3)
+  if (self == [SMBaseClassesNativeImpl_26_$Lambda$3 class]) {
+    SMBaseClassesNativeImpl_26_$Lambda$3_instance = new_SMBaseClassesNativeImpl_26_$Lambda$3_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_$Lambda$3)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_init(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *self) {
+void SMBaseClassesNativeImpl_26_$Lambda$3_init(SMBaseClassesNativeImpl_26_$Lambda$3 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *new_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3, init)
+SMBaseClassesNativeImpl_26_$Lambda$3 *new_SMBaseClassesNativeImpl_26_$Lambda$3_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_$Lambda$3, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *create_NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3, init)
+SMBaseClassesNativeImpl_26_$Lambda$3 *create_SMBaseClassesNativeImpl_26_$Lambda$3_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_$Lambda$3, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_27
+@implementation SMBaseClassesNativeImpl_27
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_27_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4284,52 +4284,52 @@ NetGlobulusSimiBaseClassesNativeImpl_26_$Lambda$3 *create_NetGlobulusSimiBaseCla
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_fromArrayWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_init()));
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_init()));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_27 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_27;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_27 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_27;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_27_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_27 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_27 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_27 *new_NetGlobulusSimiBaseClassesNativeImpl_27_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_27, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_27 *new_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_27 *create_NetGlobulusSimiBaseClassesNativeImpl_27_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_27, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_27 *create_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_28
+@implementation SMBaseClassesNativeImpl_28
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_28_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4337,53 +4337,53 @@ NetGlobulusSimiBaseClassesNativeImpl_27 *create_NetGlobulusSimiBaseClassesNative
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  jint capacity = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_fromArrayWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithInt_(capacity)));
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  jint capacity = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithInt_(capacity)));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_28 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_28;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_28 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_28;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_28_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_28 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_28 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_28 *new_NetGlobulusSimiBaseClassesNativeImpl_28_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_28, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_28 *new_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_28 *create_NetGlobulusSimiBaseClassesNativeImpl_28_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_28, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_29
+@implementation SMBaseClassesNativeImpl_29
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_29_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4391,54 +4391,54 @@ NetGlobulusSimiBaseClassesNativeImpl_28 *create_NetGlobulusSimiBaseClassesNative
   return 2;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  jint capacity = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  NetGlobulusSimiSimiValue *fillValue = [((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:2])) getValue];
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_fromArrayWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(NetGlobulusSimiBaseClassesNativeImpl_getObjectClassWithNetGlobulusSimiBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithJavaUtilCollection_(JavaUtilCollections_nCopiesWithInt_withId_(capacity, fillValue))));
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  jint capacity = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  SMSimiValue *fillValue = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithJavaUtilCollection_(JavaUtilCollections_nCopiesWithInt_withId_(capacity, fillValue))));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_29 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_29;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_29 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_29;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_29_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_29 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_29 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_29 *new_NetGlobulusSimiBaseClassesNativeImpl_29_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_29, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_29 *new_SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_29, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_29 *create_NetGlobulusSimiBaseClassesNativeImpl_29_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_29, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_29 *create_SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_29, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_30
+@implementation SMBaseClassesNativeImpl_30
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_30_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4446,53 +4446,53 @@ NetGlobulusSimiBaseClassesNativeImpl_29 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_([((NSString *) nil_chk(value)) java_length]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  return new_SMSimiValue_Number_initWithDouble_([((NSString *) nil_chk(value)) java_length]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_30 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_30;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_30 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_30;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_30_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_30 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_30 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_30 *new_NetGlobulusSimiBaseClassesNativeImpl_30_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_30, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_30 *new_SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_30, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_30 *create_NetGlobulusSimiBaseClassesNativeImpl_30_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_30, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_30 *create_SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_30, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_31
+@implementation SMBaseClassesNativeImpl_31
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_31_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4500,54 +4500,54 @@ NetGlobulusSimiBaseClassesNativeImpl_30 *create_NetGlobulusSimiBaseClassesNative
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *suffix = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_hasSuffix:suffix]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  NSString *suffix = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_hasSuffix:suffix]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_31 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_31;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_31 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_31;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_31_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_31 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_31 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_31 *new_NetGlobulusSimiBaseClassesNativeImpl_31_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_31, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_31 *new_SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_31, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_31 *create_NetGlobulusSimiBaseClassesNativeImpl_31_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_31, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_31 *create_SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_31, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_32
+@implementation SMBaseClassesNativeImpl_32
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_32_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4555,65 +4555,65 @@ NetGlobulusSimiBaseClassesNativeImpl_31 *create_NetGlobulusSimiBaseClassesNative
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NetGlobulusSimiSimiObjectImpl *argsObject = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  IOSObjectArray *args = [IOSObjectArray newArrayWithLength:[((NetGlobulusSimiSimiObjectImpl *) nil_chk(argsObject)) length] type:NSObject_class_()];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  SMSimiObjectImpl *argsObject = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  IOSObjectArray *args = [IOSObjectArray newArrayWithLength:[((SMSimiObjectImpl *) nil_chk(argsObject)) length] type:NSObject_class_()];
   jint i = 0;
-  for (NetGlobulusSimiSimiValue * __strong simiValue in nil_chk([argsObject values])) {
-    if ([simiValue isKindOfClass:[NetGlobulusSimiSimiValue_Number class]]) {
-      (void) IOSObjectArray_Set(args, i, [((NetGlobulusSimiSimiValue *) nil_chk(simiValue)) getNumber]);
+  for (SMSimiValue * __strong simiValue in nil_chk([argsObject values])) {
+    if ([simiValue isKindOfClass:[SMSimiValue_Number class]]) {
+      (void) IOSObjectArray_Set(args, i, [((SMSimiValue *) nil_chk(simiValue)) getNumber]);
     }
     else {
-      (void) IOSObjectArray_Set(args, 1, [((NetGlobulusSimiSimiValue *) nil_chk(simiValue)) description]);
+      (void) IOSObjectArray_Set(args, 1, [((SMSimiValue *) nil_chk(simiValue)) description]);
     }
     i++;
   }
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_(NSString_java_formatWithNSString_withNSObjectArray_(value, args));
+  return new_SMSimiValue_String_initWithNSString_(NSString_java_formatWithNSString_withNSObjectArray_(value, args));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_32 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_32;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_32 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_32;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_32_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_32 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_32 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_32 *new_NetGlobulusSimiBaseClassesNativeImpl_32_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_32, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_32 *new_SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_32, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_32 *create_NetGlobulusSimiBaseClassesNativeImpl_32_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_32, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_32 *create_SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_32, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_33
+@implementation SMBaseClassesNativeImpl_33
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_33_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4621,59 +4621,59 @@ NetGlobulusSimiBaseClassesNativeImpl_32 *create_NetGlobulusSimiBaseClassesNative
   return 2;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *str = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  jint index = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  jint index = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
   jint i = [((NSString *) nil_chk(value)) java_indexOfString:str fromIndex:index];
   if (i == -1) {
     return nil;
   }
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_(i);
+  return new_SMSimiValue_Number_initWithDouble_(i);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_33 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_33;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_33 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_33;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_33_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_33 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_33 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_33 *new_NetGlobulusSimiBaseClassesNativeImpl_33_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_33, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_33 *new_SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_33, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_33 *create_NetGlobulusSimiBaseClassesNativeImpl_33_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_33, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_33 *create_SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_33, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_34
+@implementation SMBaseClassesNativeImpl_34
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_34_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4681,59 +4681,59 @@ NetGlobulusSimiBaseClassesNativeImpl_33 *create_NetGlobulusSimiBaseClassesNative
   return 2;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *str = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  jint index = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  jint index = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
   jint i = [((NSString *) nil_chk(value)) java_lastIndexOfString:str fromIndex:index];
   if (i == -1) {
     return nil;
   }
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_(i);
+  return new_SMSimiValue_Number_initWithDouble_(i);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_34 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_34;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_34 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_34;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_34_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_34 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_34 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_34 *new_NetGlobulusSimiBaseClassesNativeImpl_34_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_34, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_34 *new_SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_34, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_34 *create_NetGlobulusSimiBaseClassesNativeImpl_34_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_34, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_34 *create_SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_34, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_35
+@implementation SMBaseClassesNativeImpl_35
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_35_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4741,55 +4741,55 @@ NetGlobulusSimiBaseClassesNativeImpl_34 *create_NetGlobulusSimiBaseClassesNative
   return 2;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  jint start = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  jint stop = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((NSString *) nil_chk([((NSString *) nil_chk(value)) java_substring:0 endIndex:start])) java_concat:[value java_substring:stop endIndex:[value java_length]]]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk([((NSString *) nil_chk(value)) java_substring:0 endIndex:start])) java_concat:[value java_substring:stop endIndex:[value java_length]]]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_35 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_35;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_35 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_35;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_35_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_35 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_35 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_35 *new_NetGlobulusSimiBaseClassesNativeImpl_35_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_35, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_35 *new_SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_35, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_35 *create_NetGlobulusSimiBaseClassesNativeImpl_35_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_35, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_35 *create_SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_35, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_36
+@implementation SMBaseClassesNativeImpl_36
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_36_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4797,55 +4797,55 @@ NetGlobulusSimiBaseClassesNativeImpl_35 *create_NetGlobulusSimiBaseClassesNative
   return 2;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *old = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  NSString *newStr = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getString];
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_replace:old withSequence:newStr]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  NSString *old = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  NSString *newStr = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getString];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_replace:old withSequence:newStr]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_36 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_36;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_36 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_36;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_36_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_36 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_36 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_36 *new_NetGlobulusSimiBaseClassesNativeImpl_36_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_36, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_36 *new_SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_36, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_36 *create_NetGlobulusSimiBaseClassesNativeImpl_36_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_36, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_36 *create_SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_36, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_37
+@implementation SMBaseClassesNativeImpl_37
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_37_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4853,58 +4853,58 @@ NetGlobulusSimiBaseClassesNativeImpl_36 *create_NetGlobulusSimiBaseClassesNative
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiClassImpl *objectClass = (NetGlobulusSimiSimiClassImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<NetGlobulusSimiBlockInterpreter>) nil_chk(interpreter)) getGlobalWithNSString:NetGlobulusSimiConstants_CLASS_OBJECT])) getValue])) getObject], [NetGlobulusSimiSimiClassImpl class]);
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *separator = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  JavaUtilArrayList *split = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk(JavaUtilArrays_streamWithNSObjectArray_([((NSString *) nil_chk(value)) java_split:JavaUtilRegexPattern_quoteWithNSString_(separator)]))) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2, instance))];
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_fromArrayWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, split));
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiClassImpl *objectClass = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getGlobalWithNSString:SMConstants_CLASS_OBJECT])) getValue])) getObject], [SMSimiClassImpl class]);
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  NSString *separator = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  JavaUtilArrayList *split = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk(JavaUtilArrays_streamWithNSObjectArray_([((NSString *) nil_chk(value)) java_split:JavaUtilRegexPattern_quoteWithNSString_(separator)]))) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_37_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMBaseClassesNativeImpl_37_$Lambda$2, instance))];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, split));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_37 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_37;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_37 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_37;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_37_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_37 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_37 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_37 *new_NetGlobulusSimiBaseClassesNativeImpl_37_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_37, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_37 *new_SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_37, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_37 *create_NetGlobulusSimiBaseClassesNativeImpl_37_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_37, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_37 *create_SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_37, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_37_$Lambda$1)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1
+@implementation SMBaseClassesNativeImpl_37_$Lambda$1
 
 - (id)applyWithId:(NSString *)a {
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_(a);
+  return new_SMSimiValue_String_initWithNSString_(a);
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -4916,59 +4916,59 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_instance = new_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1)
+  if (self == [SMBaseClassesNativeImpl_37_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_37_$Lambda$1_instance = new_SMBaseClassesNativeImpl_37_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_37_$Lambda$1)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_init(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *self) {
+void SMBaseClassesNativeImpl_37_$Lambda$1_init(SMBaseClassesNativeImpl_37_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1, init)
+SMBaseClassesNativeImpl_37_$Lambda$1 *new_SMBaseClassesNativeImpl_37_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_37_$Lambda$1, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$1, init)
+SMBaseClassesNativeImpl_37_$Lambda$1 *create_SMBaseClassesNativeImpl_37_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_37_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_37_$Lambda$2)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2
+@implementation SMBaseClassesNativeImpl_37_$Lambda$2
 
 - (id)get {
   return new_JavaUtilArrayList_init();
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_instance = new_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2)
+  if (self == [SMBaseClassesNativeImpl_37_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_37_$Lambda$2_instance = new_SMBaseClassesNativeImpl_37_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_37_$Lambda$2)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_init(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *self) {
+void SMBaseClassesNativeImpl_37_$Lambda$2_init(SMBaseClassesNativeImpl_37_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *new_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2, init)
+SMBaseClassesNativeImpl_37_$Lambda$2 *new_SMBaseClassesNativeImpl_37_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_37_$Lambda$2, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *create_NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2, init)
+SMBaseClassesNativeImpl_37_$Lambda$2 *create_SMBaseClassesNativeImpl_37_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_37_$Lambda$2, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_38
+@implementation SMBaseClassesNativeImpl_38
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_38_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4976,54 +4976,54 @@ NetGlobulusSimiBaseClassesNativeImpl_37_$Lambda$2 *create_NetGlobulusSimiBaseCla
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *prefix = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_hasPrefix:prefix]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  NSString *prefix = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_hasPrefix:prefix]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_38 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_38;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_38 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_38;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_38_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_38 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_38 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_38 *new_NetGlobulusSimiBaseClassesNativeImpl_38_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_38, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_38 *new_SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_38, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_38 *create_NetGlobulusSimiBaseClassesNativeImpl_38_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_38, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_38 *create_SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_38, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_39
+@implementation SMBaseClassesNativeImpl_39
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_39_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5031,55 +5031,55 @@ NetGlobulusSimiBaseClassesNativeImpl_38 *create_NetGlobulusSimiBaseClassesNative
   return 2;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  jint start = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  jint stop = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_substring:start endIndex:stop]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_substring:start endIndex:stop]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_39 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_39;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_39 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_39;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_39_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_39 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_39 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_39 *new_NetGlobulusSimiBaseClassesNativeImpl_39_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_39, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_39 *new_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_39, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_39 *create_NetGlobulusSimiBaseClassesNativeImpl_39_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_39, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_39 *create_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_39, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_40
+@implementation SMBaseClassesNativeImpl_40
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_40_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5087,53 +5087,53 @@ NetGlobulusSimiBaseClassesNativeImpl_39 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) lowercaseString]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) lowercaseString]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_40 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_40;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_40 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_40;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_40_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_40 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_40 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_40 *new_NetGlobulusSimiBaseClassesNativeImpl_40_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_40, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_40 *new_SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_40, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_40 *create_NetGlobulusSimiBaseClassesNativeImpl_40_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_40, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_40 *create_SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_40, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_41
+@implementation SMBaseClassesNativeImpl_41
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_41_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5141,53 +5141,53 @@ NetGlobulusSimiBaseClassesNativeImpl_40 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) uppercaseString]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) uppercaseString]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_41 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_41;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_41 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_41;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_41_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_41 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_41 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_41 *new_NetGlobulusSimiBaseClassesNativeImpl_41_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_41, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_41 *new_SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_41, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_41 *create_NetGlobulusSimiBaseClassesNativeImpl_41_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_41, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_41 *create_SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_41, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_42
+@implementation SMBaseClassesNativeImpl_42
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_42_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5195,53 +5195,53 @@ NetGlobulusSimiBaseClassesNativeImpl_41 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_trim]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_trim]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_42 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_42;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_42 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_42;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_42_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_42 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_42 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_42 *new_NetGlobulusSimiBaseClassesNativeImpl_42_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_42, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_42 *new_SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_42, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_42 *create_NetGlobulusSimiBaseClassesNativeImpl_42_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_42, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_42 *create_SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_42, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_43
+@implementation SMBaseClassesNativeImpl_43
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_43_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5249,74 +5249,74 @@ NetGlobulusSimiBaseClassesNativeImpl_42 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   {
     IOSCharArray *a__ = [((NSString *) nil_chk(value)) java_toCharArray];
     jchar const *b__ = ((IOSCharArray *) nil_chk(a__))->buffer_;
     jchar const *e__ = b__ + a__->size_;
     while (b__ < e__) {
       jchar c = *b__++;
-      if (!NetGlobulusSimiBaseClassesNativeImpl_43_isAlphaWithChar_(self, c)) {
-        return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(false);
+      if (!SMBaseClassesNativeImpl_43_isAlphaWithChar_(self, c)) {
+        return new_SMSimiValue_Number_initWithBoolean_(false);
       }
     }
   }
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(true);
+  return new_SMSimiValue_Number_initWithBoolean_(true);
 }
 
 - (jboolean)isAlphaWithChar:(jchar)c {
-  return NetGlobulusSimiBaseClassesNativeImpl_43_isAlphaWithChar_(self, c);
+  return SMBaseClassesNativeImpl_43_isAlphaWithChar_(self, c);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
     { NULL, "Z", 0x2, 3, 4, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   methods[3].selector = @selector(isAlphaWithChar:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isAlpha", "C", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_43 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_43;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isAlpha", "C", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_43 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
+  return &_SMBaseClassesNativeImpl_43;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_43_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_43 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_43 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_43 *new_NetGlobulusSimiBaseClassesNativeImpl_43_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_43, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_43 *new_SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_43, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_43 *create_NetGlobulusSimiBaseClassesNativeImpl_43_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_43, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_43 *create_SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_43, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-jboolean NetGlobulusSimiBaseClassesNativeImpl_43_isAlphaWithChar_(NetGlobulusSimiBaseClassesNativeImpl_43 *self, jchar c) {
+jboolean SMBaseClassesNativeImpl_43_isAlphaWithChar_(SMBaseClassesNativeImpl_43 *self, jchar c) {
   return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_44
+@implementation SMBaseClassesNativeImpl_44
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_44_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5324,74 +5324,74 @@ jboolean NetGlobulusSimiBaseClassesNativeImpl_43_isAlphaWithChar_(NetGlobulusSim
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   {
     IOSCharArray *a__ = [((NSString *) nil_chk(value)) java_toCharArray];
     jchar const *b__ = ((IOSCharArray *) nil_chk(a__))->buffer_;
     jchar const *e__ = b__ + a__->size_;
     while (b__ < e__) {
       jchar c = *b__++;
-      if (!NetGlobulusSimiBaseClassesNativeImpl_44_isDigitWithChar_(self, c)) {
-        return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(false);
+      if (!SMBaseClassesNativeImpl_44_isDigitWithChar_(self, c)) {
+        return new_SMSimiValue_Number_initWithBoolean_(false);
       }
     }
   }
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(true);
+  return new_SMSimiValue_Number_initWithBoolean_(true);
 }
 
 - (jboolean)isDigitWithChar:(jchar)c {
-  return NetGlobulusSimiBaseClassesNativeImpl_44_isDigitWithChar_(self, c);
+  return SMBaseClassesNativeImpl_44_isDigitWithChar_(self, c);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
     { NULL, "Z", 0x2, 3, 4, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   methods[3].selector = @selector(isDigitWithChar:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isDigit", "C", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_44 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_44;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isDigit", "C", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_44 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
+  return &_SMBaseClassesNativeImpl_44;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_44_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_44 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_44 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_44 *new_NetGlobulusSimiBaseClassesNativeImpl_44_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_44, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_44 *new_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_44, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_44 *create_NetGlobulusSimiBaseClassesNativeImpl_44_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_44, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_44 *create_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_44, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-jboolean NetGlobulusSimiBaseClassesNativeImpl_44_isDigitWithChar_(NetGlobulusSimiBaseClassesNativeImpl_44 *self, jchar c) {
+jboolean SMBaseClassesNativeImpl_44_isDigitWithChar_(SMBaseClassesNativeImpl_44 *self, jchar c) {
   return c >= '0' && c <= '9';
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_45
+@implementation SMBaseClassesNativeImpl_45
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_45_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5399,56 +5399,56 @@ jboolean NetGlobulusSimiBaseClassesNativeImpl_44_isDigitWithChar_(NetGlobulusSim
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   JavaTextStringCharacterIterator *iterator = new_JavaTextStringCharacterIterator_initWithNSString_(value);
   JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  (void) [fields putWithId:NetGlobulusSimiConstants_NEXT withId:new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(new_NetGlobulusSimiBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(iterator), nil, nil)];
-  return new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(new_NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
+  (void) [fields putWithId:SMConstants_NEXT withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(iterator), nil, nil)];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_45 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_45;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_45 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_45;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_45_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_45 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_45 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_45 *new_NetGlobulusSimiBaseClassesNativeImpl_45_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_45, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_45 *new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_45, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_45 *create_NetGlobulusSimiBaseClassesNativeImpl_45_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_45, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_45 *create_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_45, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_45_1
+@implementation SMBaseClassesNativeImpl_45_1
 
-- (instancetype)initWithJavaTextStringCharacterIterator:(JavaTextStringCharacterIterator *)capture$0 {
-  NetGlobulusSimiBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(self, capture$0);
+- (instancetype __nonnull)initWithJavaTextStringCharacterIterator:(JavaTextStringCharacterIterator *)capture$0 {
+  SMBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(self, capture$0);
   return self;
 }
 
@@ -5456,12 +5456,12 @@ NetGlobulusSimiBaseClassesNativeImpl_45 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
   jchar next = [((JavaTextStringCharacterIterator *) nil_chk(val$iterator_)) next];
   if (next != JavaTextCharacterIterator_DONE) {
-    return new_NetGlobulusSimiSimiValue_String_initWithNSString_(JreStrcat("C", next));
+    return new_SMSimiValue_String_initWithNSString_(JreStrcat("C", next));
   }
   return nil;
 }
@@ -5470,42 +5470,42 @@ NetGlobulusSimiBaseClassesNativeImpl_45 *create_NetGlobulusSimiBaseClassesNative
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaTextStringCharacterIterator:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$iterator_", "LJavaTextStringCharacterIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl_45;", "callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_45_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_45_1;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_45;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_45_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_45_1;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(NetGlobulusSimiBaseClassesNativeImpl_45_1 *self, JavaTextStringCharacterIterator *capture$0) {
+void SMBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(SMBaseClassesNativeImpl_45_1 *self, JavaTextStringCharacterIterator *capture$0) {
   self->val$iterator_ = capture$0;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_45_1 *new_NetGlobulusSimiBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_45_1, initWithJavaTextStringCharacterIterator_, capture$0)
+SMBaseClassesNativeImpl_45_1 *new_SMBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_45_1, initWithJavaTextStringCharacterIterator_, capture$0)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_45_1 *create_NetGlobulusSimiBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_45_1, initWithJavaTextStringCharacterIterator_, capture$0)
+SMBaseClassesNativeImpl_45_1 *create_SMBaseClassesNativeImpl_45_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_45_1, initWithJavaTextStringCharacterIterator_, capture$0)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_46
+@implementation SMBaseClassesNativeImpl_46
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_46_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5513,55 +5513,55 @@ NetGlobulusSimiBaseClassesNativeImpl_45_1 *create_NetGlobulusSimiBaseClassesNati
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *value = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *str = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_contains:str]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_contains:str]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_46 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_46;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_46 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_46;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_46_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_46 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_46 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_46 *new_NetGlobulusSimiBaseClassesNativeImpl_46_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_46, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_46 *new_SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_46, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_46 *create_NetGlobulusSimiBaseClassesNativeImpl_46_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_46, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_46 *create_SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_46, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_47
+@implementation SMBaseClassesNativeImpl_47
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_47_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_47_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -5570,49 +5570,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_47 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_47;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_47 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_47;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_47_init(NetGlobulusSimiBaseClassesNativeImpl_47 *self) {
+void SMBaseClassesNativeImpl_47_init(SMBaseClassesNativeImpl_47 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_47 *new_NetGlobulusSimiBaseClassesNativeImpl_47_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_47, init)
+SMBaseClassesNativeImpl_47 *new_SMBaseClassesNativeImpl_47_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_47, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_47 *create_NetGlobulusSimiBaseClassesNativeImpl_47_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_47, init)
+SMBaseClassesNativeImpl_47 *create_SMBaseClassesNativeImpl_47_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_47, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_48
+@implementation SMBaseClassesNativeImpl_48
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_48_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_48_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -5621,48 +5621,48 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_48 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_48;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_48 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_48;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_48_init(NetGlobulusSimiBaseClassesNativeImpl_48 *self) {
+void SMBaseClassesNativeImpl_48_init(SMBaseClassesNativeImpl_48 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_48 *new_NetGlobulusSimiBaseClassesNativeImpl_48_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_48, init)
+SMBaseClassesNativeImpl_48 *new_SMBaseClassesNativeImpl_48_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_48, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_48 *create_NetGlobulusSimiBaseClassesNativeImpl_48_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_48, init)
+SMBaseClassesNativeImpl_48 *create_SMBaseClassesNativeImpl_48_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_48, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_49
+@implementation SMBaseClassesNativeImpl_49
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_49_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_49_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5670,17 +5670,17 @@ NetGlobulusSimiBaseClassesNativeImpl_48 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NSString *string = [((NetGlobulusSimiSimiValue *) nil_chk(NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *string = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   @try {
     jdouble number = JavaLangDouble_parseDoubleWithNSString_(string);
-    return new_NetGlobulusSimiSimiValue_Number_initWithDouble_(number);
+    return new_SMSimiValue_Number_initWithDouble_(number);
   }
   @catch (JavaLangNumberFormatException *e) {
-    NetGlobulusSimiSimiException *se = new_NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_((id<NetGlobulusSimiSimiClass>) cast_check([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<NetGlobulusSimiSimiEnvironment>) nil_chk([((id<NetGlobulusSimiBlockInterpreter>) nil_chk(interpreter)) getEnvironment])) tryGetWithNSString:NetGlobulusSimiConstants_EXCEPTION_NUMBER_FORMAT])) getValue])) getObject], NetGlobulusSimiSimiClass_class_()), @"Invalid number format!");
-    [interpreter raiseExceptionWithNetGlobulusSimiSimiException:se];
+    SMSimiException *se = new_SMSimiException_initWithSMSimiClass_withNSString_((id<SMSimiClass>) cast_check([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiEnvironment>) nil_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment])) tryGetWithNSString:SMConstants_EXCEPTION_NUMBER_FORMAT])) getValue])) getObject], SMSimiClass_class_()), @"Invalid number format!");
+    [interpreter raiseExceptionWithSMSimiException:se];
     return nil;
   }
 }
@@ -5689,43 +5689,43 @@ NetGlobulusSimiBaseClassesNativeImpl_48 *create_NetGlobulusSimiBaseClassesNative
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_49 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_49;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_49 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_49;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_49_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_49 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_49_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_49 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_49 *new_NetGlobulusSimiBaseClassesNativeImpl_49_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_49, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_49 *new_SMBaseClassesNativeImpl_49_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_49, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_49 *create_NetGlobulusSimiBaseClassesNativeImpl_49_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_49, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_49 *create_SMBaseClassesNativeImpl_49_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_49, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_50
+@implementation SMBaseClassesNativeImpl_50
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_50_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_50_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -5734,15 +5734,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
   JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  NetGlobulusSimiSimiNativeObject *object = new_NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
-  NetGlobulusSimiSimiValue *objectValue = new_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(object);
+  SMSimiNativeObject *object = new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
+  SMSimiValue *objectValue = new_SMSimiValue_Object_initWithSMSimiObject_(object);
   JavaLangStringBuilder *sb = new_JavaLangStringBuilder_init();
-  (void) [fields putWithId:@"add" withId:new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(new_NetGlobulusSimiBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_(sb, objectValue), @"add", object)];
-  (void) [fields putWithId:@"build" withId:new_NetGlobulusSimiSimiValue_Callable_initWithNetGlobulusSimiSimiCallable_withNSString_withNetGlobulusSimiSimiObject_(new_NetGlobulusSimiBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(sb), @"build", object)];
+  (void) [fields putWithId:@"add" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withSMSimiValue_(sb, objectValue), @"add", object)];
+  (void) [fields putWithId:@"build" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(sb), @"build", object)];
   return objectValue;
 }
 
@@ -5750,39 +5750,39 @@ J2OBJC_IGNORE_DESIGNATED_END
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_50 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_50;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_50 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_50;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_50_init(NetGlobulusSimiBaseClassesNativeImpl_50 *self) {
+void SMBaseClassesNativeImpl_50_init(SMBaseClassesNativeImpl_50 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_50 *new_NetGlobulusSimiBaseClassesNativeImpl_50_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_50, init)
+SMBaseClassesNativeImpl_50 *new_SMBaseClassesNativeImpl_50_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_50, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_50 *create_NetGlobulusSimiBaseClassesNativeImpl_50_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_50, init)
+SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_50, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_50_1
+@implementation SMBaseClassesNativeImpl_50_1
 
-- (instancetype)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0
-                 withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)capture$1 {
-  NetGlobulusSimiBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_(self, capture$0, capture$1);
+- (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0
+                                        withSMSimiValue:(SMSimiValue *)capture$1 {
+  SMBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withSMSimiValue_(self, capture$0, capture$1);
   return self;
 }
 
@@ -5790,15 +5790,15 @@ NetGlobulusSimiBaseClassesNativeImpl_50 *create_NetGlobulusSimiBaseClassesNative
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  id<NetGlobulusSimiSimiProperty> prop = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  id<SMSimiProperty> prop = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
   if (prop == nil || [prop getValue] == nil) {
     (void) [((JavaLangStringBuilder *) nil_chk(val$sb_)) appendWithNSString:@"nil"];
   }
   else {
-    (void) [((JavaLangStringBuilder *) nil_chk(val$sb_)) appendWithNSString:[((NetGlobulusSimiSimiValue *) nil_chk([prop getValue])) description]];
+    (void) [((JavaLangStringBuilder *) nil_chk(val$sb_)) appendWithNSString:[((SMSimiValue *) nil_chk([prop getValue])) description]];
   }
   return val$objectValue_;
 }
@@ -5807,44 +5807,44 @@ NetGlobulusSimiBaseClassesNativeImpl_50 *create_NetGlobulusSimiBaseClassesNative
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaLangStringBuilder:withNetGlobulusSimiSimiValue:);
+  methods[0].selector = @selector(initWithJavaLangStringBuilder:withSMSimiValue:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$sb_", "LJavaLangStringBuilder;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-    { "val$objectValue_", "LNetGlobulusSimiSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "val$objectValue_", "LSMSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl_50;", "callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_50_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_50_1;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_50;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_50_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_50_1;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_(NetGlobulusSimiBaseClassesNativeImpl_50_1 *self, JavaLangStringBuilder *capture$0, NetGlobulusSimiSimiValue *capture$1) {
+void SMBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withSMSimiValue_(SMBaseClassesNativeImpl_50_1 *self, JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
   self->val$sb_ = capture$0;
   self->val$objectValue_ = capture$1;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_50_1 *new_NetGlobulusSimiBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_(JavaLangStringBuilder *capture$0, NetGlobulusSimiSimiValue *capture$1) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_50_1, initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_, capture$0, capture$1)
+SMBaseClassesNativeImpl_50_1 *new_SMBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_50_1, initWithJavaLangStringBuilder_withSMSimiValue_, capture$0, capture$1)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_50_1 *create_NetGlobulusSimiBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_(JavaLangStringBuilder *capture$0, NetGlobulusSimiSimiValue *capture$1) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_50_1, initWithJavaLangStringBuilder_withNetGlobulusSimiSimiValue_, capture$0, capture$1)
+SMBaseClassesNativeImpl_50_1 *create_SMBaseClassesNativeImpl_50_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_50_1, initWithJavaLangStringBuilder_withSMSimiValue_, capture$0, capture$1)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_50_2
+@implementation SMBaseClassesNativeImpl_50_2
 
-- (instancetype)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0 {
-  NetGlobulusSimiBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(self, capture$0);
+- (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0 {
+  SMBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(self, capture$0);
   return self;
 }
 
@@ -5852,53 +5852,53 @@ NetGlobulusSimiBaseClassesNativeImpl_50_1 *create_NetGlobulusSimiBaseClassesNati
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((JavaLangStringBuilder *) nil_chk(val$sb_)) description]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_String_initWithNSString_([((JavaLangStringBuilder *) nil_chk(val$sb_)) description]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaLangStringBuilder:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$sb_", "LJavaLangStringBuilder;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl_50;", "callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_50_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_50_2;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_50;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_50_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_50_2;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(NetGlobulusSimiBaseClassesNativeImpl_50_2 *self, JavaLangStringBuilder *capture$0) {
+void SMBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(SMBaseClassesNativeImpl_50_2 *self, JavaLangStringBuilder *capture$0) {
   self->val$sb_ = capture$0;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_50_2 *new_NetGlobulusSimiBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_50_2, initWithJavaLangStringBuilder_, capture$0)
+SMBaseClassesNativeImpl_50_2 *new_SMBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_50_2, initWithJavaLangStringBuilder_, capture$0)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_50_2 *create_NetGlobulusSimiBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_50_2, initWithJavaLangStringBuilder_, capture$0)
+SMBaseClassesNativeImpl_50_2 *create_SMBaseClassesNativeImpl_50_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_50_2, initWithJavaLangStringBuilder_, capture$0)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_51
+@implementation SMBaseClassesNativeImpl_51
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_51_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_51_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -5907,49 +5907,49 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Number_initWithBoolean_([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getNumberClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_51 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_51;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_51 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_51;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_51_init(NetGlobulusSimiBaseClassesNativeImpl_51 *self) {
+void SMBaseClassesNativeImpl_51_init(SMBaseClassesNativeImpl_51 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_51 *new_NetGlobulusSimiBaseClassesNativeImpl_51_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_51, init)
+SMBaseClassesNativeImpl_51 *new_SMBaseClassesNativeImpl_51_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_51, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_51 *create_NetGlobulusSimiBaseClassesNativeImpl_51_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_51, init)
+SMBaseClassesNativeImpl_51 *create_SMBaseClassesNativeImpl_51_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_51, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_52
+@implementation SMBaseClassesNativeImpl_52
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_52_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_52_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -5958,48 +5958,48 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<NetGlobulusSimiSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getNumberClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_52 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_52;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_52 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_52;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_52_init(NetGlobulusSimiBaseClassesNativeImpl_52 *self) {
+void SMBaseClassesNativeImpl_52_init(SMBaseClassesNativeImpl_52 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_52 *new_NetGlobulusSimiBaseClassesNativeImpl_52_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_52, init)
+SMBaseClassesNativeImpl_52 *new_SMBaseClassesNativeImpl_52_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_52, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_52 *create_NetGlobulusSimiBaseClassesNativeImpl_52_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_52, init)
+SMBaseClassesNativeImpl_52 *create_SMBaseClassesNativeImpl_52_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_52, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_53
+@implementation SMBaseClassesNativeImpl_53
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$ {
-  NetGlobulusSimiBaseClassesNativeImpl_53_initWithNetGlobulusSimiBaseClassesNativeImpl_(self, outer$);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_53_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -6007,54 +6007,54 @@ NetGlobulusSimiBaseClassesNativeImpl_52 *create_NetGlobulusSimiBaseClassesNative
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiValue *value = NetGlobulusSimiBaseClassesNativeImpl_prepareValueNativeCallWithNetGlobulusSimiBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments);
-  return new_NetGlobulusSimiSimiValue_String_initWithNSString_([((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk(value)) getNumber])) description]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiValue *value = SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments);
+  return new_SMSimiValue_String_initWithNSString_([((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk(value)) getNumber])) description]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getNumberClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_53 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_53;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_53 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_53;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_53_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl_53 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_53_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_53 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_53 *new_NetGlobulusSimiBaseClassesNativeImpl_53_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_53, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_53 *new_SMBaseClassesNativeImpl_53_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_53, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_53 *create_NetGlobulusSimiBaseClassesNativeImpl_53_initWithNetGlobulusSimiBaseClassesNativeImpl_(NetGlobulusSimiBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_53, initWithNetGlobulusSimiBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_53 *create_SMBaseClassesNativeImpl_53_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_53, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_54
+@implementation SMBaseClassesNativeImpl_54
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_54_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_54_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -6063,12 +6063,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  NetGlobulusSimiSimiObjectImpl *self_ = (NetGlobulusSimiSimiObjectImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [NetGlobulusSimiSimiObjectImpl class]);
-  NSString *message = [((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((NetGlobulusSimiSimiObjectImpl *) nil_chk(self_)) getWithNSString:@"message" withNetGlobulusSimiSimiEnvironment:[((id<NetGlobulusSimiBlockInterpreter>) nil_chk(interpreter)) getEnvironment]])) getValue])) getString];
-  [interpreter raiseExceptionWithNetGlobulusSimiSimiException:new_NetGlobulusSimiSimiException_initWithNetGlobulusSimiSimiClass_withNSString_(self_->clazz_, message)];
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  NSString *message = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(self_)) getWithNSString:@"message" withSMSimiEnvironment:[((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment]])) getValue])) getString];
+  [interpreter raiseExceptionWithSMSimiException:new_SMSimiException_initWithSMSimiClass_withNSString_(self_->clazz_, message)];
   return nil;
 }
 
@@ -6076,39 +6076,39 @@ J2OBJC_IGNORE_DESIGNATED_END
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getExceptionClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_54 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_54;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getExceptionClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_54 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_54;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_54_init(NetGlobulusSimiBaseClassesNativeImpl_54 *self) {
+void SMBaseClassesNativeImpl_54_init(SMBaseClassesNativeImpl_54 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_54 *new_NetGlobulusSimiBaseClassesNativeImpl_54_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_54, init)
+SMBaseClassesNativeImpl_54 *new_SMBaseClassesNativeImpl_54_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_54, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_54 *create_NetGlobulusSimiBaseClassesNativeImpl_54_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_54, init)
+SMBaseClassesNativeImpl_54 *create_SMBaseClassesNativeImpl_54_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_54, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_55
+@implementation SMBaseClassesNativeImpl_55
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$
-                                       withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0 {
-  NetGlobulusSimiBaseClassesNativeImpl_55_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, outer$, capture$0);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
+                                    withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0 {
+  SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, outer$, capture$0);
   return self;
 }
 
@@ -6116,55 +6116,55 @@ NetGlobulusSimiBaseClassesNativeImpl_54 *create_NetGlobulusSimiBaseClassesNative
   return 2;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return NetGlobulusSimiBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(this$0_, arguments, [((id<JavaUtilMap_Entry>) nil_chk(val$binary_)) getValue]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(this$0_, arguments, [((id<JavaUtilMap_Entry>) nil_chk(val$binary_)) getValue]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:withJavaUtilMap_Entry:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:withJavaUtilMap_Entry:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$binary_", "LJavaUtilMap_Entry;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/BiFunction<Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;>;>;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getGlobalsClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_55 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_55;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/BiFunction<Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;>;>;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_55 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
+  return &_SMBaseClassesNativeImpl_55;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_55_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl_55 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+void SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_55 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
   self->this$0_ = outer$;
   self->val$binary_ = capture$0;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_55 *new_NetGlobulusSimiBaseClassesNativeImpl_55_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_55, initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
+SMBaseClassesNativeImpl_55 *new_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_55, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_55 *create_NetGlobulusSimiBaseClassesNativeImpl_55_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_55, initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
+SMBaseClassesNativeImpl_55 *create_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_55, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_56
+@implementation SMBaseClassesNativeImpl_56
 
-- (instancetype)initWithNetGlobulusSimiBaseClassesNativeImpl:(NetGlobulusSimiBaseClassesNativeImpl *)outer$
-                                       withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0 {
-  NetGlobulusSimiBaseClassesNativeImpl_56_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, outer$, capture$0);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
+                                    withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0 {
+  SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, outer$, capture$0);
   return self;
 }
 
@@ -6172,55 +6172,55 @@ NetGlobulusSimiBaseClassesNativeImpl_55 *create_NetGlobulusSimiBaseClassesNative
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  return NetGlobulusSimiBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(this$0_, arguments, [((id<JavaUtilMap_Entry>) nil_chk(val$unary_)) getValue]);
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(this$0_, arguments, [((id<JavaUtilMap_Entry>) nil_chk(val$unary_)) getValue]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiBaseClassesNativeImpl:withJavaUtilMap_Entry:);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:withJavaUtilMap_Entry:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LNetGlobulusSimiBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$unary_", "LJavaUtilMap_Entry;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
   };
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/Function<Ljava/lang/Double;Ljava/lang/Double;>;>;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getGlobalsClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_56 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_56;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/Function<Ljava/lang/Double;Ljava/lang/Double;>;>;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_56 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
+  return &_SMBaseClassesNativeImpl_56;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_56_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl_56 *self, NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+void SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_56 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
   self->this$0_ = outer$;
   self->val$unary_ = capture$0;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_56 *new_NetGlobulusSimiBaseClassesNativeImpl_56_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_56, initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
+SMBaseClassesNativeImpl_56 *new_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_56, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_56 *create_NetGlobulusSimiBaseClassesNativeImpl_56_initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_(NetGlobulusSimiBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_56, initWithNetGlobulusSimiBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
+SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_56, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_57
+@implementation SMBaseClassesNativeImpl_57
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiBaseClassesNativeImpl_57_init(self);
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_57_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -6229,48 +6229,48 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 1;
 }
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow {
-  jdouble a = [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
-  return new_NetGlobulusSimiSimiValue_Number_initWithDouble_(JavaLangMath_roundWithDouble_(a));
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  jdouble a = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
+  return new_SMSimiValue_Number_initWithDouble_(JavaLangMath_roundWithDouble_(a));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithNetGlobulusSimiBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LNetGlobulusSimiBaseClassesNativeImpl;", "getGlobalsClass" };
-  static const J2ObjcClassInfo _NetGlobulusSimiBaseClassesNativeImpl_57 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_NetGlobulusSimiBaseClassesNativeImpl_57;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_57 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_57;
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_57_init(NetGlobulusSimiBaseClassesNativeImpl_57 *self) {
+void SMBaseClassesNativeImpl_57_init(SMBaseClassesNativeImpl_57 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_57 *new_NetGlobulusSimiBaseClassesNativeImpl_57_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_57, init)
+SMBaseClassesNativeImpl_57 *new_SMBaseClassesNativeImpl_57_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_57, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_57 *create_NetGlobulusSimiBaseClassesNativeImpl_57_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_57, init)
+SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_57, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$1)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1
+@implementation SMBaseClassesNativeImpl_$Lambda$1
 
 - (id)applyWithId:(JavaLangDouble *)a
            withId:(JavaLangDouble *)b {
@@ -6282,29 +6282,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_$Lambda$1_instance = new_SMBaseClassesNativeImpl_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$1)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *self) {
+void SMBaseClassesNativeImpl_$Lambda$1_init(SMBaseClassesNativeImpl_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1, init)
+SMBaseClassesNativeImpl_$Lambda$1 *new_SMBaseClassesNativeImpl_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$1, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$1, init)
+SMBaseClassesNativeImpl_$Lambda$1 *create_SMBaseClassesNativeImpl_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$2)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2
+@implementation SMBaseClassesNativeImpl_$Lambda$2
 
 - (id)applyWithId:(JavaLangDouble *)a
            withId:(JavaLangDouble *)b {
@@ -6316,29 +6316,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_$Lambda$2_instance = new_SMBaseClassesNativeImpl_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$2)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *self) {
+void SMBaseClassesNativeImpl_$Lambda$2_init(SMBaseClassesNativeImpl_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2, init)
+SMBaseClassesNativeImpl_$Lambda$2 *new_SMBaseClassesNativeImpl_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$2, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$2, init)
+SMBaseClassesNativeImpl_$Lambda$2 *create_SMBaseClassesNativeImpl_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$2, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$3)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3
+@implementation SMBaseClassesNativeImpl_$Lambda$3
 
 - (id)applyWithId:(JavaLangDouble *)a
            withId:(JavaLangDouble *)b {
@@ -6350,29 +6350,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$3 class]) {
+    SMBaseClassesNativeImpl_$Lambda$3_instance = new_SMBaseClassesNativeImpl_$Lambda$3_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$3)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *self) {
+void SMBaseClassesNativeImpl_$Lambda$3_init(SMBaseClassesNativeImpl_$Lambda$3 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3, init)
+SMBaseClassesNativeImpl_$Lambda$3 *new_SMBaseClassesNativeImpl_$Lambda$3_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$3, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$3, init)
+SMBaseClassesNativeImpl_$Lambda$3 *create_SMBaseClassesNativeImpl_$Lambda$3_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$3, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$4)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4
+@implementation SMBaseClassesNativeImpl_$Lambda$4
 
 - (id)applyWithId:(JavaLangDouble *)a
            withId:(JavaLangDouble *)b {
@@ -6384,29 +6384,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$4 class]) {
+    SMBaseClassesNativeImpl_$Lambda$4_instance = new_SMBaseClassesNativeImpl_$Lambda$4_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$4)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *self) {
+void SMBaseClassesNativeImpl_$Lambda$4_init(SMBaseClassesNativeImpl_$Lambda$4 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4, init)
+SMBaseClassesNativeImpl_$Lambda$4 *new_SMBaseClassesNativeImpl_$Lambda$4_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$4, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$4, init)
+SMBaseClassesNativeImpl_$Lambda$4 *create_SMBaseClassesNativeImpl_$Lambda$4_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$4, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$5)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5
+@implementation SMBaseClassesNativeImpl_$Lambda$5
 
 - (id)applyWithId:(JavaLangDouble *)a
            withId:(JavaLangDouble *)b {
@@ -6418,29 +6418,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$5 class]) {
+    SMBaseClassesNativeImpl_$Lambda$5_instance = new_SMBaseClassesNativeImpl_$Lambda$5_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$5)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *self) {
+void SMBaseClassesNativeImpl_$Lambda$5_init(SMBaseClassesNativeImpl_$Lambda$5 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5, init)
+SMBaseClassesNativeImpl_$Lambda$5 *new_SMBaseClassesNativeImpl_$Lambda$5_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$5, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$5, init)
+SMBaseClassesNativeImpl_$Lambda$5 *create_SMBaseClassesNativeImpl_$Lambda$5_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$5, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$6)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6
+@implementation SMBaseClassesNativeImpl_$Lambda$6
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_absWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6455,29 +6455,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$6 class]) {
+    SMBaseClassesNativeImpl_$Lambda$6_instance = new_SMBaseClassesNativeImpl_$Lambda$6_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$6)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *self) {
+void SMBaseClassesNativeImpl_$Lambda$6_init(SMBaseClassesNativeImpl_$Lambda$6 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6, init)
+SMBaseClassesNativeImpl_$Lambda$6 *new_SMBaseClassesNativeImpl_$Lambda$6_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$6, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$6, init)
+SMBaseClassesNativeImpl_$Lambda$6 *create_SMBaseClassesNativeImpl_$Lambda$6_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$6, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$7)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7
+@implementation SMBaseClassesNativeImpl_$Lambda$7
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_acosWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6492,29 +6492,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$7 class]) {
+    SMBaseClassesNativeImpl_$Lambda$7_instance = new_SMBaseClassesNativeImpl_$Lambda$7_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$7)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *self) {
+void SMBaseClassesNativeImpl_$Lambda$7_init(SMBaseClassesNativeImpl_$Lambda$7 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7, init)
+SMBaseClassesNativeImpl_$Lambda$7 *new_SMBaseClassesNativeImpl_$Lambda$7_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$7, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$7, init)
+SMBaseClassesNativeImpl_$Lambda$7 *create_SMBaseClassesNativeImpl_$Lambda$7_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$7, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$8)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8
+@implementation SMBaseClassesNativeImpl_$Lambda$8
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_asinWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6529,29 +6529,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$8 class]) {
+    SMBaseClassesNativeImpl_$Lambda$8_instance = new_SMBaseClassesNativeImpl_$Lambda$8_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$8)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *self) {
+void SMBaseClassesNativeImpl_$Lambda$8_init(SMBaseClassesNativeImpl_$Lambda$8 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8, init)
+SMBaseClassesNativeImpl_$Lambda$8 *new_SMBaseClassesNativeImpl_$Lambda$8_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$8, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$8, init)
+SMBaseClassesNativeImpl_$Lambda$8 *create_SMBaseClassesNativeImpl_$Lambda$8_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$8, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$9)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9
+@implementation SMBaseClassesNativeImpl_$Lambda$9
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_atanWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6566,29 +6566,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$9 class]) {
+    SMBaseClassesNativeImpl_$Lambda$9_instance = new_SMBaseClassesNativeImpl_$Lambda$9_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$9)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *self) {
+void SMBaseClassesNativeImpl_$Lambda$9_init(SMBaseClassesNativeImpl_$Lambda$9 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9, init)
+SMBaseClassesNativeImpl_$Lambda$9 *new_SMBaseClassesNativeImpl_$Lambda$9_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$9, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$9, init)
+SMBaseClassesNativeImpl_$Lambda$9 *create_SMBaseClassesNativeImpl_$Lambda$9_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$9, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$10)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10
+@implementation SMBaseClassesNativeImpl_$Lambda$10
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_cbrtWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6603,29 +6603,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$10 class]) {
+    SMBaseClassesNativeImpl_$Lambda$10_instance = new_SMBaseClassesNativeImpl_$Lambda$10_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$10)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *self) {
+void SMBaseClassesNativeImpl_$Lambda$10_init(SMBaseClassesNativeImpl_$Lambda$10 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10, init)
+SMBaseClassesNativeImpl_$Lambda$10 *new_SMBaseClassesNativeImpl_$Lambda$10_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$10, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$10, init)
+SMBaseClassesNativeImpl_$Lambda$10 *create_SMBaseClassesNativeImpl_$Lambda$10_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$10, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$11)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11
+@implementation SMBaseClassesNativeImpl_$Lambda$11
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_ceilWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6640,29 +6640,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$11 class]) {
+    SMBaseClassesNativeImpl_$Lambda$11_instance = new_SMBaseClassesNativeImpl_$Lambda$11_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$11)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *self) {
+void SMBaseClassesNativeImpl_$Lambda$11_init(SMBaseClassesNativeImpl_$Lambda$11 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11, init)
+SMBaseClassesNativeImpl_$Lambda$11 *new_SMBaseClassesNativeImpl_$Lambda$11_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$11, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$11, init)
+SMBaseClassesNativeImpl_$Lambda$11 *create_SMBaseClassesNativeImpl_$Lambda$11_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$11, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$12)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12
+@implementation SMBaseClassesNativeImpl_$Lambda$12
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_cosWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6677,29 +6677,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$12 class]) {
+    SMBaseClassesNativeImpl_$Lambda$12_instance = new_SMBaseClassesNativeImpl_$Lambda$12_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$12)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *self) {
+void SMBaseClassesNativeImpl_$Lambda$12_init(SMBaseClassesNativeImpl_$Lambda$12 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12, init)
+SMBaseClassesNativeImpl_$Lambda$12 *new_SMBaseClassesNativeImpl_$Lambda$12_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$12, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$12, init)
+SMBaseClassesNativeImpl_$Lambda$12 *create_SMBaseClassesNativeImpl_$Lambda$12_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$12, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$13)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13
+@implementation SMBaseClassesNativeImpl_$Lambda$13
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_coshWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6714,29 +6714,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$13 class]) {
+    SMBaseClassesNativeImpl_$Lambda$13_instance = new_SMBaseClassesNativeImpl_$Lambda$13_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$13)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *self) {
+void SMBaseClassesNativeImpl_$Lambda$13_init(SMBaseClassesNativeImpl_$Lambda$13 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13, init)
+SMBaseClassesNativeImpl_$Lambda$13 *new_SMBaseClassesNativeImpl_$Lambda$13_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$13, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$13, init)
+SMBaseClassesNativeImpl_$Lambda$13 *create_SMBaseClassesNativeImpl_$Lambda$13_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$13, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$14)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14
+@implementation SMBaseClassesNativeImpl_$Lambda$14
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_expWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6751,29 +6751,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$14 class]) {
+    SMBaseClassesNativeImpl_$Lambda$14_instance = new_SMBaseClassesNativeImpl_$Lambda$14_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$14)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *self) {
+void SMBaseClassesNativeImpl_$Lambda$14_init(SMBaseClassesNativeImpl_$Lambda$14 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14, init)
+SMBaseClassesNativeImpl_$Lambda$14 *new_SMBaseClassesNativeImpl_$Lambda$14_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$14, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$14, init)
+SMBaseClassesNativeImpl_$Lambda$14 *create_SMBaseClassesNativeImpl_$Lambda$14_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$14, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$15)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15
+@implementation SMBaseClassesNativeImpl_$Lambda$15
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_floorWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6788,29 +6788,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$15 class]) {
+    SMBaseClassesNativeImpl_$Lambda$15_instance = new_SMBaseClassesNativeImpl_$Lambda$15_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$15)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *self) {
+void SMBaseClassesNativeImpl_$Lambda$15_init(SMBaseClassesNativeImpl_$Lambda$15 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15, init)
+SMBaseClassesNativeImpl_$Lambda$15 *new_SMBaseClassesNativeImpl_$Lambda$15_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$15, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$15, init)
+SMBaseClassesNativeImpl_$Lambda$15 *create_SMBaseClassesNativeImpl_$Lambda$15_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$15, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$16)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16
+@implementation SMBaseClassesNativeImpl_$Lambda$16
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_logWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6825,29 +6825,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$16 class]) {
+    SMBaseClassesNativeImpl_$Lambda$16_instance = new_SMBaseClassesNativeImpl_$Lambda$16_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$16)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *self) {
+void SMBaseClassesNativeImpl_$Lambda$16_init(SMBaseClassesNativeImpl_$Lambda$16 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16, init)
+SMBaseClassesNativeImpl_$Lambda$16 *new_SMBaseClassesNativeImpl_$Lambda$16_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$16, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$16, init)
+SMBaseClassesNativeImpl_$Lambda$16 *create_SMBaseClassesNativeImpl_$Lambda$16_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$16, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$17)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17
+@implementation SMBaseClassesNativeImpl_$Lambda$17
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_log10WithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6862,29 +6862,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$17 class]) {
+    SMBaseClassesNativeImpl_$Lambda$17_instance = new_SMBaseClassesNativeImpl_$Lambda$17_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$17)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *self) {
+void SMBaseClassesNativeImpl_$Lambda$17_init(SMBaseClassesNativeImpl_$Lambda$17 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17, init)
+SMBaseClassesNativeImpl_$Lambda$17 *new_SMBaseClassesNativeImpl_$Lambda$17_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$17, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$17, init)
+SMBaseClassesNativeImpl_$Lambda$17 *create_SMBaseClassesNativeImpl_$Lambda$17_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$17, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$18)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18
+@implementation SMBaseClassesNativeImpl_$Lambda$18
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_log1pWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6899,29 +6899,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$18 class]) {
+    SMBaseClassesNativeImpl_$Lambda$18_instance = new_SMBaseClassesNativeImpl_$Lambda$18_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$18)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *self) {
+void SMBaseClassesNativeImpl_$Lambda$18_init(SMBaseClassesNativeImpl_$Lambda$18 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18, init)
+SMBaseClassesNativeImpl_$Lambda$18 *new_SMBaseClassesNativeImpl_$Lambda$18_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$18, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$18, init)
+SMBaseClassesNativeImpl_$Lambda$18 *create_SMBaseClassesNativeImpl_$Lambda$18_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$18, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$19)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19
+@implementation SMBaseClassesNativeImpl_$Lambda$19
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_signumWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6936,29 +6936,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$19 class]) {
+    SMBaseClassesNativeImpl_$Lambda$19_instance = new_SMBaseClassesNativeImpl_$Lambda$19_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$19)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *self) {
+void SMBaseClassesNativeImpl_$Lambda$19_init(SMBaseClassesNativeImpl_$Lambda$19 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19, init)
+SMBaseClassesNativeImpl_$Lambda$19 *new_SMBaseClassesNativeImpl_$Lambda$19_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$19, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$19, init)
+SMBaseClassesNativeImpl_$Lambda$19 *create_SMBaseClassesNativeImpl_$Lambda$19_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$19, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$20)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20
+@implementation SMBaseClassesNativeImpl_$Lambda$20
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_sinWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -6973,29 +6973,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$20 class]) {
+    SMBaseClassesNativeImpl_$Lambda$20_instance = new_SMBaseClassesNativeImpl_$Lambda$20_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$20)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *self) {
+void SMBaseClassesNativeImpl_$Lambda$20_init(SMBaseClassesNativeImpl_$Lambda$20 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20, init)
+SMBaseClassesNativeImpl_$Lambda$20 *new_SMBaseClassesNativeImpl_$Lambda$20_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$20, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$20, init)
+SMBaseClassesNativeImpl_$Lambda$20 *create_SMBaseClassesNativeImpl_$Lambda$20_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$20, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$21)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21
+@implementation SMBaseClassesNativeImpl_$Lambda$21
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_sinhWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -7010,29 +7010,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$21 class]) {
+    SMBaseClassesNativeImpl_$Lambda$21_instance = new_SMBaseClassesNativeImpl_$Lambda$21_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$21)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *self) {
+void SMBaseClassesNativeImpl_$Lambda$21_init(SMBaseClassesNativeImpl_$Lambda$21 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21, init)
+SMBaseClassesNativeImpl_$Lambda$21 *new_SMBaseClassesNativeImpl_$Lambda$21_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$21, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$21, init)
+SMBaseClassesNativeImpl_$Lambda$21 *create_SMBaseClassesNativeImpl_$Lambda$21_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$21, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$22)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22
+@implementation SMBaseClassesNativeImpl_$Lambda$22
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_sqrtWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -7047,29 +7047,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$22 class]) {
+    SMBaseClassesNativeImpl_$Lambda$22_instance = new_SMBaseClassesNativeImpl_$Lambda$22_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$22)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *self) {
+void SMBaseClassesNativeImpl_$Lambda$22_init(SMBaseClassesNativeImpl_$Lambda$22 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22, init)
+SMBaseClassesNativeImpl_$Lambda$22 *new_SMBaseClassesNativeImpl_$Lambda$22_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$22, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$22, init)
+SMBaseClassesNativeImpl_$Lambda$22 *create_SMBaseClassesNativeImpl_$Lambda$22_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$22, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$23)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23
+@implementation SMBaseClassesNativeImpl_$Lambda$23
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_tanWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -7084,29 +7084,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$23 class]) {
+    SMBaseClassesNativeImpl_$Lambda$23_instance = new_SMBaseClassesNativeImpl_$Lambda$23_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$23)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *self) {
+void SMBaseClassesNativeImpl_$Lambda$23_init(SMBaseClassesNativeImpl_$Lambda$23 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23, init)
+SMBaseClassesNativeImpl_$Lambda$23 *new_SMBaseClassesNativeImpl_$Lambda$23_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$23, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$23, init)
+SMBaseClassesNativeImpl_$Lambda$23 *create_SMBaseClassesNativeImpl_$Lambda$23_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$23, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$24)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24
+@implementation SMBaseClassesNativeImpl_$Lambda$24
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_tanhWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -7121,29 +7121,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$24 class]) {
+    SMBaseClassesNativeImpl_$Lambda$24_instance = new_SMBaseClassesNativeImpl_$Lambda$24_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$24)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *self) {
+void SMBaseClassesNativeImpl_$Lambda$24_init(SMBaseClassesNativeImpl_$Lambda$24 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24, init)
+SMBaseClassesNativeImpl_$Lambda$24 *new_SMBaseClassesNativeImpl_$Lambda$24_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$24, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$24, init)
+SMBaseClassesNativeImpl_$Lambda$24 *create_SMBaseClassesNativeImpl_$Lambda$24_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$24, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$25)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25
+@implementation SMBaseClassesNativeImpl_$Lambda$25
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_toDegreesWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -7158,29 +7158,29 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$25 class]) {
+    SMBaseClassesNativeImpl_$Lambda$25_instance = new_SMBaseClassesNativeImpl_$Lambda$25_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$25)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *self) {
+void SMBaseClassesNativeImpl_$Lambda$25_init(SMBaseClassesNativeImpl_$Lambda$25 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25, init)
+SMBaseClassesNativeImpl_$Lambda$25 *new_SMBaseClassesNativeImpl_$Lambda$25_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$25, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$25, init)
+SMBaseClassesNativeImpl_$Lambda$25 *create_SMBaseClassesNativeImpl_$Lambda$25_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$25, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$26)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26
+@implementation SMBaseClassesNativeImpl_$Lambda$26
 
 - (id)applyWithId:(JavaLangDouble *)a {
   return JavaLangDouble_valueOfWithDouble_(JavaLangMath_toRadiansWithDouble_([((JavaLangDouble *) nil_chk(a)) doubleValue]));
@@ -7195,31 +7195,31 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$26 class]) {
+    SMBaseClassesNativeImpl_$Lambda$26_instance = new_SMBaseClassesNativeImpl_$Lambda$26_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$26)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *self) {
+void SMBaseClassesNativeImpl_$Lambda$26_init(SMBaseClassesNativeImpl_$Lambda$26 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26, init)
+SMBaseClassesNativeImpl_$Lambda$26 *new_SMBaseClassesNativeImpl_$Lambda$26_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$26, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26, init)
+SMBaseClassesNativeImpl_$Lambda$26 *create_SMBaseClassesNativeImpl_$Lambda$26_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$26, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27
+@implementation SMBaseClassesNativeImpl_$Lambda$27
 
-- (jint)compareWithId:(NetGlobulusSimiSimiValue *)o1
-               withId:(NetGlobulusSimiSimiValue *)o2 {
-  return [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<NetGlobulusSimiSimiCallable>) nil_chk(val$comparator_)) callWithNetGlobulusSimiBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ o1, o2 } count:2 type:NetGlobulusSimiSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) intValue];
+- (jint)compareWithId:(SMSimiValue *)o1
+               withId:(SMSimiValue *)o2 {
+  return [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ o1, o2 } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) intValue];
 }
 
 - (id<JavaUtilComparator>)reversed {
@@ -7253,23 +7253,23 @@ NetGlobulusSimiBaseClassesNativeImpl_$Lambda$26 *create_NetGlobulusSimiBaseClass
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27 *self, id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1) {
+void SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(SMBaseClassesNativeImpl_$Lambda$27 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1) {
   self->val$comparator_ = capture$0;
   self->val$interpreter_ = capture$1;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_(id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27, initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_, capture$0, capture$1)
+SMBaseClassesNativeImpl_$Lambda$27 *new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$27, initWithSMSimiCallable_withSMBlockInterpreter_, capture$0, capture$1)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_(id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$27, initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_, capture$0, capture$1)
+SMBaseClassesNativeImpl_$Lambda$27 *create_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$27, initWithSMSimiCallable_withSMBlockInterpreter_, capture$0, capture$1)
 }
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$28)
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28
+@implementation SMBaseClassesNativeImpl_$Lambda$28
 
 - (id)applyWithId:(id<JavaUtilMap_Entry>)a {
   return [((id<JavaUtilMap_Entry>) nil_chk(a)) getKey];
@@ -7284,31 +7284,31 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 class]) {
-    NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_instance = new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28)
+  if (self == [SMBaseClassesNativeImpl_$Lambda$28 class]) {
+    SMBaseClassesNativeImpl_$Lambda$28_instance = new_SMBaseClassesNativeImpl_$Lambda$28_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$28)
   }
 }
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_init(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *self) {
+void SMBaseClassesNativeImpl_$Lambda$28_init(SMBaseClassesNativeImpl_$Lambda$28 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28, init)
+SMBaseClassesNativeImpl_$Lambda$28 *new_SMBaseClassesNativeImpl_$Lambda$28_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$28, init)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28, init)
+SMBaseClassesNativeImpl_$Lambda$28 *create_SMBaseClassesNativeImpl_$Lambda$28_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$28, init)
 }
 
-@implementation NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29
+@implementation SMBaseClassesNativeImpl_$Lambda$29
 
 - (jint)compareWithId:(id<JavaUtilMap_Entry>)o1
                withId:(id<JavaUtilMap_Entry>)o2 {
-  return [((JavaLangDouble *) nil_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([((id<NetGlobulusSimiSimiCallable>) nil_chk(val$comparator_)) callWithNetGlobulusSimiBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ create_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_decomposedPairWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiValue_withNetGlobulusSimiSimiValue_(val$objectClass_, create_NetGlobulusSimiSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o1)) getKey]), [o1 getValue])), create_NetGlobulusSimiSimiValue_Object_initWithNetGlobulusSimiSimiObject_(NetGlobulusSimiSimiObjectImpl_decomposedPairWithNetGlobulusSimiSimiClassImpl_withNetGlobulusSimiSimiValue_withNetGlobulusSimiSimiValue_(val$objectClass_, create_NetGlobulusSimiSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o2)) getKey]), [o2 getValue])) } count:2 type:NetGlobulusSimiSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) intValue];
+  return [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o1)) getKey]), [o1 getValue])), create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o2)) getKey]), [o2 getValue])) } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) intValue];
 }
 
 - (id<JavaUtilComparator>)reversed {
@@ -7342,17 +7342,17 @@ NetGlobulusSimiBaseClassesNativeImpl_$Lambda$28 *create_NetGlobulusSimiBaseClass
 
 @end
 
-void NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29 *self, id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1, NetGlobulusSimiSimiClassImpl *capture$2) {
+void SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(SMBaseClassesNativeImpl_$Lambda$29 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
   self->val$comparator_ = capture$0;
   self->val$interpreter_ = capture$1;
   self->val$objectClass_ = capture$2;
   NSObject_init(self);
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29 *new_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_(id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1, NetGlobulusSimiSimiClassImpl *capture$2) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29, initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_, capture$0, capture$1, capture$2)
+SMBaseClassesNativeImpl_$Lambda$29 *new_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$29, initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_, capture$0, capture$1, capture$2)
 }
 
-NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29 *create_NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29_initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_(id<NetGlobulusSimiSimiCallable> capture$0, id<NetGlobulusSimiBlockInterpreter> capture$1, NetGlobulusSimiSimiClassImpl *capture$2) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiBaseClassesNativeImpl_$Lambda$29, initWithNetGlobulusSimiSimiCallable_withNetGlobulusSimiBlockInterpreter_withNetGlobulusSimiSimiClassImpl_, capture$0, capture$1, capture$2)
+SMBaseClassesNativeImpl_$Lambda$29 *create_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$29, initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_, capture$0, capture$1, capture$2)
 }

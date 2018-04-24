@@ -9,26 +9,26 @@
 #include "Token.h"
 #include "TokenType.h"
 
-@implementation NetGlobulusSimiToken
+@implementation SMToken
 
-- (instancetype)initWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type
-                                    withNSString:(NSString *)lexeme
-                    withNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)literal
-                                         withInt:(jint)line {
-  NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(self, type, lexeme, literal, line);
+- (instancetype __nonnull)initWithSMTokenType:(SMTokenType *)type
+                                 withNSString:(NSString *)lexeme
+                              withSMSimiValue:(SMSimiValue *)literal
+                                      withInt:(jint)line {
+  SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(self, type, lexeme, literal, line);
   return self;
 }
 
-+ (NetGlobulusSimiToken *)self__ {
-  return NetGlobulusSimiToken_self__();
++ (SMToken *)self__ {
+  return SMToken_self__();
 }
 
-+ (NetGlobulusSimiToken *)nativeCallWithNSString:(NSString *)name {
-  return NetGlobulusSimiToken_nativeCallWithNSString_(name);
++ (SMToken *)nativeCallWithNSString:(NSString *)name {
+  return SMToken_nativeCallWithNSString_(name);
 }
 
-+ (NetGlobulusSimiToken *)namedWithNSString:(NSString *)name {
-  return NetGlobulusSimiToken_namedWithNSString_(name);
++ (SMToken *)namedWithNSString:(NSString *)name {
+  return SMToken_namedWithNSString_(name);
 }
 
 - (NSString *)description {
@@ -38,34 +38,34 @@
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiToken;", 0x8, 1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiToken;", 0x8, 2, 3, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiToken;", 0x8, 4, 3, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x8, 1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x8, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x8, 4, 3, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiTokenType:withNSString:withNetGlobulusSimiSimiValue:withInt:);
+  methods[0].selector = @selector(initWithSMTokenType:withNSString:withSMSimiValue:withInt:);
   methods[1].selector = @selector(self__);
   methods[2].selector = @selector(nativeCallWithNSString:);
   methods[3].selector = @selector(namedWithNSString:);
   methods[4].selector = @selector(description);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "type_", "LNetGlobulusSimiTokenType;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "type_", "LSMTokenType;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "lexeme_", "LNSString;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "literal_", "LNetGlobulusSimiSimiValue;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "literal_", "LSMSimiValue;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "line_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiTokenType;LNSString;LNetGlobulusSimiSimiValue;I", "self", "nativeCall", "LNSString;", "named", "toString" };
-  static const J2ObjcClassInfo _NetGlobulusSimiToken = { "Token", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 5, 4, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiToken;
+  static const void *ptrTable[] = { "LSMTokenType;LNSString;LSMSimiValue;I", "self", "nativeCall", "LNSString;", "named", "toString" };
+  static const J2ObjcClassInfo _SMToken = { "Token", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 5, 4, -1, -1, -1, -1, -1 };
+  return &_SMToken;
 }
 
 @end
 
-void NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(NetGlobulusSimiToken *self, NetGlobulusSimiTokenType *type, NSString *lexeme, NetGlobulusSimiSimiValue *literal, jint line) {
+void SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMToken *self, SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line) {
   NSObject_init(self);
   self->type_ = type;
   self->lexeme_ = lexeme;
@@ -73,27 +73,27 @@ void NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetG
   self->line_ = line;
 }
 
-NetGlobulusSimiToken *new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(NetGlobulusSimiTokenType *type, NSString *lexeme, NetGlobulusSimiSimiValue *literal, jint line) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiToken, initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_, type, lexeme, literal, line)
+SMToken *new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line) {
+  J2OBJC_NEW_IMPL(SMToken, initWithSMTokenType_withNSString_withSMSimiValue_withInt_, type, lexeme, literal, line)
 }
 
-NetGlobulusSimiToken *create_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(NetGlobulusSimiTokenType *type, NSString *lexeme, NetGlobulusSimiSimiValue *literal, jint line) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiToken, initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_, type, lexeme, literal, line)
+SMToken *create_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line) {
+  J2OBJC_CREATE_IMPL(SMToken, initWithSMTokenType_withNSString_withSMSimiValue_withInt_, type, lexeme, literal, line)
 }
 
-NetGlobulusSimiToken *NetGlobulusSimiToken_self__() {
-  NetGlobulusSimiToken_initialize();
-  return new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(JreLoadEnum(NetGlobulusSimiTokenType, SELF), NetGlobulusSimiConstants_SELF, nil, 0);
+SMToken *SMToken_self__() {
+  SMToken_initialize();
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, SELF), SMConstants_SELF, nil, 0);
 }
 
-NetGlobulusSimiToken *NetGlobulusSimiToken_nativeCallWithNSString_(NSString *name) {
-  NetGlobulusSimiToken_initialize();
-  return new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(JreLoadEnum(NetGlobulusSimiTokenType, NATIVE), name, nil, 0);
+SMToken *SMToken_nativeCallWithNSString_(NSString *name) {
+  SMToken_initialize();
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, NATIVE), name, nil, 0);
 }
 
-NetGlobulusSimiToken *NetGlobulusSimiToken_namedWithNSString_(NSString *name) {
-  NetGlobulusSimiToken_initialize();
-  return new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), name, nil, 0);
+SMToken *SMToken_namedWithNSString_(NSString *name) {
+  SMToken_initialize();
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, IDENTIFIER), name, nil, 0);
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiToken)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMToken)

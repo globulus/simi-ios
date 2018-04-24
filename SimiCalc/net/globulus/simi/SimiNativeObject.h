@@ -13,40 +13,51 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiNativeObject
 
-#if !defined (NetGlobulusSimiSimiNativeObject_) && (INCLUDE_ALL_NetGlobulusSimiSimiNativeObject || defined(INCLUDE_NetGlobulusSimiSimiNativeObject))
-#define NetGlobulusSimiSimiNativeObject_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiNativeObject_) && (INCLUDE_ALL_NetGlobulusSimiSimiNativeObject || defined(INCLUDE_SMSimiNativeObject))
+#define SMSimiNativeObject_
 
 #define RESTRICT_NetGlobulusSimiSimiObjectImpl 1
-#define INCLUDE_NetGlobulusSimiSimiObjectImpl_Dictionary 1
+#define INCLUDE_SMSimiObjectImpl_Dictionary 1
 #include "SimiObjectImpl.h"
 
 @class JavaUtilLinkedHashMap;
-@class NetGlobulusSimiSimiClassImpl;
+@class SMSimiClassImpl;
 
-@interface NetGlobulusSimiSimiNativeObject : NetGlobulusSimiSimiObjectImpl_Dictionary
+@interface SMSimiNativeObject : SMSimiObjectImpl_Dictionary
 
 #pragma mark Package-Private
 
-- (instancetype)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props;
+- (instancetype __nonnull)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithNetGlobulusSimiSimiClassImpl:(NetGlobulusSimiSimiClassImpl *)arg0
-                                         withBoolean:(jboolean)arg1
-                           withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)arg2 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)arg0
+                                      withBoolean:(jboolean)arg1
+                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)arg2 NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiNativeObject)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiNativeObject)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(NetGlobulusSimiSimiNativeObject *self, JavaUtilLinkedHashMap *props);
+FOUNDATION_EXPORT void SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(SMSimiNativeObject *self, JavaUtilLinkedHashMap *props);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiNativeObject *new_NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiNativeObject *new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiNativeObject *create_NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props);
+FOUNDATION_EXPORT SMSimiNativeObject *create_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiNativeObject)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiNativeObject)
+
+@compatibility_alias NetGlobulusSimiSimiNativeObject SMSimiNativeObject;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiNativeObject")

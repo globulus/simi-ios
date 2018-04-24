@@ -11,7 +11,7 @@
 #include "java/lang/System.h"
 #include "SparseArray.h"
 
-@interface NetGlobulusSimiSparseArray () {
+@interface SMSparseArray () {
  @public
   jboolean mGarbage_;
   IOSIntArray *mKeys_;
@@ -28,38 +28,38 @@
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSparseArray, mKeys_, IOSIntArray *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSparseArray, mValues_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(SMSparseArray, mKeys_, IOSIntArray *)
+J2OBJC_FIELD_SETTER(SMSparseArray, mValues_, IOSObjectArray *)
 
-inline id NetGlobulusSimiSparseArray_get_DELETED(void);
-static id NetGlobulusSimiSparseArray_DELETED;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiSparseArray, DELETED, id)
+inline id SMSparseArray_get_DELETED(void);
+static id SMSparseArray_DELETED;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSparseArray, DELETED, id)
 
-__attribute__((unused)) static void NetGlobulusSimiSparseArray_gc(NetGlobulusSimiSparseArray *self);
+__attribute__((unused)) static void SMSparseArray_gc(SMSparseArray *self);
 
-__attribute__((unused)) static jint NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(IOSIntArray *a, jint start, jint len, jint key);
+__attribute__((unused)) static jint SMSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(IOSIntArray *a, jint start, jint len, jint key);
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiSparseArray)
+J2OBJC_INITIALIZED_DEFN(SMSparseArray)
 
-@implementation NetGlobulusSimiSparseArray
+@implementation SMSparseArray
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiSparseArray_init(self);
+- (instancetype __nonnull)init {
+  SMSparseArray_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (instancetype)initWithInt:(jint)initialCapacity {
-  NetGlobulusSimiSparseArray_initWithInt_(self, initialCapacity);
+- (instancetype __nonnull)initWithInt:(jint)initialCapacity {
+  SMSparseArray_initWithInt_(self, initialCapacity);
   return self;
 }
 
-- (NetGlobulusSimiSparseArray *)java_clone {
-  NetGlobulusSimiSparseArray *clone = nil;
+- (SMSparseArray *)java_clone {
+  SMSparseArray *clone = nil;
   @try {
-    clone = (NetGlobulusSimiSparseArray *) cast_chk([super java_clone], [NetGlobulusSimiSparseArray class]);
-    ((NetGlobulusSimiSparseArray *) nil_chk(clone))->mKeys_ = [((IOSIntArray *) nil_chk(mKeys_)) java_clone];
+    clone = (SMSparseArray *) cast_chk([super java_clone], [SMSparseArray class]);
+    ((SMSparseArray *) nil_chk(clone))->mKeys_ = [((IOSIntArray *) nil_chk(mKeys_)) java_clone];
     clone->mValues_ = [((IOSObjectArray *) nil_chk(mValues_)) java_clone];
   }
   @catch (JavaLangCloneNotSupportedException *cnse) {
@@ -73,8 +73,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (id)getWithInt:(jint)key
           withId:(id)valueIfKeyNotFound {
-  jint i = NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
-  if (i < 0 || IOSObjectArray_Get(nil_chk(mValues_), i) == NetGlobulusSimiSparseArray_DELETED) {
+  jint i = SMSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
+  if (i < 0 || IOSObjectArray_Get(nil_chk(mValues_), i) == SMSparseArray_DELETED) {
     return valueIfKeyNotFound;
   }
   else {
@@ -83,10 +83,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)delete__WithInt:(jint)key {
-  jint i = NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
+  jint i = SMSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
   if (i >= 0) {
-    if (IOSObjectArray_Get(nil_chk(mValues_), i) != NetGlobulusSimiSparseArray_DELETED) {
-      (void) IOSObjectArray_Set(mValues_, i, NetGlobulusSimiSparseArray_DELETED);
+    if (IOSObjectArray_Get(nil_chk(mValues_), i) != SMSparseArray_DELETED) {
+      (void) IOSObjectArray_Set(mValues_, i, SMSparseArray_DELETED);
       mGarbage_ = true;
     }
   }
@@ -100,35 +100,35 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (index >= ((IOSObjectArray *) nil_chk(mValues_))->size_) {
     return;
   }
-  if (IOSObjectArray_Get(mValues_, index) != NetGlobulusSimiSparseArray_DELETED) {
-    (void) IOSObjectArray_Set(mValues_, index, NetGlobulusSimiSparseArray_DELETED);
+  if (IOSObjectArray_Get(mValues_, index) != SMSparseArray_DELETED) {
+    (void) IOSObjectArray_Set(mValues_, index, SMSparseArray_DELETED);
     mGarbage_ = true;
   }
 }
 
 - (void)gc {
-  NetGlobulusSimiSparseArray_gc(self);
+  SMSparseArray_gc(self);
 }
 
 - (void)putWithInt:(jint)key
             withId:(id)value {
-  jint i = NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
+  jint i = SMSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
   if (i >= 0) {
     (void) IOSObjectArray_Set(nil_chk(mValues_), i, value);
   }
   else {
     i = ~i;
-    if (i < mSize_ && IOSObjectArray_Get(nil_chk(mValues_), i) == NetGlobulusSimiSparseArray_DELETED) {
+    if (i < mSize_ && IOSObjectArray_Get(nil_chk(mValues_), i) == SMSparseArray_DELETED) {
       *IOSIntArray_GetRef(nil_chk(mKeys_), i) = key;
       (void) IOSObjectArray_Set(nil_chk(mValues_), i, value);
       return;
     }
     if (mGarbage_ && mSize_ >= ((IOSIntArray *) nil_chk(mKeys_))->size_) {
-      NetGlobulusSimiSparseArray_gc(self);
-      i = ~NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
+      SMSparseArray_gc(self);
+      i = ~SMSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
     }
     if (mSize_ >= ((IOSIntArray *) nil_chk(mKeys_))->size_) {
-      jint n = NetGlobulusSimiSparseArray_idealIntArraySizeWithInt_(mSize_ + 1);
+      jint n = SMSparseArray_idealIntArraySizeWithInt_(mSize_ + 1);
       IOSIntArray *nkeys = [IOSIntArray newArrayWithLength:n];
       IOSObjectArray *nvalues = [IOSObjectArray newArrayWithLength:n type:NSObject_class_()];
       JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(mKeys_, 0, nkeys, 0, ((IOSIntArray *) nil_chk(mKeys_))->size_);
@@ -148,21 +148,21 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)size {
   if (mGarbage_) {
-    NetGlobulusSimiSparseArray_gc(self);
+    SMSparseArray_gc(self);
   }
   return mSize_;
 }
 
 - (jint)keyAtWithInt:(jint)index {
   if (mGarbage_) {
-    NetGlobulusSimiSparseArray_gc(self);
+    SMSparseArray_gc(self);
   }
   return IOSIntArray_Get(nil_chk(mKeys_), index);
 }
 
 - (id)valueAtWithInt:(jint)index {
   if (mGarbage_) {
-    NetGlobulusSimiSparseArray_gc(self);
+    SMSparseArray_gc(self);
   }
   return IOSObjectArray_Get(nil_chk(mValues_), index);
 }
@@ -170,21 +170,21 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)setValueAtWithInt:(jint)index
                    withId:(id)value {
   if (mGarbage_) {
-    NetGlobulusSimiSparseArray_gc(self);
+    SMSparseArray_gc(self);
   }
   (void) IOSObjectArray_Set(nil_chk(mValues_), index, value);
 }
 
 - (jint)indexOfKeyWithInt:(jint)key {
   if (mGarbage_) {
-    NetGlobulusSimiSparseArray_gc(self);
+    SMSparseArray_gc(self);
   }
-  return NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
+  return SMSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(mKeys_, 0, mSize_, key);
 }
 
 - (jint)indexOfValueWithId:(id)value {
   if (mGarbage_) {
-    NetGlobulusSimiSparseArray_gc(self);
+    SMSparseArray_gc(self);
   }
   for (jint i = 0; i < mSize_; i++) if (IOSObjectArray_Get(nil_chk(mValues_), i) == value) return i;
   return -1;
@@ -207,11 +207,11 @@ J2OBJC_IGNORE_DESIGNATED_END
     return;
   }
   if (mGarbage_ && mSize_ >= ((IOSIntArray *) nil_chk(mKeys_))->size_) {
-    NetGlobulusSimiSparseArray_gc(self);
+    SMSparseArray_gc(self);
   }
   jint pos = mSize_;
   if (pos >= ((IOSIntArray *) nil_chk(mKeys_))->size_) {
-    jint n = NetGlobulusSimiSparseArray_idealIntArraySizeWithInt_(pos + 1);
+    jint n = SMSparseArray_idealIntArraySizeWithInt_(pos + 1);
     IOSIntArray *nkeys = [IOSIntArray newArrayWithLength:n];
     IOSObjectArray *nvalues = [IOSObjectArray newArrayWithLength:n type:NSObject_class_()];
     JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(mKeys_, 0, nkeys, 0, ((IOSIntArray *) nil_chk(mKeys_))->size_);
@@ -228,22 +228,22 @@ J2OBJC_IGNORE_DESIGNATED_END
                          withInt:(jint)start
                          withInt:(jint)len
                          withInt:(jint)key {
-  return NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(a, start, len, key);
+  return SMSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(a, start, len, key);
 }
 
 + (jint)idealByteArraySizeWithInt:(jint)need {
-  return NetGlobulusSimiSparseArray_idealByteArraySizeWithInt_(need);
+  return SMSparseArray_idealByteArraySizeWithInt_(need);
 }
 
 + (jint)idealIntArraySizeWithInt:(jint)need {
-  return NetGlobulusSimiSparseArray_idealIntArraySizeWithInt_(need);
+  return SMSparseArray_idealIntArraySizeWithInt_(need);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSparseArray;", 0x1, 1, -1, -1, 2, -1, -1 },
+    { NULL, "LSMSparseArray;", 0x1, 1, -1, -1, 2, -1, -1 },
     { NULL, "LNSObject;", 0x1, 3, 0, -1, 4, -1, -1 },
     { NULL, "LNSObject;", 0x1, 3, 5, -1, 6, -1, -1 },
     { NULL, "V", 0x1, 7, 0, -1, -1, -1, -1 },
@@ -295,61 +295,61 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mValues_", "[LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mSize_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "I", "clone", "()LSparseArray<TE;>;", "get", "(I)TE;", "ILNSObject;", "(ITE;)TE;", "delete", "remove", "removeAt", "put", "(ITE;)V", "keyAt", "valueAt", "setValueAt", "indexOfKey", "indexOfValue", "LNSObject;", "(TE;)I", "append", "binarySearch", "[IIII", "idealByteArraySize", "idealIntArraySize", &NetGlobulusSimiSparseArray_DELETED, "<E:Ljava/lang/Object;>Ljava/lang/Object;Ljava/lang/Cloneable;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSparseArray = { "SparseArray", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 21, 5, -1, -1, -1, 25, -1 };
-  return &_NetGlobulusSimiSparseArray;
+  static const void *ptrTable[] = { "I", "clone", "()LSparseArray<TE;>;", "get", "(I)TE;", "ILNSObject;", "(ITE;)TE;", "delete", "remove", "removeAt", "put", "(ITE;)V", "keyAt", "valueAt", "setValueAt", "indexOfKey", "indexOfValue", "LNSObject;", "(TE;)I", "append", "binarySearch", "[IIII", "idealByteArraySize", "idealIntArraySize", &SMSparseArray_DELETED, "<E:Ljava/lang/Object;>Ljava/lang/Object;Ljava/lang/Cloneable;" };
+  static const J2ObjcClassInfo _SMSparseArray = { "SparseArray", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 21, 5, -1, -1, -1, 25, -1 };
+  return &_SMSparseArray;
 }
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone * __nullable)zone {
   return [self java_clone];
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiSparseArray class]) {
-    NetGlobulusSimiSparseArray_DELETED = new_NSObject_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiSparseArray)
+  if (self == [SMSparseArray class]) {
+    SMSparseArray_DELETED = new_NSObject_init();
+    J2OBJC_SET_INITIALIZED(SMSparseArray)
   }
 }
 
 @end
 
-void NetGlobulusSimiSparseArray_init(NetGlobulusSimiSparseArray *self) {
-  NetGlobulusSimiSparseArray_initWithInt_(self, 10);
+void SMSparseArray_init(SMSparseArray *self) {
+  SMSparseArray_initWithInt_(self, 10);
 }
 
-NetGlobulusSimiSparseArray *new_NetGlobulusSimiSparseArray_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSparseArray, init)
+SMSparseArray *new_SMSparseArray_init() {
+  J2OBJC_NEW_IMPL(SMSparseArray, init)
 }
 
-NetGlobulusSimiSparseArray *create_NetGlobulusSimiSparseArray_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSparseArray, init)
+SMSparseArray *create_SMSparseArray_init() {
+  J2OBJC_CREATE_IMPL(SMSparseArray, init)
 }
 
-void NetGlobulusSimiSparseArray_initWithInt_(NetGlobulusSimiSparseArray *self, jint initialCapacity) {
+void SMSparseArray_initWithInt_(SMSparseArray *self, jint initialCapacity) {
   NSObject_init(self);
   self->mGarbage_ = false;
-  initialCapacity = NetGlobulusSimiSparseArray_idealIntArraySizeWithInt_(initialCapacity);
+  initialCapacity = SMSparseArray_idealIntArraySizeWithInt_(initialCapacity);
   self->mKeys_ = [IOSIntArray newArrayWithLength:initialCapacity];
   self->mValues_ = [IOSObjectArray newArrayWithLength:initialCapacity type:NSObject_class_()];
   self->mSize_ = 0;
 }
 
-NetGlobulusSimiSparseArray *new_NetGlobulusSimiSparseArray_initWithInt_(jint initialCapacity) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSparseArray, initWithInt_, initialCapacity)
+SMSparseArray *new_SMSparseArray_initWithInt_(jint initialCapacity) {
+  J2OBJC_NEW_IMPL(SMSparseArray, initWithInt_, initialCapacity)
 }
 
-NetGlobulusSimiSparseArray *create_NetGlobulusSimiSparseArray_initWithInt_(jint initialCapacity) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSparseArray, initWithInt_, initialCapacity)
+SMSparseArray *create_SMSparseArray_initWithInt_(jint initialCapacity) {
+  J2OBJC_CREATE_IMPL(SMSparseArray, initWithInt_, initialCapacity)
 }
 
-void NetGlobulusSimiSparseArray_gc(NetGlobulusSimiSparseArray *self) {
+void SMSparseArray_gc(SMSparseArray *self) {
   jint n = self->mSize_;
   jint o = 0;
   IOSIntArray *keys = self->mKeys_;
   IOSObjectArray *values = self->mValues_;
   for (jint i = 0; i < n; i++) {
     id val = IOSObjectArray_Get(nil_chk(values), i);
-    if (val != NetGlobulusSimiSparseArray_DELETED) {
+    if (val != SMSparseArray_DELETED) {
       if (i != o) {
         *IOSIntArray_GetRef(nil_chk(keys), o) = IOSIntArray_Get(keys, i);
         (void) IOSObjectArray_Set(values, o, val);
@@ -362,8 +362,8 @@ void NetGlobulusSimiSparseArray_gc(NetGlobulusSimiSparseArray *self) {
   self->mSize_ = o;
 }
 
-jint NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(IOSIntArray *a, jint start, jint len, jint key) {
-  NetGlobulusSimiSparseArray_initialize();
+jint SMSparseArray_binarySearchWithIntArray_withInt_withInt_withInt_(IOSIntArray *a, jint start, jint len, jint key) {
+  SMSparseArray_initialize();
   jint high = start + len;
   jint low = start - 1;
   jint guess;
@@ -377,15 +377,15 @@ jint NetGlobulusSimiSparseArray_binarySearchWithIntArray_withInt_withInt_withInt
   else return ~high;
 }
 
-jint NetGlobulusSimiSparseArray_idealByteArraySizeWithInt_(jint need) {
-  NetGlobulusSimiSparseArray_initialize();
+jint SMSparseArray_idealByteArraySizeWithInt_(jint need) {
+  SMSparseArray_initialize();
   for (jint i = 4; i < 32; i++) if (need <= (JreLShift32(1, i)) - 12) return (JreLShift32(1, i)) - 12;
   return need;
 }
 
-jint NetGlobulusSimiSparseArray_idealIntArraySizeWithInt_(jint need) {
-  NetGlobulusSimiSparseArray_initialize();
-  return NetGlobulusSimiSparseArray_idealByteArraySizeWithInt_(need * 4) / 4;
+jint SMSparseArray_idealIntArraySizeWithInt_(jint need) {
+  SMSparseArray_initialize();
+  return SMSparseArray_idealByteArraySizeWithInt_(need * 4) / 4;
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSparseArray)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSparseArray)

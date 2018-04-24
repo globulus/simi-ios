@@ -12,162 +12,169 @@
 #define INCLUDE_ALL_NetGlobulusSimiExpr 1
 #endif
 #undef RESTRICT_NetGlobulusSimiExpr
-#ifdef INCLUDE_NetGlobulusSimiExpr_ObjectLiteral
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_ObjectLiteral
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Variable
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Variable
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Unary
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Unary
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Self
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Self
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Super
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Super
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Set
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Set
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Logical
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Logical
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Literal
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Literal
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Gu
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Gu
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Grouping
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Grouping
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Get
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Get
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Call
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Call
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Binary
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Binary
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_ObjectDecomp
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_ObjectDecomp
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Assign
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Assign
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Annotations
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Annotations
+#define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_NetGlobulusSimiExpr_Block
-#define INCLUDE_NetGlobulusSimiExpr 1
+#ifdef INCLUDE_SMExpr_Block
+#define INCLUDE_SMExpr 1
 #endif
 
-#if !defined (NetGlobulusSimiExpr_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr))
-#define NetGlobulusSimiExpr_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMExpr_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr))
+#define SMExpr_
 
 @class IOSObjectArray;
-@protocol NetGlobulusSimiExpr_Visitor;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr : NSObject
+@interface SMExpr : NSObject
 
 #pragma mark Package-Private
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr)
-
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_init(NetGlobulusSimiExpr *self);
-
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr)
-
-#endif
-
-#if !defined (NetGlobulusSimiExpr_Visitor_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Visitor))
-#define NetGlobulusSimiExpr_Visitor_
-
-@class NetGlobulusSimiExpr_Annotations;
-@class NetGlobulusSimiExpr_Assign;
-@class NetGlobulusSimiExpr_Binary;
-@class NetGlobulusSimiExpr_Block;
-@class NetGlobulusSimiExpr_Call;
-@class NetGlobulusSimiExpr_Get;
-@class NetGlobulusSimiExpr_Grouping;
-@class NetGlobulusSimiExpr_Gu;
-@class NetGlobulusSimiExpr_Literal;
-@class NetGlobulusSimiExpr_Logical;
-@class NetGlobulusSimiExpr_ObjectLiteral;
-@class NetGlobulusSimiExpr_Self;
-@class NetGlobulusSimiExpr_Set;
-@class NetGlobulusSimiExpr_Super;
-@class NetGlobulusSimiExpr_Unary;
-@class NetGlobulusSimiExpr_Variable;
-
-@protocol NetGlobulusSimiExpr_Visitor < JavaObject >
-
-- (id)visitAnnotationsExprWithNetGlobulusSimiExpr_Annotations:(NetGlobulusSimiExpr_Annotations *)expr;
-
-- (id)visitAssignExprWithNetGlobulusSimiExpr_Assign:(NetGlobulusSimiExpr_Assign *)expr;
-
-- (id)visitBinaryExprWithNetGlobulusSimiExpr_Binary:(NetGlobulusSimiExpr_Binary *)expr;
-
-- (id)visitBlockExprWithNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)expr
-                                      withBoolean:(jboolean)newScope
-                                      withBoolean:(jboolean)execute;
-
-- (id)visitCallExprWithNetGlobulusSimiExpr_Call:(NetGlobulusSimiExpr_Call *)expr;
-
-- (id)visitGetExprWithNetGlobulusSimiExpr_Get:(NetGlobulusSimiExpr_Get *)expr;
-
-- (id)visitGroupingExprWithNetGlobulusSimiExpr_Grouping:(NetGlobulusSimiExpr_Grouping *)expr;
-
-- (id)visitGuExprWithNetGlobulusSimiExpr_Gu:(NetGlobulusSimiExpr_Gu *)expr;
-
-- (id)visitLiteralExprWithNetGlobulusSimiExpr_Literal:(NetGlobulusSimiExpr_Literal *)expr;
-
-- (id)visitLogicalExprWithNetGlobulusSimiExpr_Logical:(NetGlobulusSimiExpr_Logical *)expr;
-
-- (id)visitSetExprWithNetGlobulusSimiExpr_Set:(NetGlobulusSimiExpr_Set *)expr;
-
-- (id)visitSuperExprWithNetGlobulusSimiExpr_Super:(NetGlobulusSimiExpr_Super *)expr;
-
-- (id)visitSelfExprWithNetGlobulusSimiExpr_Self:(NetGlobulusSimiExpr_Self *)expr;
-
-- (id)visitUnaryExprWithNetGlobulusSimiExpr_Unary:(NetGlobulusSimiExpr_Unary *)expr;
-
-- (id)visitVariableExprWithNetGlobulusSimiExpr_Variable:(NetGlobulusSimiExpr_Variable *)expr;
-
-- (id)visitObjectLiteralExprWithNetGlobulusSimiExpr_ObjectLiteral:(NetGlobulusSimiExpr_ObjectLiteral *)expr;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Visitor)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Visitor)
+FOUNDATION_EXPORT void SMExpr_init(SMExpr *self);
+
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr)
+
+@compatibility_alias NetGlobulusSimiExpr SMExpr;
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Block_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Block))
-#define NetGlobulusSimiExpr_Block_
+#if !defined (SMExpr_Visitor_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Visitor))
+#define SMExpr_Visitor_
+
+@class SMExpr_Annotations;
+@class SMExpr_Assign;
+@class SMExpr_Binary;
+@class SMExpr_Block;
+@class SMExpr_Call;
+@class SMExpr_Get;
+@class SMExpr_Grouping;
+@class SMExpr_Gu;
+@class SMExpr_Literal;
+@class SMExpr_Logical;
+@class SMExpr_ObjectLiteral;
+@class SMExpr_Self;
+@class SMExpr_Set;
+@class SMExpr_Super;
+@class SMExpr_Unary;
+@class SMExpr_Variable;
+
+@protocol SMExpr_Visitor < JavaObject >
+
+- (id)visitAnnotationsExprWithSMExpr_Annotations:(SMExpr_Annotations *)expr;
+
+- (id)visitAssignExprWithSMExpr_Assign:(SMExpr_Assign *)expr;
+
+- (id)visitBinaryExprWithSMExpr_Binary:(SMExpr_Binary *)expr;
+
+- (id)visitBlockExprWithSMExpr_Block:(SMExpr_Block *)expr
+                         withBoolean:(jboolean)newScope
+                         withBoolean:(jboolean)execute;
+
+- (id)visitCallExprWithSMExpr_Call:(SMExpr_Call *)expr;
+
+- (id)visitGetExprWithSMExpr_Get:(SMExpr_Get *)expr;
+
+- (id)visitGroupingExprWithSMExpr_Grouping:(SMExpr_Grouping *)expr;
+
+- (id)visitGuExprWithSMExpr_Gu:(SMExpr_Gu *)expr;
+
+- (id)visitLiteralExprWithSMExpr_Literal:(SMExpr_Literal *)expr;
+
+- (id)visitLogicalExprWithSMExpr_Logical:(SMExpr_Logical *)expr;
+
+- (id)visitSetExprWithSMExpr_Set:(SMExpr_Set *)expr;
+
+- (id)visitSuperExprWithSMExpr_Super:(SMExpr_Super *)expr;
+
+- (id)visitSelfExprWithSMExpr_Self:(SMExpr_Self *)expr;
+
+- (id)visitUnaryExprWithSMExpr_Unary:(SMExpr_Unary *)expr;
+
+- (id)visitVariableExprWithSMExpr_Variable:(SMExpr_Variable *)expr;
+
+- (id)visitObjectLiteralExprWithSMExpr_ObjectLiteral:(SMExpr_ObjectLiteral *)expr;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Visitor)
+
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
+
+#endif
+
+#if !defined (SMExpr_Block_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Block))
+#define SMExpr_Block_
 
 #define RESTRICT_NetGlobulusSimiSimiBlock 1
-#define INCLUDE_NetGlobulusSimiSimiBlock 1
+#define INCLUDE_SMSimiBlock 1
 #include "SimiBlock.h"
 
 @class IOSObjectArray;
-@class NetGlobulusSimiToken;
+@class SMToken;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiExpr_Visitor;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Block : NetGlobulusSimiExpr < NetGlobulusSimiSimiBlock > {
+@interface SMExpr_Block : SMExpr < SMSimiBlock > {
  @public
-  NetGlobulusSimiToken *declaration_;
+  SMToken *declaration_;
   id<JavaUtilList> params_;
   id<JavaUtilList> statements_;
 }
@@ -182,730 +189,734 @@ J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Visitor)
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)declaration
-                            withJavaUtilList:(id<JavaUtilList>)params
-                            withJavaUtilList:(id<JavaUtilList>)statements;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)declaration
+                         withJavaUtilList:(id<JavaUtilList>)params
+                         withJavaUtilList:(id<JavaUtilList>)statements;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 - (jboolean)isNative;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Block)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Block)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Block, declaration_, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Block, params_, id<JavaUtilList>)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Block, statements_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMExpr_Block, declaration_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Block, params_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMExpr_Block, statements_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiExpr_Block *self, NetGlobulusSimiToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements);
+FOUNDATION_EXPORT void SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMExpr_Block *self, SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Block *new_NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Block *create_NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(NetGlobulusSimiToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements);
+FOUNDATION_EXPORT SMExpr_Block *create_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Block)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Block)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Annotations_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Annotations))
-#define NetGlobulusSimiExpr_Annotations_
+#if !defined (SMExpr_Annotations_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Annotations))
+#define SMExpr_Annotations_
 
 @class IOSObjectArray;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiExpr_Visitor;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Annotations : NetGlobulusSimiExpr {
+@interface SMExpr_Annotations : SMExpr {
  @public
   id<JavaUtilList> tokens_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tokens;
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tokens;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Annotations)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Annotations)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Annotations, tokens_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMExpr_Annotations, tokens_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Annotations_initWithJavaUtilList_(NetGlobulusSimiExpr_Annotations *self, id<JavaUtilList> tokens);
+FOUNDATION_EXPORT void SMExpr_Annotations_initWithJavaUtilList_(SMExpr_Annotations *self, id<JavaUtilList> tokens);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Annotations *new_NetGlobulusSimiExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Annotations *new_SMExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Annotations *create_NetGlobulusSimiExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens);
+FOUNDATION_EXPORT SMExpr_Annotations *create_SMExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Annotations)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Annotations)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Assign_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Assign))
-#define NetGlobulusSimiExpr_Assign_
+#if !defined (SMExpr_Assign_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Assign))
+#define SMExpr_Assign_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiExpr;
-@class NetGlobulusSimiToken;
+@class SMExpr;
+@class SMToken;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiExpr_Visitor;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Assign : NetGlobulusSimiExpr {
+@interface SMExpr_Assign : SMExpr {
  @public
-  NetGlobulusSimiToken *name_;
-  NetGlobulusSimiExpr *value_;
+  SMToken *name_;
+  SMExpr *value_;
   id<JavaUtilList> annotations_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)value
-                            withJavaUtilList:(id<JavaUtilList>)annotations;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)name
+                               withSMExpr:(SMExpr *)value
+                         withJavaUtilList:(id<JavaUtilList>)annotations;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Assign)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Assign)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Assign, name_, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Assign, value_, NetGlobulusSimiExpr *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Assign, annotations_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMExpr_Assign, name_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Assign, value_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Assign, annotations_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(NetGlobulusSimiExpr_Assign *self, NetGlobulusSimiToken *name, NetGlobulusSimiExpr *value, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT void SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMExpr_Assign *self, SMToken *name, SMExpr *value, id<JavaUtilList> annotations);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Assign *new_NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(NetGlobulusSimiToken *name, NetGlobulusSimiExpr *value, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Assign *new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMExpr *value, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Assign *create_NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(NetGlobulusSimiToken *name, NetGlobulusSimiExpr *value, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT SMExpr_Assign *create_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMExpr *value, id<JavaUtilList> annotations);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Assign)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Assign)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_ObjectDecomp_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_ObjectDecomp))
-#define NetGlobulusSimiExpr_ObjectDecomp_
+#if !defined (SMExpr_ObjectDecomp_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_ObjectDecomp))
+#define SMExpr_ObjectDecomp_
 
 @class IOSObjectArray;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiExpr_Visitor;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_ObjectDecomp : NetGlobulusSimiExpr {
+@interface SMExpr_ObjectDecomp : SMExpr {
  @public
   id<JavaUtilList> assigns_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)assigns;
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)assigns;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_ObjectDecomp)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_ObjectDecomp)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_ObjectDecomp, assigns_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMExpr_ObjectDecomp, assigns_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_ObjectDecomp_initWithJavaUtilList_(NetGlobulusSimiExpr_ObjectDecomp *self, id<JavaUtilList> assigns);
+FOUNDATION_EXPORT void SMExpr_ObjectDecomp_initWithJavaUtilList_(SMExpr_ObjectDecomp *self, id<JavaUtilList> assigns);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_ObjectDecomp *new_NetGlobulusSimiExpr_ObjectDecomp_initWithJavaUtilList_(id<JavaUtilList> assigns) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_ObjectDecomp *new_SMExpr_ObjectDecomp_initWithJavaUtilList_(id<JavaUtilList> assigns) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_ObjectDecomp *create_NetGlobulusSimiExpr_ObjectDecomp_initWithJavaUtilList_(id<JavaUtilList> assigns);
+FOUNDATION_EXPORT SMExpr_ObjectDecomp *create_SMExpr_ObjectDecomp_initWithJavaUtilList_(id<JavaUtilList> assigns);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_ObjectDecomp)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectDecomp)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Binary_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Binary))
-#define NetGlobulusSimiExpr_Binary_
+#if !defined (SMExpr_Binary_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Binary))
+#define SMExpr_Binary_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiExpr;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMExpr;
+@class SMToken;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Binary : NetGlobulusSimiExpr {
+@interface SMExpr_Binary : SMExpr {
  @public
-  NetGlobulusSimiExpr *left_;
-  NetGlobulusSimiToken *operator__;
-  NetGlobulusSimiExpr *right_;
+  SMExpr *left_;
+  SMToken *operator__;
+  SMExpr *right_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)left
-                   withNetGlobulusSimiToken:(NetGlobulusSimiToken *)operator_
-                    withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)right;
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)left
+                             withSMToken:(SMToken *)operator_
+                              withSMExpr:(SMExpr *)right;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Binary)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Binary)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Binary, left_, NetGlobulusSimiExpr *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Binary, operator__, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Binary, right_, NetGlobulusSimiExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Binary, left_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Binary, operator__, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Binary, right_, SMExpr *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Binary *self, NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right);
+FOUNDATION_EXPORT void SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(SMExpr_Binary *self, SMExpr *left, SMToken *operator_, SMExpr *right);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Binary *new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Binary *new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(SMExpr *left, SMToken *operator_, SMExpr *right) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Binary *create_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right);
+FOUNDATION_EXPORT SMExpr_Binary *create_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(SMExpr *left, SMToken *operator_, SMExpr *right);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Binary)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Binary)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Call_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Call))
-#define NetGlobulusSimiExpr_Call_
+#if !defined (SMExpr_Call_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Call))
+#define SMExpr_Call_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiExpr;
-@class NetGlobulusSimiToken;
+@class SMExpr;
+@class SMToken;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiExpr_Visitor;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Call : NetGlobulusSimiExpr {
+@interface SMExpr_Call : SMExpr {
  @public
-  NetGlobulusSimiExpr *callee_;
-  NetGlobulusSimiToken *paren_;
+  SMExpr *callee_;
+  SMToken *paren_;
   id<JavaUtilList> arguments_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)callee
-                   withNetGlobulusSimiToken:(NetGlobulusSimiToken *)paren
-                           withJavaUtilList:(id<JavaUtilList>)arguments;
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)callee
+                             withSMToken:(SMToken *)paren
+                        withJavaUtilList:(id<JavaUtilList>)arguments;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Call)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Call)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Call, callee_, NetGlobulusSimiExpr *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Call, paren_, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Call, arguments_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMExpr_Call, callee_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Call, paren_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Call, arguments_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Call_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_(NetGlobulusSimiExpr_Call *self, NetGlobulusSimiExpr *callee, NetGlobulusSimiToken *paren, id<JavaUtilList> arguments);
+FOUNDATION_EXPORT void SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(SMExpr_Call *self, SMExpr *callee, SMToken *paren, id<JavaUtilList> arguments);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Call *new_NetGlobulusSimiExpr_Call_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_(NetGlobulusSimiExpr *callee, NetGlobulusSimiToken *paren, id<JavaUtilList> arguments) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Call *new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(SMExpr *callee, SMToken *paren, id<JavaUtilList> arguments) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Call *create_NetGlobulusSimiExpr_Call_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_(NetGlobulusSimiExpr *callee, NetGlobulusSimiToken *paren, id<JavaUtilList> arguments);
+FOUNDATION_EXPORT SMExpr_Call *create_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(SMExpr *callee, SMToken *paren, id<JavaUtilList> arguments);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Call)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Call)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Get_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Get))
-#define NetGlobulusSimiExpr_Get_
+#if !defined (SMExpr_Get_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Get))
+#define SMExpr_Get_
 
 @class IOSObjectArray;
 @class JavaLangInteger;
-@class NetGlobulusSimiExpr;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMExpr;
+@class SMToken;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Get : NetGlobulusSimiExpr {
+@interface SMExpr_Get : SMExpr {
  @public
-  NetGlobulusSimiToken *origin_;
-  NetGlobulusSimiExpr *object_;
-  NetGlobulusSimiExpr *name_;
+  SMToken *origin_;
+  SMExpr *object_;
+  SMExpr *name_;
   JavaLangInteger *arity_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)origin
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)object
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)name
-                         withJavaLangInteger:(JavaLangInteger *)arity;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)origin
+                               withSMExpr:(SMExpr *)object
+                               withSMExpr:(SMExpr *)name
+                      withJavaLangInteger:(JavaLangInteger *)arity;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Get)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Get)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Get, origin_, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Get, object_, NetGlobulusSimiExpr *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Get, name_, NetGlobulusSimiExpr *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Get, arity_, JavaLangInteger *)
+J2OBJC_FIELD_SETTER(SMExpr_Get, origin_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Get, object_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Get, name_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Get, arity_, JavaLangInteger *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(NetGlobulusSimiExpr_Get *self, NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, JavaLangInteger *arity);
+FOUNDATION_EXPORT void SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(SMExpr_Get *self, SMToken *origin, SMExpr *object, SMExpr *name, JavaLangInteger *arity);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Get *new_NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, JavaLangInteger *arity) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Get *new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(SMToken *origin, SMExpr *object, SMExpr *name, JavaLangInteger *arity) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Get *create_NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, JavaLangInteger *arity);
+FOUNDATION_EXPORT SMExpr_Get *create_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(SMToken *origin, SMExpr *object, SMExpr *name, JavaLangInteger *arity);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Get)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Get)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Grouping_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Grouping))
-#define NetGlobulusSimiExpr_Grouping_
+#if !defined (SMExpr_Grouping_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Grouping))
+#define SMExpr_Grouping_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiExpr;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMExpr;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Grouping : NetGlobulusSimiExpr {
+@interface SMExpr_Grouping : SMExpr {
  @public
-  NetGlobulusSimiExpr *expression_;
+  SMExpr *expression_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)expression;
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)expression;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Grouping)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Grouping)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Grouping, expression_, NetGlobulusSimiExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Grouping, expression_, SMExpr *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Grouping_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Grouping *self, NetGlobulusSimiExpr *expression);
+FOUNDATION_EXPORT void SMExpr_Grouping_initWithSMExpr_(SMExpr_Grouping *self, SMExpr *expression);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Grouping *new_NetGlobulusSimiExpr_Grouping_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expression) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Grouping *new_SMExpr_Grouping_initWithSMExpr_(SMExpr *expression) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Grouping *create_NetGlobulusSimiExpr_Grouping_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expression);
+FOUNDATION_EXPORT SMExpr_Grouping *create_SMExpr_Grouping_initWithSMExpr_(SMExpr *expression);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Grouping)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Grouping)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Gu_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Gu))
-#define NetGlobulusSimiExpr_Gu_
+#if !defined (SMExpr_Gu_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Gu))
+#define SMExpr_Gu_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiExpr;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMExpr;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Gu : NetGlobulusSimiExpr {
+@interface SMExpr_Gu : SMExpr {
  @public
-  NetGlobulusSimiExpr *expr_;
+  SMExpr *expr_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)expr;
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)expr;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Gu)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Gu)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Gu, expr_, NetGlobulusSimiExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Gu, expr_, SMExpr *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Gu_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Gu *self, NetGlobulusSimiExpr *expr);
+FOUNDATION_EXPORT void SMExpr_Gu_initWithSMExpr_(SMExpr_Gu *self, SMExpr *expr);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Gu *new_NetGlobulusSimiExpr_Gu_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expr) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Gu *new_SMExpr_Gu_initWithSMExpr_(SMExpr *expr) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Gu *create_NetGlobulusSimiExpr_Gu_initWithNetGlobulusSimiExpr_(NetGlobulusSimiExpr *expr);
+FOUNDATION_EXPORT SMExpr_Gu *create_SMExpr_Gu_initWithSMExpr_(SMExpr *expr);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Gu)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Gu)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Literal_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Literal))
-#define NetGlobulusSimiExpr_Literal_
+#if !defined (SMExpr_Literal_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Literal))
+#define SMExpr_Literal_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiSimiValue;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMSimiValue;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Literal : NetGlobulusSimiExpr {
+@interface SMExpr_Literal : SMExpr {
  @public
-  NetGlobulusSimiSimiValue *value_;
+  SMSimiValue *value_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value;
+- (instancetype __nonnull)initWithSMSimiValue:(SMSimiValue *)value;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Literal)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Literal)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Literal, value_, NetGlobulusSimiSimiValue *)
+J2OBJC_FIELD_SETTER(SMExpr_Literal, value_, SMSimiValue *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(NetGlobulusSimiExpr_Literal *self, NetGlobulusSimiSimiValue *value);
+FOUNDATION_EXPORT void SMExpr_Literal_initWithSMSimiValue_(SMExpr_Literal *self, SMSimiValue *value);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Literal *new_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(NetGlobulusSimiSimiValue *value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Literal *new_SMExpr_Literal_initWithSMSimiValue_(SMSimiValue *value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Literal *create_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(NetGlobulusSimiSimiValue *value);
+FOUNDATION_EXPORT SMExpr_Literal *create_SMExpr_Literal_initWithSMSimiValue_(SMSimiValue *value);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Literal)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Literal)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Logical_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Logical))
-#define NetGlobulusSimiExpr_Logical_
+#if !defined (SMExpr_Logical_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Logical))
+#define SMExpr_Logical_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiExpr;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMExpr;
+@class SMToken;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Logical : NetGlobulusSimiExpr {
+@interface SMExpr_Logical : SMExpr {
  @public
-  NetGlobulusSimiExpr *left_;
-  NetGlobulusSimiToken *operator__;
-  NetGlobulusSimiExpr *right_;
+  SMExpr *left_;
+  SMToken *operator__;
+  SMExpr *right_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)left
-                   withNetGlobulusSimiToken:(NetGlobulusSimiToken *)operator_
-                    withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)right;
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)left
+                             withSMToken:(SMToken *)operator_
+                              withSMExpr:(SMExpr *)right;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Logical)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Logical)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Logical, left_, NetGlobulusSimiExpr *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Logical, operator__, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Logical, right_, NetGlobulusSimiExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Logical, left_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Logical, operator__, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Logical, right_, SMExpr *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Logical *self, NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right);
+FOUNDATION_EXPORT void SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(SMExpr_Logical *self, SMExpr *left, SMToken *operator_, SMExpr *right);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Logical *new_NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Logical *new_SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(SMExpr *left, SMToken *operator_, SMExpr *right) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Logical *create_NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr *left, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right);
+FOUNDATION_EXPORT SMExpr_Logical *create_SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(SMExpr *left, SMToken *operator_, SMExpr *right);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Logical)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Logical)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Set_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Set))
-#define NetGlobulusSimiExpr_Set_
+#if !defined (SMExpr_Set_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Set))
+#define SMExpr_Set_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiExpr;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMExpr;
+@class SMToken;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Set : NetGlobulusSimiExpr {
+@interface SMExpr_Set : SMExpr {
  @public
-  NetGlobulusSimiToken *origin_;
-  NetGlobulusSimiExpr *object_;
-  NetGlobulusSimiExpr *name_;
-  NetGlobulusSimiExpr *value_;
+  SMToken *origin_;
+  SMExpr *object_;
+  SMExpr *name_;
+  SMExpr *value_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)origin
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)object
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)name
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)value;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)origin
+                               withSMExpr:(SMExpr *)object
+                               withSMExpr:(SMExpr *)name
+                               withSMExpr:(SMExpr *)value;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Set)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Set)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Set, origin_, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Set, object_, NetGlobulusSimiExpr *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Set, name_, NetGlobulusSimiExpr *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Set, value_, NetGlobulusSimiExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Set, origin_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Set, object_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Set, name_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Set, value_, SMExpr *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Set *self, NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, NetGlobulusSimiExpr *value);
+FOUNDATION_EXPORT void SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(SMExpr_Set *self, SMToken *origin, SMExpr *object, SMExpr *name, SMExpr *value);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Set *new_NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, NetGlobulusSimiExpr *value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Set *new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(SMToken *origin, SMExpr *object, SMExpr *name, SMExpr *value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Set *create_NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *origin, NetGlobulusSimiExpr *object, NetGlobulusSimiExpr *name, NetGlobulusSimiExpr *value);
+FOUNDATION_EXPORT SMExpr_Set *create_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(SMToken *origin, SMExpr *object, SMExpr *name, SMExpr *value);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Set)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Set)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Super_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Super))
-#define NetGlobulusSimiExpr_Super_
+#if !defined (SMExpr_Super_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Super))
+#define SMExpr_Super_
 
 @class IOSObjectArray;
 @class JavaLangInteger;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMToken;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Super : NetGlobulusSimiExpr {
+@interface SMExpr_Super : SMExpr {
  @public
-  NetGlobulusSimiToken *keyword_;
-  NetGlobulusSimiToken *superclass__;
-  NetGlobulusSimiToken *method_;
+  SMToken *keyword_;
+  SMToken *superclass__;
+  SMToken *method_;
   JavaLangInteger *arity_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)keyword
-                    withNetGlobulusSimiToken:(NetGlobulusSimiToken *)superclass_
-                    withNetGlobulusSimiToken:(NetGlobulusSimiToken *)method
-                         withJavaLangInteger:(JavaLangInteger *)arity;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword
+                              withSMToken:(SMToken *)superclass_
+                              withSMToken:(SMToken *)method
+                      withJavaLangInteger:(JavaLangInteger *)arity;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Super)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Super)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Super, keyword_, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Super, superclass__, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Super, method_, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Super, arity_, JavaLangInteger *)
+J2OBJC_FIELD_SETTER(SMExpr_Super, keyword_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Super, superclass__, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Super, method_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Super, arity_, JavaLangInteger *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Super_initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_(NetGlobulusSimiExpr_Super *self, NetGlobulusSimiToken *keyword, NetGlobulusSimiToken *superclass_, NetGlobulusSimiToken *method, JavaLangInteger *arity);
+FOUNDATION_EXPORT void SMExpr_Super_initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_(SMExpr_Super *self, SMToken *keyword, SMToken *superclass_, SMToken *method, JavaLangInteger *arity);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Super *new_NetGlobulusSimiExpr_Super_initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_(NetGlobulusSimiToken *keyword, NetGlobulusSimiToken *superclass_, NetGlobulusSimiToken *method, JavaLangInteger *arity) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Super *new_SMExpr_Super_initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_(SMToken *keyword, SMToken *superclass_, SMToken *method, JavaLangInteger *arity) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Super *create_NetGlobulusSimiExpr_Super_initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_(NetGlobulusSimiToken *keyword, NetGlobulusSimiToken *superclass_, NetGlobulusSimiToken *method, JavaLangInteger *arity);
+FOUNDATION_EXPORT SMExpr_Super *create_SMExpr_Super_initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_(SMToken *keyword, SMToken *superclass_, SMToken *method, JavaLangInteger *arity);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Super)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Super)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Self_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Self))
-#define NetGlobulusSimiExpr_Self_
+#if !defined (SMExpr_Self_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Self))
+#define SMExpr_Self_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMToken;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Self : NetGlobulusSimiExpr {
+@interface SMExpr_Self : SMExpr {
  @public
-  NetGlobulusSimiToken *keyword_;
+  SMToken *keyword_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)keyword;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Self)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Self)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Self, keyword_, NetGlobulusSimiToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Self, keyword_, SMToken *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(NetGlobulusSimiExpr_Self *self, NetGlobulusSimiToken *keyword);
+FOUNDATION_EXPORT void SMExpr_Self_initWithSMToken_(SMExpr_Self *self, SMToken *keyword);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Self *new_NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *keyword) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Self *new_SMExpr_Self_initWithSMToken_(SMToken *keyword) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Self *create_NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *keyword);
+FOUNDATION_EXPORT SMExpr_Self *create_SMExpr_Self_initWithSMToken_(SMToken *keyword);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Self)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Self)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Unary_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Unary))
-#define NetGlobulusSimiExpr_Unary_
+#if !defined (SMExpr_Unary_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Unary))
+#define SMExpr_Unary_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiExpr;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMExpr;
+@class SMToken;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Unary : NetGlobulusSimiExpr {
+@interface SMExpr_Unary : SMExpr {
  @public
-  NetGlobulusSimiToken *operator__;
-  NetGlobulusSimiExpr *right_;
+  SMToken *operator__;
+  SMExpr *right_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)operator_
-                     withNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)right;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)operator_
+                               withSMExpr:(SMExpr *)right;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Unary)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Unary)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Unary, operator__, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Unary, right_, NetGlobulusSimiExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Unary, operator__, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Unary, right_, SMExpr *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiExpr_Unary *self, NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right);
+FOUNDATION_EXPORT void SMExpr_Unary_initWithSMToken_withSMExpr_(SMExpr_Unary *self, SMToken *operator_, SMExpr *right);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Unary *new_NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Unary *new_SMExpr_Unary_initWithSMToken_withSMExpr_(SMToken *operator_, SMExpr *right) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Unary *create_NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiToken *operator_, NetGlobulusSimiExpr *right);
+FOUNDATION_EXPORT SMExpr_Unary *create_SMExpr_Unary_initWithSMToken_withSMExpr_(SMToken *operator_, SMExpr *right);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Unary)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Unary)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_Variable_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_Variable))
-#define NetGlobulusSimiExpr_Variable_
+#if !defined (SMExpr_Variable_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Variable))
+#define SMExpr_Variable_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiToken;
-@protocol NetGlobulusSimiExpr_Visitor;
+@class SMToken;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_Variable : NetGlobulusSimiExpr {
+@interface SMExpr_Variable : SMExpr {
  @public
-  NetGlobulusSimiToken *name_;
+  SMToken *name_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)name;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_Variable)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Variable)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_Variable, name_, NetGlobulusSimiToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Variable, name_, SMToken *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiExpr_Variable *self, NetGlobulusSimiToken *name);
+FOUNDATION_EXPORT void SMExpr_Variable_initWithSMToken_(SMExpr_Variable *self, SMToken *name);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Variable *new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *name) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Variable *new_SMExpr_Variable_initWithSMToken_(SMToken *name) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_Variable *create_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken *name);
+FOUNDATION_EXPORT SMExpr_Variable *create_SMExpr_Variable_initWithSMToken_(SMToken *name);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_Variable)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Variable)
 
 #endif
 
-#if !defined (NetGlobulusSimiExpr_ObjectLiteral_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_NetGlobulusSimiExpr_ObjectLiteral))
-#define NetGlobulusSimiExpr_ObjectLiteral_
+#if !defined (SMExpr_ObjectLiteral_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_ObjectLiteral))
+#define SMExpr_ObjectLiteral_
 
 @class IOSObjectArray;
-@class NetGlobulusSimiToken;
+@class SMToken;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiExpr_Visitor;
+@protocol SMExpr_Visitor;
 
-@interface NetGlobulusSimiExpr_ObjectLiteral : NetGlobulusSimiExpr {
+@interface SMExpr_ObjectLiteral : SMExpr {
  @public
-  NetGlobulusSimiToken *opener_;
+  SMToken *opener_;
   id<JavaUtilList> props_;
   jboolean isDictionary_;
 }
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)opener
-                            withJavaUtilList:(id<JavaUtilList>)props
-                                 withBoolean:(jboolean)isDictionary;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)opener
+                         withJavaUtilList:(id<JavaUtilList>)props
+                              withBoolean:(jboolean)isDictionary;
 
-- (id)acceptWithNetGlobulusSimiExpr_Visitor:(id<NetGlobulusSimiExpr_Visitor>)visitor
-                          withNSObjectArray:(IOSObjectArray *)params;
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiExpr_ObjectLiteral)
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_ObjectLiteral)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_ObjectLiteral, opener_, NetGlobulusSimiToken *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiExpr_ObjectLiteral, props_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMExpr_ObjectLiteral, opener_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_ObjectLiteral, props_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void NetGlobulusSimiExpr_ObjectLiteral_initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_(NetGlobulusSimiExpr_ObjectLiteral *self, NetGlobulusSimiToken *opener, id<JavaUtilList> props, jboolean isDictionary);
+FOUNDATION_EXPORT void SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMExpr_ObjectLiteral *self, SMToken *opener, id<JavaUtilList> props, jboolean isDictionary);
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_ObjectLiteral *new_NetGlobulusSimiExpr_ObjectLiteral_initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_(NetGlobulusSimiToken *opener, id<JavaUtilList> props, jboolean isDictionary) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_ObjectLiteral *new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiExpr_ObjectLiteral *create_NetGlobulusSimiExpr_ObjectLiteral_initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_(NetGlobulusSimiToken *opener, id<JavaUtilList> props, jboolean isDictionary);
+FOUNDATION_EXPORT SMExpr_ObjectLiteral *create_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiExpr_ObjectLiteral)
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectLiteral)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiExpr")

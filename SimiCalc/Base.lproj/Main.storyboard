@@ -57,12 +57,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reddit stats" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MG0-oA-uph">
+                                <rect key="frame" x="49" y="378" width="276" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="lblResult" destination="zJy-zD-BSx" id="GKq-jb-37c"/>
+                        <outlet property="lblStats" destination="MG0-oA-uph" id="lIO-0d-c4z"/>
                         <outlet property="segOp" destination="1Wm-Hz-vW1" id="F4g-9E-URk"/>
                         <outlet property="txtLeft" destination="qGo-fE-uFn" id="PBM-Wu-vA1"/>
                         <outlet property="txtRIght" destination="dYH-Rm-idL" id="pKE-bm-pBJ"/>

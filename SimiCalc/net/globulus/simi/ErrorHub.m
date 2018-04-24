@@ -12,40 +12,40 @@
 #include "Token.h"
 #include "TokenType.h"
 
-@interface NetGlobulusSimiErrorHub () {
+@interface SMErrorHub () {
  @public
   id<JavaUtilList> watchers_;
 }
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiErrorHub, watchers_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMErrorHub, watchers_, id<JavaUtilList>)
 
-inline NetGlobulusSimiErrorHub *NetGlobulusSimiErrorHub_get_instance(void);
-static NetGlobulusSimiErrorHub *NetGlobulusSimiErrorHub_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiErrorHub, instance, NetGlobulusSimiErrorHub *)
+inline SMErrorHub *SMErrorHub_get_instance(void);
+static SMErrorHub *SMErrorHub_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMErrorHub, instance, SMErrorHub *)
 
-__attribute__((unused)) static void NetGlobulusSimiErrorHub_init(NetGlobulusSimiErrorHub *self);
+__attribute__((unused)) static void SMErrorHub_init(SMErrorHub *self);
 
-__attribute__((unused)) static NetGlobulusSimiErrorHub *new_NetGlobulusSimiErrorHub_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMErrorHub *new_SMErrorHub_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiErrorHub *create_NetGlobulusSimiErrorHub_init(void);
+__attribute__((unused)) static SMErrorHub *create_SMErrorHub_init(void);
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiErrorHub)
+J2OBJC_INITIALIZED_DEFN(SMErrorHub)
 
-@implementation NetGlobulusSimiErrorHub
+@implementation SMErrorHub
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiErrorHub_init(self);
+- (instancetype __nonnull)init {
+  SMErrorHub_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-+ (NetGlobulusSimiErrorHub *)sharedInstance {
-  return NetGlobulusSimiErrorHub_sharedInstance();
++ (SMErrorHub *)sharedInstance {
+  return SMErrorHub_sharedInstance();
 }
 
 - (void)errorWithInt:(jint)line
@@ -53,9 +53,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self reportWithInt:line withNSString:@"" withNSString:message];
 }
 
-- (void)errorWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)token
-                         withNSString:(NSString *)message {
-  if (((NetGlobulusSimiToken *) nil_chk(token))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, EOF)) {
+- (void)errorWithSMToken:(SMToken *)token
+            withNSString:(NSString *)message {
+  if (((SMToken *) nil_chk(token))->type_ == JreLoadEnum(SMTokenType, EOF)) {
     [self reportWithInt:token->line_ withNSString:@" at end" withNSString:message];
   }
   else {
@@ -66,29 +66,29 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)reportWithInt:(jint)line
          withNSString:(NSString *)where
          withNSString:(NSString *)message {
-  for (id<NetGlobulusSimiErrorWatcher> __strong watcher in nil_chk(watchers_)) {
-    [((id<NetGlobulusSimiErrorWatcher>) nil_chk(watcher)) reportWithInt:line withNSString:where withNSString:message];
+  for (id<SMErrorWatcher> __strong watcher in nil_chk(watchers_)) {
+    [((id<SMErrorWatcher>) nil_chk(watcher)) reportWithInt:line withNSString:where withNSString:message];
   }
 }
 
-- (void)runtimeErrorWithNetGlobulusSimiRuntimeError:(NetGlobulusSimiRuntimeError *)error {
-  for (id<NetGlobulusSimiErrorWatcher> __strong watcher in nil_chk(watchers_)) {
-    [((id<NetGlobulusSimiErrorWatcher>) nil_chk(watcher)) runtimeErrorWithNetGlobulusSimiRuntimeError:error];
+- (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error {
+  for (id<SMErrorWatcher> __strong watcher in nil_chk(watchers_)) {
+    [((id<SMErrorWatcher>) nil_chk(watcher)) runtimeErrorWithSMRuntimeError:error];
   }
 }
 
-- (void)addWatcherWithNetGlobulusSimiErrorWatcher:(id<NetGlobulusSimiErrorWatcher>)watcher {
+- (void)addWatcherWithSMErrorWatcher:(id<SMErrorWatcher>)watcher {
   [((id<JavaUtilList>) nil_chk(watchers_)) addWithId:watcher];
 }
 
-- (void)removeWatcherWithNetGlobulusSimiErrorWatcher:(id<NetGlobulusSimiErrorWatcher>)watcher {
+- (void)removeWatcherWithSMErrorWatcher:(id<SMErrorWatcher>)watcher {
   [((id<JavaUtilList>) nil_chk(watchers_)) removeWithId:watcher];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiErrorHub;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMErrorHub;", 0x8, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x0, 0, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x0, 0, 2, -1, -1, -1, -1 },
     { NULL, "V", 0x0, 3, 4, -1, -1, -1, -1 },
@@ -102,46 +102,46 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(sharedInstance);
   methods[2].selector = @selector(errorWithInt:withNSString:);
-  methods[3].selector = @selector(errorWithNetGlobulusSimiToken:withNSString:);
+  methods[3].selector = @selector(errorWithSMToken:withNSString:);
   methods[4].selector = @selector(reportWithInt:withNSString:withNSString:);
-  methods[5].selector = @selector(runtimeErrorWithNetGlobulusSimiRuntimeError:);
-  methods[6].selector = @selector(addWatcherWithNetGlobulusSimiErrorWatcher:);
-  methods[7].selector = @selector(removeWatcherWithNetGlobulusSimiErrorWatcher:);
+  methods[5].selector = @selector(runtimeErrorWithSMRuntimeError:);
+  methods[6].selector = @selector(addWatcherWithSMErrorWatcher:);
+  methods[7].selector = @selector(removeWatcherWithSMErrorWatcher:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "watchers_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 10, -1 },
-    { "instance", "LNetGlobulusSimiErrorHub;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
+    { "instance", "LSMErrorHub;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
   };
-  static const void *ptrTable[] = { "error", "ILNSString;", "LNetGlobulusSimiToken;LNSString;", "report", "ILNSString;LNSString;", "runtimeError", "LNetGlobulusSimiRuntimeError;", "addWatcher", "LNetGlobulusSimiErrorWatcher;", "removeWatcher", "Ljava/util/List<LErrorWatcher;>;", &NetGlobulusSimiErrorHub_instance };
-  static const J2ObjcClassInfo _NetGlobulusSimiErrorHub = { "ErrorHub", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 8, 2, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiErrorHub;
+  static const void *ptrTable[] = { "error", "ILNSString;", "LSMToken;LNSString;", "report", "ILNSString;LNSString;", "runtimeError", "LSMRuntimeError;", "addWatcher", "LSMErrorWatcher;", "removeWatcher", "Ljava/util/List<LErrorWatcher;>;", &SMErrorHub_instance };
+  static const J2ObjcClassInfo _SMErrorHub = { "ErrorHub", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 8, 2, -1, -1, -1, -1, -1 };
+  return &_SMErrorHub;
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiErrorHub class]) {
-    NetGlobulusSimiErrorHub_instance = new_NetGlobulusSimiErrorHub_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiErrorHub)
+  if (self == [SMErrorHub class]) {
+    SMErrorHub_instance = new_SMErrorHub_init();
+    J2OBJC_SET_INITIALIZED(SMErrorHub)
   }
 }
 
 @end
 
-void NetGlobulusSimiErrorHub_init(NetGlobulusSimiErrorHub *self) {
+void SMErrorHub_init(SMErrorHub *self) {
   NSObject_init(self);
   self->watchers_ = new_JavaUtilArrayList_init();
 }
 
-NetGlobulusSimiErrorHub *new_NetGlobulusSimiErrorHub_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiErrorHub, init)
+SMErrorHub *new_SMErrorHub_init() {
+  J2OBJC_NEW_IMPL(SMErrorHub, init)
 }
 
-NetGlobulusSimiErrorHub *create_NetGlobulusSimiErrorHub_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiErrorHub, init)
+SMErrorHub *create_SMErrorHub_init() {
+  J2OBJC_CREATE_IMPL(SMErrorHub, init)
 }
 
-NetGlobulusSimiErrorHub *NetGlobulusSimiErrorHub_sharedInstance() {
-  NetGlobulusSimiErrorHub_initialize();
-  return NetGlobulusSimiErrorHub_instance;
+SMErrorHub *SMErrorHub_sharedInstance() {
+  SMErrorHub_initialize();
+  return SMErrorHub_instance;
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiErrorHub)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMErrorHub)

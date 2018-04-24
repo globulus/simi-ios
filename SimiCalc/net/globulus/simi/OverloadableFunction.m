@@ -6,11 +6,11 @@
 #include "J2ObjC_source.h"
 #include "OverloadableFunction.h"
 
-@implementation NetGlobulusSimiOverloadableFunction
+@implementation SMOverloadableFunction
 
-- (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)arity {
-  NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(self, name, arity);
+- (instancetype __nonnull)initWithNSString:(NSString *)name
+                                   withInt:(jint)arity {
+  SMOverloadableFunction_initWithNSString_withInt_(self, name, arity);
   return self;
 }
 
@@ -22,10 +22,10 @@
   if (obj == nil) {
     return false;
   }
-  if (!([obj isKindOfClass:[NetGlobulusSimiOverloadableFunction class]])) {
+  if (!([obj isKindOfClass:[SMOverloadableFunction class]])) {
     return false;
   }
-  NetGlobulusSimiOverloadableFunction *of = (NetGlobulusSimiOverloadableFunction *) cast_chk(obj, [NetGlobulusSimiOverloadableFunction class]);
+  SMOverloadableFunction *of = (SMOverloadableFunction *) cast_chk(obj, [SMOverloadableFunction class]);
   return [((NSString *) nil_chk(name_)) isEqual:of->name_] && arity_ == of->arity_;
 }
 
@@ -47,24 +47,24 @@
     { "arity_", "I", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LNSString;I", "hashCode", "equals", "LNSObject;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiOverloadableFunction = { "OverloadableFunction", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 3, 2, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiOverloadableFunction;
+  static const J2ObjcClassInfo _SMOverloadableFunction = { "OverloadableFunction", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 3, 2, -1, -1, -1, -1, -1 };
+  return &_SMOverloadableFunction;
 }
 
 @end
 
-void NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NetGlobulusSimiOverloadableFunction *self, NSString *name, jint arity) {
+void SMOverloadableFunction_initWithNSString_withInt_(SMOverloadableFunction *self, NSString *name, jint arity) {
   NSObject_init(self);
   self->name_ = name;
   self->arity_ = arity;
 }
 
-NetGlobulusSimiOverloadableFunction *new_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NSString *name, jint arity) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiOverloadableFunction, initWithNSString_withInt_, name, arity)
+SMOverloadableFunction *new_SMOverloadableFunction_initWithNSString_withInt_(NSString *name, jint arity) {
+  J2OBJC_NEW_IMPL(SMOverloadableFunction, initWithNSString_withInt_, name, arity)
 }
 
-NetGlobulusSimiOverloadableFunction *create_NetGlobulusSimiOverloadableFunction_initWithNSString_withInt_(NSString *name, jint arity) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiOverloadableFunction, initWithNSString_withInt_, name, arity)
+SMOverloadableFunction *create_SMOverloadableFunction_initWithNSString_withInt_(NSString *name, jint arity) {
+  J2OBJC_CREATE_IMPL(SMOverloadableFunction, initWithNSString_withInt_, name, arity)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiOverloadableFunction)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMOverloadableFunction)

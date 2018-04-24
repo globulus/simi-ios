@@ -13,86 +13,97 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiEnvironment
 
-#if !defined (NetGlobulusSimiEnvironment_) && (INCLUDE_ALL_NetGlobulusSimiEnvironment || defined(INCLUDE_NetGlobulusSimiEnvironment))
-#define NetGlobulusSimiEnvironment_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMEnvironment_) && (INCLUDE_ALL_NetGlobulusSimiEnvironment || defined(INCLUDE_SMEnvironment))
+#define SMEnvironment_
 
 #define RESTRICT_NetGlobulusSimiSimiEnvironment 1
-#define INCLUDE_NetGlobulusSimiSimiEnvironment 1
+#define INCLUDE_SMSimiEnvironment 1
 #include "SimiEnvironment.h"
 
-@class NetGlobulusSimiBlockImpl;
-@class NetGlobulusSimiExpr_Block;
-@class NetGlobulusSimiSimiValue;
-@class NetGlobulusSimiToken;
+@class SMBlockImpl;
+@class SMExpr_Block;
+@class SMSimiValue;
+@class SMToken;
 @protocol JavaUtilMap;
-@protocol NetGlobulusSimiSimiProperty;
-@protocol NetGlobulusSimiStmt_BlockStmt;
+@protocol SMSimiProperty;
+@protocol SMStmt_BlockStmt;
 
-@interface NetGlobulusSimiEnvironment : NSObject < NetGlobulusSimiSimiEnvironment > {
+@interface SMEnvironment : NSObject < SMSimiEnvironment > {
  @public
-  NetGlobulusSimiEnvironment *enclosing_;
+  SMEnvironment *enclosing_;
   jint depth_;
 }
 
 #pragma mark Public
 
 - (void)defineWithNSString:(NSString *)name
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)property;
+        withSMSimiProperty:(id<SMSimiProperty>)property;
 
 - (NSString *)description;
 
-- (id<NetGlobulusSimiSimiProperty>)tryGetWithNSString:(NSString *)name;
+- (id<SMSimiProperty>)tryGetWithNSString:(NSString *)name;
 
 #pragma mark Package-Private
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
-- (instancetype)initWithNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)enclosing;
+- (instancetype __nonnull)initWithSMEnvironment:(SMEnvironment *)enclosing;
 
-- (NetGlobulusSimiEnvironment *)ancestorWithInt:(jint)distance;
+- (SMEnvironment *)ancestorWithInt:(jint)distance;
 
-- (void)assignWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-       withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop
-                           withBoolean:(jboolean)allowImmutable;
+- (void)assignWithSMToken:(SMToken *)name
+       withSMSimiProperty:(id<SMSimiProperty>)prop
+              withBoolean:(jboolean)allowImmutable;
 
 - (void)assignAtWithInt:(jint)distance
-withNetGlobulusSimiToken:(NetGlobulusSimiToken *)name
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop;
+            withSMToken:(SMToken *)name
+     withSMSimiProperty:(id<SMSimiProperty>)prop;
 
-- (void)endBlockWithNetGlobulusSimiStmt_BlockStmt:(id<NetGlobulusSimiStmt_BlockStmt>)stmt
-                                  withJavaUtilMap:(id<JavaUtilMap>)yieldedStmts;
+- (void)endBlockWithSMStmt_BlockStmt:(id<SMStmt_BlockStmt>)stmt
+                     withJavaUtilMap:(id<JavaUtilMap>)yieldedStmts;
 
-- (NetGlobulusSimiSimiValue *)getWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)name;
+- (SMSimiValue *)getWithSMToken:(SMToken *)name;
 
-- (id<NetGlobulusSimiSimiProperty>)getAtWithInt:(jint)distance
-                                   withNSString:(NSString *)name;
+- (id<SMSimiProperty>)getAtWithInt:(jint)distance
+                      withNSString:(NSString *)name;
 
-- (NetGlobulusSimiBlockImpl *)getOrAssignBlockWithNetGlobulusSimiStmt_BlockStmt:(id<NetGlobulusSimiStmt_BlockStmt>)stmt
-                                                  withNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)declaration
-                                                                withJavaUtilMap:(id<JavaUtilMap>)yieldedStmts;
+- (SMBlockImpl *)getOrAssignBlockWithSMStmt_BlockStmt:(id<SMStmt_BlockStmt>)stmt
+                                     withSMExpr_Block:(SMExpr_Block *)declaration
+                                      withJavaUtilMap:(id<JavaUtilMap>)yieldedStmts;
 
 - (jboolean)hasWithNSString:(NSString *)key;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiEnvironment)
+J2OBJC_EMPTY_STATIC_INIT(SMEnvironment)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiEnvironment, enclosing_, NetGlobulusSimiEnvironment *)
+J2OBJC_FIELD_SETTER(SMEnvironment, enclosing_, SMEnvironment *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiEnvironment_init(NetGlobulusSimiEnvironment *self);
+FOUNDATION_EXPORT void SMEnvironment_init(SMEnvironment *self);
 
-FOUNDATION_EXPORT NetGlobulusSimiEnvironment *new_NetGlobulusSimiEnvironment_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMEnvironment *new_SMEnvironment_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiEnvironment *create_NetGlobulusSimiEnvironment_init(void);
+FOUNDATION_EXPORT SMEnvironment *create_SMEnvironment_init(void);
 
-FOUNDATION_EXPORT void NetGlobulusSimiEnvironment_initWithNetGlobulusSimiEnvironment_(NetGlobulusSimiEnvironment *self, NetGlobulusSimiEnvironment *enclosing);
+FOUNDATION_EXPORT void SMEnvironment_initWithSMEnvironment_(SMEnvironment *self, SMEnvironment *enclosing);
 
-FOUNDATION_EXPORT NetGlobulusSimiEnvironment *new_NetGlobulusSimiEnvironment_initWithNetGlobulusSimiEnvironment_(NetGlobulusSimiEnvironment *enclosing) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMEnvironment *new_SMEnvironment_initWithSMEnvironment_(SMEnvironment *enclosing) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiEnvironment *create_NetGlobulusSimiEnvironment_initWithNetGlobulusSimiEnvironment_(NetGlobulusSimiEnvironment *enclosing);
+FOUNDATION_EXPORT SMEnvironment *create_SMEnvironment_initWithSMEnvironment_(SMEnvironment *enclosing);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiEnvironment)
+J2OBJC_TYPE_LITERAL_HEADER(SMEnvironment)
+
+@compatibility_alias NetGlobulusSimiEnvironment SMEnvironment;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiEnvironment")

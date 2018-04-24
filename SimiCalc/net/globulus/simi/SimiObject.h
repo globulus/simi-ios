@@ -13,35 +13,46 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiObject
 
-#if !defined (NetGlobulusSimiSimiObject_) && (INCLUDE_ALL_NetGlobulusSimiSimiObject || defined(INCLUDE_NetGlobulusSimiSimiObject))
-#define NetGlobulusSimiSimiObject_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiObject_) && (INCLUDE_ALL_NetGlobulusSimiSimiObject || defined(INCLUDE_SMSimiObject))
+#define SMSimiObject_
 
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiSimiClass;
-@protocol NetGlobulusSimiSimiEnvironment;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMSimiClass;
+@protocol SMSimiEnvironment;
+@protocol SMSimiProperty;
 
-@protocol NetGlobulusSimiSimiObject < JavaObject >
+@protocol SMSimiObject < JavaObject >
 
-- (id<NetGlobulusSimiSimiClass>)getSimiClass;
+- (id<SMSimiClass>)getSimiClass;
 
-- (id<NetGlobulusSimiSimiProperty>)getWithNSString:(NSString *)key
-                withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment;
+- (id<SMSimiProperty>)getWithNSString:(NSString *)key
+                withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
 - (void)setWithNSString:(NSString *)key
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)prop
-withNetGlobulusSimiSimiEnvironment:(id<NetGlobulusSimiSimiEnvironment>)environment;
+     withSMSimiProperty:(id<SMSimiProperty>)prop
+  withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
-- (id<NetGlobulusSimiSimiObject>)cloneWithBoolean:(jboolean)mutable_;
+- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
 
 - (id<JavaUtilList>)values;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiObject)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObject)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiObject)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiObject)
+
+#define NetGlobulusSimiSimiObject SMSimiObject
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiObject")

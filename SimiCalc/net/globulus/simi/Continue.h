@@ -13,8 +13,13 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiContinue
 
-#if !defined (NetGlobulusSimiContinue_) && (INCLUDE_ALL_NetGlobulusSimiContinue || defined(INCLUDE_NetGlobulusSimiContinue))
-#define NetGlobulusSimiContinue_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMContinue_) && (INCLUDE_ALL_NetGlobulusSimiContinue || defined(INCLUDE_SMContinue))
+#define SMContinue_
 
 #define RESTRICT_JavaLangRuntimeException 1
 #define INCLUDE_JavaLangRuntimeException 1
@@ -22,38 +27,44 @@
 
 @class JavaLangThrowable;
 
-@interface NetGlobulusSimiContinue : JavaLangRuntimeException
+@interface SMContinue : JavaLangRuntimeException
 
 #pragma mark Package-Private
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
 
-- (instancetype)initWithNSString:(NSString *)arg0
-           withJavaLangThrowable:(JavaLangThrowable *)arg1
-                     withBoolean:(jboolean)arg2
-                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithNSString:(NSString *)arg0
+                     withJavaLangThrowable:(JavaLangThrowable *)arg1
+                               withBoolean:(jboolean)arg2
+                               withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiContinue)
+J2OBJC_EMPTY_STATIC_INIT(SMContinue)
 
-FOUNDATION_EXPORT void NetGlobulusSimiContinue_init(NetGlobulusSimiContinue *self);
+FOUNDATION_EXPORT void SMContinue_init(SMContinue *self);
 
-FOUNDATION_EXPORT NetGlobulusSimiContinue *new_NetGlobulusSimiContinue_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMContinue *new_SMContinue_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiContinue *create_NetGlobulusSimiContinue_init(void);
+FOUNDATION_EXPORT SMContinue *create_SMContinue_init(void);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiContinue)
+J2OBJC_TYPE_LITERAL_HEADER(SMContinue)
+
+@compatibility_alias NetGlobulusSimiContinue SMContinue;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiContinue")

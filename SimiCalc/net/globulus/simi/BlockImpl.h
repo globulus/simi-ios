@@ -13,37 +13,42 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiBlockImpl
 
-#if !defined (NetGlobulusSimiBlockImpl_) && (INCLUDE_ALL_NetGlobulusSimiBlockImpl || defined(INCLUDE_NetGlobulusSimiBlockImpl))
-#define NetGlobulusSimiBlockImpl_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMBlockImpl_) && (INCLUDE_ALL_NetGlobulusSimiBlockImpl || defined(INCLUDE_SMBlockImpl))
+#define SMBlockImpl_
 
 #define RESTRICT_NetGlobulusSimiSimiBlock 1
-#define INCLUDE_NetGlobulusSimiSimiBlock 1
+#define INCLUDE_SMSimiBlock 1
 #include "SimiBlock.h"
 
 #define RESTRICT_NetGlobulusSimiSimiCallable 1
-#define INCLUDE_NetGlobulusSimiSimiCallable 1
+#define INCLUDE_SMSimiCallable 1
 #include "SimiCallable.h"
 
-@class NetGlobulusSimiEnvironment;
-@class NetGlobulusSimiExpr_Block;
-@class NetGlobulusSimiSimiObjectImpl;
+@class SMEnvironment;
+@class SMExpr_Block;
+@class SMSimiObjectImpl;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiBlockInterpreter;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMBlockInterpreter;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiBlockImpl : NSObject < NetGlobulusSimiSimiBlock, NetGlobulusSimiSimiCallable > {
+@interface SMBlockImpl : NSObject < SMSimiBlock, SMSimiCallable > {
  @public
-  NetGlobulusSimiExpr_Block *declaration_;
-  NetGlobulusSimiEnvironment *closure_;
+  SMExpr_Block *declaration_;
+  SMEnvironment *closure_;
 }
 
 #pragma mark Public
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 - (id<JavaUtilList>)getStatements;
 
@@ -53,32 +58,38 @@
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiExpr_Block:(NetGlobulusSimiExpr_Block *)declaration
-                   withNetGlobulusSimiEnvironment:(NetGlobulusSimiEnvironment *)closure;
+- (instancetype __nonnull)initWithSMExpr_Block:(SMExpr_Block *)declaration
+                             withSMEnvironment:(SMEnvironment *)closure;
 
-- (NetGlobulusSimiBlockImpl *)bindWithNetGlobulusSimiSimiObjectImpl:(NetGlobulusSimiSimiObjectImpl *)instance;
+- (SMBlockImpl *)bindWithSMSimiObjectImpl:(SMSimiObjectImpl *)instance;
 
 - (jboolean)isNative;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiBlockImpl)
+J2OBJC_EMPTY_STATIC_INIT(SMBlockImpl)
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiBlockImpl, declaration_, NetGlobulusSimiExpr_Block *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiBlockImpl, closure_, NetGlobulusSimiEnvironment *)
+J2OBJC_FIELD_SETTER(SMBlockImpl, declaration_, SMExpr_Block *)
+J2OBJC_FIELD_SETTER(SMBlockImpl, closure_, SMEnvironment *)
 
-FOUNDATION_EXPORT void NetGlobulusSimiBlockImpl_initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_(NetGlobulusSimiBlockImpl *self, NetGlobulusSimiExpr_Block *declaration, NetGlobulusSimiEnvironment *closure);
+FOUNDATION_EXPORT void SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMBlockImpl *self, SMExpr_Block *declaration, SMEnvironment *closure);
 
-FOUNDATION_EXPORT NetGlobulusSimiBlockImpl *new_NetGlobulusSimiBlockImpl_initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_(NetGlobulusSimiExpr_Block *declaration, NetGlobulusSimiEnvironment *closure) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMBlockImpl *new_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMExpr_Block *declaration, SMEnvironment *closure) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiBlockImpl *create_NetGlobulusSimiBlockImpl_initWithNetGlobulusSimiExpr_Block_withNetGlobulusSimiEnvironment_(NetGlobulusSimiExpr_Block *declaration, NetGlobulusSimiEnvironment *closure);
+FOUNDATION_EXPORT SMBlockImpl *create_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMExpr_Block *declaration, SMEnvironment *closure);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiBlockImpl)
+J2OBJC_TYPE_LITERAL_HEADER(SMBlockImpl)
+
+@compatibility_alias NetGlobulusSimiBlockImpl SMBlockImpl;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiBlockImpl")

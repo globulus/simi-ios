@@ -13,27 +13,38 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiCallable
 
-#if !defined (NetGlobulusSimiSimiCallable_) && (INCLUDE_ALL_NetGlobulusSimiSimiCallable || defined(INCLUDE_NetGlobulusSimiSimiCallable))
-#define NetGlobulusSimiSimiCallable_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiCallable_) && (INCLUDE_ALL_NetGlobulusSimiSimiCallable || defined(INCLUDE_SMSimiCallable))
+#define SMSimiCallable_
 
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiBlockInterpreter;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMBlockInterpreter;
+@protocol SMSimiProperty;
 
-@protocol NetGlobulusSimiSimiCallable < JavaObject >
+@protocol SMSimiCallable < JavaObject >
 
 - (jint)arity;
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                          withJavaUtilList:(id<JavaUtilList>)arguments
-                                                               withBoolean:(jboolean)rethrow;
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiCallable)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiCallable)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiCallable)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiCallable)
+
+#define NetGlobulusSimiSimiCallable SMSimiCallable
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiCallable")

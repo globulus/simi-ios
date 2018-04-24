@@ -8,33 +8,33 @@
 #include "Pass.h"
 #include "SimiValue.h"
 
-@implementation NetGlobulusSimiPass
+@implementation SMPass
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiPass_init(self);
+- (instancetype __nonnull)init {
+  SMPass_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (NetGlobulusSimiSimiValue *)copy__ {
+- (SMSimiValue *)copy__ {
   return nil;
 }
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
   return nil;
 }
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o {
-  (void) cast_chk(o, [NetGlobulusSimiSimiValue class]);
+- (jint)compareToWithId:(SMSimiValue *)o {
+  (void) cast_chk(o, [SMSimiValue class]);
   @throw new_JavaLangAssertionError_init();
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 0, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 0, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 1, 2, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 3, 4, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -45,23 +45,23 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[2].selector = @selector(cloneWithBoolean:);
   methods[3].selector = @selector(compareToWithId:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "copy", "clone", "Z", "compareTo", "LNetGlobulusSimiSimiValue;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiPass = { "Pass", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x0, 4, 0, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiPass;
+  static const void *ptrTable[] = { "copy", "clone", "Z", "compareTo", "LSMSimiValue;" };
+  static const J2ObjcClassInfo _SMPass = { "Pass", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x0, 4, 0, -1, -1, -1, -1, -1 };
+  return &_SMPass;
 }
 
 @end
 
-void NetGlobulusSimiPass_init(NetGlobulusSimiPass *self) {
-  NetGlobulusSimiSimiValue_init(self);
+void SMPass_init(SMPass *self) {
+  SMSimiValue_init(self);
 }
 
-NetGlobulusSimiPass *new_NetGlobulusSimiPass_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiPass, init)
+SMPass *new_SMPass_init() {
+  J2OBJC_NEW_IMPL(SMPass, init)
 }
 
-NetGlobulusSimiPass *create_NetGlobulusSimiPass_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiPass, init)
+SMPass *create_SMPass_init() {
+  J2OBJC_CREATE_IMPL(SMPass, init)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiPass)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMPass)

@@ -13,24 +13,35 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiEnvironment
 
-#if !defined (NetGlobulusSimiSimiEnvironment_) && (INCLUDE_ALL_NetGlobulusSimiSimiEnvironment || defined(INCLUDE_NetGlobulusSimiSimiEnvironment))
-#define NetGlobulusSimiSimiEnvironment_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
-@protocol NetGlobulusSimiSimiProperty;
+#if !defined (SMSimiEnvironment_) && (INCLUDE_ALL_NetGlobulusSimiSimiEnvironment || defined(INCLUDE_SMSimiEnvironment))
+#define SMSimiEnvironment_
 
-@protocol NetGlobulusSimiSimiEnvironment < JavaObject >
+@protocol SMSimiProperty;
+
+@protocol SMSimiEnvironment < JavaObject >
 
 - (void)defineWithNSString:(NSString *)name
-withNetGlobulusSimiSimiProperty:(id<NetGlobulusSimiSimiProperty>)property;
+        withSMSimiProperty:(id<SMSimiProperty>)property;
 
-- (id<NetGlobulusSimiSimiProperty>)tryGetWithNSString:(NSString *)name;
+- (id<SMSimiProperty>)tryGetWithNSString:(NSString *)name;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiEnvironment)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiEnvironment)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiEnvironment)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiEnvironment)
+
+#define NetGlobulusSimiSimiEnvironment SMSimiEnvironment
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiEnvironment")

@@ -13,57 +13,68 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiPropertyImpl
 
-#if !defined (NetGlobulusSimiSimiPropertyImpl_) && (INCLUDE_ALL_NetGlobulusSimiSimiPropertyImpl || defined(INCLUDE_NetGlobulusSimiSimiPropertyImpl))
-#define NetGlobulusSimiSimiPropertyImpl_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiPropertyImpl_) && (INCLUDE_ALL_NetGlobulusSimiSimiPropertyImpl || defined(INCLUDE_SMSimiPropertyImpl))
+#define SMSimiPropertyImpl_
 
 #define RESTRICT_NetGlobulusSimiSimiProperty 1
-#define INCLUDE_NetGlobulusSimiSimiProperty 1
+#define INCLUDE_SMSimiProperty 1
 #include "SimiProperty.h"
 
 #define RESTRICT_JavaLangComparable 1
 #define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
-@class NetGlobulusSimiSimiValue;
+@class SMSimiValue;
 @protocol JavaUtilList;
 
-@interface NetGlobulusSimiSimiPropertyImpl : NSObject < NetGlobulusSimiSimiProperty, JavaLangComparable >
+@interface SMSimiPropertyImpl : NSObject < SMSimiProperty, JavaLangComparable >
 
 #pragma mark Public
 
-- (NetGlobulusSimiSimiPropertyImpl *)cloneWithBoolean:(jboolean)mutable_;
+- (SMSimiPropertyImpl *)cloneWithBoolean:(jboolean)mutable_;
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiPropertyImpl *)o;
+- (jint)compareToWithId:(SMSimiPropertyImpl *)o;
 
 - (id<JavaUtilList>)getAnnotations;
 
-- (NetGlobulusSimiSimiValue *)getValue;
+- (SMSimiValue *)getValue;
 
-- (void)setValueWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value;
+- (void)setValueWithSMSimiValue:(SMSimiValue *)value;
 
 - (NSString *)description;
 
 #pragma mark Package-Private
 
-- (instancetype)initWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value
-                                withJavaUtilList:(id<JavaUtilList>)annotations;
+- (instancetype __nonnull)initWithSMSimiValue:(SMSimiValue *)value
+                             withJavaUtilList:(id<JavaUtilList>)annotations;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiPropertyImpl)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiPropertyImpl)
 
-FOUNDATION_EXPORT void NetGlobulusSimiSimiPropertyImpl_initWithNetGlobulusSimiSimiValue_withJavaUtilList_(NetGlobulusSimiSimiPropertyImpl *self, NetGlobulusSimiSimiValue *value, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT void SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(SMSimiPropertyImpl *self, SMSimiValue *value, id<JavaUtilList> annotations);
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiPropertyImpl *new_NetGlobulusSimiSimiPropertyImpl_initWithNetGlobulusSimiSimiValue_withJavaUtilList_(NetGlobulusSimiSimiValue *value, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiPropertyImpl *new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(SMSimiValue *value, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiSimiPropertyImpl *create_NetGlobulusSimiSimiPropertyImpl_initWithNetGlobulusSimiSimiValue_withJavaUtilList_(NetGlobulusSimiSimiValue *value, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT SMSimiPropertyImpl *create_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(SMSimiValue *value, id<JavaUtilList> annotations);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiPropertyImpl)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiPropertyImpl)
+
+@compatibility_alias NetGlobulusSimiSimiPropertyImpl SMSimiPropertyImpl;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiPropertyImpl")

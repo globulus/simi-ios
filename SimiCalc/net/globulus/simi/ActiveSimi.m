@@ -32,81 +32,81 @@
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
-@interface NetGlobulusSimiActiveSimi ()
+@interface SMActiveSimi ()
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 + (NSString *)readFileWithNSString:(NSString *)path;
 
 + (void)runWithNSString:(NSString *)source;
 
-+ (id<NetGlobulusSimiSimiProperty>)runExpressionWithNSString:(NSString *)expression;
++ (id<SMSimiProperty>)runExpressionWithNSString:(NSString *)expression;
 
 + (id<JavaUtilList>)scanImportsWithJavaUtilList:(id<JavaUtilList>)input
                                withJavaUtilList:(id<JavaUtilList>)imports
-        withNetGlobulusSimiNativeModulesManager:(NetGlobulusSimiNativeModulesManager *)nativeModulesManager;
+                     withSMNativeModulesManager:(SMNativeModulesManager *)nativeModulesManager;
 
 @end
 
-inline NetGlobulusSimiInterpreter *NetGlobulusSimiActiveSimi_get_interpreter(void);
-inline NetGlobulusSimiInterpreter *NetGlobulusSimiActiveSimi_set_interpreter(NetGlobulusSimiInterpreter *value);
-static NetGlobulusSimiInterpreter *NetGlobulusSimiActiveSimi_interpreter;
-J2OBJC_STATIC_FIELD_OBJ(NetGlobulusSimiActiveSimi, interpreter, NetGlobulusSimiInterpreter *)
+inline SMInterpreter *SMActiveSimi_get_interpreter(void);
+inline SMInterpreter *SMActiveSimi_set_interpreter(SMInterpreter *value);
+static SMInterpreter *SMActiveSimi_interpreter;
+J2OBJC_STATIC_FIELD_OBJ(SMActiveSimi, interpreter, SMInterpreter *)
 
-inline id<NetGlobulusSimiActiveSimi_ImportResolver> NetGlobulusSimiActiveSimi_get_importResolver(void);
-inline id<NetGlobulusSimiActiveSimi_ImportResolver> NetGlobulusSimiActiveSimi_set_importResolver(id<NetGlobulusSimiActiveSimi_ImportResolver> value);
-static id<NetGlobulusSimiActiveSimi_ImportResolver> NetGlobulusSimiActiveSimi_importResolver;
-J2OBJC_STATIC_FIELD_OBJ(NetGlobulusSimiActiveSimi, importResolver, id<NetGlobulusSimiActiveSimi_ImportResolver>)
+inline id<SMActiveSimi_ImportResolver> SMActiveSimi_get_importResolver(void);
+inline id<SMActiveSimi_ImportResolver> SMActiveSimi_set_importResolver(id<SMActiveSimi_ImportResolver> value);
+static id<SMActiveSimi_ImportResolver> SMActiveSimi_importResolver;
+J2OBJC_STATIC_FIELD_OBJ(SMActiveSimi, importResolver, id<SMActiveSimi_ImportResolver>)
 
-inline id<NetGlobulusSimiErrorWatcher> NetGlobulusSimiActiveSimi_get_WATCHER(void);
-static id<NetGlobulusSimiErrorWatcher> NetGlobulusSimiActiveSimi_WATCHER;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiActiveSimi, WATCHER, id<NetGlobulusSimiErrorWatcher>)
+inline id<SMErrorWatcher> SMActiveSimi_get_WATCHER(void);
+static id<SMErrorWatcher> SMActiveSimi_WATCHER;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMActiveSimi, WATCHER, id<SMErrorWatcher>)
 
-__attribute__((unused)) static void NetGlobulusSimiActiveSimi_init(NetGlobulusSimiActiveSimi *self);
+__attribute__((unused)) static void SMActiveSimi_init(SMActiveSimi *self);
 
-__attribute__((unused)) static NetGlobulusSimiActiveSimi *new_NetGlobulusSimiActiveSimi_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMActiveSimi *new_SMActiveSimi_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiActiveSimi *create_NetGlobulusSimiActiveSimi_init(void);
+__attribute__((unused)) static SMActiveSimi *create_SMActiveSimi_init(void);
 
-__attribute__((unused)) static NSString *NetGlobulusSimiActiveSimi_readFileWithNSString_(NSString *path);
+__attribute__((unused)) static NSString *SMActiveSimi_readFileWithNSString_(NSString *path);
 
-__attribute__((unused)) static void NetGlobulusSimiActiveSimi_runWithNSString_(NSString *source);
+__attribute__((unused)) static void SMActiveSimi_runWithNSString_(NSString *source);
 
-__attribute__((unused)) static id<NetGlobulusSimiSimiProperty> NetGlobulusSimiActiveSimi_runExpressionWithNSString_(NSString *expression);
+__attribute__((unused)) static id<SMSimiProperty> SMActiveSimi_runExpressionWithNSString_(NSString *expression);
 
-__attribute__((unused)) static id<JavaUtilList> NetGlobulusSimiActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withNetGlobulusSimiNativeModulesManager_(id<JavaUtilList> input, id<JavaUtilList> imports, NetGlobulusSimiNativeModulesManager *nativeModulesManager);
+__attribute__((unused)) static id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(id<JavaUtilList> input, id<JavaUtilList> imports, SMNativeModulesManager *nativeModulesManager);
 
-@interface NetGlobulusSimiActiveSimi_1 : NSObject < NetGlobulusSimiErrorWatcher >
+@interface SMActiveSimi_1 : NSObject < SMErrorWatcher >
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (void)reportWithInt:(jint)line
          withNSString:(NSString *)where
          withNSString:(NSString *)message;
 
-- (void)runtimeErrorWithNetGlobulusSimiRuntimeError:(NetGlobulusSimiRuntimeError *)error;
+- (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiActiveSimi_1)
+J2OBJC_EMPTY_STATIC_INIT(SMActiveSimi_1)
 
-__attribute__((unused)) static void NetGlobulusSimiActiveSimi_1_init(NetGlobulusSimiActiveSimi_1 *self);
+__attribute__((unused)) static void SMActiveSimi_1_init(SMActiveSimi_1 *self);
 
-__attribute__((unused)) static NetGlobulusSimiActiveSimi_1 *new_NetGlobulusSimiActiveSimi_1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMActiveSimi_1 *new_SMActiveSimi_1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiActiveSimi_1 *create_NetGlobulusSimiActiveSimi_1_init(void);
+__attribute__((unused)) static SMActiveSimi_1 *create_SMActiveSimi_1_init(void);
 
-@interface NetGlobulusSimiActiveSimi_ImportResolver : NSObject
-
-@end
-
-@interface NetGlobulusSimiActiveSimi_Callback : NSObject
+@interface SMActiveSimi_ImportResolver : NSObject
 
 @end
 
-@interface NetGlobulusSimiActiveSimi_$Lambda$1 : NSObject < JavaLangRunnable > {
+@interface SMActiveSimi_Callback : NSObject
+
+@end
+
+@interface SMActiveSimi_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
-  id<NetGlobulusSimiActiveSimi_Callback> val$callback_;
+  id<SMActiveSimi_Callback> val$callback_;
   NSString *val$className_;
   NSString *val$methodName_;
   IOSObjectArray *val$params_;
@@ -116,135 +116,151 @@ __attribute__((unused)) static NetGlobulusSimiActiveSimi_1 *create_NetGlobulusSi
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiActiveSimi_$Lambda$1)
+J2OBJC_EMPTY_STATIC_INIT(SMActiveSimi_$Lambda$1)
 
-__attribute__((unused)) static void NetGlobulusSimiActiveSimi_$Lambda$1_initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(NetGlobulusSimiActiveSimi_$Lambda$1 *self, id<NetGlobulusSimiActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3);
+__attribute__((unused)) static void SMActiveSimi_$Lambda$1_initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(SMActiveSimi_$Lambda$1 *self, id<SMActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3);
 
-__attribute__((unused)) static NetGlobulusSimiActiveSimi_$Lambda$1 *new_NetGlobulusSimiActiveSimi_$Lambda$1_initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(id<NetGlobulusSimiActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMActiveSimi_$Lambda$1 *new_SMActiveSimi_$Lambda$1_initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(id<SMActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiActiveSimi_$Lambda$1 *create_NetGlobulusSimiActiveSimi_$Lambda$1_initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(id<NetGlobulusSimiActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3);
+__attribute__((unused)) static SMActiveSimi_$Lambda$1 *create_SMActiveSimi_$Lambda$1_initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(id<SMActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3);
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiActiveSimi)
+J2OBJC_INITIALIZED_DEFN(SMActiveSimi)
 
-jboolean NetGlobulusSimiActiveSimi_hadError = false;
-jboolean NetGlobulusSimiActiveSimi_hadRuntimeError = false;
+jboolean SMActiveSimi_hadError = false;
+jboolean SMActiveSimi_hadRuntimeError = false;
 
-@implementation NetGlobulusSimiActiveSimi
+@implementation SMActiveSimi
+
++ (jboolean)hadError {
+  return SMActiveSimi_hadError;
+}
+
++ (void)setHadError:(jboolean)value {
+  SMActiveSimi_hadError = value;
+}
+
++ (jboolean)hadRuntimeError {
+  return SMActiveSimi_hadRuntimeError;
+}
+
++ (void)setHadRuntimeError:(jboolean)value {
+  SMActiveSimi_hadRuntimeError = value;
+}
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiActiveSimi_init(self);
+- (instancetype __nonnull)init {
+  SMActiveSimi_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)load__WithNSStringArray:(IOSObjectArray *)files {
-  NetGlobulusSimiActiveSimi_load__WithNSStringArray_(files);
+  SMActiveSimi_load__WithNSStringArray_(files);
 }
 
-+ (id<NetGlobulusSimiSimiProperty>)evalWithNSString:(NSString *)className_
-                                       withNSString:(NSString *)methodName
-               withNetGlobulusSimiSimiPropertyArray:(IOSObjectArray *)params {
-  return NetGlobulusSimiActiveSimi_evalWithNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(className_, methodName, params);
++ (id<SMSimiProperty>)evalWithNSString:(NSString *)className_
+                          withNSString:(NSString *)methodName
+               withSMSimiPropertyArray:(IOSObjectArray *)params {
+  return SMActiveSimi_evalWithNSString_withNSString_withSMSimiPropertyArray_(className_, methodName, params);
 }
 
-+ (void)evalAsyncWithNetGlobulusSimiActiveSimi_Callback:(id<NetGlobulusSimiActiveSimi_Callback>)callback
-                                           withNSString:(NSString *)className_
-                                           withNSString:(NSString *)methodName
-                   withNetGlobulusSimiSimiPropertyArray:(IOSObjectArray *)params {
-  NetGlobulusSimiActiveSimi_evalAsyncWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(callback, className_, methodName, params);
++ (void)evalAsyncWithSMActiveSimi_Callback:(id<SMActiveSimi_Callback>)callback
+                              withNSString:(NSString *)className_
+                              withNSString:(NSString *)methodName
+                   withSMSimiPropertyArray:(IOSObjectArray *)params {
+  SMActiveSimi_evalAsyncWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(callback, className_, methodName, params);
 }
 
-+ (void)setImportResolverWithNetGlobulusSimiActiveSimi_ImportResolver:(id<NetGlobulusSimiActiveSimi_ImportResolver>)ir {
-  NetGlobulusSimiActiveSimi_setImportResolverWithNetGlobulusSimiActiveSimi_ImportResolver_(ir);
++ (void)setImportResolverWithSMActiveSimi_ImportResolver:(id<SMActiveSimi_ImportResolver>)ir {
+  SMActiveSimi_setImportResolverWithSMActiveSimi_ImportResolver_(ir);
 }
 
 + (NSString *)readFileWithNSString:(NSString *)path {
-  return NetGlobulusSimiActiveSimi_readFileWithNSString_(path);
+  return SMActiveSimi_readFileWithNSString_(path);
 }
 
 + (void)runWithNSString:(NSString *)source {
-  NetGlobulusSimiActiveSimi_runWithNSString_(source);
+  SMActiveSimi_runWithNSString_(source);
 }
 
-+ (id<NetGlobulusSimiSimiProperty>)runExpressionWithNSString:(NSString *)expression {
-  return NetGlobulusSimiActiveSimi_runExpressionWithNSString_(expression);
++ (id<SMSimiProperty>)runExpressionWithNSString:(NSString *)expression {
+  return SMActiveSimi_runExpressionWithNSString_(expression);
 }
 
 + (id<JavaUtilList>)scanImportsWithJavaUtilList:(id<JavaUtilList>)input
                                withJavaUtilList:(id<JavaUtilList>)imports
-        withNetGlobulusSimiNativeModulesManager:(NetGlobulusSimiNativeModulesManager *)nativeModulesManager {
-  return NetGlobulusSimiActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withNetGlobulusSimiNativeModulesManager_(input, imports, nativeModulesManager);
+                     withSMNativeModulesManager:(SMNativeModulesManager *)nativeModulesManager {
+  return SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(input, imports, nativeModulesManager);
 }
 
-+ (NetGlobulusSimiSimiClassImpl *)getObjectClass {
-  return NetGlobulusSimiActiveSimi_getObjectClass();
++ (SMSimiClassImpl *)getObjectClass {
+  return SMActiveSimi_getObjectClass();
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x89, 0, 1, 2, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x89, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x89, 3, 4, -1, -1, -1, -1 },
     { NULL, "V", 0x89, 5, 6, -1, -1, -1, -1 },
     { NULL, "V", 0x9, 7, 8, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0xa, 9, 10, -1, -1, -1, -1 },
     { NULL, "V", 0xa, 11, 10, 2, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0xa, 12, 10, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0xa, 12, 10, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0xa, 13, 14, 2, 15, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiClassImpl;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiClassImpl;", 0x8, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(load__WithNSStringArray:);
-  methods[2].selector = @selector(evalWithNSString:withNSString:withNetGlobulusSimiSimiPropertyArray:);
-  methods[3].selector = @selector(evalAsyncWithNetGlobulusSimiActiveSimi_Callback:withNSString:withNSString:withNetGlobulusSimiSimiPropertyArray:);
-  methods[4].selector = @selector(setImportResolverWithNetGlobulusSimiActiveSimi_ImportResolver:);
+  methods[2].selector = @selector(evalWithNSString:withNSString:withSMSimiPropertyArray:);
+  methods[3].selector = @selector(evalAsyncWithSMActiveSimi_Callback:withNSString:withNSString:withSMSimiPropertyArray:);
+  methods[4].selector = @selector(setImportResolverWithSMActiveSimi_ImportResolver:);
   methods[5].selector = @selector(readFileWithNSString:);
   methods[6].selector = @selector(runWithNSString:);
   methods[7].selector = @selector(runExpressionWithNSString:);
-  methods[8].selector = @selector(scanImportsWithJavaUtilList:withJavaUtilList:withNetGlobulusSimiNativeModulesManager:);
+  methods[8].selector = @selector(scanImportsWithJavaUtilList:withJavaUtilList:withSMNativeModulesManager:);
   methods[9].selector = @selector(getObjectClass);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "interpreter", "LNetGlobulusSimiInterpreter;", .constantValue.asLong = 0, 0xa, -1, 16, -1, -1 },
+    { "interpreter", "LSMInterpreter;", .constantValue.asLong = 0, 0xa, -1, 16, -1, -1 },
     { "hadError", "Z", .constantValue.asLong = 0, 0x8, -1, 17, -1, -1 },
     { "hadRuntimeError", "Z", .constantValue.asLong = 0, 0x8, -1, 18, -1, -1 },
-    { "importResolver", "LNetGlobulusSimiActiveSimi_ImportResolver;", .constantValue.asLong = 0, 0xa, -1, 19, -1, -1 },
-    { "WATCHER", "LNetGlobulusSimiErrorWatcher;", .constantValue.asLong = 0, 0x1a, -1, 20, -1, -1 },
+    { "importResolver", "LSMActiveSimi_ImportResolver;", .constantValue.asLong = 0, 0xa, -1, 19, -1, -1 },
+    { "WATCHER", "LSMErrorWatcher;", .constantValue.asLong = 0, 0x1a, -1, 20, -1, -1 },
   };
-  static const void *ptrTable[] = { "load", "[LNSString;", "LJavaIoIOException;", "eval", "LNSString;LNSString;[LNetGlobulusSimiSimiProperty;", "evalAsync", "LNetGlobulusSimiActiveSimi_Callback;LNSString;LNSString;[LNetGlobulusSimiSimiProperty;", "setImportResolver", "LNetGlobulusSimiActiveSimi_ImportResolver;", "readFile", "LNSString;", "run", "runExpression", "scanImports", "LJavaUtilList;LJavaUtilList;LNetGlobulusSimiNativeModulesManager;", "(Ljava/util/List<LToken;>;Ljava/util/List<Ljava/lang/String;>;LNativeModulesManager;)Ljava/util/List<LToken;>;", &NetGlobulusSimiActiveSimi_interpreter, &NetGlobulusSimiActiveSimi_hadError, &NetGlobulusSimiActiveSimi_hadRuntimeError, &NetGlobulusSimiActiveSimi_importResolver, &NetGlobulusSimiActiveSimi_WATCHER, "LNetGlobulusSimiActiveSimi_ImportResolver;LNetGlobulusSimiActiveSimi_Callback;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiActiveSimi = { "ActiveSimi", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 10, 5, -1, 21, -1, -1, -1 };
-  return &_NetGlobulusSimiActiveSimi;
+  static const void *ptrTable[] = { "load", "[LNSString;", "LJavaIoIOException;", "eval", "LNSString;LNSString;[LSMSimiProperty;", "evalAsync", "LSMActiveSimi_Callback;LNSString;LNSString;[LSMSimiProperty;", "setImportResolver", "LSMActiveSimi_ImportResolver;", "readFile", "LNSString;", "run", "runExpression", "scanImports", "LJavaUtilList;LJavaUtilList;LSMNativeModulesManager;", "(Ljava/util/List<LToken;>;Ljava/util/List<Ljava/lang/String;>;LNativeModulesManager;)Ljava/util/List<LToken;>;", &SMActiveSimi_interpreter, &SMActiveSimi_hadError, &SMActiveSimi_hadRuntimeError, &SMActiveSimi_importResolver, &SMActiveSimi_WATCHER, "LSMActiveSimi_ImportResolver;LSMActiveSimi_Callback;" };
+  static const J2ObjcClassInfo _SMActiveSimi = { "ActiveSimi", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 10, 5, -1, 21, -1, -1, -1 };
+  return &_SMActiveSimi;
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiActiveSimi class]) {
-    NetGlobulusSimiActiveSimi_WATCHER = new_NetGlobulusSimiActiveSimi_1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiActiveSimi)
+  if (self == [SMActiveSimi class]) {
+    SMActiveSimi_WATCHER = new_SMActiveSimi_1_init();
+    J2OBJC_SET_INITIALIZED(SMActiveSimi)
   }
 }
 
 @end
 
-void NetGlobulusSimiActiveSimi_init(NetGlobulusSimiActiveSimi *self) {
+void SMActiveSimi_init(SMActiveSimi *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiActiveSimi *new_NetGlobulusSimiActiveSimi_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiActiveSimi, init)
+SMActiveSimi *new_SMActiveSimi_init() {
+  J2OBJC_NEW_IMPL(SMActiveSimi, init)
 }
 
-NetGlobulusSimiActiveSimi *create_NetGlobulusSimiActiveSimi_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiActiveSimi, init)
+SMActiveSimi *create_SMActiveSimi_init() {
+  J2OBJC_CREATE_IMPL(SMActiveSimi, init)
 }
 
-void NetGlobulusSimiActiveSimi_load__WithNSStringArray_(IOSObjectArray *files) {
-  NetGlobulusSimiActiveSimi_initialize();
-  [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) removeWatcherWithNetGlobulusSimiErrorWatcher:NetGlobulusSimiActiveSimi_WATCHER];
-  [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) addWatcherWithNetGlobulusSimiErrorWatcher:NetGlobulusSimiActiveSimi_WATCHER];
+void SMActiveSimi_load__WithNSStringArray_(IOSObjectArray *files) {
+  SMActiveSimi_initialize();
+  [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) removeWatcherWithSMErrorWatcher:SMActiveSimi_WATCHER];
+  [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) addWatcherWithSMErrorWatcher:SMActiveSimi_WATCHER];
   JavaLangStringBuilder *source = new_JavaLangStringBuilder_initWithNSString_(@"import \"stdlib/Stdlib.simi\"\n\n");
   {
     IOSObjectArray *a__ = files;
@@ -255,12 +271,12 @@ void NetGlobulusSimiActiveSimi_load__WithNSStringArray_(IOSObjectArray *files) {
       (void) [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([source appendWithNSString:@"import \""])) appendWithNSString:file])) appendWithNSString:@"\"\n"];
     }
   }
-  NetGlobulusSimiActiveSimi_runWithNSString_([source description]);
+  SMActiveSimi_runWithNSString_([source description]);
 }
 
-id<NetGlobulusSimiSimiProperty> NetGlobulusSimiActiveSimi_evalWithNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(NSString *className_, NSString *methodName, IOSObjectArray *params) {
-  NetGlobulusSimiActiveSimi_initialize();
-  if (NetGlobulusSimiActiveSimi_interpreter == nil) {
+id<SMSimiProperty> SMActiveSimi_evalWithNSString_withNSString_withSMSimiPropertyArray_(NSString *className_, NSString *methodName, IOSObjectArray *params) {
+  SMActiveSimi_initialize();
+  if (SMActiveSimi_interpreter == nil) {
     @throw new_JavaLangIllegalStateException_initWithNSString_(@"Must call load() before using eval!");
   }
   JavaLangStringBuilder *sb = new_JavaLangStringBuilder_init();
@@ -268,7 +284,7 @@ id<NetGlobulusSimiSimiProperty> NetGlobulusSimiActiveSimi_evalWithNSString_withN
     (void) [((JavaLangStringBuilder *) nil_chk([sb appendWithNSString:className_])) appendWithChar:'.'];
   }
   (void) [((JavaLangStringBuilder *) nil_chk([sb appendWithNSString:methodName])) appendWithChar:'('];
-  id<JavaUtilList> names = [((NetGlobulusSimiInterpreter *) nil_chk(NetGlobulusSimiActiveSimi_interpreter)) defineTempVarsWithNetGlobulusSimiSimiPropertyArray:params];
+  id<JavaUtilList> names = [((SMInterpreter *) nil_chk(SMActiveSimi_interpreter)) defineTempVarsWithSMSimiPropertyArray:params];
   jboolean first = true;
   for (NSString * __strong name in nil_chk(names)) {
     if (first) {
@@ -280,104 +296,104 @@ id<NetGlobulusSimiSimiProperty> NetGlobulusSimiActiveSimi_evalWithNSString_withN
     (void) [sb appendWithNSString:name];
   }
   (void) [sb appendWithChar:')'];
-  id<NetGlobulusSimiSimiProperty> result = NetGlobulusSimiActiveSimi_runExpressionWithNSString_([sb description]);
-  [((NetGlobulusSimiInterpreter *) nil_chk(NetGlobulusSimiActiveSimi_interpreter)) undefineTempVarsWithJavaUtilList:names];
+  id<SMSimiProperty> result = SMActiveSimi_runExpressionWithNSString_([sb description]);
+  [((SMInterpreter *) nil_chk(SMActiveSimi_interpreter)) undefineTempVarsWithJavaUtilList:names];
   return result;
 }
 
-void NetGlobulusSimiActiveSimi_evalAsyncWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(id<NetGlobulusSimiActiveSimi_Callback> callback, NSString *className_, NSString *methodName, IOSObjectArray *params) {
-  NetGlobulusSimiActiveSimi_initialize();
-  @synchronized(NetGlobulusSimiActiveSimi_interpreter) {
-    [new_JavaLangThread_initWithJavaLangRunnable_(new_NetGlobulusSimiActiveSimi_$Lambda$1_initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(callback, className_, methodName, params)) run];
+void SMActiveSimi_evalAsyncWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(id<SMActiveSimi_Callback> callback, NSString *className_, NSString *methodName, IOSObjectArray *params) {
+  SMActiveSimi_initialize();
+  @synchronized(SMActiveSimi_interpreter) {
+    [new_JavaLangThread_initWithJavaLangRunnable_(new_SMActiveSimi_$Lambda$1_initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(callback, className_, methodName, params)) run];
   }
 }
 
-void NetGlobulusSimiActiveSimi_setImportResolverWithNetGlobulusSimiActiveSimi_ImportResolver_(id<NetGlobulusSimiActiveSimi_ImportResolver> ir) {
-  NetGlobulusSimiActiveSimi_initialize();
-  NetGlobulusSimiActiveSimi_importResolver = ir;
+void SMActiveSimi_setImportResolverWithSMActiveSimi_ImportResolver_(id<SMActiveSimi_ImportResolver> ir) {
+  SMActiveSimi_initialize();
+  SMActiveSimi_importResolver = ir;
 }
 
-NSString *NetGlobulusSimiActiveSimi_readFileWithNSString_(NSString *path) {
-  NetGlobulusSimiActiveSimi_initialize();
-  if (NetGlobulusSimiActiveSimi_importResolver == nil) {
+NSString *SMActiveSimi_readFileWithNSString_(NSString *path) {
+  SMActiveSimi_initialize();
+  if (SMActiveSimi_importResolver == nil) {
     @throw new_JavaLangIllegalStateException_initWithNSString_(@"ImportResolver not initialized!");
   }
-  return [NetGlobulusSimiActiveSimi_importResolver readFileWithNSString:path];
+  return [SMActiveSimi_importResolver readFileWithNSString:path];
 }
 
-void NetGlobulusSimiActiveSimi_runWithNSString_(NSString *source) {
-  NetGlobulusSimiActiveSimi_initialize();
-  NetGlobulusSimiNativeModulesManager *nativeModulesManager = new_NetGlobulusSimiNativeModulesManager_init();
+void SMActiveSimi_runWithNSString_(NSString *source) {
+  SMActiveSimi_initialize();
+  SMNativeModulesManager *nativeModulesManager = new_SMNativeModulesManager_init();
   id<JavaUtilList> imports = new_JavaUtilArrayList_init();
   jlong time = JavaLangSystem_currentTimeMillis();
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"Scanning and resolving imports..."];
-  NetGlobulusSimiScanner *scanner = new_NetGlobulusSimiScanner_initWithNSString_(source);
-  id<JavaUtilList> tokens = NetGlobulusSimiActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withNetGlobulusSimiNativeModulesManager_([scanner scanTokensWithBoolean:true], imports, nativeModulesManager);
+  SMScanner *scanner = new_SMScanner_initWithNSString_(source);
+  id<JavaUtilList> tokens = SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_([scanner scanTokensWithBoolean:true], imports, nativeModulesManager);
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
   time = JavaLangSystem_currentTimeMillis();
   [JreLoadStatic(JavaLangSystem, out) printWithNSString:@"Parsing..."];
-  NetGlobulusSimiParser *parser = new_NetGlobulusSimiParser_initWithJavaUtilList_(tokens);
+  SMParser *parser = new_SMParser_initWithJavaUtilList_(tokens);
   id<JavaUtilList> statements = [parser parse];
-  if (NetGlobulusSimiActiveSimi_hadError) return;
-  NetGlobulusSimiActiveSimi_interpreter = new_NetGlobulusSimiInterpreter_initWithNetGlobulusSimiNativeModulesManager_(nativeModulesManager);
-  NetGlobulusSimiResolver *resolver = new_NetGlobulusSimiResolver_initWithNetGlobulusSimiInterpreter_(NetGlobulusSimiActiveSimi_interpreter);
+  if (SMActiveSimi_hadError) return;
+  SMActiveSimi_interpreter = new_SMInterpreter_initWithSMNativeModulesManager_(nativeModulesManager);
+  SMResolver *resolver = new_SMResolver_initWithSMInterpreter_(SMActiveSimi_interpreter);
   [resolver resolveWithJavaUtilList:statements];
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
   time = JavaLangSystem_currentTimeMillis();
-  if (NetGlobulusSimiActiveSimi_hadError) return;
-  (void) [((NetGlobulusSimiInterpreter *) nil_chk(NetGlobulusSimiActiveSimi_interpreter)) interpretWithJavaUtilList:statements];
+  if (SMActiveSimi_hadError) return;
+  (void) [((SMInterpreter *) nil_chk(SMActiveSimi_interpreter)) interpretWithJavaUtilList:statements];
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$J$", @"Interpreting... ", (JavaLangSystem_currentTimeMillis() - time), @" ms")];
 }
 
-id<NetGlobulusSimiSimiProperty> NetGlobulusSimiActiveSimi_runExpressionWithNSString_(NSString *expression) {
-  NetGlobulusSimiActiveSimi_initialize();
-  id<JavaUtilList> tokens = [new_NetGlobulusSimiScanner_initWithNSString_(expression) scanTokensWithBoolean:true];
-  id<JavaUtilList> statements = [new_NetGlobulusSimiParser_initWithJavaUtilList_(tokens) parse];
-  return [((NetGlobulusSimiInterpreter *) nil_chk(NetGlobulusSimiActiveSimi_interpreter)) interpretWithJavaUtilList:statements];
+id<SMSimiProperty> SMActiveSimi_runExpressionWithNSString_(NSString *expression) {
+  SMActiveSimi_initialize();
+  id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_(expression) scanTokensWithBoolean:true];
+  id<JavaUtilList> statements = [new_SMParser_initWithJavaUtilList_(tokens) parse];
+  return [((SMInterpreter *) nil_chk(SMActiveSimi_interpreter)) interpretWithJavaUtilList:statements];
 }
 
-id<JavaUtilList> NetGlobulusSimiActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withNetGlobulusSimiNativeModulesManager_(id<JavaUtilList> input, id<JavaUtilList> imports, NetGlobulusSimiNativeModulesManager *nativeModulesManager) {
-  NetGlobulusSimiActiveSimi_initialize();
+id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(id<JavaUtilList> input, id<JavaUtilList> imports, SMNativeModulesManager *nativeModulesManager) {
+  SMActiveSimi_initialize();
   id<JavaUtilList> result = new_JavaUtilArrayList_init();
   jint len = [((id<JavaUtilList>) nil_chk(input)) size];
   for (jint i = 0; i < len; i++) {
-    NetGlobulusSimiToken *token = [input getWithInt:i];
-    if (((NetGlobulusSimiToken *) nil_chk(token))->type_ != JreLoadEnum(NetGlobulusSimiTokenType, IMPORT)) {
+    SMToken *token = [input getWithInt:i];
+    if (((SMToken *) nil_chk(token))->type_ != JreLoadEnum(SMTokenType, IMPORT)) {
       continue;
     }
     i++;
-    NetGlobulusSimiToken *nextToken = [input getWithInt:i];
-    if (((NetGlobulusSimiToken *) nil_chk(nextToken))->type_ != JreLoadEnum(NetGlobulusSimiTokenType, STRING)) {
+    SMToken *nextToken = [input getWithInt:i];
+    if (((SMToken *) nil_chk(nextToken))->type_ != JreLoadEnum(SMTokenType, STRING)) {
       continue;
     }
-    NSString *location = [((NetGlobulusSimiSimiValue *) nil_chk(nextToken->literal_)) getString];
+    NSString *location = [((SMSimiValue *) nil_chk(nextToken->literal_)) getString];
     if ([((id<JavaUtilList>) nil_chk(imports)) containsWithId:location]) {
       continue;
     }
     if ([((NSString *) nil_chk(location)) java_hasSuffix:@".simi"]) {
-      id<JavaUtilList> tokens = [new_NetGlobulusSimiScanner_initWithNSString_(NetGlobulusSimiActiveSimi_readFileWithNSString_(location)) scanTokensWithBoolean:false];
-      [result addAllWithJavaUtilCollection:NetGlobulusSimiActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withNetGlobulusSimiNativeModulesManager_(tokens, imports, nativeModulesManager)];
+      id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_(SMActiveSimi_readFileWithNSString_(location)) scanTokensWithBoolean:false];
+      [result addAllWithJavaUtilCollection:SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(tokens, imports, nativeModulesManager)];
     }
   }
   [result addAllWithJavaUtilCollection:input];
   return result;
 }
 
-NetGlobulusSimiSimiClassImpl *NetGlobulusSimiActiveSimi_getObjectClass() {
-  NetGlobulusSimiActiveSimi_initialize();
-  if (NetGlobulusSimiActiveSimi_interpreter == nil) {
+SMSimiClassImpl *SMActiveSimi_getObjectClass() {
+  SMActiveSimi_initialize();
+  if (SMActiveSimi_interpreter == nil) {
     return nil;
   }
-  return (NetGlobulusSimiSimiClassImpl *) cast_chk([((NetGlobulusSimiSimiValue *) nil_chk([((id<NetGlobulusSimiSimiProperty>) nil_chk([NetGlobulusSimiActiveSimi_interpreter getGlobalWithNSString:NetGlobulusSimiConstants_CLASS_OBJECT])) getValue])) getObject], [NetGlobulusSimiSimiClassImpl class]);
+  return (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([SMActiveSimi_interpreter getGlobalWithNSString:SMConstants_CLASS_OBJECT])) getValue])) getObject], [SMSimiClassImpl class]);
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiActiveSimi)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMActiveSimi)
 
-@implementation NetGlobulusSimiActiveSimi_1
+@implementation SMActiveSimi_1
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiActiveSimi_1_init(self);
+- (instancetype __nonnull)init {
+  SMActiveSimi_1_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -386,12 +402,12 @@ J2OBJC_IGNORE_DESIGNATED_END
          withNSString:(NSString *)where
          withNSString:(NSString *)message {
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$I$$$$", @"[line ", line, @"] Error", where, @": ", message)];
-  *JreLoadStaticRef(NetGlobulusSimiActiveSimi, hadError) = true;
+  *JreLoadStaticRef(SMActiveSimi, hadError) = true;
 }
 
-- (void)runtimeErrorWithNetGlobulusSimiRuntimeError:(NetGlobulusSimiRuntimeError *)error {
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$IC", [((NetGlobulusSimiRuntimeError *) nil_chk(error)) getMessage], @"\n[line ", ((NetGlobulusSimiToken *) nil_chk(error->token_))->line_, ']')];
-  *JreLoadStaticRef(NetGlobulusSimiActiveSimi, hadRuntimeError) = true;
+- (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error {
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$IC", [((SMRuntimeError *) nil_chk(error)) getMessage], @"\n[line ", ((SMToken *) nil_chk(error->token_))->line_, ']')];
+  *JreLoadStaticRef(SMActiveSimi, hadRuntimeError) = true;
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -405,28 +421,28 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(reportWithInt:withNSString:withNSString:);
-  methods[2].selector = @selector(runtimeErrorWithNetGlobulusSimiRuntimeError:);
+  methods[2].selector = @selector(runtimeErrorWithSMRuntimeError:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "report", "ILNSString;LNSString;", "runtimeError", "LNetGlobulusSimiRuntimeError;", "LNetGlobulusSimiActiveSimi;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiActiveSimi_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 4, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiActiveSimi_1;
+  static const void *ptrTable[] = { "report", "ILNSString;LNSString;", "runtimeError", "LSMRuntimeError;", "LSMActiveSimi;" };
+  static const J2ObjcClassInfo _SMActiveSimi_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 4, -1, -1, -1, -1 };
+  return &_SMActiveSimi_1;
 }
 
 @end
 
-void NetGlobulusSimiActiveSimi_1_init(NetGlobulusSimiActiveSimi_1 *self) {
+void SMActiveSimi_1_init(SMActiveSimi_1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiActiveSimi_1 *new_NetGlobulusSimiActiveSimi_1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiActiveSimi_1, init)
+SMActiveSimi_1 *new_SMActiveSimi_1_init() {
+  J2OBJC_NEW_IMPL(SMActiveSimi_1, init)
 }
 
-NetGlobulusSimiActiveSimi_1 *create_NetGlobulusSimiActiveSimi_1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiActiveSimi_1, init)
+SMActiveSimi_1 *create_SMActiveSimi_1_init() {
+  J2OBJC_CREATE_IMPL(SMActiveSimi_1, init)
 }
 
-@implementation NetGlobulusSimiActiveSimi_ImportResolver
+@implementation SMActiveSimi_ImportResolver
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
@@ -437,16 +453,16 @@ NetGlobulusSimiActiveSimi_1 *create_NetGlobulusSimiActiveSimi_1_init() {
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(readFileWithNSString:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "readFile", "LNSString;", "LNetGlobulusSimiActiveSimi;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiActiveSimi_ImportResolver = { "ImportResolver", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 1, 0, 2, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiActiveSimi_ImportResolver;
+  static const void *ptrTable[] = { "readFile", "LNSString;", "LSMActiveSimi;" };
+  static const J2ObjcClassInfo _SMActiveSimi_ImportResolver = { "ImportResolver", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 1, 0, 2, -1, -1, -1, -1 };
+  return &_SMActiveSimi_ImportResolver;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiActiveSimi_ImportResolver)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMActiveSimi_ImportResolver)
 
-@implementation NetGlobulusSimiActiveSimi_Callback
+@implementation SMActiveSimi_Callback
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
@@ -455,26 +471,26 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiActiveSimi_ImportResolver)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(doneWithNetGlobulusSimiSimiProperty:);
+  methods[0].selector = @selector(doneWithSMSimiProperty:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "done", "LNetGlobulusSimiSimiProperty;", "LNetGlobulusSimiActiveSimi;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiActiveSimi_Callback = { "Callback", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 1, 0, 2, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiActiveSimi_Callback;
+  static const void *ptrTable[] = { "done", "LSMSimiProperty;", "LSMActiveSimi;" };
+  static const J2ObjcClassInfo _SMActiveSimi_Callback = { "Callback", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 1, 0, 2, -1, -1, -1, -1 };
+  return &_SMActiveSimi_Callback;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiActiveSimi_Callback)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMActiveSimi_Callback)
 
-@implementation NetGlobulusSimiActiveSimi_$Lambda$1
+@implementation SMActiveSimi_$Lambda$1
 
 - (void)run {
-  [((id<NetGlobulusSimiActiveSimi_Callback>) nil_chk(val$callback_)) doneWithNetGlobulusSimiSimiProperty:NetGlobulusSimiActiveSimi_evalWithNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(val$className_, val$methodName_, val$params_)];
+  [((id<SMActiveSimi_Callback>) nil_chk(val$callback_)) doneWithSMSimiProperty:SMActiveSimi_evalWithNSString_withNSString_withSMSimiPropertyArray_(val$className_, val$methodName_, val$params_)];
 }
 
 @end
 
-void NetGlobulusSimiActiveSimi_$Lambda$1_initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(NetGlobulusSimiActiveSimi_$Lambda$1 *self, id<NetGlobulusSimiActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3) {
+void SMActiveSimi_$Lambda$1_initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(SMActiveSimi_$Lambda$1 *self, id<SMActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3) {
   self->val$callback_ = capture$0;
   self->val$className_ = capture$1;
   self->val$methodName_ = capture$2;
@@ -482,10 +498,10 @@ void NetGlobulusSimiActiveSimi_$Lambda$1_initWithNetGlobulusSimiActiveSimi_Callb
   NSObject_init(self);
 }
 
-NetGlobulusSimiActiveSimi_$Lambda$1 *new_NetGlobulusSimiActiveSimi_$Lambda$1_initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(id<NetGlobulusSimiActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiActiveSimi_$Lambda$1, initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_, capture$0, capture$1, capture$2, capture$3)
+SMActiveSimi_$Lambda$1 *new_SMActiveSimi_$Lambda$1_initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(id<SMActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3) {
+  J2OBJC_NEW_IMPL(SMActiveSimi_$Lambda$1, initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_, capture$0, capture$1, capture$2, capture$3)
 }
 
-NetGlobulusSimiActiveSimi_$Lambda$1 *create_NetGlobulusSimiActiveSimi_$Lambda$1_initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_(id<NetGlobulusSimiActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiActiveSimi_$Lambda$1, initWithNetGlobulusSimiActiveSimi_Callback_withNSString_withNSString_withNetGlobulusSimiSimiPropertyArray_, capture$0, capture$1, capture$2, capture$3)
+SMActiveSimi_$Lambda$1 *create_SMActiveSimi_$Lambda$1_initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_(id<SMActiveSimi_Callback> capture$0, NSString *capture$1, NSString *capture$2, IOSObjectArray *capture$3) {
+  J2OBJC_CREATE_IMPL(SMActiveSimi_$Lambda$1, initWithSMActiveSimi_Callback_withNSString_withNSString_withSMSimiPropertyArray_, capture$0, capture$1, capture$2, capture$3)
 }

@@ -26,116 +26,116 @@
 #include "Token.h"
 #include "TokenType.h"
 
-@class NetGlobulusSimiParser_ParseError;
+@class SMParser_ParseError;
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
-@interface NetGlobulusSimiParser () {
+@interface SMParser () {
  @public
   id<JavaUtilList> tokens_;
   jint current_;
   id<JavaUtilList> annotations_;
 }
 
-- (NetGlobulusSimiExpr *)expression;
+- (SMExpr *)expression;
 
-- (NetGlobulusSimiStmt *)declaration;
+- (SMStmt *)declaration;
 
-- (NetGlobulusSimiStmt_Class *)classDeclaration;
+- (SMStmt_Class *)classDeclaration;
 
-- (NetGlobulusSimiStmt_Annotation *)annotation;
+- (SMStmt_Annotation *)annotation;
 
-- (NetGlobulusSimiStmt *)statementWithBoolean:(jboolean)lambda;
+- (SMStmt *)statementWithBoolean:(jboolean)lambda;
 
-- (NetGlobulusSimiStmt *)forStatement;
+- (SMStmt *)forStatement;
 
-- (NetGlobulusSimiStmt *)ifStatement;
+- (SMStmt *)ifStatement;
 
-- (NetGlobulusSimiStmt *)whenStatement;
+- (SMStmt *)whenStatement;
 
-- (NetGlobulusSimiStmt *)printStatementWithBoolean:(jboolean)lambda;
+- (SMStmt *)printStatementWithBoolean:(jboolean)lambda;
 
-- (NetGlobulusSimiStmt *)returnStatementWithBoolean:(jboolean)lambda;
+- (SMStmt *)returnStatementWithBoolean:(jboolean)lambda;
 
-- (NetGlobulusSimiStmt *)yieldStatementWithBoolean:(jboolean)lambda;
+- (SMStmt *)yieldStatementWithBoolean:(jboolean)lambda;
 
-- (NetGlobulusSimiStmt *)whileStatement;
+- (SMStmt *)whileStatement;
 
-- (NetGlobulusSimiStmt *)breakStatement;
+- (SMStmt *)breakStatement;
 
-- (NetGlobulusSimiStmt *)continueStatement;
+- (SMStmt *)continueStatement;
 
-- (NetGlobulusSimiStmt *)rescueStatement;
+- (SMStmt *)rescueStatement;
 
-- (NetGlobulusSimiStmt_Expression *)expressionStatementWithBoolean:(jboolean)lambda;
+- (SMStmt_Expression *)expressionStatementWithBoolean:(jboolean)lambda;
 
 - (void)checkStatementEndWithBoolean:(jboolean)lambda;
 
-- (NetGlobulusSimiStmt_Function *)functionWithNSString:(NSString *)kind;
+- (SMStmt_Function *)functionWithNSString:(NSString *)kind;
 
-- (NetGlobulusSimiExpr_Block *)blockWithNSString:(NSString *)kind
-                                     withBoolean:(jboolean)lambda;
+- (SMExpr_Block *)blockWithNSString:(NSString *)kind
+                        withBoolean:(jboolean)lambda;
 
-- (NetGlobulusSimiExpr_Block *)blockWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)declaration
-                                                withNSString:(NSString *)kind
-                                                 withBoolean:(jboolean)lambda;
+- (SMExpr_Block *)blockWithSMToken:(SMToken *)declaration
+                      withNSString:(NSString *)kind
+                       withBoolean:(jboolean)lambda;
 
 - (id<JavaUtilList>)paramsWithNSString:(NSString *)kind
                            withBoolean:(jboolean)lambda;
 
 - (JavaLangInteger *)peekParams;
 
-- (NetGlobulusSimiExpr *)assignment;
+- (SMExpr *)assignment;
 
-- (NetGlobulusSimiExpr *)or__;
+- (SMExpr *)or__;
 
-- (NetGlobulusSimiExpr *)and__;
+- (SMExpr *)and__;
 
-- (NetGlobulusSimiExpr *)equality;
+- (SMExpr *)equality;
 
-- (NetGlobulusSimiExpr *)comparison;
+- (SMExpr *)comparison;
 
-- (NetGlobulusSimiExpr *)addition;
+- (SMExpr *)addition;
 
-- (NetGlobulusSimiExpr *)multiplication;
+- (SMExpr *)multiplication;
 
-- (NetGlobulusSimiExpr *)nilCoalescence;
+- (SMExpr *)nilCoalescence;
 
-- (NetGlobulusSimiExpr *)unary;
+- (SMExpr *)unary;
 
-- (NetGlobulusSimiExpr *)call;
+- (SMExpr *)call;
 
-- (NetGlobulusSimiExpr *)finishCallWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)callee;
+- (SMExpr *)finishCallWithSMExpr:(SMExpr *)callee;
 
-- (NetGlobulusSimiExpr *)primary;
+- (SMExpr *)primary;
 
-- (NetGlobulusSimiExpr *)objectLiteral;
+- (SMExpr *)objectLiteral;
 
 - (void)matchAllNewlines;
 
-- (jboolean)matchSequenceWithNetGlobulusSimiTokenTypeArray:(IOSObjectArray *)types;
+- (jboolean)matchSequenceWithSMTokenTypeArray:(IOSObjectArray *)types;
 
-- (jboolean)matchWithNetGlobulusSimiTokenTypeArray:(IOSObjectArray *)types;
+- (jboolean)matchWithSMTokenTypeArray:(IOSObjectArray *)types;
 
-- (NetGlobulusSimiToken *)consumeWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type
-                                                 withNSString:(NSString *)message;
+- (SMToken *)consumeWithSMTokenType:(SMTokenType *)type
+                       withNSString:(NSString *)message;
 
-- (jboolean)checkWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)tokenType;
+- (jboolean)checkWithSMTokenType:(SMTokenType *)tokenType;
 
-- (NetGlobulusSimiToken *)advance;
+- (SMToken *)advance;
 
 - (jboolean)isAtEnd;
 
-- (NetGlobulusSimiToken *)peek;
+- (SMToken *)peek;
 
-- (jboolean)peekSequenceWithNetGlobulusSimiTokenTypeArray:(IOSObjectArray *)tokenTypes;
+- (jboolean)peekSequenceWithSMTokenTypeArray:(IOSObjectArray *)tokenTypes;
 
-- (NetGlobulusSimiToken *)previous;
+- (SMToken *)previous;
 
-- (NetGlobulusSimiToken *)operatorFromAssignWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)assignOp;
+- (SMToken *)operatorFromAssignWithSMToken:(SMToken *)assignOp;
 
-- (NetGlobulusSimiParser_ParseError *)errorWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)token
-                                                       withNSString:(NSString *)message;
+- (SMParser_ParseError *)errorWithSMToken:(SMToken *)token
+                             withNSString:(NSString *)message;
 
 - (void)synchronize;
 
@@ -143,420 +143,420 @@
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiParser, tokens_, id<JavaUtilList>)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiParser, annotations_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMParser, tokens_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMParser, annotations_, id<JavaUtilList>)
 
-inline NSString *NetGlobulusSimiParser_get_LAMBDA(void);
-static NSString *NetGlobulusSimiParser_LAMBDA = @"lambda";
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiParser, LAMBDA, NSString *)
+inline NSString *SMParser_get_LAMBDA(void);
+static NSString *SMParser_LAMBDA = @"lambda";
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMParser, LAMBDA, NSString *)
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_expression(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_expression(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_declaration(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt *SMParser_declaration(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt_Class *NetGlobulusSimiParser_classDeclaration(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt_Class *SMParser_classDeclaration(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt_Annotation *NetGlobulusSimiParser_annotation(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt_Annotation *SMParser_annotation(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_statementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda);
+__attribute__((unused)) static SMStmt *SMParser_statementWithBoolean_(SMParser *self, jboolean lambda);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_forStatement(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt *SMParser_forStatement(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_ifStatement(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt *SMParser_ifStatement(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_whenStatement(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt *SMParser_whenStatement(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_printStatementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda);
+__attribute__((unused)) static SMStmt *SMParser_printStatementWithBoolean_(SMParser *self, jboolean lambda);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_returnStatementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda);
+__attribute__((unused)) static SMStmt *SMParser_returnStatementWithBoolean_(SMParser *self, jboolean lambda);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_yieldStatementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda);
+__attribute__((unused)) static SMStmt *SMParser_yieldStatementWithBoolean_(SMParser *self, jboolean lambda);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_whileStatement(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt *SMParser_whileStatement(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_breakStatement(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt *SMParser_breakStatement(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_continueStatement(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt *SMParser_continueStatement(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt *NetGlobulusSimiParser_rescueStatement(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMStmt *SMParser_rescueStatement(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiStmt_Expression *NetGlobulusSimiParser_expressionStatementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda);
+__attribute__((unused)) static SMStmt_Expression *SMParser_expressionStatementWithBoolean_(SMParser *self, jboolean lambda);
 
-__attribute__((unused)) static void NetGlobulusSimiParser_checkStatementEndWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda);
+__attribute__((unused)) static void SMParser_checkStatementEndWithBoolean_(SMParser *self, jboolean lambda);
 
-__attribute__((unused)) static NetGlobulusSimiStmt_Function *NetGlobulusSimiParser_functionWithNSString_(NetGlobulusSimiParser *self, NSString *kind);
+__attribute__((unused)) static SMStmt_Function *SMParser_functionWithNSString_(SMParser *self, NSString *kind);
 
-__attribute__((unused)) static NetGlobulusSimiExpr_Block *NetGlobulusSimiParser_blockWithNSString_withBoolean_(NetGlobulusSimiParser *self, NSString *kind, jboolean lambda);
+__attribute__((unused)) static SMExpr_Block *SMParser_blockWithNSString_withBoolean_(SMParser *self, NSString *kind, jboolean lambda);
 
-__attribute__((unused)) static NetGlobulusSimiExpr_Block *NetGlobulusSimiParser_blockWithNetGlobulusSimiToken_withNSString_withBoolean_(NetGlobulusSimiParser *self, NetGlobulusSimiToken *declaration, NSString *kind, jboolean lambda);
+__attribute__((unused)) static SMExpr_Block *SMParser_blockWithSMToken_withNSString_withBoolean_(SMParser *self, SMToken *declaration, NSString *kind, jboolean lambda);
 
-__attribute__((unused)) static id<JavaUtilList> NetGlobulusSimiParser_paramsWithNSString_withBoolean_(NetGlobulusSimiParser *self, NSString *kind, jboolean lambda);
+__attribute__((unused)) static id<JavaUtilList> SMParser_paramsWithNSString_withBoolean_(SMParser *self, NSString *kind, jboolean lambda);
 
-__attribute__((unused)) static JavaLangInteger *NetGlobulusSimiParser_peekParams(NetGlobulusSimiParser *self);
+__attribute__((unused)) static JavaLangInteger *SMParser_peekParams(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_assignment(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_assignment(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_or__(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_or__(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_and__(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_and__(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_equality(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_equality(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_comparison(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_comparison(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_addition(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_addition(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_multiplication(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_multiplication(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_nilCoalescence(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_nilCoalescence(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_unary(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_unary(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_call(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_call(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_finishCallWithNetGlobulusSimiExpr_(NetGlobulusSimiParser *self, NetGlobulusSimiExpr *callee);
+__attribute__((unused)) static SMExpr *SMParser_finishCallWithSMExpr_(SMParser *self, SMExpr *callee);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_primary(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_primary(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiExpr *NetGlobulusSimiParser_objectLiteral(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMExpr *SMParser_objectLiteral(SMParser *self);
 
-__attribute__((unused)) static void NetGlobulusSimiParser_matchAllNewlines(NetGlobulusSimiParser *self);
+__attribute__((unused)) static void SMParser_matchAllNewlines(SMParser *self);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiParser_matchSequenceWithNetGlobulusSimiTokenTypeArray_(NetGlobulusSimiParser *self, IOSObjectArray *types);
+__attribute__((unused)) static jboolean SMParser_matchSequenceWithSMTokenTypeArray_(SMParser *self, IOSObjectArray *types);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(NetGlobulusSimiParser *self, IOSObjectArray *types);
+__attribute__((unused)) static jboolean SMParser_matchWithSMTokenTypeArray_(SMParser *self, IOSObjectArray *types);
 
-__attribute__((unused)) static NetGlobulusSimiToken *NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(NetGlobulusSimiParser *self, NetGlobulusSimiTokenType *type, NSString *message);
+__attribute__((unused)) static SMToken *SMParser_consumeWithSMTokenType_withNSString_(SMParser *self, SMTokenType *type, NSString *message);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(NetGlobulusSimiParser *self, NetGlobulusSimiTokenType *tokenType);
+__attribute__((unused)) static jboolean SMParser_checkWithSMTokenType_(SMParser *self, SMTokenType *tokenType);
 
-__attribute__((unused)) static NetGlobulusSimiToken *NetGlobulusSimiParser_advance(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMToken *SMParser_advance(SMParser *self);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiParser_isAtEnd(NetGlobulusSimiParser *self);
+__attribute__((unused)) static jboolean SMParser_isAtEnd(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiToken *NetGlobulusSimiParser_peek(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMToken *SMParser_peek(SMParser *self);
 
-__attribute__((unused)) static jboolean NetGlobulusSimiParser_peekSequenceWithNetGlobulusSimiTokenTypeArray_(NetGlobulusSimiParser *self, IOSObjectArray *tokenTypes);
+__attribute__((unused)) static jboolean SMParser_peekSequenceWithSMTokenTypeArray_(SMParser *self, IOSObjectArray *tokenTypes);
 
-__attribute__((unused)) static NetGlobulusSimiToken *NetGlobulusSimiParser_previous(NetGlobulusSimiParser *self);
+__attribute__((unused)) static SMToken *SMParser_previous(SMParser *self);
 
-__attribute__((unused)) static NetGlobulusSimiToken *NetGlobulusSimiParser_operatorFromAssignWithNetGlobulusSimiToken_(NetGlobulusSimiParser *self, NetGlobulusSimiToken *assignOp);
+__attribute__((unused)) static SMToken *SMParser_operatorFromAssignWithSMToken_(SMParser *self, SMToken *assignOp);
 
-__attribute__((unused)) static NetGlobulusSimiParser_ParseError *NetGlobulusSimiParser_errorWithNetGlobulusSimiToken_withNSString_(NetGlobulusSimiParser *self, NetGlobulusSimiToken *token, NSString *message);
+__attribute__((unused)) static SMParser_ParseError *SMParser_errorWithSMToken_withNSString_(SMParser *self, SMToken *token, NSString *message);
 
-__attribute__((unused)) static void NetGlobulusSimiParser_synchronize(NetGlobulusSimiParser *self);
+__attribute__((unused)) static void SMParser_synchronize(SMParser *self);
 
-__attribute__((unused)) static id<JavaUtilList> NetGlobulusSimiParser_getAnnotations(NetGlobulusSimiParser *self);
+__attribute__((unused)) static id<JavaUtilList> SMParser_getAnnotations(SMParser *self);
 
-@interface NetGlobulusSimiParser_ParseError : JavaLangRuntimeException
+@interface SMParser_ParseError : JavaLangRuntimeException
 
-- (instancetype)init;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiParser_ParseError)
-
-__attribute__((unused)) static void NetGlobulusSimiParser_ParseError_init(NetGlobulusSimiParser_ParseError *self);
-
-__attribute__((unused)) static NetGlobulusSimiParser_ParseError *new_NetGlobulusSimiParser_ParseError_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static NetGlobulusSimiParser_ParseError *create_NetGlobulusSimiParser_ParseError_init(void);
-
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiParser_ParseError)
-
-@interface NetGlobulusSimiParser_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(NetGlobulusSimiToken *)a;
+- (instancetype __nonnull)init;
 
 @end
 
-J2OBJC_STATIC_INIT(NetGlobulusSimiParser_$Lambda$1)
+J2OBJC_EMPTY_STATIC_INIT(SMParser_ParseError)
 
-inline NetGlobulusSimiParser_$Lambda$1 *NetGlobulusSimiParser_$Lambda$1_get_instance(void);
-static NetGlobulusSimiParser_$Lambda$1 *NetGlobulusSimiParser_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(NetGlobulusSimiParser_$Lambda$1, instance, NetGlobulusSimiParser_$Lambda$1 *)
+__attribute__((unused)) static void SMParser_ParseError_init(SMParser_ParseError *self);
 
-__attribute__((unused)) static void NetGlobulusSimiParser_$Lambda$1_init(NetGlobulusSimiParser_$Lambda$1 *self);
+__attribute__((unused)) static SMParser_ParseError *new_SMParser_ParseError_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiParser_$Lambda$1 *new_NetGlobulusSimiParser_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMParser_ParseError *create_SMParser_ParseError_init(void);
 
-__attribute__((unused)) static NetGlobulusSimiParser_$Lambda$1 *create_NetGlobulusSimiParser_$Lambda$1_init(void);
+J2OBJC_TYPE_LITERAL_HEADER(SMParser_ParseError)
 
-@implementation NetGlobulusSimiParser
+@interface SMParser_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tokens {
-  NetGlobulusSimiParser_initWithJavaUtilList_(self, tokens);
+- (id)applyWithId:(SMToken *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMParser_$Lambda$1)
+
+inline SMParser_$Lambda$1 *SMParser_$Lambda$1_get_instance(void);
+static SMParser_$Lambda$1 *SMParser_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMParser_$Lambda$1, instance, SMParser_$Lambda$1 *)
+
+__attribute__((unused)) static void SMParser_$Lambda$1_init(SMParser_$Lambda$1 *self);
+
+__attribute__((unused)) static SMParser_$Lambda$1 *new_SMParser_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMParser_$Lambda$1 *create_SMParser_$Lambda$1_init(void);
+
+@implementation SMParser
+
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tokens {
+  SMParser_initWithJavaUtilList_(self, tokens);
   return self;
 }
 
 - (id<JavaUtilList>)parse {
   id<JavaUtilList> statements = new_JavaUtilArrayList_init();
-  while (!NetGlobulusSimiParser_isAtEnd(self)) {
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, IMPORT) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      (void) NetGlobulusSimiParser_advance(self);
+  while (!SMParser_isAtEnd(self)) {
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IMPORT) } count:1 type:SMTokenType_class_()])) {
+      (void) SMParser_advance(self);
       continue;
     }
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE), JreLoadEnum(NetGlobulusSimiTokenType, PASS) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NEWLINE), JreLoadEnum(SMTokenType, PASS) } count:2 type:SMTokenType_class_()])) {
       continue;
     }
-    [statements addWithId:NetGlobulusSimiParser_declaration(self)];
+    [statements addWithId:SMParser_declaration(self)];
   }
   return statements;
 }
 
-- (NetGlobulusSimiExpr *)expression {
-  return NetGlobulusSimiParser_expression(self);
+- (SMExpr *)expression {
+  return SMParser_expression(self);
 }
 
-- (NetGlobulusSimiStmt *)declaration {
-  return NetGlobulusSimiParser_declaration(self);
+- (SMStmt *)declaration {
+  return SMParser_declaration(self);
 }
 
-- (NetGlobulusSimiStmt_Class *)classDeclaration {
-  return NetGlobulusSimiParser_classDeclaration(self);
+- (SMStmt_Class *)classDeclaration {
+  return SMParser_classDeclaration(self);
 }
 
-- (NetGlobulusSimiStmt_Annotation *)annotation {
-  return NetGlobulusSimiParser_annotation(self);
+- (SMStmt_Annotation *)annotation {
+  return SMParser_annotation(self);
 }
 
-- (NetGlobulusSimiStmt *)statementWithBoolean:(jboolean)lambda {
-  return NetGlobulusSimiParser_statementWithBoolean_(self, lambda);
+- (SMStmt *)statementWithBoolean:(jboolean)lambda {
+  return SMParser_statementWithBoolean_(self, lambda);
 }
 
-- (NetGlobulusSimiStmt *)forStatement {
-  return NetGlobulusSimiParser_forStatement(self);
+- (SMStmt *)forStatement {
+  return SMParser_forStatement(self);
 }
 
-- (NetGlobulusSimiStmt *)ifStatement {
-  return NetGlobulusSimiParser_ifStatement(self);
+- (SMStmt *)ifStatement {
+  return SMParser_ifStatement(self);
 }
 
-- (NetGlobulusSimiStmt *)whenStatement {
-  return NetGlobulusSimiParser_whenStatement(self);
+- (SMStmt *)whenStatement {
+  return SMParser_whenStatement(self);
 }
 
-- (NetGlobulusSimiStmt *)printStatementWithBoolean:(jboolean)lambda {
-  return NetGlobulusSimiParser_printStatementWithBoolean_(self, lambda);
+- (SMStmt *)printStatementWithBoolean:(jboolean)lambda {
+  return SMParser_printStatementWithBoolean_(self, lambda);
 }
 
-- (NetGlobulusSimiStmt *)returnStatementWithBoolean:(jboolean)lambda {
-  return NetGlobulusSimiParser_returnStatementWithBoolean_(self, lambda);
+- (SMStmt *)returnStatementWithBoolean:(jboolean)lambda {
+  return SMParser_returnStatementWithBoolean_(self, lambda);
 }
 
-- (NetGlobulusSimiStmt *)yieldStatementWithBoolean:(jboolean)lambda {
-  return NetGlobulusSimiParser_yieldStatementWithBoolean_(self, lambda);
+- (SMStmt *)yieldStatementWithBoolean:(jboolean)lambda {
+  return SMParser_yieldStatementWithBoolean_(self, lambda);
 }
 
-- (NetGlobulusSimiStmt *)whileStatement {
-  return NetGlobulusSimiParser_whileStatement(self);
+- (SMStmt *)whileStatement {
+  return SMParser_whileStatement(self);
 }
 
-- (NetGlobulusSimiStmt *)breakStatement {
-  return NetGlobulusSimiParser_breakStatement(self);
+- (SMStmt *)breakStatement {
+  return SMParser_breakStatement(self);
 }
 
-- (NetGlobulusSimiStmt *)continueStatement {
-  return NetGlobulusSimiParser_continueStatement(self);
+- (SMStmt *)continueStatement {
+  return SMParser_continueStatement(self);
 }
 
-- (NetGlobulusSimiStmt *)rescueStatement {
-  return NetGlobulusSimiParser_rescueStatement(self);
+- (SMStmt *)rescueStatement {
+  return SMParser_rescueStatement(self);
 }
 
-- (NetGlobulusSimiStmt_Expression *)expressionStatementWithBoolean:(jboolean)lambda {
-  return NetGlobulusSimiParser_expressionStatementWithBoolean_(self, lambda);
+- (SMStmt_Expression *)expressionStatementWithBoolean:(jboolean)lambda {
+  return SMParser_expressionStatementWithBoolean_(self, lambda);
 }
 
 - (void)checkStatementEndWithBoolean:(jboolean)lambda {
-  NetGlobulusSimiParser_checkStatementEndWithBoolean_(self, lambda);
+  SMParser_checkStatementEndWithBoolean_(self, lambda);
 }
 
-- (NetGlobulusSimiStmt_Function *)functionWithNSString:(NSString *)kind {
-  return NetGlobulusSimiParser_functionWithNSString_(self, kind);
+- (SMStmt_Function *)functionWithNSString:(NSString *)kind {
+  return SMParser_functionWithNSString_(self, kind);
 }
 
-- (NetGlobulusSimiExpr_Block *)blockWithNSString:(NSString *)kind
-                                     withBoolean:(jboolean)lambda {
-  return NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, kind, lambda);
+- (SMExpr_Block *)blockWithNSString:(NSString *)kind
+                        withBoolean:(jboolean)lambda {
+  return SMParser_blockWithNSString_withBoolean_(self, kind, lambda);
 }
 
-- (NetGlobulusSimiExpr_Block *)blockWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)declaration
-                                                withNSString:(NSString *)kind
-                                                 withBoolean:(jboolean)lambda {
-  return NetGlobulusSimiParser_blockWithNetGlobulusSimiToken_withNSString_withBoolean_(self, declaration, kind, lambda);
+- (SMExpr_Block *)blockWithSMToken:(SMToken *)declaration
+                      withNSString:(NSString *)kind
+                       withBoolean:(jboolean)lambda {
+  return SMParser_blockWithSMToken_withNSString_withBoolean_(self, declaration, kind, lambda);
 }
 
 - (id<JavaUtilList>)paramsWithNSString:(NSString *)kind
                            withBoolean:(jboolean)lambda {
-  return NetGlobulusSimiParser_paramsWithNSString_withBoolean_(self, kind, lambda);
+  return SMParser_paramsWithNSString_withBoolean_(self, kind, lambda);
 }
 
 - (JavaLangInteger *)peekParams {
-  return NetGlobulusSimiParser_peekParams(self);
+  return SMParser_peekParams(self);
 }
 
-- (NetGlobulusSimiExpr *)assignment {
-  return NetGlobulusSimiParser_assignment(self);
+- (SMExpr *)assignment {
+  return SMParser_assignment(self);
 }
 
-- (NetGlobulusSimiExpr *)or__ {
-  return NetGlobulusSimiParser_or__(self);
+- (SMExpr *)or__ {
+  return SMParser_or__(self);
 }
 
-- (NetGlobulusSimiExpr *)and__ {
-  return NetGlobulusSimiParser_and__(self);
+- (SMExpr *)and__ {
+  return SMParser_and__(self);
 }
 
-- (NetGlobulusSimiExpr *)equality {
-  return NetGlobulusSimiParser_equality(self);
+- (SMExpr *)equality {
+  return SMParser_equality(self);
 }
 
-- (NetGlobulusSimiExpr *)comparison {
-  return NetGlobulusSimiParser_comparison(self);
+- (SMExpr *)comparison {
+  return SMParser_comparison(self);
 }
 
-- (NetGlobulusSimiExpr *)addition {
-  return NetGlobulusSimiParser_addition(self);
+- (SMExpr *)addition {
+  return SMParser_addition(self);
 }
 
-- (NetGlobulusSimiExpr *)multiplication {
-  return NetGlobulusSimiParser_multiplication(self);
+- (SMExpr *)multiplication {
+  return SMParser_multiplication(self);
 }
 
-- (NetGlobulusSimiExpr *)nilCoalescence {
-  return NetGlobulusSimiParser_nilCoalescence(self);
+- (SMExpr *)nilCoalescence {
+  return SMParser_nilCoalescence(self);
 }
 
-- (NetGlobulusSimiExpr *)unary {
-  return NetGlobulusSimiParser_unary(self);
+- (SMExpr *)unary {
+  return SMParser_unary(self);
 }
 
-- (NetGlobulusSimiExpr *)call {
-  return NetGlobulusSimiParser_call(self);
+- (SMExpr *)call {
+  return SMParser_call(self);
 }
 
-- (NetGlobulusSimiExpr *)finishCallWithNetGlobulusSimiExpr:(NetGlobulusSimiExpr *)callee {
-  return NetGlobulusSimiParser_finishCallWithNetGlobulusSimiExpr_(self, callee);
+- (SMExpr *)finishCallWithSMExpr:(SMExpr *)callee {
+  return SMParser_finishCallWithSMExpr_(self, callee);
 }
 
-- (NetGlobulusSimiExpr *)primary {
-  return NetGlobulusSimiParser_primary(self);
+- (SMExpr *)primary {
+  return SMParser_primary(self);
 }
 
-- (NetGlobulusSimiExpr *)objectLiteral {
-  return NetGlobulusSimiParser_objectLiteral(self);
+- (SMExpr *)objectLiteral {
+  return SMParser_objectLiteral(self);
 }
 
 - (void)matchAllNewlines {
-  NetGlobulusSimiParser_matchAllNewlines(self);
+  SMParser_matchAllNewlines(self);
 }
 
-- (jboolean)matchSequenceWithNetGlobulusSimiTokenTypeArray:(IOSObjectArray *)types {
-  return NetGlobulusSimiParser_matchSequenceWithNetGlobulusSimiTokenTypeArray_(self, types);
+- (jboolean)matchSequenceWithSMTokenTypeArray:(IOSObjectArray *)types {
+  return SMParser_matchSequenceWithSMTokenTypeArray_(self, types);
 }
 
-- (jboolean)matchWithNetGlobulusSimiTokenTypeArray:(IOSObjectArray *)types {
-  return NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, types);
+- (jboolean)matchWithSMTokenTypeArray:(IOSObjectArray *)types {
+  return SMParser_matchWithSMTokenTypeArray_(self, types);
 }
 
-- (NetGlobulusSimiToken *)consumeWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)type
-                                                 withNSString:(NSString *)message {
-  return NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, type, message);
+- (SMToken *)consumeWithSMTokenType:(SMTokenType *)type
+                       withNSString:(NSString *)message {
+  return SMParser_consumeWithSMTokenType_withNSString_(self, type, message);
 }
 
-- (jboolean)checkWithNetGlobulusSimiTokenType:(NetGlobulusSimiTokenType *)tokenType {
-  return NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, tokenType);
+- (jboolean)checkWithSMTokenType:(SMTokenType *)tokenType {
+  return SMParser_checkWithSMTokenType_(self, tokenType);
 }
 
-- (NetGlobulusSimiToken *)advance {
-  return NetGlobulusSimiParser_advance(self);
+- (SMToken *)advance {
+  return SMParser_advance(self);
 }
 
 - (jboolean)isAtEnd {
-  return NetGlobulusSimiParser_isAtEnd(self);
+  return SMParser_isAtEnd(self);
 }
 
-- (NetGlobulusSimiToken *)peek {
-  return NetGlobulusSimiParser_peek(self);
+- (SMToken *)peek {
+  return SMParser_peek(self);
 }
 
-- (jboolean)peekSequenceWithNetGlobulusSimiTokenTypeArray:(IOSObjectArray *)tokenTypes {
-  return NetGlobulusSimiParser_peekSequenceWithNetGlobulusSimiTokenTypeArray_(self, tokenTypes);
+- (jboolean)peekSequenceWithSMTokenTypeArray:(IOSObjectArray *)tokenTypes {
+  return SMParser_peekSequenceWithSMTokenTypeArray_(self, tokenTypes);
 }
 
-- (NetGlobulusSimiToken *)previous {
-  return NetGlobulusSimiParser_previous(self);
+- (SMToken *)previous {
+  return SMParser_previous(self);
 }
 
-- (NetGlobulusSimiToken *)operatorFromAssignWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)assignOp {
-  return NetGlobulusSimiParser_operatorFromAssignWithNetGlobulusSimiToken_(self, assignOp);
+- (SMToken *)operatorFromAssignWithSMToken:(SMToken *)assignOp {
+  return SMParser_operatorFromAssignWithSMToken_(self, assignOp);
 }
 
-- (NetGlobulusSimiParser_ParseError *)errorWithNetGlobulusSimiToken:(NetGlobulusSimiToken *)token
-                                                       withNSString:(NSString *)message {
-  return NetGlobulusSimiParser_errorWithNetGlobulusSimiToken_withNSString_(self, token, message);
+- (SMParser_ParseError *)errorWithSMToken:(SMToken *)token
+                             withNSString:(NSString *)message {
+  return SMParser_errorWithSMToken_withNSString_(self, token, message);
 }
 
 - (void)synchronize {
-  NetGlobulusSimiParser_synchronize(self);
+  SMParser_synchronize(self);
 }
 
 - (id<JavaUtilList>)getAnnotations {
-  return NetGlobulusSimiParser_getAnnotations(self);
+  return SMParser_getAnnotations(self);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x0, -1, -1, -1, 2, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt_Class;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt_Annotation;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, 5, 4, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, 6, 4, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, 7, 4, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt_Expression;", 0x2, 8, 4, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt_Class;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt_Annotation;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, 5, 4, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, 6, 4, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, 7, 4, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMStmt_Expression;", 0x2, 8, 4, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 9, 4, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiStmt_Function;", 0x2, 10, 11, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr_Block;", 0x2, 12, 13, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr_Block;", 0x2, 12, 14, -1, -1, -1, -1 },
+    { NULL, "LSMStmt_Function;", 0x2, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LSMExpr_Block;", 0x2, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LSMExpr_Block;", 0x2, 12, 14, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x2, 15, 13, -1, 16, -1, -1 },
     { NULL, "LJavaLangInteger;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, 17, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, 18, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, 19, 20, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, 17, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, 18, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, 19, 20, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMExpr;", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x82, 21, 22, -1, -1, -1, -1 },
     { NULL, "Z", 0x82, 23, 22, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiToken;", 0x2, 24, 25, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x2, 24, 25, -1, -1, -1, -1 },
     { NULL, "Z", 0x2, 26, 27, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiToken;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiToken;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x82, 28, 22, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiToken;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiToken;", 0x2, 29, 30, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiParser_ParseError;", 0x2, 31, 32, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x2, 29, 30, -1, -1, -1, -1 },
+    { NULL, "LSMParser_ParseError;", 0x2, 31, 32, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x2, -1, -1, -1, 33, -1, -1 },
   };
@@ -584,7 +584,7 @@ __attribute__((unused)) static NetGlobulusSimiParser_$Lambda$1 *create_NetGlobul
   methods[18].selector = @selector(checkStatementEndWithBoolean:);
   methods[19].selector = @selector(functionWithNSString:);
   methods[20].selector = @selector(blockWithNSString:withBoolean:);
-  methods[21].selector = @selector(blockWithNetGlobulusSimiToken:withNSString:withBoolean:);
+  methods[21].selector = @selector(blockWithSMToken:withNSString:withBoolean:);
   methods[22].selector = @selector(paramsWithNSString:withBoolean:);
   methods[23].selector = @selector(peekParams);
   methods[24].selector = @selector(assignment);
@@ -597,21 +597,21 @@ __attribute__((unused)) static NetGlobulusSimiParser_$Lambda$1 *create_NetGlobul
   methods[31].selector = @selector(nilCoalescence);
   methods[32].selector = @selector(unary);
   methods[33].selector = @selector(call);
-  methods[34].selector = @selector(finishCallWithNetGlobulusSimiExpr:);
+  methods[34].selector = @selector(finishCallWithSMExpr:);
   methods[35].selector = @selector(primary);
   methods[36].selector = @selector(objectLiteral);
   methods[37].selector = @selector(matchAllNewlines);
-  methods[38].selector = @selector(matchSequenceWithNetGlobulusSimiTokenTypeArray:);
-  methods[39].selector = @selector(matchWithNetGlobulusSimiTokenTypeArray:);
-  methods[40].selector = @selector(consumeWithNetGlobulusSimiTokenType:withNSString:);
-  methods[41].selector = @selector(checkWithNetGlobulusSimiTokenType:);
+  methods[38].selector = @selector(matchSequenceWithSMTokenTypeArray:);
+  methods[39].selector = @selector(matchWithSMTokenTypeArray:);
+  methods[40].selector = @selector(consumeWithSMTokenType:withNSString:);
+  methods[41].selector = @selector(checkWithSMTokenType:);
   methods[42].selector = @selector(advance);
   methods[43].selector = @selector(isAtEnd);
   methods[44].selector = @selector(peek);
-  methods[45].selector = @selector(peekSequenceWithNetGlobulusSimiTokenTypeArray:);
+  methods[45].selector = @selector(peekSequenceWithSMTokenTypeArray:);
   methods[46].selector = @selector(previous);
-  methods[47].selector = @selector(operatorFromAssignWithNetGlobulusSimiToken:);
-  methods[48].selector = @selector(errorWithNetGlobulusSimiToken:withNSString:);
+  methods[47].selector = @selector(operatorFromAssignWithSMToken:);
+  methods[48].selector = @selector(errorWithSMToken:withNSString:);
   methods[49].selector = @selector(synchronize);
   methods[50].selector = @selector(getAnnotations);
   #pragma clang diagnostic pop
@@ -621,198 +621,198 @@ __attribute__((unused)) static NetGlobulusSimiParser_$Lambda$1 *create_NetGlobul
     { "current_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 36, -1 },
   };
-  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LToken;>;)V", "()Ljava/util/List<LStmt;>;", "statement", "Z", "printStatement", "returnStatement", "yieldStatement", "expressionStatement", "checkStatementEnd", "function", "LNSString;", "block", "LNSString;Z", "LNetGlobulusSimiToken;LNSString;Z", "params", "(Ljava/lang/String;Z)Ljava/util/List<LToken;>;", "or", "and", "finishCall", "LNetGlobulusSimiExpr;", "matchSequence", "[LNetGlobulusSimiTokenType;", "match", "consume", "LNetGlobulusSimiTokenType;LNSString;", "check", "LNetGlobulusSimiTokenType;", "peekSequence", "operatorFromAssign", "LNetGlobulusSimiToken;", "error", "LNetGlobulusSimiToken;LNSString;", "()Ljava/util/List<LStmt$Annotation;>;", &NetGlobulusSimiParser_LAMBDA, "Ljava/util/List<LToken;>;", "Ljava/util/List<LStmt$Annotation;>;", "LNetGlobulusSimiParser_ParseError;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiParser = { "Parser", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 51, 4, -1, 37, -1, -1, -1 };
-  return &_NetGlobulusSimiParser;
+  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LToken;>;)V", "()Ljava/util/List<LStmt;>;", "statement", "Z", "printStatement", "returnStatement", "yieldStatement", "expressionStatement", "checkStatementEnd", "function", "LNSString;", "block", "LNSString;Z", "LSMToken;LNSString;Z", "params", "(Ljava/lang/String;Z)Ljava/util/List<LToken;>;", "or", "and", "finishCall", "LSMExpr;", "matchSequence", "[LSMTokenType;", "match", "consume", "LSMTokenType;LNSString;", "check", "LSMTokenType;", "peekSequence", "operatorFromAssign", "LSMToken;", "error", "LSMToken;LNSString;", "()Ljava/util/List<LStmt$Annotation;>;", &SMParser_LAMBDA, "Ljava/util/List<LToken;>;", "Ljava/util/List<LStmt$Annotation;>;", "LSMParser_ParseError;" };
+  static const J2ObjcClassInfo _SMParser = { "Parser", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 51, 4, -1, 37, -1, -1, -1 };
+  return &_SMParser;
 }
 
 @end
 
-void NetGlobulusSimiParser_initWithJavaUtilList_(NetGlobulusSimiParser *self, id<JavaUtilList> tokens) {
+void SMParser_initWithJavaUtilList_(SMParser *self, id<JavaUtilList> tokens) {
   NSObject_init(self);
   self->current_ = 0;
   self->annotations_ = new_JavaUtilArrayList_init();
   self->tokens_ = tokens;
 }
 
-NetGlobulusSimiParser *new_NetGlobulusSimiParser_initWithJavaUtilList_(id<JavaUtilList> tokens) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiParser, initWithJavaUtilList_, tokens)
+SMParser *new_SMParser_initWithJavaUtilList_(id<JavaUtilList> tokens) {
+  J2OBJC_NEW_IMPL(SMParser, initWithJavaUtilList_, tokens)
 }
 
-NetGlobulusSimiParser *create_NetGlobulusSimiParser_initWithJavaUtilList_(id<JavaUtilList> tokens) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiParser, initWithJavaUtilList_, tokens)
+SMParser *create_SMParser_initWithJavaUtilList_(id<JavaUtilList> tokens) {
+  J2OBJC_CREATE_IMPL(SMParser, initWithJavaUtilList_, tokens)
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_expression(NetGlobulusSimiParser *self) {
-  return NetGlobulusSimiParser_assignment(self);
+SMExpr *SMParser_expression(SMParser *self) {
+  return SMParser_assignment(self);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_declaration(NetGlobulusSimiParser *self) {
+SMStmt *SMParser_declaration(SMParser *self) {
   @try {
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, CLASS) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      return NetGlobulusSimiParser_classDeclaration(self);
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, CLASS) } count:1 type:SMTokenType_class_()])) {
+      return SMParser_classDeclaration(self);
     }
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, DEF), JreLoadEnum(NetGlobulusSimiTokenType, NATIVE) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
-      return NetGlobulusSimiParser_functionWithNSString_(self, @"function");
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DEF), JreLoadEnum(SMTokenType, NATIVE) } count:2 type:SMTokenType_class_()])) {
+      return SMParser_functionWithNSString_(self, @"function");
     }
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, BANG) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      return NetGlobulusSimiParser_annotation(self);
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, BANG) } count:1 type:SMTokenType_class_()])) {
+      return SMParser_annotation(self);
     }
-    return NetGlobulusSimiParser_statementWithBoolean_(self, false);
+    return SMParser_statementWithBoolean_(self, false);
   }
-  @catch (NetGlobulusSimiParser_ParseError *error) {
-    NetGlobulusSimiParser_synchronize(self);
+  @catch (SMParser_ParseError *error) {
+    SMParser_synchronize(self);
     return nil;
   }
 }
 
-NetGlobulusSimiStmt_Class *NetGlobulusSimiParser_classDeclaration(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiToken *name = NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), @"Expect class name.");
+SMStmt_Class *SMParser_classDeclaration(SMParser *self) {
+  SMToken *name = SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), @"Expect class name.");
   id<JavaUtilList> superclasses = nil;
-  if (NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN))) {
-    superclasses = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(NetGlobulusSimiParser_paramsWithNSString_withBoolean_(self, @"class", false))) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(NetGlobulusSimiParser_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  if (SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN))) {
+    superclasses = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(SMParser_paramsWithNSString_withBoolean_(self, @"class", false))) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMParser_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
   }
-  (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, COLON), @"Expect ':' before class body.");
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, COLON), @"Expect ':' before class body.");
   id<JavaUtilList> constants = new_JavaUtilArrayList_init();
   id<JavaUtilList> innerClasses = new_JavaUtilArrayList_init();
   id<JavaUtilList> methods = new_JavaUtilArrayList_init();
-  while (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, END)) && !NetGlobulusSimiParser_isAtEnd(self)) {
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
+  while (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, END)) && !SMParser_isAtEnd(self)) {
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NEWLINE) } count:1 type:SMTokenType_class_()])) {
       continue;
     }
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, DEF), JreLoadEnum(NetGlobulusSimiTokenType, NATIVE) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
-      [methods addWithId:NetGlobulusSimiParser_functionWithNSString_(self, @"method")];
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DEF), JreLoadEnum(SMTokenType, NATIVE) } count:2 type:SMTokenType_class_()])) {
+      [methods addWithId:SMParser_functionWithNSString_(self, @"method")];
     }
-    else if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, CLASS) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      [innerClasses addWithId:NetGlobulusSimiParser_classDeclaration(self)];
+    else if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, CLASS) } count:1 type:SMTokenType_class_()])) {
+      [innerClasses addWithId:SMParser_classDeclaration(self)];
     }
-    else if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, BANG) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      [((id<JavaUtilList>) nil_chk(self->annotations_)) addWithId:NetGlobulusSimiParser_annotation(self)];
+    else if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, BANG) } count:1 type:SMTokenType_class_()])) {
+      [((id<JavaUtilList>) nil_chk(self->annotations_)) addWithId:SMParser_annotation(self)];
     }
     else {
-      NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_assignment(self);
-      if ([expr isKindOfClass:[NetGlobulusSimiExpr_Assign class]]) {
-        [constants addWithId:(NetGlobulusSimiExpr_Assign *) cast_chk(expr, [NetGlobulusSimiExpr_Assign class])];
+      SMExpr *expr = SMParser_assignment(self);
+      if ([expr isKindOfClass:[SMExpr_Assign class]]) {
+        [constants addWithId:(SMExpr_Assign *) cast_chk(expr, [SMExpr_Assign class])];
       }
     }
   }
-  (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, END), @"Expect 'end' after class body.");
-  return new_NetGlobulusSimiStmt_Class_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(name, superclasses, constants, innerClasses, methods, NetGlobulusSimiParser_getAnnotations(self));
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, END), @"Expect 'end' after class body.");
+  return new_SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(name, superclasses, constants, innerClasses, methods, SMParser_getAnnotations(self));
 }
 
-NetGlobulusSimiStmt_Annotation *NetGlobulusSimiParser_annotation(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = nil;
-  if (((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_peek(self)))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, LEFT_BRACKET)) {
-    (void) NetGlobulusSimiParser_advance(self);
-    expr = NetGlobulusSimiParser_objectLiteral(self);
+SMStmt_Annotation *SMParser_annotation(SMParser *self) {
+  SMExpr *expr = nil;
+  if (((SMToken *) nil_chk(SMParser_peek(self)))->type_ == JreLoadEnum(SMTokenType, LEFT_BRACKET)) {
+    (void) SMParser_advance(self);
+    expr = SMParser_objectLiteral(self);
   }
-  else if (((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_peek(self)))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER)) {
-    expr = NetGlobulusSimiParser_call(self);
+  else if (((SMToken *) nil_chk(SMParser_peek(self)))->type_ == JreLoadEnum(SMTokenType, IDENTIFIER)) {
+    expr = SMParser_call(self);
   }
   else {
-    [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithNetGlobulusSimiToken:NetGlobulusSimiParser_peek(self) withNSString:@"Annotation expect either an object literal or a constructor invocation!"];
+    [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:SMParser_peek(self) withNSString:@"Annotation expect either an object literal or a constructor invocation!"];
   }
-  NetGlobulusSimiParser_checkStatementEndWithBoolean_(self, false);
-  return new_NetGlobulusSimiStmt_Annotation_initWithNetGlobulusSimiExpr_(expr);
+  SMParser_checkStatementEndWithBoolean_(self, false);
+  return new_SMStmt_Annotation_initWithSMExpr_(expr);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_statementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda) {
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, FOR) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_forStatement(self);
+SMStmt *SMParser_statementWithBoolean_(SMParser *self, jboolean lambda) {
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, FOR) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_forStatement(self);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, IF) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_ifStatement(self);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IF) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_ifStatement(self);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, WHEN) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_whenStatement(self);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, WHEN) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_whenStatement(self);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, PRINT) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_printStatementWithBoolean_(self, lambda);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, PRINT) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_printStatementWithBoolean_(self, lambda);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, RETURN) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_returnStatementWithBoolean_(self, lambda);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, RETURN) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_returnStatementWithBoolean_(self, lambda);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, WHILE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_whileStatement(self);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, WHILE) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_whileStatement(self);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, BREAK) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_breakStatement(self);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, BREAK) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_breakStatement(self);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, CONTINUE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_continueStatement(self);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, CONTINUE) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_continueStatement(self);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, RESCUE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_rescueStatement(self);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, RESCUE) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_rescueStatement(self);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, YIELD) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_yieldStatementWithBoolean_(self, lambda);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, YIELD) } count:1 type:SMTokenType_class_()])) {
+    return SMParser_yieldStatementWithBoolean_(self, lambda);
   }
-  return NetGlobulusSimiParser_expressionStatementWithBoolean_(self, lambda);
+  return SMParser_expressionStatementWithBoolean_(self, lambda);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_forStatement(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiToken *var = NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), @"Expected identifier.");
-  (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IN), @"Expected 'in'.");
-  NetGlobulusSimiExpr *iterable = NetGlobulusSimiParser_expression(self);
-  NetGlobulusSimiExpr_Block *body = NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, @"for", true);
-  return new_NetGlobulusSimiStmt_For_initWithNetGlobulusSimiExpr_Variable_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(var), iterable, body);
+SMStmt *SMParser_forStatement(SMParser *self) {
+  SMToken *var = SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), @"Expected identifier.");
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IN), @"Expected 'in'.");
+  SMExpr *iterable = SMParser_expression(self);
+  SMExpr_Block *body = SMParser_blockWithNSString_withBoolean_(self, @"for", true);
+  return new_SMStmt_For_initWithSMExpr_Variable_withSMExpr_withSMExpr_Block_(new_SMExpr_Variable_initWithSMToken_(var), iterable, body);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_ifStatement(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *condition = NetGlobulusSimiParser_expression(self);
-  NetGlobulusSimiExpr_Block *thenBranch = NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, @"if", true);
-  NetGlobulusSimiExpr_Block *elseBranch = nil;
+SMStmt *SMParser_ifStatement(SMParser *self) {
+  SMExpr *condition = SMParser_expression(self);
+  SMExpr_Block *thenBranch = SMParser_blockWithNSString_withBoolean_(self, @"if", true);
+  SMExpr_Block *elseBranch = nil;
   id<JavaUtilList> elsifs = new_JavaUtilArrayList_init();
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, ELSIF), JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
-    if (((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_previous(self)))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, ELSIF)) {
-      [elsifs addWithId:new_NetGlobulusSimiStmt_Elsif_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(NetGlobulusSimiParser_expression(self), NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, @"elsif", true))];
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, ELSIF), JreLoadEnum(SMTokenType, NEWLINE) } count:2 type:SMTokenType_class_()])) {
+    if (((SMToken *) nil_chk(SMParser_previous(self)))->type_ == JreLoadEnum(SMTokenType, ELSIF)) {
+      [elsifs addWithId:new_SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(SMParser_expression(self), SMParser_blockWithNSString_withBoolean_(self, @"elsif", true))];
     }
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, ELSE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    elseBranch = NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, @"else", true);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, ELSE) } count:1 type:SMTokenType_class_()])) {
+    elseBranch = SMParser_blockWithNSString_withBoolean_(self, @"else", true);
   }
-  return new_NetGlobulusSimiStmt_If_initWithNetGlobulusSimiStmt_Elsif_withJavaUtilList_withNetGlobulusSimiExpr_Block_(new_NetGlobulusSimiStmt_Elsif_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(condition, thenBranch), elsifs, elseBranch);
+  return new_SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(new_SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(condition, thenBranch), elsifs, elseBranch);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_whenStatement(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiToken *when = NetGlobulusSimiParser_previous(self);
-  NetGlobulusSimiExpr *left = NetGlobulusSimiParser_call(self);
-  (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, COLON), @"Expect a ':' after when.");
-  (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE), @"Expect a newline after when ':.");
-  NetGlobulusSimiStmt_Elsif *firstElsif = nil;
+SMStmt *SMParser_whenStatement(SMParser *self) {
+  SMToken *when = SMParser_previous(self);
+  SMExpr *left = SMParser_call(self);
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, COLON), @"Expect a ':' after when.");
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, NEWLINE), @"Expect a newline after when ':.");
+  SMStmt_Elsif *firstElsif = nil;
   id<JavaUtilList> elsifs = new_JavaUtilArrayList_init();
-  NetGlobulusSimiExpr_Block *elseBranch = nil;
-  while (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, END)) && !NetGlobulusSimiParser_isAtEnd(self)) {
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
+  SMExpr_Block *elseBranch = nil;
+  while (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, END)) && !SMParser_isAtEnd(self)) {
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NEWLINE) } count:1 type:SMTokenType_class_()])) {
       continue;
     }
     id<JavaUtilList> conditions = new_JavaUtilArrayList_init();
     do {
-      NetGlobulusSimiToken *op;
-      if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, IS), JreLoadEnum(NetGlobulusSimiTokenType, ISNOT), JreLoadEnum(NetGlobulusSimiTokenType, IN), JreLoadEnum(NetGlobulusSimiTokenType, NOTIN) } count:4 type:NetGlobulusSimiTokenType_class_()])) {
-        op = NetGlobulusSimiParser_previous(self);
+      SMToken *op;
+      if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IS), JreLoadEnum(SMTokenType, ISNOT), JreLoadEnum(SMTokenType, IN), JreLoadEnum(SMTokenType, NOTIN) } count:4 type:SMTokenType_class_()])) {
+        op = SMParser_previous(self);
       }
-      else if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, ELSE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-        elseBranch = NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, @"else", true);
+      else if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, ELSE) } count:1 type:SMTokenType_class_()])) {
+        elseBranch = SMParser_blockWithNSString_withBoolean_(self, @"else", true);
         break;
       }
       else {
-        op = new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(JreLoadEnum(NetGlobulusSimiTokenType, EQUAL_EQUAL), nil, nil, ((NetGlobulusSimiToken *) nil_chk(when))->line_);
+        op = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, EQUAL_EQUAL), nil, nil, ((SMToken *) nil_chk(when))->line_);
       }
-      NetGlobulusSimiExpr *right = NetGlobulusSimiParser_call(self);
-      [conditions addWithId:new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(left, op, right)];
-      NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, OR) } count:1 type:NetGlobulusSimiTokenType_class_()]);
+      SMExpr *right = SMParser_call(self);
+      [conditions addWithId:new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(left, op, right)];
+      SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, OR) } count:1 type:SMTokenType_class_()]);
     }
-    while (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, COLON)));
+    while (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, COLON)));
     if ([conditions isEmpty]) {
       continue;
     }
-    NetGlobulusSimiExpr *condition = [conditions getWithInt:0];
-    NetGlobulusSimiToken *or_ = new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(JreLoadEnum(NetGlobulusSimiTokenType, OR), nil, nil, ((NetGlobulusSimiToken *) nil_chk(when))->line_);
+    SMExpr *condition = [conditions getWithInt:0];
+    SMToken *or_ = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, OR), nil, nil, ((SMToken *) nil_chk(when))->line_);
     for (jint i = 1; i < [conditions size]; i++) {
-      condition = new_NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(condition, or_, [conditions getWithInt:i]);
+      condition = new_SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(condition, or_, [conditions getWithInt:i]);
     }
-    NetGlobulusSimiStmt_Elsif *elsif = new_NetGlobulusSimiStmt_Elsif_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(condition, NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, @"when", true));
+    SMStmt_Elsif *elsif = new_SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(condition, SMParser_blockWithNSString_withBoolean_(self, @"when", true));
     if (firstElsif == nil) {
       firstElsif = elsif;
     }
@@ -820,162 +820,162 @@ NetGlobulusSimiStmt *NetGlobulusSimiParser_whenStatement(NetGlobulusSimiParser *
       [elsifs addWithId:elsif];
     }
   }
-  (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, END), @"Expect end at the end of when.");
-  return new_NetGlobulusSimiStmt_If_initWithNetGlobulusSimiStmt_Elsif_withJavaUtilList_withNetGlobulusSimiExpr_Block_(firstElsif, elsifs, elseBranch);
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, END), @"Expect end at the end of when.");
+  return new_SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(firstElsif, elsifs, elseBranch);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_printStatementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda) {
-  NetGlobulusSimiExpr *value = ((NetGlobulusSimiStmt_Expression *) nil_chk(NetGlobulusSimiParser_expressionStatementWithBoolean_(self, lambda)))->expression_;
-  return new_NetGlobulusSimiStmt_Print_initWithNetGlobulusSimiExpr_(value);
+SMStmt *SMParser_printStatementWithBoolean_(SMParser *self, jboolean lambda) {
+  SMExpr *value = ((SMStmt_Expression *) nil_chk(SMParser_expressionStatementWithBoolean_(self, lambda)))->expression_;
+  return new_SMStmt_Print_initWithSMExpr_(value);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_returnStatementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda) {
-  NetGlobulusSimiToken *keyword = NetGlobulusSimiParser_previous(self);
-  NetGlobulusSimiExpr *value = nil;
-  if (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE))) {
-    value = NetGlobulusSimiParser_expression(self);
+SMStmt *SMParser_returnStatementWithBoolean_(SMParser *self, jboolean lambda) {
+  SMToken *keyword = SMParser_previous(self);
+  SMExpr *value = nil;
+  if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, NEWLINE))) {
+    value = SMParser_expression(self);
   }
-  NetGlobulusSimiParser_checkStatementEndWithBoolean_(self, lambda);
-  return new_NetGlobulusSimiStmt_Return_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(keyword, value);
+  SMParser_checkStatementEndWithBoolean_(self, lambda);
+  return new_SMStmt_Return_initWithSMToken_withSMExpr_(keyword, value);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_yieldStatementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda) {
-  NetGlobulusSimiToken *keyword = NetGlobulusSimiParser_previous(self);
-  NetGlobulusSimiExpr *value = nil;
-  if (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE))) {
-    value = NetGlobulusSimiParser_expression(self);
+SMStmt *SMParser_yieldStatementWithBoolean_(SMParser *self, jboolean lambda) {
+  SMToken *keyword = SMParser_previous(self);
+  SMExpr *value = nil;
+  if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, NEWLINE))) {
+    value = SMParser_expression(self);
   }
-  NetGlobulusSimiParser_checkStatementEndWithBoolean_(self, lambda);
-  return new_NetGlobulusSimiStmt_Yield_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(keyword, value);
+  SMParser_checkStatementEndWithBoolean_(self, lambda);
+  return new_SMStmt_Yield_initWithSMToken_withSMExpr_(keyword, value);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_whileStatement(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *condition = NetGlobulusSimiParser_expression(self);
-  NetGlobulusSimiExpr_Block *block = NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, @"while", true);
-  return new_NetGlobulusSimiStmt_While_initWithNetGlobulusSimiExpr_withNetGlobulusSimiExpr_Block_(condition, block);
+SMStmt *SMParser_whileStatement(SMParser *self) {
+  SMExpr *condition = SMParser_expression(self);
+  SMExpr_Block *block = SMParser_blockWithNSString_withBoolean_(self, @"while", true);
+  return new_SMStmt_While_initWithSMExpr_withSMExpr_Block_(condition, block);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_breakStatement(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiToken *name = NetGlobulusSimiParser_previous(self);
-  return new_NetGlobulusSimiStmt_Break_initWithNetGlobulusSimiToken_(name);
+SMStmt *SMParser_breakStatement(SMParser *self) {
+  SMToken *name = SMParser_previous(self);
+  return new_SMStmt_Break_initWithSMToken_(name);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_continueStatement(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiToken *name = NetGlobulusSimiParser_previous(self);
-  return new_NetGlobulusSimiStmt_Continue_initWithNetGlobulusSimiToken_(name);
+SMStmt *SMParser_continueStatement(SMParser *self) {
+  SMToken *name = SMParser_previous(self);
+  return new_SMStmt_Continue_initWithSMToken_(name);
 }
 
-NetGlobulusSimiStmt *NetGlobulusSimiParser_rescueStatement(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiToken *keyword = NetGlobulusSimiParser_previous(self);
-  NetGlobulusSimiExpr_Block *block = NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, @"rescue", true);
-  if ([((id<JavaUtilList>) nil_chk(((NetGlobulusSimiExpr_Block *) nil_chk(block))->params_)) size] != 1) {
-    [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithNetGlobulusSimiToken:keyword withNSString:@"Rescue block expects exactly 1 parameter!"];
+SMStmt *SMParser_rescueStatement(SMParser *self) {
+  SMToken *keyword = SMParser_previous(self);
+  SMExpr_Block *block = SMParser_blockWithNSString_withBoolean_(self, @"rescue", true);
+  if ([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(block))->params_)) size] != 1) {
+    [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:keyword withNSString:@"Rescue block expects exactly 1 parameter!"];
   }
-  return new_NetGlobulusSimiStmt_Rescue_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_(keyword, block);
+  return new_SMStmt_Rescue_initWithSMToken_withSMExpr_Block_(keyword, block);
 }
 
-NetGlobulusSimiStmt_Expression *NetGlobulusSimiParser_expressionStatementWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_expression(self);
-  if (!([expr isKindOfClass:[NetGlobulusSimiExpr_Assign class]]) || !([((NetGlobulusSimiExpr_Assign *) nil_chk(((NetGlobulusSimiExpr_Assign *) cast_chk(expr, [NetGlobulusSimiExpr_Assign class]))))->value_ isKindOfClass:[NetGlobulusSimiExpr_Block class]])) {
-    NetGlobulusSimiParser_checkStatementEndWithBoolean_(self, lambda);
+SMStmt_Expression *SMParser_expressionStatementWithBoolean_(SMParser *self, jboolean lambda) {
+  SMExpr *expr = SMParser_expression(self);
+  if (!([expr isKindOfClass:[SMExpr_Assign class]]) || !([((SMExpr_Assign *) nil_chk(((SMExpr_Assign *) cast_chk(expr, [SMExpr_Assign class]))))->value_ isKindOfClass:[SMExpr_Block class]])) {
+    SMParser_checkStatementEndWithBoolean_(self, lambda);
   }
-  return new_NetGlobulusSimiStmt_Expression_initWithNetGlobulusSimiExpr_(expr);
+  return new_SMStmt_Expression_initWithSMExpr_(expr);
 }
 
-void NetGlobulusSimiParser_checkStatementEndWithBoolean_(NetGlobulusSimiParser *self, jboolean lambda) {
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
+void SMParser_checkStatementEndWithBoolean_(SMParser *self, jboolean lambda) {
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NEWLINE) } count:1 type:SMTokenType_class_()])) {
     return;
   }
   if (lambda) {
-    NetGlobulusSimiToken *token = NetGlobulusSimiParser_peek(self);
-    if (((NetGlobulusSimiToken *) nil_chk(token))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, COMMA) || token->type_ == JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN) || token->type_ == JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_BRACKET)) {
+    SMToken *token = SMParser_peek(self);
+    if (((SMToken *) nil_chk(token))->type_ == JreLoadEnum(SMTokenType, COMMA) || token->type_ == JreLoadEnum(SMTokenType, RIGHT_PAREN) || token->type_ == JreLoadEnum(SMTokenType, RIGHT_BRACKET)) {
       return;
     }
   }
-  (void) NetGlobulusSimiParser_errorWithNetGlobulusSimiToken_withNSString_(self, NetGlobulusSimiParser_peek(self), @"Unterminated lambda expression!");
+  (void) SMParser_errorWithSMToken_withNSString_(self, SMParser_peek(self), @"Unterminated lambda expression!");
 }
 
-NetGlobulusSimiStmt_Function *NetGlobulusSimiParser_functionWithNSString_(NetGlobulusSimiParser *self, NSString *kind) {
-  NetGlobulusSimiToken *declaration = NetGlobulusSimiParser_previous(self);
-  NetGlobulusSimiToken *name = NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), JreStrcat("$$$", @"Expect ", kind, @" name."));
-  NSString *blockKind = [((NSString *) nil_chk(((NetGlobulusSimiToken *) nil_chk(name))->lexeme_)) isEqual:NetGlobulusSimiConstants_INIT] ? NetGlobulusSimiConstants_INIT : kind;
-  NetGlobulusSimiExpr_Block *block = NetGlobulusSimiParser_blockWithNetGlobulusSimiToken_withNSString_withBoolean_(self, declaration, blockKind, false);
-  if ([name->lexeme_ isEqual:NetGlobulusSimiConstants_INIT] && [((NetGlobulusSimiExpr_Block *) nil_chk(block)) isEmpty]) {
+SMStmt_Function *SMParser_functionWithNSString_(SMParser *self, NSString *kind) {
+  SMToken *declaration = SMParser_previous(self);
+  SMToken *name = SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), JreStrcat("$$$", @"Expect ", kind, @" name."));
+  NSString *blockKind = [((NSString *) nil_chk(((SMToken *) nil_chk(name))->lexeme_)) isEqual:SMConstants_INIT] ? SMConstants_INIT : kind;
+  SMExpr_Block *block = SMParser_blockWithSMToken_withNSString_withBoolean_(self, declaration, blockKind, false);
+  if ([name->lexeme_ isEqual:SMConstants_INIT] && [((SMExpr_Block *) nil_chk(block)) isEmpty]) {
     id<JavaUtilList> statements = new_JavaUtilArrayList_init();
-    for (NetGlobulusSimiToken * __strong param in nil_chk(((NetGlobulusSimiExpr_Block *) nil_chk(block))->params_)) {
-      [statements addWithId:new_NetGlobulusSimiStmt_Expression_initWithNetGlobulusSimiExpr_(new_NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(name, new_NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(NetGlobulusSimiToken_self__()), new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(param), new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(param)))];
+    for (SMToken * __strong param in nil_chk(((SMExpr_Block *) nil_chk(block))->params_)) {
+      [statements addWithId:new_SMStmt_Expression_initWithSMExpr_(new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(name, new_SMExpr_Self_initWithSMToken_(SMToken_self__()), new_SMExpr_Variable_initWithSMToken_(param), new_SMExpr_Variable_initWithSMToken_(param)))];
     }
-    block = new_NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(declaration, block->params_, statements);
+    block = new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(declaration, block->params_, statements);
   }
-  return new_NetGlobulusSimiStmt_Function_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_Block_withJavaUtilList_(name, block, NetGlobulusSimiParser_getAnnotations(self));
+  return new_SMStmt_Function_initWithSMToken_withSMExpr_Block_withJavaUtilList_(name, block, SMParser_getAnnotations(self));
 }
 
-NetGlobulusSimiExpr_Block *NetGlobulusSimiParser_blockWithNSString_withBoolean_(NetGlobulusSimiParser *self, NSString *kind, jboolean lambda) {
-  return NetGlobulusSimiParser_blockWithNetGlobulusSimiToken_withNSString_withBoolean_(self, nil, kind, lambda);
+SMExpr_Block *SMParser_blockWithNSString_withBoolean_(SMParser *self, NSString *kind, jboolean lambda) {
+  return SMParser_blockWithSMToken_withNSString_withBoolean_(self, nil, kind, lambda);
 }
 
-NetGlobulusSimiExpr_Block *NetGlobulusSimiParser_blockWithNetGlobulusSimiToken_withNSString_withBoolean_(NetGlobulusSimiParser *self, NetGlobulusSimiToken *declaration, NSString *kind, jboolean lambda) {
+SMExpr_Block *SMParser_blockWithSMToken_withNSString_withBoolean_(SMParser *self, SMToken *declaration, NSString *kind, jboolean lambda) {
   if (declaration == nil) {
-    declaration = NetGlobulusSimiParser_previous(self);
+    declaration = SMParser_previous(self);
   }
-  id<JavaUtilList> params = NetGlobulusSimiParser_paramsWithNSString_withBoolean_(self, kind, lambda);
-  (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, COLON), @"Expected a ':' at the start of block!");
+  id<JavaUtilList> params = SMParser_paramsWithNSString_withBoolean_(self, kind, lambda);
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, COLON), @"Expected a ':' at the start of block!");
   id<JavaUtilList> statements = new_JavaUtilArrayList_init();
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    while (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, END)) && !NetGlobulusSimiParser_isAtEnd(self)) {
-      if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE), JreLoadEnum(NetGlobulusSimiTokenType, PASS) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NEWLINE) } count:1 type:SMTokenType_class_()])) {
+    while (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, END)) && !SMParser_isAtEnd(self)) {
+      if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NEWLINE), JreLoadEnum(SMTokenType, PASS) } count:2 type:SMTokenType_class_()])) {
         continue;
       }
-      [statements addWithId:NetGlobulusSimiParser_declaration(self)];
+      [statements addWithId:SMParser_declaration(self)];
     }
-    (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, END), @"Expect 'end' after block.");
+    (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, END), @"Expect 'end' after block.");
   }
   else {
-    NetGlobulusSimiStmt *stmt = NetGlobulusSimiParser_statementWithBoolean_(self, true);
-    if ([((NSString *) nil_chk(kind)) isEqual:NetGlobulusSimiParser_LAMBDA] && [stmt isKindOfClass:[NetGlobulusSimiStmt_Expression class]]) {
-      stmt = new_NetGlobulusSimiStmt_Return_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(declaration, ((NetGlobulusSimiStmt_Expression *) nil_chk(((NetGlobulusSimiStmt_Expression *) cast_chk(stmt, [NetGlobulusSimiStmt_Expression class]))))->expression_);
+    SMStmt *stmt = SMParser_statementWithBoolean_(self, true);
+    if ([((NSString *) nil_chk(kind)) isEqual:SMParser_LAMBDA] && [stmt isKindOfClass:[SMStmt_Expression class]]) {
+      stmt = new_SMStmt_Return_initWithSMToken_withSMExpr_(declaration, ((SMStmt_Expression *) nil_chk(((SMStmt_Expression *) cast_chk(stmt, [SMStmt_Expression class]))))->expression_);
     }
     [statements addWithId:stmt];
   }
-  return new_NetGlobulusSimiExpr_Block_initWithNetGlobulusSimiToken_withJavaUtilList_withJavaUtilList_(declaration, params, statements);
+  return new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(declaration, params, statements);
 }
 
-id<JavaUtilList> NetGlobulusSimiParser_paramsWithNSString_withBoolean_(NetGlobulusSimiParser *self, NSString *kind, jboolean lambda) {
+id<JavaUtilList> SMParser_paramsWithNSString_withBoolean_(SMParser *self, NSString *kind, jboolean lambda) {
   id<JavaUtilList> params = new_JavaUtilArrayList_init();
-  if (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN))) {
-    if (lambda && !NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, COLON))) {
-      [params addWithId:NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), @"Expect parameter name.")];
+  if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN))) {
+    if (lambda && !SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, COLON))) {
+      [params addWithId:SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), @"Expect parameter name.")];
     }
   }
   else {
-    (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN), JreStrcat("$$$", @"Expect '(' after ", kind, @" name."));
-    if (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN))) {
+    (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, LEFT_PAREN), JreStrcat("$$$", @"Expect '(' after ", kind, @" name."));
+    if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN))) {
       do {
-        [params addWithId:NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), @"Expect parameter name.")];
+        [params addWithId:SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), @"Expect parameter name.")];
       }
-      while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, COMMA) } count:1 type:NetGlobulusSimiTokenType_class_()]));
+      while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, COMMA) } count:1 type:SMTokenType_class_()]));
     }
-    (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN), @"Expect ')' after parameters.");
+    (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN), @"Expect ')' after parameters.");
   }
   return params;
 }
 
-JavaLangInteger *NetGlobulusSimiParser_peekParams(NetGlobulusSimiParser *self) {
-  if (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN))) {
+JavaLangInteger *SMParser_peekParams(SMParser *self) {
+  if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN))) {
     return nil;
   }
-  if (NetGlobulusSimiParser_peekSequenceWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN), JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
+  if (SMParser_peekSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_PAREN), JreLoadEnum(SMTokenType, RIGHT_PAREN) } count:2 type:SMTokenType_class_()])) {
     return JavaLangInteger_valueOfWithInt_(0);
   }
   jint len = [((id<JavaUtilList>) nil_chk(self->tokens_)) size];
   jint count = 1;
   jint parenCount = 0;
   for (jint i = self->current_ + 1; i < len; i++) {
-    NetGlobulusSimiTokenType *type = ((NetGlobulusSimiToken *) nil_chk([self->tokens_ getWithInt:i]))->type_;
-    if (type == JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN) || type == JreLoadEnum(NetGlobulusSimiTokenType, LEFT_BRACKET) || type == JreLoadEnum(NetGlobulusSimiTokenType, DOLLAR_LEFT_BRACKET)) {
+    SMTokenType *type = ((SMToken *) nil_chk([self->tokens_ getWithInt:i]))->type_;
+    if (type == JreLoadEnum(SMTokenType, LEFT_PAREN) || type == JreLoadEnum(SMTokenType, LEFT_BRACKET) || type == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
       parenCount++;
     }
-    else if (type == JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN) || type == JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_BRACKET)) {
+    else if (type == JreLoadEnum(SMTokenType, RIGHT_PAREN) || type == JreLoadEnum(SMTokenType, RIGHT_BRACKET)) {
       if (parenCount == 0) {
         break;
       }
@@ -983,171 +983,171 @@ JavaLangInteger *NetGlobulusSimiParser_peekParams(NetGlobulusSimiParser *self) {
         parenCount--;
       }
     }
-    else if (type == JreLoadEnum(NetGlobulusSimiTokenType, COMMA) && parenCount == 0) {
+    else if (type == JreLoadEnum(SMTokenType, COMMA) && parenCount == 0) {
       count++;
     }
   }
   return JavaLangInteger_valueOfWithInt_(count);
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_assignment(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_or__(self);
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, PLUS_EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, MINUS_EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, STAR_EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, SLASH_EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, MOD_EQUAL) } count:6 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *equals = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *value = NetGlobulusSimiParser_assignment(self);
-    if ([expr isKindOfClass:[NetGlobulusSimiExpr_Literal class]] && [((NetGlobulusSimiExpr_Literal *) nil_chk(((NetGlobulusSimiExpr_Literal *) cast_chk(expr, [NetGlobulusSimiExpr_Literal class]))))->value_ isKindOfClass:[NetGlobulusSimiSimiValue_String class]]) {
-      NetGlobulusSimiToken *literal = new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(JreLoadEnum(NetGlobulusSimiTokenType, STRING), nil, ((NetGlobulusSimiExpr_Literal *) nil_chk(((NetGlobulusSimiExpr_Literal *) cast_chk(expr, [NetGlobulusSimiExpr_Literal class]))))->value_, ((NetGlobulusSimiToken *) nil_chk(equals))->line_);
-      return new_NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(literal, value, NetGlobulusSimiParser_getAnnotations(self));
+SMExpr *SMParser_assignment(SMParser *self) {
+  SMExpr *expr = SMParser_or__(self);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, EQUAL), JreLoadEnum(SMTokenType, PLUS_EQUAL), JreLoadEnum(SMTokenType, MINUS_EQUAL), JreLoadEnum(SMTokenType, STAR_EQUAL), JreLoadEnum(SMTokenType, SLASH_EQUAL), JreLoadEnum(SMTokenType, MOD_EQUAL) } count:6 type:SMTokenType_class_()])) {
+    SMToken *equals = SMParser_previous(self);
+    SMExpr *value = SMParser_assignment(self);
+    if ([expr isKindOfClass:[SMExpr_Literal class]] && [((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(expr, [SMExpr_Literal class]))))->value_ isKindOfClass:[SMSimiValue_String class]]) {
+      SMToken *literal = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, STRING), nil, ((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(expr, [SMExpr_Literal class]))))->value_, ((SMToken *) nil_chk(equals))->line_);
+      return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(literal, value, SMParser_getAnnotations(self));
     }
-    else if ([expr isKindOfClass:[NetGlobulusSimiExpr_Variable class]]) {
-      NetGlobulusSimiToken *name = ((NetGlobulusSimiExpr_Variable *) nil_chk(((NetGlobulusSimiExpr_Variable *) cast_chk(expr, [NetGlobulusSimiExpr_Variable class]))))->name_;
-      if (((NetGlobulusSimiToken *) nil_chk(equals))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, EQUAL)) {
-        return new_NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(name, value, NetGlobulusSimiParser_getAnnotations(self));
+    else if ([expr isKindOfClass:[SMExpr_Variable class]]) {
+      SMToken *name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(expr, [SMExpr_Variable class]))))->name_;
+      if (((SMToken *) nil_chk(equals))->type_ == JreLoadEnum(SMTokenType, EQUAL)) {
+        return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, value, SMParser_getAnnotations(self));
       }
       else {
-        return new_NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(name, new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(expr, NetGlobulusSimiParser_operatorFromAssignWithNetGlobulusSimiToken_(self, equals), value), NetGlobulusSimiParser_getAnnotations(self));
+        return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(expr, SMParser_operatorFromAssignWithSMToken_(self, equals), value), SMParser_getAnnotations(self));
       }
     }
-    else if ([expr isKindOfClass:[NetGlobulusSimiExpr_Get class]]) {
-      if (((NetGlobulusSimiToken *) nil_chk(equals))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, EQUAL)) {
-        NetGlobulusSimiExpr_Get *get = (NetGlobulusSimiExpr_Get *) cast_chk(expr, [NetGlobulusSimiExpr_Get class]);
-        return new_NetGlobulusSimiExpr_Set_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_(((NetGlobulusSimiExpr_Get *) nil_chk(get))->origin_, get->object_, get->name_, value);
+    else if ([expr isKindOfClass:[SMExpr_Get class]]) {
+      if (((SMToken *) nil_chk(equals))->type_ == JreLoadEnum(SMTokenType, EQUAL)) {
+        SMExpr_Get *get = (SMExpr_Get *) cast_chk(expr, [SMExpr_Get class]);
+        return new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(((SMExpr_Get *) nil_chk(get))->origin_, get->object_, get->name_, value);
       }
       else {
-        [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithNetGlobulusSimiToken:equals withNSString:@"Cannot use compound assignment operators with setters!"];
+        [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:equals withNSString:@"Cannot use compound assignment operators with setters!"];
       }
     }
-    else if ([expr isKindOfClass:[NetGlobulusSimiExpr_ObjectLiteral class]]) {
-      NetGlobulusSimiExpr_ObjectLiteral *objectLiteral = (NetGlobulusSimiExpr_ObjectLiteral *) cast_chk(expr, [NetGlobulusSimiExpr_ObjectLiteral class]);
-      if (((NetGlobulusSimiExpr_ObjectLiteral *) nil_chk(objectLiteral))->isDictionary_ || ((NetGlobulusSimiToken *) nil_chk(objectLiteral->opener_))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, DOLLAR_LEFT_BRACKET)) {
-        [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithInt:((NetGlobulusSimiToken *) nil_chk(equals))->line_ withNSString:@"Invalid object decomposition syntax."];
+    else if ([expr isKindOfClass:[SMExpr_ObjectLiteral class]]) {
+      SMExpr_ObjectLiteral *objectLiteral = (SMExpr_ObjectLiteral *) cast_chk(expr, [SMExpr_ObjectLiteral class]);
+      if (((SMExpr_ObjectLiteral *) nil_chk(objectLiteral))->isDictionary_ || ((SMToken *) nil_chk(objectLiteral->opener_))->type_ == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
+        [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithInt:((SMToken *) nil_chk(equals))->line_ withNSString:@"Invalid object decomposition syntax."];
       }
       id<JavaUtilList> assigns = new_JavaUtilArrayList_init();
-      id<JavaUtilList> annotations = NetGlobulusSimiParser_getAnnotations(self);
-      for (NetGlobulusSimiExpr * __strong prop in nil_chk(objectLiteral->props_)) {
-        NetGlobulusSimiToken *name = ((NetGlobulusSimiExpr_Variable *) nil_chk(((NetGlobulusSimiExpr_Variable *) cast_chk(prop, [NetGlobulusSimiExpr_Variable class]))))->name_;
-        [assigns addWithId:new_NetGlobulusSimiExpr_Assign_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withJavaUtilList_(name, new_NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(name, value, prop, nil), annotations)];
+      id<JavaUtilList> annotations = SMParser_getAnnotations(self);
+      for (SMExpr * __strong prop in nil_chk(objectLiteral->props_)) {
+        SMToken *name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(prop, [SMExpr_Variable class]))))->name_;
+        [assigns addWithId:new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(name, value, prop, nil), annotations)];
       }
-      return new_NetGlobulusSimiExpr_ObjectDecomp_initWithJavaUtilList_(assigns);
+      return new_SMExpr_ObjectDecomp_initWithJavaUtilList_(assigns);
     }
-    [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithNetGlobulusSimiToken:equals withNSString:@"Invalid assignment target."];
+    [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:equals withNSString:@"Invalid assignment target."];
   }
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_or__(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_and__(self);
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, OR) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *operator_ = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *right = NetGlobulusSimiParser_and__(self);
-    expr = new_NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(expr, operator_, right);
+SMExpr *SMParser_or__(SMParser *self) {
+  SMExpr *expr = SMParser_and__(self);
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, OR) } count:1 type:SMTokenType_class_()])) {
+    SMToken *operator_ = SMParser_previous(self);
+    SMExpr *right = SMParser_and__(self);
+    expr = new_SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(expr, operator_, right);
   }
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_and__(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_equality(self);
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, AND) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *operator_ = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *right = NetGlobulusSimiParser_equality(self);
-    expr = new_NetGlobulusSimiExpr_Logical_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(expr, operator_, right);
+SMExpr *SMParser_and__(SMParser *self) {
+  SMExpr *expr = SMParser_equality(self);
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, AND) } count:1 type:SMTokenType_class_()])) {
+    SMToken *operator_ = SMParser_previous(self);
+    SMExpr *right = SMParser_equality(self);
+    expr = new_SMExpr_Logical_initWithSMExpr_withSMToken_withSMExpr_(expr, operator_, right);
   }
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_equality(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_comparison(self);
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, BANG_EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, EQUAL_EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, IS), JreLoadEnum(NetGlobulusSimiTokenType, ISNOT), JreLoadEnum(NetGlobulusSimiTokenType, IN), JreLoadEnum(NetGlobulusSimiTokenType, NOTIN) } count:6 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *operator_ = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *right = NetGlobulusSimiParser_comparison(self);
-    expr = new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(expr, operator_, right);
+SMExpr *SMParser_equality(SMParser *self) {
+  SMExpr *expr = SMParser_comparison(self);
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, BANG_EQUAL), JreLoadEnum(SMTokenType, EQUAL_EQUAL), JreLoadEnum(SMTokenType, IS), JreLoadEnum(SMTokenType, ISNOT), JreLoadEnum(SMTokenType, IN), JreLoadEnum(SMTokenType, NOTIN) } count:6 type:SMTokenType_class_()])) {
+    SMToken *operator_ = SMParser_previous(self);
+    SMExpr *right = SMParser_comparison(self);
+    expr = new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(expr, operator_, right);
   }
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_comparison(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_addition(self);
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, GREATER), JreLoadEnum(NetGlobulusSimiTokenType, GREATER_EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, LESS), JreLoadEnum(NetGlobulusSimiTokenType, LESS_EQUAL), JreLoadEnum(NetGlobulusSimiTokenType, LESS_GREATER) } count:5 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *operator_ = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *right = NetGlobulusSimiParser_addition(self);
-    expr = new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(expr, operator_, right);
+SMExpr *SMParser_comparison(SMParser *self) {
+  SMExpr *expr = SMParser_addition(self);
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, GREATER), JreLoadEnum(SMTokenType, GREATER_EQUAL), JreLoadEnum(SMTokenType, LESS), JreLoadEnum(SMTokenType, LESS_EQUAL), JreLoadEnum(SMTokenType, LESS_GREATER) } count:5 type:SMTokenType_class_()])) {
+    SMToken *operator_ = SMParser_previous(self);
+    SMExpr *right = SMParser_addition(self);
+    expr = new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(expr, operator_, right);
   }
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_addition(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_multiplication(self);
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, MINUS), JreLoadEnum(NetGlobulusSimiTokenType, PLUS) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *operator_ = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *right = NetGlobulusSimiParser_multiplication(self);
-    expr = new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(expr, operator_, right);
+SMExpr *SMParser_addition(SMParser *self) {
+  SMExpr *expr = SMParser_multiplication(self);
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, MINUS), JreLoadEnum(SMTokenType, PLUS) } count:2 type:SMTokenType_class_()])) {
+    SMToken *operator_ = SMParser_previous(self);
+    SMExpr *right = SMParser_multiplication(self);
+    expr = new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(expr, operator_, right);
   }
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_multiplication(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_nilCoalescence(self);
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, SLASH), JreLoadEnum(NetGlobulusSimiTokenType, SLASH_SLASH), JreLoadEnum(NetGlobulusSimiTokenType, STAR), JreLoadEnum(NetGlobulusSimiTokenType, MOD) } count:4 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *operator_ = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *right = NetGlobulusSimiParser_nilCoalescence(self);
-    expr = new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(expr, operator_, right);
+SMExpr *SMParser_multiplication(SMParser *self) {
+  SMExpr *expr = SMParser_nilCoalescence(self);
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, SLASH), JreLoadEnum(SMTokenType, SLASH_SLASH), JreLoadEnum(SMTokenType, STAR), JreLoadEnum(SMTokenType, MOD) } count:4 type:SMTokenType_class_()])) {
+    SMToken *operator_ = SMParser_previous(self);
+    SMExpr *right = SMParser_nilCoalescence(self);
+    expr = new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(expr, operator_, right);
   }
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_nilCoalescence(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_unary(self);
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, QUESTION_QUESTION) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *operator_ = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *right = NetGlobulusSimiParser_unary(self);
-    expr = new_NetGlobulusSimiExpr_Binary_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withNetGlobulusSimiExpr_(expr, operator_, right);
+SMExpr *SMParser_nilCoalescence(SMParser *self) {
+  SMExpr *expr = SMParser_unary(self);
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, QUESTION_QUESTION) } count:1 type:SMTokenType_class_()])) {
+    SMToken *operator_ = SMParser_previous(self);
+    SMExpr *right = SMParser_unary(self);
+    expr = new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(expr, operator_, right);
   }
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_unary(NetGlobulusSimiParser *self) {
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NOT), JreLoadEnum(NetGlobulusSimiTokenType, MINUS) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *operator_ = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiExpr *right = NetGlobulusSimiParser_unary(self);
-    return new_NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(operator_, right);
+SMExpr *SMParser_unary(SMParser *self) {
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NOT), JreLoadEnum(SMTokenType, MINUS) } count:2 type:SMTokenType_class_()])) {
+    SMToken *operator_ = SMParser_previous(self);
+    SMExpr *right = SMParser_unary(self);
+    return new_SMExpr_Unary_initWithSMToken_withSMExpr_(operator_, right);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, GU) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return new_NetGlobulusSimiExpr_Gu_initWithNetGlobulusSimiExpr_(NetGlobulusSimiParser_primary(self));
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, GU) } count:1 type:SMTokenType_class_()])) {
+    return new_SMExpr_Gu_initWithSMExpr_(SMParser_primary(self));
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, BANG_BANG) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, BANG_BANG) } count:1 type:SMTokenType_class_()])) {
     id<JavaUtilList> tokens = new_JavaUtilArrayList_init();
-    while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      [tokens addWithId:NetGlobulusSimiParser_previous(self)];
-      NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, DOT) } count:1 type:NetGlobulusSimiTokenType_class_()]);
+    while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IDENTIFIER) } count:1 type:SMTokenType_class_()])) {
+      [tokens addWithId:SMParser_previous(self)];
+      SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DOT) } count:1 type:SMTokenType_class_()]);
     }
     if ([tokens isEmpty]) {
-      [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithNetGlobulusSimiToken:NetGlobulusSimiParser_peek(self) withNSString:@"Annotations operator needs params!"];
+      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:SMParser_peek(self) withNSString:@"Annotations operator needs params!"];
     }
-    return new_NetGlobulusSimiExpr_Annotations_initWithJavaUtilList_(tokens);
+    return new_SMExpr_Annotations_initWithJavaUtilList_(tokens);
   }
-  return NetGlobulusSimiParser_call(self);
+  return SMParser_call(self);
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_call(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_primary(self);
+SMExpr *SMParser_call(SMParser *self) {
+  SMExpr *expr = SMParser_primary(self);
   while (true) {
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      expr = NetGlobulusSimiParser_finishCallWithNetGlobulusSimiExpr_(self, expr);
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_PAREN) } count:1 type:SMTokenType_class_()])) {
+      expr = SMParser_finishCallWithSMExpr_(self, expr);
     }
-    else if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, DOT) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      NetGlobulusSimiToken *dot = NetGlobulusSimiParser_previous(self);
-      NetGlobulusSimiExpr *name;
-      if (((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_peek(self)))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, NUMBER)) {
-        name = new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, NUMBER), @"Expected a number or id after '.'."));
+    else if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DOT) } count:1 type:SMTokenType_class_()])) {
+      SMToken *dot = SMParser_previous(self);
+      SMExpr *name;
+      if (((SMToken *) nil_chk(SMParser_peek(self)))->type_ == JreLoadEnum(SMTokenType, NUMBER)) {
+        name = new_SMExpr_Variable_initWithSMToken_(SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, NUMBER), @"Expected a number or id after '.'."));
       }
-      else if (((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_peek(self)))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN)) {
-        name = NetGlobulusSimiParser_primary(self);
+      else if (((SMToken *) nil_chk(SMParser_peek(self)))->type_ == JreLoadEnum(SMTokenType, LEFT_PAREN)) {
+        name = SMParser_primary(self);
       }
       else {
-        name = new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), @"Expected a number of id after '.'."));
+        name = new_SMExpr_Variable_initWithSMToken_(SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), @"Expected a number of id after '.'."));
       }
-      JavaLangInteger *arity = NetGlobulusSimiParser_peekParams(self);
-      expr = new_NetGlobulusSimiExpr_Get_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_withNetGlobulusSimiExpr_withJavaLangInteger_(dot, expr, name, arity);
+      JavaLangInteger *arity = SMParser_peekParams(self);
+      expr = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(dot, expr, name, arity);
     }
     else {
       break;
@@ -1156,122 +1156,122 @@ NetGlobulusSimiExpr *NetGlobulusSimiParser_call(NetGlobulusSimiParser *self) {
   return expr;
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_finishCallWithNetGlobulusSimiExpr_(NetGlobulusSimiParser *self, NetGlobulusSimiExpr *callee) {
+SMExpr *SMParser_finishCallWithSMExpr_(SMParser *self, SMExpr *callee) {
   id<JavaUtilList> arguments = new_JavaUtilArrayList_init();
-  if (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN))) {
+  if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN))) {
     do {
-      NetGlobulusSimiParser_matchSequenceWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), JreLoadEnum(NetGlobulusSimiTokenType, EQUAL) } count:2 type:NetGlobulusSimiTokenType_class_()]);
-      [arguments addWithId:NetGlobulusSimiParser_expression(self)];
+      SMParser_matchSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IDENTIFIER), JreLoadEnum(SMTokenType, EQUAL) } count:2 type:SMTokenType_class_()]);
+      [arguments addWithId:SMParser_expression(self)];
     }
-    while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, COMMA) } count:1 type:NetGlobulusSimiTokenType_class_()]));
+    while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, COMMA) } count:1 type:SMTokenType_class_()]));
   }
-  NetGlobulusSimiToken *paren = NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN), @"Expect ')' after arguments.");
-  return new_NetGlobulusSimiExpr_Call_initWithNetGlobulusSimiExpr_withNetGlobulusSimiToken_withJavaUtilList_(callee, paren, arguments);
+  SMToken *paren = SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN), @"Expect ')' after arguments.");
+  return new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(callee, paren, arguments);
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_primary(NetGlobulusSimiParser *self) {
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, FALSE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return new_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(false));
+SMExpr *SMParser_primary(SMParser *self) {
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, FALSE) } count:1 type:SMTokenType_class_()])) {
+    return new_SMExpr_Literal_initWithSMSimiValue_(new_SMSimiValue_Number_initWithBoolean_(false));
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, TRUE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return new_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(new_NetGlobulusSimiSimiValue_Number_initWithBoolean_(true));
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, TRUE) } count:1 type:SMTokenType_class_()])) {
+    return new_SMExpr_Literal_initWithSMSimiValue_(new_SMSimiValue_Number_initWithBoolean_(true));
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NIL) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return new_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(nil);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NIL) } count:1 type:SMTokenType_class_()])) {
+    return new_SMExpr_Literal_initWithSMSimiValue_(nil);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, PASS) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return new_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(new_NetGlobulusSimiPass_init());
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, PASS) } count:1 type:SMTokenType_class_()])) {
+    return new_SMExpr_Literal_initWithSMSimiValue_(new_SMPass_init());
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NUMBER), JreLoadEnum(NetGlobulusSimiTokenType, STRING) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
-    return new_NetGlobulusSimiExpr_Literal_initWithNetGlobulusSimiSimiValue_(((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_previous(self)))->literal_);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NUMBER), JreLoadEnum(SMTokenType, STRING) } count:2 type:SMTokenType_class_()])) {
+    return new_SMExpr_Literal_initWithSMSimiValue_(((SMToken *) nil_chk(SMParser_previous(self)))->literal_);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, SUPER) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *keyword = NetGlobulusSimiParser_previous(self);
-    NetGlobulusSimiToken *superclass_;
-    if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-      superclass_ = NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), @"Expected superclass name in parentheses!");
-      (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN), @"Expected ')' after superclass specification!");
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, SUPER) } count:1 type:SMTokenType_class_()])) {
+    SMToken *keyword = SMParser_previous(self);
+    SMToken *superclass_;
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_PAREN) } count:1 type:SMTokenType_class_()])) {
+      superclass_ = SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), @"Expected superclass name in parentheses!");
+      (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN), @"Expected ')' after superclass specification!");
     }
     else {
       superclass_ = nil;
     }
-    (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, DOT), @"Expect '.' after 'super'.");
-    NetGlobulusSimiToken *method = NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), @"Expect superclass method name.");
-    JavaLangInteger *arity = NetGlobulusSimiParser_peekParams(self);
-    return new_NetGlobulusSimiExpr_Super_initWithNetGlobulusSimiToken_withNetGlobulusSimiToken_withNetGlobulusSimiToken_withJavaLangInteger_(keyword, superclass_, method, arity);
+    (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, DOT), @"Expect '.' after 'super'.");
+    SMToken *method = SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), @"Expect superclass method name.");
+    JavaLangInteger *arity = SMParser_peekParams(self);
+    return new_SMExpr_Super_initWithSMToken_withSMToken_withSMToken_withJavaLangInteger_(keyword, superclass_, method, arity);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, SELF) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiToken *previous = NetGlobulusSimiParser_previous(self);
-    return new_NetGlobulusSimiExpr_Self_initWithNetGlobulusSimiToken_(new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(JreLoadEnum(NetGlobulusSimiTokenType, SELF), NetGlobulusSimiConstants_SELF, nil, ((NetGlobulusSimiToken *) nil_chk(previous))->line_));
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, SELF) } count:1 type:SMTokenType_class_()])) {
+    SMToken *previous = SMParser_previous(self);
+    return new_SMExpr_Self_initWithSMToken_(new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, SELF), SMConstants_SELF, nil, ((SMToken *) nil_chk(previous))->line_));
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, LEFT_BRACKET), JreLoadEnum(NetGlobulusSimiTokenType, DOLLAR_LEFT_BRACKET) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_objectLiteral(self);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_BRACKET), JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET) } count:2 type:SMTokenType_class_()])) {
+    return SMParser_objectLiteral(self);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, DEF), JreLoadEnum(NetGlobulusSimiTokenType, NATIVE) } count:2 type:NetGlobulusSimiTokenType_class_()])) {
-    return NetGlobulusSimiParser_blockWithNSString_withBoolean_(self, NetGlobulusSimiParser_LAMBDA, true);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DEF), JreLoadEnum(SMTokenType, NATIVE) } count:2 type:SMTokenType_class_()])) {
+    return SMParser_blockWithNSString_withBoolean_(self, SMParser_LAMBDA, true);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(NetGlobulusSimiParser_previous(self));
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IDENTIFIER) } count:1 type:SMTokenType_class_()])) {
+    return new_SMExpr_Variable_initWithSMToken_(SMParser_previous(self));
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, LEFT_PAREN) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    NetGlobulusSimiExpr *expr = NetGlobulusSimiParser_expression(self);
-    (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_PAREN), @"Expect ')' after expression.");
-    return new_NetGlobulusSimiExpr_Grouping_initWithNetGlobulusSimiExpr_(expr);
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_PAREN) } count:1 type:SMTokenType_class_()])) {
+    SMExpr *expr = SMParser_expression(self);
+    (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN), @"Expect ')' after expression.");
+    return new_SMExpr_Grouping_initWithSMExpr_(expr);
   }
-  if (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, QUESTION) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
-    return new_NetGlobulusSimiExpr_Unary_initWithNetGlobulusSimiToken_withNetGlobulusSimiExpr_(NetGlobulusSimiParser_previous(self), NetGlobulusSimiParser_primary(self));
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, QUESTION) } count:1 type:SMTokenType_class_()])) {
+    return new_SMExpr_Unary_initWithSMToken_withSMExpr_(SMParser_previous(self), SMParser_primary(self));
   }
-  @throw nil_chk(NetGlobulusSimiParser_errorWithNetGlobulusSimiToken_withNSString_(self, NetGlobulusSimiParser_peek(self), @"Expect expression."));
+  @throw nil_chk(SMParser_errorWithSMToken_withNSString_(self, SMParser_peek(self), @"Expect expression."));
 }
 
-NetGlobulusSimiExpr *NetGlobulusSimiParser_objectLiteral(NetGlobulusSimiParser *self) {
-  NetGlobulusSimiToken *opener = NetGlobulusSimiParser_previous(self);
+SMExpr *SMParser_objectLiteral(SMParser *self) {
+  SMToken *opener = SMParser_previous(self);
   id<JavaUtilList> props = new_JavaUtilArrayList_init();
   jboolean dictionary = true;
-  if (!NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_BRACKET))) {
-    NetGlobulusSimiParser_matchAllNewlines(self);
-    dictionary = (NetGlobulusSimiParser_peekSequenceWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, IDENTIFIER), JreLoadEnum(NetGlobulusSimiTokenType, EQUAL) } count:2 type:NetGlobulusSimiTokenType_class_()]) || NetGlobulusSimiParser_peekSequenceWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, STRING), JreLoadEnum(NetGlobulusSimiTokenType, EQUAL) } count:2 type:NetGlobulusSimiTokenType_class_()]));
+  if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_BRACKET))) {
+    SMParser_matchAllNewlines(self);
+    dictionary = (SMParser_peekSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IDENTIFIER), JreLoadEnum(SMTokenType, EQUAL) } count:2 type:SMTokenType_class_()]) || SMParser_peekSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, STRING), JreLoadEnum(SMTokenType, EQUAL) } count:2 type:SMTokenType_class_()]));
     do {
-      NetGlobulusSimiParser_matchAllNewlines(self);
-      [props addWithId:dictionary ? NetGlobulusSimiParser_assignment(self) : NetGlobulusSimiParser_or__(self)];
+      SMParser_matchAllNewlines(self);
+      [props addWithId:dictionary ? SMParser_assignment(self) : SMParser_or__(self)];
     }
-    while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, COMMA) } count:1 type:NetGlobulusSimiTokenType_class_()]));
-    NetGlobulusSimiParser_matchAllNewlines(self);
+    while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, COMMA) } count:1 type:SMTokenType_class_()]));
+    SMParser_matchAllNewlines(self);
   }
-  (void) NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(self, JreLoadEnum(NetGlobulusSimiTokenType, RIGHT_BRACKET), @"Expect ']' at the end of object.");
-  return new_NetGlobulusSimiExpr_ObjectLiteral_initWithNetGlobulusSimiToken_withJavaUtilList_withBoolean_(opener, props, dictionary);
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, RIGHT_BRACKET), @"Expect ']' at the end of object.");
+  return new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(opener, props, dictionary);
 }
 
-void NetGlobulusSimiParser_matchAllNewlines(NetGlobulusSimiParser *self) {
-  while (NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(NetGlobulusSimiTokenType, NEWLINE) } count:1 type:NetGlobulusSimiTokenType_class_()])) {
+void SMParser_matchAllNewlines(SMParser *self) {
+  while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NEWLINE) } count:1 type:SMTokenType_class_()])) {
   }
 }
 
-jboolean NetGlobulusSimiParser_matchSequenceWithNetGlobulusSimiTokenTypeArray_(NetGlobulusSimiParser *self, IOSObjectArray *types) {
+jboolean SMParser_matchSequenceWithSMTokenTypeArray_(SMParser *self, IOSObjectArray *types) {
   for (jint i = 0; i < ((IOSObjectArray *) nil_chk(types))->size_; i++) {
     jint index = self->current_ + i;
     if (index >= [((id<JavaUtilList>) nil_chk(self->tokens_)) size]) {
       return false;
     }
-    if (((NetGlobulusSimiToken *) nil_chk([self->tokens_ getWithInt:index]))->type_ != IOSObjectArray_Get(types, i)) {
+    if (((SMToken *) nil_chk([self->tokens_ getWithInt:index]))->type_ != IOSObjectArray_Get(types, i)) {
       return false;
     }
   }
   for (jint i = 0; i < types->size_; i++) {
-    (void) NetGlobulusSimiParser_advance(self);
+    (void) SMParser_advance(self);
   }
   return true;
 }
 
-jboolean NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(NetGlobulusSimiParser *self, IOSObjectArray *types) {
+jboolean SMParser_matchWithSMTokenTypeArray_(SMParser *self, IOSObjectArray *types) {
   {
     IOSObjectArray *a__ = types;
-    NetGlobulusSimiTokenType * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
-    NetGlobulusSimiTokenType * const *e__ = b__ + a__->size_;
+    SMTokenType * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
+    SMTokenType * const *e__ = b__ + a__->size_;
     while (b__ < e__) {
-      NetGlobulusSimiTokenType *type = *b__++;
-      if (NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, type)) {
-        (void) NetGlobulusSimiParser_advance(self);
+      SMTokenType *type = *b__++;
+      if (SMParser_checkWithSMTokenType_(self, type)) {
+        (void) SMParser_advance(self);
         return true;
       }
     }
@@ -1279,92 +1279,92 @@ jboolean NetGlobulusSimiParser_matchWithNetGlobulusSimiTokenTypeArray_(NetGlobul
   return false;
 }
 
-NetGlobulusSimiToken *NetGlobulusSimiParser_consumeWithNetGlobulusSimiTokenType_withNSString_(NetGlobulusSimiParser *self, NetGlobulusSimiTokenType *type, NSString *message) {
-  if (NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(self, type)) return NetGlobulusSimiParser_advance(self);
-  @throw nil_chk(NetGlobulusSimiParser_errorWithNetGlobulusSimiToken_withNSString_(self, NetGlobulusSimiParser_peek(self), message));
+SMToken *SMParser_consumeWithSMTokenType_withNSString_(SMParser *self, SMTokenType *type, NSString *message) {
+  if (SMParser_checkWithSMTokenType_(self, type)) return SMParser_advance(self);
+  @throw nil_chk(SMParser_errorWithSMToken_withNSString_(self, SMParser_peek(self), message));
 }
 
-jboolean NetGlobulusSimiParser_checkWithNetGlobulusSimiTokenType_(NetGlobulusSimiParser *self, NetGlobulusSimiTokenType *tokenType) {
-  if (NetGlobulusSimiParser_isAtEnd(self)) return false;
-  return ((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_peek(self)))->type_ == tokenType;
+jboolean SMParser_checkWithSMTokenType_(SMParser *self, SMTokenType *tokenType) {
+  if (SMParser_isAtEnd(self)) return false;
+  return ((SMToken *) nil_chk(SMParser_peek(self)))->type_ == tokenType;
 }
 
-NetGlobulusSimiToken *NetGlobulusSimiParser_advance(NetGlobulusSimiParser *self) {
-  if (!NetGlobulusSimiParser_isAtEnd(self)) self->current_++;
-  return NetGlobulusSimiParser_previous(self);
+SMToken *SMParser_advance(SMParser *self) {
+  if (!SMParser_isAtEnd(self)) self->current_++;
+  return SMParser_previous(self);
 }
 
-jboolean NetGlobulusSimiParser_isAtEnd(NetGlobulusSimiParser *self) {
-  return ((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_peek(self)))->type_ == JreLoadEnum(NetGlobulusSimiTokenType, EOF);
+jboolean SMParser_isAtEnd(SMParser *self) {
+  return ((SMToken *) nil_chk(SMParser_peek(self)))->type_ == JreLoadEnum(SMTokenType, EOF);
 }
 
-NetGlobulusSimiToken *NetGlobulusSimiParser_peek(NetGlobulusSimiParser *self) {
+SMToken *SMParser_peek(SMParser *self) {
   return [((id<JavaUtilList>) nil_chk(self->tokens_)) getWithInt:self->current_];
 }
 
-jboolean NetGlobulusSimiParser_peekSequenceWithNetGlobulusSimiTokenTypeArray_(NetGlobulusSimiParser *self, IOSObjectArray *tokenTypes) {
+jboolean SMParser_peekSequenceWithSMTokenTypeArray_(SMParser *self, IOSObjectArray *tokenTypes) {
   if (self->current_ + ((IOSObjectArray *) nil_chk(tokenTypes))->size_ >= [((id<JavaUtilList>) nil_chk(self->tokens_)) size]) {
     return false;
   }
   for (jint i = 0; i < tokenTypes->size_; i++) {
-    if (((NetGlobulusSimiToken *) nil_chk([self->tokens_ getWithInt:self->current_ + i]))->type_ != IOSObjectArray_Get(tokenTypes, i)) {
+    if (((SMToken *) nil_chk([self->tokens_ getWithInt:self->current_ + i]))->type_ != IOSObjectArray_Get(tokenTypes, i)) {
       return false;
     }
   }
   return true;
 }
 
-NetGlobulusSimiToken *NetGlobulusSimiParser_previous(NetGlobulusSimiParser *self) {
+SMToken *SMParser_previous(SMParser *self) {
   return [((id<JavaUtilList>) nil_chk(self->tokens_)) getWithInt:self->current_ - 1];
 }
 
-NetGlobulusSimiToken *NetGlobulusSimiParser_operatorFromAssignWithNetGlobulusSimiToken_(NetGlobulusSimiParser *self, NetGlobulusSimiToken *assignOp) {
-  NetGlobulusSimiTokenType *type;
-  switch ([((NetGlobulusSimiToken *) nil_chk(assignOp))->type_ ordinal]) {
-    case NetGlobulusSimiTokenType_Enum_PLUS_EQUAL:
-    type = JreLoadEnum(NetGlobulusSimiTokenType, PLUS);
+SMToken *SMParser_operatorFromAssignWithSMToken_(SMParser *self, SMToken *assignOp) {
+  SMTokenType *type;
+  switch ([((SMToken *) nil_chk(assignOp))->type_ ordinal]) {
+    case SMTokenType_Enum_PLUS_EQUAL:
+    type = JreLoadEnum(SMTokenType, PLUS);
     break;
-    case NetGlobulusSimiTokenType_Enum_MINUS_EQUAL:
-    type = JreLoadEnum(NetGlobulusSimiTokenType, MINUS);
+    case SMTokenType_Enum_MINUS_EQUAL:
+    type = JreLoadEnum(SMTokenType, MINUS);
     break;
-    case NetGlobulusSimiTokenType_Enum_STAR_EQUAL:
-    type = JreLoadEnum(NetGlobulusSimiTokenType, STAR);
+    case SMTokenType_Enum_STAR_EQUAL:
+    type = JreLoadEnum(SMTokenType, STAR);
     break;
-    case NetGlobulusSimiTokenType_Enum_SLASH_EQUAL:
-    type = JreLoadEnum(NetGlobulusSimiTokenType, SLASH);
+    case SMTokenType_Enum_SLASH_EQUAL:
+    type = JreLoadEnum(SMTokenType, SLASH);
     break;
-    case NetGlobulusSimiTokenType_Enum_MOD_EQUAL:
-    type = JreLoadEnum(NetGlobulusSimiTokenType, MOD);
+    case SMTokenType_Enum_MOD_EQUAL:
+    type = JreLoadEnum(SMTokenType, MOD);
     break;
     default:
     @throw new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"Unable to process assignment operator: ", assignOp->type_));
   }
-  return new_NetGlobulusSimiToken_initWithNetGlobulusSimiTokenType_withNSString_withNetGlobulusSimiSimiValue_withInt_(type, assignOp->lexeme_, nil, assignOp->line_);
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(type, assignOp->lexeme_, nil, assignOp->line_);
 }
 
-NetGlobulusSimiParser_ParseError *NetGlobulusSimiParser_errorWithNetGlobulusSimiToken_withNSString_(NetGlobulusSimiParser *self, NetGlobulusSimiToken *token, NSString *message) {
-  [((NetGlobulusSimiErrorHub *) nil_chk(NetGlobulusSimiErrorHub_sharedInstance())) errorWithNetGlobulusSimiToken:token withNSString:message];
-  return new_NetGlobulusSimiParser_ParseError_init();
+SMParser_ParseError *SMParser_errorWithSMToken_withNSString_(SMParser *self, SMToken *token, NSString *message) {
+  [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:token withNSString:message];
+  return new_SMParser_ParseError_init();
 }
 
-void NetGlobulusSimiParser_synchronize(NetGlobulusSimiParser *self) {
-  (void) NetGlobulusSimiParser_advance(self);
-  while (!NetGlobulusSimiParser_isAtEnd(self)) {
-    switch ([((NetGlobulusSimiToken *) nil_chk(NetGlobulusSimiParser_peek(self)))->type_ ordinal]) {
-      case NetGlobulusSimiTokenType_Enum_CLASS:
-      case NetGlobulusSimiTokenType_Enum_DEF:
-      case NetGlobulusSimiTokenType_Enum_FOR:
-      case NetGlobulusSimiTokenType_Enum_IF:
-      case NetGlobulusSimiTokenType_Enum_WHILE:
-      case NetGlobulusSimiTokenType_Enum_PRINT:
-      case NetGlobulusSimiTokenType_Enum_RETURN:
+void SMParser_synchronize(SMParser *self) {
+  (void) SMParser_advance(self);
+  while (!SMParser_isAtEnd(self)) {
+    switch ([((SMToken *) nil_chk(SMParser_peek(self)))->type_ ordinal]) {
+      case SMTokenType_Enum_CLASS:
+      case SMTokenType_Enum_DEF:
+      case SMTokenType_Enum_FOR:
+      case SMTokenType_Enum_IF:
+      case SMTokenType_Enum_WHILE:
+      case SMTokenType_Enum_PRINT:
+      case SMTokenType_Enum_RETURN:
       return;
     }
-    (void) NetGlobulusSimiParser_advance(self);
+    (void) SMParser_advance(self);
   }
 }
 
-id<JavaUtilList> NetGlobulusSimiParser_getAnnotations(NetGlobulusSimiParser *self) {
+id<JavaUtilList> SMParser_getAnnotations(SMParser *self) {
   if ([((id<JavaUtilList>) nil_chk(self->annotations_)) isEmpty]) {
     return nil;
   }
@@ -1373,13 +1373,13 @@ id<JavaUtilList> NetGlobulusSimiParser_getAnnotations(NetGlobulusSimiParser *sel
   return copy_;
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiParser)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMParser)
 
-@implementation NetGlobulusSimiParser_ParseError
+@implementation SMParser_ParseError
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiParser_ParseError_init(self);
+- (instancetype __nonnull)init {
+  SMParser_ParseError_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -1393,33 +1393,33 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LNetGlobulusSimiParser;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiParser_ParseError = { "ParseError", "net.globulus.simi", ptrTable, methods, NULL, 7, 0xa, 1, 0, 0, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiParser_ParseError;
+  static const void *ptrTable[] = { "LSMParser;" };
+  static const J2ObjcClassInfo _SMParser_ParseError = { "ParseError", "net.globulus.simi", ptrTable, methods, NULL, 7, 0xa, 1, 0, 0, -1, -1, -1, -1 };
+  return &_SMParser_ParseError;
 }
 
 @end
 
-void NetGlobulusSimiParser_ParseError_init(NetGlobulusSimiParser_ParseError *self) {
+void SMParser_ParseError_init(SMParser_ParseError *self) {
   JavaLangRuntimeException_init(self);
 }
 
-NetGlobulusSimiParser_ParseError *new_NetGlobulusSimiParser_ParseError_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiParser_ParseError, init)
+SMParser_ParseError *new_SMParser_ParseError_init() {
+  J2OBJC_NEW_IMPL(SMParser_ParseError, init)
 }
 
-NetGlobulusSimiParser_ParseError *create_NetGlobulusSimiParser_ParseError_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiParser_ParseError, init)
+SMParser_ParseError *create_SMParser_ParseError_init() {
+  J2OBJC_CREATE_IMPL(SMParser_ParseError, init)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiParser_ParseError)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMParser_ParseError)
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiParser_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMParser_$Lambda$1)
 
-@implementation NetGlobulusSimiParser_$Lambda$1
+@implementation SMParser_$Lambda$1
 
-- (id)applyWithId:(NetGlobulusSimiToken *)a {
-  return new_NetGlobulusSimiExpr_Variable_initWithNetGlobulusSimiToken_(a);
+- (id)applyWithId:(SMToken *)a {
+  return new_SMExpr_Variable_initWithSMToken_(a);
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -1431,22 +1431,22 @@ J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiParser_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiParser_$Lambda$1 class]) {
-    NetGlobulusSimiParser_$Lambda$1_instance = new_NetGlobulusSimiParser_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiParser_$Lambda$1)
+  if (self == [SMParser_$Lambda$1 class]) {
+    SMParser_$Lambda$1_instance = new_SMParser_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMParser_$Lambda$1)
   }
 }
 
 @end
 
-void NetGlobulusSimiParser_$Lambda$1_init(NetGlobulusSimiParser_$Lambda$1 *self) {
+void SMParser_$Lambda$1_init(SMParser_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-NetGlobulusSimiParser_$Lambda$1 *new_NetGlobulusSimiParser_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiParser_$Lambda$1, init)
+SMParser_$Lambda$1 *new_SMParser_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMParser_$Lambda$1, init)
 }
 
-NetGlobulusSimiParser_$Lambda$1 *create_NetGlobulusSimiParser_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiParser_$Lambda$1, init)
+SMParser_$Lambda$1 *create_SMParser_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMParser_$Lambda$1, init)
 }

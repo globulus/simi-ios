@@ -6,26 +6,26 @@
 #include "J2ObjC_source.h"
 #include "SimiClass.h"
 
-@interface NetGlobulusSimiSimiClass : NSObject
+@interface SMSimiClass : NSObject
 
 @end
 
-@implementation NetGlobulusSimiSimiClass
+@implementation SMSimiClass
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, "LNetGlobulusSimiSimiProperty;", 0x401, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x401, 0, 1, -1, 2, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init__WithNetGlobulusSimiBlockInterpreter:withJavaUtilList:);
+  methods[0].selector = @selector(init__WithSMBlockInterpreter:withJavaUtilList:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "init", "LNetGlobulusSimiBlockInterpreter;LJavaUtilList;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiClass = { "SimiClass", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 1, 0, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiClass;
+  static const void *ptrTable[] = { "init", "LSMBlockInterpreter;LJavaUtilList;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;" };
+  static const J2ObjcClassInfo _SMSimiClass = { "SimiClass", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 1, 0, -1, -1, -1, -1, -1 };
+  return &_SMSimiClass;
 }
 
 @end
 
-J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiClass)
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMSimiClass)

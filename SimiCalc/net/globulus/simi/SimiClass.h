@@ -13,28 +13,39 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiClass
 
-#if !defined (NetGlobulusSimiSimiClass_) && (INCLUDE_ALL_NetGlobulusSimiSimiClass || defined(INCLUDE_NetGlobulusSimiSimiClass))
-#define NetGlobulusSimiSimiClass_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMSimiClass_) && (INCLUDE_ALL_NetGlobulusSimiSimiClass || defined(INCLUDE_SMSimiClass))
+#define SMSimiClass_
 
 #define RESTRICT_NetGlobulusSimiSimiObject 1
-#define INCLUDE_NetGlobulusSimiSimiObject 1
+#define INCLUDE_SMSimiObject 1
 #include "SimiObject.h"
 
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiBlockInterpreter;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMBlockInterpreter;
+@protocol SMSimiProperty;
 
-@protocol NetGlobulusSimiSimiClass < NetGlobulusSimiSimiObject, JavaObject >
+@protocol SMSimiClass < SMSimiObject, JavaObject >
 
-- (id<NetGlobulusSimiSimiProperty>)init__WithNetGlobulusSimiBlockInterpreter:(id<NetGlobulusSimiBlockInterpreter>)interpreter
-                                                            withJavaUtilList:(id<JavaUtilList>)args OBJC_METHOD_FAMILY_NONE;
+- (id<SMSimiProperty>)init__WithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                  withJavaUtilList:(id<JavaUtilList>)args OBJC_METHOD_FAMILY_NONE;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiSimiClass)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiClass)
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiSimiClass)
+J2OBJC_TYPE_LITERAL_HEADER(SMSimiClass)
+
+#define NetGlobulusSimiSimiClass SMSimiClass
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiSimiClass")

@@ -13,43 +13,54 @@
 #endif
 #undef RESTRICT_NetGlobulusSimiNativeModulesManager
 
-#if !defined (NetGlobulusSimiNativeModulesManager_) && (INCLUDE_ALL_NetGlobulusSimiNativeModulesManager || defined(INCLUDE_NetGlobulusSimiNativeModulesManager))
-#define NetGlobulusSimiNativeModulesManager_
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
+#if !defined (SMNativeModulesManager_) && (INCLUDE_ALL_NetGlobulusSimiNativeModulesManager || defined(INCLUDE_SMNativeModulesManager))
+#define SMNativeModulesManager_
 
 @class JavaNetURL;
-@class NetGlobulusSimiInterpreter;
+@class SMInterpreter;
 @protocol JavaUtilList;
-@protocol NetGlobulusSimiSimiObject;
-@protocol NetGlobulusSimiSimiProperty;
+@protocol SMSimiObject;
+@protocol SMSimiProperty;
 
-@interface NetGlobulusSimiNativeModulesManager : NSObject
+@interface SMNativeModulesManager : NSObject
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (void)loadJarWithJavaNetURL:(JavaNetURL *)url;
 
 #pragma mark Package-Private
 
-- (id<NetGlobulusSimiSimiProperty>)callWithNSString:(NSString *)className_
-                                       withNSString:(NSString *)methodName
-                      withNetGlobulusSimiSimiObject:(id<NetGlobulusSimiSimiObject>)self_
-                     withNetGlobulusSimiInterpreter:(NetGlobulusSimiInterpreter *)interpreter
-                                   withJavaUtilList:(id<JavaUtilList>)args;
+- (id<SMSimiProperty>)callWithNSString:(NSString *)className_
+                          withNSString:(NSString *)methodName
+                      withSMSimiObject:(id<SMSimiObject>)self_
+                     withSMInterpreter:(SMInterpreter *)interpreter
+                      withJavaUtilList:(id<JavaUtilList>)args;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(NetGlobulusSimiNativeModulesManager)
+J2OBJC_EMPTY_STATIC_INIT(SMNativeModulesManager)
 
-FOUNDATION_EXPORT void NetGlobulusSimiNativeModulesManager_init(NetGlobulusSimiNativeModulesManager *self);
+FOUNDATION_EXPORT void SMNativeModulesManager_init(SMNativeModulesManager *self);
 
-FOUNDATION_EXPORT NetGlobulusSimiNativeModulesManager *new_NetGlobulusSimiNativeModulesManager_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMNativeModulesManager *new_SMNativeModulesManager_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT NetGlobulusSimiNativeModulesManager *create_NetGlobulusSimiNativeModulesManager_init(void);
+FOUNDATION_EXPORT SMNativeModulesManager *create_SMNativeModulesManager_init(void);
 
-J2OBJC_TYPE_LITERAL_HEADER(NetGlobulusSimiNativeModulesManager)
+J2OBJC_TYPE_LITERAL_HEADER(SMNativeModulesManager)
+
+@compatibility_alias NetGlobulusSimiNativeModulesManager SMNativeModulesManager;
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_NetGlobulusSimiNativeModulesManager")

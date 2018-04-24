@@ -8,10 +8,10 @@
 #include "SimiNativeObject.h"
 #include "SimiObjectImpl.h"
 
-@implementation NetGlobulusSimiSimiNativeObject
+@implementation SMSimiNativeObject
 
-- (instancetype)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props {
-  NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(self, props);
+- (instancetype __nonnull)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)props {
+  SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(self, props);
   return self;
 }
 
@@ -25,22 +25,22 @@
   methods[0].selector = @selector(initWithJavaUtilLinkedHashMap:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "LJavaUtilLinkedHashMap;", "(Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)V" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiNativeObject = { "SimiNativeObject", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x0, 1, 0, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiSimiNativeObject;
+  static const J2ObjcClassInfo _SMSimiNativeObject = { "SimiNativeObject", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x0, 1, 0, -1, -1, -1, -1, -1 };
+  return &_SMSimiNativeObject;
 }
 
 @end
 
-void NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(NetGlobulusSimiSimiNativeObject *self, JavaUtilLinkedHashMap *props) {
-  NetGlobulusSimiSimiObjectImpl_Dictionary_initWithNetGlobulusSimiSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(self, nil, true, props);
+void SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(SMSimiNativeObject *self, JavaUtilLinkedHashMap *props) {
+  SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(self, nil, true, props);
 }
 
-NetGlobulusSimiSimiNativeObject *new_NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiNativeObject, initWithJavaUtilLinkedHashMap_, props)
+SMSimiNativeObject *new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props) {
+  J2OBJC_NEW_IMPL(SMSimiNativeObject, initWithJavaUtilLinkedHashMap_, props)
 }
 
-NetGlobulusSimiSimiNativeObject *create_NetGlobulusSimiSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiNativeObject, initWithJavaUtilLinkedHashMap_, props)
+SMSimiNativeObject *create_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props) {
+  J2OBJC_CREATE_IMPL(SMSimiNativeObject, initWithJavaUtilLinkedHashMap_, props)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiNativeObject)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiNativeObject)

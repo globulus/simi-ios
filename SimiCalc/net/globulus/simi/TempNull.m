@@ -7,41 +7,45 @@
 #include "SimiValue.h"
 #include "TempNull.h"
 
-@interface NetGlobulusSimiTempNull ()
+@interface SMTempNull ()
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
-__attribute__((unused)) static void NetGlobulusSimiTempNull_init(NetGlobulusSimiTempNull *self);
+__attribute__((unused)) static void SMTempNull_init(SMTempNull *self);
 
-__attribute__((unused)) static NetGlobulusSimiTempNull *new_NetGlobulusSimiTempNull_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMTempNull *new_SMTempNull_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static NetGlobulusSimiTempNull *create_NetGlobulusSimiTempNull_init(void);
+__attribute__((unused)) static SMTempNull *create_SMTempNull_init(void);
 
-J2OBJC_INITIALIZED_DEFN(NetGlobulusSimiTempNull)
+J2OBJC_INITIALIZED_DEFN(SMTempNull)
 
-NetGlobulusSimiTempNull *NetGlobulusSimiTempNull_INSTANCE;
+SMTempNull *SMTempNull_INSTANCE;
 
-@implementation NetGlobulusSimiTempNull
+@implementation SMTempNull
+
++ (SMTempNull *)INSTANCE {
+  return SMTempNull_INSTANCE;
+}
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  NetGlobulusSimiTempNull_init(self);
+- (instancetype __nonnull)init {
+  SMTempNull_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (NetGlobulusSimiSimiValue *)copy__ {
+- (SMSimiValue *)copy__ {
   return self;
 }
 
-- (NetGlobulusSimiSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
+- (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
   return self;
 }
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiValue *)o {
-  (void) cast_chk(o, [NetGlobulusSimiSimiValue class]);
+- (jint)compareToWithId:(SMSimiValue *)o {
+  (void) cast_chk(o, [SMSimiValue class]);
   return 0;
 }
 
@@ -52,8 +56,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 0, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 0, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 1, 2, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 3, 4, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, -1, -1, -1, -1, -1 },
   };
@@ -67,32 +71,32 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[4].selector = @selector(description);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "LNetGlobulusSimiTempNull;", .constantValue.asLong = 0, 0x18, -1, 6, -1, -1 },
+    { "INSTANCE", "LSMTempNull;", .constantValue.asLong = 0, 0x18, -1, 6, -1, -1 },
   };
-  static const void *ptrTable[] = { "copy", "clone", "Z", "compareTo", "LNetGlobulusSimiSimiValue;", "toString", &NetGlobulusSimiTempNull_INSTANCE };
-  static const J2ObjcClassInfo _NetGlobulusSimiTempNull = { "TempNull", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 5, 1, -1, -1, -1, -1, -1 };
-  return &_NetGlobulusSimiTempNull;
+  static const void *ptrTable[] = { "copy", "clone", "Z", "compareTo", "LSMSimiValue;", "toString", &SMTempNull_INSTANCE };
+  static const J2ObjcClassInfo _SMTempNull = { "TempNull", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 5, 1, -1, -1, -1, -1, -1 };
+  return &_SMTempNull;
 }
 
 + (void)initialize {
-  if (self == [NetGlobulusSimiTempNull class]) {
-    NetGlobulusSimiTempNull_INSTANCE = new_NetGlobulusSimiTempNull_init();
-    J2OBJC_SET_INITIALIZED(NetGlobulusSimiTempNull)
+  if (self == [SMTempNull class]) {
+    SMTempNull_INSTANCE = new_SMTempNull_init();
+    J2OBJC_SET_INITIALIZED(SMTempNull)
   }
 }
 
 @end
 
-void NetGlobulusSimiTempNull_init(NetGlobulusSimiTempNull *self) {
-  NetGlobulusSimiSimiValue_init(self);
+void SMTempNull_init(SMTempNull *self) {
+  SMSimiValue_init(self);
 }
 
-NetGlobulusSimiTempNull *new_NetGlobulusSimiTempNull_init() {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiTempNull, init)
+SMTempNull *new_SMTempNull_init() {
+  J2OBJC_NEW_IMPL(SMTempNull, init)
 }
 
-NetGlobulusSimiTempNull *create_NetGlobulusSimiTempNull_init() {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiTempNull, init)
+SMTempNull *create_SMTempNull_init() {
+  J2OBJC_CREATE_IMPL(SMTempNull, init)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiTempNull)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMTempNull)

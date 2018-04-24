@@ -8,43 +8,43 @@
 #include "SimiPropertyImpl.h"
 #include "SimiValue.h"
 
-@interface NetGlobulusSimiSimiPropertyImpl () {
+@interface SMSimiPropertyImpl () {
  @public
-  NetGlobulusSimiSimiValue *value_;
+  SMSimiValue *value_;
   id<JavaUtilList> annotations_;
 }
 
 @end
 
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiPropertyImpl, value_, NetGlobulusSimiSimiValue *)
-J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiPropertyImpl, annotations_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMSimiPropertyImpl, value_, SMSimiValue *)
+J2OBJC_FIELD_SETTER(SMSimiPropertyImpl, annotations_, id<JavaUtilList>)
 
-@implementation NetGlobulusSimiSimiPropertyImpl
+@implementation SMSimiPropertyImpl
 
-- (instancetype)initWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value
-                                withJavaUtilList:(id<JavaUtilList>)annotations {
-  NetGlobulusSimiSimiPropertyImpl_initWithNetGlobulusSimiSimiValue_withJavaUtilList_(self, value, annotations);
+- (instancetype __nonnull)initWithSMSimiValue:(SMSimiValue *)value
+                             withJavaUtilList:(id<JavaUtilList>)annotations {
+  SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(self, value, annotations);
   return self;
 }
 
-- (NetGlobulusSimiSimiPropertyImpl *)cloneWithBoolean:(jboolean)mutable_ {
-  return new_NetGlobulusSimiSimiPropertyImpl_initWithNetGlobulusSimiSimiValue_withJavaUtilList_([((NetGlobulusSimiSimiValue *) nil_chk(value_)) cloneWithBoolean:mutable_], annotations_);
+- (SMSimiPropertyImpl *)cloneWithBoolean:(jboolean)mutable_ {
+  return new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_([((SMSimiValue *) nil_chk(value_)) cloneWithBoolean:mutable_], annotations_);
 }
 
-- (jint)compareToWithId:(NetGlobulusSimiSimiPropertyImpl *)o {
-  (void) cast_chk(o, [NetGlobulusSimiSimiPropertyImpl class]);
-  return [((NetGlobulusSimiSimiValue *) nil_chk(value_)) compareToWithId:((NetGlobulusSimiSimiPropertyImpl *) nil_chk(o))->value_];
+- (jint)compareToWithId:(SMSimiPropertyImpl *)o {
+  (void) cast_chk(o, [SMSimiPropertyImpl class]);
+  return [((SMSimiValue *) nil_chk(value_)) compareToWithId:((SMSimiPropertyImpl *) nil_chk(o))->value_];
 }
 
 - (NSString *)description {
-  return [((NetGlobulusSimiSimiValue *) nil_chk(value_)) description];
+  return [((SMSimiValue *) nil_chk(value_)) description];
 }
 
-- (NetGlobulusSimiSimiValue *)getValue {
+- (SMSimiValue *)getValue {
   return value_;
 }
 
-- (void)setValueWithNetGlobulusSimiSimiValue:(NetGlobulusSimiSimiValue *)value {
+- (void)setValueWithSMSimiValue:(SMSimiValue *)value {
   self->value_ = value;
 }
 
@@ -55,47 +55,47 @@ J2OBJC_FIELD_SETTER(NetGlobulusSimiSimiPropertyImpl, annotations_, id<JavaUtilLi
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiPropertyImpl;", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LSMSimiPropertyImpl;", 0x1, 2, 3, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 6, -1, -1, -1, -1, -1 },
-    { NULL, "LNetGlobulusSimiSimiValue;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 7, 8, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 9, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNetGlobulusSimiSimiValue:withJavaUtilList:);
+  methods[0].selector = @selector(initWithSMSimiValue:withJavaUtilList:);
   methods[1].selector = @selector(cloneWithBoolean:);
   methods[2].selector = @selector(compareToWithId:);
   methods[3].selector = @selector(description);
   methods[4].selector = @selector(getValue);
-  methods[5].selector = @selector(setValueWithNetGlobulusSimiSimiValue:);
+  methods[5].selector = @selector(setValueWithSMSimiValue:);
   methods[6].selector = @selector(getAnnotations);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "value_", "LNetGlobulusSimiSimiValue;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "value_", "LSMSimiValue;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x12, -1, -1, 10, -1 },
   };
-  static const void *ptrTable[] = { "LNetGlobulusSimiSimiValue;LJavaUtilList;", "(LSimiValue;Ljava/util/List<LSimiObject;>;)V", "clone", "Z", "compareTo", "LNetGlobulusSimiSimiPropertyImpl;", "toString", "setValue", "LNetGlobulusSimiSimiValue;", "()Ljava/util/List<LSimiObject;>;", "Ljava/util/List<LSimiObject;>;", "Ljava/lang/Object;LSimiProperty;Ljava/lang/Comparable<LSimiPropertyImpl;>;" };
-  static const J2ObjcClassInfo _NetGlobulusSimiSimiPropertyImpl = { "SimiPropertyImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x10, 7, 2, -1, -1, -1, 11, -1 };
-  return &_NetGlobulusSimiSimiPropertyImpl;
+  static const void *ptrTable[] = { "LSMSimiValue;LJavaUtilList;", "(LSimiValue;Ljava/util/List<LSimiObject;>;)V", "clone", "Z", "compareTo", "LSMSimiPropertyImpl;", "toString", "setValue", "LSMSimiValue;", "()Ljava/util/List<LSimiObject;>;", "Ljava/util/List<LSimiObject;>;", "Ljava/lang/Object;LSimiProperty;Ljava/lang/Comparable<LSimiPropertyImpl;>;" };
+  static const J2ObjcClassInfo _SMSimiPropertyImpl = { "SimiPropertyImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x10, 7, 2, -1, -1, -1, 11, -1 };
+  return &_SMSimiPropertyImpl;
 }
 
 @end
 
-void NetGlobulusSimiSimiPropertyImpl_initWithNetGlobulusSimiSimiValue_withJavaUtilList_(NetGlobulusSimiSimiPropertyImpl *self, NetGlobulusSimiSimiValue *value, id<JavaUtilList> annotations) {
+void SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(SMSimiPropertyImpl *self, SMSimiValue *value, id<JavaUtilList> annotations) {
   NSObject_init(self);
   self->value_ = value;
   self->annotations_ = annotations;
 }
 
-NetGlobulusSimiSimiPropertyImpl *new_NetGlobulusSimiSimiPropertyImpl_initWithNetGlobulusSimiSimiValue_withJavaUtilList_(NetGlobulusSimiSimiValue *value, id<JavaUtilList> annotations) {
-  J2OBJC_NEW_IMPL(NetGlobulusSimiSimiPropertyImpl, initWithNetGlobulusSimiSimiValue_withJavaUtilList_, value, annotations)
+SMSimiPropertyImpl *new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(SMSimiValue *value, id<JavaUtilList> annotations) {
+  J2OBJC_NEW_IMPL(SMSimiPropertyImpl, initWithSMSimiValue_withJavaUtilList_, value, annotations)
 }
 
-NetGlobulusSimiSimiPropertyImpl *create_NetGlobulusSimiSimiPropertyImpl_initWithNetGlobulusSimiSimiValue_withJavaUtilList_(NetGlobulusSimiSimiValue *value, id<JavaUtilList> annotations) {
-  J2OBJC_CREATE_IMPL(NetGlobulusSimiSimiPropertyImpl, initWithNetGlobulusSimiSimiValue_withJavaUtilList_, value, annotations)
+SMSimiPropertyImpl *create_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(SMSimiValue *value, id<JavaUtilList> annotations) {
+  J2OBJC_CREATE_IMPL(SMSimiPropertyImpl, initWithSMSimiValue_withJavaUtilList_, value, annotations)
 }
 
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(NetGlobulusSimiSimiPropertyImpl)
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiPropertyImpl)
