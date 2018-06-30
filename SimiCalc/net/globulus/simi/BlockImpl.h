@@ -52,6 +52,9 @@
 
 - (id<JavaUtilList>)getStatements;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (NSString *)description;
 
 - (void)yieldWithInt:(jint)index;

@@ -92,7 +92,7 @@ class Json:
                     if $escaping: $escaping = false
                     else: break
                end
-               elsif peek() == "\":
+               elsif peek() == "\"":
                     $escaping = true
                     $escapedCount = $escapedCount + 1
                end
@@ -197,7 +197,7 @@ class Json:
     end
 end
 
-range = [a = 15, b = Range(10, 15), c = "asdjsakdaskd", d = [1, 2, 3]]
-str = Json.stringify(range)
-print str
-print Json.parse(str)
+#range = [a = 15, b = Range(10, 15), c = "asdjsakdaskd", d = [1, 2, 3]]
+#str = Json.stringify(range)
+#print str
+#print Json.parse(str)

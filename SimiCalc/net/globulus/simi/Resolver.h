@@ -38,6 +38,7 @@
 @class SMExpr_Get;
 @class SMExpr_Grouping;
 @class SMExpr_Gu;
+@class SMExpr_Ivic;
 @class SMExpr_Literal;
 @class SMExpr_Logical;
 @class SMExpr_ObjectLiteral;
@@ -107,6 +108,8 @@
 - (JavaLangVoid *)visitGuExprWithSMExpr_Gu:(SMExpr_Gu *)expr;
 
 - (JavaLangVoid *)visitIfStmtWithSMStmt_If:(SMStmt_If *)stmt;
+
+- (JavaLangVoid *)visitIvicExprWithSMExpr_Ivic:(SMExpr_Ivic *)expr;
 
 - (JavaLangVoid *)visitLiteralExprWithSMExpr_Literal:(SMExpr_Literal *)expr;
 

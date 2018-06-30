@@ -1112,7 +1112,10 @@ SMExpr *SMParser_unary(SMParser *self) {
     return new_SMExpr_Unary_initWithSMToken_withSMExpr_(operator_, right);
   }
   if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, GU) } count:1 type:SMTokenType_class_()])) {
-    return new_SMExpr_Gu_initWithSMExpr_(SMParser_primary(self));
+    return new_SMExpr_Gu_initWithSMExpr_(SMParser_unary(self));
+  }
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IVIC) } count:1 type:SMTokenType_class_()])) {
+    return new_SMExpr_Ivic_initWithSMExpr_(SMParser_unary(self));
   }
   if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, BANG_BANG) } count:1 type:SMTokenType_class_()])) {
     id<JavaUtilList> tokens = new_JavaUtilArrayList_init();

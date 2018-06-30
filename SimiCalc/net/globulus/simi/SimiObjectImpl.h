@@ -64,6 +64,8 @@
 
 - (id<SMSimiClass>)getSimiClass;
 
+- (JavaUtilArrayList *)keys;
+
 - (void)setWithNSString:(NSString *)key
      withSMSimiProperty:(id<SMSimiProperty>)prop
   withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
@@ -139,8 +141,6 @@
 - (jboolean)isString;
 
 - (id<JavaUtilIterator>)iterate;
-
-- (JavaUtilArrayList *)keys;
 
 - (jint)length;
 
@@ -225,6 +225,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl)
 
 - (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
 
+- (JavaUtilArrayList *)keys;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (JavaUtilArrayList *)values;
 
 #pragma mark Package-Private
@@ -257,8 +262,6 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl)
 - (jboolean)isArray;
 
 - (id<JavaUtilIterator>)iterate;
-
-- (JavaUtilArrayList *)keys;
 
 - (jint)length;
 
@@ -318,6 +321,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_Dictionary)
 
 - (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
 
+- (JavaUtilArrayList *)keys;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (JavaUtilArrayList *)values;
 
 #pragma mark Package-Private
@@ -350,8 +358,6 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_Dictionary)
 - (jboolean)isArray;
 
 - (id<JavaUtilIterator>)iterate;
-
-- (JavaUtilArrayList *)keys;
 
 - (jint)length;
 
@@ -409,6 +415,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_Array)
 
 - (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
 
+- (JavaUtilArrayList *)keys;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (JavaUtilArrayList *)values;
 
 #pragma mark Package-Private
@@ -437,8 +448,6 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_Array)
 - (jboolean)isArray;
 
 - (id<JavaUtilIterator>)iterate;
-
-- (JavaUtilArrayList *)keys;
 
 - (jint)length;
 

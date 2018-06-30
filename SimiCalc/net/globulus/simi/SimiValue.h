@@ -37,6 +37,10 @@
 #define INCLUDE_SMSimiProperty 1
 #include "SimiProperty.h"
 
+#define RESTRICT_NetGlobulusSimiCodifiable 1
+#define INCLUDE_SMCodifiable 1
+#include "Codifiable.h"
+
 #define RESTRICT_JavaLangComparable 1
 #define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
@@ -46,7 +50,7 @@
 @protocol SMSimiCallable;
 @protocol SMSimiObject;
 
-@interface SMSimiValue : NSObject < SMSimiProperty, JavaLangComparable >
+@interface SMSimiValue : NSObject < SMSimiProperty, SMCodifiable, JavaLangComparable >
 
 #pragma mark Public
 
@@ -106,6 +110,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue)
 
 - (jboolean)isEqual:(id)obj;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (NSString *)description;
 
 // Disallowed inherited constructors, do not use.
@@ -155,6 +162,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_String)
 - (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
 - (jboolean)isEqual:(id)obj;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 - (NSString *)description;
 
@@ -215,6 +225,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_Number)
 
 - (jboolean)isEqual:(id)obj;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (NSString *)description;
 
 // Disallowed inherited constructors, do not use.
@@ -267,6 +280,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_Object)
 - (jboolean)isEqual:(id)obj;
 
 - (id<SMSimiObject>)getInstance;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 - (NSString *)description;
 

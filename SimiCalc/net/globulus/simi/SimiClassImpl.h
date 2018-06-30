@@ -35,6 +35,7 @@
 @class SMEnvironment;
 @class SMSimiMethod;
 @class SMSimiObjectImpl;
+@class SMStmt_Class;
 @class SMToken;
 @protocol JavaUtilList;
 @protocol JavaUtilMap;
@@ -46,6 +47,7 @@
  @public
   NSString *name_;
   id<JavaUtilList> superclasses_;
+  SMStmt_Class *stmt_;
 }
 
 + (SMSimiClassImpl *)CLASS;
@@ -57,6 +59,9 @@
 
 - (JavaUtilArrayList *)keys;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (NSString *)description;
 
 - (JavaUtilArrayList *)values;
@@ -66,7 +71,8 @@
 - (instancetype __nonnull)initWithNSString:(NSString *)name
                           withJavaUtilList:(id<JavaUtilList>)superclasses
                            withJavaUtilMap:(id<JavaUtilMap>)constants
-                           withJavaUtilMap:(id<JavaUtilMap>)methods;
+                           withJavaUtilMap:(id<JavaUtilMap>)methods
+                          withSMStmt_Class:(SMStmt_Class *)stmt;
 
 - (id<JavaUtilSet>)allKeys;
 
@@ -92,17 +98,18 @@ J2OBJC_STATIC_INIT(SMSimiClassImpl)
 
 J2OBJC_FIELD_SETTER(SMSimiClassImpl, name_, NSString *)
 J2OBJC_FIELD_SETTER(SMSimiClassImpl, superclasses_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMSimiClassImpl, stmt_, SMStmt_Class *)
 
 inline SMSimiClassImpl *SMSimiClassImpl_get_CLASS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT SMSimiClassImpl *SMSimiClassImpl_CLASS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiClassImpl, CLASS, SMSimiClassImpl *)
 
-FOUNDATION_EXPORT void SMSimiClassImpl_initWithNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_(SMSimiClassImpl *self, NSString *name, id<JavaUtilList> superclasses, id<JavaUtilMap> constants, id<JavaUtilMap> methods);
+FOUNDATION_EXPORT void SMSimiClassImpl_initWithNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_withSMStmt_Class_(SMSimiClassImpl *self, NSString *name, id<JavaUtilList> superclasses, id<JavaUtilMap> constants, id<JavaUtilMap> methods, SMStmt_Class *stmt);
 
-FOUNDATION_EXPORT SMSimiClassImpl *new_SMSimiClassImpl_initWithNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_(NSString *name, id<JavaUtilList> superclasses, id<JavaUtilMap> constants, id<JavaUtilMap> methods) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMSimiClassImpl *new_SMSimiClassImpl_initWithNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_withSMStmt_Class_(NSString *name, id<JavaUtilList> superclasses, id<JavaUtilMap> constants, id<JavaUtilMap> methods, SMStmt_Class *stmt) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMSimiClassImpl *create_SMSimiClassImpl_initWithNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_(NSString *name, id<JavaUtilList> superclasses, id<JavaUtilMap> constants, id<JavaUtilMap> methods);
+FOUNDATION_EXPORT SMSimiClassImpl *create_SMSimiClassImpl_initWithNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_withSMStmt_Class_(NSString *name, id<JavaUtilList> superclasses, id<JavaUtilMap> constants, id<JavaUtilMap> methods, SMStmt_Class *stmt);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMSimiClassImpl)
 
@@ -133,6 +140,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiClassImpl)
 - (jint)compareToWithId:(SMSimiValue *)o;
 
 - (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 // Disallowed inherited constructors, do not use.
 

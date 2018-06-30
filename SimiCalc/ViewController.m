@@ -17,6 +17,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "ConversionUtil.h"
 #import "IOSObjectArray+Simi.h"
+#import "java/lang/Long.h"
 
 @interface ViewController () <SMActiveSimi_Callback>
 
@@ -24,8 +25,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtRIght;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segOp;
 @property (weak, nonatomic) IBOutlet UILabel *lblResult;
-    @property (weak, nonatomic) IBOutlet UILabel *lblStats;
-    
+@property (weak, nonatomic) IBOutlet UILabel *lblStats;
+
 @end
 
 @implementation ViewController
@@ -43,6 +44,9 @@
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    
+    id<SMSimiProperty> date = [SMActiveSimi evalWithNSString:@"Date" withNSString:@"init" withSMSimiPropertyArray:[IOSObjectArray arrayWithProps:[SMSimiMapper toSimiPropertyWithId:[[JavaLangLong alloc] initWithLong:(long)([NSDate new].timeIntervalSince1970 * 1000)]], nil]];
+    NSLog(@"Date: %@", date);
 }
 
 
@@ -64,9 +68,9 @@
 - (void)doneWithSMSimiProperty:(id<SMSimiProperty>)result {
     NSMutableString *string = [[NSMutableString alloc] initWithString:@"Top posters:\n\n"];
     NSDictionary *dict = [ConversionUtil dictionaryFromMap:[SMSimiMapper fromObjectWithSMSimiObject:[[result getValue] getObject]]];
-    for (id key in dict) {
-        [string appendFormat:@"%@ with %@ comments\n", key, [dict objectForKey:key]];
-    }
+    [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [string appendFormat:@"%@ with %@ comments\n", key, obj];
+    }];
     self.lblStats.text = string;
 }
 

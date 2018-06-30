@@ -112,7 +112,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[8].selector = @selector(getObject);
   methods[9].selector = @selector(getCallable);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "copy", "clone", "Z", "setValue", "LSMSimiValue;", "()Ljava/util/List<LSimiObject;>;", "LSMSimiValue_String;LSMSimiValue_Number;LSMSimiValue_Object;LSMSimiValue_Callable;LSMSimiValue_IncompatibleValuesException;", "Ljava/lang/Object;LSimiProperty;Ljava/lang/Comparable<LSimiValue;>;" };
+  static const void *ptrTable[] = { "copy", "clone", "Z", "setValue", "LSMSimiValue;", "()Ljava/util/List<LSimiObject;>;", "LSMSimiValue_String;LSMSimiValue_Number;LSMSimiValue_Object;LSMSimiValue_Callable;LSMSimiValue_IncompatibleValuesException;", "Ljava/lang/Object;LSimiProperty;LCodifiable;Ljava/lang/Comparable<LSimiValue;>;" };
   static const J2ObjcClassInfo _SMSimiValue = { "SimiValue", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x401, 10, 0, -1, 6, -1, 7, -1 };
   return &_SMSimiValue;
 }
@@ -159,6 +159,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue)
   return [((NSString *) nil_chk(self->value_)) compareToWithId:((SMSimiValue_String *) nil_chk(((SMSimiValue_String *) cast_chk(o, [SMSimiValue_String class]))))->value_];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("C$C", '"', [((NSString *) nil_chk([self description])) java_replace:@"\"" withSequence:@"\\\""], '"');
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
@@ -167,6 +172,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue)
     { NULL, "LSMSimiValue;", 0x1, 4, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 7, 8, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 10, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -177,12 +183,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue)
   methods[3].selector = @selector(copy__);
   methods[4].selector = @selector(cloneWithBoolean:);
   methods[5].selector = @selector(compareToWithId:);
+  methods[6].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "value_", "LNSString;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNSString;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "compareTo", "LSMSimiValue;" };
-  static const J2ObjcClassInfo _SMSimiValue_String = { "String", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 8, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LNSString;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "compareTo", "LSMSimiValue;", "toCode", "IZ" };
+  static const J2ObjcClassInfo _SMSimiValue_String = { "String", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 7, 1, 8, -1, -1, -1, -1 };
   return &_SMSimiValue_String;
 }
 
@@ -259,6 +266,11 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
   return JavaLangDouble_compareWithDouble_withDouble_(self->value_, ((SMSimiValue_Number *) nil_chk(((SMSimiValue_Number *) cast_chk(o, [SMSimiValue_Number class]))))->value_);
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [self description];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
@@ -268,6 +280,7 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
     { NULL, "LSMSimiValue;", 0x1, 5, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue;", 0x1, 6, 1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 7, 8, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 10, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -279,14 +292,15 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
   methods[4].selector = @selector(copy__);
   methods[5].selector = @selector(cloneWithBoolean:);
   methods[6].selector = @selector(compareToWithId:);
+  methods[7].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "value_", "D", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
-    { "TRUE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 9, -1, -1 },
-    { "FALSE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 10, -1, -1 },
+    { "TRUE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 11, -1, -1 },
+    { "FALSE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 12, -1, -1 },
   };
-  static const void *ptrTable[] = { "D", "Z", "toString", "equals", "LNSObject;", "copy", "clone", "compareTo", "LSMSimiValue;", &SMSimiValue_Number_TRUE, &SMSimiValue_Number_FALSE };
-  static const J2ObjcClassInfo _SMSimiValue_Number = { "Number", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 7, 3, 8, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "D", "Z", "toString", "equals", "LNSObject;", "copy", "clone", "compareTo", "LSMSimiValue;", "toCode", "IZ", &SMSimiValue_Number_TRUE, &SMSimiValue_Number_FALSE };
+  static const J2ObjcClassInfo _SMSimiValue_Number = { "Number", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 8, 3, 8, -1, -1, -1, -1 };
   return &_SMSimiValue_Number;
 }
 
@@ -356,6 +370,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Number)
   @throw new_JavaLangRuntimeException_initWithNSString_(@"Unable to compare objects by default, implement in subclass!");
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((id<SMSimiObject>) nil_chk(value_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
@@ -364,6 +383,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Number)
     { NULL, "LSMSimiValue;", 0x1, 4, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 7, 8, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 10, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -374,12 +394,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Number)
   methods[3].selector = @selector(copy__);
   methods[4].selector = @selector(cloneWithBoolean:);
   methods[5].selector = @selector(compareToWithId:);
+  methods[6].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "value_", "LSMSimiObject;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiObject;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "compareTo", "LSMSimiValue;" };
-  static const J2ObjcClassInfo _SMSimiValue_Object = { "Object", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 8, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiObject;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "compareTo", "LSMSimiValue;", "toCode", "IZ" };
+  static const J2ObjcClassInfo _SMSimiValue_Object = { "Object", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 7, 1, 8, -1, -1, -1, -1 };
   return &_SMSimiValue_Object;
 }
 
@@ -438,6 +459,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Object)
   @throw new_JavaLangRuntimeException_initWithNSString_(@"Unable to compare callables!");
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((id<SMSimiCallable>) nil_chk(value_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
@@ -448,6 +474,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Object)
     { NULL, "LSMSimiObject;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 7, 8, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 9, 10, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 11, 12, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -460,14 +487,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Object)
   methods[5].selector = @selector(getInstance);
   methods[6].selector = @selector(bindWithSMSimiObject:);
   methods[7].selector = @selector(compareToWithId:);
+  methods[8].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "value_", "LSMSimiCallable;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
     { "name_", "LNSString;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
     { "instance_", "LSMSimiObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiCallable;LNSString;LSMSimiObject;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "bind", "LSMSimiObject;", "compareTo", "LSMSimiValue;" };
-  static const J2ObjcClassInfo _SMSimiValue_Callable = { "Callable", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 8, 3, 10, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiCallable;LNSString;LSMSimiObject;", "toString", "equals", "LNSObject;", "copy", "clone", "Z", "bind", "LSMSimiObject;", "compareTo", "LSMSimiValue;", "toCode", "IZ" };
+  static const J2ObjcClassInfo _SMSimiValue_Callable = { "Callable", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 9, 3, 10, -1, -1, -1, -1 };
   return &_SMSimiValue_Callable;
 }
 

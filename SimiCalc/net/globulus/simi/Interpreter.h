@@ -45,6 +45,7 @@
 @class SMExpr_Get;
 @class SMExpr_Grouping;
 @class SMExpr_Gu;
+@class SMExpr_Ivic;
 @class SMExpr_Literal;
 @class SMExpr_Logical;
 @class SMExpr_ObjectLiteral;
@@ -147,6 +148,8 @@
 - (id<SMSimiProperty>)visitGuExprWithSMExpr_Gu:(SMExpr_Gu *)expr;
 
 - (id<SMSimiProperty>)visitIfStmtWithSMStmt_If:(SMStmt_If *)stmt;
+
+- (id<SMSimiProperty>)visitIvicExprWithSMExpr_Ivic:(SMExpr_Ivic *)expr;
 
 - (SMSimiValue *)visitLiteralExprWithSMExpr_Literal:(SMExpr_Literal *)expr;
 

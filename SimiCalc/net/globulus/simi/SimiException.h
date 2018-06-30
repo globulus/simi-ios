@@ -49,9 +49,14 @@
 
 - (id<SMSimiClass>)getSimiClass;
 
+- (id<JavaUtilList>)keys;
+
 - (void)setWithNSString:(NSString *)key
      withSMSimiProperty:(id<SMSimiProperty>)value
   withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 - (id<JavaUtilList>)values;
 

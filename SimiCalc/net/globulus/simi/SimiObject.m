@@ -19,6 +19,7 @@
     { NULL, "V", 0x401, 2, 3, -1, -1, -1, -1 },
     { NULL, "LSMSimiObject;", 0x401, 4, 5, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x401, -1, -1, -1, 6, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x401, -1, -1, -1, 6, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -27,10 +28,11 @@
   methods[1].selector = @selector(getWithNSString:withSMSimiEnvironment:);
   methods[2].selector = @selector(setWithNSString:withSMSimiProperty:withSMSimiEnvironment:);
   methods[3].selector = @selector(cloneWithBoolean:);
-  methods[4].selector = @selector(values);
+  methods[4].selector = @selector(keys);
+  methods[5].selector = @selector(values);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "get", "LNSString;LSMSimiEnvironment;", "set", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;" };
-  static const J2ObjcClassInfo _SMSimiObject = { "SimiObject", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 5, 0, -1, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMSimiObject = { "SimiObject", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 6, 0, -1, -1, -1, -1, -1 };
   return &_SMSimiObject;
 }
 

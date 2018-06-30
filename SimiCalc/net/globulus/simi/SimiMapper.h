@@ -24,6 +24,7 @@
 @class SMSimiValue;
 @protocol JavaUtilList;
 @protocol JavaUtilMap;
+@protocol SMBlockInterpreter;
 @protocol SMSimiObject;
 @protocol SMSimiProperty;
 
@@ -40,10 +41,21 @@
 + (id<SMSimiObject>)toObjectWithJavaUtilList:(id<JavaUtilList>)list
                                  withBoolean:(jboolean)immutable;
 
++ (id<SMSimiObject>)toObjectWithJavaUtilList:(id<JavaUtilList>)list
+                                 withBoolean:(jboolean)immutable
+                      withSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter;
+
 + (id<SMSimiObject>)toObjectWithJavaUtilMap:(id<JavaUtilMap>)map
                                 withBoolean:(jboolean)immutable;
 
++ (id<SMSimiObject>)toObjectWithJavaUtilMap:(id<JavaUtilMap>)map
+                                withBoolean:(jboolean)immutable
+                     withSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter;
+
 + (id<SMSimiProperty>)toSimiPropertyWithId:(id)value;
+
++ (id<SMSimiProperty>)toSimiPropertyWithId:(id)value
+                    withSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter;
 
 @end
 
@@ -51,13 +63,19 @@ J2OBJC_EMPTY_STATIC_INIT(SMSimiMapper)
 
 FOUNDATION_EXPORT id<SMSimiObject> SMSimiMapper_toObjectWithJavaUtilMap_withBoolean_(id<JavaUtilMap> map, jboolean immutable);
 
+FOUNDATION_EXPORT id<SMSimiObject> SMSimiMapper_toObjectWithJavaUtilMap_withBoolean_withSMBlockInterpreter_(id<JavaUtilMap> map, jboolean immutable, id<SMBlockInterpreter> interpreter);
+
 FOUNDATION_EXPORT id<SMSimiObject> SMSimiMapper_toObjectWithJavaUtilList_withBoolean_(id<JavaUtilList> list, jboolean immutable);
+
+FOUNDATION_EXPORT id<SMSimiObject> SMSimiMapper_toObjectWithJavaUtilList_withBoolean_withSMBlockInterpreter_(id<JavaUtilList> list, jboolean immutable, id<SMBlockInterpreter> interpreter);
 
 FOUNDATION_EXPORT id<JavaUtilMap> SMSimiMapper_fromObjectWithSMSimiObject_(id<SMSimiObject> object);
 
 FOUNDATION_EXPORT id<JavaUtilList> SMSimiMapper_fromArrayWithSMSimiObject_(id<SMSimiObject> object);
 
 FOUNDATION_EXPORT id<SMSimiProperty> SMSimiMapper_toSimiPropertyWithId_(id value);
+
+FOUNDATION_EXPORT id<SMSimiProperty> SMSimiMapper_toSimiPropertyWithId_withSMBlockInterpreter_(id value, id<SMBlockInterpreter> interpreter);
 
 FOUNDATION_EXPORT id SMSimiMapper_fromSimiValueWithSMSimiValue_(SMSimiValue *value);
 

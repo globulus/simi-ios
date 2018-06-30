@@ -29,6 +29,7 @@
 #include "java/util/stream/IntStream.h"
 #include "java/util/stream/Stream.h"
 #include "BlockImpl.h"
+#include "Codifiable.h"
 #include "Constants.h"
 #include "Environment.h"
 #include "Interpreter.h"
@@ -45,6 +46,7 @@
 #include "SimiPropertyImpl.h"
 #include "SimiValue.h"
 #include "Token.h"
+#include "TokenType.h"
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
@@ -95,7 +97,7 @@ __attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$2 *create_SMS
 
 @interface SMSimiObjectImpl_Dictionary_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(id<SMSimiProperty>)p;
+- (id)applyWithId:(id<SMSimiProperty>)a;
 
 @end
 
@@ -163,6 +165,24 @@ __attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$6_initWi
 __attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$6 *new_SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0);
+
+@interface SMSimiObjectImpl_Dictionary_$Lambda$7 : NSObject < JavaUtilFunctionFunction > {
+ @public
+  NSString *val$indentation_;
+  jint val$indentationLevel_;
+}
+
+- (id)applyWithId:(id<JavaUtilMap_Entry>)e;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Dictionary_$Lambda$7)
+
+__attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(SMSimiObjectImpl_Dictionary_$Lambda$7 *self, NSString *capture$0, jint capture$1);
+
+__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$7 *new_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(NSString *capture$0, jint capture$1) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$7 *create_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(NSString *capture$0, jint capture$1);
 
 @interface SMSimiObjectImpl_Array_$Lambda$1 : NSObject < JavaUtilFunctionIntFunction >
 
@@ -235,6 +255,23 @@ __attribute__((unused)) static void SMSimiObjectImpl_Array_$Lambda$4_init(SMSimi
 __attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$4 *new_SMSimiObjectImpl_Array_$Lambda$4_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init(void);
+
+@interface SMSimiObjectImpl_Array_$Lambda$5 : NSObject < JavaUtilFunctionFunction > {
+ @public
+  jint val$indentationLevel_;
+}
+
+- (id)applyWithId:(id<SMSimiProperty>)i;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Array_$Lambda$5)
+
+__attribute__((unused)) static void SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(SMSimiObjectImpl_Array_$Lambda$5 *self, jint capture$0);
+
+__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$5 *new_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$5 *create_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(jint capture$0);
 
 @interface SMSimiObjectImpl_InitiallyEmpty () {
  @public
@@ -595,7 +632,7 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
     { NULL, "Z", 0x400, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x400, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x0, 32, 33, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x400, -1, -1, -1, 34, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x401, -1, -1, -1, 34, -1, -1 },
     { NULL, "LJavaUtilArrayList;", 0x401, -1, -1, -1, 34, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x400, 35, 24, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x400, 36, 24, -1, -1, -1, -1 },
@@ -926,6 +963,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
   return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz_, mutable_, fieldsClone);
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  NSString *indentation = SMCodifiable_getIndentationWithInt_(indentationLevel + 1);
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_(ignoreFirst ? @"" : SMCodifiable_getIndentationWithInt_(indentationLevel)) appendWithNSString:immutable_ ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, LEFT_BRACKET))) toCode] : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET))) toCode]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]])) appendWithNSString:clazz_ != nil ? JreStrcat("$$$C$$", indentation, @"\"class\" = gu \"", clazz_->name_, '"', ([((JavaUtilLinkedHashMap *) nil_chk(fields_)) isEmpty] ? @"" : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode]), [JreLoadEnum(SMTokenType, NEWLINE) toCode]) : @""])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) stream])) mapWithJavaUtilFunctionFunction:new_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(indentation, indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], [JreLoadEnum(SMTokenType, NEWLINE) toCode]))]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCode]])) description];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
@@ -936,7 +979,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
     { NULL, "Z", 0x0, 9, 10, -1, -1, -1, -1 },
     { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x0, -1, -1, -1, 11, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
     { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x0, 12, 13, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x0, 14, 13, -1, -1, -1, -1 },
@@ -950,6 +993,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
     { NULL, "LSMSimiObjectImpl_Dictionary;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl_Array;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObject;", 0x1, 25, 26, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 27, 28, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -976,12 +1020,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
   methods[19].selector = @selector(asDictionary);
   methods[20].selector = @selector(asArray);
   methods[21].selector = @selector(cloneWithBoolean:);
+  methods[22].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x10, -1, -1, 27, -1 },
+    { "fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x10, -1, -1, 29, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl_Dictionary = { "Dictionary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 22, 1, 24, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "toCode", "IZ", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;" };
+  static const J2ObjcClassInfo _SMSimiObjectImpl_Dictionary = { "Dictionary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 23, 1, 24, -1, -1, -1, -1 };
   return &_SMSimiObjectImpl_Dictionary;
 }
 
@@ -1072,8 +1117,8 @@ J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$3)
 
 @implementation SMSimiObjectImpl_Dictionary_$Lambda$3
 
-- (id)applyWithId:(id<SMSimiProperty>)p {
-  return [((id<SMSimiProperty>) nil_chk(p)) getValue];
+- (id)applyWithId:(id<SMSimiProperty>)a {
+  return [((id<SMSimiProperty>) nil_chk(a)) getValue];
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -1194,6 +1239,36 @@ SMSimiObjectImpl_Dictionary_$Lambda$6 *new_SMSimiObjectImpl_Dictionary_$Lambda$6
 
 SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0) {
   J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$6, initWithJavaUtilLinkedHashMap_, capture$0)
+}
+
+@implementation SMSimiObjectImpl_Dictionary_$Lambda$7
+
+- (id)applyWithId:(id<JavaUtilMap_Entry>)e {
+  return JreStrcat("$$C$C$", val$indentation_, [((id<JavaUtilMap_Entry>) nil_chk(e)) getKey], ' ', [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, EQUAL))) toCode], ' ', [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([e getValue])) getValue])) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:true]);
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+@end
+
+void SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(SMSimiObjectImpl_Dictionary_$Lambda$7 *self, NSString *capture$0, jint capture$1) {
+  self->val$indentation_ = capture$0;
+  self->val$indentationLevel_ = capture$1;
+  NSObject_init(self);
+}
+
+SMSimiObjectImpl_Dictionary_$Lambda$7 *new_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(NSString *capture$0, jint capture$1) {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$7, initWithNSString_withInt_, capture$0, capture$1)
+}
+
+SMSimiObjectImpl_Dictionary_$Lambda$7 *create_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(NSString *capture$0, jint capture$1) {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$7, initWithNSString_withInt_, capture$0, capture$1)
 }
 
 @implementation SMSimiObjectImpl_Array
@@ -1346,6 +1421,11 @@ SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambd
   return new_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz_, mutable_, fieldsClone);
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_(ignoreFirst ? @"" : SMCodifiable_getIndentationWithInt_(indentationLevel)) appendWithNSString:immutable_ ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, LEFT_BRACKET))) toCode] : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET))) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk(fields_)) stream])) mapWithJavaUtilFunctionFunction:new_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$C", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], ' '))]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]])) description];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
@@ -1356,7 +1436,7 @@ SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambd
     { NULL, "Z", 0x0, 9, 10, -1, -1, -1, -1 },
     { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x0, -1, -1, -1, 11, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
     { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x0, 12, 13, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x0, 14, 13, -1, -1, -1, -1 },
@@ -1370,6 +1450,7 @@ SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambd
     { NULL, "LSMSimiObjectImpl_Dictionary;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl_Array;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObject;", 0x1, 25, 26, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 27, 28, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1396,12 +1477,13 @@ SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambd
   methods[19].selector = @selector(asDictionary);
   methods[20].selector = @selector(asArray);
   methods[21].selector = @selector(cloneWithBoolean:);
+  methods[22].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "fields_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x10, -1, -1, 27, -1 },
+    { "fields_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x10, -1, -1, 29, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilArrayList;", "(LSimiClassImpl;ZLjava/util/ArrayList<+LSimiProperty;>;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "Ljava/util/ArrayList<LSimiProperty;>;" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl_Array = { "Array", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 22, 1, 24, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilArrayList;", "(LSimiClassImpl;ZLjava/util/ArrayList<+LSimiProperty;>;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "toCode", "IZ", "Ljava/util/ArrayList<LSimiProperty;>;" };
+  static const J2ObjcClassInfo _SMSimiObjectImpl_Array = { "Array", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 23, 1, 24, -1, -1, -1, -1 };
   return &_SMSimiObjectImpl_Array;
 }
 
@@ -1544,6 +1626,35 @@ SMSimiObjectImpl_Array_$Lambda$4 *new_SMSimiObjectImpl_Array_$Lambda$4_init() {
 
 SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init() {
   J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Array_$Lambda$4, init)
+}
+
+@implementation SMSimiObjectImpl_Array_$Lambda$5
+
+- (id)applyWithId:(id<SMSimiProperty>)i {
+  return [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(i)) getValue])) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+@end
+
+void SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(SMSimiObjectImpl_Array_$Lambda$5 *self, jint capture$0) {
+  self->val$indentationLevel_ = capture$0;
+  NSObject_init(self);
+}
+
+SMSimiObjectImpl_Array_$Lambda$5 *new_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Array_$Lambda$5, initWithInt_, capture$0)
+}
+
+SMSimiObjectImpl_Array_$Lambda$5 *create_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Array_$Lambda$5, initWithInt_, capture$0)
 }
 
 @implementation SMSimiObjectImpl_InitiallyEmpty
@@ -1717,6 +1828,14 @@ SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init()
   return clone;
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  if (underlying_ == nil) {
+    return @"";
+  }
+  return [underlying_ toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x2, -1, 0, -1, -1, -1, -1 },
@@ -1727,7 +1846,7 @@ SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init()
     { NULL, "Z", 0x0, 8, 9, -1, -1, -1, -1 },
     { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x0, -1, -1, -1, 10, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 10, -1, -1 },
     { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 10, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x0, 11, 12, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x0, 13, 12, -1, -1, -1, -1 },
@@ -1741,6 +1860,7 @@ SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init()
     { NULL, "LSMSimiObjectImpl_Dictionary;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl_Array;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObject;", 0x1, 24, 25, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 26, 27, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1767,12 +1887,13 @@ SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init()
   methods[19].selector = @selector(asDictionary);
   methods[20].selector = @selector(asArray);
   methods[21].selector = @selector(cloneWithBoolean:);
+  methods[22].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "underlying_", "LSMSimiObjectImpl;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;Z", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl_InitiallyEmpty = { "InitiallyEmpty", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 22, 1, 23, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClassImpl;Z", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "toCode", "IZ" };
+  static const J2ObjcClassInfo _SMSimiObjectImpl_InitiallyEmpty = { "InitiallyEmpty", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 23, 1, 23, -1, -1, -1, -1 };
   return &_SMSimiObjectImpl_InitiallyEmpty;
 }
 

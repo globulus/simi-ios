@@ -29,11 +29,17 @@
   return [((SMSimiFunction *) nil_chk(function_)) callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:rethrow];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((SMSimiFunction *) nil_chk(function_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x1, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -41,13 +47,14 @@
   methods[0].selector = @selector(initWithSMSimiClassImpl:withSMSimiFunction:);
   methods[1].selector = @selector(arity);
   methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "function_", "LSMSimiFunction;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;LSMSimiFunction;", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;" };
-  static const J2ObjcClassInfo _SMSimiMethod = { "SimiMethod", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 3, 2, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClassImpl;LSMSimiFunction;", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ" };
+  static const J2ObjcClassInfo _SMSimiMethod = { "SimiMethod", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 4, 2, -1, -1, -1, -1, -1 };
   return &_SMSimiMethod;
 }
 

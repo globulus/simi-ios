@@ -35,6 +35,9 @@
 
 - (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)init;

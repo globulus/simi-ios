@@ -143,7 +143,12 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
 
 - (void)stringWithChar:(jchar)opener {
   while (SMScanner_peek(self) != opener && !SMScanner_isAtEnd(self)) {
-    if (SMScanner_peek(self) == 0x000a) line_++;
+    if (SMScanner_peek(self) == 0x000a) {
+      line_++;
+    }
+    else if (SMScanner_peek(self) == '\\' && SMScanner_peekNext(self) == opener) {
+      SMScanner_advance(self);
+    }
     SMScanner_advance(self);
   }
   if (SMScanner_isAtEnd(self)) {
@@ -298,6 +303,7 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
       (void) [SMScanner_keywords putWithId:@"import" withId:JreLoadEnum(SMTokenType, IMPORT)];
       (void) [SMScanner_keywords putWithId:@"in" withId:JreLoadEnum(SMTokenType, IN)];
       (void) [SMScanner_keywords putWithId:@"is" withId:JreLoadEnum(SMTokenType, IS)];
+      (void) [SMScanner_keywords putWithId:@"ivic" withId:JreLoadEnum(SMTokenType, IVIC)];
       (void) [SMScanner_keywords putWithId:@"native" withId:JreLoadEnum(SMTokenType, NATIVE)];
       (void) [SMScanner_keywords putWithId:@"nil" withId:JreLoadEnum(SMTokenType, NIL)];
       (void) [SMScanner_keywords putWithId:@"not" withId:JreLoadEnum(SMTokenType, NOT)];
@@ -526,7 +532,7 @@ void SMScanner_number(SMScanner *self) {
 }
 
 NSString *SMScanner_escapedStringWithInt_withInt_(SMScanner *self, jint start, jint stop) {
-  return [((NSString *) nil_chk([((NSString *) nil_chk([((NSString *) nil_chk(self->source_)) java_substring:start endIndex:stop])) java_replace:@"\\n" withSequence:@"\n"])) java_replace:@"\\t" withSequence:@"\t"];
+  return [((NSString *) nil_chk([((NSString *) nil_chk([((NSString *) nil_chk([((NSString *) nil_chk(self->source_)) java_substring:start endIndex:stop])) java_replace:@"\\n" withSequence:@"\n"])) java_replace:@"\\t" withSequence:@"\t"])) java_replace:@"\\\"" withSequence:@"\""];
 }
 
 NSString *SMScanner_keywordStringWithSMTokenType_(SMScanner *self, SMTokenType *type) {

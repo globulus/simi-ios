@@ -45,6 +45,9 @@
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz

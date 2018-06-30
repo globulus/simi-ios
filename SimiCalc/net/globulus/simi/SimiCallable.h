@@ -21,11 +21,15 @@
 #if !defined (SMSimiCallable_) && (INCLUDE_ALL_NetGlobulusSimiSimiCallable || defined(INCLUDE_SMSimiCallable))
 #define SMSimiCallable_
 
+#define RESTRICT_NetGlobulusSimiCodifiable 1
+#define INCLUDE_SMCodifiable 1
+#include "Codifiable.h"
+
 @protocol JavaUtilList;
 @protocol SMBlockInterpreter;
 @protocol SMSimiProperty;
 
-@protocol SMSimiCallable < JavaObject >
+@protocol SMSimiCallable < SMCodifiable, JavaObject >
 
 - (jint)arity;
 
@@ -33,9 +37,14 @@
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(SMSimiCallable)
+
+FOUNDATION_EXPORT NSString *SMSimiCallable_toCodeWithInt_withBoolean_(id<SMSimiCallable> self, jint indentationLevel, jboolean ignoreFirst);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMSimiCallable)
 

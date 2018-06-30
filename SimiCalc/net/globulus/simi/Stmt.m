@@ -7,6 +7,7 @@
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/Boolean.h"
+#include "java/lang/StringBuilder.h"
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
 #include "java/util/function/Function.h"
@@ -17,6 +18,7 @@
 #include "Expr.h"
 #include "Stmt.h"
 #include "Token.h"
+#include "TokenType.h"
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
@@ -27,6 +29,92 @@
 @interface SMStmt_BlockStmt : NSObject
 
 @end
+
+@interface SMStmt_Class_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(SMExpr *)s;
+
+@end
+
+J2OBJC_STATIC_INIT(SMStmt_Class_$Lambda$1)
+
+inline SMStmt_Class_$Lambda$1 *SMStmt_Class_$Lambda$1_get_instance(void);
+static SMStmt_Class_$Lambda$1 *SMStmt_Class_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMStmt_Class_$Lambda$1, instance, SMStmt_Class_$Lambda$1 *)
+
+__attribute__((unused)) static void SMStmt_Class_$Lambda$1_init(SMStmt_Class_$Lambda$1 *self);
+
+__attribute__((unused)) static SMStmt_Class_$Lambda$1 *new_SMStmt_Class_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_Class_$Lambda$1 *create_SMStmt_Class_$Lambda$1_init(void);
+
+@interface SMStmt_Class_$Lambda$2 : NSObject < JavaUtilFunctionFunction > {
+ @public
+  jint val$indentationLevel_;
+}
+
+- (id)applyWithId:(SMExpr_Assign *)c;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMStmt_Class_$Lambda$2)
+
+__attribute__((unused)) static void SMStmt_Class_$Lambda$2_initWithInt_(SMStmt_Class_$Lambda$2 *self, jint capture$0);
+
+__attribute__((unused)) static SMStmt_Class_$Lambda$2 *new_SMStmt_Class_$Lambda$2_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_Class_$Lambda$2 *create_SMStmt_Class_$Lambda$2_initWithInt_(jint capture$0);
+
+@interface SMStmt_Class_$Lambda$3 : NSObject < JavaUtilFunctionFunction > {
+ @public
+  jint val$indentationLevel_;
+}
+
+- (id)applyWithId:(SMStmt_Function *)m;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMStmt_Class_$Lambda$3)
+
+__attribute__((unused)) static void SMStmt_Class_$Lambda$3_initWithInt_(SMStmt_Class_$Lambda$3 *self, jint capture$0);
+
+__attribute__((unused)) static SMStmt_Class_$Lambda$3 *new_SMStmt_Class_$Lambda$3_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_Class_$Lambda$3 *create_SMStmt_Class_$Lambda$3_initWithInt_(jint capture$0);
+
+@interface SMStmt_Class_$Lambda$4 : NSObject < JavaUtilFunctionFunction > {
+ @public
+  jint val$indentationLevel_;
+}
+
+- (id)applyWithId:(SMStmt_Class *)i;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMStmt_Class_$Lambda$4)
+
+__attribute__((unused)) static void SMStmt_Class_$Lambda$4_initWithInt_(SMStmt_Class_$Lambda$4 *self, jint capture$0);
+
+__attribute__((unused)) static SMStmt_Class_$Lambda$4 *new_SMStmt_Class_$Lambda$4_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_Class_$Lambda$4 *create_SMStmt_Class_$Lambda$4_initWithInt_(jint capture$0);
+
+@interface SMStmt_Function_$Lambda$1 : NSObject < JavaUtilFunctionFunction > {
+ @public
+  jint val$indentationLevel_;
+}
+
+- (id)applyWithId:(SMStmt_Annotation *)a;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMStmt_Function_$Lambda$1)
+
+__attribute__((unused)) static void SMStmt_Function_$Lambda$1_initWithInt_(SMStmt_Function_$Lambda$1 *self, jint capture$0);
+
+__attribute__((unused)) static SMStmt_Function_$Lambda$1 *new_SMStmt_Function_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_Function_$Lambda$1 *create_SMStmt_Function_$Lambda$1_initWithInt_(jint capture$0);
 
 @interface SMStmt_Elsif_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
 
@@ -99,6 +187,23 @@ __attribute__((unused)) static void SMStmt_If_$Lambda$2_init(SMStmt_If_$Lambda$2
 __attribute__((unused)) static SMStmt_If_$Lambda$2 *new_SMStmt_If_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static SMStmt_If_$Lambda$2 *create_SMStmt_If_$Lambda$2_init(void);
+
+@interface SMStmt_If_$Lambda$3 : NSObject < JavaUtilFunctionFunction > {
+ @public
+  jint val$indentationLevel_;
+}
+
+- (id)applyWithId:(SMStmt_Elsif *)e;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMStmt_If_$Lambda$3)
+
+__attribute__((unused)) static void SMStmt_If_$Lambda$3_initWithInt_(SMStmt_If_$Lambda$3 *self, jint capture$0);
+
+__attribute__((unused)) static SMStmt_If_$Lambda$3 *new_SMStmt_If_$Lambda$3_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMStmt_If_$Lambda$3 *create_SMStmt_If_$Lambda$3_initWithInt_(jint capture$0);
 
 @interface SMStmt_While_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
 
@@ -290,22 +395,29 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMStmt_BlockStmt)
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitAnnotationStmtWithSMStmt_Annotation:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, BANG))) toCodeWithInt:indentationLevel withBoolean:false], [((SMExpr *) nil_chk(expr_)) toCodeWithInt:indentationLevel withBoolean:true], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMExpr:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expr_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Annotation = { "Annotation", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Annotation = { "Annotation", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Annotation;
 }
 
@@ -338,22 +450,29 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Annotation)
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitBreakStmtWithSMStmt_Break:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$$", [((SMTokenType *) nil_chk(((SMToken *) nil_chk(name_))->type_)) toCodeWithInt:indentationLevel withBoolean:false], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMToken:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Break = { "Break", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Break = { "Break", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Break;
 }
 
@@ -395,27 +514,34 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Break)
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitClassStmtWithSMStmt_Class:self withBoolean:addToEnv];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, CLASS))) toCodeWithInt:indentationLevel withBoolean:false]) appendWithNSString:@" "])) appendWithNSString:((SMToken *) nil_chk(name_))->lexeme_])) appendWithNSString:superclasses_ != nil ? JreStrcat("$$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, LEFT_PAREN))) toCode], [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([superclasses_ stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_Class_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$C", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], ' '))], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_PAREN))) toCode]) : @""])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COLON))) toCode]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(constants_)) stream])) mapWithJavaUtilFunctionFunction:new_SMStmt_Class_$Lambda$2_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_([JreLoadEnum(SMTokenType, NEWLINE) toCode])]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(methods_)) stream])) mapWithJavaUtilFunctionFunction:new_SMStmt_Class_$Lambda$3_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joining()]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(innerClasses_)) stream])) mapWithJavaUtilFunctionFunction:new_SMStmt_Class_$Lambda$4_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joining()]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCode]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, END))) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCode]])) description];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
+    { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMToken:withJavaUtilList:withJavaUtilList:withJavaUtilList:withJavaUtilList:withJavaUtilList:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "superclasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
-    { "constants_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 6, -1 },
-    { "innerClasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
-    { "methods_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 8, -1 },
-    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 9, -1 },
+    { "superclasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
+    { "constants_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 8, -1 },
+    { "innerClasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 9, -1 },
+    { "methods_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 10, -1 },
+    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 11, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LExpr$Assign;>;Ljava/util/List<LStmt$Class;>;Ljava/util/List<LStmt$Function;>;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LExpr;>;", "Ljava/util/List<LExpr$Assign;>;", "Ljava/util/List<LStmt$Class;>;", "Ljava/util/List<LStmt$Function;>;", "Ljava/util/List<LStmt$Annotation;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Class = { "Class", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 6, 10, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LExpr$Assign;>;Ljava/util/List<LStmt$Class;>;Ljava/util/List<LStmt$Function;>;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LExpr;>;", "Ljava/util/List<LExpr$Assign;>;", "Ljava/util/List<LStmt$Class;>;", "Ljava/util/List<LStmt$Function;>;", "Ljava/util/List<LStmt$Annotation;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Class = { "Class", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 6, 12, -1, -1, -1, -1 };
   return &_SMStmt_Class;
 }
 
@@ -441,6 +567,130 @@ SMStmt_Class *create_SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilL
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Class)
 
+J2OBJC_INITIALIZED_DEFN(SMStmt_Class_$Lambda$1)
+
+@implementation SMStmt_Class_$Lambda$1
+
+- (id)applyWithId:(SMExpr *)s {
+  return [((SMExpr *) nil_chk(s)) toCodeWithInt:0 withBoolean:false];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMStmt_Class_$Lambda$1 class]) {
+    SMStmt_Class_$Lambda$1_instance = new_SMStmt_Class_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMStmt_Class_$Lambda$1)
+  }
+}
+
+@end
+
+void SMStmt_Class_$Lambda$1_init(SMStmt_Class_$Lambda$1 *self) {
+  NSObject_init(self);
+}
+
+SMStmt_Class_$Lambda$1 *new_SMStmt_Class_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMStmt_Class_$Lambda$1, init)
+}
+
+SMStmt_Class_$Lambda$1 *create_SMStmt_Class_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMStmt_Class_$Lambda$1, init)
+}
+
+@implementation SMStmt_Class_$Lambda$2
+
+- (id)applyWithId:(SMExpr_Assign *)c {
+  return [((SMExpr_Assign *) nil_chk(c)) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+@end
+
+void SMStmt_Class_$Lambda$2_initWithInt_(SMStmt_Class_$Lambda$2 *self, jint capture$0) {
+  self->val$indentationLevel_ = capture$0;
+  NSObject_init(self);
+}
+
+SMStmt_Class_$Lambda$2 *new_SMStmt_Class_$Lambda$2_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMStmt_Class_$Lambda$2, initWithInt_, capture$0)
+}
+
+SMStmt_Class_$Lambda$2 *create_SMStmt_Class_$Lambda$2_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMStmt_Class_$Lambda$2, initWithInt_, capture$0)
+}
+
+@implementation SMStmt_Class_$Lambda$3
+
+- (id)applyWithId:(SMStmt_Function *)m {
+  return [((SMStmt_Function *) nil_chk(m)) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+@end
+
+void SMStmt_Class_$Lambda$3_initWithInt_(SMStmt_Class_$Lambda$3 *self, jint capture$0) {
+  self->val$indentationLevel_ = capture$0;
+  NSObject_init(self);
+}
+
+SMStmt_Class_$Lambda$3 *new_SMStmt_Class_$Lambda$3_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMStmt_Class_$Lambda$3, initWithInt_, capture$0)
+}
+
+SMStmt_Class_$Lambda$3 *create_SMStmt_Class_$Lambda$3_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMStmt_Class_$Lambda$3, initWithInt_, capture$0)
+}
+
+@implementation SMStmt_Class_$Lambda$4
+
+- (id)applyWithId:(SMStmt_Class *)i {
+  return [((SMStmt_Class *) nil_chk(i)) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+@end
+
+void SMStmt_Class_$Lambda$4_initWithInt_(SMStmt_Class_$Lambda$4 *self, jint capture$0) {
+  self->val$indentationLevel_ = capture$0;
+  NSObject_init(self);
+}
+
+SMStmt_Class_$Lambda$4 *new_SMStmt_Class_$Lambda$4_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMStmt_Class_$Lambda$4, initWithInt_, capture$0)
+}
+
+SMStmt_Class_$Lambda$4 *create_SMStmt_Class_$Lambda$4_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMStmt_Class_$Lambda$4, initWithInt_, capture$0)
+}
+
 @implementation SMStmt_Continue
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)name {
@@ -453,22 +703,29 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Class)
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitContinueStmtWithSMStmt_Continue:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$$", [((SMTokenType *) nil_chk(((SMToken *) nil_chk(name_))->type_)) toCodeWithInt:indentationLevel withBoolean:false], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMToken:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Continue = { "Continue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Continue = { "Continue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Continue;
 }
 
@@ -501,22 +758,29 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Continue)
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitExpressionStmtWithSMStmt_Expression:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$$", [((SMExpr *) nil_chk(expression_)) toCodeWithInt:indentationLevel withBoolean:false], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMExpr:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expression_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Expression = { "Expression", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Expression = { "Expression", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Expression;
 }
 
@@ -551,24 +815,31 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Expression)
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitFunctionStmtWithSMStmt_Function:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_init() appendWithNSString:annotations_ != nil ? [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([annotations_ stream])) mapWithJavaUtilFunctionFunction:new_SMStmt_Function_$Lambda$1_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joining()] : @""])) appendWithNSString:[((SMExpr_Block *) nil_chk(block_)) toCodeWithInt:indentationLevel withBoolean:false withNSString:((SMToken *) nil_chk(name_))->lexeme_]])) description];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
+    { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMToken:withSMExpr_Block:withJavaUtilList:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "block_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 5, -1 },
+    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LSMExpr_Block;LJavaUtilList;", "(LToken;LExpr$Block;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "Ljava/util/List<LStmt$Annotation;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Function = { "Function", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 3, 6, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LSMExpr_Block;LJavaUtilList;", "(LToken;LExpr$Block;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LStmt$Annotation;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Function = { "Function", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 3, 8, -1, -1, -1, -1 };
   return &_SMStmt_Function;
 }
 
@@ -591,6 +862,35 @@ SMStmt_Function *create_SMStmt_Function_initWithSMToken_withSMExpr_Block_withJav
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Function)
 
+@implementation SMStmt_Function_$Lambda$1
+
+- (id)applyWithId:(SMStmt_Annotation *)a {
+  return [((SMStmt_Annotation *) nil_chk(a)) toCodeWithInt:val$indentationLevel_ withBoolean:false];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+@end
+
+void SMStmt_Function_$Lambda$1_initWithInt_(SMStmt_Function_$Lambda$1 *self, jint capture$0) {
+  self->val$indentationLevel_ = capture$0;
+  NSObject_init(self);
+}
+
+SMStmt_Function_$Lambda$1 *new_SMStmt_Function_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMStmt_Function_$Lambda$1, initWithInt_, capture$0)
+}
+
+SMStmt_Function_$Lambda$1 *create_SMStmt_Function_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMStmt_Function_$Lambda$1, initWithInt_, capture$0)
+}
+
 @implementation SMStmt_Elsif
 
 - (instancetype __nonnull)initWithSMExpr:(SMExpr *)condition
@@ -608,11 +908,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Function)
   return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(thenBranch_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_Elsif_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_Elsif_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$$", [((SMExpr *) nil_chk(condition_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst], [((SMExpr_Block *) nil_chk(thenBranch_)) toCodeWithInt:indentationLevel withBoolean:true]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 4, -1, -1 },
+    { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -620,13 +926,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Function)
   methods[0].selector = @selector(initWithSMExpr:withSMExpr_Block:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(getChildren);
+  methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "condition_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "thenBranch_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Elsif = { "Elsif", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 5, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Elsif = { "Elsif", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 4, 2, 7, -1, -1, -1, -1 };
   return &_SMStmt_Elsif;
 }
 
@@ -750,11 +1057,17 @@ SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init() {
   return children;
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, IF))) toCodeWithInt:indentationLevel withBoolean:false]) appendWithNSString:@" "])) appendWithNSString:[((SMStmt_Elsif *) nil_chk(ifstmt_)) toCodeWithInt:indentationLevel withBoolean:true]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(elsifs_)) stream])) mapWithJavaUtilFunctionFunction:new_SMStmt_If_$Lambda$3_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joining()]])) appendWithNSString:elseBranch_ != nil ? JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, ELSE))) toCodeWithInt:indentationLevel withBoolean:false], [elseBranch_ toCodeWithInt:indentationLevel withBoolean:true]) : @""])) description];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 5, -1, -1 },
+    { NULL, "LNSString;", 0x1, 6, 7, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -762,14 +1075,15 @@ SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init() {
   methods[0].selector = @selector(initWithSMStmt_Elsif:withJavaUtilList:withSMExpr_Block:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(getChildren);
+  methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "ifstmt_", "LSMStmt_Elsif;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "elsifs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 6, -1 },
+    { "elsifs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 8, -1 },
     { "elseBranch_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMStmt_Elsif;LJavaUtilList;LSMExpr_Block;", "(LStmt$Elsif;Ljava/util/List<LStmt$Elsif;>;LExpr$Block;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "Ljava/util/List<LStmt$Elsif;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_If = { "If", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 3, 7, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMStmt_Elsif;LJavaUtilList;LSMExpr_Block;", "(LStmt$Elsif;Ljava/util/List<LStmt$Elsif;>;LExpr$Block;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "toCode", "IZ", "Ljava/util/List<LStmt$Elsif;>;", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_If = { "If", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 4, 3, 9, -1, -1, -1, -1 };
   return &_SMStmt_If;
 }
 
@@ -870,6 +1184,35 @@ SMStmt_If_$Lambda$2 *create_SMStmt_If_$Lambda$2_init() {
   J2OBJC_CREATE_IMPL(SMStmt_If_$Lambda$2, init)
 }
 
+@implementation SMStmt_If_$Lambda$3
+
+- (id)applyWithId:(SMStmt_Elsif *)e {
+  return JreStrcat("$C$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, ELSIF))) toCode], ' ', [((SMStmt_Elsif *) nil_chk(e)) toCodeWithInt:val$indentationLevel_ withBoolean:true]);
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+@end
+
+void SMStmt_If_$Lambda$3_initWithInt_(SMStmt_If_$Lambda$3 *self, jint capture$0) {
+  self->val$indentationLevel_ = capture$0;
+  NSObject_init(self);
+}
+
+SMStmt_If_$Lambda$3 *new_SMStmt_If_$Lambda$3_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMStmt_If_$Lambda$3, initWithInt_, capture$0)
+}
+
+SMStmt_If_$Lambda$3 *create_SMStmt_If_$Lambda$3_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMStmt_If_$Lambda$3, initWithInt_, capture$0)
+}
+
 @implementation SMStmt_Print
 
 - (instancetype __nonnull)initWithSMExpr:(SMExpr *)expression {
@@ -882,22 +1225,29 @@ SMStmt_If_$Lambda$2 *create_SMStmt_If_$Lambda$2_init() {
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitPrintStmtWithSMStmt_Print:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$C$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, PRINT))) toCodeWithInt:indentationLevel withBoolean:false], ' ', [((SMExpr *) nil_chk(expression_)) toCodeWithInt:0 withBoolean:false], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMExpr:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expression_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Print = { "Print", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 1, 4, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Print = { "Print", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Print;
 }
 
@@ -931,23 +1281,30 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Print)
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitRescueStmtWithSMStmt_Rescue:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$C$", [((SMTokenType *) nil_chk(((SMToken *) nil_chk(keyword_))->type_)) toCode], ' ', [((SMExpr_Block *) nil_chk(block_)) toCodeWithInt:indentationLevel withBoolean:true]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMToken:withSMExpr_Block:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "block_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Rescue = { "Rescue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Rescue = { "Rescue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 6, -1, -1, -1, -1 };
   return &_SMStmt_Rescue;
 }
 
@@ -982,23 +1339,30 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Rescue)
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitReturnStmtWithSMStmt_Return:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$C$$", [((SMTokenType *) nil_chk(((SMToken *) nil_chk(keyword_))->type_)) toCodeWithInt:indentationLevel withBoolean:false], ' ', [((SMExpr *) nil_chk(value_)) toCodeWithInt:0 withBoolean:false], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMToken:withSMExpr:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Return = { "Return", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Return = { "Return", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 6, -1, -1, -1, -1 };
   return &_SMStmt_Return;
 }
 
@@ -1037,11 +1401,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Return)
   return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(body_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_While_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_While_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, WHILE))) toCode]) appendWithNSString:@" "])) appendWithNSString:[((SMExpr *) nil_chk(condition_)) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[((SMExpr_Block *) nil_chk(body_)) toCodeWithInt:indentationLevel withBoolean:true]])) description];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 4, -1, -1 },
+    { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1049,13 +1419,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Return)
   methods[0].selector = @selector(initWithSMExpr:withSMExpr_Block:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(getChildren);
+  methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "condition_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "body_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_While = { "While", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 5, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_While = { "While", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 4, 2, 7, -1, -1, -1, -1 };
   return &_SMStmt_While;
 }
 
@@ -1173,11 +1544,17 @@ SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init() {
   return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(body_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_For_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_For_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, FOR))) toCodeWithInt:indentationLevel withBoolean:false]) appendWithNSString:@" "])) appendWithNSString:[((SMExpr_Variable *) nil_chk(var_)) toCodeWithInt:0 withBoolean:false]])) appendWithNSString:@" "])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, IN))) toCode]])) appendWithNSString:@" "])) appendWithNSString:[((SMExpr *) nil_chk(iterable_)) toCodeWithInt:0 withBoolean:false]])) appendWithNSString:[((SMExpr_Block *) nil_chk(body_)) toCodeWithInt:indentationLevel withBoolean:true]])) description];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 4, -1, -1 },
+    { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1185,14 +1562,15 @@ SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init() {
   methods[0].selector = @selector(initWithSMExpr_Variable:withSMExpr:withSMExpr_Block:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(getChildren);
+  methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "var_", "LSMExpr_Variable;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "iterable_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "body_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMExpr_Variable;LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_For = { "For", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 3, 5, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMExpr_Variable;LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_For = { "For", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 4, 3, 7, -1, -1, -1, -1 };
   return &_SMStmt_For;
 }
 
@@ -1306,23 +1684,30 @@ SMStmt_For_$Lambda$2 *create_SMStmt_For_$Lambda$2_init() {
   return [((id<SMStmt_Visitor>) nil_chk(visitor)) visitYieldStmtWithSMStmt_Yield:self];
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$C$$", [((SMTokenType *) nil_chk(((SMToken *) nil_chk(keyword_))->type_)) toCodeWithInt:indentationLevel withBoolean:false], ' ', [((SMExpr *) nil_chk(value_)) toCodeWithInt:0 withBoolean:false], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMToken:withSMExpr:);
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 2, 4, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
+  static const J2ObjcClassInfo _SMStmt_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 2, 6, -1, -1, -1, -1 };
   return &_SMStmt_Yield;
 }
 

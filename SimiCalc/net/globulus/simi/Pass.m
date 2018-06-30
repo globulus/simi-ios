@@ -7,6 +7,7 @@
 #include "java/lang/AssertionError.h"
 #include "Pass.h"
 #include "SimiValue.h"
+#include "TokenType.h"
 
 @implementation SMPass
 
@@ -30,12 +31,18 @@ J2OBJC_IGNORE_DESIGNATED_END
   @throw new_JavaLangAssertionError_init();
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, PASS))) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue;", 0x1, 0, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue;", 0x1, 1, 2, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -44,9 +51,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[1].selector = @selector(copy__);
   methods[2].selector = @selector(cloneWithBoolean:);
   methods[3].selector = @selector(compareToWithId:);
+  methods[4].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "copy", "clone", "Z", "compareTo", "LSMSimiValue;" };
-  static const J2ObjcClassInfo _SMPass = { "Pass", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x0, 4, 0, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "copy", "clone", "Z", "compareTo", "LSMSimiValue;", "toCode", "IZ" };
+  static const J2ObjcClassInfo _SMPass = { "Pass", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x0, 5, 0, -1, -1, -1, -1, -1 };
   return &_SMPass;
 }
 

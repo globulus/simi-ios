@@ -25,6 +25,10 @@
 #define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
 
+#define RESTRICT_NetGlobulusSimiCodifiable 1
+#define INCLUDE_SMCodifiable 1
+#include "Codifiable.h"
+
 @class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, SMTokenType_Enum) {
@@ -96,10 +100,11 @@ typedef NS_ENUM(NSUInteger, SMTokenType_Enum) {
   SMTokenType_Enum_YIELD = 65,
   SMTokenType_Enum_WHEN = 66,
   SMTokenType_Enum_GU = 67,
-  SMTokenType_Enum_EOF = 68,
+  SMTokenType_Enum_IVIC = 68,
+  SMTokenType_Enum_EOF = 69,
 };
 
-@interface SMTokenType : JavaLangEnum
+@interface SMTokenType : JavaLangEnum < SMCodifiable >
 
 + (SMTokenType * __nonnull)LEFT_PAREN;
 
@@ -237,9 +242,16 @@ typedef NS_ENUM(NSUInteger, SMTokenType_Enum) {
 
 + (SMTokenType * __nonnull)GU;
 
++ (SMTokenType * __nonnull)IVIC;
+
 + (SMTokenType * __nonnull)EOF_;
 
 #pragma mark Public
+
+- (NSString *)toCode;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 + (SMTokenType *)valueOfWithNSString:(NSString *)name;
 
@@ -459,6 +471,9 @@ J2OBJC_ENUM_CONSTANT(SMTokenType, WHEN)
 
 inline SMTokenType *SMTokenType_get_GU(void);
 J2OBJC_ENUM_CONSTANT(SMTokenType, GU)
+
+inline SMTokenType *SMTokenType_get_IVIC(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, IVIC)
 
 inline SMTokenType *SMTokenType_get_EOF(void);
 J2OBJC_ENUM_CONSTANT(SMTokenType, EOF)

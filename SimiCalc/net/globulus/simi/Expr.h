@@ -36,6 +36,9 @@
 #ifdef INCLUDE_SMExpr_Literal
 #define INCLUDE_SMExpr 1
 #endif
+#ifdef INCLUDE_SMExpr_Ivic
+#define INCLUDE_SMExpr 1
+#endif
 #ifdef INCLUDE_SMExpr_Gu
 #define INCLUDE_SMExpr 1
 #endif
@@ -72,10 +75,14 @@
 #if !defined (SMExpr_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr))
 #define SMExpr_
 
+#define RESTRICT_NetGlobulusSimiCodifiable 1
+#define INCLUDE_SMCodifiable 1
+#include "Codifiable.h"
+
 @class IOSObjectArray;
 @protocol SMExpr_Visitor;
 
-@interface SMExpr : NSObject
+@interface SMExpr : NSObject < SMCodifiable >
 
 #pragma mark Package-Private
 
@@ -107,6 +114,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr)
 @class SMExpr_Get;
 @class SMExpr_Grouping;
 @class SMExpr_Gu;
+@class SMExpr_Ivic;
 @class SMExpr_Literal;
 @class SMExpr_Logical;
 @class SMExpr_ObjectLiteral;
@@ -135,6 +143,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr)
 - (id)visitGroupingExprWithSMExpr_Grouping:(SMExpr_Grouping *)expr;
 
 - (id)visitGuExprWithSMExpr_Gu:(SMExpr_Gu *)expr;
+
+- (id)visitIvicExprWithSMExpr_Ivic:(SMExpr_Ivic *)expr;
 
 - (id)visitLiteralExprWithSMExpr_Literal:(SMExpr_Literal *)expr;
 
@@ -185,6 +195,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
 
 - (jboolean)isEmpty;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (void)yieldWithInt:(jint)index;
 
 #pragma mark Package-Private
@@ -197,6 +210,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
              withNSObjectArray:(IOSObjectArray *)params;
 
 - (jboolean)isNative;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst
+               withNSString:(NSString *)name;
 
 // Disallowed inherited constructors, do not use.
 
@@ -231,6 +248,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Block)
  @public
   id<JavaUtilList> tokens_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -275,6 +297,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Annotations)
   id<JavaUtilList> annotations_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)name
@@ -318,6 +345,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Assign)
   id<JavaUtilList> assigns_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)assigns;
@@ -359,6 +391,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectDecomp)
   SMToken *operator__;
   SMExpr *right_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -406,6 +443,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Binary)
   SMToken *paren_;
   id<JavaUtilList> arguments_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -455,6 +497,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Call)
   JavaLangInteger *arity_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)origin
@@ -500,6 +547,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Get)
   SMExpr *expression_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMExpr:(SMExpr *)expression;
@@ -539,6 +591,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Grouping)
   SMExpr *expr_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMExpr:(SMExpr *)expr;
@@ -566,6 +623,50 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Gu)
 
 #endif
 
+#if !defined (SMExpr_Ivic_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Ivic))
+#define SMExpr_Ivic_
+
+@class IOSObjectArray;
+@class SMExpr;
+@protocol SMExpr_Visitor;
+
+@interface SMExpr_Ivic : SMExpr {
+ @public
+  SMExpr *expr_;
+}
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
+#pragma mark Package-Private
+
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)expr;
+
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)params;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype __nonnull)init NS_UNAVAILABLE;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Ivic)
+
+J2OBJC_FIELD_SETTER(SMExpr_Ivic, expr_, SMExpr *)
+
+FOUNDATION_EXPORT void SMExpr_Ivic_initWithSMExpr_(SMExpr_Ivic *self, SMExpr *expr);
+
+FOUNDATION_EXPORT SMExpr_Ivic *new_SMExpr_Ivic_initWithSMExpr_(SMExpr *expr) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT SMExpr_Ivic *create_SMExpr_Ivic_initWithSMExpr_(SMExpr *expr);
+
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Ivic)
+
+#endif
+
 #if !defined (SMExpr_Literal_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Literal))
 #define SMExpr_Literal_
 
@@ -577,6 +678,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Gu)
  @public
   SMSimiValue *value_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -619,6 +725,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Literal)
   SMToken *operator__;
   SMExpr *right_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -666,6 +777,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Logical)
   SMExpr *name_;
   SMExpr *value_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -716,6 +832,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Set)
   JavaLangInteger *arity_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)keyword
@@ -761,6 +882,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Super)
   SMToken *keyword_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)keyword;
@@ -801,6 +927,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Self)
   SMToken *operator__;
   SMExpr *right_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -843,6 +974,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Unary)
   SMToken *name_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)name;
@@ -884,6 +1020,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Variable)
   id<JavaUtilList> props_;
   jboolean isDictionary_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 

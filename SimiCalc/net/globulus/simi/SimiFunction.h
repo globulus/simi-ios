@@ -47,6 +47,9 @@
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (NSString *)description;
 
 #pragma mark Package-Private

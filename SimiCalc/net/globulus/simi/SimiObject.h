@@ -21,12 +21,16 @@
 #if !defined (SMSimiObject_) && (INCLUDE_ALL_NetGlobulusSimiSimiObject || defined(INCLUDE_SMSimiObject))
 #define SMSimiObject_
 
+#define RESTRICT_NetGlobulusSimiCodifiable 1
+#define INCLUDE_SMCodifiable 1
+#include "Codifiable.h"
+
 @protocol JavaUtilList;
 @protocol SMSimiClass;
 @protocol SMSimiEnvironment;
 @protocol SMSimiProperty;
 
-@protocol SMSimiObject < JavaObject >
+@protocol SMSimiObject < SMCodifiable, JavaObject >
 
 - (id<SMSimiClass>)getSimiClass;
 
@@ -38,6 +42,8 @@
   withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
 - (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
+
+- (id<JavaUtilList>)keys;
 
 - (id<JavaUtilList>)values;
 

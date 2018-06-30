@@ -86,7 +86,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                       withSMSimiObject:(id<SMSimiObject>)self_
                      withSMInterpreter:(SMInterpreter *)interpreter
                       withJavaUtilList:(id<JavaUtilList>)args {
-  if ([((NSString *) nil_chk(className_)) isEqual:SMConstants_CLASS_GLOBALS]) {
+  if ([((NSString *) nil_chk(className_)) isEqual:SMConstants_GLOBALS_CLASS_NAME]) {
     id<SMSimiApiClass> apiClass = [((id<JavaUtilMap>) nil_chk(globals_)) getWithId:methodName];
     if (apiClass != nil) {
       return [apiClass callWithNSString:className_ withNSString:methodName withSMSimiObject:self_ withSMBlockInterpreter:interpreter withJavaUtilList:args];

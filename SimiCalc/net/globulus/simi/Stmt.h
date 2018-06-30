@@ -71,10 +71,14 @@
 #define INCLUDE_SMSimiStatement 1
 #include "SimiStatement.h"
 
+#define RESTRICT_NetGlobulusSimiCodifiable 1
+#define INCLUDE_SMCodifiable 1
+#include "Codifiable.h"
+
 @class IOSObjectArray;
 @protocol SMStmt_Visitor;
 
-@interface SMStmt : NSObject < SMSimiStatement >
+@interface SMStmt : NSObject < SMSimiStatement, SMCodifiable >
 
 #pragma mark Package-Private
 
@@ -181,6 +185,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_BlockStmt)
   SMExpr *expr_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMExpr:(SMExpr *)expr;
@@ -219,6 +228,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Annotation)
  @public
   SMToken *name_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -264,6 +278,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Break)
   id<JavaUtilList> methods_;
   id<JavaUtilList> annotations_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -314,6 +333,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Class)
   SMToken *name_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)name;
@@ -352,6 +376,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Continue)
  @public
   SMExpr *expression_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -395,6 +424,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Expression)
   SMExpr_Block *block_;
   id<JavaUtilList> annotations_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -446,6 +480,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Function)
 
 - (id<JavaUtilList>)getChildren;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMExpr:(SMExpr *)condition
@@ -495,6 +532,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Elsif)
 
 - (id<JavaUtilList>)getChildren;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMStmt_Elsif:(SMStmt_Elsif *)ifstmt
@@ -538,6 +578,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_If)
   SMExpr *expression_;
 }
 
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMExpr:(SMExpr *)expression;
@@ -578,6 +623,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Print)
   SMToken *keyword_;
   SMExpr_Block *block_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -621,6 +671,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Rescue)
   SMToken *keyword_;
   SMExpr *value_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -669,6 +724,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Return)
 #pragma mark Public
 
 - (id<JavaUtilList>)getChildren;
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 
@@ -720,6 +778,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_While)
 
 - (id<JavaUtilList>)getChildren;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMExpr_Variable:(SMExpr_Variable *)var
@@ -764,6 +825,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_For)
   SMToken *keyword_;
   SMExpr *value_;
 }
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
 
 #pragma mark Package-Private
 

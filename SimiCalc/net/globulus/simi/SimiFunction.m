@@ -74,6 +74,11 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
   return prop;
 }
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return [((SMStmt_Function *) nil_chk(declaration_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
@@ -82,6 +87,7 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
     { NULL, "LNSString;", 0x1, 5, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x1, 6, 7, -1, 8, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 10, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -92,16 +98,17 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
   methods[3].selector = @selector(description);
   methods[4].selector = @selector(arity);
   methods[5].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[6].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "declaration_", "LSMStmt_Function;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "block_", "LSMBlockImpl;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "isInitializer_", "Z", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "isNative_", "Z", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
-    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 9, -1 },
+    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 11, -1 },
   };
-  static const void *ptrTable[] = { "LSMStmt_Function;LSMEnvironment;ZZLJavaUtilList;", "(LStmt$Function;LEnvironment;ZZLjava/util/List<LSimiObject;>;)V", "LSMSimiFunction;LSMBlockImpl;", "bind", "LSMSimiObjectImpl;", "toString", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/List<LSimiObject;>;" };
-  static const J2ObjcClassInfo _SMSimiFunction = { "SimiFunction", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 6, 5, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMStmt_Function;LSMEnvironment;ZZLJavaUtilList;", "(LStmt$Function;LEnvironment;ZZLjava/util/List<LSimiObject;>;)V", "LSMSimiFunction;LSMBlockImpl;", "bind", "LSMSimiObjectImpl;", "toString", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ", "Ljava/util/List<LSimiObject;>;" };
+  static const J2ObjcClassInfo _SMSimiFunction = { "SimiFunction", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 7, 5, -1, -1, -1, -1, -1 };
   return &_SMSimiFunction;
 }
 

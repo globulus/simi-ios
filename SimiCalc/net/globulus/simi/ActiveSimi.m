@@ -5,12 +5,15 @@
 
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
+#include "java/io/File.h"
 #include "java/io/PrintStream.h"
 #include "java/lang/IllegalStateException.h"
 #include "java/lang/Runnable.h"
 #include "java/lang/StringBuilder.h"
 #include "java/lang/System.h"
 #include "java/lang/Thread.h"
+#include "java/net/URI.h"
+#include "java/net/URL.h"
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
 #include "ActiveSimi.h"
@@ -370,8 +373,12 @@ id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withS
     if ([((id<JavaUtilList>) nil_chk(imports)) containsWithId:location]) {
       continue;
     }
-    if ([((NSString *) nil_chk(location)) java_hasSuffix:@".simi"]) {
-      id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_(SMActiveSimi_readFileWithNSString_(location)) scanTokensWithBoolean:false];
+    NSString *pathString = ((NSString *) nil_chk(location));
+    if ([((NSString *) nil_chk(pathString)) java_hasSuffix:@".jar"]) {
+//      [((SMNativeModulesManager *) nil_chk(nativeModulesManager)) loadJarWithJavaNetURL:[((JavaNetURI *) nil_chk([new_JavaIoFile_initWithNSString_(pathString) toURI])) toURL]];
+    }
+    else if ([pathString java_hasSuffix:@".simi"]) {
+      id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_(SMActiveSimi_readFileWithNSString_(pathString)) scanTokensWithBoolean:false];
       [result addAllWithJavaUtilCollection:SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(tokens, imports, nativeModulesManager)];
     }
   }

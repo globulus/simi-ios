@@ -16,18 +16,24 @@
   static J2ObjcMethodInfo methods[] = {
     { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x401, 0, 1, -1, 2, -1, -1 },
+    { NULL, "LNSString;", 0x1, 3, 4, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(arity);
   methods[1].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;" };
-  static const J2ObjcClassInfo _SMSimiCallable = { "SimiCallable", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ" };
+  static const J2ObjcClassInfo _SMSimiCallable = { "SimiCallable", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 3, 0, -1, -1, -1, -1, -1 };
   return &_SMSimiCallable;
 }
 
 @end
+
+NSString *SMSimiCallable_toCodeWithInt_withBoolean_(id<SMSimiCallable> self, jint indentationLevel, jboolean ignoreFirst) {
+  return nil;
+}
 
 J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMSimiCallable)
