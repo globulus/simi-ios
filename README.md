@@ -8,9 +8,10 @@ The Šimi interpreter was converted to Objective-C using [J2ObjC tool](https://d
 
 ### How-to
 
-1. Add Obj-C Šimi fiels to your project.
-2. Add the **Šimi stdlib folder** to your project and add it to target.
-3. Add any additional **Šimi code files** to your project and add them to target. Subfolders are NOT supported.
+1. **Build SimiLib/iOSSimi static library** and add it to your project.
+2. Set your project up to [support J2ObjC building](https://developers.google.com/j2objc/guides/xcode-build-rules).
+3. Add the **Šimi stdlib folder** to your project and add it to target.
+4. Add any additional **Šimi code files** to your project and add them to target. Subfolders are NOT supported.
 5. Mark your UIAppDelegate class to implement the *SMActiveSimi_ImportResolver* protocol, and then load your Šimi files. Loading sets up the interpreter and interprets the listed files, retaining the interpreter instance for future use.
 ```objc
 ...
