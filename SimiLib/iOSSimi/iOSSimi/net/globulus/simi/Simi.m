@@ -11,10 +11,12 @@
 #include "java/io/PrintStream.h"
 #include "java/lang/System.h"
 #include "java/util/ArrayList.h"
+#include "java/util/Collections.h"
 #include "java/util/List.h"
 #include "ErrorHub.h"
 #include "ErrorWatcher.h"
 #include "Interpreter.h"
+#include "JavaNativeModulesManager.h"
 #include "NativeModulesManager.h"
 #include "Parser.h"
 #include "Resolver.h"
@@ -39,7 +41,7 @@
 
 + (id<JavaUtilList>)scanImportsWithJavaUtilList:(id<JavaUtilList>)input
                                withJavaUtilList:(id<JavaUtilList>)imports
-                     withSMNativeModulesManager:(SMNativeModulesManager *)nativeModulesManager;
+                     withSMNativeModulesManager:(id<SMNativeModulesManager>)nativeModulesManager;
 
 @end
 
@@ -60,7 +62,7 @@ __attribute__((unused)) static void SMSimi_runPrompt(void);
 
 __attribute__((unused)) static void SMSimi_runWithNSString_(NSString *source);
 
-__attribute__((unused)) static id<JavaUtilList> SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(id<JavaUtilList> input, id<JavaUtilList> imports, SMNativeModulesManager *nativeModulesManager);
+__attribute__((unused)) static id<JavaUtilList> SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(id<JavaUtilList> input, id<JavaUtilList> imports, id<SMNativeModulesManager> nativeModulesManager);
 
 @interface SMSimi_1 : NSObject < SMErrorWatcher >
 
@@ -135,7 +137,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (id<JavaUtilList>)scanImportsWithJavaUtilList:(id<JavaUtilList>)input
                                withJavaUtilList:(id<JavaUtilList>)imports
-                     withSMNativeModulesManager:(SMNativeModulesManager *)nativeModulesManager {
+                     withSMNativeModulesManager:(id<SMNativeModulesManager>)nativeModulesManager {
   return SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(input, imports, nativeModulesManager);
 }
 
@@ -232,7 +234,7 @@ void SMSimi_runPrompt() {
 
 void SMSimi_runWithNSString_(NSString *source) {
   SMSimi_initialize();
-  SMNativeModulesManager *nativeModulesManager = new_SMNativeModulesManager_init();
+  id<SMNativeModulesManager> nativeModulesManager = new_SMJavaNativeModulesManager_init();
   id<JavaUtilList> imports = new_JavaUtilArrayList_init();
   jlong time = JavaLangSystem_currentTimeMillis();
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"Scanning and resolving imports..."];
@@ -244,7 +246,7 @@ void SMSimi_runWithNSString_(NSString *source) {
   SMParser *parser = new_SMParser_initWithJavaUtilList_(tokens);
   id<JavaUtilList> statements = [parser parse];
   if (SMSimi_hadError) return;
-  SMSimi_interpreter = new_SMInterpreter_initWithSMNativeModulesManager_(nativeModulesManager);
+  SMSimi_interpreter = new_SMInterpreter_initWithJavaUtilCollection_(JavaUtilCollections_singletonListWithId_(nativeModulesManager));
   SMResolver *resolver = new_SMResolver_initWithSMInterpreter_(SMSimi_interpreter);
   [resolver resolveWithJavaUtilList:statements];
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
@@ -254,7 +256,7 @@ void SMSimi_runWithNSString_(NSString *source) {
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$J$", @"Interpreting... ", (JavaLangSystem_currentTimeMillis() - time), @" ms")];
 }
 
-id<JavaUtilList> SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(id<JavaUtilList> input, id<JavaUtilList> imports, SMNativeModulesManager *nativeModulesManager) {
+id<JavaUtilList> SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(id<JavaUtilList> input, id<JavaUtilList> imports, id<SMNativeModulesManager> nativeModulesManager) {
   SMSimi_initialize();
   id<JavaUtilList> result = new_JavaUtilArrayList_init();
   jint len = [((id<JavaUtilList>) nil_chk(input)) size];

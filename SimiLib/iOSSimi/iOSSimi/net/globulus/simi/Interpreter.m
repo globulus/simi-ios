@@ -14,6 +14,7 @@
 #include "java/lang/System.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Arrays.h"
+#include "java/util/Collection.h"
 #include "java/util/Collections.h"
 #include "java/util/HashMap.h"
 #include "java/util/LinkedHashMap.h"
@@ -284,8 +285,8 @@ SMInterpreter *SMInterpreter_sharedInstance;
   SMInterpreter_sharedInstance = value;
 }
 
-- (instancetype __nonnull)initWithSMNativeModulesManager:(SMNativeModulesManager *)nativeModulesManager {
-  SMInterpreter_initWithSMNativeModulesManager_(self, nativeModulesManager);
+- (instancetype __nonnull)initWithJavaUtilCollection:(id<JavaUtilCollection>)nativeModulesManagers {
+  SMInterpreter_initWithJavaUtilCollection_(self, nativeModulesManagers);
   return self;
 }
 
@@ -352,7 +353,10 @@ SMInterpreter *SMInterpreter_sharedInstance;
             SMSimiException *e = [raisedExceptions_ pop];
             SMInterpreter_executeRescueBlockWithSMStmt_Rescue_withSMSimiException_(self, rescue, e);
           }
-          else if (![((JavaUtilStack *) nil_chk(loopBlocks_)) isEmpty]) {
+          else if ([block canReturn]) {
+            @throw new_SMReturn_initWithSMSimiProperty_(nil);
+          }
+          else {
             @throw new_SMBreak_init();
           }
         }
@@ -1144,76 +1148,76 @@ SMInterpreter *SMInterpreter_sharedInstance;
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x0, 1, 2, -1, 3, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x2, 4, 5, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x82, 4, 6, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x2, 7, 8, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 9, 10, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 11, 12, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x0, 2, 3, -1, 4, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x82, 5, 7, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 8, 9, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 10, 11, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 14, 15, -1, -1, -1, -1 },
     { NULL, "LSMSimiEnvironment;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 15, 16, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObject;", 0x1, 17, 18, -1, 19, -1, -1 },
-    { NULL, "LSMSimiObject;", 0x1, 20, 21, -1, 22, -1, -1 },
-    { NULL, "LSMSimiObject;", 0x1, 23, 24, -1, 25, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 26, 27, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 28, 29, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 30, 31, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 32, 33, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 34, 35, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 36, 37, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 38, 39, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 40, 41, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 42, 43, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 44, 45, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 46, 47, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 48, 49, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 50, 51, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 52, 53, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 54, 55, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 56, 57, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 58, 59, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 60, 61, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 62, 63, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x2, 64, 65, -1, 66, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x2, 64, 67, -1, 68, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x2, 64, 69, -1, 70, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 71, 72, -1, -1, -1, -1 },
-    { NULL, "LSMToken;", 0x2, 73, 74, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 75, 76, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 77, 78, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 79, 80, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 81, 82, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 83, 84, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 85, 86, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 87, 88, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 89, 90, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 91, 92, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 93, 94, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 95, 96, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 97, 98, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x2, 99, 74, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 100, 101, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 102, 103, -1, -1, -1, -1 },
-    { NULL, "Z", 0x8, 104, 105, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 106, 107, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x2, 108, 107, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 109, 107, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 110, 107, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x2, 111, 105, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 112, 14, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 16, 17, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x1, 18, 19, -1, 20, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x1, 21, 22, -1, 23, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x1, 24, 25, -1, 26, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 27, 28, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 29, 30, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 31, 32, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 33, 34, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 35, 36, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 37, 38, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 39, 40, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 41, 42, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 43, 44, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 45, 46, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 47, 48, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 49, 50, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 51, 52, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 53, 54, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 55, 56, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 57, 58, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 59, 60, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 61, 62, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 63, 64, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 65, 66, -1, 67, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 65, 68, -1, 69, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 65, 70, -1, 71, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 72, 73, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x2, 74, 75, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 76, 77, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 78, 79, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 80, 81, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 82, 83, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 84, 85, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 86, 87, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 88, 89, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 90, 91, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 92, 93, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 94, 95, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 96, 97, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 98, 99, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 100, 75, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 101, 102, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 103, 104, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 105, 106, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 107, 108, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x2, 109, 108, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 110, 108, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 111, 108, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x2, 112, 106, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 113, 15, -1, -1, -1, -1 },
     { NULL, "LSMSimiClassImpl;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 113, 114, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 115, 116, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilList;", 0x2, 117, 116, -1, 118, -1, -1 },
-    { NULL, "LJavaUtilList;", 0x81, 119, 120, -1, 121, -1, -1 },
-    { NULL, "V", 0x1, 122, 2, -1, 123, -1, -1 },
+    { NULL, "V", 0x2, 114, 115, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 116, 117, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x2, 118, 117, -1, 119, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x81, 120, 121, -1, 122, -1, -1 },
+    { NULL, "V", 0x1, 123, 3, -1, 124, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMNativeModulesManager:);
+  methods[0].selector = @selector(initWithJavaUtilCollection:);
   methods[1].selector = @selector(interpretWithJavaUtilList:);
   methods[2].selector = @selector(evaluateWithSMExpr:);
   methods[3].selector = @selector(evaluateWithSMExpr:withNSObjectArray:);
@@ -1280,26 +1284,26 @@ SMInterpreter *SMInterpreter_sharedInstance;
   methods[64].selector = @selector(undefineTempVarsWithJavaUtilList:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "nativeModulesManager_", "LSMNativeModulesManager;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "nativeModulesManagers_", "LJavaUtilCollection;", .constantValue.asLong = 0, 0x10, -1, -1, 125, -1 },
     { "globals_", "LSMEnvironment;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "environment_", "LSMEnvironment;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "locals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 124, -1 },
+    { "locals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 126, -1 },
     { "baseClassesNativeImpl_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
-    { "loopBlocks_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 125, -1 },
-    { "raisedExceptions_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 126, -1 },
-    { "yieldedStmts_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 127, -1 },
-    { "annotations_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 128, -1 },
-    { "annotationsBuffer_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 129, -1 },
-    { "sharedInstance", "LSMInterpreter;", .constantValue.asLong = 0, 0x8, -1, 130, -1, -1 },
+    { "loopBlocks_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 127, -1 },
+    { "raisedExceptions_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 128, -1 },
+    { "yieldedStmts_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 129, -1 },
+    { "annotations_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 130, -1 },
+    { "annotationsBuffer_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 131, -1 },
+    { "sharedInstance", "LSMInterpreter;", .constantValue.asLong = 0, 0x8, -1, 132, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMNativeModulesManager;", "interpret", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)LSimiProperty;", "evaluate", "LSMExpr;", "LSMExpr;[LNSObject;", "execute", "LSMStmt;", "resolve", "LSMExpr;I", "executeBlock", "LSMSimiBlock;LSMSimiEnvironment;I", "getGlobal", "LNSString;", "raiseException", "LSMSimiException;", "newObject", "ZLJavaUtilLinkedHashMap;", "(ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "newArray", "ZLJavaUtilArrayList;", "(ZLjava/util/ArrayList<LSimiValue;>;)LSimiObject;", "newInstance", "LSMSimiClass;LJavaUtilLinkedHashMap;", "(LSimiClass;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitYieldStmt", "LSMStmt_Yield;", "visitWhileStmt", "LSMStmt_While;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "call", "LSMSimiProperty;LJavaUtilList;LSMToken;", "(LSimiProperty;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LJavaUtilList;LSMToken;", "(LSimiValue;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LSMToken;LJavaUtilList;", "(LSimiValue;LToken;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "visitGetExpr", "LSMExpr_Get;", "evaluateGetSetName", "LSMToken;LSMExpr;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "executeRescueBlock", "LSMStmt_Rescue;LSMSimiException;", "lookUpVariable", "checkNumberOperand", "LSMToken;LSMSimiValue;", "checkNumberOperands", "LSMToken;LSMSimiValue;LSMSimiValue;", "isTruthy", "LSMSimiProperty;", "isEqual", "LSMSimiValue;LSMSimiValue;LSMExpr_Binary;", "compare", "isInstance", "isIn", "stringify", "isBaseClass", "putBlock", "LSMStmt_BlockStmt;LSMBlockImpl;", "applyAnnotations", "LNSObject;", "getAnnotations", "(Ljava/lang/Object;)Ljava/util/List<LSimiObject;>;", "defineTempVars", "[LSMSimiProperty;", "([LSimiProperty;)Ljava/util/List<Ljava/lang/String;>;", "undefineTempVars", "(Ljava/util/List<Ljava/lang/String;>;)V", "Ljava/util/Map<LExpr;Ljava/lang/Integer;>;", "Ljava/util/Stack<LSimiBlock;>;", "Ljava/util/Stack<LSimiException;>;", "Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;", "Ljava/util/Map<Ljava/lang/Object;Ljava/util/List<LSimiObject;>;>;", "Ljava/util/List<LSimiObject;>;", &SMInterpreter_sharedInstance, "Ljava/lang/Object;LBlockInterpreter;LExpr$Visitor<LSimiProperty;>;LStmt$Visitor<LSimiProperty;>;" };
-  static const J2ObjcClassInfo _SMInterpreter = { "Interpreter", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 65, 11, -1, -1, -1, 131, -1 };
+  static const void *ptrTable[] = { "LJavaUtilCollection;", "(Ljava/util/Collection<LNativeModulesManager;>;)V", "interpret", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)LSimiProperty;", "evaluate", "LSMExpr;", "LSMExpr;[LNSObject;", "execute", "LSMStmt;", "resolve", "LSMExpr;I", "executeBlock", "LSMSimiBlock;LSMSimiEnvironment;I", "getGlobal", "LNSString;", "raiseException", "LSMSimiException;", "newObject", "ZLJavaUtilLinkedHashMap;", "(ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "newArray", "ZLJavaUtilArrayList;", "(ZLjava/util/ArrayList<LSimiValue;>;)LSimiObject;", "newInstance", "LSMSimiClass;LJavaUtilLinkedHashMap;", "(LSimiClass;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitYieldStmt", "LSMStmt_Yield;", "visitWhileStmt", "LSMStmt_While;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "call", "LSMSimiProperty;LJavaUtilList;LSMToken;", "(LSimiProperty;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LJavaUtilList;LSMToken;", "(LSimiValue;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LSMToken;LJavaUtilList;", "(LSimiValue;LToken;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "visitGetExpr", "LSMExpr_Get;", "evaluateGetSetName", "LSMToken;LSMExpr;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "executeRescueBlock", "LSMStmt_Rescue;LSMSimiException;", "lookUpVariable", "checkNumberOperand", "LSMToken;LSMSimiValue;", "checkNumberOperands", "LSMToken;LSMSimiValue;LSMSimiValue;", "isTruthy", "LSMSimiProperty;", "isEqual", "LSMSimiValue;LSMSimiValue;LSMExpr_Binary;", "compare", "isInstance", "isIn", "stringify", "isBaseClass", "putBlock", "LSMStmt_BlockStmt;LSMBlockImpl;", "applyAnnotations", "LNSObject;", "getAnnotations", "(Ljava/lang/Object;)Ljava/util/List<LSimiObject;>;", "defineTempVars", "[LSMSimiProperty;", "([LSimiProperty;)Ljava/util/List<Ljava/lang/String;>;", "undefineTempVars", "(Ljava/util/List<Ljava/lang/String;>;)V", "Ljava/util/Collection<LNativeModulesManager;>;", "Ljava/util/Map<LExpr;Ljava/lang/Integer;>;", "Ljava/util/Stack<LSimiBlock;>;", "Ljava/util/Stack<LSimiException;>;", "Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;", "Ljava/util/Map<Ljava/lang/Object;Ljava/util/List<LSimiObject;>;>;", "Ljava/util/List<LSimiObject;>;", &SMInterpreter_sharedInstance, "Ljava/lang/Object;LBlockInterpreter;LExpr$Visitor<LSimiProperty;>;LStmt$Visitor<LSimiProperty;>;" };
+  static const J2ObjcClassInfo _SMInterpreter = { "Interpreter", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 65, 11, -1, -1, -1, 133, -1 };
   return &_SMInterpreter;
 }
 
 @end
 
-void SMInterpreter_initWithSMNativeModulesManager_(SMInterpreter *self, SMNativeModulesManager *nativeModulesManager) {
+void SMInterpreter_initWithJavaUtilCollection_(SMInterpreter *self, id<JavaUtilCollection> nativeModulesManagers) {
   NSObject_init(self);
   self->globals_ = new_SMEnvironment_init();
   self->environment_ = self->globals_;
@@ -1311,16 +1315,16 @@ void SMInterpreter_initWithSMNativeModulesManager_(SMInterpreter *self, SMNative
   self->annotations_ = new_JavaUtilHashMap_init();
   self->annotationsBuffer_ = new_JavaUtilArrayList_init();
   SMInterpreter_sharedInstance = self;
-  self->nativeModulesManager_ = nativeModulesManager;
+  self->nativeModulesManagers_ = nativeModulesManagers;
   [self->globals_ defineWithNSString:@"clock" withSMSimiProperty:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMInterpreter_1_init(), @"clock", nil)];
 }
 
-SMInterpreter *new_SMInterpreter_initWithSMNativeModulesManager_(SMNativeModulesManager *nativeModulesManager) {
-  J2OBJC_NEW_IMPL(SMInterpreter, initWithSMNativeModulesManager_, nativeModulesManager)
+SMInterpreter *new_SMInterpreter_initWithJavaUtilCollection_(id<JavaUtilCollection> nativeModulesManagers) {
+  J2OBJC_NEW_IMPL(SMInterpreter, initWithJavaUtilCollection_, nativeModulesManagers)
 }
 
-SMInterpreter *create_SMInterpreter_initWithSMNativeModulesManager_(SMNativeModulesManager *nativeModulesManager) {
-  J2OBJC_CREATE_IMPL(SMInterpreter, initWithSMNativeModulesManager_, nativeModulesManager)
+SMInterpreter *create_SMInterpreter_initWithJavaUtilCollection_(id<JavaUtilCollection> nativeModulesManagers) {
+  J2OBJC_CREATE_IMPL(SMInterpreter, initWithJavaUtilCollection_, nativeModulesManagers)
 }
 
 id<SMSimiProperty> SMInterpreter_evaluateWithSMExpr_(SMInterpreter *self, SMExpr *expr) {
@@ -1394,10 +1398,12 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
       }
       jboolean isBaseClass = SMInterpreter_isBaseClassWithNSString_(self, ((SMSimiClassImpl *) nil_chk(clazz))->name_);
       if (!isBaseClass) {
-        @try {
-          return [((SMNativeModulesManager *) nil_chk(self->nativeModulesManager_)) callWithNSString:clazz->name_ withNSString:methodName withSMSimiObject:instance withSMInterpreter:self withJavaUtilList:arguments];
-        }
-        @catch (JavaLangIllegalArgumentException *ignored) {
+        for (id<SMNativeModulesManager> __strong manager in nil_chk(self->nativeModulesManagers_)) {
+          @try {
+            return [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:clazz->name_ withNSString:methodName withSMSimiObject:instance withSMInterpreter:self withJavaUtilList:arguments];
+          }
+          @catch (JavaLangIllegalArgumentException *ignored) {
+          }
         }
       }
       NSString *className_ = isBaseClass ? clazz->name_ : SMConstants_CLASS_OBJECT;
@@ -1411,10 +1417,12 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
       return [((id<SMSimiCallable>) nil_chk(nativeMethod)) callWithSMBlockInterpreter:self withJavaUtilList:nativeArgs withBoolean:false];
     }
     else {
-      @try {
-        return [((SMNativeModulesManager *) nil_chk(self->nativeModulesManager_)) callWithNSString:SMConstants_GLOBALS_CLASS_NAME withNSString:methodName withSMSimiObject:nil withSMInterpreter:self withJavaUtilList:arguments];
-      }
-      @catch (JavaLangIllegalArgumentException *ignored) {
+      for (id<SMNativeModulesManager> __strong manager in nil_chk(self->nativeModulesManagers_)) {
+        @try {
+          return [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:SMConstants_GLOBALS_CLASS_NAME withNSString:methodName withSMSimiObject:nil withSMInterpreter:self withJavaUtilList:arguments];
+        }
+        @catch (JavaLangIllegalArgumentException *ignored) {
+        }
       }
     }
   }
@@ -1621,7 +1629,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[2].selector = @selector(arity);
   methods[3].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "toCode", "IZ", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMInterpreter;", "initWithSMNativeModulesManager:" };
+  static const void *ptrTable[] = { "toCode", "IZ", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMInterpreter;", "initWithJavaUtilCollection:" };
   static const J2ObjcClassInfo _SMInterpreter_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 4, 0, 5, -1, 6, -1, -1 };
   return &_SMInterpreter_1;
 }

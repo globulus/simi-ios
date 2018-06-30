@@ -21,21 +21,14 @@
 #if !defined (SMNativeModulesManager_) && (INCLUDE_ALL_NetGlobulusSimiNativeModulesManager || defined(INCLUDE_SMNativeModulesManager))
 #define SMNativeModulesManager_
 
-@class JavaNetURL;
 @class SMInterpreter;
 @protocol JavaUtilList;
 @protocol SMSimiObject;
 @protocol SMSimiProperty;
 
-@interface SMNativeModulesManager : NSObject
+@protocol SMNativeModulesManager < JavaObject >
 
-#pragma mark Public
-
-- (instancetype __nonnull)init;
-
-- (void)loadJarWithJavaNetURL:(JavaNetURL *)url;
-
-#pragma mark Package-Private
+- (void)load__WithNSString:(NSString *)path;
 
 - (id<SMSimiProperty>)callWithNSString:(NSString *)className_
                           withNSString:(NSString *)methodName
@@ -47,15 +40,9 @@
 
 J2OBJC_EMPTY_STATIC_INIT(SMNativeModulesManager)
 
-FOUNDATION_EXPORT void SMNativeModulesManager_init(SMNativeModulesManager *self);
-
-FOUNDATION_EXPORT SMNativeModulesManager *new_SMNativeModulesManager_init(void) NS_RETURNS_RETAINED;
-
-FOUNDATION_EXPORT SMNativeModulesManager *create_SMNativeModulesManager_init(void);
-
 J2OBJC_TYPE_LITERAL_HEADER(SMNativeModulesManager)
 
-@compatibility_alias NetGlobulusSimiNativeModulesManager SMNativeModulesManager;
+#define NetGlobulusSimiNativeModulesManager SMNativeModulesManager
 
 #endif
 

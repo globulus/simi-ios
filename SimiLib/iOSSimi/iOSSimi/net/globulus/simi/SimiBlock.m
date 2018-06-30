@@ -16,15 +16,17 @@
   static J2ObjcMethodInfo methods[] = {
     { NULL, "LJavaUtilList;", 0x401, -1, -1, -1, 0, -1, -1 },
     { NULL, "V", 0x401, 1, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getStatements);
   methods[1].selector = @selector(yieldWithInt:);
+  methods[2].selector = @selector(canReturn);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "()Ljava/util/List<+LSimiStatement;>;", "yield", "I" };
-  static const J2ObjcClassInfo _SMSimiBlock = { "SimiBlock", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMSimiBlock = { "SimiBlock", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 3, 0, -1, -1, -1, -1, -1 };
   return &_SMSimiBlock;
 }
 

@@ -247,8 +247,9 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)declaration
                          withJavaUtilList:(id<JavaUtilList>)params
-                         withJavaUtilList:(id<JavaUtilList>)statements {
-  SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(self, declaration, params, statements);
+                         withJavaUtilList:(id<JavaUtilList>)statements
+                              withBoolean:(jboolean)canReturn {
+  SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(self, declaration, params, statements, canReturn);
   return self;
 }
 
@@ -269,6 +270,10 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
 
 - (void)yieldWithInt:(jint)index {
   @throw new_JavaLangRuntimeException_initWithNSString_(@"Trying to yield a Expr.Block!");
+}
+
+- (jboolean)canReturn {
+  return canReturn_;
 }
 
 - (jboolean)isEmpty {
@@ -324,46 +329,50 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 5, -1, -1 },
     { NULL, "V", 0x1, 6, 7, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x0, 8, 9, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 8, 10, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMToken:withJavaUtilList:withJavaUtilList:);
+  methods[0].selector = @selector(initWithSMToken:withJavaUtilList:withJavaUtilList:withBoolean:);
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(isNative);
   methods[3].selector = @selector(getStatements);
   methods[4].selector = @selector(yieldWithInt:);
-  methods[5].selector = @selector(isEmpty);
-  methods[6].selector = @selector(toCodeWithInt:withBoolean:withNSString:);
-  methods[7].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[5].selector = @selector(canReturn);
+  methods[6].selector = @selector(isEmpty);
+  methods[7].selector = @selector(toCodeWithInt:withBoolean:withNSString:);
+  methods[8].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "declaration_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "params_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 11, -1 },
     { "statements_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 12, -1 },
+    { "canReturn_", "Z", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LToken;>;Ljava/util/List<LStmt;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<+LSimiStatement;>;", "yield", "I", "toCode", "IZLNSString;", "IZ", "Ljava/util/List<LToken;>;", "Ljava/util/List<LStmt;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Block = { "Block", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 8, 3, 13, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;Z", "(LToken;Ljava/util/List<LToken;>;Ljava/util/List<LStmt;>;Z)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<+LSimiStatement;>;", "yield", "I", "toCode", "IZLNSString;", "IZ", "Ljava/util/List<LToken;>;", "Ljava/util/List<LStmt;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Block = { "Block", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 9, 4, 13, -1, -1, -1, -1 };
   return &_SMExpr_Block;
 }
 
 @end
 
-void SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMExpr_Block *self, SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
+void SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMExpr_Block *self, SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn) {
   SMExpr_init(self);
   self->declaration_ = declaration;
   self->params_ = params;
   self->statements_ = statements;
+  self->canReturn_ = canReturn;
 }
 
-SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
-  J2OBJC_NEW_IMPL(SMExpr_Block, initWithSMToken_withJavaUtilList_withJavaUtilList_, declaration, params, statements)
+SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn) {
+  J2OBJC_NEW_IMPL(SMExpr_Block, initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_, declaration, params, statements, canReturn)
 }
 
-SMExpr_Block *create_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) {
-  J2OBJC_CREATE_IMPL(SMExpr_Block, initWithSMToken_withJavaUtilList_withJavaUtilList_, declaration, params, statements)
+SMExpr_Block *create_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn) {
+  J2OBJC_CREATE_IMPL(SMExpr_Block, initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_, declaration, params, statements, canReturn)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Block)

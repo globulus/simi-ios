@@ -9,6 +9,7 @@
 #include "java/lang/Math.h"
 #include "java/lang/StringBuilder.h"
 #include "java/util/ArrayList.h"
+#include "java/util/Collection.h"
 #include "java/util/Comparator.h"
 #include "java/util/HashMap.h"
 #include "java/util/HashSet.h"
@@ -360,7 +361,12 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
   if (initializer != nil) {
     if (((SMSimiFunction *) nil_chk(initializer->function_))->isNative_) {
       SMInterpreter *in = (SMInterpreter *) cast_chk(interpreter, [SMInterpreter class]);
-      instance = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((SMNativeModulesManager *) nil_chk(((SMInterpreter *) nil_chk(in))->nativeModulesManager_)) callWithNSString:name_ withNSString:SMConstants_INIT withSMSimiObject:self withSMInterpreter:in withJavaUtilList:arguments])) getValue])) getObject], [SMSimiObjectImpl class]);
+      for (id<SMNativeModulesManager> __strong manager in nil_chk(((SMInterpreter *) nil_chk(in))->nativeModulesManagers_)) {
+        instance = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:name_ withNSString:SMConstants_INIT withSMSimiObject:self withSMInterpreter:in withJavaUtilList:arguments])) getValue])) getObject], [SMSimiObjectImpl class]);
+        if (instance != nil) {
+          break;
+        }
+      }
     }
     else {
       (void) [initializer->function_ callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:false];

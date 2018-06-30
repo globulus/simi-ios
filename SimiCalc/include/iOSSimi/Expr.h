@@ -187,9 +187,12 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
   SMToken *declaration_;
   id<JavaUtilList> params_;
   id<JavaUtilList> statements_;
+  jboolean canReturn_;
 }
 
 #pragma mark Public
+
+- (jboolean)canReturn;
 
 - (id<JavaUtilList>)getStatements;
 
@@ -204,7 +207,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)declaration
                          withJavaUtilList:(id<JavaUtilList>)params
-                         withJavaUtilList:(id<JavaUtilList>)statements;
+                         withJavaUtilList:(id<JavaUtilList>)statements
+                              withBoolean:(jboolean)canReturn;
 
 - (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
              withNSObjectArray:(IOSObjectArray *)params;
@@ -227,11 +231,11 @@ J2OBJC_FIELD_SETTER(SMExpr_Block, declaration_, SMToken *)
 J2OBJC_FIELD_SETTER(SMExpr_Block, params_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(SMExpr_Block, statements_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMExpr_Block *self, SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements);
+FOUNDATION_EXPORT void SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMExpr_Block *self, SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn);
 
-FOUNDATION_EXPORT SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMExpr_Block *create_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements);
+FOUNDATION_EXPORT SMExpr_Block *create_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Block)
 

@@ -29,6 +29,8 @@
 
 - (void)yieldWithInt:(jint)index;
 
+- (jboolean)canReturn;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(SMSimiBlock)

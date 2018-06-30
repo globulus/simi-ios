@@ -104,6 +104,10 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
   return [((SMExpr_Block *) nil_chk(declaration_)) getStatements];
 }
 
+- (jboolean)canReturn {
+  return [((SMExpr_Block *) nil_chk(declaration_)) canReturn];
+}
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst {
   return [((SMExpr_Block *) nil_chk(declaration_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
@@ -120,6 +124,7 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x1, 6, 7, -1, 8, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 9, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 10, 11, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -134,7 +139,8 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
   methods[6].selector = @selector(arity);
   methods[7].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   methods[8].selector = @selector(getStatements);
-  methods[9].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[9].selector = @selector(canReturn);
+  methods[10].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "declaration_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -143,7 +149,7 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
     { "lastClosure_", "LSMEnvironment;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr_Block;LSMEnvironment;", "bind", "LSMSimiObjectImpl;", "yield", "I", "toString", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "()Ljava/util/List<+LSimiStatement;>;", "toCode", "IZ" };
-  static const J2ObjcClassInfo _SMBlockImpl = { "BlockImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 10, 4, -1, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMBlockImpl = { "BlockImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 11, 4, -1, -1, -1, -1, -1 };
   return &_SMBlockImpl;
 }
 

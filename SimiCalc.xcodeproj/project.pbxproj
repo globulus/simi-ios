@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A000D56208E026200F8BF0A /* json.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A000D54208E026200F8BF0A /* json.simi */; };
-		6A000D57208E026200F8BF0A /* RedditStats.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A000D55208E026200F8BF0A /* RedditStats.simi */; };
-		6A486B92208BDF61000398A6 /* Stdlib.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B8C208BDF61000398A6 /* Stdlib.simi */; };
-		6A486B96208C652A000398A6 /* Calc.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B95208C652A000398A6 /* Calc.simi */; };
+		6A000D57208E026200F8BF0A /* redditstats.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A000D55208E026200F8BF0A /* redditstats.simi */; };
+		6A486B92208BDF61000398A6 /* stdlib.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B8C208BDF61000398A6 /* stdlib.simi */; };
+		6A486B96208C652A000398A6 /* calc.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B95208C652A000398A6 /* calc.simi */; };
 		6A59D6D720E7D8E0008FB2AB /* libiOSSimi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A59D6D620E7D8E0008FB2AB /* libiOSSimi.a */; };
 		6AB5686C208F766000103ABF /* Stdlib-java.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB5686A208F752000103ABF /* Stdlib-java.jar */; };
 		6AF83E06208A7A30005CA323 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF83E05208A7A30005CA323 /* AppDelegate.m */; };
@@ -39,9 +39,9 @@
 /* Begin PBXFileReference section */
 		6A000D52208E010A00F8BF0A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6A000D54208E026200F8BF0A /* json.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json.simi; path = Simi/json.simi; sourceTree = "<group>"; };
-		6A000D55208E026200F8BF0A /* RedditStats.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RedditStats.simi; path = Simi/RedditStats.simi; sourceTree = "<group>"; };
-		6A486B8C208BDF61000398A6 /* Stdlib.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stdlib.simi; sourceTree = "<group>"; };
-		6A486B95208C652A000398A6 /* Calc.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Calc.simi; path = Simi/Calc.simi; sourceTree = "<group>"; };
+		6A000D55208E026200F8BF0A /* redditstats.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = redditstats.simi; path = Simi/redditstats.simi; sourceTree = "<group>"; };
+		6A486B8C208BDF61000398A6 /* stdlib.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stdlib.simi; sourceTree = "<group>"; };
+		6A486B95208C652A000398A6 /* calc.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = calc.simi; path = Simi/calc.simi; sourceTree = "<group>"; };
 		6A59D6A220E7D814008FB2AB /* SimiClassImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiClassImpl.h; sourceTree = "<group>"; };
 		6A59D6A320E7D814008FB2AB /* Codifiable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Codifiable.h; sourceTree = "<group>"; };
 		6A59D6A420E7D814008FB2AB /* IOSObjectArray+Simi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IOSObjectArray+Simi.h"; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				6AB5686A208F752000103ABF /* Stdlib-java.jar */,
-				6A486B8C208BDF61000398A6 /* Stdlib.simi */,
+				6A486B8C208BDF61000398A6 /* stdlib.simi */,
 			);
 			name = stdlib;
 			path = Simi/stdlib;
@@ -225,9 +225,9 @@
 			children = (
 				6A59D6D620E7D8E0008FB2AB /* libiOSSimi.a */,
 				6A59D6A020E7D814008FB2AB /* include */,
-				6A486B95208C652A000398A6 /* Calc.simi */,
+				6A486B95208C652A000398A6 /* calc.simi */,
 				6A000D54208E026200F8BF0A /* json.simi */,
-				6A000D55208E026200F8BF0A /* RedditStats.simi */,
+				6A000D55208E026200F8BF0A /* redditstats.simi */,
 				6A486B88208BDF60000398A6 /* stdlib */,
 				6AF83E04208A7A30005CA323 /* AppDelegate.h */,
 				6AF83E05208A7A30005CA323 /* AppDelegate.m */,
@@ -321,10 +321,10 @@
 			files = (
 				6AF83E11208A7A31005CA323 /* LaunchScreen.storyboard in Resources */,
 				6AF83E0E208A7A31005CA323 /* Assets.xcassets in Resources */,
-				6A000D57208E026200F8BF0A /* RedditStats.simi in Resources */,
-				6A486B92208BDF61000398A6 /* Stdlib.simi in Resources */,
+				6A000D57208E026200F8BF0A /* redditstats.simi in Resources */,
+				6A486B92208BDF61000398A6 /* stdlib.simi in Resources */,
 				6A000D56208E026200F8BF0A /* json.simi in Resources */,
-				6A486B96208C652A000398A6 /* Calc.simi in Resources */,
+				6A486B96208C652A000398A6 /* calc.simi in Resources */,
 				6AF83E0C208A7A30005CA323 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,7 +502,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N43KYHR3HM;
-				FRAMEWORK_SEARCH_PATHS = "${J2OBJC_HOME}/frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${J2OBJC_HOME}/frameworks",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -539,7 +542,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N43KYHR3HM;
-				FRAMEWORK_SEARCH_PATHS = "${J2OBJC_HOME}/frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${J2OBJC_HOME}/frameworks",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",

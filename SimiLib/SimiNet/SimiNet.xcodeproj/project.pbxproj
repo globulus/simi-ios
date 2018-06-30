@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A59D72420E7DC0C008FB2AB /* libiOSSimi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A59D6ED20E7DC0C008FB2AB /* libiOSSimi.a */; };
+		6A59D72520E7DC0C008FB2AB /* SimiClassImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F020E7DC0C008FB2AB /* SimiClassImpl.h */; };
+		6A59D72620E7DC0C008FB2AB /* Codifiable.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F120E7DC0C008FB2AB /* Codifiable.h */; };
+		6A59D72720E7DC0C008FB2AB /* IOSObjectArray+Simi.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F220E7DC0C008FB2AB /* IOSObjectArray+Simi.h */; };
+		6A59D72820E7DC0C008FB2AB /* SimiApiClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F320E7DC0C008FB2AB /* SimiApiClass.h */; };
+		6A59D72920E7DC0C008FB2AB /* SimiPropertyImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F420E7DC0C008FB2AB /* SimiPropertyImpl.h */; };
+		6A59D72A20E7DC0C008FB2AB /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F520E7DC0C008FB2AB /* Parser.h */; };
+		6A59D72B20E7DC0C008FB2AB /* SimiFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F620E7DC0C008FB2AB /* SimiFunction.h */; };
+		6A59D72C20E7DC0C008FB2AB /* ErrorWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F720E7DC0C008FB2AB /* ErrorWatcher.h */; };
+		6A59D72D20E7DC0C008FB2AB /* ErrorHub.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F820E7DC0C008FB2AB /* ErrorHub.h */; };
+		6A59D72E20E7DC0C008FB2AB /* Interpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6F920E7DC0C008FB2AB /* Interpreter.h */; };
+		6A59D72F20E7DC0C008FB2AB /* BaseClassesNativeImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6FA20E7DC0C008FB2AB /* BaseClassesNativeImpl.h */; };
+		6A59D73020E7DC0C008FB2AB /* SimiObjectImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6FB20E7DC0C008FB2AB /* SimiObjectImpl.h */; };
+		6A59D73120E7DC0C008FB2AB /* SimiObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6FC20E7DC0C008FB2AB /* SimiObject.h */; };
+		6A59D73220E7DC0C008FB2AB /* Return.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6FD20E7DC0C008FB2AB /* Return.h */; };
+		6A59D73320E7DC0C008FB2AB /* SimiStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6FE20E7DC0C008FB2AB /* SimiStatement.h */; };
+		6A59D73420E7DC0C008FB2AB /* RuntimeError.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D6FF20E7DC0C008FB2AB /* RuntimeError.h */; };
+		6A59D73520E7DC0C008FB2AB /* SimiProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70020E7DC0C008FB2AB /* SimiProperty.h */; };
+		6A59D73620E7DC0C008FB2AB /* TempNull.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70120E7DC0C008FB2AB /* TempNull.h */; };
+		6A59D73720E7DC0C008FB2AB /* ActiveSimi.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70220E7DC0C008FB2AB /* ActiveSimi.h */; };
+		6A59D73820E7DC0C008FB2AB /* Expr.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70320E7DC0C008FB2AB /* Expr.h */; };
+		6A59D73920E7DC0C008FB2AB /* SimiValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70420E7DC0C008FB2AB /* SimiValue.h */; };
+		6A59D73A20E7DC0C008FB2AB /* Yield.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70520E7DC0C008FB2AB /* Yield.h */; };
+		6A59D73B20E7DC0C008FB2AB /* Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70620E7DC0C008FB2AB /* Environment.h */; };
+		6A59D73C20E7DC0C008FB2AB /* SimiMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70720E7DC0C008FB2AB /* SimiMapper.h */; };
+		6A59D73D20E7DC0C008FB2AB /* SimiEnvironment.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70820E7DC0C008FB2AB /* SimiEnvironment.h */; };
+		6A59D73E20E7DC0C008FB2AB /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70920E7DC0C008FB2AB /* Constants.h */; };
+		6A59D73F20E7DC0C008FB2AB /* BlockInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70A20E7DC0C008FB2AB /* BlockInterpreter.h */; };
+		6A59D74020E7DC0C008FB2AB /* Scanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70B20E7DC0C008FB2AB /* Scanner.h */; };
+		6A59D74120E7DC0C008FB2AB /* SparseArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70C20E7DC0C008FB2AB /* SparseArray.h */; };
+		6A59D74220E7DC0C008FB2AB /* Resolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70D20E7DC0C008FB2AB /* Resolver.h */; };
+		6A59D74320E7DC0C008FB2AB /* SimiBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70E20E7DC0C008FB2AB /* SimiBlock.h */; };
+		6A59D74420E7DC0D008FB2AB /* Pass.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D70F20E7DC0C008FB2AB /* Pass.h */; };
+		6A59D74520E7DC0D008FB2AB /* SimiClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71020E7DC0C008FB2AB /* SimiClass.h */; };
+		6A59D74620E7DC0D008FB2AB /* TokenType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71120E7DC0C008FB2AB /* TokenType.h */; };
+		6A59D74720E7DC0D008FB2AB /* NativeModulesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71220E7DC0C008FB2AB /* NativeModulesManager.h */; };
+		6A59D74820E7DC0D008FB2AB /* SimiMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71320E7DC0C008FB2AB /* SimiMethod.h */; };
+		6A59D74920E7DC0D008FB2AB /* SimiJavaClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71420E7DC0C008FB2AB /* SimiJavaClass.h */; };
+		6A59D74A20E7DC0D008FB2AB /* SimiJavaMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71520E7DC0C008FB2AB /* SimiJavaMethod.h */; };
+		6A59D74B20E7DC0D008FB2AB /* Token.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71620E7DC0C008FB2AB /* Token.h */; };
+		6A59D74C20E7DC0D008FB2AB /* Break.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71720E7DC0C008FB2AB /* Break.h */; };
+		6A59D74D20E7DC0D008FB2AB /* SimiNativeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71820E7DC0C008FB2AB /* SimiNativeClass.h */; };
+		6A59D74E20E7DC0D008FB2AB /* Continue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71920E7DC0C008FB2AB /* Continue.h */; };
+		6A59D74F20E7DC0D008FB2AB /* SimiJavaGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71A20E7DC0C008FB2AB /* SimiJavaGlobal.h */; };
+		6A59D75020E7DC0D008FB2AB /* SimiException.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71B20E7DC0C008FB2AB /* SimiException.h */; };
+		6A59D75120E7DC0D008FB2AB /* SimiCallable.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71C20E7DC0C008FB2AB /* SimiCallable.h */; };
+		6A59D75220E7DC0D008FB2AB /* OverloadableFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71D20E7DC0C008FB2AB /* OverloadableFunction.h */; };
+		6A59D75320E7DC0D008FB2AB /* SimiNativeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71E20E7DC0C008FB2AB /* SimiNativeObject.h */; };
+		6A59D75420E7DC0D008FB2AB /* Stmt.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D71F20E7DC0C008FB2AB /* Stmt.h */; };
+		6A59D75520E7DC0D008FB2AB /* GenerateAst.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D72020E7DC0C008FB2AB /* GenerateAst.h */; };
+		6A59D75620E7DC0D008FB2AB /* BlockImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D72120E7DC0C008FB2AB /* BlockImpl.h */; };
+		6A59D75720E7DC0D008FB2AB /* ConversionUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D72220E7DC0C008FB2AB /* ConversionUtil.h */; };
+		6A59D75820E7DC0D008FB2AB /* Simi.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D72320E7DC0C008FB2AB /* Simi.h */; };
+		6A59D75B20E7DD74008FB2AB /* Net.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A59D75920E7DD74008FB2AB /* Net.h */; };
+		6A59D75C20E7DD74008FB2AB /* Net.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A59D75A20E7DD74008FB2AB /* Net.m */; };
+		6A59D75F20E7E2E6008FB2AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A59D75E20E7E2E6008FB2AB /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6A59D6E220E7DBD7008FB2AB /* SimiNet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimiNet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A59D6E620E7DBD7008FB2AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A59D6ED20E7DC0C008FB2AB /* libiOSSimi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiOSSimi.a; path = ../../../SimiCalc/libiOSSimi.a; sourceTree = "<group>"; };
+		6A59D6F020E7DC0C008FB2AB /* SimiClassImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiClassImpl.h; sourceTree = "<group>"; };
+		6A59D6F120E7DC0C008FB2AB /* Codifiable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Codifiable.h; sourceTree = "<group>"; };
+		6A59D6F220E7DC0C008FB2AB /* IOSObjectArray+Simi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IOSObjectArray+Simi.h"; sourceTree = "<group>"; };
+		6A59D6F320E7DC0C008FB2AB /* SimiApiClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiApiClass.h; sourceTree = "<group>"; };
+		6A59D6F420E7DC0C008FB2AB /* SimiPropertyImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiPropertyImpl.h; sourceTree = "<group>"; };
+		6A59D6F520E7DC0C008FB2AB /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		6A59D6F620E7DC0C008FB2AB /* SimiFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiFunction.h; sourceTree = "<group>"; };
+		6A59D6F720E7DC0C008FB2AB /* ErrorWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorWatcher.h; sourceTree = "<group>"; };
+		6A59D6F820E7DC0C008FB2AB /* ErrorHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHub.h; sourceTree = "<group>"; };
+		6A59D6F920E7DC0C008FB2AB /* Interpreter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interpreter.h; sourceTree = "<group>"; };
+		6A59D6FA20E7DC0C008FB2AB /* BaseClassesNativeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseClassesNativeImpl.h; sourceTree = "<group>"; };
+		6A59D6FB20E7DC0C008FB2AB /* SimiObjectImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiObjectImpl.h; sourceTree = "<group>"; };
+		6A59D6FC20E7DC0C008FB2AB /* SimiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiObject.h; sourceTree = "<group>"; };
+		6A59D6FD20E7DC0C008FB2AB /* Return.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Return.h; sourceTree = "<group>"; };
+		6A59D6FE20E7DC0C008FB2AB /* SimiStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiStatement.h; sourceTree = "<group>"; };
+		6A59D6FF20E7DC0C008FB2AB /* RuntimeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeError.h; sourceTree = "<group>"; };
+		6A59D70020E7DC0C008FB2AB /* SimiProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiProperty.h; sourceTree = "<group>"; };
+		6A59D70120E7DC0C008FB2AB /* TempNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempNull.h; sourceTree = "<group>"; };
+		6A59D70220E7DC0C008FB2AB /* ActiveSimi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveSimi.h; sourceTree = "<group>"; };
+		6A59D70320E7DC0C008FB2AB /* Expr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expr.h; sourceTree = "<group>"; };
+		6A59D70420E7DC0C008FB2AB /* SimiValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiValue.h; sourceTree = "<group>"; };
+		6A59D70520E7DC0C008FB2AB /* Yield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yield.h; sourceTree = "<group>"; };
+		6A59D70620E7DC0C008FB2AB /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		6A59D70720E7DC0C008FB2AB /* SimiMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiMapper.h; sourceTree = "<group>"; };
+		6A59D70820E7DC0C008FB2AB /* SimiEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiEnvironment.h; sourceTree = "<group>"; };
+		6A59D70920E7DC0C008FB2AB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		6A59D70A20E7DC0C008FB2AB /* BlockInterpreter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockInterpreter.h; sourceTree = "<group>"; };
+		6A59D70B20E7DC0C008FB2AB /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scanner.h; sourceTree = "<group>"; };
+		6A59D70C20E7DC0C008FB2AB /* SparseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparseArray.h; sourceTree = "<group>"; };
+		6A59D70D20E7DC0C008FB2AB /* Resolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resolver.h; sourceTree = "<group>"; };
+		6A59D70E20E7DC0C008FB2AB /* SimiBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiBlock.h; sourceTree = "<group>"; };
+		6A59D70F20E7DC0C008FB2AB /* Pass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pass.h; sourceTree = "<group>"; };
+		6A59D71020E7DC0C008FB2AB /* SimiClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiClass.h; sourceTree = "<group>"; };
+		6A59D71120E7DC0C008FB2AB /* TokenType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenType.h; sourceTree = "<group>"; };
+		6A59D71220E7DC0C008FB2AB /* NativeModulesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeModulesManager.h; sourceTree = "<group>"; };
+		6A59D71320E7DC0C008FB2AB /* SimiMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiMethod.h; sourceTree = "<group>"; };
+		6A59D71420E7DC0C008FB2AB /* SimiJavaClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiJavaClass.h; sourceTree = "<group>"; };
+		6A59D71520E7DC0C008FB2AB /* SimiJavaMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiJavaMethod.h; sourceTree = "<group>"; };
+		6A59D71620E7DC0C008FB2AB /* Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Token.h; sourceTree = "<group>"; };
+		6A59D71720E7DC0C008FB2AB /* Break.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Break.h; sourceTree = "<group>"; };
+		6A59D71820E7DC0C008FB2AB /* SimiNativeClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiNativeClass.h; sourceTree = "<group>"; };
+		6A59D71920E7DC0C008FB2AB /* Continue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Continue.h; sourceTree = "<group>"; };
+		6A59D71A20E7DC0C008FB2AB /* SimiJavaGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiJavaGlobal.h; sourceTree = "<group>"; };
+		6A59D71B20E7DC0C008FB2AB /* SimiException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiException.h; sourceTree = "<group>"; };
+		6A59D71C20E7DC0C008FB2AB /* SimiCallable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiCallable.h; sourceTree = "<group>"; };
+		6A59D71D20E7DC0C008FB2AB /* OverloadableFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverloadableFunction.h; sourceTree = "<group>"; };
+		6A59D71E20E7DC0C008FB2AB /* SimiNativeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiNativeObject.h; sourceTree = "<group>"; };
+		6A59D71F20E7DC0C008FB2AB /* Stmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stmt.h; sourceTree = "<group>"; };
+		6A59D72020E7DC0C008FB2AB /* GenerateAst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateAst.h; sourceTree = "<group>"; };
+		6A59D72120E7DC0C008FB2AB /* BlockImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockImpl.h; sourceTree = "<group>"; };
+		6A59D72220E7DC0C008FB2AB /* ConversionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionUtil.h; sourceTree = "<group>"; };
+		6A59D72320E7DC0C008FB2AB /* Simi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simi.h; sourceTree = "<group>"; };
+		6A59D75920E7DD74008FB2AB /* Net.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Net.h; sourceTree = "<group>"; };
+		6A59D75A20E7DD74008FB2AB /* Net.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Net.m; sourceTree = "<group>"; };
+		6A59D75E20E7E2E6008FB2AB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A59D6DE20E7DBD7008FB2AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A59D75F20E7E2E6008FB2AB /* UIKit.framework in Frameworks */,
+				6A59D72420E7DC0C008FB2AB /* libiOSSimi.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6A59D6D820E7DBD7008FB2AB = {
+			isa = PBXGroup;
+			children = (
+				6A59D6E420E7DBD7008FB2AB /* SimiNet */,
+				6A59D6E320E7DBD7008FB2AB /* Products */,
+				6A59D75D20E7E2E6008FB2AB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6A59D6E320E7DBD7008FB2AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A59D6E220E7DBD7008FB2AB /* SimiNet.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A59D6E420E7DBD7008FB2AB /* SimiNet */ = {
+			isa = PBXGroup;
+			children = (
+				6A59D6EE20E7DC0C008FB2AB /* include */,
+				6A59D6ED20E7DC0C008FB2AB /* libiOSSimi.a */,
+				6A59D6E620E7DBD7008FB2AB /* Info.plist */,
+				6A59D75920E7DD74008FB2AB /* Net.h */,
+				6A59D75A20E7DD74008FB2AB /* Net.m */,
+			);
+			path = SimiNet;
+			sourceTree = "<group>";
+		};
+		6A59D6EE20E7DC0C008FB2AB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6A59D6EF20E7DC0C008FB2AB /* iOSSimi */,
+			);
+			name = include;
+			path = ../../../SimiCalc/include;
+			sourceTree = "<group>";
+		};
+		6A59D6EF20E7DC0C008FB2AB /* iOSSimi */ = {
+			isa = PBXGroup;
+			children = (
+				6A59D6F020E7DC0C008FB2AB /* SimiClassImpl.h */,
+				6A59D6F120E7DC0C008FB2AB /* Codifiable.h */,
+				6A59D6F220E7DC0C008FB2AB /* IOSObjectArray+Simi.h */,
+				6A59D6F320E7DC0C008FB2AB /* SimiApiClass.h */,
+				6A59D6F420E7DC0C008FB2AB /* SimiPropertyImpl.h */,
+				6A59D6F520E7DC0C008FB2AB /* Parser.h */,
+				6A59D6F620E7DC0C008FB2AB /* SimiFunction.h */,
+				6A59D6F720E7DC0C008FB2AB /* ErrorWatcher.h */,
+				6A59D6F820E7DC0C008FB2AB /* ErrorHub.h */,
+				6A59D6F920E7DC0C008FB2AB /* Interpreter.h */,
+				6A59D6FA20E7DC0C008FB2AB /* BaseClassesNativeImpl.h */,
+				6A59D6FB20E7DC0C008FB2AB /* SimiObjectImpl.h */,
+				6A59D6FC20E7DC0C008FB2AB /* SimiObject.h */,
+				6A59D6FD20E7DC0C008FB2AB /* Return.h */,
+				6A59D6FE20E7DC0C008FB2AB /* SimiStatement.h */,
+				6A59D6FF20E7DC0C008FB2AB /* RuntimeError.h */,
+				6A59D70020E7DC0C008FB2AB /* SimiProperty.h */,
+				6A59D70120E7DC0C008FB2AB /* TempNull.h */,
+				6A59D70220E7DC0C008FB2AB /* ActiveSimi.h */,
+				6A59D70320E7DC0C008FB2AB /* Expr.h */,
+				6A59D70420E7DC0C008FB2AB /* SimiValue.h */,
+				6A59D70520E7DC0C008FB2AB /* Yield.h */,
+				6A59D70620E7DC0C008FB2AB /* Environment.h */,
+				6A59D70720E7DC0C008FB2AB /* SimiMapper.h */,
+				6A59D70820E7DC0C008FB2AB /* SimiEnvironment.h */,
+				6A59D70920E7DC0C008FB2AB /* Constants.h */,
+				6A59D70A20E7DC0C008FB2AB /* BlockInterpreter.h */,
+				6A59D70B20E7DC0C008FB2AB /* Scanner.h */,
+				6A59D70C20E7DC0C008FB2AB /* SparseArray.h */,
+				6A59D70D20E7DC0C008FB2AB /* Resolver.h */,
+				6A59D70E20E7DC0C008FB2AB /* SimiBlock.h */,
+				6A59D70F20E7DC0C008FB2AB /* Pass.h */,
+				6A59D71020E7DC0C008FB2AB /* SimiClass.h */,
+				6A59D71120E7DC0C008FB2AB /* TokenType.h */,
+				6A59D71220E7DC0C008FB2AB /* NativeModulesManager.h */,
+				6A59D71320E7DC0C008FB2AB /* SimiMethod.h */,
+				6A59D71420E7DC0C008FB2AB /* SimiJavaClass.h */,
+				6A59D71520E7DC0C008FB2AB /* SimiJavaMethod.h */,
+				6A59D71620E7DC0C008FB2AB /* Token.h */,
+				6A59D71720E7DC0C008FB2AB /* Break.h */,
+				6A59D71820E7DC0C008FB2AB /* SimiNativeClass.h */,
+				6A59D71920E7DC0C008FB2AB /* Continue.h */,
+				6A59D71A20E7DC0C008FB2AB /* SimiJavaGlobal.h */,
+				6A59D71B20E7DC0C008FB2AB /* SimiException.h */,
+				6A59D71C20E7DC0C008FB2AB /* SimiCallable.h */,
+				6A59D71D20E7DC0C008FB2AB /* OverloadableFunction.h */,
+				6A59D71E20E7DC0C008FB2AB /* SimiNativeObject.h */,
+				6A59D71F20E7DC0C008FB2AB /* Stmt.h */,
+				6A59D72020E7DC0C008FB2AB /* GenerateAst.h */,
+				6A59D72120E7DC0C008FB2AB /* BlockImpl.h */,
+				6A59D72220E7DC0C008FB2AB /* ConversionUtil.h */,
+				6A59D72320E7DC0C008FB2AB /* Simi.h */,
+			);
+			path = iOSSimi;
+			sourceTree = "<group>";
+		};
+		6A59D75D20E7E2E6008FB2AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A59D75E20E7E2E6008FB2AB /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6A59D6DF20E7DBD7008FB2AB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A59D75820E7DC0D008FB2AB /* Simi.h in Headers */,
+				6A59D73A20E7DC0C008FB2AB /* Yield.h in Headers */,
+				6A59D72C20E7DC0C008FB2AB /* ErrorWatcher.h in Headers */,
+				6A59D74D20E7DC0D008FB2AB /* SimiNativeClass.h in Headers */,
+				6A59D74A20E7DC0D008FB2AB /* SimiJavaMethod.h in Headers */,
+				6A59D75020E7DC0D008FB2AB /* SimiException.h in Headers */,
+				6A59D72A20E7DC0C008FB2AB /* Parser.h in Headers */,
+				6A59D72D20E7DC0C008FB2AB /* ErrorHub.h in Headers */,
+				6A59D75520E7DC0D008FB2AB /* GenerateAst.h in Headers */,
+				6A59D74B20E7DC0D008FB2AB /* Token.h in Headers */,
+				6A59D74520E7DC0D008FB2AB /* SimiClass.h in Headers */,
+				6A59D72920E7DC0C008FB2AB /* SimiPropertyImpl.h in Headers */,
+				6A59D73520E7DC0C008FB2AB /* SimiProperty.h in Headers */,
+				6A59D73220E7DC0C008FB2AB /* Return.h in Headers */,
+				6A59D74C20E7DC0D008FB2AB /* Break.h in Headers */,
+				6A59D74220E7DC0C008FB2AB /* Resolver.h in Headers */,
+				6A59D72720E7DC0C008FB2AB /* IOSObjectArray+Simi.h in Headers */,
+				6A59D73720E7DC0C008FB2AB /* ActiveSimi.h in Headers */,
+				6A59D75720E7DC0D008FB2AB /* ConversionUtil.h in Headers */,
+				6A59D72B20E7DC0C008FB2AB /* SimiFunction.h in Headers */,
+				6A59D73420E7DC0C008FB2AB /* RuntimeError.h in Headers */,
+				6A59D73C20E7DC0C008FB2AB /* SimiMapper.h in Headers */,
+				6A59D75620E7DC0D008FB2AB /* BlockImpl.h in Headers */,
+				6A59D74620E7DC0D008FB2AB /* TokenType.h in Headers */,
+				6A59D72E20E7DC0C008FB2AB /* Interpreter.h in Headers */,
+				6A59D74820E7DC0D008FB2AB /* SimiMethod.h in Headers */,
+				6A59D75220E7DC0D008FB2AB /* OverloadableFunction.h in Headers */,
+				6A59D75320E7DC0D008FB2AB /* SimiNativeObject.h in Headers */,
+				6A59D75420E7DC0D008FB2AB /* Stmt.h in Headers */,
+				6A59D73E20E7DC0C008FB2AB /* Constants.h in Headers */,
+				6A59D73F20E7DC0C008FB2AB /* BlockInterpreter.h in Headers */,
+				6A59D74720E7DC0D008FB2AB /* NativeModulesManager.h in Headers */,
+				6A59D73920E7DC0C008FB2AB /* SimiValue.h in Headers */,
+				6A59D73820E7DC0C008FB2AB /* Expr.h in Headers */,
+				6A59D72820E7DC0C008FB2AB /* SimiApiClass.h in Headers */,
+				6A59D73B20E7DC0C008FB2AB /* Environment.h in Headers */,
+				6A59D75120E7DC0D008FB2AB /* SimiCallable.h in Headers */,
+				6A59D72520E7DC0C008FB2AB /* SimiClassImpl.h in Headers */,
+				6A59D72620E7DC0C008FB2AB /* Codifiable.h in Headers */,
+				6A59D73320E7DC0C008FB2AB /* SimiStatement.h in Headers */,
+				6A59D73620E7DC0C008FB2AB /* TempNull.h in Headers */,
+				6A59D75B20E7DD74008FB2AB /* Net.h in Headers */,
+				6A59D73120E7DC0C008FB2AB /* SimiObject.h in Headers */,
+				6A59D73020E7DC0C008FB2AB /* SimiObjectImpl.h in Headers */,
+				6A59D74F20E7DC0D008FB2AB /* SimiJavaGlobal.h in Headers */,
+				6A59D74420E7DC0D008FB2AB /* Pass.h in Headers */,
+				6A59D74120E7DC0C008FB2AB /* SparseArray.h in Headers */,
+				6A59D73D20E7DC0C008FB2AB /* SimiEnvironment.h in Headers */,
+				6A59D74020E7DC0C008FB2AB /* Scanner.h in Headers */,
+				6A59D74320E7DC0C008FB2AB /* SimiBlock.h in Headers */,
+				6A59D74E20E7DC0D008FB2AB /* Continue.h in Headers */,
+				6A59D72F20E7DC0C008FB2AB /* BaseClassesNativeImpl.h in Headers */,
+				6A59D74920E7DC0D008FB2AB /* SimiJavaClass.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6A59D6E120E7DBD7008FB2AB /* SimiNet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A59D6EA20E7DBD7008FB2AB /* Build configuration list for PBXNativeTarget "SimiNet" */;
+			buildPhases = (
+				6A59D6DD20E7DBD7008FB2AB /* Sources */,
+				6A59D6DE20E7DBD7008FB2AB /* Frameworks */,
+				6A59D6DF20E7DBD7008FB2AB /* Headers */,
+				6A59D6E020E7DBD7008FB2AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimiNet;
+			productName = SimiNet;
+			productReference = 6A59D6E220E7DBD7008FB2AB /* SimiNet.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6A59D6D920E7DBD7008FB2AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Gordan Glavaš";
+				TargetAttributes = {
+					6A59D6E120E7DBD7008FB2AB = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 6A59D6DC20E7DBD7008FB2AB /* Build configuration list for PBXProject "SimiNet" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6A59D6D820E7DBD7008FB2AB;
+			productRefGroup = 6A59D6E320E7DBD7008FB2AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6A59D6E120E7DBD7008FB2AB /* SimiNet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A59D6E020E7DBD7008FB2AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A59D6DD20E7DBD7008FB2AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A59D75C20E7DD74008FB2AB /* Net.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6A59D6E820E7DBD7008FB2AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6A59D6E920E7DBD7008FB2AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6A59D6EB20E7DBD7008FB2AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = N43KYHR3HM;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "${J2OBJC_HOME}/frameworks";
+				HEADER_SEARCH_PATHS = "/Users/gordanglavas/Desktop/github/simi-ios/SimiCalc/**";
+				INFOPLIST_FILE = SimiNet/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				J2OBJC_HOME = "/Users/gordanglavas/Downloads/j2objc-2.1/dist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/gordanglavas/Desktop/github/simi-ios/SimiCalc/**",
+					"${J2OBJC_HOME}/lib",
+				);
+				OTHER_LDFLAGS = (
+					"-ljre_emul",
+					"-l\"iconv\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.globulus.SimiNet;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${J2OBJC_HOME}/include";
+			};
+			name = Debug;
+		};
+		6A59D6EC20E7DBD7008FB2AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = N43KYHR3HM;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "${J2OBJC_HOME}/frameworks";
+				HEADER_SEARCH_PATHS = "/Users/gordanglavas/Desktop/github/simi-ios/SimiCalc/**";
+				INFOPLIST_FILE = SimiNet/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				J2OBJC_HOME = "/Users/gordanglavas/Downloads/j2objc-2.1/dist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/gordanglavas/Desktop/github/simi-ios/SimiCalc/**",
+					"${J2OBJC_HOME}/lib",
+				);
+				OTHER_LDFLAGS = (
+					"-ljre_emul",
+					"-l\"iconv\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.globulus.SimiNet;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${J2OBJC_HOME}/include";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6A59D6DC20E7DBD7008FB2AB /* Build configuration list for PBXProject "SimiNet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A59D6E820E7DBD7008FB2AB /* Debug */,
+				6A59D6E920E7DBD7008FB2AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A59D6EA20E7DBD7008FB2AB /* Build configuration list for PBXNativeTarget "SimiNet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A59D6EB20E7DBD7008FB2AB /* Debug */,
+				6A59D6EC20E7DBD7008FB2AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6A59D6D920E7DBD7008FB2AB /* Project object */;
+}

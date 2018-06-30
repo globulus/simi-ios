@@ -54,7 +54,6 @@
 @class SMExpr_Super;
 @class SMExpr_Unary;
 @class SMExpr_Variable;
-@class SMNativeModulesManager;
 @class SMSimiException;
 @class SMSimiValue;
 @class SMStmt_Annotation;
@@ -71,6 +70,7 @@
 @class SMStmt_Return;
 @class SMStmt_While;
 @class SMStmt_Yield;
+@protocol JavaUtilCollection;
 @protocol JavaUtilList;
 @protocol SMSimiBlock;
 @protocol SMSimiClass;
@@ -80,7 +80,7 @@
 
 @interface SMInterpreter : NSObject < SMBlockInterpreter, SMExpr_Visitor, SMStmt_Visitor > {
  @public
-  SMNativeModulesManager *nativeModulesManager_;
+  id<JavaUtilCollection> nativeModulesManagers_;
 }
 
 + (SMInterpreter *)sharedInstance;
@@ -179,7 +179,7 @@
 
 #pragma mark Package-Private
 
-- (instancetype __nonnull)initWithSMNativeModulesManager:(SMNativeModulesManager *)nativeModulesManager;
+- (instancetype __nonnull)initWithJavaUtilCollection:(id<JavaUtilCollection>)nativeModulesManagers;
 
 - (id<SMSimiProperty>)interpretWithJavaUtilList:(id<JavaUtilList>)statements;
 
@@ -196,7 +196,7 @@
 
 J2OBJC_EMPTY_STATIC_INIT(SMInterpreter)
 
-J2OBJC_FIELD_SETTER(SMInterpreter, nativeModulesManager_, SMNativeModulesManager *)
+J2OBJC_FIELD_SETTER(SMInterpreter, nativeModulesManagers_, id<JavaUtilCollection>)
 
 inline SMInterpreter *SMInterpreter_get_sharedInstance(void);
 inline SMInterpreter *SMInterpreter_set_sharedInstance(SMInterpreter *value);
@@ -204,11 +204,11 @@ inline SMInterpreter *SMInterpreter_set_sharedInstance(SMInterpreter *value);
 FOUNDATION_EXPORT SMInterpreter *SMInterpreter_sharedInstance;
 J2OBJC_STATIC_FIELD_OBJ(SMInterpreter, sharedInstance, SMInterpreter *)
 
-FOUNDATION_EXPORT void SMInterpreter_initWithSMNativeModulesManager_(SMInterpreter *self, SMNativeModulesManager *nativeModulesManager);
+FOUNDATION_EXPORT void SMInterpreter_initWithJavaUtilCollection_(SMInterpreter *self, id<JavaUtilCollection> nativeModulesManagers);
 
-FOUNDATION_EXPORT SMInterpreter *new_SMInterpreter_initWithSMNativeModulesManager_(SMNativeModulesManager *nativeModulesManager) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMInterpreter *new_SMInterpreter_initWithJavaUtilCollection_(id<JavaUtilCollection> nativeModulesManagers) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMInterpreter *create_SMInterpreter_initWithSMNativeModulesManager_(SMNativeModulesManager *nativeModulesManager);
+FOUNDATION_EXPORT SMInterpreter *create_SMInterpreter_initWithJavaUtilCollection_(id<JavaUtilCollection> nativeModulesManagers);
 
 FOUNDATION_EXPORT jboolean SMInterpreter_isTruthyWithSMSimiProperty_(id<SMSimiProperty> object);
 

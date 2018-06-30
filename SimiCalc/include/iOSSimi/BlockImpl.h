@@ -50,6 +50,8 @@
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
+- (jboolean)canReturn;
+
 - (id<JavaUtilList>)getStatements;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
