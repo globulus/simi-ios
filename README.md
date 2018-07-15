@@ -1,10 +1,10 @@
-# Šimi for iOS
+# Šimi for iOS and OS X
 
 Šimi is an awesome programming language! Check out its [main project repo here](https://github.com/globulus/simi)!
 
-This repo contains a sample project showcasing how Šimi code can be embedded and used in an iOS app.
+This repo contains a sample project showcasing how Šimi code can be embedded and used in an iOS or OS X app.
 
-The Šimi interpreter was converted to Objective-C using [J2ObjC tool](https://developers.google.com/j2objc/). This puts some limitations on its usage, such as **preventing the usage of external Java files inside Šimi code**.
+The Šimi interpreter was converted to Objective-C using [J2ObjC tool](https://developers.google.com/j2objc/). This puts some limitations on its usage, such as **preventing the usage of external Java files inside Šimi code**, but allows for **using Cocoa classes and frameworks**.
 
 ### How-to
 
@@ -53,3 +53,8 @@ The Šimi interpreter was converted to Objective-C using [J2ObjC tool](https://d
 ...
 ```
 7. You can use static methods in *SMSimiMapper* class to convert iOS values, arrays and dictionaries to Šimi ones. There's also an IOSObjectArray+Simi extension that allows for simple adding of Šimi props to ISOObjectArray (needed by SMActiveSimi methods), as well as a ConversionUtil class that maps Java lists/sets/maps to NSArray/NSDictionary.
+
+#### Native methods
+
+* Unlike external Java files, Cocoa Šimi doesn't require imports to use native code. Simply put, for any method marked as native, an attempt will be made to instantiate it via reflection from its associated class. **The Cocoa class sought is required to have prefix SM_**, i.e if the Šimi class is named *Net*, then the corresponding Cocoa class should be named *SM_Net* (check out the [SimInet framework](SimiLib/SimiNet/SimiNet/SM_Net.h) to see how it's done).
+* All methods should be *class methods*, return an *id<SMSimiProperty>*, and accept a single parameter of type *NSArray*. The first two parameters of the said array will be the invoking instance (self) and a BlockInterpreter, just like in Java Šimi bridging. The rest of parameters are actual method parameters. (This limitation is placed by NSInvocation requiring void * for parameters.)
