@@ -30,7 +30,10 @@
 @protocol SMSimiObject;
 @protocol SMSimiProperty;
 
-@interface SMCocoaNativeModulesManager : NSObject < SMNativeModulesManager >
+@interface SMCocoaNativeModulesManager : NSObject < SMNativeModulesManager >{
+    NSMutableDictionary *classes;
+    NSMutableDictionary *invocations;
+}
 
 #pragma mark Public
 

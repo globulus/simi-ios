@@ -1,3 +1,7 @@
+class Net:
+native post(request, callback): pass
+end
+
 class Calc:
     def compute(left, op, right):
         when op:
@@ -7,5 +11,13 @@ class Calc:
             '/': return left / right
             else: return nil
         end
+    end
+
+    def post():
+        print "performing request"
+        Net.post([url = "http://httpbin.org/post", json = "", headers = [accept = "application/json"]], def response:
+            print "GOT RESPONSE"
+            print response
+        end)
     end
 end

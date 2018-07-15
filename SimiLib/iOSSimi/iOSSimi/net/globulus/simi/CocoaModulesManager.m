@@ -20,14 +20,14 @@
 }
 
 - (void)loadFramework:(NSString *)framework {
-    NSString *fullPath = [NSString stringWithFormat:@"%@.framework/%@", framework, framework];
-    void *frameworkHandle = dlopen([fullPath cStringUsingEncoding:NSUTF8StringEncoding], RTLD_LAZY);
-    Class class = NSClassFromString(framework);
-    if (class) {
-        [classes setObject:class forKey:framework];
-    } else {
-        NSLog(@"Error, can't load class: %@", framework);
-    }
+//    NSString *fullPath = [NSString stringWithFormat:@"%@.framework/%@", framework, framework];
+//    void *frameworkHandle = dlopen([fullPath cStringUsingEncoding:NSUTF8StringEncoding], RTLD_LAZY);
+//    Class class = NSClassFromString(framework);
+//    if (class) {
+//        [classes setObject:class forKey:framework];
+//    } else {
+//        NSLog(@"Error, can't load class: %@", framework);
+//    }
 }
 
 - (id<SMSimiProperty>)call:(NSString *)className
@@ -36,6 +36,12 @@
                interpreter:(id<SMBlockInterpreter>)interpreter
                       args:(id<JavaUtilList>)args {
     Class class = [classes objectForKey:className];
+    if (class == nil) {
+        class = NSClassFromString(className);
+        if (class) {
+            [classes setObject:class forKey:className];
+        }
+    }
     if (class) {
         NSMutableArray *params = [NSMutableArray arrayWithArray:@[sender, interpreter]];
         for (id arg in args) {

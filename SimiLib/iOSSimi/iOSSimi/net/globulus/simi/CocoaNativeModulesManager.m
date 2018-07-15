@@ -27,7 +27,63 @@ J2OBJC_IGNORE_DESIGNATED_END
                       withSMSimiObject:(id<SMSimiObject>)self_
                      withSMInterpreter:(SMInterpreter *)interpreter
                       withJavaUtilList:(id<JavaUtilList>)args {
-  return nil;
+    if (!invocations) {
+        invocations = [[NSMutableDictionary alloc] init];
+    }
+    if (!classes) {
+        classes = [[NSMutableDictionary alloc] init];
+    }
+    className_ = [NSString stringWithFormat:@"SM_%@", className_];
+    Class class = [classes objectForKey:className_];
+    if (class == nil) {
+        class = NSClassFromString(className_);
+        if (class) {
+            [classes setObject:class forKey:className_];
+            [invocations setObject:[[NSMutableDictionary alloc] init] forKey:className_];
+        }
+    }
+    if (class) {
+        NSMutableDictionary *classInvocations = [invocations objectForKey:className_];
+        NSInvocation *invocation = [classInvocations objectForKey:methodName];
+        if (invocation == nil) {
+            unsigned int methodCount = 0;
+            Method *methods = class_copyMethodList(objc_getMetaClass([className_ cStringUsingEncoding:NSUTF8StringEncoding]), &methodCount);
+            SEL selector;
+            for (unsigned int i = 0; i < methodCount; i++) {
+                Method method = methods[i];
+                SEL methodSel = method_getName(method);
+                NSString *selName = NSStringFromSelector(methodSel);
+                if ([[selName substringToIndex:[selName rangeOfString:@":"].location] isEqualToString:methodName]) {
+                    selector = methodSel;
+                }
+                NSLog(@"METHOD: %@", NSStringFromSelector(method_getName(method)));
+                NSLog(@"NAME %s" , sel_getName(method_getName(method)));
+            }
+            
+            free(methods);
+    //        NSMutableString *sel = [NSMutableString stringWithString:methodName];
+            
+            if (selector) {
+                NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[class methodSignatureForSelector:selector]];
+                [inv setSelector:selector];
+                [inv setTarget:class];
+                [classInvocations setObject:inv forKey:methodName];
+                invocation = inv;
+            }
+        }
+        if (invocation) {
+            NSMutableArray *params = [NSMutableArray arrayWithArray:@[self_, interpreter]];
+            for (id arg in args) {
+                [params addObject:arg];
+            }
+            [invocation setArgument:&params atIndex:2];
+            [invocation invoke];
+            void *tempResultSet;
+            [invocation getReturnValue:&tempResultSet];
+            return  (__bridge id<SMSimiProperty>)tempResultSet;
+        }
+    }
+    return nil;
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -51,7 +107,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 @end
 
 void SMCocoaNativeModulesManager_init(SMCocoaNativeModulesManager *self) {
-  NSObject_init(self);
+    NSObject_init(self);
 }
 
 SMCocoaNativeModulesManager *new_SMCocoaNativeModulesManager_init() {

@@ -35,18 +35,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager GET:@"https://api.reddit.com/top.json" parameters:@{@"limit": @3} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSString *json = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"JSON: %@", json);
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    [manager GET:@"https://api.reddit.com/top.json" parameters:@{@"limit": @3} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+//        NSString *json = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//        NSLog(@"JSON: %@", json);
 //        [SMActiveSimi evalAsyncWithSMActiveSimi_Callback:self withNSString:@"RedditStats" withNSString:@"getStats" withSMSimiPropertyArray:[IOSObjectArray arrayWithNSArray:@[[SMSimiMapper toSimiPropertyWithId:json]] type:SMSimiValue_class_()]];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+//    } failure:^(NSURLSessionTask *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//    }];
     
     id<SMSimiProperty> date = [SMActiveSimi evalWithNSString:@"Date" withNSString:@"init" withSMSimiPropertyArray:[IOSObjectArray arrayWithNSArray:@[[SMSimiMapper toSimiPropertyWithId:[[JavaLangLong alloc] initWithLong:(long)([NSDate new].timeIntervalSince1970 * 1000)]]] type: SMSimiValue_class_()]];
     NSLog(@"Date: %@", date);
+    
+    [SMActiveSimi evalAsyncWithSMActiveSimi_Callback:self withNSString:@"Calc" withNSString:@"post" withSMSimiPropertyArray:[IOSObjectArray arrayWithNSArray:@[] type:SMSimiValue_class_()]];
 }
 
 
@@ -66,12 +68,12 @@
 #pragma mark - ActiveSimi Callback
     
 - (void)doneWithSMSimiProperty:(id<SMSimiProperty>)result {
-    NSMutableString *string = [[NSMutableString alloc] initWithString:@"Top posters:\n\n"];
-    NSDictionary *dict = [ConversionUtil dictionaryFromMap:[SMSimiMapper fromObjectWithSMSimiObject:[[result getValue] getObject]]];
-    [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        [string appendFormat:@"%@ with %@ comments\n", key, obj];
-    }];
-    self.lblStats.text = string;
+//    NSMutableString *string = [[NSMutableString alloc] initWithString:@"Top posters:\n\n"];
+//    NSDictionary *dict = [ConversionUtil dictionaryFromMap:[SMSimiMapper fromObjectWithSMSimiObject:[[result getValue] getObject]]];
+//    [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+//        [string appendFormat:@"%@ with %@ comments\n", key, obj];
+//    }];
+//    self.lblStats.text = string;
 }
 
 @end
