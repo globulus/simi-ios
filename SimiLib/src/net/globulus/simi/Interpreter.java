@@ -17,6 +17,8 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
   private Map<Object, List<SimiObject>> annotations = new HashMap<>();
   private List<SimiObject> annotationsBuffer = new ArrayList<>();
 
+  private Stack<Expr.Call> callExprStack = new Stack<>();
+
   static Interpreter sharedInstance;
 
   Interpreter(Collection<NativeModulesManager> nativeModulesManagers) {
@@ -187,7 +189,11 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
             if (!(clazz instanceof SimiClassImpl)) {
                 throw new RuntimeError(stmt.name, "Superclass must be a class.");
             }
-            superclasses.add((SimiClassImpl) clazz);
+            SimiClassImpl simiClass = (SimiClassImpl) clazz;
+            if (simiClass.type == SimiClassImpl.Type.FINAL) {
+              throw new RuntimeError(stmt.name, "Can't use a final class as superclass: " + simiClass.name);
+            }
+            superclasses.add(simiClass);
         }
       } else if (!isBaseClass) {
           superclasses = Collections.singletonList(getObjectClass());
@@ -239,7 +245,8 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
       methods.put(new OverloadableFunction(name, function.arity()), function);
     }
 
-    SimiClassImpl klass = new SimiClassImpl(className, superclasses, constants, methods, stmt);
+    SimiClassImpl klass = new SimiClassImpl(SimiClassImpl.Type.from(stmt.opener.type),
+            className, superclasses, constants, methods, stmt);
     SimiValue classValue = new SimiValue.Object(klass);
     SimiProperty classProp = new SimiPropertyImpl(classValue, getAnnotations(stmt));
 
@@ -541,8 +548,11 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
 
   @Override
   public SimiProperty visitCallExpr(Expr.Call expr) {
+    callExprStack.push(expr);
     SimiProperty callee = evaluate(expr.callee);
-    return call(callee, expr.arguments, expr.paren);
+    SimiProperty result = call(callee, expr.arguments, expr.paren);
+    callExprStack.pop();
+    return result;
   }
 
   private SimiProperty call(SimiProperty prop, List<Expr> args, Token paren) {
@@ -579,14 +589,20 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
       methodName = ((SimiValue.Callable) callee).name;
       instance = ((SimiValue.Callable) callee).getInstance();
     } else {
-      throw new RuntimeError(paren,"Can only call functions and classes.");
+      throw new RuntimeError(paren,"Can only call functions and classes: " + callExprStack.peek().callee.toCode(0, true));
     }
 
+    List<SimiProperty> decomposedArgs = arguments;
     if (arguments.size() != callable.arity()) {
-      throw new RuntimeError(paren, "Expected " +
-              callable.arity() + " arguments but got " +
-              arguments.size() + ".");
+      // See if we can decompose argument array/object into actual arguments
+      decomposedArgs = decomposeArguments(callable, arguments);
+      if (decomposedArgs == arguments) { // We didn't manage to decomp args from object
+        throw new RuntimeError(paren, "Expected " +
+                callable.arity() + " arguments but got " +
+                arguments.size() + ".");
+      }
     }
+
     boolean isNative = callable instanceof SimiFunction && ((SimiFunction) callable).isNative
             || callable instanceof SimiMethod && ((SimiMethod) callable).function.isNative
             || callable instanceof BlockImpl && ((BlockImpl) callable).isNative();
@@ -606,7 +622,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
         if (!isBaseClass) {
           for (NativeModulesManager manager : nativeModulesManagers) {
             try {
-              return manager.call(clazz.name, methodName, instance, this, arguments);
+              return manager.call(clazz.name, methodName, instance, this, decomposedArgs);
             } catch (IllegalArgumentException ignored) {
             }
           }
@@ -618,19 +634,30 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
         }
         List<SimiProperty> nativeArgs = new ArrayList<>();
         nativeArgs.add(new SimiValue.Object(instance));
-        nativeArgs.addAll(arguments);
+        nativeArgs.addAll(decomposedArgs);
         return nativeMethod.call(this, nativeArgs, false);
       } else {
         for (NativeModulesManager manager : nativeModulesManagers) {
           try {
             return manager.call(Constants.GLOBALS_CLASS_NAME,
-                    methodName, null, this, arguments);
+                    methodName, null, this, decomposedArgs);
           } catch (IllegalArgumentException ignored) {
           }
         }
       }
     }
-    return callable.call(this, arguments, false);
+    return callable.call(this, decomposedArgs, false);
+  }
+
+  private List<SimiProperty> decomposeArguments(SimiCallable callable, List<SimiProperty> arguments) {
+    if (arguments.size() == 1 && arguments.get(0).getValue() instanceof SimiValue.Object) {
+      SimiObject argObject = arguments.get(0).getValue().getObject();
+      List<SimiValue> values = argObject.values();
+      if (argObject.values().size() == callable.arity()) {
+        return values.stream().map(v -> (SimiProperty) v).collect(Collectors.toList());
+      }
+    }
+    return arguments;
   }
 
   @Override

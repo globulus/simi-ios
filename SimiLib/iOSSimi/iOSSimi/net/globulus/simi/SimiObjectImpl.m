@@ -1389,7 +1389,14 @@ SMSimiObjectImpl_Dictionary_$Lambda$7 *create_SMSimiObjectImpl_Dictionary_$Lambd
 
 - (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other {
   if ([((SMSimiObjectImpl *) nil_chk(other)) isArray]) {
-    [((JavaUtilArrayList *) nil_chk(fields_)) addAllWithJavaUtilCollection:((SMSimiObjectImpl_Array *) cast_chk(other, [SMSimiObjectImpl_Array class]))->fields_];
+    SMSimiObjectImpl_Array *array;
+    if ([other isKindOfClass:[SMSimiObjectImpl_InitiallyEmpty class]]) {
+      array = [other asArray];
+    }
+    else {
+      array = (SMSimiObjectImpl_Array *) cast_chk(other, [SMSimiObjectImpl_Array class]);
+    }
+    [((JavaUtilArrayList *) nil_chk(fields_)) addAllWithJavaUtilCollection:((SMSimiObjectImpl_Array *) nil_chk(array))->fields_];
   }
   else {
     @throw new_JavaLangRuntimeException_initWithNSString_(@"Trying to add a dictionary to an array!");

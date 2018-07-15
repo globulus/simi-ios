@@ -57,7 +57,7 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
 }
 
 - (NSString *)description {
-  return JreStrcat("C$C$C", '<', (isNative_ ? @"native" : @"def"), ' ', ((SMToken *) nil_chk(((SMStmt_Function *) nil_chk(declaration_))->name_))->lexeme_, '>');
+  return ((SMToken *) nil_chk(((SMStmt_Function *) nil_chk(declaration_))->name_))->lexeme_;
 }
 
 - (jint)arity {

@@ -77,6 +77,7 @@
   id<JavaUtilMap> yieldedStmts_;
   id<JavaUtilMap> annotations_;
   id<JavaUtilList> annotationsBuffer_;
+  JavaUtilStack *callExprStack_;
 }
 
 - (id<SMSimiProperty>)evaluateWithSMExpr:(SMExpr *)expr;
@@ -97,6 +98,9 @@
 - (id<SMSimiProperty>)callWithSMSimiValue:(SMSimiValue *)callee
                               withSMToken:(SMToken *)paren
                          withJavaUtilList:(id<JavaUtilList>)arguments;
+
+- (id<JavaUtilList>)decomposeArgumentsWithSMSimiCallable:(id<SMSimiCallable>)callable
+                                        withJavaUtilList:(id<JavaUtilList>)arguments;
 
 - (SMToken *)evaluateGetSetNameWithSMToken:(SMToken *)origin
                                 withSMExpr:(SMExpr *)name;
@@ -154,6 +158,7 @@ J2OBJC_FIELD_SETTER(SMInterpreter, raisedExceptions_, JavaUtilStack *)
 J2OBJC_FIELD_SETTER(SMInterpreter, yieldedStmts_, id<JavaUtilMap>)
 J2OBJC_FIELD_SETTER(SMInterpreter, annotations_, id<JavaUtilMap>)
 J2OBJC_FIELD_SETTER(SMInterpreter, annotationsBuffer_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMInterpreter, callExprStack_, JavaUtilStack *)
 
 __attribute__((unused)) static id<SMSimiProperty> SMInterpreter_evaluateWithSMExpr_(SMInterpreter *self, SMExpr *expr);
 
@@ -166,6 +171,8 @@ __attribute__((unused)) static id<SMSimiProperty> SMInterpreter_callWithSMSimiPr
 __attribute__((unused)) static id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withJavaUtilList_withSMToken_(SMInterpreter *self, SMSimiValue *callee, id<JavaUtilList> args, SMToken *paren);
 
 __attribute__((unused)) static id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(SMInterpreter *self, SMSimiValue *callee, SMToken *paren, id<JavaUtilList> arguments);
+
+__attribute__((unused)) static id<JavaUtilList> SMInterpreter_decomposeArgumentsWithSMSimiCallable_withJavaUtilList_(SMInterpreter *self, id<SMSimiCallable> callable, id<JavaUtilList> arguments);
 
 __attribute__((unused)) static SMToken *SMInterpreter_evaluateGetSetNameWithSMToken_withSMExpr_(SMInterpreter *self, SMToken *origin, SMExpr *name);
 
@@ -256,7 +263,25 @@ __attribute__((unused)) static SMInterpreter_$Lambda$2 *new_SMInterpreter_$Lambd
 
 __attribute__((unused)) static SMInterpreter_$Lambda$2 *create_SMInterpreter_$Lambda$2_init(void);
 
-@interface SMInterpreter_$Lambda$3 : NSObject < JavaUtilFunctionPredicate > {
+@interface SMInterpreter_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(SMSimiValue *)v;
+
+@end
+
+J2OBJC_STATIC_INIT(SMInterpreter_$Lambda$3)
+
+inline SMInterpreter_$Lambda$3 *SMInterpreter_$Lambda$3_get_instance(void);
+static SMInterpreter_$Lambda$3 *SMInterpreter_$Lambda$3_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMInterpreter_$Lambda$3, instance, SMInterpreter_$Lambda$3 *)
+
+__attribute__((unused)) static void SMInterpreter_$Lambda$3_init(SMInterpreter_$Lambda$3 *self);
+
+__attribute__((unused)) static SMInterpreter_$Lambda$3 *new_SMInterpreter_$Lambda$3_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMInterpreter_$Lambda$3 *create_SMInterpreter_$Lambda$3_init(void);
+
+@interface SMInterpreter_$Lambda$4 : NSObject < JavaUtilFunctionPredicate > {
  @public
   SMExpr_Super *val$expr_;
 }
@@ -265,13 +290,13 @@ __attribute__((unused)) static SMInterpreter_$Lambda$2 *create_SMInterpreter_$La
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMInterpreter_$Lambda$3)
+J2OBJC_EMPTY_STATIC_INIT(SMInterpreter_$Lambda$4)
 
-__attribute__((unused)) static void SMInterpreter_$Lambda$3_initWithSMExpr_Super_(SMInterpreter_$Lambda$3 *self, SMExpr_Super *capture$0);
+__attribute__((unused)) static void SMInterpreter_$Lambda$4_initWithSMExpr_Super_(SMInterpreter_$Lambda$4 *self, SMExpr_Super *capture$0);
 
-__attribute__((unused)) static SMInterpreter_$Lambda$3 *new_SMInterpreter_$Lambda$3_initWithSMExpr_Super_(SMExpr_Super *capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMInterpreter_$Lambda$4 *new_SMInterpreter_$Lambda$4_initWithSMExpr_Super_(SMExpr_Super *capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMInterpreter_$Lambda$3 *create_SMInterpreter_$Lambda$3_initWithSMExpr_Super_(SMExpr_Super *capture$0);
+__attribute__((unused)) static SMInterpreter_$Lambda$4 *create_SMInterpreter_$Lambda$4_initWithSMExpr_Super_(SMExpr_Super *capture$0);
 
 SMInterpreter *SMInterpreter_sharedInstance;
 
@@ -441,7 +466,11 @@ SMInterpreter *SMInterpreter_sharedInstance;
       if (!([clazz isKindOfClass:[SMSimiClassImpl class]])) {
         @throw new_SMRuntimeError_initWithSMToken_withNSString_(stmt->name_, @"Superclass must be a class.");
       }
-      [superclasses addWithId:(SMSimiClassImpl *) cast_chk(clazz, [SMSimiClassImpl class])];
+      SMSimiClassImpl *simiClass = (SMSimiClassImpl *) cast_chk(clazz, [SMSimiClassImpl class]);
+      if (((SMSimiClassImpl *) nil_chk(simiClass))->type_ == JreLoadEnum(SMSimiClassImpl_Type, FINAL)) {
+        @throw new_SMRuntimeError_initWithSMToken_withNSString_(stmt->name_, JreStrcat("$$", @"Can't use a final class as superclass: ", simiClass->name_));
+      }
+      [superclasses addWithId:simiClass];
     }
   }
   else if (!isBaseClass) {
@@ -490,7 +519,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
     SMSimiFunction *function = new_SMSimiFunction_initWithSMStmt_Function_withSMEnvironment_withBoolean_withBoolean_withJavaUtilList_(method, environment_, [((NSString *) nil_chk(name)) isEqual:SMConstants_INIT], [((SMExpr_Block *) nil_chk(method->block_)) isNative], SMInterpreter_getAnnotationsWithId_(self, method));
     (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(name, [function arity]) withId:function];
   }
-  SMSimiClassImpl *klass = new_SMSimiClassImpl_initWithNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_withSMStmt_Class_(className_, superclasses, constants, methods, stmt);
+  SMSimiClassImpl *klass = new_SMSimiClassImpl_initWithSMSimiClassImpl_Type_withNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_withSMStmt_Class_(SMSimiClassImpl_Type_fromWithSMTokenType_(((SMToken *) nil_chk(stmt->opener_))->type_), className_, superclasses, constants, methods, stmt);
   SMSimiValue *classValue = new_SMSimiValue_Object_initWithSMSimiObject_(klass);
   id<SMSimiProperty> classProp = new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(classValue, SMInterpreter_getAnnotationsWithId_(self, stmt));
   if (isBaseClass) {
@@ -825,8 +854,11 @@ SMInterpreter *SMInterpreter_sharedInstance;
 }
 
 - (id<SMSimiProperty>)visitCallExprWithSMExpr_Call:(SMExpr_Call *)expr {
+  (void) [((JavaUtilStack *) nil_chk(callExprStack_)) pushWithId:expr];
   id<SMSimiProperty> callee = SMInterpreter_evaluateWithSMExpr_(self, ((SMExpr_Call *) nil_chk(expr))->callee_);
-  return SMInterpreter_callWithSMSimiProperty_withJavaUtilList_withSMToken_(self, callee, expr->arguments_, expr->paren_);
+  id<SMSimiProperty> result = SMInterpreter_callWithSMSimiProperty_withJavaUtilList_withSMToken_(self, callee, expr->arguments_, expr->paren_);
+  (void) [((JavaUtilStack *) nil_chk(callExprStack_)) pop];
+  return result;
 }
 
 - (id<SMSimiProperty>)callWithSMSimiProperty:(id<SMSimiProperty>)prop
@@ -845,6 +877,11 @@ SMInterpreter *SMInterpreter_sharedInstance;
                               withSMToken:(SMToken *)paren
                          withJavaUtilList:(id<JavaUtilList>)arguments {
   return SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(self, callee, paren, arguments);
+}
+
+- (id<JavaUtilList>)decomposeArgumentsWithSMSimiCallable:(id<SMSimiCallable>)callable
+                                        withJavaUtilList:(id<JavaUtilList>)arguments {
+  return SMInterpreter_decomposeArgumentsWithSMSimiCallable_withJavaUtilList_(self, callable, arguments);
 }
 
 - (id<SMSimiProperty>)visitGetExprWithSMExpr_Get:(SMExpr_Get *)expr {
@@ -944,7 +981,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
   SMSimiMethod *method = nil;
   id<JavaUtilList> superclasses = ((SMSimiClassImpl_SuperClassesList *) nil_chk(((SMSimiClassImpl_SuperClassesList *) cast_chk([((id<SMSimiProperty>) nil_chk([((SMEnvironment *) nil_chk(environment_)) getAtWithInt:distance withNSString:SMConstants_SUPER])) getValue], [SMSimiClassImpl_SuperClassesList class]))))->value_;
   if (((SMExpr_Super *) nil_chk(expr))->superclass__ != nil) {
-    superclasses = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(superclasses)) stream])) filterWithJavaUtilFunctionPredicate:new_SMInterpreter_$Lambda$3_initWithSMExpr_Super_(expr)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+    superclasses = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(superclasses)) stream])) filterWithJavaUtilFunctionPredicate:new_SMInterpreter_$Lambda$4_initWithSMExpr_Super_(expr)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
     if ([((id<JavaUtilList>) nil_chk(superclasses)) isEmpty]) {
       @throw new_SMRuntimeError_initWithSMToken_withNSString_(expr->superclass__, @"Invalid superclass specified!");
     }
@@ -1183,36 +1220,37 @@ SMInterpreter *SMInterpreter_sharedInstance;
     { NULL, "LSMSimiProperty;", 0x2, 65, 66, -1, 67, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x2, 65, 68, -1, 69, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x2, 65, 70, -1, 71, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 72, 73, -1, -1, -1, -1 },
-    { NULL, "LSMToken;", 0x2, 74, 75, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 76, 77, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 78, 79, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 80, 81, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 82, 83, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 84, 85, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 86, 87, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 88, 89, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 90, 91, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 92, 93, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 94, 95, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 96, 97, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 98, 99, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x2, 100, 75, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x2, 72, 73, -1, 74, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 75, 76, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x2, 77, 78, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 79, 80, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 81, 82, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 83, 84, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 85, 86, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 87, 88, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 89, 90, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 91, 92, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 93, 94, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 95, 96, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 97, 98, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 99, 100, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 101, 102, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 103, 104, -1, -1, -1, -1 },
-    { NULL, "Z", 0x8, 105, 106, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 107, 108, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x2, 109, 108, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 110, 108, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 111, 108, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x2, 112, 106, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 113, 15, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 103, 78, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 104, 105, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 106, 107, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 108, 109, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 110, 111, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x2, 112, 111, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 113, 111, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 114, 111, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x2, 115, 109, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 116, 15, -1, -1, -1, -1 },
     { NULL, "LSMSimiClassImpl;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 114, 115, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 116, 117, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilList;", 0x2, 118, 117, -1, 119, -1, -1 },
-    { NULL, "LJavaUtilList;", 0x81, 120, 121, -1, 122, -1, -1 },
-    { NULL, "V", 0x1, 123, 3, -1, 124, -1, -1 },
+    { NULL, "V", 0x2, 117, 118, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 119, 120, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x2, 121, 120, -1, 122, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x81, 123, 124, -1, 125, -1, -1 },
+    { NULL, "V", 0x1, 126, 3, -1, 127, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1252,52 +1290,54 @@ SMInterpreter *SMInterpreter_sharedInstance;
   methods[32].selector = @selector(callWithSMSimiProperty:withJavaUtilList:withSMToken:);
   methods[33].selector = @selector(callWithSMSimiValue:withJavaUtilList:withSMToken:);
   methods[34].selector = @selector(callWithSMSimiValue:withSMToken:withJavaUtilList:);
-  methods[35].selector = @selector(visitGetExprWithSMExpr_Get:);
-  methods[36].selector = @selector(evaluateGetSetNameWithSMToken:withSMExpr:);
-  methods[37].selector = @selector(visitGroupingExprWithSMExpr_Grouping:);
-  methods[38].selector = @selector(visitGuExprWithSMExpr_Gu:);
-  methods[39].selector = @selector(visitIvicExprWithSMExpr_Ivic:);
-  methods[40].selector = @selector(visitLiteralExprWithSMExpr_Literal:);
-  methods[41].selector = @selector(visitLogicalExprWithSMExpr_Logical:);
-  methods[42].selector = @selector(visitSetExprWithSMExpr_Set:);
-  methods[43].selector = @selector(visitSuperExprWithSMExpr_Super:);
-  methods[44].selector = @selector(visitSelfExprWithSMExpr_Self:);
-  methods[45].selector = @selector(visitUnaryExprWithSMExpr_Unary:);
-  methods[46].selector = @selector(visitVariableExprWithSMExpr_Variable:);
-  methods[47].selector = @selector(visitObjectLiteralExprWithSMExpr_ObjectLiteral:);
-  methods[48].selector = @selector(executeRescueBlockWithSMStmt_Rescue:withSMSimiException:);
-  methods[49].selector = @selector(lookUpVariableWithSMToken:withSMExpr:);
-  methods[50].selector = @selector(checkNumberOperandWithSMToken:withSMSimiValue:);
-  methods[51].selector = @selector(checkNumberOperandsWithSMToken:withSMSimiValue:withSMSimiValue:);
-  methods[52].selector = @selector(isTruthyWithSMSimiProperty:);
-  methods[53].selector = @selector(isEqualWithSMSimiValue:withSMSimiValue:withSMExpr_Binary:);
-  methods[54].selector = @selector(compareWithSMSimiValue:withSMSimiValue:withSMExpr_Binary:);
-  methods[55].selector = @selector(isInstanceWithSMSimiValue:withSMSimiValue:withSMExpr_Binary:);
-  methods[56].selector = @selector(isInWithSMSimiValue:withSMSimiValue:withSMExpr_Binary:);
-  methods[57].selector = @selector(stringifyWithSMSimiProperty:);
-  methods[58].selector = @selector(isBaseClassWithNSString:);
-  methods[59].selector = @selector(getObjectClass);
-  methods[60].selector = @selector(putBlockWithSMStmt_BlockStmt:withSMBlockImpl:);
-  methods[61].selector = @selector(applyAnnotationsWithId:);
-  methods[62].selector = @selector(getAnnotationsWithId:);
-  methods[63].selector = @selector(defineTempVarsWithSMSimiPropertyArray:);
-  methods[64].selector = @selector(undefineTempVarsWithJavaUtilList:);
+  methods[35].selector = @selector(decomposeArgumentsWithSMSimiCallable:withJavaUtilList:);
+  methods[36].selector = @selector(visitGetExprWithSMExpr_Get:);
+  methods[37].selector = @selector(evaluateGetSetNameWithSMToken:withSMExpr:);
+  methods[38].selector = @selector(visitGroupingExprWithSMExpr_Grouping:);
+  methods[39].selector = @selector(visitGuExprWithSMExpr_Gu:);
+  methods[40].selector = @selector(visitIvicExprWithSMExpr_Ivic:);
+  methods[41].selector = @selector(visitLiteralExprWithSMExpr_Literal:);
+  methods[42].selector = @selector(visitLogicalExprWithSMExpr_Logical:);
+  methods[43].selector = @selector(visitSetExprWithSMExpr_Set:);
+  methods[44].selector = @selector(visitSuperExprWithSMExpr_Super:);
+  methods[45].selector = @selector(visitSelfExprWithSMExpr_Self:);
+  methods[46].selector = @selector(visitUnaryExprWithSMExpr_Unary:);
+  methods[47].selector = @selector(visitVariableExprWithSMExpr_Variable:);
+  methods[48].selector = @selector(visitObjectLiteralExprWithSMExpr_ObjectLiteral:);
+  methods[49].selector = @selector(executeRescueBlockWithSMStmt_Rescue:withSMSimiException:);
+  methods[50].selector = @selector(lookUpVariableWithSMToken:withSMExpr:);
+  methods[51].selector = @selector(checkNumberOperandWithSMToken:withSMSimiValue:);
+  methods[52].selector = @selector(checkNumberOperandsWithSMToken:withSMSimiValue:withSMSimiValue:);
+  methods[53].selector = @selector(isTruthyWithSMSimiProperty:);
+  methods[54].selector = @selector(isEqualWithSMSimiValue:withSMSimiValue:withSMExpr_Binary:);
+  methods[55].selector = @selector(compareWithSMSimiValue:withSMSimiValue:withSMExpr_Binary:);
+  methods[56].selector = @selector(isInstanceWithSMSimiValue:withSMSimiValue:withSMExpr_Binary:);
+  methods[57].selector = @selector(isInWithSMSimiValue:withSMSimiValue:withSMExpr_Binary:);
+  methods[58].selector = @selector(stringifyWithSMSimiProperty:);
+  methods[59].selector = @selector(isBaseClassWithNSString:);
+  methods[60].selector = @selector(getObjectClass);
+  methods[61].selector = @selector(putBlockWithSMStmt_BlockStmt:withSMBlockImpl:);
+  methods[62].selector = @selector(applyAnnotationsWithId:);
+  methods[63].selector = @selector(getAnnotationsWithId:);
+  methods[64].selector = @selector(defineTempVarsWithSMSimiPropertyArray:);
+  methods[65].selector = @selector(undefineTempVarsWithJavaUtilList:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "nativeModulesManagers_", "LJavaUtilCollection;", .constantValue.asLong = 0, 0x10, -1, -1, 125, -1 },
+    { "nativeModulesManagers_", "LJavaUtilCollection;", .constantValue.asLong = 0, 0x10, -1, -1, 128, -1 },
     { "globals_", "LSMEnvironment;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "environment_", "LSMEnvironment;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "locals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 126, -1 },
+    { "locals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 129, -1 },
     { "baseClassesNativeImpl_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
-    { "loopBlocks_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 127, -1 },
-    { "raisedExceptions_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 128, -1 },
-    { "yieldedStmts_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 129, -1 },
-    { "annotations_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 130, -1 },
-    { "annotationsBuffer_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 131, -1 },
-    { "sharedInstance", "LSMInterpreter;", .constantValue.asLong = 0, 0x8, -1, 132, -1, -1 },
+    { "loopBlocks_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 130, -1 },
+    { "raisedExceptions_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 131, -1 },
+    { "yieldedStmts_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 132, -1 },
+    { "annotations_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 133, -1 },
+    { "annotationsBuffer_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 134, -1 },
+    { "callExprStack_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x2, -1, -1, 135, -1 },
+    { "sharedInstance", "LSMInterpreter;", .constantValue.asLong = 0, 0x8, -1, 136, -1, -1 },
   };
-  static const void *ptrTable[] = { "LJavaUtilCollection;", "(Ljava/util/Collection<LNativeModulesManager;>;)V", "interpret", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)LSimiProperty;", "evaluate", "LSMExpr;", "LSMExpr;[LNSObject;", "execute", "LSMStmt;", "resolve", "LSMExpr;I", "executeBlock", "LSMSimiBlock;LSMSimiEnvironment;I", "getGlobal", "LNSString;", "raiseException", "LSMSimiException;", "newObject", "ZLJavaUtilLinkedHashMap;", "(ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "newArray", "ZLJavaUtilArrayList;", "(ZLjava/util/ArrayList<LSimiValue;>;)LSimiObject;", "newInstance", "LSMSimiClass;LJavaUtilLinkedHashMap;", "(LSimiClass;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitYieldStmt", "LSMStmt_Yield;", "visitWhileStmt", "LSMStmt_While;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "call", "LSMSimiProperty;LJavaUtilList;LSMToken;", "(LSimiProperty;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LJavaUtilList;LSMToken;", "(LSimiValue;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LSMToken;LJavaUtilList;", "(LSimiValue;LToken;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "visitGetExpr", "LSMExpr_Get;", "evaluateGetSetName", "LSMToken;LSMExpr;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "executeRescueBlock", "LSMStmt_Rescue;LSMSimiException;", "lookUpVariable", "checkNumberOperand", "LSMToken;LSMSimiValue;", "checkNumberOperands", "LSMToken;LSMSimiValue;LSMSimiValue;", "isTruthy", "LSMSimiProperty;", "isEqual", "LSMSimiValue;LSMSimiValue;LSMExpr_Binary;", "compare", "isInstance", "isIn", "stringify", "isBaseClass", "putBlock", "LSMStmt_BlockStmt;LSMBlockImpl;", "applyAnnotations", "LNSObject;", "getAnnotations", "(Ljava/lang/Object;)Ljava/util/List<LSimiObject;>;", "defineTempVars", "[LSMSimiProperty;", "([LSimiProperty;)Ljava/util/List<Ljava/lang/String;>;", "undefineTempVars", "(Ljava/util/List<Ljava/lang/String;>;)V", "Ljava/util/Collection<LNativeModulesManager;>;", "Ljava/util/Map<LExpr;Ljava/lang/Integer;>;", "Ljava/util/Stack<LSimiBlock;>;", "Ljava/util/Stack<LSimiException;>;", "Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;", "Ljava/util/Map<Ljava/lang/Object;Ljava/util/List<LSimiObject;>;>;", "Ljava/util/List<LSimiObject;>;", &SMInterpreter_sharedInstance, "Ljava/lang/Object;LBlockInterpreter;LExpr$Visitor<LSimiProperty;>;LStmt$Visitor<LSimiProperty;>;" };
-  static const J2ObjcClassInfo _SMInterpreter = { "Interpreter", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 65, 11, -1, -1, -1, 133, -1 };
+  static const void *ptrTable[] = { "LJavaUtilCollection;", "(Ljava/util/Collection<LNativeModulesManager;>;)V", "interpret", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)LSimiProperty;", "evaluate", "LSMExpr;", "LSMExpr;[LNSObject;", "execute", "LSMStmt;", "resolve", "LSMExpr;I", "executeBlock", "LSMSimiBlock;LSMSimiEnvironment;I", "getGlobal", "LNSString;", "raiseException", "LSMSimiException;", "newObject", "ZLJavaUtilLinkedHashMap;", "(ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "newArray", "ZLJavaUtilArrayList;", "(ZLjava/util/ArrayList<LSimiValue;>;)LSimiObject;", "newInstance", "LSMSimiClass;LJavaUtilLinkedHashMap;", "(LSimiClass;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitYieldStmt", "LSMStmt_Yield;", "visitWhileStmt", "LSMStmt_While;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "call", "LSMSimiProperty;LJavaUtilList;LSMToken;", "(LSimiProperty;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LJavaUtilList;LSMToken;", "(LSimiValue;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LSMToken;LJavaUtilList;", "(LSimiValue;LToken;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "decomposeArguments", "LSMSimiCallable;LJavaUtilList;", "(LSimiCallable;Ljava/util/List<LSimiProperty;>;)Ljava/util/List<LSimiProperty;>;", "visitGetExpr", "LSMExpr_Get;", "evaluateGetSetName", "LSMToken;LSMExpr;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "executeRescueBlock", "LSMStmt_Rescue;LSMSimiException;", "lookUpVariable", "checkNumberOperand", "LSMToken;LSMSimiValue;", "checkNumberOperands", "LSMToken;LSMSimiValue;LSMSimiValue;", "isTruthy", "LSMSimiProperty;", "isEqual", "LSMSimiValue;LSMSimiValue;LSMExpr_Binary;", "compare", "isInstance", "isIn", "stringify", "isBaseClass", "putBlock", "LSMStmt_BlockStmt;LSMBlockImpl;", "applyAnnotations", "LNSObject;", "getAnnotations", "(Ljava/lang/Object;)Ljava/util/List<LSimiObject;>;", "defineTempVars", "[LSMSimiProperty;", "([LSimiProperty;)Ljava/util/List<Ljava/lang/String;>;", "undefineTempVars", "(Ljava/util/List<Ljava/lang/String;>;)V", "Ljava/util/Collection<LNativeModulesManager;>;", "Ljava/util/Map<LExpr;Ljava/lang/Integer;>;", "Ljava/util/Stack<LSimiBlock;>;", "Ljava/util/Stack<LSimiException;>;", "Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;", "Ljava/util/Map<Ljava/lang/Object;Ljava/util/List<LSimiObject;>;>;", "Ljava/util/List<LSimiObject;>;", "Ljava/util/Stack<LExpr$Call;>;", &SMInterpreter_sharedInstance, "Ljava/lang/Object;LBlockInterpreter;LExpr$Visitor<LSimiProperty;>;LStmt$Visitor<LSimiProperty;>;" };
+  static const J2ObjcClassInfo _SMInterpreter = { "Interpreter", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 66, 12, -1, -1, -1, 137, -1 };
   return &_SMInterpreter;
 }
 
@@ -1314,6 +1354,7 @@ void SMInterpreter_initWithJavaUtilCollection_(SMInterpreter *self, id<JavaUtilC
   self->yieldedStmts_ = new_JavaUtilHashMap_init();
   self->annotations_ = new_JavaUtilHashMap_init();
   self->annotationsBuffer_ = new_JavaUtilArrayList_init();
+  self->callExprStack_ = new_JavaUtilStack_init();
   SMInterpreter_sharedInstance = self;
   self->nativeModulesManagers_ = nativeModulesManagers;
   [self->globals_ defineWithNSString:@"clock" withSMSimiProperty:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMInterpreter_1_init(), @"clock", nil)];
@@ -1376,10 +1417,14 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
     instance = [((SMSimiValue_Callable *) cast_chk(callee, [SMSimiValue_Callable class])) getInstance];
   }
   else {
-    @throw new_SMRuntimeError_initWithSMToken_withNSString_(paren, @"Can only call functions and classes.");
+    @throw new_SMRuntimeError_initWithSMToken_withNSString_(paren, JreStrcat("$$", @"Can only call functions and classes: ", [((SMExpr *) nil_chk(((SMExpr_Call *) nil_chk([((JavaUtilStack *) nil_chk(self->callExprStack_)) peek]))->callee_)) toCodeWithInt:0 withBoolean:true]));
   }
+  id<JavaUtilList> decomposedArgs = arguments;
   if ([((id<JavaUtilList>) nil_chk(arguments)) size] != [((id<SMSimiCallable>) nil_chk(callable)) arity]) {
-    @throw new_SMRuntimeError_initWithSMToken_withNSString_(paren, JreStrcat("$I$IC", @"Expected ", [callable arity], @" arguments but got ", [arguments size], '.'));
+    decomposedArgs = SMInterpreter_decomposeArgumentsWithSMSimiCallable_withJavaUtilList_(self, callable, arguments);
+    if (decomposedArgs == arguments) {
+      @throw new_SMRuntimeError_initWithSMToken_withNSString_(paren, JreStrcat("$I$IC", @"Expected ", [callable arity], @" arguments but got ", [arguments size], '.'));
+    }
   }
   jboolean isNative = ([callable isKindOfClass:[SMSimiFunction class]] && ((SMSimiFunction *) cast_chk(callable, [SMSimiFunction class]))->isNative_) || ([callable isKindOfClass:[SMSimiMethod class]] && ((SMSimiFunction *) nil_chk(((SMSimiMethod *) cast_chk(callable, [SMSimiMethod class]))->function_))->isNative_) || ([callable isKindOfClass:[SMBlockImpl class]] && [((SMBlockImpl *) cast_chk(callable, [SMBlockImpl class])) isNative]);
   if (isNative) {
@@ -1400,7 +1445,7 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
       if (!isBaseClass) {
         for (id<SMNativeModulesManager> __strong manager in nil_chk(self->nativeModulesManagers_)) {
           @try {
-            return [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:clazz->name_ withNSString:methodName withSMSimiObject:instance withSMInterpreter:self withJavaUtilList:arguments];
+            return [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:clazz->name_ withNSString:methodName withSMSimiObject:instance withSMInterpreter:self withJavaUtilList:decomposedArgs];
           }
           @catch (JavaLangIllegalArgumentException *ignored) {
           }
@@ -1413,20 +1458,31 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
       }
       id<JavaUtilList> nativeArgs = new_JavaUtilArrayList_init();
       [nativeArgs addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(instance)];
-      [nativeArgs addAllWithJavaUtilCollection:arguments];
+      [nativeArgs addAllWithJavaUtilCollection:decomposedArgs];
       return [((id<SMSimiCallable>) nil_chk(nativeMethod)) callWithSMBlockInterpreter:self withJavaUtilList:nativeArgs withBoolean:false];
     }
     else {
       for (id<SMNativeModulesManager> __strong manager in nil_chk(self->nativeModulesManagers_)) {
         @try {
-          return [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:SMConstants_GLOBALS_CLASS_NAME withNSString:methodName withSMSimiObject:nil withSMInterpreter:self withJavaUtilList:arguments];
+          return [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:SMConstants_GLOBALS_CLASS_NAME withNSString:methodName withSMSimiObject:nil withSMInterpreter:self withJavaUtilList:decomposedArgs];
         }
         @catch (JavaLangIllegalArgumentException *ignored) {
         }
       }
     }
   }
-  return [callable callWithSMBlockInterpreter:self withJavaUtilList:arguments withBoolean:false];
+  return [callable callWithSMBlockInterpreter:self withJavaUtilList:decomposedArgs withBoolean:false];
+}
+
+id<JavaUtilList> SMInterpreter_decomposeArgumentsWithSMSimiCallable_withJavaUtilList_(SMInterpreter *self, id<SMSimiCallable> callable, id<JavaUtilList> arguments) {
+  if ([((id<JavaUtilList>) nil_chk(arguments)) size] == 1 && [[((id<SMSimiProperty>) nil_chk([arguments getWithInt:0])) getValue] isKindOfClass:[SMSimiValue_Object class]]) {
+    id<SMSimiObject> argObject = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:0])) getValue])) getObject];
+    id<JavaUtilList> values = [((id<SMSimiObject>) nil_chk(argObject)) values];
+    if ([((id<JavaUtilList>) nil_chk([argObject values])) size] == [((id<SMSimiCallable>) nil_chk(callable)) arity]) {
+      return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(values)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMInterpreter_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+    }
+  }
+  return arguments;
 }
 
 SMToken *SMInterpreter_evaluateGetSetNameWithSMToken_withSMExpr_(SMInterpreter *self, SMToken *origin, SMExpr *name) {
@@ -1714,7 +1770,44 @@ SMInterpreter_$Lambda$2 *create_SMInterpreter_$Lambda$2_init() {
   J2OBJC_CREATE_IMPL(SMInterpreter_$Lambda$2, init)
 }
 
+J2OBJC_INITIALIZED_DEFN(SMInterpreter_$Lambda$3)
+
 @implementation SMInterpreter_$Lambda$3
+
+- (id)applyWithId:(SMSimiValue *)v {
+  return v;
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMInterpreter_$Lambda$3 class]) {
+    SMInterpreter_$Lambda$3_instance = new_SMInterpreter_$Lambda$3_init();
+    J2OBJC_SET_INITIALIZED(SMInterpreter_$Lambda$3)
+  }
+}
+
+@end
+
+void SMInterpreter_$Lambda$3_init(SMInterpreter_$Lambda$3 *self) {
+  NSObject_init(self);
+}
+
+SMInterpreter_$Lambda$3 *new_SMInterpreter_$Lambda$3_init() {
+  J2OBJC_NEW_IMPL(SMInterpreter_$Lambda$3, init)
+}
+
+SMInterpreter_$Lambda$3 *create_SMInterpreter_$Lambda$3_init() {
+  J2OBJC_CREATE_IMPL(SMInterpreter_$Lambda$3, init)
+}
+
+@implementation SMInterpreter_$Lambda$4
 
 - (jboolean)testWithId:(SMSimiClassImpl *)superclass_ {
   return [((NSString *) nil_chk(((SMSimiClassImpl *) nil_chk(superclass_))->name_)) isEqual:((SMToken *) nil_chk(((SMExpr_Super *) nil_chk(val$expr_))->superclass__))->lexeme_];
@@ -1734,15 +1827,15 @@ SMInterpreter_$Lambda$2 *create_SMInterpreter_$Lambda$2_init() {
 
 @end
 
-void SMInterpreter_$Lambda$3_initWithSMExpr_Super_(SMInterpreter_$Lambda$3 *self, SMExpr_Super *capture$0) {
+void SMInterpreter_$Lambda$4_initWithSMExpr_Super_(SMInterpreter_$Lambda$4 *self, SMExpr_Super *capture$0) {
   self->val$expr_ = capture$0;
   NSObject_init(self);
 }
 
-SMInterpreter_$Lambda$3 *new_SMInterpreter_$Lambda$3_initWithSMExpr_Super_(SMExpr_Super *capture$0) {
-  J2OBJC_NEW_IMPL(SMInterpreter_$Lambda$3, initWithSMExpr_Super_, capture$0)
+SMInterpreter_$Lambda$4 *new_SMInterpreter_$Lambda$4_initWithSMExpr_Super_(SMExpr_Super *capture$0) {
+  J2OBJC_NEW_IMPL(SMInterpreter_$Lambda$4, initWithSMExpr_Super_, capture$0)
 }
 
-SMInterpreter_$Lambda$3 *create_SMInterpreter_$Lambda$3_initWithSMExpr_Super_(SMExpr_Super *capture$0) {
-  J2OBJC_CREATE_IMPL(SMInterpreter_$Lambda$3, initWithSMExpr_Super_, capture$0)
+SMInterpreter_$Lambda$4 *create_SMInterpreter_$Lambda$4_initWithSMExpr_Super_(SMExpr_Super *capture$0) {
+  J2OBJC_CREATE_IMPL(SMInterpreter_$Lambda$4, initWithSMExpr_Super_, capture$0)
 }

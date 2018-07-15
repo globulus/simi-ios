@@ -48,6 +48,8 @@
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
+- (NSString *)description;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz

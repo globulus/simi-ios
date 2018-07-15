@@ -3,6 +3,9 @@ import "json.simi"
 class RedditStats:
     def getStats(json):
         obj = Json.parse(json)
+        rescue ex:
+            if ex is MalformedJsonException: return
+        end
 print obj.data.children
         children = obj.data.children.map(def c: c.data)
         stats = $[]

@@ -1,6 +1,9 @@
 package net.globulus.simi;
 
 import java.util.ArrayList;
+//< Statements and State parser-imports
+//> Control Flow import-arrays
+//< Control Flow import-arrays
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,7 +48,7 @@ class Parser {
 
   private Stmt declaration() {
     try {
-      if (match(CLASS)) {
+      if (match(CLASS, CLASS_FINAL, CLASS_OPEN)) {
           return classDeclaration();
       }
       if (match(DEF, NATIVE)) {
@@ -62,6 +65,7 @@ class Parser {
   }
 
   private Stmt.Class classDeclaration() {
+    Token opener = previous();
     Token name = consume(IDENTIFIER, "Expect class name.");
 
     List<Expr> superclasses = null;
@@ -97,7 +101,7 @@ class Parser {
 
     consume(END, "Expect 'end' after class body.");
 
-    return new Stmt.Class(name, superclasses, constants, innerClasses, methods, getAnnotations());
+    return new Stmt.Class(opener, name, superclasses, constants, innerClasses, methods, getAnnotations());
   }
 
   private Stmt.Annotation annotation() {

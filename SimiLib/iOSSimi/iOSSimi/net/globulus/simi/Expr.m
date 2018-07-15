@@ -136,6 +136,7 @@ __attribute__((unused)) static SMExpr_Call_$Lambda$1 *create_SMExpr_Call_$Lambda
 
 @interface SMExpr_ObjectLiteral_$Lambda$1 : NSObject < JavaUtilFunctionFunction > {
  @public
+  jboolean val$needsNewline_;
   jint val$indentationLevel_;
 }
 
@@ -145,11 +146,11 @@ __attribute__((unused)) static SMExpr_Call_$Lambda$1 *create_SMExpr_Call_$Lambda
 
 J2OBJC_EMPTY_STATIC_INIT(SMExpr_ObjectLiteral_$Lambda$1)
 
-__attribute__((unused)) static void SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(SMExpr_ObjectLiteral_$Lambda$1 *self, jint capture$0);
+__attribute__((unused)) static void SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(SMExpr_ObjectLiteral_$Lambda$1 *self, jboolean capture$0, jint capture$1);
 
-__attribute__((unused)) static SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(jint capture$0);
+__attribute__((unused)) static SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1);
 
 @implementation SMExpr
 
@@ -1123,7 +1124,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Ivic)
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst {
-  return [((SMSimiValue *) nil_chk(value_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+  if (self->value_ == nil) {
+    return [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NIL))) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+  }
+  return [value_ toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1542,7 +1546,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Variable)
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst {
-  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMTokenType *) nil_chk(((SMToken *) nil_chk(opener_))->type_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst]) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(props_)) stream])) mapWithJavaUtilFunctionFunction:new_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], [JreLoadEnum(SMTokenType, NEWLINE) toCode]))]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCode]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) description];
+  jboolean needsNewline = isDictionary_ && ![((id<JavaUtilList>) nil_chk(props_)) isEmpty];
+  return [((NSString *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMTokenType *) nil_chk(((SMToken *) nil_chk(opener_))->type_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst]) appendWithNSString:needsNewline ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode] : @""])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(props_)) stream])) mapWithJavaUtilFunctionFunction:new_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(needsNewline, indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], (needsNewline ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode] : @" ")))]])) appendWithNSString:needsNewline ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode] : @""])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) description])) java_replace:@"end\n," withSequence:@"end,"];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1590,7 +1595,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_ObjectLiteral)
 @implementation SMExpr_ObjectLiteral_$Lambda$1
 
 - (id)applyWithId:(SMExpr *)p {
-  return [((SMExpr *) nil_chk(p)) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
+  return [((SMExpr *) nil_chk(p)) toCodeWithInt:val$needsNewline_ ? val$indentationLevel_ + 1 : 0 withBoolean:false];
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -1603,15 +1608,16 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_ObjectLiteral)
 
 @end
 
-void SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(SMExpr_ObjectLiteral_$Lambda$1 *self, jint capture$0) {
-  self->val$indentationLevel_ = capture$0;
+void SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(SMExpr_ObjectLiteral_$Lambda$1 *self, jboolean capture$0, jint capture$1) {
+  self->val$needsNewline_ = capture$0;
+  self->val$indentationLevel_ = capture$1;
   NSObject_init(self);
 }
 
-SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(jint capture$0) {
-  J2OBJC_NEW_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithInt_, capture$0)
+SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1) {
+  J2OBJC_NEW_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithBoolean_withInt_, capture$0, capture$1)
 }
 
-SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(jint capture$0) {
-  J2OBJC_CREATE_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithInt_, capture$0)
+SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1) {
+  J2OBJC_CREATE_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithBoolean_withInt_, capture$0, capture$1)
 }

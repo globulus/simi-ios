@@ -271,6 +271,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Break)
 
 @interface SMStmt_Class : SMStmt {
  @public
+  SMToken *opener_;
   SMToken *name_;
   id<JavaUtilList> superclasses_;
   id<JavaUtilList> constants_;
@@ -286,7 +287,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Break)
 
 #pragma mark Package-Private
 
-- (instancetype __nonnull)initWithSMToken:(SMToken *)name
+- (instancetype __nonnull)initWithSMToken:(SMToken *)opener
+                              withSMToken:(SMToken *)name
                          withJavaUtilList:(id<JavaUtilList>)superclasses
                          withJavaUtilList:(id<JavaUtilList>)constants
                          withJavaUtilList:(id<JavaUtilList>)innerClasses
@@ -304,6 +306,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Break)
 
 J2OBJC_EMPTY_STATIC_INIT(SMStmt_Class)
 
+J2OBJC_FIELD_SETTER(SMStmt_Class, opener_, SMToken *)
 J2OBJC_FIELD_SETTER(SMStmt_Class, name_, SMToken *)
 J2OBJC_FIELD_SETTER(SMStmt_Class, superclasses_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(SMStmt_Class, constants_, id<JavaUtilList>)
@@ -311,11 +314,11 @@ J2OBJC_FIELD_SETTER(SMStmt_Class, innerClasses_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(SMStmt_Class, methods_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(SMStmt_Class, annotations_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMStmt_Class *self, SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT void SMStmt_Class_initWithSMToken_withSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMStmt_Class *self, SMToken *opener, SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations);
 
-FOUNDATION_EXPORT SMStmt_Class *new_SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMStmt_Class *new_SMStmt_Class_initWithSMToken_withSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMToken *opener, SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMStmt_Class *create_SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT SMStmt_Class *create_SMStmt_Class_initWithSMToken_withSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(SMToken *opener, SMToken *name, id<JavaUtilList> superclasses, id<JavaUtilList> constants, id<JavaUtilList> innerClasses, id<JavaUtilList> methods, id<JavaUtilList> annotations);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Class)
 

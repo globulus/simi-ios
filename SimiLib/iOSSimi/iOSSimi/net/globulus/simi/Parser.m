@@ -659,7 +659,7 @@ SMExpr *SMParser_expression(SMParser *self) {
 
 SMStmt *SMParser_declaration(SMParser *self) {
   @try {
-    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, CLASS) } count:1 type:SMTokenType_class_()])) {
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, CLASS), JreLoadEnum(SMTokenType, CLASS_FINAL), JreLoadEnum(SMTokenType, CLASS_OPEN) } count:3 type:SMTokenType_class_()])) {
       return SMParser_classDeclaration(self);
     }
     if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DEF), JreLoadEnum(SMTokenType, NATIVE) } count:2 type:SMTokenType_class_()])) {
@@ -677,6 +677,7 @@ SMStmt *SMParser_declaration(SMParser *self) {
 }
 
 SMStmt_Class *SMParser_classDeclaration(SMParser *self) {
+  SMToken *opener = SMParser_previous(self);
   SMToken *name = SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IDENTIFIER), @"Expect class name.");
   id<JavaUtilList> superclasses = nil;
   if (SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN))) {
@@ -707,7 +708,7 @@ SMStmt_Class *SMParser_classDeclaration(SMParser *self) {
     }
   }
   (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, END), @"Expect 'end' after class body.");
-  return new_SMStmt_Class_initWithSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(name, superclasses, constants, innerClasses, methods, SMParser_getAnnotations(self));
+  return new_SMStmt_Class_initWithSMToken_withSMToken_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_withJavaUtilList_(opener, name, superclasses, constants, innerClasses, methods, SMParser_getAnnotations(self));
 }
 
 SMStmt_Annotation *SMParser_annotation(SMParser *self) {

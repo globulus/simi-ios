@@ -40,7 +40,7 @@
     [manager GET:@"https://api.reddit.com/top.json" parameters:@{@"limit": @3} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSString *json = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"JSON: %@", json);
-        [SMActiveSimi evalAsyncWithSMActiveSimi_Callback:self withNSString:@"RedditStats" withNSString:@"getStats" withSMSimiPropertyArray:[IOSObjectArray arrayWithNSArray:@[[SMSimiMapper toSimiPropertyWithId:json]] type:SMSimiValue_class_()]];
+//        [SMActiveSimi evalAsyncWithSMActiveSimi_Callback:self withNSString:@"RedditStats" withNSString:@"getStats" withSMSimiPropertyArray:[IOSObjectArray arrayWithNSArray:@[[SMSimiMapper toSimiPropertyWithId:json]] type:SMSimiValue_class_()]];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];

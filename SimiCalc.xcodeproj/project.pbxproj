@@ -12,7 +12,6 @@
 		6A486B92208BDF61000398A6 /* stdlib.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B8C208BDF61000398A6 /* stdlib.simi */; };
 		6A486B96208C652A000398A6 /* calc.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B95208C652A000398A6 /* calc.simi */; };
 		6A59D6D720E7D8E0008FB2AB /* libiOSSimi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A59D6D620E7D8E0008FB2AB /* libiOSSimi.a */; };
-		6AB5686C208F766000103ABF /* Stdlib-java.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB5686A208F752000103ABF /* Stdlib-java.jar */; };
 		6AF83E06208A7A30005CA323 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF83E05208A7A30005CA323 /* AppDelegate.m */; };
 		6AF83E09208A7A30005CA323 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF83E08208A7A30005CA323 /* ViewController.m */; };
 		6AF83E0C208A7A30005CA323 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF83E0A208A7A30005CA323 /* Main.storyboard */; };
@@ -95,7 +94,6 @@
 		6A59D6D420E7D814008FB2AB /* ConversionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionUtil.h; sourceTree = "<group>"; };
 		6A59D6D520E7D814008FB2AB /* Simi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simi.h; sourceTree = "<group>"; };
 		6A59D6D620E7D8E0008FB2AB /* libiOSSimi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiOSSimi.a; sourceTree = "<group>"; };
-		6AB5686A208F752000103ABF /* Stdlib-java.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "Stdlib-java.jar"; sourceTree = "<group>"; };
 		6AF83E01208A7A30005CA323 /* SimiCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimiCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AF83E04208A7A30005CA323 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6AF83E05208A7A30005CA323 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			files = (
 				6A59D6D720E7D8E0008FB2AB /* libiOSSimi.a in Frameworks */,
 				9DC4C65CB7D7C83ACED6611C /* libPods-SimiCalc.a in Frameworks */,
-				6AB5686C208F766000103ABF /* Stdlib-java.jar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +125,6 @@
 		6A486B88208BDF60000398A6 /* stdlib */ = {
 			isa = PBXGroup;
 			children = (
-				6AB5686A208F752000103ABF /* Stdlib-java.jar */,
 				6A486B8C208BDF61000398A6 /* stdlib.simi */,
 			);
 			name = stdlib;

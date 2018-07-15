@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		6A0A04C620FB44DE001B720E /* CocoaModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0A04C520FB44DE001B720E /* CocoaModulesManager.m */; };
+		6A0A04C920FB4505001B720E /* CocoaNativeModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0A04C820FB4504001B720E /* CocoaNativeModulesManager.m */; };
 		6A59D63020E7D1CA008FB2AB /* IOSObjectArray+Simi.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A59D5C720E7D1CA008FB2AB /* IOSObjectArray+Simi.m */; };
 		6A59D63120E7D1CA008FB2AB /* ConversionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A59D5C820E7D1CA008FB2AB /* ConversionUtil.m */; };
 		6A59D63220E7D1CA008FB2AB /* Scanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A59D5CC20E7D1CA008FB2AB /* Scanner.m */; };
@@ -126,10 +128,8 @@
 		6A59D69E20E7D766008FB2AB /* BlockImpl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A59D62520E7D1CA008FB2AB /* BlockImpl.h */; };
 		6A59D69F20E7D766008FB2AB /* Simi.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A59D62B20E7D1CA008FB2AB /* Simi.h */; };
 		6A59D76620E7E488008FB2AB /* CocoaModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A59D76520E7E488008FB2AB /* CocoaModulesManager.m */; };
-		6A731F1620E80C6700F11E94 /* CocoaNativeModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A731F1520E80C6700F11E94 /* CocoaNativeModulesManager.m */; };
 		6A731F1920E80C7600F11E94 /* JavaNativeModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A731F1820E80C7600F11E94 /* JavaNativeModulesManager.m */; };
 		6A731F1A20E80CB600F11E94 /* JavaNativeModulesManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */; };
-		6A731F1B20E80CB600F11E94 /* CocoaNativeModulesManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A731F1420E80C6600F11E94 /* CocoaNativeModulesManager.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -154,7 +154,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				6A731F1A20E80CB600F11E94 /* JavaNativeModulesManager.h in CopyFiles */,
-				6A731F1B20E80CB600F11E94 /* CocoaNativeModulesManager.h in CopyFiles */,
 				6A59D66C20E7D765008FB2AB /* ConversionUtil.h in CopyFiles */,
 				6A59D66D20E7D765008FB2AB /* IOSObjectArray+Simi.h in CopyFiles */,
 				6A59D66E20E7D765008FB2AB /* SimiClassImpl.h in CopyFiles */,
@@ -213,6 +212,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A0A04C420FB44DD001B720E /* CocoaModulesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaModulesManager.h; sourceTree = "<group>"; };
+		6A0A04C520FB44DE001B720E /* CocoaModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaModulesManager.m; sourceTree = "<group>"; };
+		6A0A04C720FB4504001B720E /* CocoaNativeModulesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaNativeModulesManager.h; sourceTree = "<group>"; };
+		6A0A04C820FB4504001B720E /* CocoaNativeModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaNativeModulesManager.m; sourceTree = "<group>"; };
 		6A59D5B920E7D183008FB2AB /* libiOSSimi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiOSSimi.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A59D5C520E7D1CA008FB2AB /* ConversionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionUtil.h; sourceTree = "<group>"; };
 		6A59D5C620E7D1CA008FB2AB /* IOSObjectArray+Simi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IOSObjectArray+Simi.h"; sourceTree = "<group>"; };
@@ -320,8 +323,6 @@
 		6A59D62F20E7D1CA008FB2AB /* Return.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Return.m; sourceTree = "<group>"; };
 		6A59D76420E7E488008FB2AB /* CocoaModulesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaModulesManager.h; sourceTree = "<group>"; };
 		6A59D76520E7E488008FB2AB /* CocoaModulesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaModulesManager.m; sourceTree = "<group>"; };
-		6A731F1420E80C6600F11E94 /* CocoaNativeModulesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaNativeModulesManager.h; sourceTree = "<group>"; };
-		6A731F1520E80C6700F11E94 /* CocoaNativeModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaNativeModulesManager.m; sourceTree = "<group>"; };
 		6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JavaNativeModulesManager.h; sourceTree = "<group>"; };
 		6A731F1820E80C7600F11E94 /* JavaNativeModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JavaNativeModulesManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -386,10 +387,10 @@
 		6A59D5CB20E7D1CA008FB2AB /* simi */ = {
 			isa = PBXGroup;
 			children = (
+				6A0A04C420FB44DD001B720E /* CocoaModulesManager.h */,
+				6A0A04C520FB44DE001B720E /* CocoaModulesManager.m */,
 				6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */,
 				6A731F1820E80C7600F11E94 /* JavaNativeModulesManager.m */,
-				6A731F1420E80C6600F11E94 /* CocoaNativeModulesManager.h */,
-				6A731F1520E80C6700F11E94 /* CocoaNativeModulesManager.m */,
 				6A59D5CC20E7D1CA008FB2AB /* Scanner.m */,
 				6A59D5CD20E7D1CA008FB2AB /* SimiClassImpl.h */,
 				6A59D5CE20E7D1CA008FB2AB /* Codifiable.h */,
@@ -404,6 +405,8 @@
 				6A59D5D720E7D1CA008FB2AB /* NativeModulesManager.m */,
 				6A59D5D820E7D1CA008FB2AB /* Pass.m */,
 				6A59D5D920E7D1CA008FB2AB /* SimiClass.m */,
+				6A0A04C720FB4504001B720E /* CocoaNativeModulesManager.h */,
+				6A0A04C820FB4504001B720E /* CocoaNativeModulesManager.m */,
 				6A59D5DA20E7D1CA008FB2AB /* SimiBlock.m */,
 				6A59D5DB20E7D1CA008FB2AB /* SparseArray.m */,
 				6A59D5DC20E7D1CA008FB2AB /* Resolver.m */,
@@ -577,7 +580,6 @@
 				6A59D64620E7D1CA008FB2AB /* Continue.m in Sources */,
 				6A59D63820E7D1CA008FB2AB /* SimiMethod.m in Sources */,
 				6A59D65720E7D1CA008FB2AB /* ErrorWatcher.m in Sources */,
-				6A731F1620E80C6700F11E94 /* CocoaNativeModulesManager.m in Sources */,
 				6A59D63520E7D1CA008FB2AB /* SimiEnvironment.m in Sources */,
 				6A59D64220E7D1CA008FB2AB /* OverloadableFunction.m in Sources */,
 				6A59D66220E7D1CA008FB2AB /* SimiProperty.m in Sources */,
@@ -589,6 +591,7 @@
 				6A59D63F20E7D1CA008FB2AB /* Resolver.m in Sources */,
 				6A59D64020E7D1CA008FB2AB /* Stmt.m in Sources */,
 				6A59D64E20E7D1CA008FB2AB /* SimiApiClass.m in Sources */,
+				6A0A04C620FB44DE001B720E /* CocoaModulesManager.m in Sources */,
 				6A59D65020E7D1CA008FB2AB /* SimiClassImpl.m in Sources */,
 				6A59D64F20E7D1CA008FB2AB /* Codifiable.m in Sources */,
 				6A59D64720E7D1CA008FB2AB /* SimiNativeClass.m in Sources */,
@@ -617,6 +620,7 @@
 				6A59D66120E7D1CA008FB2AB /* SimiStatement.m in Sources */,
 				6A59D63320E7D1CA008FB2AB /* BlockInterpreter.m in Sources */,
 				6A59D63620E7D1CA008FB2AB /* SimiMapper.m in Sources */,
+				6A0A04C920FB4505001B720E /* CocoaNativeModulesManager.m in Sources */,
 				6A59D63C20E7D1CA008FB2AB /* SimiClass.m in Sources */,
 				6A59D64920E7D1CA008FB2AB /* Token.m in Sources */,
 				6A59D64B20E7D1CA008FB2AB /* Simi.m in Sources */,

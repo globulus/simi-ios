@@ -20,9 +20,9 @@ final class Constants {
     public static final String TO_STRING = "toString";
     public static final String RAISE = "raise";
 
-    public static final String CLASS_OBJECT = "$Object";
-    public static final String CLASS_STRING = "$String";
-    public static final String CLASS_NUMBER = "$Number";
+    public static final String CLASS_OBJECT = "Object";
+    public static final String CLASS_STRING = "String";
+    public static final String CLASS_NUMBER = "Number";
     public static final String CLASS_CLASS = "Class";
     public static final String CLASS_EXCEPTION = "Exception";
 		public static final String GLOBALS_CLASS_NAME = "Globals";

@@ -291,6 +291,8 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
       (void) [SMScanner_keywords putWithId:@"and" withId:JreLoadEnum(SMTokenType, AND)];
       (void) [SMScanner_keywords putWithId:@"break" withId:JreLoadEnum(SMTokenType, BREAK)];
       (void) [SMScanner_keywords putWithId:@"class" withId:JreLoadEnum(SMTokenType, CLASS)];
+      (void) [SMScanner_keywords putWithId:@"class_" withId:JreLoadEnum(SMTokenType, CLASS_FINAL)];
+      (void) [SMScanner_keywords putWithId:@"class$" withId:JreLoadEnum(SMTokenType, CLASS_OPEN)];
       (void) [SMScanner_keywords putWithId:@"continue" withId:JreLoadEnum(SMTokenType, CONTINUE)];
       (void) [SMScanner_keywords putWithId:@"def" withId:JreLoadEnum(SMTokenType, DEF)];
       (void) [SMScanner_keywords putWithId:@"end" withId:JreLoadEnum(SMTokenType, END)];
@@ -502,6 +504,14 @@ void SMScanner_identifier(SMScanner *self) {
   }
   else if (type == JreLoadEnum(SMTokenType, IS) && SMScanner_matchPeekWithSMTokenType_(self, JreLoadEnum(SMTokenType, NOT))) {
     type = JreLoadEnum(SMTokenType, ISNOT);
+  }
+  else if (type == JreLoadEnum(SMTokenType, CLASS)) {
+    NSString *candidateText = JreStrcat("$C", text, SMScanner_peek(self));
+    SMTokenType *candidateType = [SMScanner_keywords getWithId:candidateText];
+    if (candidateType != nil) {
+      type = candidateType;
+      SMScanner_advance(self);
+    }
   }
   else if (type == nil) {
     type = JreLoadEnum(SMTokenType, IDENTIFIER);

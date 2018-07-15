@@ -72,36 +72,38 @@ typedef NS_ENUM(NSUInteger, SMTokenType_Enum) {
   SMTokenType_Enum_AND = 37,
   SMTokenType_Enum_BREAK = 38,
   SMTokenType_Enum_CLASS = 39,
-  SMTokenType_Enum_CONTINUE = 40,
-  SMTokenType_Enum_ELSE = 41,
-  SMTokenType_Enum_FALSE = 42,
-  SMTokenType_Enum_DEF = 43,
-  SMTokenType_Enum_FOR = 44,
-  SMTokenType_Enum_RESCUE = 45,
-  SMTokenType_Enum_IF = 46,
-  SMTokenType_Enum_NIL = 47,
-  SMTokenType_Enum_OR = 48,
-  SMTokenType_Enum_PRINT = 49,
-  SMTokenType_Enum_RETURN = 50,
-  SMTokenType_Enum_SUPER = 51,
-  SMTokenType_Enum_SELF = 52,
-  SMTokenType_Enum_TRUE = 53,
-  SMTokenType_Enum_WHILE = 54,
-  SMTokenType_Enum_PASS = 55,
-  SMTokenType_Enum_IN = 56,
-  SMTokenType_Enum_IS = 57,
-  SMTokenType_Enum_NOT = 58,
-  SMTokenType_Enum_ELSIF = 59,
-  SMTokenType_Enum_END = 60,
-  SMTokenType_Enum_ISNOT = 61,
-  SMTokenType_Enum_NOTIN = 62,
-  SMTokenType_Enum_NATIVE = 63,
-  SMTokenType_Enum_IMPORT = 64,
-  SMTokenType_Enum_YIELD = 65,
-  SMTokenType_Enum_WHEN = 66,
-  SMTokenType_Enum_GU = 67,
-  SMTokenType_Enum_IVIC = 68,
-  SMTokenType_Enum_EOF = 69,
+  SMTokenType_Enum_CLASS_FINAL = 40,
+  SMTokenType_Enum_CLASS_OPEN = 41,
+  SMTokenType_Enum_CONTINUE = 42,
+  SMTokenType_Enum_ELSE = 43,
+  SMTokenType_Enum_FALSE = 44,
+  SMTokenType_Enum_DEF = 45,
+  SMTokenType_Enum_FOR = 46,
+  SMTokenType_Enum_RESCUE = 47,
+  SMTokenType_Enum_IF = 48,
+  SMTokenType_Enum_NIL = 49,
+  SMTokenType_Enum_OR = 50,
+  SMTokenType_Enum_PRINT = 51,
+  SMTokenType_Enum_RETURN = 52,
+  SMTokenType_Enum_SUPER = 53,
+  SMTokenType_Enum_SELF = 54,
+  SMTokenType_Enum_TRUE = 55,
+  SMTokenType_Enum_WHILE = 56,
+  SMTokenType_Enum_PASS = 57,
+  SMTokenType_Enum_IN = 58,
+  SMTokenType_Enum_IS = 59,
+  SMTokenType_Enum_NOT = 60,
+  SMTokenType_Enum_ELSIF = 61,
+  SMTokenType_Enum_END = 62,
+  SMTokenType_Enum_ISNOT = 63,
+  SMTokenType_Enum_NOTIN = 64,
+  SMTokenType_Enum_NATIVE = 65,
+  SMTokenType_Enum_IMPORT = 66,
+  SMTokenType_Enum_YIELD = 67,
+  SMTokenType_Enum_WHEN = 68,
+  SMTokenType_Enum_GU = 69,
+  SMTokenType_Enum_IVIC = 70,
+  SMTokenType_Enum_EOF = 71,
 };
 
 @interface SMTokenType : JavaLangEnum < SMCodifiable >
@@ -185,6 +187,10 @@ typedef NS_ENUM(NSUInteger, SMTokenType_Enum) {
 + (SMTokenType * __nonnull)BREAK;
 
 + (SMTokenType * __nonnull)CLASS;
+
++ (SMTokenType * __nonnull)CLASS_FINAL;
+
++ (SMTokenType * __nonnull)CLASS_OPEN;
 
 + (SMTokenType * __nonnull)CONTINUE;
 
@@ -387,6 +393,12 @@ J2OBJC_ENUM_CONSTANT(SMTokenType, BREAK)
 
 inline SMTokenType *SMTokenType_get_CLASS(void);
 J2OBJC_ENUM_CONSTANT(SMTokenType, CLASS)
+
+inline SMTokenType *SMTokenType_get_CLASS_FINAL(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, CLASS_FINAL)
+
+inline SMTokenType *SMTokenType_get_CLASS_OPEN(void);
+J2OBJC_ENUM_CONSTANT(SMTokenType, CLASS_OPEN)
 
 inline SMTokenType *SMTokenType_get_CONTINUE(void);
 J2OBJC_ENUM_CONSTANT(SMTokenType, CONTINUE)
