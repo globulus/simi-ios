@@ -56,12 +56,9 @@ J2OBJC_IGNORE_DESIGNATED_END
                 if ([[selName substringToIndex:[selName rangeOfString:@":"].location] isEqualToString:methodName]) {
                     selector = methodSel;
                 }
-                NSLog(@"METHOD: %@", NSStringFromSelector(method_getName(method)));
-                NSLog(@"NAME %s" , sel_getName(method_getName(method)));
             }
             
             free(methods);
-    //        NSMutableString *sel = [NSMutableString stringWithString:methodName];
             
             if (selector) {
                 NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[class methodSignatureForSelector:selector]];
@@ -76,7 +73,10 @@ J2OBJC_IGNORE_DESIGNATED_END
             for (id arg in args) {
                 [params addObject:arg];
             }
-            [invocation setArgument:&params atIndex:2];
+            for (int i = 0; i < [params count]; i++) {
+                NSObject *obj = [params objectAtIndex:i];
+                [invocation setArgument:&obj atIndex:(i + 2)];
+            }
             [invocation invoke];
             void *tempResultSet;
             [invocation getReturnValue:&tempResultSet];

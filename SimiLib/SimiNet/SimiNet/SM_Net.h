@@ -13,6 +13,8 @@
 
 @interface SM_Net : NSObject
 
-+ (SMSimiValue *)post:(NSArray *)params;
-
++ (SMSimiValue *)post:(id<SMSimiObject>)sender
+          interpreter:(id<SMBlockInterpreter>)interpeter
+              request:(id<SMSimiProperty>)request
+             callback:(id<SMSimiProperty>)callback;
 @end

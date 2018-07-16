@@ -14,12 +14,10 @@
 
 @implementation SM_Net
 
-+ (SMSimiValue *)post:(NSArray *)params {
-    
-    id<SMBlockInterpreter> interpeter = [params objectAtIndex:1];
-    id<SMSimiProperty> request = [params objectAtIndex:2];
-    id<SMSimiProperty> callback = [params objectAtIndex:3];
-    NSLog(@"Net POST %d", [request isEqual:SMSimiValue_Object_class_()]);
++ (SMSimiValue *)post:(id<SMSimiObject>)sender
+          interpreter:(id<SMBlockInterpreter>)interpeter
+              request:(id<SMSimiProperty>)request
+             callback:(id<SMSimiProperty>)callback {
     
     id<SMSimiObject> object = [[request getValue] getObject];
     id<SMSimiEnvironment> env = [interpeter getEnvironment];
