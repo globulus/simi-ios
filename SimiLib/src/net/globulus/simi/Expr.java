@@ -29,15 +29,23 @@ abstract class Expr implements Codifiable {
     static class Block extends Expr implements SimiBlock {
 
       final Token declaration;
-      final List<Token> params;
+      final List<Expr> params;
       final List<Stmt> statements;
       final boolean canReturn;
+      final boolean isNative;
 
-        Block(Token declaration, List<Token> params, List<Stmt> statements, boolean canReturn) {
+        Block(Token declaration,
+              List<Expr> params,
+              List<Stmt> statements,
+              boolean canReturn) {
             this.declaration = declaration;
             this.params = params;
             this.statements = statements;
             this.canReturn = canReturn;
+            this.isNative = (statements.size() == 1
+                    && statements.get(0) instanceof Stmt.Expression
+                    && ((Stmt.Expression) statements.get(0)).expression instanceof Expr.Literal
+                    && ((Literal) ((Stmt.Expression) statements.get(0)).expression).value instanceof Native);
         }
 
         <R> R accept(Visitor<R> visitor, Object... params) {
@@ -45,10 +53,6 @@ abstract class Expr implements Codifiable {
             boolean execute = (params.length < 2) ? true : (Boolean) params[1];
             return visitor.visitBlockExpr(this, newScope, execute);
         }
-
-      boolean isNative() {
-        return declaration.type == TokenType.NATIVE;
-      }
 
       @Override
       public List<? extends SimiStatement> getStatements() {
@@ -82,7 +86,7 @@ abstract class Expr implements Codifiable {
 
       String toCode(int indentationLevel, boolean ignoreFirst, String name) {
         String opener;
-        if (declaration.type == TokenType.DEF || declaration.type == TokenType.NATIVE) {
+        if (declaration.type == TokenType.DEF) {
           opener = declaration.type.toCode() + " ";
         } else {
           opener = "";
@@ -96,7 +100,7 @@ abstract class Expr implements Codifiable {
           paramsBuilder.append(TokenType.LEFT_PAREN.toCode());
         }
         paramsBuilder.append(params.stream()
-                .map(p -> p.lexeme)
+                .map(BlockImpl::getParamLexeme)
                 .collect(Collectors.joining(TokenType.COMMA.toCode() + " "))
         );
         if (needsParenthesis) {
@@ -201,7 +205,7 @@ abstract class Expr implements Codifiable {
               )
               .append(TokenType.RIGHT_BRACKET.toCode())
               .append(" ").append(TokenType.EQUAL.toCode()).append(" ")
-              .append(((Get) assigns.get(0).value).object.toCode(0, false))
+              .append(((Get)((Binary) assigns.get(0).value).left).object.toCode(0, false))
               .toString();
     }
   }
@@ -455,9 +459,11 @@ abstract class Expr implements Codifiable {
   static class Self extends Expr {
 
     final Token keyword;
+    final Token specifier;
 
-    Self(Token keyword) {
+    Self(Token keyword, Token specifier) {
       this.keyword = keyword;
+      this.specifier = specifier;
     }
 
     <R> R accept(Visitor<R> visitor, Object... params) {
@@ -466,7 +472,13 @@ abstract class Expr implements Codifiable {
 
     @Override
     public String toCode(int indentationLevel, boolean ignoreFirst) {
-      return keyword.type.toCode(indentationLevel, ignoreFirst);
+      StringBuilder sb = new StringBuilder(keyword.type.toCode(indentationLevel, ignoreFirst));
+      if (specifier != null) {
+        sb.append(TokenType.LEFT_PAREN.toCode())
+                .append(specifier.type.toCode())
+                .append(TokenType.RIGHT_PAREN.toCode());
+      }
+      return sb.toString();
     }
   }
 
@@ -535,8 +547,7 @@ abstract class Expr implements Codifiable {
                 )
                 .append(needsNewline ? TokenType.NEWLINE.toCode() : "")
                 .append(TokenType.RIGHT_BRACKET.toCode(indentationLevel, false))
-                .toString()
-                .replace("end\n,", "end,");
+                .toString();
       }
     }
 }

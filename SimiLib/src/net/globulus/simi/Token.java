@@ -1,7 +1,5 @@
 package net.globulus.simi;
 
-import net.globulus.simi.SimiValue;
-
 class Token {
 
   final TokenType type;
@@ -20,8 +18,16 @@ class Token {
     return new Token(TokenType.SELF, Constants.SELF, null, 0);
   }
 
+  static Token superToken() {
+    return new Token(TokenType.SUPER, Constants.SUPER, null, 0);
+  }
+
+  static Token selfDef() {
+    return new Token(TokenType.DEF, Constants.SELF_DEF, null, 0);
+  }
+
   static Token nativeCall(String name) {
-    return new Token(TokenType.NATIVE, name, null, 0);
+    return new Token(TokenType.DEF, name, null, 0);
   }
 
   static Token named(String name) {

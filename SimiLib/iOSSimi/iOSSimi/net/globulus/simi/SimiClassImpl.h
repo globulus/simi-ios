@@ -50,6 +50,7 @@
   NSString *name_;
   id<JavaUtilList> superclasses_;
   SMStmt_Class *stmt_;
+  id<JavaUtilMap> methods_;
 }
 
 + (SMSimiClassImpl *)CLASS;
@@ -79,6 +80,8 @@
 
 - (id<JavaUtilSet>)allKeys;
 
+- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
+
 - (SMSimiMethod *)findMethodWithSMSimiObjectImpl:(SMSimiObjectImpl *)instance
                                     withNSString:(NSString *)name
                              withJavaLangInteger:(JavaLangInteger *)arity;
@@ -103,6 +106,7 @@ J2OBJC_FIELD_SETTER(SMSimiClassImpl, type_, SMSimiClassImpl_Type *)
 J2OBJC_FIELD_SETTER(SMSimiClassImpl, name_, NSString *)
 J2OBJC_FIELD_SETTER(SMSimiClassImpl, superclasses_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(SMSimiClassImpl, stmt_, SMStmt_Class *)
+J2OBJC_FIELD_SETTER(SMSimiClassImpl, methods_, id<JavaUtilMap>)
 
 inline SMSimiClassImpl *SMSimiClassImpl_get_CLASS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */

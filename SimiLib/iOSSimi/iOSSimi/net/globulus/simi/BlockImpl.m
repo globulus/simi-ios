@@ -11,6 +11,8 @@
 #include "Environment.h"
 #include "Expr.h"
 #include "Return.h"
+#include "SimiCallable.h"
+#include "SimiClassImpl.h"
 #include "SimiObjectImpl.h"
 #include "SimiProperty.h"
 #include "SimiValue.h"
@@ -42,12 +44,16 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
 
 - (SMBlockImpl *)bindWithSMSimiObjectImpl:(SMSimiObjectImpl *)instance {
   SMEnvironment *environment = new_SMEnvironment_initWithSMEnvironment_(closure_);
-  [environment assignWithSMToken:SMToken_self__() withSMSimiProperty:new_SMSimiValue_Object_initWithSMSimiObject_(instance) withBoolean:false];
+  [environment assignWithSMToken:SMToken_self__() withSMSimiProperty:new_SMSimiValue_Object_initWithSMSimiObject_(instance) withBoolean:true];
+  SMSimiClassImpl *clazz = ((SMSimiObjectImpl *) nil_chk(instance))->clazz_;
+  if (clazz != nil) {
+    [environment assignWithSMToken:SMToken_superToken() withSMSimiProperty:new_SMSimiClassImpl_SuperClassesList_initWithJavaUtilList_(clazz->superclasses_) withBoolean:true];
+  }
   return new_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(declaration_, environment);
 }
 
 - (jboolean)isNative {
-  return [((SMExpr_Block *) nil_chk(declaration_)) isNative];
+  return ((SMExpr_Block *) nil_chk(declaration_))->isNative_;
 }
 
 - (void)yieldWithInt:(jint)index {
@@ -70,12 +76,20 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
+  return [self callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:rethrow withSMSimiCallable:nil];
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow
+                              withSMSimiCallable:(id<SMSimiCallable>)invoker {
   SMEnvironment *environment = new_SMEnvironment_initWithSMEnvironment_(lastClosure_ != nil ? lastClosure_ : closure_);
   if (arguments != nil) {
     for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(declaration_))->params_)) size]; i++) {
-      [environment defineWithNSString:((SMToken *) nil_chk([declaration_->params_ getWithInt:i]))->lexeme_ withSMSimiProperty:[arguments getWithInt:i]];
+      [environment defineWithNSString:SMBlockImpl_getParamLexemeWithSMExpr_([declaration_->params_ getWithInt:i]) withSMSimiProperty:[arguments getWithInt:i]];
     }
   }
+  [environment assignWithSMToken:SMToken_selfDef() withSMSimiProperty:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_((invoker != nil) ? invoker : self, nil, nil) withBoolean:false];
   @try {
     [((id<SMBlockInterpreter>) nil_chk(interpreter)) executeBlockWithSMSimiBlock:self withSMSimiEnvironment:environment withInt:(lastStatement_ != nil) ? [((JavaLangInteger *) nil_chk(lastStatement_)) intValue] : 0];
   }
@@ -113,6 +127,10 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
   return [((SMExpr_Block *) nil_chk(declaration_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
 }
 
++ (NSString *)getParamLexemeWithSMExpr:(SMExpr *)param {
+  return SMBlockImpl_getParamLexemeWithSMExpr_(param);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
@@ -123,9 +141,11 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
     { NULL, "LNSString;", 0x1, 5, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x1, 6, 7, -1, 8, -1, -1 },
-    { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 9, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x0, 6, 9, -1, 10, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 11, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x9, 14, 15, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -138,9 +158,11 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
   methods[5].selector = @selector(description);
   methods[6].selector = @selector(arity);
   methods[7].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  methods[8].selector = @selector(getStatements);
-  methods[9].selector = @selector(canReturn);
-  methods[10].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[8].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:withSMSimiCallable:);
+  methods[9].selector = @selector(getStatements);
+  methods[10].selector = @selector(canReturn);
+  methods[11].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[12].selector = @selector(getParamLexemeWithSMExpr:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "declaration_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -148,8 +170,8 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
     { "lastStatement_", "LJavaLangInteger;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "lastClosure_", "LSMEnvironment;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMExpr_Block;LSMEnvironment;", "bind", "LSMSimiObjectImpl;", "yield", "I", "toString", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "()Ljava/util/List<+LSimiStatement;>;", "toCode", "IZ" };
-  static const J2ObjcClassInfo _SMBlockImpl = { "BlockImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 11, 4, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMExpr_Block;LSMEnvironment;", "bind", "LSMSimiObjectImpl;", "yield", "I", "toString", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBlockInterpreter;LJavaUtilList;ZLSMSimiCallable;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;ZLSimiCallable;)LSimiProperty;", "()Ljava/util/List<+LSimiStatement;>;", "toCode", "IZ", "getParamLexeme", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMBlockImpl = { "BlockImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 13, 4, -1, -1, -1, -1, -1 };
   return &_SMBlockImpl;
 }
 
@@ -172,6 +194,18 @@ SMBlockImpl *create_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMExpr_B
 void SMBlockImpl_clearYield(SMBlockImpl *self) {
   self->lastStatement_ = nil;
   self->lastClosure_ = nil;
+}
+
+NSString *SMBlockImpl_getParamLexemeWithSMExpr_(SMExpr *param) {
+  SMBlockImpl_initialize();
+  NSString *lexeme;
+  if ([param isKindOfClass:[SMExpr_Variable class]]) {
+    lexeme = ((SMToken *) nil_chk(((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(param, [SMExpr_Variable class]))))->name_))->lexeme_;
+  }
+  else {
+    lexeme = ((SMToken *) nil_chk(((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(((SMExpr_Binary *) nil_chk(((SMExpr_Binary *) cast_chk(param, [SMExpr_Binary class]))))->left_, [SMExpr_Variable class]))))->name_))->lexeme_;
+  }
+  return lexeme;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMBlockImpl)

@@ -49,6 +49,10 @@
 
 + (SMToken *)self__;
 
++ (SMToken *)selfDef;
+
++ (SMToken *)superToken;
+
 // Disallowed inherited constructors, do not use.
 
 - (instancetype __nonnull)init NS_UNAVAILABLE;
@@ -68,6 +72,10 @@ FOUNDATION_EXPORT SMToken *new_SMToken_initWithSMTokenType_withNSString_withSMSi
 FOUNDATION_EXPORT SMToken *create_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line);
 
 FOUNDATION_EXPORT SMToken *SMToken_self__(void);
+
+FOUNDATION_EXPORT SMToken *SMToken_superToken(void);
+
+FOUNDATION_EXPORT SMToken *SMToken_selfDef(void);
 
 FOUNDATION_EXPORT SMToken *SMToken_nativeCallWithNSString_(NSString *name);
 

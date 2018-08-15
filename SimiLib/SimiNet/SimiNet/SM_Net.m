@@ -12,20 +12,60 @@
 #import "java/util/LinkedHashMap.h"
 #import "java/util/Collections.h"
 
+@interface SM_Net()
+
++ (SMSimiValue *)performRequestWithVerb:(NSString *) verb
+                                 sender:(id<SMSimiObject>)sender
+                            interpreter:(id<SMBlockInterpreter>)interpeter
+                                request:(id<SMSimiProperty>)request
+                               callback:(id<SMSimiProperty>)callback;
+
+@end
+
 @implementation SM_Net
+
++ (SMSimiValue *)get:(id<SMSimiObject>)sender
+         interpreter:(id<SMBlockInterpreter>)interpeter
+             request:(id<SMSimiProperty>)request
+            callback:(id<SMSimiProperty>)callback {
+    return [SM_Net performRequestWithVerb:@"GET" sender:sender interpreter:interpeter request:request callback:callback];
+}
 
 + (SMSimiValue *)post:(id<SMSimiObject>)sender
           interpreter:(id<SMBlockInterpreter>)interpeter
               request:(id<SMSimiProperty>)request
              callback:(id<SMSimiProperty>)callback {
-    
+    return [SM_Net performRequestWithVerb:@"POST" sender:sender interpreter:interpeter request:request callback:callback];
+}
+
++ (SMSimiValue *)put:(id<SMSimiObject>)sender
+          interpreter:(id<SMBlockInterpreter>)interpeter
+              request:(id<SMSimiProperty>)request
+             callback:(id<SMSimiProperty>)callback {
+    return [SM_Net performRequestWithVerb:@"PUT" sender:sender interpreter:interpeter request:request callback:callback];
+}
+
++ (SMSimiValue *)delete:(id<SMSimiObject>)sender
+         interpreter:(id<SMBlockInterpreter>)interpeter
+             request:(id<SMSimiProperty>)request
+            callback:(id<SMSimiProperty>)callback {
+    return [SM_Net performRequestWithVerb:@"DELETE" sender:sender interpreter:interpeter request:request callback:callback];
+}
+
++ (SMSimiValue *)performRequestWithVerb:(NSString *)verb
+                                 sender:(id<SMSimiObject>)sender
+                            interpreter:(id<SMBlockInterpreter>)interpeter
+                                request:(id<SMSimiProperty>)request
+                               callback:(id<SMSimiProperty>)callback {
     id<SMSimiObject> object = [[request getValue] getObject];
     id<SMSimiEnvironment> env = [interpeter getEnvironment];
     
     NSMutableURLRequest *req = [[NSMutableURLRequest alloc] init];
     [req setURL:[NSURL URLWithString:[[[object getWithNSString:@"url" withSMSimiEnvironment:env] getValue] getString]]];
-    [req setHTTPMethod:@"POST"];
-    [req setHTTPBody:[[[[object getWithNSString:@"url" withSMSimiEnvironment:env] getValue] getString] dataUsingEncoding:NSUTF8StringEncoding]];
+    [req setHTTPMethod:verb];
+    if ([verb isEqualToString:@"PUT"] || [verb isEqualToString:@"POST"]) {
+        [req setHTTPBody:[[[[object getWithNSString:@"body" withSMSimiEnvironment:env] getValue] getString] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     id<SMSimiObject> headers = [[[object getWithNSString:@"headers" withSMSimiEnvironment:env] getValue] getObject];
     for (SMSimiValue *header in [headers keys] ) {
         [req setValue:[header getString] forHTTPHeaderField:[[[headers getWithNSString:[header getString] withSMSimiEnvironment:env] getValue] getString]];
@@ -35,7 +75,7 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:req
                                             completionHandler:
                                   ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                      NSLog(@"NET POST GOT RESPONSE");
+                                      NSLog(@"NET %@ GOT RESPONSE", verb);
                                       NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                       JavaUtilLinkedHashMap *props = [[JavaUtilLinkedHashMap alloc] init];
                                       [props putWithId:@"code" withId:[[SMSimiValue_Number alloc] initWithDouble:httpResponse.statusCode]];

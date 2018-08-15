@@ -5,14 +5,12 @@
 
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
-#include "java/io/File.h"
 #include "java/io/PrintStream.h"
 #include "java/lang/IllegalStateException.h"
 #include "java/lang/Runnable.h"
 #include "java/lang/StringBuilder.h"
 #include "java/lang/System.h"
 #include "java/lang/Thread.h"
-#include "java/net/URI.h"
 #include "java/net/URL.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Collection.h"
@@ -46,12 +44,12 @@
 
 + (NSString *)readFileWithNSString:(NSString *)path;
 
-+ (void)runWithNSString:(NSString *)source;
++ (void)runWithNSString:(NSString *)source
+            withBoolean:(jboolean)isLoad;
 
 + (id<SMSimiProperty>)runExpressionWithNSString:(NSString *)expression;
 
 + (id<JavaUtilList>)scanImportsWithJavaUtilList:(id<JavaUtilList>)input
-                               withJavaUtilList:(id<JavaUtilList>)imports
                                 withJavaUtilMap:(id<JavaUtilMap>)nativeModulesManagers;
 
 @end
@@ -66,6 +64,11 @@ inline id<SMActiveSimi_ImportResolver> SMActiveSimi_set_importResolver(id<SMActi
 static id<SMActiveSimi_ImportResolver> SMActiveSimi_importResolver;
 J2OBJC_STATIC_FIELD_OBJ(SMActiveSimi, importResolver, id<SMActiveSimi_ImportResolver>)
 
+inline id<JavaUtilList> SMActiveSimi_get_resolvedImports(void);
+inline id<JavaUtilList> SMActiveSimi_set_resolvedImports(id<JavaUtilList> value);
+static id<JavaUtilList> SMActiveSimi_resolvedImports;
+J2OBJC_STATIC_FIELD_OBJ(SMActiveSimi, resolvedImports, id<JavaUtilList>)
+
 inline id<SMErrorWatcher> SMActiveSimi_get_WATCHER(void);
 static id<SMErrorWatcher> SMActiveSimi_WATCHER;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMActiveSimi, WATCHER, id<SMErrorWatcher>)
@@ -78,11 +81,11 @@ __attribute__((unused)) static SMActiveSimi *create_SMActiveSimi_init(void);
 
 __attribute__((unused)) static NSString *SMActiveSimi_readFileWithNSString_(NSString *path);
 
-__attribute__((unused)) static void SMActiveSimi_runWithNSString_(NSString *source);
+__attribute__((unused)) static void SMActiveSimi_runWithNSString_withBoolean_(NSString *source, jboolean isLoad);
 
 __attribute__((unused)) static id<SMSimiProperty> SMActiveSimi_runExpressionWithNSString_(NSString *expression);
 
-__attribute__((unused)) static id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withJavaUtilMap_(id<JavaUtilList> input, id<JavaUtilList> imports, id<JavaUtilMap> nativeModulesManagers);
+__attribute__((unused)) static id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilMap_(id<JavaUtilList> input, id<JavaUtilMap> nativeModulesManagers);
 
 @interface SMActiveSimi_1 : NSObject < SMErrorWatcher >
 
@@ -187,8 +190,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   return SMActiveSimi_readFileWithNSString_(path);
 }
 
-+ (void)runWithNSString:(NSString *)source {
-  SMActiveSimi_runWithNSString_(source);
++ (void)runWithNSString:(NSString *)source
+            withBoolean:(jboolean)isLoad {
+  SMActiveSimi_runWithNSString_withBoolean_(source, isLoad);
 }
 
 + (id<SMSimiProperty>)runExpressionWithNSString:(NSString *)expression {
@@ -196,9 +200,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (id<JavaUtilList>)scanImportsWithJavaUtilList:(id<JavaUtilList>)input
-                               withJavaUtilList:(id<JavaUtilList>)imports
                                 withJavaUtilMap:(id<JavaUtilMap>)nativeModulesManagers {
-  return SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withJavaUtilMap_(input, imports, nativeModulesManagers);
+  return SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilMap_(input, nativeModulesManagers);
 }
 
 + (SMSimiClassImpl *)getObjectClass {
@@ -208,14 +211,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x89, 0, 1, 2, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x89, 3, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x89, 5, 6, -1, -1, -1, -1 },
-    { NULL, "V", 0x9, 7, 8, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0xa, 9, 10, -1, -1, -1, -1 },
-    { NULL, "V", 0xa, 11, 10, 2, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0xa, 12, 10, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilList;", 0xa, 13, 14, 2, 15, -1, -1 },
+    { NULL, "V", 0x89, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x89, 2, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x89, 4, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 6, 7, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0xa, 8, 9, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0xa, 12, 9, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilList;", 0xa, 13, 14, -1, 15, -1, -1 },
     { NULL, "LSMSimiClassImpl;", 0x8, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -227,9 +230,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[3].selector = @selector(evalAsyncWithSMActiveSimi_Callback:withNSString:withNSString:withSMSimiPropertyArray:);
   methods[4].selector = @selector(setImportResolverWithSMActiveSimi_ImportResolver:);
   methods[5].selector = @selector(readFileWithNSString:);
-  methods[6].selector = @selector(runWithNSString:);
+  methods[6].selector = @selector(runWithNSString:withBoolean:);
   methods[7].selector = @selector(runExpressionWithNSString:);
-  methods[8].selector = @selector(scanImportsWithJavaUtilList:withJavaUtilList:withJavaUtilMap:);
+  methods[8].selector = @selector(scanImportsWithJavaUtilList:withJavaUtilMap:);
   methods[9].selector = @selector(getObjectClass);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
@@ -237,15 +240,17 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "hadError", "Z", .constantValue.asLong = 0, 0x8, -1, 17, -1, -1 },
     { "hadRuntimeError", "Z", .constantValue.asLong = 0, 0x8, -1, 18, -1, -1 },
     { "importResolver", "LSMActiveSimi_ImportResolver;", .constantValue.asLong = 0, 0xa, -1, 19, -1, -1 },
-    { "WATCHER", "LSMErrorWatcher;", .constantValue.asLong = 0, 0x1a, -1, 20, -1, -1 },
+    { "resolvedImports", "LJavaUtilList;", .constantValue.asLong = 0, 0xa, -1, 20, 21, -1 },
+    { "WATCHER", "LSMErrorWatcher;", .constantValue.asLong = 0, 0x1a, -1, 22, -1, -1 },
   };
-  static const void *ptrTable[] = { "load", "[LNSString;", "LJavaIoIOException;", "eval", "LNSString;LNSString;[LSMSimiProperty;", "evalAsync", "LSMActiveSimi_Callback;LNSString;LNSString;[LSMSimiProperty;", "setImportResolver", "LSMActiveSimi_ImportResolver;", "readFile", "LNSString;", "run", "runExpression", "scanImports", "LJavaUtilList;LJavaUtilList;LJavaUtilMap;", "(Ljava/util/List<LToken;>;Ljava/util/List<Ljava/lang/String;>;Ljava/util/Map<Ljava/lang/String;LNativeModulesManager;>;)Ljava/util/List<LToken;>;", &SMActiveSimi_interpreter, &SMActiveSimi_hadError, &SMActiveSimi_hadRuntimeError, &SMActiveSimi_importResolver, &SMActiveSimi_WATCHER, "LSMActiveSimi_ImportResolver;LSMActiveSimi_Callback;" };
-  static const J2ObjcClassInfo _SMActiveSimi = { "ActiveSimi", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 10, 5, -1, 21, -1, -1, -1 };
+  static const void *ptrTable[] = { "load", "[LNSString;", "eval", "LNSString;LNSString;[LSMSimiProperty;", "evalAsync", "LSMActiveSimi_Callback;LNSString;LNSString;[LSMSimiProperty;", "setImportResolver", "LSMActiveSimi_ImportResolver;", "readFile", "LNSString;", "run", "LNSString;Z", "runExpression", "scanImports", "LJavaUtilList;LJavaUtilMap;", "(Ljava/util/List<LToken;>;Ljava/util/Map<Ljava/lang/String;LNativeModulesManager;>;)Ljava/util/List<LToken;>;", &SMActiveSimi_interpreter, &SMActiveSimi_hadError, &SMActiveSimi_hadRuntimeError, &SMActiveSimi_importResolver, &SMActiveSimi_resolvedImports, "Ljava/util/List<Ljava/lang/String;>;", &SMActiveSimi_WATCHER, "LSMActiveSimi_ImportResolver;LSMActiveSimi_Callback;" };
+  static const J2ObjcClassInfo _SMActiveSimi = { "ActiveSimi", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 10, 6, -1, 23, -1, -1, -1 };
   return &_SMActiveSimi;
 }
 
 + (void)initialize {
   if (self == [SMActiveSimi class]) {
+    SMActiveSimi_resolvedImports = new_JavaUtilArrayList_init();
     SMActiveSimi_WATCHER = new_SMActiveSimi_1_init();
     J2OBJC_SET_INITIALIZED(SMActiveSimi)
   }
@@ -279,7 +284,7 @@ void SMActiveSimi_load__WithNSStringArray_(IOSObjectArray *files) {
       (void) [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([source appendWithNSString:@"import \""])) appendWithNSString:file])) appendWithNSString:@"\"\n"];
     }
   }
-  SMActiveSimi_runWithNSString_([source description]);
+  SMActiveSimi_runWithNSString_withBoolean_([source description], true);
 }
 
 id<SMSimiProperty> SMActiveSimi_evalWithNSString_withNSString_withSMSimiPropertyArray_(NSString *className_, NSString *methodName, IOSObjectArray *params) {
@@ -329,30 +334,33 @@ NSString *SMActiveSimi_readFileWithNSString_(NSString *path) {
   return [SMActiveSimi_importResolver readFileWithNSString:path];
 }
 
-void SMActiveSimi_runWithNSString_(NSString *source) {
+void SMActiveSimi_runWithNSString_withBoolean_(NSString *source, jboolean isLoad) {
   SMActiveSimi_initialize();
   id<JavaUtilMap> nativeModulesManagers = new_JavaUtilHashMap_init();
-  (void) [nativeModulesManagers putWithId:@"jar" withId:new_SMJavaNativeModulesManager_init()];
-  (void) [nativeModulesManagers putWithId:@"framework" withId:new_SMCocoaNativeModulesManager_init()];
-  id<JavaUtilList> imports = new_JavaUtilArrayList_init();
-  jlong time = JavaLangSystem_currentTimeMillis();
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"Scanning and resolving imports..."];
+  if (SMActiveSimi_interpreter == nil) {
+    (void) [nativeModulesManagers putWithId:@"jar" withId:new_SMJavaNativeModulesManager_init()];
+    (void) [nativeModulesManagers putWithId:@"framework" withId:new_SMCocoaNativeModulesManager_init()];
+    SMActiveSimi_interpreter = new_SMInterpreter_initWithJavaUtilCollection_([nativeModulesManagers values]);
+  }
+  else {
+    for (id<SMNativeModulesManager> __strong manager in nil_chk(SMActiveSimi_interpreter->nativeModulesManagers_)) {
+      if ([manager isKindOfClass:[SMJavaNativeModulesManager class]]) {
+        (void) [nativeModulesManagers putWithId:@"jar" withId:manager];
+      }
+      else if ([manager isKindOfClass:[SMCocoaNativeModulesManager class]]) {
+        (void) [nativeModulesManagers putWithId:@"framework" withId:manager];
+      }
+    }
+  }
   SMScanner *scanner = new_SMScanner_initWithNSString_(source);
-  id<JavaUtilList> tokens = SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withJavaUtilMap_([scanner scanTokensWithBoolean:true], imports, nativeModulesManagers);
-  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
-  time = JavaLangSystem_currentTimeMillis();
-  [JreLoadStatic(JavaLangSystem, out) printWithNSString:@"Parsing..."];
+  id<JavaUtilList> tokens = SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilMap_([scanner scanTokensWithBoolean:true], nativeModulesManagers);
   SMParser *parser = new_SMParser_initWithJavaUtilList_(tokens);
   id<JavaUtilList> statements = [parser parse];
   if (SMActiveSimi_hadError) return;
-  SMActiveSimi_interpreter = new_SMInterpreter_initWithJavaUtilCollection_([nativeModulesManagers values]);
   SMResolver *resolver = new_SMResolver_initWithSMInterpreter_(SMActiveSimi_interpreter);
   [resolver resolveWithJavaUtilList:statements];
-  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
-  time = JavaLangSystem_currentTimeMillis();
   if (SMActiveSimi_hadError) return;
-  (void) [((SMInterpreter *) nil_chk(SMActiveSimi_interpreter)) interpretWithJavaUtilList:statements];
-  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$J$", @"Interpreting... ", (JavaLangSystem_currentTimeMillis() - time), @" ms")];
+  (void) [((SMInterpreter *) nil_chk(SMActiveSimi_interpreter)) interpretWithJavaUtilList:statements withBoolean:isLoad];
 }
 
 id<SMSimiProperty> SMActiveSimi_runExpressionWithNSString_(NSString *expression) {
@@ -362,7 +370,7 @@ id<SMSimiProperty> SMActiveSimi_runExpressionWithNSString_(NSString *expression)
   return [((SMInterpreter *) nil_chk(SMActiveSimi_interpreter)) interpretWithJavaUtilList:statements];
 }
 
-id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withJavaUtilMap_(id<JavaUtilList> input, id<JavaUtilList> imports, id<JavaUtilMap> nativeModulesManagers) {
+id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilMap_(id<JavaUtilList> input, id<JavaUtilMap> nativeModulesManagers) {
   SMActiveSimi_initialize();
   id<JavaUtilList> result = new_JavaUtilArrayList_init();
   jint len = [((id<JavaUtilList>) nil_chk(input)) size];
@@ -377,20 +385,21 @@ id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withJ
       continue;
     }
     NSString *location = [((SMSimiValue *) nil_chk(nextToken->literal_)) getString];
-    if ([((id<JavaUtilList>) nil_chk(imports)) containsWithId:location]) {
+    if ([((id<JavaUtilList>) nil_chk(SMActiveSimi_resolvedImports)) containsWithId:location]) {
       continue;
     }
+    [((id<JavaUtilList>) nil_chk(SMActiveSimi_resolvedImports)) addWithId:location];
     NSString *pathString = [((NSString *) nil_chk(location)) lowercaseString];
     if ([((NSString *) nil_chk(pathString)) java_hasSuffix:@".simi"]) {
-      id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_(SMActiveSimi_readFileWithNSString_(pathString)) scanTokensWithBoolean:false];
-      [result addAllWithJavaUtilCollection:SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilList_withJavaUtilMap_(tokens, imports, nativeModulesManagers)];
+      id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_(SMActiveSimi_readFileWithNSString_(location)) scanTokensWithBoolean:false];
+      [result addAllWithJavaUtilCollection:SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilMap_(tokens, nativeModulesManagers)];
     }
-    else {
-      NSString *extension = [pathString java_substring:[pathString java_lastIndexOf:'.']];
-      id<SMNativeModulesManager> manager = [((id<JavaUtilMap>) nil_chk(nativeModulesManagers)) getWithId:extension];
-      if (manager != nil) {
-        [manager load__WithNSString:[((JavaNetURL *) nil_chk([((JavaNetURI *) nil_chk([new_JavaIoFile_initWithNSString_(pathString) toURI])) toURL])) description]];
-      }
+    else if (nativeModulesManagers != nil) {
+//      NSString *extension = [pathString java_substring:[pathString java_lastIndexOf:'.'] + 1];
+//      id<SMNativeModulesManager> manager = [nativeModulesManagers getWithId:extension];
+//      if (manager != nil) {
+//        [manager load__WithNSString:[((JavaNetURL *) nil_chk([((id<SMActiveSimi_ImportResolver>) nil_chk(SMActiveSimi_importResolver)) resolveWithNSString:pathString])) description] withBoolean:[((id<SMActiveSimi_ImportResolver>) nil_chk(SMActiveSimi_importResolver)) useApiClassNameWithNSString:pathString]];
+//      }
     }
   }
   [result addAllWithJavaUtilCollection:input];
@@ -465,14 +474,18 @@ SMActiveSimi_1 *create_SMActiveSimi_1_init() {
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "LNSString;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LJavaNetURL;", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 3, 1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(readFileWithNSString:);
+  methods[1].selector = @selector(resolveWithNSString:);
+  methods[2].selector = @selector(useApiClassNameWithNSString:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "readFile", "LNSString;", "LSMActiveSimi;" };
-  static const J2ObjcClassInfo _SMActiveSimi_ImportResolver = { "ImportResolver", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 1, 0, 2, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "readFile", "LNSString;", "resolve", "useApiClassName", "LSMActiveSimi;" };
+  static const J2ObjcClassInfo _SMActiveSimi_ImportResolver = { "ImportResolver", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 3, 0, 4, -1, -1, -1, -1 };
   return &_SMActiveSimi_ImportResolver;
 }
 

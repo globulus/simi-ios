@@ -13,8 +13,23 @@
 
 @interface SM_Net : NSObject
 
++ (SMSimiValue *)get:(id<SMSimiObject>)sender
+         interpreter:(id<SMBlockInterpreter>)interpeter
+             request:(id<SMSimiProperty>)request
+            callback:(id<SMSimiProperty>)callback;
+
 + (SMSimiValue *)post:(id<SMSimiObject>)sender
           interpreter:(id<SMBlockInterpreter>)interpeter
               request:(id<SMSimiProperty>)request
              callback:(id<SMSimiProperty>)callback;
+
++ (SMSimiValue *)put:(id<SMSimiObject>)sender
+         interpreter:(id<SMBlockInterpreter>)interpeter
+             request:(id<SMSimiProperty>)request
+            callback:(id<SMSimiProperty>)callback;
+
++ (SMSimiValue *)delete:(id<SMSimiObject>)sender
+            interpreter:(id<SMBlockInterpreter>)interpeter
+                request:(id<SMSimiProperty>)request
+               callback:(id<SMSimiProperty>)callback;
 @end

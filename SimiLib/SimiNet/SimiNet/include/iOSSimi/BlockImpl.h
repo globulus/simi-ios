@@ -30,6 +30,7 @@
 #include "SimiCallable.h"
 
 @class SMEnvironment;
+@class SMExpr;
 @class SMExpr_Block;
 @class SMSimiObjectImpl;
 @protocol JavaUtilList;
@@ -52,6 +53,8 @@
 
 - (jboolean)canReturn;
 
++ (NSString *)getParamLexemeWithSMExpr:(SMExpr *)param;
+
 - (id<JavaUtilList>)getStatements;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
@@ -67,6 +70,11 @@
                              withSMEnvironment:(SMEnvironment *)closure;
 
 - (SMBlockImpl *)bindWithSMSimiObjectImpl:(SMSimiObjectImpl *)instance;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow
+                              withSMSimiCallable:(id<SMSimiCallable>)invoker;
 
 - (jboolean)isNative;
 
@@ -86,6 +94,8 @@ FOUNDATION_EXPORT void SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMBlo
 FOUNDATION_EXPORT SMBlockImpl *new_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMExpr_Block *declaration, SMEnvironment *closure) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT SMBlockImpl *create_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_(SMExpr_Block *declaration, SMEnvironment *closure);
+
+FOUNDATION_EXPORT NSString *SMBlockImpl_getParamLexemeWithSMExpr_(SMExpr *param);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMBlockImpl)
 

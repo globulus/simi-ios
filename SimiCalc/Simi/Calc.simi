@@ -1,0 +1,25 @@
+import "Net.simi"
+
+class Calc:
+    def compute(left, op, right):
+        when op:
+            '+': return left + right
+            '-': return left - right
+            '*': return left * right
+            '/': return left / right
+            else: return nil
+        end
+    end
+
+    def post():
+#print "performing request"
+#       Net.post([url = "http://httpbin.org/post", json = "", headers = [accept = "application/json"]], def response:
+#            print "GOT RESPONSE"
+#            print response
+#       end)
+Net.get([url = "http://localhost:8888/sync/1", headers = []], def response:
+    print "GOT RESPONSE"
+    print response
+end)
+    end
+end

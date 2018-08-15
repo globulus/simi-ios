@@ -51,10 +51,7 @@
 #pragma clang diagnostic ignored "-Wprotocol"
 #pragma clang diagnostic ignored "-Wincomplete-implementation"
 
-@interface SMSimiClassImpl () {
- @public
-  id<JavaUtilMap> methods_;
-}
+@interface SMSimiClassImpl ()
 
 - (instancetype __nonnull)initWithSMSimiClassImpl_Type:(SMSimiClassImpl_Type *)type
                                           withNSString:(NSString *)name;
@@ -64,8 +61,6 @@
                                                       withInt:(jint)arity;
 
 @end
-
-J2OBJC_FIELD_SETTER(SMSimiClassImpl, methods_, id<JavaUtilMap>)
 
 __attribute__((unused)) static void SMSimiClassImpl_initWithSMSimiClassImpl_Type_withNSString_(SMSimiClassImpl *self, SMSimiClassImpl_Type *type, NSString *name);
 
@@ -373,9 +368,12 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
     if (((SMSimiFunction *) nil_chk(initializer->function_))->isNative_) {
       SMInterpreter *in = (SMInterpreter *) cast_chk(interpreter, [SMInterpreter class]);
       for (id<SMNativeModulesManager> __strong manager in nil_chk(((SMInterpreter *) nil_chk(in))->nativeModulesManagers_)) {
-        instance = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:name_ withNSString:SMConstants_INIT withSMSimiObject:self withSMInterpreter:in withJavaUtilList:arguments])) getValue])) getObject], [SMSimiObjectImpl class]);
-        if (instance != nil) {
-          break;
+        id<SMSimiProperty> inst = [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:name_ withNSString:SMConstants_INIT withSMSimiObject:self withSMInterpreter:in withJavaUtilList:arguments];
+        if (inst != nil) {
+          instance = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([inst getValue])) getObject], [SMSimiObjectImpl class]);
+          if (instance != nil) {
+            break;
+          }
         }
       }
     }
@@ -411,6 +409,14 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
   return constructors;
 }
 
+- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
+  JavaUtilArrayList *values = [self getEnumeratedValuesWithSMSimiClassImpl:objectClass];
+  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((id<JavaUtilMap>) nil_chk(methods_)) entrySet])) {
+    [((JavaUtilArrayList *) nil_chk(values)) addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(objectClass, new_SMSimiValue_String_initWithNSString_(((SMOverloadableFunction *) nil_chk([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]))->name_), new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_([entry_ getValue], ((SMOverloadableFunction *) nil_chk([entry_ getKey]))->name_, self)))];
+  }
+  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, values);
+}
+
 - (id<JavaUtilSet>)allKeys {
   id<JavaUtilSet> keys = new_JavaUtilHashSet_initWithJavaUtilCollection_([((JavaUtilLinkedHashMap *) nil_chk(fields_)) keySet]);
   if (superclasses_ != nil) {
@@ -443,9 +449,10 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
     { NULL, "LSMSimiProperty;", 0x1, 9, 10, -1, 11, -1, -1 },
     { NULL, "LNSString;", 0x1, 12, -1, -1, -1, -1, -1 },
     { NULL, "LJavaUtilSet;", 0x0, -1, -1, -1, 13, -1, -1 },
-    { NULL, "LJavaUtilSet;", 0x0, -1, -1, -1, 14, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 15, -1, -1 },
-    { NULL, "LNSString;", 0x1, 16, 17, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x0, 14, 15, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilSet;", 0x0, -1, -1, -1, 16, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 17, -1, -1 },
+    { NULL, "LNSString;", 0x1, 18, 19, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -458,20 +465,21 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
   methods[5].selector = @selector(init__WithSMBlockInterpreter:withJavaUtilList:);
   methods[6].selector = @selector(description);
   methods[7].selector = @selector(getConstructors);
-  methods[8].selector = @selector(allKeys);
-  methods[9].selector = @selector(keys);
-  methods[10].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[8].selector = @selector(enumerateWithSMSimiClassImpl:);
+  methods[9].selector = @selector(allKeys);
+  methods[10].selector = @selector(keys);
+  methods[11].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "type_", "LSMSimiClassImpl_Type;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "name_", "LNSString;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "superclasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 18, -1 },
+    { "superclasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 20, -1 },
     { "stmt_", "LSMStmt_Class;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "methods_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 19, -1 },
-    { "CLASS", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x18, -1, 20, -1, -1 },
+    { "methods_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x10, -1, -1, 21, -1 },
+    { "CLASS", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x18, -1, 22, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClassImpl_Type;LNSString;", "LSMSimiClassImpl_Type;LNSString;LJavaUtilList;LJavaUtilMap;LJavaUtilMap;LSMStmt_Class;", "(LSimiClassImpl$Type;Ljava/lang/String;Ljava/util/List<LSimiClassImpl;>;Ljava/util/Map<Ljava/lang/String;LSimiProperty;>;Ljava/util/Map<LOverloadableFunction;LSimiFunction;>;LStmt$Class;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "findMethod", "LSMSimiObjectImpl;LNSString;LJavaLangInteger;", "findClosestVarargMethod", "LSMSimiObjectImpl;LNSString;I", "init", "LSMBlockInterpreter;LJavaUtilList;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "toString", "()Ljava/util/Set<LSimiFunction;>;", "()Ljava/util/Set<Ljava/lang/String;>;", "()Ljava/util/ArrayList<LSimiValue;>;", "toCode", "IZ", "Ljava/util/List<LSimiClassImpl;>;", "Ljava/util/Map<LOverloadableFunction;LSimiFunction;>;", &SMSimiClassImpl_CLASS, "LSMSimiClassImpl_SuperClassesList;LSMSimiClassImpl_Type;" };
-  static const J2ObjcClassInfo _SMSimiClassImpl = { "SimiClassImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 11, 6, -1, 21, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClassImpl_Type;LNSString;", "LSMSimiClassImpl_Type;LNSString;LJavaUtilList;LJavaUtilMap;LJavaUtilMap;LSMStmt_Class;", "(LSimiClassImpl$Type;Ljava/lang/String;Ljava/util/List<LSimiClassImpl;>;Ljava/util/Map<Ljava/lang/String;LSimiProperty;>;Ljava/util/Map<LOverloadableFunction;LSimiFunction;>;LStmt$Class;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "findMethod", "LSMSimiObjectImpl;LNSString;LJavaLangInteger;", "findClosestVarargMethod", "LSMSimiObjectImpl;LNSString;I", "init", "LSMBlockInterpreter;LJavaUtilList;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "toString", "()Ljava/util/Set<LSimiFunction;>;", "enumerate", "LSMSimiClassImpl;", "()Ljava/util/Set<Ljava/lang/String;>;", "()Ljava/util/ArrayList<LSimiValue;>;", "toCode", "IZ", "Ljava/util/List<LSimiClassImpl;>;", "Ljava/util/Map<LOverloadableFunction;LSimiFunction;>;", &SMSimiClassImpl_CLASS, "LSMSimiClassImpl_SuperClassesList;LSMSimiClassImpl_Type;" };
+  static const J2ObjcClassInfo _SMSimiClassImpl = { "SimiClassImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 12, 6, -1, 23, -1, -1, -1 };
   return &_SMSimiClassImpl;
 }
 

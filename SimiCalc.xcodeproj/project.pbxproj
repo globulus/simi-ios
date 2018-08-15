@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		6A000D56208E026200F8BF0A /* json.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A000D54208E026200F8BF0A /* json.simi */; };
-		6A000D57208E026200F8BF0A /* redditstats.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A000D55208E026200F8BF0A /* redditstats.simi */; };
-		6A486B92208BDF61000398A6 /* stdlib.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B8C208BDF61000398A6 /* stdlib.simi */; };
-		6A486B96208C652A000398A6 /* calc.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B95208C652A000398A6 /* calc.simi */; };
+		6A000D57208E026200F8BF0A /* RedditStats.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A000D55208E026200F8BF0A /* RedditStats.simi */; };
+		6A486B96208C652A000398A6 /* Calc.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6A486B95208C652A000398A6 /* Calc.simi */; };
 		6A71C09F20FB545400BBDC87 /* libiOSSimi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A71C09C20FB520500BBDC87 /* libiOSSimi.a */; };
 		6A71C13620FBE21100BBDC87 /* SimiNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A71C13520FBE1E700BBDC87 /* SimiNet.framework */; };
 		6A71C13720FBE21400BBDC87 /* SimiNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A71C13520FBE1E700BBDC87 /* SimiNet.framework */; };
 		6A71C13820FBE21400BBDC87 /* SimiNet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A71C13520FBE1E700BBDC87 /* SimiNet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6AB172DA21246F4600F32968 /* Stdlib.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6AB172D821246F4600F32968 /* Stdlib.simi */; };
+		6AB172DC2124721600F32968 /* Net.simi in Resources */ = {isa = PBXBuildFile; fileRef = 6AB172DB2124721600F32968 /* Net.simi */; };
 		6AF83E06208A7A30005CA323 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF83E05208A7A30005CA323 /* AppDelegate.m */; };
 		6AF83E09208A7A30005CA323 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF83E08208A7A30005CA323 /* ViewController.m */; };
 		6AF83E0C208A7A30005CA323 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF83E0A208A7A30005CA323 /* Main.storyboard */; };
@@ -86,11 +87,12 @@
 /* Begin PBXFileReference section */
 		6A000D52208E010A00F8BF0A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6A000D54208E026200F8BF0A /* json.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = json.simi; path = Simi/json.simi; sourceTree = "<group>"; };
-		6A000D55208E026200F8BF0A /* redditstats.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = redditstats.simi; path = Simi/redditstats.simi; sourceTree = "<group>"; };
-		6A486B8C208BDF61000398A6 /* stdlib.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stdlib.simi; sourceTree = "<group>"; };
-		6A486B95208C652A000398A6 /* calc.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = calc.simi; path = Simi/calc.simi; sourceTree = "<group>"; };
+		6A000D55208E026200F8BF0A /* RedditStats.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RedditStats.simi; path = Simi/RedditStats.simi; sourceTree = "<group>"; };
+		6A486B95208C652A000398A6 /* Calc.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Calc.simi; path = Simi/Calc.simi; sourceTree = "<group>"; };
 		6A71C09620FB520400BBDC87 /* iOSSimi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iOSSimi.xcodeproj; path = SimiLib/iOSSimi/iOSSimi.xcodeproj; sourceTree = "<group>"; };
 		6A71C13020FBE1E700BBDC87 /* SimiNet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SimiNet.xcodeproj; path = SimiLib/SimiNet/SimiNet.xcodeproj; sourceTree = "<group>"; };
+		6AB172D821246F4600F32968 /* Stdlib.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Stdlib.simi; path = "../../../../simi-sync/web/src/main/resources/static/stdlib/Stdlib.simi"; sourceTree = "<group>"; };
+		6AB172DB2124721600F32968 /* Net.simi */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Net.simi; sourceTree = "<group>"; };
 		6AF83E01208A7A30005CA323 /* SimiCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimiCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AF83E04208A7A30005CA323 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6AF83E05208A7A30005CA323 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -124,7 +126,8 @@
 		6A486B88208BDF60000398A6 /* stdlib */ = {
 			isa = PBXGroup;
 			children = (
-				6A486B8C208BDF61000398A6 /* stdlib.simi */,
+				6AB172DB2124721600F32968 /* Net.simi */,
+				6AB172D821246F4600F32968 /* Stdlib.simi */,
 			);
 			name = stdlib;
 			path = Simi/stdlib;
@@ -169,9 +172,9 @@
 		6AF83E03208A7A30005CA323 /* SimiCalc */ = {
 			isa = PBXGroup;
 			children = (
-				6A486B95208C652A000398A6 /* calc.simi */,
+				6A486B95208C652A000398A6 /* Calc.simi */,
 				6A000D54208E026200F8BF0A /* json.simi */,
-				6A000D55208E026200F8BF0A /* redditstats.simi */,
+				6A000D55208E026200F8BF0A /* RedditStats.simi */,
 				6A486B88208BDF60000398A6 /* stdlib */,
 				6AF83E04208A7A30005CA323 /* AppDelegate.h */,
 				6AF83E05208A7A30005CA323 /* AppDelegate.m */,
@@ -295,11 +298,12 @@
 			files = (
 				6AF83E11208A7A31005CA323 /* LaunchScreen.storyboard in Resources */,
 				6AF83E0E208A7A31005CA323 /* Assets.xcassets in Resources */,
-				6A000D57208E026200F8BF0A /* redditstats.simi in Resources */,
-				6A486B92208BDF61000398A6 /* stdlib.simi in Resources */,
+				6A000D57208E026200F8BF0A /* RedditStats.simi in Resources */,
 				6A000D56208E026200F8BF0A /* json.simi in Resources */,
-				6A486B96208C652A000398A6 /* calc.simi in Resources */,
+				6AB172DA21246F4600F32968 /* Stdlib.simi in Resources */,
+				6A486B96208C652A000398A6 /* Calc.simi in Resources */,
 				6AF83E0C208A7A30005CA323 /* Main.storyboard in Resources */,
+				6AB172DC2124721600F32968 /* Net.simi in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

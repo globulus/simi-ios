@@ -21,7 +21,6 @@
     [SMActiveSimi setImportResolverWithSMActiveSimi_ImportResolver:self];
     [SMActiveSimi load__WithNSStringArray:[IOSObjectArray arrayWithNSArray:@[@"Calc.simi", @"RedditStats.simi"] type:[IOSClass classForIosName:@"NSString"]]];
     
-    
     return YES;
 }
 
@@ -58,6 +57,14 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:comps[0] ofType:comps[1]];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     return content;
+}
+
+- (JavaNetURL *)resolveWithNSString:(NSString *)nativeFileName {
+    return nil;
+}
+
+- (jboolean)useApiClassNameWithNSString:(NSString *)nativeFileName {
+    return true;
 }
 
 

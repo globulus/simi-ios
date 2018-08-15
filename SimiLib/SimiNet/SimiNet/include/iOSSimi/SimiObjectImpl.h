@@ -232,6 +232,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl)
 
 - (JavaUtilArrayList *)values;
 
+#pragma mark Protected
+
+- (JavaUtilArrayList *)getEnumeratedValuesWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz

@@ -30,6 +30,9 @@
   id<JavaUtilMap> globals_;
 }
 
+- (NSString *)getApiClassNameWithNSString:(NSString *)path
+                              withBoolean:(jboolean)useApiClassName;
+
 @end
 
 J2OBJC_FIELD_SETTER(SMJavaNativeModulesManager, classes_, id<JavaUtilMap>)
@@ -38,6 +41,8 @@ J2OBJC_FIELD_SETTER(SMJavaNativeModulesManager, globals_, id<JavaUtilMap>)
 inline NSString *SMJavaNativeModulesManager_get_API_CLASS(void);
 static NSString *SMJavaNativeModulesManager_API_CLASS = @"net.globulus.simi.api.JavaApi";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMJavaNativeModulesManager, API_CLASS, NSString *)
+
+__attribute__((unused)) static NSString *SMJavaNativeModulesManager_getApiClassNameWithNSString_withBoolean_(SMJavaNativeModulesManager *self, NSString *path, jboolean useApiClassName);
 
 @implementation SMJavaNativeModulesManager
 
@@ -48,44 +53,85 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)load__WithNSString:(NSString *)path {
+- (void)load__WithNSString:(NSString *)path
+               withBoolean:(jboolean)useApiClassName {
+  [self load__WithNSString:path withBoolean:useApiClassName withBoolean:useApiClassName];
+}
+
+- (void)load__WithNSString:(NSString *)path
+               withBoolean:(jboolean)useApiClassName
+               withBoolean:(jboolean)useCustomLoader {
   @try {
-    JavaNetURL *url = new_JavaNetURL_initWithNSString_(path);
-    JavaLangClassLoader *loader = JavaNetURLClassLoader_newInstanceWithJavaNetURLArray_withJavaLangClassLoader_([IOSObjectArray newArrayWithObjects:(id[]){ url } count:1 type:JavaNetURL_class_()], [[self java_getClass] getClassLoader]);
-    @try {
-      id<SMSimiApiClass> apiClass = (id<SMSimiApiClass>) cast_check([((IOSClass *) nil_chk(IOSClass_forName_initialize_classLoader_(SMJavaNativeModulesManager_API_CLASS, true, loader))) newInstance], SMSimiApiClass_class_());
-      {
-        IOSObjectArray *a__ = [((id<SMSimiApiClass>) nil_chk(apiClass)) classNames];
-        NSString * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
-        NSString * const *e__ = b__ + a__->size_;
-        while (b__ < e__) {
-          NSString *className_ = *b__++;
-          (void) [((id<JavaUtilMap>) nil_chk(classes_)) putWithId:className_ withId:apiClass];
-        }
-      }
-      {
-        IOSObjectArray *a__ = [apiClass globalMethodNames];
-        NSString * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
-        NSString * const *e__ = b__ + a__->size_;
-        while (b__ < e__) {
-          NSString *globalMethodName = *b__++;
-          (void) [((id<JavaUtilMap>) nil_chk(globals_)) putWithId:globalMethodName withId:apiClass];
-        }
+    id<SMSimiApiClass> apiClass;
+    JavaLangClassLoader *loader;
+    if (useCustomLoader) {
+      JavaNetURL *url = new_JavaNetURL_initWithNSString_(path);
+      loader = JavaNetURLClassLoader_newInstanceWithJavaNetURLArray_withJavaLangClassLoader_([IOSObjectArray newArrayWithObjects:(id[]){ url } count:1 type:JavaNetURL_class_()], [[self java_getClass] getClassLoader]);
+      apiClass = (id<SMSimiApiClass>) cast_check([((IOSClass *) nil_chk(IOSClass_forName_initialize_classLoader_(SMJavaNativeModulesManager_getApiClassNameWithNSString_withBoolean_(self, path, useApiClassName), true, loader))) newInstance], SMSimiApiClass_class_());
+    }
+    else {
+      apiClass = (id<SMSimiApiClass>) cast_check([((IOSClass *) nil_chk(IOSClass_forName_(SMJavaNativeModulesManager_getApiClassNameWithNSString_withBoolean_(self, path, useApiClassName)))) newInstance], SMSimiApiClass_class_());
+    }
+    {
+      IOSObjectArray *a__ = [((id<SMSimiApiClass>) nil_chk(apiClass)) classNames];
+      NSString * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
+      NSString * const *e__ = b__ + a__->size_;
+      while (b__ < e__) {
+        NSString *className_ = *b__++;
+        (void) [((id<JavaUtilMap>) nil_chk(classes_)) putWithId:className_ withId:apiClass];
       }
     }
-    @catch (JavaLangClassNotFoundException *e) {
+    {
+      IOSObjectArray *a__ = [apiClass globalMethodNames];
+      NSString * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
+      NSString * const *e__ = b__ + a__->size_;
+      while (b__ < e__) {
+        NSString *globalMethodName = *b__++;
+        (void) [((id<JavaUtilMap>) nil_chk(globals_)) putWithId:globalMethodName withId:apiClass];
+      }
+    }
+  }
+  @catch (JavaLangClassNotFoundException *e) {
+    if (useApiClassName) {
+      [self load__WithNSString:path withBoolean:false withBoolean:true];
+    }
+    else if (useCustomLoader) {
+      [self load__WithNSString:path withBoolean:false withBoolean:false];
+    }
+    else {
       [e printStackTrace];
     }
-    @catch (JavaLangIllegalAccessException *e) {
+  }
+  @catch (JavaLangIllegalAccessException *e) {
+    if (useApiClassName) {
+      [self load__WithNSString:path withBoolean:false withBoolean:true];
+    }
+    else if (useCustomLoader) {
+      [self load__WithNSString:path withBoolean:false withBoolean:false];
+    }
+    else {
       [e printStackTrace];
     }
-    @catch (JavaLangInstantiationException *e) {
+  }
+  @catch (JavaLangInstantiationException *e) {
+    if (useApiClassName) {
+      [self load__WithNSString:path withBoolean:false withBoolean:true];
+    }
+    else if (useCustomLoader) {
+      [self load__WithNSString:path withBoolean:false withBoolean:false];
+    }
+    else {
       [e printStackTrace];
     }
   }
   @catch (JavaNetMalformedURLException *e) {
     [e printStackTrace];
   }
+}
+
+- (NSString *)getApiClassNameWithNSString:(NSString *)path
+                              withBoolean:(jboolean)useApiClassName {
+  return SMJavaNativeModulesManager_getApiClassNameWithNSString_withBoolean_(self, path, useApiClassName);
 }
 
 - (id<SMSimiProperty>)callWithNSString:(NSString *)className_
@@ -112,22 +158,26 @@ J2OBJC_IGNORE_DESIGNATED_END
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 2, 3, 4, 5, -1, -1 },
+    { NULL, "V", 0x1, 0, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x2, 3, 1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 4, 5, 6, 7, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
-  methods[1].selector = @selector(load__WithNSString:);
-  methods[2].selector = @selector(callWithNSString:withNSString:withSMSimiObject:withSMInterpreter:withJavaUtilList:);
+  methods[1].selector = @selector(load__WithNSString:withBoolean:);
+  methods[2].selector = @selector(load__WithNSString:withBoolean:withBoolean:);
+  methods[3].selector = @selector(getApiClassNameWithNSString:withBoolean:);
+  methods[4].selector = @selector(callWithNSString:withNSString:withSMSimiObject:withSMInterpreter:withJavaUtilList:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "API_CLASS", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 6, -1, -1 },
-    { "classes_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 7, -1 },
-    { "globals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 7, -1 },
+    { "API_CLASS", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 8, -1, -1 },
+    { "classes_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 9, -1 },
+    { "globals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 9, -1 },
   };
-  static const void *ptrTable[] = { "load", "LNSString;", "call", "LNSString;LNSString;LSMSimiObject;LSMInterpreter;LJavaUtilList;", "LJavaLangIllegalArgumentException;", "(Ljava/lang/String;Ljava/lang/String;LSimiObject;LInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", &SMJavaNativeModulesManager_API_CLASS, "Ljava/util/Map<Ljava/lang/String;LSimiApiClass;>;" };
-  static const J2ObjcClassInfo _SMJavaNativeModulesManager = { "JavaNativeModulesManager", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 3, 3, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "load", "LNSString;Z", "LNSString;ZZ", "getApiClassName", "call", "LNSString;LNSString;LSMSimiObject;LSMInterpreter;LJavaUtilList;", "LJavaLangIllegalArgumentException;", "(Ljava/lang/String;Ljava/lang/String;LSimiObject;LInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", &SMJavaNativeModulesManager_API_CLASS, "Ljava/util/Map<Ljava/lang/String;LSimiApiClass;>;" };
+  static const J2ObjcClassInfo _SMJavaNativeModulesManager = { "JavaNativeModulesManager", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 5, 3, -1, -1, -1, -1, -1 };
   return &_SMJavaNativeModulesManager;
 }
 
@@ -145,6 +195,15 @@ SMJavaNativeModulesManager *new_SMJavaNativeModulesManager_init() {
 
 SMJavaNativeModulesManager *create_SMJavaNativeModulesManager_init() {
   J2OBJC_CREATE_IMPL(SMJavaNativeModulesManager, init)
+}
+
+NSString *SMJavaNativeModulesManager_getApiClassNameWithNSString_withBoolean_(SMJavaNativeModulesManager *self, NSString *path, jboolean useApiClassName) {
+  if (useApiClassName) {
+    return SMJavaNativeModulesManager_API_CLASS;
+  }
+  NSString *fileName = [((NSString *) nil_chk(path)) java_substring:[path java_lastIndexOf:'/'] + 1];
+  fileName = [((NSString *) nil_chk(fileName)) java_substring:0 endIndex:[fileName java_indexOf:'.']];
+  return JreStrcat("$C$", SMConstants_PACKAGE_SIMI_API, '.', [((NSString *) nil_chk(fileName)) java_replace:'-' withChar:'_']);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMJavaNativeModulesManager)

@@ -276,6 +276,7 @@ id<JavaUtilList> SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativ
     }
     NSString *pathString = @"";
     if ([pathString java_hasSuffix:@".jar"]) {
+      [((id<SMNativeModulesManager>) nil_chk(nativeModulesManager)) load__WithNSString:pathString withBoolean:true];
     }
     else if ([pathString java_hasSuffix:@".simi"]) {
       id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_(SMSimi_readFileWithNSString_withBoolean_(location, false)) scanTokensWithBoolean:false];

@@ -42,7 +42,12 @@
                      withSMInterpreter:(SMInterpreter *)interpreter
                       withJavaUtilList:(id<JavaUtilList>)args;
 
-- (void)load__WithNSString:(NSString *)path;
+- (void)load__WithNSString:(NSString *)path
+               withBoolean:(jboolean)useApiClassName;
+
+- (void)load__WithNSString:(NSString *)path
+               withBoolean:(jboolean)useApiClassName
+               withBoolean:(jboolean)useCustomLoader;
 
 @end
 

@@ -594,6 +594,9 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
 
 - (id<SMSimiProperty>)getWithNSString:(NSString *)key
                 withSMSimiEnvironment:(id<SMSimiEnvironment>)environment {
+  if ([((NSString *) nil_chk(key)) isEqual:@"class"]) {
+    return new_SMSimiValue_Object_initWithSMSimiObject_(clazz_);
+  }
   return [self getWithSMToken:SMToken_nativeCallWithNSString_(key) withJavaLangInteger:nil withSMEnvironment:(SMEnvironment *) cast_chk(environment, [SMEnvironment class])];
 }
 
@@ -785,6 +788,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
                  withJavaLangInteger:(JavaLangInteger *)arity
                    withSMEnvironment:(SMEnvironment *)environment {
   NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
+  if ([((NSString *) nil_chk(key)) isEqual:@"class"]) {
+    return new_SMSimiValue_Object_initWithSMSimiObject_(clazz_);
+  }
   @try {
     jint index = JavaLangInteger_parseIntWithNSString_(key);
     NSString *implicitKey = JreStrcat("$I", SMConstants_IMPLICIT, index);
@@ -801,7 +807,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
   }
   @catch (JavaLangNumberFormatException *ignored) {
   }
-  if ([((NSString *) nil_chk(key)) java_hasPrefix:SMConstants_PRIVATE]) {
+  if ([key java_hasPrefix:SMConstants_PRIVATE]) {
     id<SMSimiObject> self_ = [((SMSimiValue *) nil_chk([((SMEnvironment *) nil_chk(environment)) getWithSMToken:SMToken_self__()])) getObject];
     if (self_ != self && self_ != clazz_) {
       @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Trying to access a private property!");
@@ -874,12 +880,16 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
 }
 
 - (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
+  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, [self getEnumeratedValuesWithSMSimiClassImpl:objectClass]);
+}
+
+- (JavaUtilArrayList *)getEnumeratedValuesWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
   jint size = [self length];
   JavaUtilArrayList *values = new_JavaUtilArrayList_initWithInt_(size);
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) {
     [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(objectClass, new_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]), [((id<SMSimiProperty>) nil_chk([entry_ getValue])) getValue]))];
   }
-  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, values);
+  return values;
 }
 
 - (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
@@ -982,18 +992,19 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
     { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
     { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x0, 12, 13, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 14, 13, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x0, 15, 16, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x4, 14, 13, -1, 15, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x0, 16, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x0, 17, 18, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilIterator;", 0x0, -1, -1, -1, 17, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 18, 19, -1, 20, -1, -1 },
-    { NULL, "V", 0x0, 21, 22, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilIterator;", 0x0, -1, -1, -1, 19, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x0, 20, 21, -1, 22, -1, -1 },
     { NULL, "V", 0x0, 23, 24, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 25, 26, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl_Dictionary;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObjectImpl_Array;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObject;", 0x1, 25, 26, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 27, 28, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x1, 27, 28, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 29, 30, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1009,24 +1020,25 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
   methods[8].selector = @selector(keys);
   methods[9].selector = @selector(values);
   methods[10].selector = @selector(enumerateWithSMSimiClassImpl:);
-  methods[11].selector = @selector(zipWithSMSimiClassImpl:);
-  methods[12].selector = @selector(indexOfWithSMSimiValue:);
-  methods[13].selector = @selector(reversed);
-  methods[14].selector = @selector(iterate);
-  methods[15].selector = @selector(sortedWithJavaUtilComparator:);
-  methods[16].selector = @selector(appendImplWithSMSimiProperty:);
-  methods[17].selector = @selector(addAllWithSMSimiObjectImpl:);
-  methods[18].selector = @selector(printFields);
-  methods[19].selector = @selector(asDictionary);
-  methods[20].selector = @selector(asArray);
-  methods[21].selector = @selector(cloneWithBoolean:);
-  methods[22].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[11].selector = @selector(getEnumeratedValuesWithSMSimiClassImpl:);
+  methods[12].selector = @selector(zipWithSMSimiClassImpl:);
+  methods[13].selector = @selector(indexOfWithSMSimiValue:);
+  methods[14].selector = @selector(reversed);
+  methods[15].selector = @selector(iterate);
+  methods[16].selector = @selector(sortedWithJavaUtilComparator:);
+  methods[17].selector = @selector(appendImplWithSMSimiProperty:);
+  methods[18].selector = @selector(addAllWithSMSimiObjectImpl:);
+  methods[19].selector = @selector(printFields);
+  methods[20].selector = @selector(asDictionary);
+  methods[21].selector = @selector(asArray);
+  methods[22].selector = @selector(cloneWithBoolean:);
+  methods[23].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x10, -1, -1, 29, -1 },
+    { "fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x10, -1, -1, 31, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "toCode", "IZ", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl_Dictionary = { "Dictionary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 23, 1, 24, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "getEnumeratedValues", "(LSimiClassImpl;)Ljava/util/ArrayList<LSimiProperty;>;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "toCode", "IZ", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;" };
+  static const J2ObjcClassInfo _SMSimiObjectImpl_Dictionary = { "Dictionary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 24, 1, 26, -1, -1, -1, -1 };
   return &_SMSimiObjectImpl_Dictionary;
 }
 
@@ -1714,7 +1726,7 @@ SMSimiObjectImpl_Array_$Lambda$5 *create_SMSimiObjectImpl_Array_$Lambda$5_initWi
 
 - (jboolean)isArray {
   if (underlying_ == nil) {
-    return false;
+    return true;
   }
   return [underlying_ isArray];
 }

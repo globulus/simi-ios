@@ -28,7 +28,8 @@
 
 @protocol SMNativeModulesManager < JavaObject >
 
-- (void)load__WithNSString:(NSString *)path;
+- (void)load__WithNSString:(NSString *)path
+               withBoolean:(jboolean)useApiClassName;
 
 - (id<SMSimiProperty>)callWithNSString:(NSString *)className_
                           withNSString:(NSString *)methodName

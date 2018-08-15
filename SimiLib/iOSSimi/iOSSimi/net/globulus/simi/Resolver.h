@@ -57,6 +57,7 @@
 @class SMStmt_For;
 @class SMStmt_Function;
 @class SMStmt_If;
+@class SMStmt_Import;
 @class SMStmt_Print;
 @class SMStmt_Rescue;
 @class SMStmt_Return;
@@ -108,6 +109,8 @@
 - (JavaLangVoid *)visitGuExprWithSMExpr_Gu:(SMExpr_Gu *)expr;
 
 - (JavaLangVoid *)visitIfStmtWithSMStmt_If:(SMStmt_If *)stmt;
+
+- (JavaLangVoid *)visitImportStmtWithSMStmt_Import:(SMStmt_Import *)stmt;
 
 - (JavaLangVoid *)visitIvicExprWithSMExpr_Ivic:(SMExpr_Ivic *)expr;
 

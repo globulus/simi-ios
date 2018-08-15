@@ -67,7 +67,7 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  id<SMSimiProperty> prop = [((SMBlockImpl *) nil_chk(block_)) callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:rethrow];
+  id<SMSimiProperty> prop = [((SMBlockImpl *) nil_chk(block_)) callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:rethrow withSMSimiCallable:self];
   if (isInitializer_) {
     return [((SMEnvironment *) nil_chk(block_->closure_)) getAtWithInt:0 withNSString:SMConstants_SELF];
   }

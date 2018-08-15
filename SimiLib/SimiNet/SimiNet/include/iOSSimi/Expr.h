@@ -188,6 +188,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
   id<JavaUtilList> params_;
   id<JavaUtilList> statements_;
   jboolean canReturn_;
+  jboolean isNative_;
 }
 
 #pragma mark Public
@@ -212,8 +213,6 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
 
 - (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
              withNSObjectArray:(IOSObjectArray *)params;
-
-- (jboolean)isNative;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst
@@ -884,6 +883,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Super)
 @interface SMExpr_Self : SMExpr {
  @public
   SMToken *keyword_;
+  SMToken *specifier_;
 }
 
 #pragma mark Public
@@ -893,7 +893,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Super)
 
 #pragma mark Package-Private
 
-- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword;
+- (instancetype __nonnull)initWithSMToken:(SMToken *)keyword
+                              withSMToken:(SMToken *)specifier;
 
 - (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
              withNSObjectArray:(IOSObjectArray *)params;
@@ -907,12 +908,13 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Super)
 J2OBJC_EMPTY_STATIC_INIT(SMExpr_Self)
 
 J2OBJC_FIELD_SETTER(SMExpr_Self, keyword_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Self, specifier_, SMToken *)
 
-FOUNDATION_EXPORT void SMExpr_Self_initWithSMToken_(SMExpr_Self *self, SMToken *keyword);
+FOUNDATION_EXPORT void SMExpr_Self_initWithSMToken_withSMToken_(SMExpr_Self *self, SMToken *keyword, SMToken *specifier);
 
-FOUNDATION_EXPORT SMExpr_Self *new_SMExpr_Self_initWithSMToken_(SMToken *keyword) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Self *new_SMExpr_Self_initWithSMToken_withSMToken_(SMToken *keyword, SMToken *specifier) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMExpr_Self *create_SMExpr_Self_initWithSMToken_(SMToken *keyword);
+FOUNDATION_EXPORT SMExpr_Self *create_SMExpr_Self_initWithSMToken_withSMToken_(SMToken *keyword, SMToken *specifier);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Self)
 

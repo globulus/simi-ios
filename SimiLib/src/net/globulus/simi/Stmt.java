@@ -1,8 +1,5 @@
 package net.globulus.simi;
 
-import net.globulus.simi.Codifiable;
-import net.globulus.simi.SimiStatement;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +18,7 @@ abstract class Stmt implements SimiStatement, Codifiable {
     R visitFunctionStmt(Function stmt);
     R visitForStmt(For stmt);
     R visitIfStmt(If stmt);
+    R visitImportStmt(Import stmt);
     R visitPrintStmt(Print stmt);
     R visitRescueStmt(Rescue stmt);
     R visitReturnStmt(Return stmt);
@@ -73,17 +71,20 @@ abstract class Stmt implements SimiStatement, Codifiable {
     final Token opener;
     final Token name;
     final List<Expr> superclasses;
+    final List<Expr> mixins;
     final List<Expr.Assign> constants;
     final List<Stmt.Class> innerClasses;
     final List<Stmt.Function> methods;
     final List<Stmt.Annotation> annotations;
 
     Class(Token opener, Token name, List<Expr> superclasses,
-          List<Expr.Assign> constants, List<Stmt.Class> innerClasses,
-          List<Stmt.Function> methods, List<Stmt.Annotation> annotations) {
+          List<Expr> mixins, List<Expr.Assign> constants,
+          List<Stmt.Class> innerClasses, List<Stmt.Function> methods,
+          List<Stmt.Annotation> annotations) {
       this.opener = opener;
       this.name = name;
       this.superclasses = superclasses;
+      this.mixins = mixins;
       this.constants = constants;
       this.innerClasses = innerClasses;
       this.methods = methods;
@@ -111,6 +112,10 @@ abstract class Stmt implements SimiStatement, Codifiable {
               )
               .append(TokenType.COLON.toCode())
               .append(TokenType.NEWLINE.toCode())
+              .append(mixins.stream()
+                      .map(m -> TokenType.IMPORT.toCode(indentationLevel + 1, false) + " " + m.toCode(0, false))
+                      .collect(Collectors.joining(TokenType.NEWLINE.toCode()))
+              )
               .append(constants.stream().map(c -> c.toCode(indentationLevel + 1, false)).collect(Collectors.joining(TokenType.NEWLINE.toCode())))
               .append(TokenType.NEWLINE.toCode())
               .append(methods.stream().map(m -> m.toCode(indentationLevel + 1, false)).collect(Collectors.joining()))
@@ -291,6 +296,26 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return keyword.type.toCode() + " " + block.toCode(indentationLevel, true);
+    }
+  }
+
+  static class Import extends Stmt {
+
+    final Token keyword;
+    final Expr value;
+
+    Import(Token keyword, Expr value) {
+      this.keyword = keyword;
+      this.value = value;
+    }
+
+    <R> R accept(Visitor<R> visitor, Object... args) {
+      return visitor.visitImportStmt(this);
+    }
+
+    @Override
+    public String toCode(int indentationLevel, boolean ignoreFirst) {
+      return keyword.type.toCode(indentationLevel, false) + " " + value.toCode(0, false) + TokenType.NEWLINE.toCode();
     }
   }
 

@@ -93,9 +93,15 @@ J2OBJC_TYPE_LITERAL_HEADER(SMActiveSimi)
 #if !defined (SMActiveSimi_ImportResolver_) && (INCLUDE_ALL_NetGlobulusSimiActiveSimi || defined(INCLUDE_SMActiveSimi_ImportResolver))
 #define SMActiveSimi_ImportResolver_
 
+@class JavaNetURL;
+
 @protocol SMActiveSimi_ImportResolver < JavaObject >
 
 - (NSString *)readFileWithNSString:(NSString *)fileName;
+
+- (JavaNetURL *)resolveWithNSString:(NSString *)nativeFileName;
+
+- (jboolean)useApiClassNameWithNSString:(NSString *)nativeFileName;
 
 @end
 

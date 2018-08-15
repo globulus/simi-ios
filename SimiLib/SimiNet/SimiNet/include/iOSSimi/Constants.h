@@ -33,6 +33,8 @@
 
 + (NSString *)SELF;
 
++ (NSString *)SELF_DEF;
+
 + (NSString *)SUPER;
 
 + (NSString *)KEY;
@@ -55,6 +57,8 @@
 
 + (NSString *)CLASS_OBJECT;
 
++ (NSString *)CLASS_FUNCTION;
+
 + (NSString *)CLASS_STRING;
 
 + (NSString *)CLASS_NUMBER;
@@ -67,11 +71,13 @@
 
 + (NSString *)CLASS_GLOBALS;
 
-+ (NSString *)EXCEPTION_NUMBER_FORMAT;
-
 + (NSString *)PACKAGE_SIMI_API;
 
 + (NSString *)API_CLASS_NAME;
+
++ (NSString *)EXCEPTION_NUMBER_FORMAT;
+
++ (NSString *)EXCEPTION_TYPE_MISMATCH;
 
 @end
 
@@ -101,6 +107,11 @@ inline NSString *SMConstants_get_SELF(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_SELF;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, SELF, NSString *)
+
+inline NSString *SMConstants_get_SELF_DEF(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_SELF_DEF;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, SELF_DEF, NSString *)
 
 inline NSString *SMConstants_get_SUPER(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
@@ -157,6 +168,11 @@ inline NSString *SMConstants_get_CLASS_OBJECT(void);
 FOUNDATION_EXPORT NSString *SMConstants_CLASS_OBJECT;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, CLASS_OBJECT, NSString *)
 
+inline NSString *SMConstants_get_CLASS_FUNCTION(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_CLASS_FUNCTION;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, CLASS_FUNCTION, NSString *)
+
 inline NSString *SMConstants_get_CLASS_STRING(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_CLASS_STRING;
@@ -187,11 +203,6 @@ inline NSString *SMConstants_get_CLASS_GLOBALS(void);
 FOUNDATION_EXPORT NSString *SMConstants_CLASS_GLOBALS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, CLASS_GLOBALS, NSString *)
 
-inline NSString *SMConstants_get_EXCEPTION_NUMBER_FORMAT(void);
-/*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_NUMBER_FORMAT;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_NUMBER_FORMAT, NSString *)
-
 inline NSString *SMConstants_get_PACKAGE_SIMI_API(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_PACKAGE_SIMI_API;
@@ -201,6 +212,16 @@ inline NSString *SMConstants_get_API_CLASS_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_API_CLASS_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, API_CLASS_NAME, NSString *)
+
+inline NSString *SMConstants_get_EXCEPTION_NUMBER_FORMAT(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_NUMBER_FORMAT;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_NUMBER_FORMAT, NSString *)
+
+inline NSString *SMConstants_get_EXCEPTION_TYPE_MISMATCH(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_TYPE_MISMATCH;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_TYPE_MISMATCH, NSString *)
 
 J2OBJC_TYPE_LITERAL_HEADER(SMConstants)
 

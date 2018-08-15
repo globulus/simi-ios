@@ -1,0 +1,21 @@
+import "json.simi"
+
+class RedditStats:
+    def getStats(json):
+        obj = Json.parse(json)
+        rescue ex:
+            if ex is MalformedJsonException: return
+        end
+print obj.data.children
+        children = obj.data.children.map(def c: c.data)
+        stats = $[]
+print children
+        for child in children:
+            author = child.author
+            stats.(author) = (stats.(author) ?? 0) + child.num_comments
+        end
+        sorted = stats.sorted(def (a, b): -(a.value <> b.value))
+        print sorted
+        return sorted
+    end
+end

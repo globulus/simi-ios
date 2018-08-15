@@ -23,6 +23,14 @@
   return SMToken_self__();
 }
 
++ (SMToken *)superToken {
+  return SMToken_superToken();
+}
+
++ (SMToken *)selfDef {
+  return SMToken_selfDef();
+}
+
 + (SMToken *)nativeCallWithNSString:(NSString *)name {
   return SMToken_nativeCallWithNSString_(name);
 }
@@ -39,6 +47,8 @@
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
     { NULL, "LSMToken;", 0x8, 1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0x8, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMToken;", 0x8, 2, 3, -1, -1, -1, -1 },
     { NULL, "LSMToken;", 0x8, 4, 3, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, -1, -1, -1, -1, -1 },
@@ -48,9 +58,11 @@
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMTokenType:withNSString:withSMSimiValue:withInt:);
   methods[1].selector = @selector(self__);
-  methods[2].selector = @selector(nativeCallWithNSString:);
-  methods[3].selector = @selector(namedWithNSString:);
-  methods[4].selector = @selector(description);
+  methods[2].selector = @selector(superToken);
+  methods[3].selector = @selector(selfDef);
+  methods[4].selector = @selector(nativeCallWithNSString:);
+  methods[5].selector = @selector(namedWithNSString:);
+  methods[6].selector = @selector(description);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "type_", "LSMTokenType;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -59,7 +71,7 @@
     { "line_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMTokenType;LNSString;LSMSimiValue;I", "self", "nativeCall", "LNSString;", "named", "toString" };
-  static const J2ObjcClassInfo _SMToken = { "Token", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 5, 4, -1, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMToken = { "Token", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 7, 4, -1, -1, -1, -1, -1 };
   return &_SMToken;
 }
 
@@ -86,9 +98,19 @@ SMToken *SMToken_self__() {
   return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, SELF), SMConstants_SELF, nil, 0);
 }
 
+SMToken *SMToken_superToken() {
+  SMToken_initialize();
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, SUPER), SMConstants_SUPER, nil, 0);
+}
+
+SMToken *SMToken_selfDef() {
+  SMToken_initialize();
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, DEF), SMConstants_SELF_DEF, nil, 0);
+}
+
 SMToken *SMToken_nativeCallWithNSString_(NSString *name) {
   SMToken_initialize();
-  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, NATIVE), name, nil, 0);
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, DEF), name, nil, 0);
 }
 
 SMToken *SMToken_namedWithNSString_(NSString *name) {

@@ -65,6 +65,7 @@
 @class SMStmt_For;
 @class SMStmt_Function;
 @class SMStmt_If;
+@class SMStmt_Import;
 @class SMStmt_Print;
 @class SMStmt_Rescue;
 @class SMStmt_Return;
@@ -149,6 +150,8 @@
 
 - (id<SMSimiProperty>)visitIfStmtWithSMStmt_If:(SMStmt_If *)stmt;
 
+- (id<SMSimiProperty>)visitImportStmtWithSMStmt_Import:(SMStmt_Import *)stmt;
+
 - (id<SMSimiProperty>)visitIvicExprWithSMExpr_Ivic:(SMExpr_Ivic *)expr;
 
 - (SMSimiValue *)visitLiteralExprWithSMExpr_Literal:(SMExpr_Literal *)expr;
@@ -182,6 +185,9 @@
 - (instancetype __nonnull)initWithJavaUtilCollection:(id<JavaUtilCollection>)nativeModulesManagers;
 
 - (id<SMSimiProperty>)interpretWithJavaUtilList:(id<JavaUtilList>)statements;
+
+- (id<SMSimiProperty>)interpretWithJavaUtilList:(id<JavaUtilList>)statements
+                                    withBoolean:(jboolean)addClassesToRootEnv;
 
 + (jboolean)isTruthyWithSMSimiProperty:(id<SMSimiProperty>)object;
 

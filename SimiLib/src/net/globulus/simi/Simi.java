@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 
 public class Simi {
 
@@ -104,10 +104,10 @@ public class Simi {
       if (imports.contains(location)) {
         continue;
       }
-      // Path path = ""; Paths.get(location);
-      String pathString = ""; // path.toString().toLowerCase();
+      // Path path = Paths.get(location);
+      String pathString = "";
       if (pathString.endsWith(".jar")) {
-          // nativeModulesManager.loadJar(path.toUri().toURL());
+          nativeModulesManager.load(pathString, true);
       } else if (pathString.endsWith(".simi")) {
           List<Token> tokens = new Scanner(readFile(location, false)).scanTokens(false);
           result.addAll(scanImports(tokens, imports, nativeModulesManager));

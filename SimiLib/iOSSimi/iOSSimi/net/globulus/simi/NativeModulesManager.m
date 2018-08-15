@@ -20,10 +20,10 @@
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(load__WithNSString:);
+  methods[0].selector = @selector(load__WithNSString:withBoolean:);
   methods[1].selector = @selector(callWithNSString:withNSString:withSMSimiObject:withSMInterpreter:withJavaUtilList:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "load", "LNSString;", "call", "LNSString;LNSString;LSMSimiObject;LSMInterpreter;LJavaUtilList;", "LJavaLangIllegalArgumentException;", "(Ljava/lang/String;Ljava/lang/String;LSimiObject;LInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;" };
+  static const void *ptrTable[] = { "load", "LNSString;Z", "call", "LNSString;LNSString;LSMSimiObject;LSMInterpreter;LJavaUtilList;", "LJavaLangIllegalArgumentException;", "(Ljava/lang/String;Ljava/lang/String;LSimiObject;LInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;" };
   static const J2ObjcClassInfo _SMNativeModulesManager = { "NativeModulesManager", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 2, 0, -1, -1, -1, -1, -1 };
   return &_SMNativeModulesManager;
 }

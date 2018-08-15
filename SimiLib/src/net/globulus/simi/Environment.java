@@ -1,9 +1,5 @@
 package net.globulus.simi;
 
-import net.globulus.simi.SimiEnvironment;
-import net.globulus.simi.SimiProperty;
-import net.globulus.simi.SimiValue;
-
 import java.util.HashMap;
 import java.util.Map;
 

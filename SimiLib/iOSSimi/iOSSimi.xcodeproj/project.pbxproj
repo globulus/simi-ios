@@ -129,6 +129,8 @@
 		6A59D69F20E7D766008FB2AB /* Simi.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A59D62B20E7D1CA008FB2AB /* Simi.h */; };
 		6A731F1920E80C7600F11E94 /* JavaNativeModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A731F1820E80C7600F11E94 /* JavaNativeModulesManager.m */; };
 		6A731F1A20E80CB600F11E94 /* JavaNativeModulesManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */; };
+		6AB171FA21246AD500F32968 /* JavaNativeModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB171F921246AD500F32968 /* JavaNativeModulesManager.m */; };
+		6AB171FD21246AEF00F32968 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB171FB21246AEE00F32968 /* Native.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -322,6 +324,9 @@
 		6A59D62F20E7D1CA008FB2AB /* Return.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Return.m; sourceTree = "<group>"; };
 		6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JavaNativeModulesManager.h; sourceTree = "<group>"; };
 		6A731F1820E80C7600F11E94 /* JavaNativeModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JavaNativeModulesManager.m; sourceTree = "<group>"; };
+		6AB171F921246AD500F32968 /* JavaNativeModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JavaNativeModulesManager.m; sourceTree = "<group>"; };
+		6AB171FB21246AEE00F32968 /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Native.m; sourceTree = "<group>"; };
+		6AB171FC21246AEE00F32968 /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +387,7 @@
 		6A59D5CB20E7D1CA008FB2AB /* simi */ = {
 			isa = PBXGroup;
 			children = (
+				6AB171F921246AD500F32968 /* JavaNativeModulesManager.m */,
 				6A0A04C420FB44DD001B720E /* CocoaModulesManager.h */,
 				6A0A04C520FB44DE001B720E /* CocoaModulesManager.m */,
 				6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */,
@@ -455,6 +461,8 @@
 				6A59D60C20E7D1CA008FB2AB /* NativeModulesManager.h */,
 				6A59D60D20E7D1CA008FB2AB /* SimiMethod.h */,
 				6A59D60E20E7D1CA008FB2AB /* SimiJavaClass.h */,
+				6AB171FC21246AEE00F32968 /* Native.h */,
+				6AB171FB21246AEE00F32968 /* Native.m */,
 				6A59D60F20E7D1CA008FB2AB /* SimiObject.m */,
 				6A59D61020E7D1CA008FB2AB /* SimiJavaMethod.h */,
 				6A59D61120E7D1CA008FB2AB /* Token.h */,
@@ -579,6 +587,7 @@
 				6A59D64220E7D1CA008FB2AB /* OverloadableFunction.m in Sources */,
 				6A59D66220E7D1CA008FB2AB /* SimiProperty.m in Sources */,
 				6A59D66320E7D1CA008FB2AB /* Return.m in Sources */,
+				6AB171FA21246AD500F32968 /* JavaNativeModulesManager.m in Sources */,
 				6A59D63120E7D1CA008FB2AB /* ConversionUtil.m in Sources */,
 				6A59D64320E7D1CA008FB2AB /* SimiCallable.m in Sources */,
 				6A59D64A20E7D1CA008FB2AB /* SimiJavaMethod.m in Sources */,
@@ -599,6 +608,7 @@
 				6A59D63720E7D1CA008FB2AB /* SimiJavaClass.m in Sources */,
 				6A59D63020E7D1CA008FB2AB /* IOSObjectArray+Simi.m in Sources */,
 				6A59D66020E7D1CA008FB2AB /* RuntimeError.m in Sources */,
+				6AB171FD21246AEF00F32968 /* Native.m in Sources */,
 				6A59D63220E7D1CA008FB2AB /* Scanner.m in Sources */,
 				6A59D64120E7D1CA008FB2AB /* SimiNativeObject.m in Sources */,
 				6A59D65D20E7D1CA008FB2AB /* Expr.m in Sources */,

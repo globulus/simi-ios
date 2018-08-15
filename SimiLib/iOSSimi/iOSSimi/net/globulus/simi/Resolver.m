@@ -265,6 +265,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
   return nil;
 }
 
+- (JavaLangVoid *)visitImportStmtWithSMStmt_Import:(SMStmt_Import *)stmt {
+  return nil;
+}
+
 - (JavaLangVoid *)visitPrintStmtWithSMStmt_Print:(SMStmt_Print *)stmt {
   SMResolver_resolveWithSMExpr_withNSObjectArray_(self, ((SMStmt_Print *) nil_chk(stmt))->expression_, [IOSObjectArray newArrayWithLength:0 type:NSObject_class_()]);
   return nil;
@@ -471,15 +475,16 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
     { NULL, "LJavaLangVoid;", 0x1, 60, 61, -1, -1, -1, -1 },
     { NULL, "LJavaLangVoid;", 0x1, 62, 63, -1, -1, -1, -1 },
     { NULL, "LJavaLangVoid;", 0x1, 64, 65, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 1, 66, -1, -1, -1, -1 },
-    { NULL, "V", 0x82, 1, 67, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 68, 69, -1, -1, -1, -1 },
+    { NULL, "LJavaLangVoid;", 0x1, 66, 67, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 1, 68, -1, -1, -1, -1 },
+    { NULL, "V", 0x82, 1, 69, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 70, 71, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 72, 73, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 72, 73, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 74, 75, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 74, 75, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 76, 77, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 78, 79, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -495,47 +500,48 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
   methods[8].selector = @selector(visitFunctionStmtWithSMStmt_Function:);
   methods[9].selector = @selector(visitElsifStmtWithSMStmt_Elsif:);
   methods[10].selector = @selector(visitIfStmtWithSMStmt_If:);
-  methods[11].selector = @selector(visitPrintStmtWithSMStmt_Print:);
-  methods[12].selector = @selector(visitRescueStmtWithSMStmt_Rescue:);
-  methods[13].selector = @selector(visitReturnStmtWithSMStmt_Return:);
-  methods[14].selector = @selector(visitWhileStmtWithSMStmt_While:);
-  methods[15].selector = @selector(visitYieldStmtWithSMStmt_Yield:);
-  methods[16].selector = @selector(visitForStmtWithSMStmt_For:);
-  methods[17].selector = @selector(visitAnnotationsExprWithSMExpr_Annotations:);
-  methods[18].selector = @selector(visitAssignExprWithSMExpr_Assign:);
-  methods[19].selector = @selector(visitBinaryExprWithSMExpr_Binary:);
-  methods[20].selector = @selector(visitCallExprWithSMExpr_Call:);
-  methods[21].selector = @selector(visitGetExprWithSMExpr_Get:);
-  methods[22].selector = @selector(visitGroupingExprWithSMExpr_Grouping:);
-  methods[23].selector = @selector(visitGuExprWithSMExpr_Gu:);
-  methods[24].selector = @selector(visitIvicExprWithSMExpr_Ivic:);
-  methods[25].selector = @selector(visitLiteralExprWithSMExpr_Literal:);
-  methods[26].selector = @selector(visitLogicalExprWithSMExpr_Logical:);
-  methods[27].selector = @selector(visitSetExprWithSMExpr_Set:);
-  methods[28].selector = @selector(visitSuperExprWithSMExpr_Super:);
-  methods[29].selector = @selector(visitSelfExprWithSMExpr_Self:);
-  methods[30].selector = @selector(visitUnaryExprWithSMExpr_Unary:);
-  methods[31].selector = @selector(visitVariableExprWithSMExpr_Variable:);
-  methods[32].selector = @selector(visitObjectLiteralExprWithSMExpr_ObjectLiteral:);
-  methods[33].selector = @selector(resolveWithSMStmt:);
-  methods[34].selector = @selector(resolveWithSMExpr:withNSObjectArray:);
-  methods[35].selector = @selector(resolveFunctionBlockWithSMExpr_Block:);
-  methods[36].selector = @selector(resolveFunctionWithSMStmt_Function:withSMResolver_FunctionType:);
-  methods[37].selector = @selector(beginScope);
-  methods[38].selector = @selector(endScope);
-  methods[39].selector = @selector(declareWithSMToken:withBoolean:);
-  methods[40].selector = @selector(defineWithSMToken:);
-  methods[41].selector = @selector(resolveLocalWithSMExpr:withSMToken:);
+  methods[11].selector = @selector(visitImportStmtWithSMStmt_Import:);
+  methods[12].selector = @selector(visitPrintStmtWithSMStmt_Print:);
+  methods[13].selector = @selector(visitRescueStmtWithSMStmt_Rescue:);
+  methods[14].selector = @selector(visitReturnStmtWithSMStmt_Return:);
+  methods[15].selector = @selector(visitWhileStmtWithSMStmt_While:);
+  methods[16].selector = @selector(visitYieldStmtWithSMStmt_Yield:);
+  methods[17].selector = @selector(visitForStmtWithSMStmt_For:);
+  methods[18].selector = @selector(visitAnnotationsExprWithSMExpr_Annotations:);
+  methods[19].selector = @selector(visitAssignExprWithSMExpr_Assign:);
+  methods[20].selector = @selector(visitBinaryExprWithSMExpr_Binary:);
+  methods[21].selector = @selector(visitCallExprWithSMExpr_Call:);
+  methods[22].selector = @selector(visitGetExprWithSMExpr_Get:);
+  methods[23].selector = @selector(visitGroupingExprWithSMExpr_Grouping:);
+  methods[24].selector = @selector(visitGuExprWithSMExpr_Gu:);
+  methods[25].selector = @selector(visitIvicExprWithSMExpr_Ivic:);
+  methods[26].selector = @selector(visitLiteralExprWithSMExpr_Literal:);
+  methods[27].selector = @selector(visitLogicalExprWithSMExpr_Logical:);
+  methods[28].selector = @selector(visitSetExprWithSMExpr_Set:);
+  methods[29].selector = @selector(visitSuperExprWithSMExpr_Super:);
+  methods[30].selector = @selector(visitSelfExprWithSMExpr_Self:);
+  methods[31].selector = @selector(visitUnaryExprWithSMExpr_Unary:);
+  methods[32].selector = @selector(visitVariableExprWithSMExpr_Variable:);
+  methods[33].selector = @selector(visitObjectLiteralExprWithSMExpr_ObjectLiteral:);
+  methods[34].selector = @selector(resolveWithSMStmt:);
+  methods[35].selector = @selector(resolveWithSMExpr:withNSObjectArray:);
+  methods[36].selector = @selector(resolveFunctionBlockWithSMExpr_Block:);
+  methods[37].selector = @selector(resolveFunctionWithSMStmt_Function:withSMResolver_FunctionType:);
+  methods[38].selector = @selector(beginScope);
+  methods[39].selector = @selector(endScope);
+  methods[40].selector = @selector(declareWithSMToken:withBoolean:);
+  methods[41].selector = @selector(defineWithSMToken:);
+  methods[42].selector = @selector(resolveLocalWithSMExpr:withSMToken:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "interpreter_", "LSMInterpreter;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
-    { "globalScope_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x0, -1, -1, 78, -1 },
-    { "scopes_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 79, -1 },
+    { "globalScope_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x0, -1, -1, 80, -1 },
+    { "scopes_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 81, -1 },
     { "currentFunction_", "LSMResolver_FunctionType;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "currentClass_", "LSMResolver_ClassType;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMInterpreter;", "resolve", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)V", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitWhileStmt", "LSMStmt_While;", "visitYieldStmt", "LSMStmt_Yield;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "visitGetExpr", "LSMExpr_Get;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "LSMStmt;", "LSMExpr;[LNSObject;", "resolveFunctionBlock", "LSMExpr_Block;", "resolveFunction", "LSMStmt_Function;LSMResolver_FunctionType;", "declare", "LSMToken;Z", "define", "LSMToken;", "resolveLocal", "LSMExpr;LSMToken;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Stack<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Boolean;>;>;", "LSMResolver_FunctionType;LSMResolver_ClassType;", "Ljava/lang/Object;LExpr$Visitor<Ljava/lang/Void;>;LStmt$Visitor<Ljava/lang/Void;>;" };
-  static const J2ObjcClassInfo _SMResolver = { "Resolver", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 42, 5, -1, 80, -1, 81, -1 };
+  static const void *ptrTable[] = { "LSMInterpreter;", "resolve", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)V", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitImportStmt", "LSMStmt_Import;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitWhileStmt", "LSMStmt_While;", "visitYieldStmt", "LSMStmt_Yield;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "visitGetExpr", "LSMExpr_Get;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "LSMStmt;", "LSMExpr;[LNSObject;", "resolveFunctionBlock", "LSMExpr_Block;", "resolveFunction", "LSMStmt_Function;LSMResolver_FunctionType;", "declare", "LSMToken;Z", "define", "LSMToken;", "resolveLocal", "LSMExpr;LSMToken;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Stack<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Boolean;>;>;", "LSMResolver_FunctionType;LSMResolver_ClassType;", "Ljava/lang/Object;LExpr$Visitor<Ljava/lang/Void;>;LStmt$Visitor<Ljava/lang/Void;>;" };
+  static const J2ObjcClassInfo _SMResolver = { "Resolver", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 43, 5, -1, 82, -1, 83, -1 };
   return &_SMResolver;
 }
 
@@ -568,9 +574,16 @@ void SMResolver_resolveWithSMExpr_withNSObjectArray_(SMResolver *self, SMExpr *e
 
 void SMResolver_resolveFunctionBlockWithSMExpr_Block_(SMResolver *self, SMExpr_Block *block) {
   SMResolver_beginScope(self);
-  for (SMToken * __strong param in nil_chk(((SMExpr_Block *) nil_chk(block))->params_)) {
-    SMResolver_declareWithSMToken_withBoolean_(self, param, false);
-    SMResolver_defineWithSMToken_(self, param);
+  for (SMExpr * __strong param in nil_chk(((SMExpr_Block *) nil_chk(block))->params_)) {
+    SMToken *name;
+    if ([param isKindOfClass:[SMExpr_Variable class]]) {
+      name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(param, [SMExpr_Variable class]))))->name_;
+    }
+    else {
+      name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(((SMExpr_Binary *) nil_chk(((SMExpr_Binary *) cast_chk(param, [SMExpr_Binary class]))))->left_, [SMExpr_Variable class]))))->name_;
+    }
+    SMResolver_declareWithSMToken_withBoolean_(self, name, false);
+    SMResolver_defineWithSMToken_(self, name);
   }
   SMResolver_resolveWithSMExpr_withNSObjectArray_(self, block, [IOSObjectArray newArrayWithObjects:(id[]){ JavaLangBoolean_valueOfWithBoolean_(false) } count:1 type:NSObject_class_()]);
   SMResolver_endScope(self);

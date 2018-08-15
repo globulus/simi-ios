@@ -36,6 +36,7 @@
 #include "java/util/stream/Collectors.h"
 #include "java/util/stream/Stream.h"
 #include "BaseClassesNativeImpl.h"
+#include "BlockImpl.h"
 #include "BlockInterpreter.h"
 #include "Constants.h"
 #include "Environment.h"
@@ -53,6 +54,7 @@
 #include "SimiObject.h"
 #include "SimiObjectImpl.h"
 #include "SimiProperty.h"
+#include "SimiPropertyImpl.h"
 #include "SimiValue.h"
 #include "Stmt.h"
 #include "Token.h"
@@ -179,6 +181,24 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_3 *new_SMBaseClassesNativ
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_3 *create_SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
+@interface SMBaseClassesNativeImpl_3_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(NSString *)k;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_3_$Lambda$1)
+
+inline SMBaseClassesNativeImpl_3_$Lambda$1 *SMBaseClassesNativeImpl_3_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_3_$Lambda$1 *SMBaseClassesNativeImpl_3_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_3_$Lambda$1, instance, SMBaseClassesNativeImpl_3_$Lambda$1 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_3_$Lambda$1_init(SMBaseClassesNativeImpl_3_$Lambda$1 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_3_$Lambda$1 *new_SMBaseClassesNativeImpl_3_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_3_$Lambda$1 *create_SMBaseClassesNativeImpl_3_$Lambda$1_init(void);
+
 @interface SMBaseClassesNativeImpl_4 : NSObject < SMSimiCallable > {
  @public
   SMBaseClassesNativeImpl *this$0_;
@@ -225,9 +245,12 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_5 *new_SMBaseClassesNativ
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_5 *create_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface SMBaseClassesNativeImpl_6 : NSObject < SMSimiCallable >
+@interface SMBaseClassesNativeImpl_6 : NSObject < SMSimiCallable > {
+ @public
+  SMBaseClassesNativeImpl *this$0_;
+}
 
-- (instancetype __nonnull)init;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
@@ -239,11 +262,11 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_5 *create_SMBaseClassesNa
 
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_6)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_6_init(SMBaseClassesNativeImpl_6 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_6 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_6 *new_SMBaseClassesNativeImpl_6_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_6 *new_SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_6 *create_SMBaseClassesNativeImpl_6_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_6 *create_SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
 @interface SMBaseClassesNativeImpl_7 : NSObject < SMSimiCallable >
 
@@ -325,12 +348,9 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_10 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_10 *create_SMBaseClassesNativeImpl_10_init(void);
 
-@interface SMBaseClassesNativeImpl_11 : NSObject < SMSimiCallable > {
- @public
-  SMBaseClassesNativeImpl *this$0_;
-}
+@interface SMBaseClassesNativeImpl_11 : NSObject < SMSimiCallable >
 
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
@@ -342,11 +362,11 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_10 *create_SMBaseClassesN
 
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_11)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_11 *self, SMBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_11_init(SMBaseClassesNativeImpl_11 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_11 *new_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_11 *new_SMBaseClassesNativeImpl_11_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_init(void);
 
 @interface SMBaseClassesNativeImpl_12 : NSObject < SMSimiCallable > {
  @public
@@ -394,9 +414,12 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_13 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_13 *create_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface SMBaseClassesNativeImpl_14 : NSObject < SMSimiCallable >
+@interface SMBaseClassesNativeImpl_14 : NSObject < SMSimiCallable > {
+ @public
+  SMBaseClassesNativeImpl *this$0_;
+}
 
-- (instancetype __nonnull)init;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
@@ -408,11 +431,11 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_13 *create_SMBaseClassesN
 
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_14)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_14_init(SMBaseClassesNativeImpl_14 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_14 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_14 *new_SMBaseClassesNativeImpl_14_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_14 *new_SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_14 *create_SMBaseClassesNativeImpl_14_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_14 *create_SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
 @interface SMBaseClassesNativeImpl_15 : NSObject < SMSimiCallable >
 
@@ -514,29 +537,6 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_19 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_19 *create_SMBaseClassesNativeImpl_19_init(void);
 
-@interface SMBaseClassesNativeImpl_19_1 : NSObject < SMSimiCallable > {
- @public
-  id<JavaUtilIterator> val$iterator_;
-}
-
-- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_19_1)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_19_1 *self, id<JavaUtilIterator> capture$0);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_19_1 *new_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_19_1 *create_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0);
-
 @interface SMBaseClassesNativeImpl_20 : NSObject < SMSimiCallable >
 
 - (instancetype __nonnull)init;
@@ -556,6 +556,29 @@ __attribute__((unused)) static void SMBaseClassesNativeImpl_20_init(SMBaseClasse
 __attribute__((unused)) static SMBaseClassesNativeImpl_20 *new_SMBaseClassesNativeImpl_20_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_20 *create_SMBaseClassesNativeImpl_20_init(void);
+
+@interface SMBaseClassesNativeImpl_20_1 : NSObject < SMSimiCallable > {
+ @public
+  id<JavaUtilIterator> val$iterator_;
+}
+
+- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_20_1)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_20_1 *self, id<JavaUtilIterator> capture$0);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_20_1 *new_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_20_1 *create_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0);
 
 @interface SMBaseClassesNativeImpl_21 : NSObject < SMSimiCallable >
 
@@ -657,24 +680,6 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_25 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_25 *create_SMBaseClassesNativeImpl_25_init(void);
 
-@interface SMBaseClassesNativeImpl_25_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(SMSimiValue *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_25_$Lambda$1)
-
-inline SMBaseClassesNativeImpl_25_$Lambda$1 *SMBaseClassesNativeImpl_25_$Lambda$1_get_instance(void);
-static SMBaseClassesNativeImpl_25_$Lambda$1 *SMBaseClassesNativeImpl_25_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_25_$Lambda$1, instance, SMBaseClassesNativeImpl_25_$Lambda$1 *)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_25_$Lambda$1_init(SMBaseClassesNativeImpl_25_$Lambda$1 *self);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_25_$Lambda$1 *new_SMBaseClassesNativeImpl_25_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_25_$Lambda$1 *create_SMBaseClassesNativeImpl_25_$Lambda$1_init(void);
-
 @interface SMBaseClassesNativeImpl_26 : NSObject < SMSimiCallable >
 
 - (instancetype __nonnull)init;
@@ -695,7 +700,45 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_26 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_26 *create_SMBaseClassesNativeImpl_26_init(void);
 
-@interface SMBaseClassesNativeImpl_26_1 : NSObject < SMSimiCallable > {
+@interface SMBaseClassesNativeImpl_26_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(SMSimiValue *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_$Lambda$1)
+
+inline SMBaseClassesNativeImpl_26_$Lambda$1 *SMBaseClassesNativeImpl_26_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_26_$Lambda$1 *SMBaseClassesNativeImpl_26_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_$Lambda$1, instance, SMBaseClassesNativeImpl_26_$Lambda$1 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_26_$Lambda$1_init(SMBaseClassesNativeImpl_26_$Lambda$1 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *new_SMBaseClassesNativeImpl_26_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBaseClassesNativeImpl_26_$Lambda$1_init(void);
+
+@interface SMBaseClassesNativeImpl_27 : NSObject < SMSimiCallable >
+
+- (instancetype __nonnull)init;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_init(SMBaseClassesNativeImpl_27 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_27 *new_SMBaseClassesNativeImpl_27_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_27 *create_SMBaseClassesNativeImpl_27_init(void);
+
+@interface SMBaseClassesNativeImpl_27_1 : NSObject < SMSimiCallable > {
  @public
   JavaUtilLinkedHashMap *val$fields_;
   NSString *val$param_;
@@ -716,15 +759,15 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_26 *create_SMBaseClassesN
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_26_1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27_1)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_26_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_27_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_1 *new_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_1 *new_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_1 *create_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_1 *create_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
 
-@interface SMBaseClassesNativeImpl_26_2 : NSObject < SMSimiCallable > {
+@interface SMBaseClassesNativeImpl_27_2 : NSObject < SMSimiCallable > {
  @public
   id<JavaUtilSet> val$params_;
   id<JavaUtilSet> val$constructors_;
@@ -747,15 +790,15 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_26_1 *create_SMBaseClasse
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_26_2)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27_2)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_26_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_27_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_2 *new_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_2 *new_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_2 *create_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_2 *create_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
 
-@interface SMBaseClassesNativeImpl_26_2_$Lambda$1 : NSObject < JavaUtilFunctionToIntFunction > {
+@interface SMBaseClassesNativeImpl_27_2_$Lambda$1 : NSObject < JavaUtilFunctionToIntFunction > {
  @public
   jint val$size_;
 }
@@ -764,108 +807,85 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_26_2 *create_SMBaseClasse
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_26_2_$Lambda$1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27_2_$Lambda$1)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_26_2_$Lambda$1 *self, jint capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_27_2_$Lambda$1 *self, jint capture$0);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_2_$Lambda$1 *new_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_2_$Lambda$1 *new_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_2_$Lambda$1 *create_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_2_$Lambda$1 *create_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(jint capture$0);
 
-@interface SMBaseClassesNativeImpl_26_2_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_27_2_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(SMToken *)t;
+- (id)applyWithId:(SMExpr *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_2_$Lambda$2)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_2_$Lambda$2)
 
-inline SMBaseClassesNativeImpl_26_2_$Lambda$2 *SMBaseClassesNativeImpl_26_2_$Lambda$2_get_instance(void);
-static SMBaseClassesNativeImpl_26_2_$Lambda$2 *SMBaseClassesNativeImpl_26_2_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_2_$Lambda$2, instance, SMBaseClassesNativeImpl_26_2_$Lambda$2 *)
+inline SMBaseClassesNativeImpl_27_2_$Lambda$2 *SMBaseClassesNativeImpl_27_2_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_27_2_$Lambda$2 *SMBaseClassesNativeImpl_27_2_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_2_$Lambda$2, instance, SMBaseClassesNativeImpl_27_2_$Lambda$2 *)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_26_2_$Lambda$2_init(SMBaseClassesNativeImpl_26_2_$Lambda$2 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_2_$Lambda$2_init(SMBaseClassesNativeImpl_27_2_$Lambda$2 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_2_$Lambda$2 *new_SMBaseClassesNativeImpl_26_2_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_2_$Lambda$2 *new_SMBaseClassesNativeImpl_27_2_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_2_$Lambda$2 *create_SMBaseClassesNativeImpl_26_2_$Lambda$2_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_2_$Lambda$2 *create_SMBaseClassesNativeImpl_27_2_$Lambda$2_init(void);
 
-@interface SMBaseClassesNativeImpl_26_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_27_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(SMSimiFunction *)f;
 
 @end
 
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_$Lambda$1)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_$Lambda$1)
 
-inline SMBaseClassesNativeImpl_26_$Lambda$1 *SMBaseClassesNativeImpl_26_$Lambda$1_get_instance(void);
-static SMBaseClassesNativeImpl_26_$Lambda$1 *SMBaseClassesNativeImpl_26_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_$Lambda$1, instance, SMBaseClassesNativeImpl_26_$Lambda$1 *)
+inline SMBaseClassesNativeImpl_27_$Lambda$1 *SMBaseClassesNativeImpl_27_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_27_$Lambda$1 *SMBaseClassesNativeImpl_27_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_$Lambda$1, instance, SMBaseClassesNativeImpl_27_$Lambda$1 *)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_26_$Lambda$1_init(SMBaseClassesNativeImpl_26_$Lambda$1 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_$Lambda$1_init(SMBaseClassesNativeImpl_27_$Lambda$1 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *new_SMBaseClassesNativeImpl_26_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$1 *new_SMBaseClassesNativeImpl_27_$Lambda$1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBaseClassesNativeImpl_26_$Lambda$1_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$1 *create_SMBaseClassesNativeImpl_27_$Lambda$1_init(void);
 
-@interface SMBaseClassesNativeImpl_26_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_27_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(id<JavaUtilList>)a;
 
 @end
 
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_$Lambda$2)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_$Lambda$2)
 
-inline SMBaseClassesNativeImpl_26_$Lambda$2 *SMBaseClassesNativeImpl_26_$Lambda$2_get_instance(void);
-static SMBaseClassesNativeImpl_26_$Lambda$2 *SMBaseClassesNativeImpl_26_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_$Lambda$2, instance, SMBaseClassesNativeImpl_26_$Lambda$2 *)
+inline SMBaseClassesNativeImpl_27_$Lambda$2 *SMBaseClassesNativeImpl_27_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_27_$Lambda$2 *SMBaseClassesNativeImpl_27_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_$Lambda$2, instance, SMBaseClassesNativeImpl_27_$Lambda$2 *)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_26_$Lambda$2_init(SMBaseClassesNativeImpl_26_$Lambda$2 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_$Lambda$2_init(SMBaseClassesNativeImpl_27_$Lambda$2 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$2 *new_SMBaseClassesNativeImpl_26_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$2 *new_SMBaseClassesNativeImpl_27_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$2 *create_SMBaseClassesNativeImpl_26_$Lambda$2_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$2 *create_SMBaseClassesNativeImpl_27_$Lambda$2_init(void);
 
-@interface SMBaseClassesNativeImpl_26_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_27_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(SMToken *)t;
-
-@end
-
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_$Lambda$3)
-
-inline SMBaseClassesNativeImpl_26_$Lambda$3 *SMBaseClassesNativeImpl_26_$Lambda$3_get_instance(void);
-static SMBaseClassesNativeImpl_26_$Lambda$3 *SMBaseClassesNativeImpl_26_$Lambda$3_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_$Lambda$3, instance, SMBaseClassesNativeImpl_26_$Lambda$3 *)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_26_$Lambda$3_init(SMBaseClassesNativeImpl_26_$Lambda$3 *self);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$3 *new_SMBaseClassesNativeImpl_26_$Lambda$3_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$3 *create_SMBaseClassesNativeImpl_26_$Lambda$3_init(void);
-
-@interface SMBaseClassesNativeImpl_27 : NSObject < SMSimiCallable > {
- @public
-  SMBaseClassesNativeImpl *this$0_;
-}
-
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
+- (id)applyWithId:(SMExpr *)a;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_$Lambda$3)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_27 *self, SMBaseClassesNativeImpl *outer$);
+inline SMBaseClassesNativeImpl_27_$Lambda$3 *SMBaseClassesNativeImpl_27_$Lambda$3_get_instance(void);
+static SMBaseClassesNativeImpl_27_$Lambda$3 *SMBaseClassesNativeImpl_27_$Lambda$3_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_$Lambda$3, instance, SMBaseClassesNativeImpl_27_$Lambda$3 *)
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27 *new_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_$Lambda$3_init(SMBaseClassesNativeImpl_27_$Lambda$3 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27 *create_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$3 *new_SMBaseClassesNativeImpl_27_$Lambda$3_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$3 *create_SMBaseClassesNativeImpl_27_$Lambda$3_init(void);
 
 @interface SMBaseClassesNativeImpl_28 : NSObject < SMSimiCallable > {
  @public
@@ -1120,42 +1140,6 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_38 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_38 *create_SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface SMBaseClassesNativeImpl_38_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(NSString *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_38_$Lambda$1)
-
-inline SMBaseClassesNativeImpl_38_$Lambda$1 *SMBaseClassesNativeImpl_38_$Lambda$1_get_instance(void);
-static SMBaseClassesNativeImpl_38_$Lambda$1 *SMBaseClassesNativeImpl_38_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_38_$Lambda$1, instance, SMBaseClassesNativeImpl_38_$Lambda$1 *)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_38_$Lambda$1_init(SMBaseClassesNativeImpl_38_$Lambda$1 *self);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_38_$Lambda$1 *new_SMBaseClassesNativeImpl_38_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_38_$Lambda$1 *create_SMBaseClassesNativeImpl_38_$Lambda$1_init(void);
-
-@interface SMBaseClassesNativeImpl_38_$Lambda$2 : NSObject < JavaUtilFunctionSupplier >
-
-- (id)get;
-
-@end
-
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_38_$Lambda$2)
-
-inline SMBaseClassesNativeImpl_38_$Lambda$2 *SMBaseClassesNativeImpl_38_$Lambda$2_get_instance(void);
-static SMBaseClassesNativeImpl_38_$Lambda$2 *SMBaseClassesNativeImpl_38_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_38_$Lambda$2, instance, SMBaseClassesNativeImpl_38_$Lambda$2 *)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_38_$Lambda$2_init(SMBaseClassesNativeImpl_38_$Lambda$2 *self);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_38_$Lambda$2 *new_SMBaseClassesNativeImpl_38_$Lambda$2_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_38_$Lambda$2 *create_SMBaseClassesNativeImpl_38_$Lambda$2_init(void);
-
 @interface SMBaseClassesNativeImpl_39 : NSObject < SMSimiCallable > {
  @public
   SMBaseClassesNativeImpl *this$0_;
@@ -1178,6 +1162,42 @@ __attribute__((unused)) static void SMBaseClassesNativeImpl_39_initWithSMBaseCla
 __attribute__((unused)) static SMBaseClassesNativeImpl_39 *new_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_39 *create_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
+
+@interface SMBaseClassesNativeImpl_39_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(NSString *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_39_$Lambda$1)
+
+inline SMBaseClassesNativeImpl_39_$Lambda$1 *SMBaseClassesNativeImpl_39_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_39_$Lambda$1 *SMBaseClassesNativeImpl_39_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_39_$Lambda$1, instance, SMBaseClassesNativeImpl_39_$Lambda$1 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_39_$Lambda$1_init(SMBaseClassesNativeImpl_39_$Lambda$1 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_39_$Lambda$1 *new_SMBaseClassesNativeImpl_39_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_39_$Lambda$1 *create_SMBaseClassesNativeImpl_39_$Lambda$1_init(void);
+
+@interface SMBaseClassesNativeImpl_39_$Lambda$2 : NSObject < JavaUtilFunctionSupplier >
+
+- (id)get;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_39_$Lambda$2)
+
+inline SMBaseClassesNativeImpl_39_$Lambda$2 *SMBaseClassesNativeImpl_39_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_39_$Lambda$2 *SMBaseClassesNativeImpl_39_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_39_$Lambda$2, instance, SMBaseClassesNativeImpl_39_$Lambda$2 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_39_$Lambda$2_init(SMBaseClassesNativeImpl_39_$Lambda$2 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_39_$Lambda$2 *new_SMBaseClassesNativeImpl_39_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_39_$Lambda$2 *create_SMBaseClassesNativeImpl_39_$Lambda$2_init(void);
 
 @interface SMBaseClassesNativeImpl_40 : NSObject < SMSimiCallable > {
  @public
@@ -1284,8 +1304,6 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_43 *create_SMBaseClassesN
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
-- (jboolean)isAlphaWithChar:(jchar)c;
-
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_44)
@@ -1296,9 +1314,34 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_44 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_44 *create_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static jboolean SMBaseClassesNativeImpl_44_isAlphaWithChar_(SMBaseClassesNativeImpl_44 *self, jchar c);
-
 @interface SMBaseClassesNativeImpl_45 : NSObject < SMSimiCallable > {
+ @public
+  SMBaseClassesNativeImpl *this$0_;
+}
+
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+- (jboolean)isAlphaWithChar:(jchar)c;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_45)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_45 *self, SMBaseClassesNativeImpl *outer$);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_45 *new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_45 *create_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
+
+__attribute__((unused)) static jboolean SMBaseClassesNativeImpl_45_isAlphaWithChar_(SMBaseClassesNativeImpl_45 *self, jchar c);
+
+@interface SMBaseClassesNativeImpl_46 : NSObject < SMSimiCallable > {
  @public
   SMBaseClassesNativeImpl *this$0_;
 }
@@ -1315,31 +1358,6 @@ __attribute__((unused)) static jboolean SMBaseClassesNativeImpl_44_isAlphaWithCh
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_45)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_45 *self, SMBaseClassesNativeImpl *outer$);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_45 *new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_45 *create_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
-
-__attribute__((unused)) static jboolean SMBaseClassesNativeImpl_45_isDigitWithChar_(SMBaseClassesNativeImpl_45 *self, jchar c);
-
-@interface SMBaseClassesNativeImpl_46 : NSObject < SMSimiCallable > {
- @public
-  SMBaseClassesNativeImpl *this$0_;
-}
-
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_46)
 
 __attribute__((unused)) static void SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_46 *self, SMBaseClassesNativeImpl *outer$);
@@ -1348,28 +1366,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_46 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_46 *create_SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface SMBaseClassesNativeImpl_46_1 : NSObject < SMSimiCallable > {
- @public
-  JavaTextStringCharacterIterator *val$iterator_;
-}
-
-- (instancetype __nonnull)initWithJavaTextStringCharacterIterator:(JavaTextStringCharacterIterator *)capture$0;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_46_1)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_46_1_initWithJavaTextStringCharacterIterator_(SMBaseClassesNativeImpl_46_1 *self, JavaTextStringCharacterIterator *capture$0);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_46_1 *new_SMBaseClassesNativeImpl_46_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_46_1 *create_SMBaseClassesNativeImpl_46_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0);
+__attribute__((unused)) static jboolean SMBaseClassesNativeImpl_46_isDigitWithChar_(SMBaseClassesNativeImpl_46 *self, jchar c);
 
 @interface SMBaseClassesNativeImpl_47 : NSObject < SMSimiCallable > {
  @public
@@ -1394,9 +1391,35 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_47 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_47 *create_SMBaseClassesNativeImpl_47_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface SMBaseClassesNativeImpl_48 : NSObject < SMSimiCallable >
+@interface SMBaseClassesNativeImpl_47_1 : NSObject < SMSimiCallable > {
+ @public
+  JavaTextStringCharacterIterator *val$iterator_;
+}
 
-- (instancetype __nonnull)init;
+- (instancetype __nonnull)initWithJavaTextStringCharacterIterator:(JavaTextStringCharacterIterator *)capture$0;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_47_1)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_47_1_initWithJavaTextStringCharacterIterator_(SMBaseClassesNativeImpl_47_1 *self, JavaTextStringCharacterIterator *capture$0);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_47_1 *new_SMBaseClassesNativeImpl_47_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_47_1 *create_SMBaseClassesNativeImpl_47_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0);
+
+@interface SMBaseClassesNativeImpl_48 : NSObject < SMSimiCallable > {
+ @public
+  SMBaseClassesNativeImpl *this$0_;
+}
+
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
@@ -1408,11 +1431,11 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_47 *create_SMBaseClassesN
 
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_48)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_48_init(SMBaseClassesNativeImpl_48 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_48_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_48 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_48 *new_SMBaseClassesNativeImpl_48_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_48 *new_SMBaseClassesNativeImpl_48_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_48 *create_SMBaseClassesNativeImpl_48_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_48 *create_SMBaseClassesNativeImpl_48_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
 @interface SMBaseClassesNativeImpl_49 : NSObject < SMSimiCallable >
 
@@ -1434,7 +1457,27 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_49 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_49 *create_SMBaseClassesNativeImpl_49_init(void);
 
-@interface SMBaseClassesNativeImpl_50 : NSObject < SMSimiCallable > {
+@interface SMBaseClassesNativeImpl_50 : NSObject < SMSimiCallable >
+
+- (instancetype __nonnull)init;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_50)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_50_init(SMBaseClassesNativeImpl_50 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_50 *new_SMBaseClassesNativeImpl_50_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_init(void);
+
+@interface SMBaseClassesNativeImpl_51 : NSObject < SMSimiCallable > {
  @public
   SMBaseClassesNativeImpl *this$0_;
 }
@@ -1449,81 +1492,13 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_49 *create_SMBaseClassesN
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_50)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_50_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_50 *self, SMBaseClassesNativeImpl *outer$);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_50 *new_SMBaseClassesNativeImpl_50_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
-
-@interface SMBaseClassesNativeImpl_51 : NSObject < SMSimiCallable >
-
-- (instancetype __nonnull)init;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_51)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_51_init(SMBaseClassesNativeImpl_51 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_51_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_51 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_51 *new_SMBaseClassesNativeImpl_51_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_51 *new_SMBaseClassesNativeImpl_51_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_51 *create_SMBaseClassesNativeImpl_51_init(void);
-
-@interface SMBaseClassesNativeImpl_51_1 : NSObject < SMSimiCallable > {
- @public
-  JavaLangStringBuilder *val$sb_;
-  SMSimiValue *val$objectValue_;
-}
-
-- (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0
-                                        withSMSimiValue:(SMSimiValue *)capture$1;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_51_1)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_51_1_initWithJavaLangStringBuilder_withSMSimiValue_(SMBaseClassesNativeImpl_51_1 *self, JavaLangStringBuilder *capture$0, SMSimiValue *capture$1);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_51_1 *new_SMBaseClassesNativeImpl_51_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_51_1 *create_SMBaseClassesNativeImpl_51_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1);
-
-@interface SMBaseClassesNativeImpl_51_2 : NSObject < SMSimiCallable > {
- @public
-  JavaLangStringBuilder *val$sb_;
-}
-
-- (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_51_2)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_51_2_initWithJavaLangStringBuilder_(SMBaseClassesNativeImpl_51_2 *self, JavaLangStringBuilder *capture$0);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_51_2 *new_SMBaseClassesNativeImpl_51_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_51_2 *create_SMBaseClassesNativeImpl_51_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_51 *create_SMBaseClassesNativeImpl_51_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
 @interface SMBaseClassesNativeImpl_52 : NSObject < SMSimiCallable >
 
@@ -1544,6 +1519,54 @@ __attribute__((unused)) static void SMBaseClassesNativeImpl_52_init(SMBaseClasse
 __attribute__((unused)) static SMBaseClassesNativeImpl_52 *new_SMBaseClassesNativeImpl_52_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_52 *create_SMBaseClassesNativeImpl_52_init(void);
+
+@interface SMBaseClassesNativeImpl_52_1 : NSObject < SMSimiCallable > {
+ @public
+  JavaLangStringBuilder *val$sb_;
+  SMSimiValue *val$objectValue_;
+}
+
+- (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0
+                                        withSMSimiValue:(SMSimiValue *)capture$1;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_52_1)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_52_1_initWithJavaLangStringBuilder_withSMSimiValue_(SMBaseClassesNativeImpl_52_1 *self, JavaLangStringBuilder *capture$0, SMSimiValue *capture$1);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_52_1 *new_SMBaseClassesNativeImpl_52_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_52_1 *create_SMBaseClassesNativeImpl_52_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1);
+
+@interface SMBaseClassesNativeImpl_52_2 : NSObject < SMSimiCallable > {
+ @public
+  JavaLangStringBuilder *val$sb_;
+}
+
+- (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_52_2)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_52_2_initWithJavaLangStringBuilder_(SMBaseClassesNativeImpl_52_2 *self, JavaLangStringBuilder *capture$0);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_52_2 *new_SMBaseClassesNativeImpl_52_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_52_2 *create_SMBaseClassesNativeImpl_52_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0);
 
 @interface SMBaseClassesNativeImpl_53 : NSObject < SMSimiCallable >
 
@@ -1585,7 +1608,27 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_54 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_54 *create_SMBaseClassesNativeImpl_54_init(void);
 
-@interface SMBaseClassesNativeImpl_55 : NSObject < SMSimiCallable > {
+@interface SMBaseClassesNativeImpl_55 : NSObject < SMSimiCallable >
+
+- (instancetype __nonnull)init;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_55)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_55_init(SMBaseClassesNativeImpl_55 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_55 *new_SMBaseClassesNativeImpl_55_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_55 *create_SMBaseClassesNativeImpl_55_init(void);
+
+@interface SMBaseClassesNativeImpl_56 : NSObject < SMSimiCallable > {
  @public
   SMBaseClassesNativeImpl *this$0_;
 }
@@ -1600,15 +1643,15 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_54 *create_SMBaseClassesN
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_55)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_56)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_55 *self, SMBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_56 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_55 *new_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_56 *new_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_55 *create_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface SMBaseClassesNativeImpl_56 : NSObject < SMSimiCallable >
+@interface SMBaseClassesNativeImpl_57 : NSObject < SMSimiCallable >
 
 - (instancetype __nonnull)init;
 
@@ -1620,43 +1663,18 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_55 *create_SMBaseClassesN
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_56)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_56_init(SMBaseClassesNativeImpl_56 *self);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_56 *new_SMBaseClassesNativeImpl_56_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_init(void);
-
-@interface SMBaseClassesNativeImpl_57 : NSObject < SMSimiCallable > {
- @public
-  SMBaseClassesNativeImpl *this$0_;
-  id<JavaUtilMap_Entry> val$binary_;
-}
-
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
-                                    withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_57)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_57_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_57 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_57_init(SMBaseClassesNativeImpl_57 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_57 *new_SMBaseClassesNativeImpl_57_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_57 *new_SMBaseClassesNativeImpl_57_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_init(void);
 
 @interface SMBaseClassesNativeImpl_58 : NSObject < SMSimiCallable > {
  @public
   SMBaseClassesNativeImpl *this$0_;
-  id<JavaUtilMap_Entry> val$unary_;
+  id<JavaUtilMap_Entry> val$binary_;
 }
 
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
@@ -1678,9 +1696,14 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_58 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_58 *create_SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
 
-@interface SMBaseClassesNativeImpl_59 : NSObject < SMSimiCallable >
+@interface SMBaseClassesNativeImpl_59 : NSObject < SMSimiCallable > {
+ @public
+  SMBaseClassesNativeImpl *this$0_;
+  id<JavaUtilMap_Entry> val$unary_;
+}
 
-- (instancetype __nonnull)init;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
+                                    withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0;
 
 - (jint)arity;
 
@@ -1692,11 +1715,31 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_58 *create_SMBaseClassesN
 
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_59)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_59_init(SMBaseClassesNativeImpl_59 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_59_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_59 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_59 *new_SMBaseClassesNativeImpl_59_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_59 *new_SMBaseClassesNativeImpl_59_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_59 *create_SMBaseClassesNativeImpl_59_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_59 *create_SMBaseClassesNativeImpl_59_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0);
+
+@interface SMBaseClassesNativeImpl_60 : NSObject < SMSimiCallable >
+
+- (instancetype __nonnull)init;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_60)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_60_init(SMBaseClassesNativeImpl_60 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_60 *new_SMBaseClassesNativeImpl_60_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_60 *create_SMBaseClassesNativeImpl_60_init(void);
 
 @interface SMBaseClassesNativeImpl_$Lambda$1 : NSObject < JavaUtilFunctionBiFunction >
 
@@ -2357,75 +2400,76 @@ SMSimiNativeClass *SMBaseClassesNativeImpl_getObjectClass(SMBaseClassesNativeImp
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
   (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"len", 0) withId:new_SMBaseClassesNativeImpl_1_init()];
   (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"keys", 0) withId:new_SMBaseClassesNativeImpl_2_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"values", 0) withId:new_SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"enumerate", 0) withId:new_SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"zip", 0) withId:new_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"append", 1) withId:new_SMBaseClassesNativeImpl_6_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"addAll", 1) withId:new_SMBaseClassesNativeImpl_7_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clear", 0) withId:new_SMBaseClassesNativeImpl_8_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"indexOf", 1) withId:new_SMBaseClassesNativeImpl_9_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"reversed", 0) withId:new_SMBaseClassesNativeImpl_10_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 0) withId:new_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 1) withId:new_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"uniques", 0) withId:new_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 0) withId:new_SMBaseClassesNativeImpl_14_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 1) withId:new_SMBaseClassesNativeImpl_15_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isMutable", 0) withId:new_SMBaseClassesNativeImpl_16_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isArray", 0) withId:new_SMBaseClassesNativeImpl_17_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"class", 0) withId:new_SMBaseClassesNativeImpl_18_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_ITERATE, 0) withId:new_SMBaseClassesNativeImpl_19_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_HAS, 1) withId:new_SMBaseClassesNativeImpl_20_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_21_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_22_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_TO_STRING, 0) withId:new_SMBaseClassesNativeImpl_23_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 1) withId:new_SMBaseClassesNativeImpl_24_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 2) withId:new_SMBaseClassesNativeImpl_25_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_SMBaseClassesNativeImpl_26_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 0) withId:new_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 1) withId:new_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 2) withId:new_SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"slice", 2) withId:new_SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"methods", 0) withId:new_SMBaseClassesNativeImpl_3_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"values", 0) withId:new_SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"enumerate", 0) withId:new_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"zip", 0) withId:new_SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"append", 1) withId:new_SMBaseClassesNativeImpl_7_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"addAll", 1) withId:new_SMBaseClassesNativeImpl_8_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clear", 0) withId:new_SMBaseClassesNativeImpl_9_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"indexOf", 1) withId:new_SMBaseClassesNativeImpl_10_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"reversed", 0) withId:new_SMBaseClassesNativeImpl_11_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 0) withId:new_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 1) withId:new_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"uniques", 0) withId:new_SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 0) withId:new_SMBaseClassesNativeImpl_15_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 1) withId:new_SMBaseClassesNativeImpl_16_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isMutable", 0) withId:new_SMBaseClassesNativeImpl_17_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isArray", 0) withId:new_SMBaseClassesNativeImpl_18_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"class", 0) withId:new_SMBaseClassesNativeImpl_19_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_ITERATE, 0) withId:new_SMBaseClassesNativeImpl_20_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_HAS, 1) withId:new_SMBaseClassesNativeImpl_21_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_22_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_23_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_TO_STRING, 0) withId:new_SMBaseClassesNativeImpl_24_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 1) withId:new_SMBaseClassesNativeImpl_25_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 2) withId:new_SMBaseClassesNativeImpl_26_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_SMBaseClassesNativeImpl_27_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 0) withId:new_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 1) withId:new_SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 2) withId:new_SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"slice", 2) withId:new_SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(self)];
   return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_OBJECT, methods);
 }
 
 SMSimiNativeClass *SMBaseClassesNativeImpl_getStringClass(SMBaseClassesNativeImpl *self) {
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"len", 0) withId:new_SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"endsWith", 1) withId:new_SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"format", 1) withId:new_SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"indexOf", 2) withId:new_SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"lastIndexOf", 2) withId:new_SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"removing", 2) withId:new_SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"replacing", 2) withId:new_SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"split", 1) withId:new_SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"startsWith", 1) withId:new_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"substring", 2) withId:new_SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"lowerCased", 0) withId:new_SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"upperCased", 0) withId:new_SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"trim", 0) withId:new_SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isAlpha", 0) withId:new_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isDigit", 0) withId:new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_ITERATE, 0) withId:new_SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_HAS, 1) withId:new_SMBaseClassesNativeImpl_47_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_48_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_49_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"toNumber", 0) withId:new_SMBaseClassesNativeImpl_50_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_SMBaseClassesNativeImpl_51_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"len", 0) withId:new_SMBaseClassesNativeImpl_32_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"endsWith", 1) withId:new_SMBaseClassesNativeImpl_33_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"format", 1) withId:new_SMBaseClassesNativeImpl_34_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"indexOf", 2) withId:new_SMBaseClassesNativeImpl_35_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"lastIndexOf", 2) withId:new_SMBaseClassesNativeImpl_36_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"removing", 2) withId:new_SMBaseClassesNativeImpl_37_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"replacing", 2) withId:new_SMBaseClassesNativeImpl_38_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"split", 1) withId:new_SMBaseClassesNativeImpl_39_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"startsWith", 1) withId:new_SMBaseClassesNativeImpl_40_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"substring", 2) withId:new_SMBaseClassesNativeImpl_41_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"lowerCased", 0) withId:new_SMBaseClassesNativeImpl_42_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"upperCased", 0) withId:new_SMBaseClassesNativeImpl_43_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"trim", 0) withId:new_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isAlpha", 0) withId:new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isDigit", 0) withId:new_SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_ITERATE, 0) withId:new_SMBaseClassesNativeImpl_47_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_HAS, 1) withId:new_SMBaseClassesNativeImpl_48_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_49_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_50_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"toNumber", 0) withId:new_SMBaseClassesNativeImpl_51_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_SMBaseClassesNativeImpl_52_init()];
   return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_STRING, methods);
 }
 
 SMSimiNativeClass *SMBaseClassesNativeImpl_getNumberClass(SMBaseClassesNativeImpl *self) {
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"randomInt", 1) withId:new_SMBaseClassesNativeImpl_52_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_53_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_54_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_TO_STRING, 0) withId:new_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"randomInt", 1) withId:new_SMBaseClassesNativeImpl_53_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_54_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_55_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_TO_STRING, 0) withId:new_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_(self)];
   return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_NUMBER, methods);
 }
 
 SMSimiNativeClass *SMBaseClassesNativeImpl_getExceptionClass(SMBaseClassesNativeImpl *self) {
   id<JavaUtilMap> methods = new_JavaUtilHashMap_init();
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_RAISE, 0) withId:new_SMBaseClassesNativeImpl_56_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_RAISE, 0) withId:new_SMBaseClassesNativeImpl_57_init()];
   return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_EXCEPTION, methods);
 }
 
@@ -2438,7 +2482,7 @@ SMSimiNativeClass *SMBaseClassesNativeImpl_getGlobalsClass(SMBaseClassesNativeIm
   (void) [binaries putWithId:@"atan2" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$4, instance)];
   (void) [binaries putWithId:@"hypot" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$5, instance)];
   for (id<JavaUtilMap_Entry> __strong binary in nil_chk([binaries entrySet])) {
-    (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_([((id<JavaUtilMap_Entry>) nil_chk(binary)) getKey], 2) withId:new_SMBaseClassesNativeImpl_57_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, binary)];
+    (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_([((id<JavaUtilMap_Entry>) nil_chk(binary)) getKey], 2) withId:new_SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, binary)];
   }
   id<JavaUtilMap> unaries = new_JavaUtilHashMap_init();
   (void) [unaries putWithId:@"abs" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$6, instance)];
@@ -2463,9 +2507,9 @@ SMSimiNativeClass *SMBaseClassesNativeImpl_getGlobalsClass(SMBaseClassesNativeIm
   (void) [unaries putWithId:@"toDegrees" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$25, instance)];
   (void) [unaries putWithId:@"toRadians" withId:JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$26, instance)];
   for (id<JavaUtilMap_Entry> __strong unary in nil_chk([unaries entrySet])) {
-    (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_([((id<JavaUtilMap_Entry>) nil_chk(unary)) getKey], 1) withId:new_SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, unary)];
+    (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_([((id<JavaUtilMap_Entry>) nil_chk(unary)) getKey], 1) withId:new_SMBaseClassesNativeImpl_59_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, unary)];
   }
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"round", 1) withId:new_SMBaseClassesNativeImpl_59_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"round", 1) withId:new_SMBaseClassesNativeImpl_60_init()];
   return new_SMSimiNativeClass_initWithNSString_withJavaUtilMap_(SMConstants_CLASS_GLOBALS, methods);
 }
 
@@ -2658,7 +2702,18 @@ SMBaseClassesNativeImpl_2 *create_SMBaseClassesNativeImpl_2_initWithSMBaseClasse
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, [((SMSimiObjectImpl *) nil_chk(self_)) values]));
+  SMSimiClassImpl *clazz = ([self_ isKindOfClass:[SMSimiClassImpl class]]) ? (SMSimiClassImpl *) cast_chk(self_, [SMSimiClassImpl class]) : ((SMSimiObjectImpl *) nil_chk(self_))->clazz_;
+  id<JavaUtilMap> tempMap = new_JavaUtilHashMap_init();
+  for (id<JavaUtilMap_Entry> __strong method in nil_chk([((id<JavaUtilMap>) nil_chk(clazz->methods_)) entrySet])) {
+    SMOverloadableFunction *key = [((id<JavaUtilMap_Entry>) nil_chk(method)) getKey];
+    id<JavaUtilList> list = [tempMap computeIfAbsentWithId:((SMOverloadableFunction *) nil_chk(key))->name_ withJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_3_$Lambda$1, instance)];
+    [((id<JavaUtilList>) nil_chk(list)) addWithId:new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_([method getValue], nil, self_), ((SMSimiFunction *) nil_chk([method getValue]))->annotations_)];
+  }
+  JavaUtilLinkedHashMap *map = new_JavaUtilLinkedHashMap_initWithInt_([tempMap size]);
+  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([tempMap entrySet])) {
+    (void) [map putWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey] withId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, [entry_ getValue]))];
+  }
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, map));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -2702,6 +2757,43 @@ SMBaseClassesNativeImpl_3 *create_SMBaseClassesNativeImpl_3_initWithSMBaseClasse
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_3, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_3_$Lambda$1)
+
+@implementation SMBaseClassesNativeImpl_3_$Lambda$1
+
+- (id)applyWithId:(NSString *)k {
+  return new_JavaUtilArrayList_init();
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_3_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_3_$Lambda$1_instance = new_SMBaseClassesNativeImpl_3_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_3_$Lambda$1)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_3_$Lambda$1_init(SMBaseClassesNativeImpl_3_$Lambda$1 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_3_$Lambda$1 *new_SMBaseClassesNativeImpl_3_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_3_$Lambda$1, init)
+}
+
+SMBaseClassesNativeImpl_3_$Lambda$1 *create_SMBaseClassesNativeImpl_3_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_3_$Lambda$1, init)
+}
+
 @implementation SMBaseClassesNativeImpl_4
 
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
@@ -2717,7 +2809,7 @@ SMBaseClassesNativeImpl_3 *create_SMBaseClassesNativeImpl_3_initWithSMBaseClasse
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) enumerateWithSMSimiClassImpl:SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter)]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, [((SMSimiObjectImpl *) nil_chk(self_)) values]));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -2776,7 +2868,7 @@ SMBaseClassesNativeImpl_4 *create_SMBaseClassesNativeImpl_4_initWithSMBaseClasse
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) zipWithSMSimiClassImpl:SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter)]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) enumerateWithSMSimiClassImpl:SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter)]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -2822,23 +2914,20 @@ SMBaseClassesNativeImpl_5 *create_SMBaseClassesNativeImpl_5_initWithSMBaseClasse
 
 @implementation SMBaseClassesNativeImpl_6
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_6_init(self);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
-J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  [((SMSimiObjectImpl *) nil_chk(self_)) appendWithSMSimiProperty:[arguments getWithInt:1]];
-  return [arguments getWithInt:0];
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) zipWithSMSimiClassImpl:SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter)]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -2855,27 +2944,31 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
   methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+  };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_6 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_6 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_6;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_6_init(SMBaseClassesNativeImpl_6 *self) {
+void SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_6 *self, SMBaseClassesNativeImpl *outer$) {
+  self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_6 *new_SMBaseClassesNativeImpl_6_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_6, init)
+SMBaseClassesNativeImpl_6 *new_SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_6, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-SMBaseClassesNativeImpl_6 *create_SMBaseClassesNativeImpl_6_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_6, init)
+SMBaseClassesNativeImpl_6 *create_SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_6, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
 @implementation SMBaseClassesNativeImpl_7
@@ -2895,8 +2988,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  SMSimiObjectImpl *obj = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
-  [((SMSimiObjectImpl *) nil_chk(self_)) addAllWithSMSimiObjectImpl:obj];
+  [((SMSimiObjectImpl *) nil_chk(self_)) appendWithSMSimiProperty:[arguments getWithInt:1]];
   return [arguments getWithInt:0];
 }
 
@@ -2947,15 +3039,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  [((SMSimiObjectImpl *) nil_chk(self_)) clearWithSMEnvironment:(SMEnvironment *) cast_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment], [SMEnvironment class])];
-  return nil;
+  SMSimiObjectImpl *obj = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  [((SMSimiObjectImpl *) nil_chk(self_)) addAllWithSMSimiObjectImpl:obj];
+  return [arguments getWithInt:0];
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3005,15 +3098,15 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  SMSimiValue *value = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue];
-  return [((SMSimiObjectImpl *) nil_chk(self_)) indexOfWithSMSimiValue:value];
+  [((SMSimiObjectImpl *) nil_chk(self_)) clearWithSMEnvironment:(SMEnvironment *) cast_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment], [SMEnvironment class])];
+  return nil;
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3063,14 +3156,15 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) reversed]);
+  SMSimiValue *value = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue];
+  return [((SMSimiObjectImpl *) nil_chk(self_)) indexOfWithSMSimiValue:value];
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3112,10 +3206,12 @@ SMBaseClassesNativeImpl_10 *create_SMBaseClassesNativeImpl_10_init() {
 
 @implementation SMBaseClassesNativeImpl_11
 
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(self, outer$);
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_11_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
   return 0;
@@ -3124,7 +3220,8 @@ SMBaseClassesNativeImpl_10 *create_SMBaseClassesNativeImpl_10_init() {
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, nil);
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) reversed]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3141,31 +3238,27 @@ SMBaseClassesNativeImpl_10 *create_SMBaseClassesNativeImpl_10_init() {
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
+  methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
   methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_11 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_11 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_11;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_11 *self, SMBaseClassesNativeImpl *outer$) {
-  self->this$0_ = outer$;
+void SMBaseClassesNativeImpl_11_init(SMBaseClassesNativeImpl_11 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_11 *new_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_11, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_11 *new_SMBaseClassesNativeImpl_11_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_11, init)
 }
 
-SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_11, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_11, init)
 }
 
 @implementation SMBaseClassesNativeImpl_12
@@ -3176,14 +3269,13 @@ SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  id<SMSimiCallable> comparator = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getCallable];
-  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, comparator);
+  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, nil);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3235,17 +3327,14 @@ SMBaseClassesNativeImpl_12 *create_SMBaseClassesNativeImpl_12_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
-    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), self_->immutable_, new_JavaUtilArrayList_initWithJavaUtilCollection_([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([self_ values])) stream])) distinct])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()])));
-  }
-  return [arguments getWithInt:0];
+  id<SMSimiCallable> comparator = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getCallable];
+  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, comparator);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3291,12 +3380,10 @@ SMBaseClassesNativeImpl_13 *create_SMBaseClassesNativeImpl_13_initWithSMBaseClas
 
 @implementation SMBaseClassesNativeImpl_14
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_14_init(self);
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
-J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
   return 0;
@@ -3306,7 +3393,10 @@ J2OBJC_IGNORE_DESIGNATED_END
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:false]);
+  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
+    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), self_->immutable_, new_JavaUtilArrayList_initWithJavaUtilCollection_([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([self_ values])) stream])) distinct])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()])));
+  }
+  return [arguments getWithInt:0];
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3323,27 +3413,31 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init);
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
   methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+  };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_14 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_14 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_14;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_14_init(SMBaseClassesNativeImpl_14 *self) {
+void SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_14 *self, SMBaseClassesNativeImpl *outer$) {
+  self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_14 *new_SMBaseClassesNativeImpl_14_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_14, init)
+SMBaseClassesNativeImpl_14 *new_SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_14, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-SMBaseClassesNativeImpl_14 *create_SMBaseClassesNativeImpl_14_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_14, init)
+SMBaseClassesNativeImpl_14 *create_SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_14, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
 @implementation SMBaseClassesNativeImpl_15
@@ -3356,15 +3450,14 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  jboolean mutable_ = SMInterpreter_isTruthyWithSMSimiProperty_([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]);
-  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:mutable_]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:false]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3414,13 +3507,15 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithBoolean_(!((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]))))->immutable_);
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  jboolean mutable_ = SMInterpreter_isTruthyWithSMSimiProperty_([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:mutable_]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3476,7 +3571,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class])))) isArray]);
+  return new_SMSimiValue_Number_initWithBoolean_(!((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]))))->immutable_);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3532,12 +3627,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  id<SMSimiObject> self_ = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject];
-  id<SMSimiClass> clazz = [((id<SMSimiObject>) nil_chk(self_)) getSimiClass];
-  if (clazz == nil) {
-    return nil;
-  }
-  return new_SMSimiValue_Object_initWithSMSimiObject_(clazz);
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class])))) isArray]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3593,12 +3683,12 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  jboolean isArray = [((SMSimiObjectImpl *) nil_chk(self_)) isArray];
-  id<JavaUtilIterator> iterator = [self_ iterate];
-  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  (void) [fields putWithId:SMConstants_NEXT withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(iterator), nil, nil)];
-  return new_SMSimiValue_Object_initWithSMSimiObject_(new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
+  id<SMSimiObject> self_ = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject];
+  id<SMSimiClass> clazz = [((id<SMSimiObject>) nil_chk(self_)) getSimiClass];
+  if (clazz == nil) {
+    return nil;
+  }
+  return new_SMSimiValue_Object_initWithSMSimiObject_(clazz);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3638,67 +3728,6 @@ SMBaseClassesNativeImpl_19 *create_SMBaseClassesNativeImpl_19_init() {
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_19, init)
 }
 
-@implementation SMBaseClassesNativeImpl_19_1
-
-- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0 {
-  SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(self, capture$0);
-  return self;
-}
-
-- (jint)arity {
-  return 0;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  if ([((id<JavaUtilIterator>) nil_chk(val$iterator_)) hasNext]) {
-    return (id<SMSimiProperty>) cast_check([val$iterator_ next], SMSimiProperty_class_());
-  }
-  return nil;
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaUtilIterator:);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "val$iterator_", "LJavaUtilIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Iterator<*>;", "LSMBaseClassesNativeImpl_19;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_19_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 4, -1, 5, -1, -1 };
-  return &_SMBaseClassesNativeImpl_19_1;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_19_1 *self, id<JavaUtilIterator> capture$0) {
-  self->val$iterator_ = capture$0;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_19_1 *new_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_19_1, initWithJavaUtilIterator_, capture$0)
-}
-
-SMBaseClassesNativeImpl_19_1 *create_SMBaseClassesNativeImpl_19_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_19_1, initWithJavaUtilIterator_, capture$0)
-}
-
 @implementation SMBaseClassesNativeImpl_20
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -3709,14 +3738,18 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) containsWithSMSimiValue:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue] withSMToken:SMToken_nativeCallWithNSString_(SMConstants_HAS)]);
+  jboolean isArray = [((SMSimiObjectImpl *) nil_chk(self_)) isArray];
+  id<JavaUtilIterator> iterator = [self_ iterate];
+  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
+  (void) [fields putWithId:SMConstants_NEXT withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(iterator), nil, nil)];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3756,6 +3789,67 @@ SMBaseClassesNativeImpl_20 *create_SMBaseClassesNativeImpl_20_init() {
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_20, init)
 }
 
+@implementation SMBaseClassesNativeImpl_20_1
+
+- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0 {
+  SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(self, capture$0);
+  return self;
+}
+
+- (jint)arity {
+  return 0;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  if ([((id<JavaUtilIterator>) nil_chk(val$iterator_)) hasNext]) {
+    return (id<SMSimiProperty>) cast_check([val$iterator_ next], SMSimiProperty_class_());
+  }
+  return nil;
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithJavaUtilIterator:);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "val$iterator_", "LJavaUtilIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
+  };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Iterator<*>;", "LSMBaseClassesNativeImpl_20;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_20_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 4, -1, 5, -1, -1 };
+  return &_SMBaseClassesNativeImpl_20_1;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_20_1 *self, id<JavaUtilIterator> capture$0) {
+  self->val$iterator_ = capture$0;
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_20_1 *new_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_20_1, initWithJavaUtilIterator_, capture$0)
+}
+
+SMBaseClassesNativeImpl_20_1 *create_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_20_1, initWithJavaUtilIterator_, capture$0)
+}
+
 @implementation SMBaseClassesNativeImpl_21
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -3772,7 +3866,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) containsWithSMSimiValue:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue] withSMToken:SMToken_nativeCallWithNSString_(SMConstants_HAS)]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3828,7 +3923,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3878,13 +3973,13 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_String_initWithNSString_([((id<SMSimiObject>) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject])) description]);
+  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3934,15 +4029,13 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:nil]);
+  return new_SMSimiValue_String_initWithNSString_([((id<SMSimiObject>) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject])) description]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3992,7 +4085,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 2;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
@@ -4000,8 +4093,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
   SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
-  id<JavaUtilList> fieldsToMatch = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getObject], [SMSimiObjectImpl class])))) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_25_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
-  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:fieldsToMatch]);
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:nil]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4041,43 +4133,6 @@ SMBaseClassesNativeImpl_25 *create_SMBaseClassesNativeImpl_25_init() {
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_25, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_25_$Lambda$1)
-
-@implementation SMBaseClassesNativeImpl_25_$Lambda$1
-
-- (id)applyWithId:(SMSimiValue *)a {
-  return [((SMSimiValue *) nil_chk(a)) getString];
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_25_$Lambda$1 class]) {
-    SMBaseClassesNativeImpl_25_$Lambda$1_instance = new_SMBaseClassesNativeImpl_25_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_25_$Lambda$1)
-  }
-}
-
-@end
-
-void SMBaseClassesNativeImpl_25_$Lambda$1_init(SMBaseClassesNativeImpl_25_$Lambda$1 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_25_$Lambda$1 *new_SMBaseClassesNativeImpl_25_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_25_$Lambda$1, init)
-}
-
-SMBaseClassesNativeImpl_25_$Lambda$1 *create_SMBaseClassesNativeImpl_25_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_25_$Lambda$1, init)
-}
-
 @implementation SMBaseClassesNativeImpl_26
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -4088,24 +4143,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 2;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiClassImpl *clazz = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiClassImpl class]);
-  id<JavaUtilSet> constructors = [((SMSimiClassImpl *) nil_chk(clazz)) getConstructors];
-  id<JavaUtilSet> params = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(constructors)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_$Lambda$1, instance)])) flatMapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_$Lambda$2, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toSet()];
-  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  SMSimiNativeObject *object = new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
-  SMSimiValue *objectValue = new_SMSimiValue_Object_initWithSMSimiObject_(object);
-  id<JavaUtilList> initArgs = new_JavaUtilArrayList_init();
-  for (NSString * __strong param in nil_chk(params)) {
-    (void) [fields putWithId:param withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(fields, param, initArgs, objectValue), param, object)];
-  }
-  (void) [fields putWithId:@"build" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(params, constructors, fields, clazz, initArgs), @"build", object)];
-  return objectValue;
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  id<JavaUtilList> fieldsToMatch = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getObject], [SMSimiObjectImpl class])))) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:fieldsToMatch]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4145,13 +4192,117 @@ SMBaseClassesNativeImpl_26 *create_SMBaseClassesNativeImpl_26_init() {
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26, init)
 }
 
-@implementation SMBaseClassesNativeImpl_26_1
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$1)
+
+@implementation SMBaseClassesNativeImpl_26_$Lambda$1
+
+- (id)applyWithId:(SMSimiValue *)a {
+  return [((SMSimiValue *) nil_chk(a)) getString];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_26_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_26_$Lambda$1_instance = new_SMBaseClassesNativeImpl_26_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_$Lambda$1)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_26_$Lambda$1_init(SMBaseClassesNativeImpl_26_$Lambda$1 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_26_$Lambda$1 *new_SMBaseClassesNativeImpl_26_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_$Lambda$1, init)
+}
+
+SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBaseClassesNativeImpl_26_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_$Lambda$1, init)
+}
+
+@implementation SMBaseClassesNativeImpl_27
+
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_27_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
+- (jint)arity {
+  return 0;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiClassImpl *clazz = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiClassImpl class]);
+  id<JavaUtilSet> constructors = [((SMSimiClassImpl *) nil_chk(clazz)) getConstructors];
+  id<JavaUtilSet> params = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(constructors)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_$Lambda$1, instance)])) flatMapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_$Lambda$2, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toSet()];
+  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
+  SMSimiNativeObject *object = new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
+  SMSimiValue *objectValue = new_SMSimiValue_Object_initWithSMSimiObject_(object);
+  id<JavaUtilList> initArgs = new_JavaUtilArrayList_init();
+  for (NSString * __strong param in nil_chk(params)) {
+    (void) [fields putWithId:param withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(fields, param, initArgs, objectValue), param, object)];
+  }
+  (void) [fields putWithId:@"build" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(params, constructors, fields, clazz, initArgs), @"build", object)];
+  return objectValue;
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_27 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_27;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_27_init(SMBaseClassesNativeImpl_27 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_27 *new_SMBaseClassesNativeImpl_27_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27, init)
+}
+
+SMBaseClassesNativeImpl_27 *create_SMBaseClassesNativeImpl_27_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27, init)
+}
+
+@implementation SMBaseClassesNativeImpl_27_1
 
 - (instancetype __nonnull)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$0
                                            withNSString:(NSString *)capture$1
                                        withJavaUtilList:(id<JavaUtilList>)capture$2
                                         withSMSimiValue:(SMSimiValue *)capture$3 {
-  SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(self, capture$0, capture$1, capture$2, capture$3);
+  SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(self, capture$0, capture$1, capture$2, capture$3);
   return self;
 }
 
@@ -4192,14 +4343,14 @@ SMBaseClassesNativeImpl_26 *create_SMBaseClassesNativeImpl_26_init() {
     { "val$initArgs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x1012, -1, -1, 4, -1 },
     { "val$objectValue_", "LSMSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_26;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_26_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 4, 5, -1, 6, -1, -1 };
-  return &_SMBaseClassesNativeImpl_26_1;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_27;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_27_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 4, 5, -1, 6, -1, -1 };
+  return &_SMBaseClassesNativeImpl_27_1;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_26_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
+void SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_27_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
   self->val$fields_ = capture$0;
   self->val$param_ = capture$1;
   self->val$initArgs_ = capture$2;
@@ -4207,22 +4358,22 @@ void SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_wit
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_26_1 *new_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
+SMBaseClassesNativeImpl_27_1 *new_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
 }
 
-SMBaseClassesNativeImpl_26_1 *create_SMBaseClassesNativeImpl_26_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
+SMBaseClassesNativeImpl_27_1 *create_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
 }
 
-@implementation SMBaseClassesNativeImpl_26_2
+@implementation SMBaseClassesNativeImpl_27_2
 
 - (instancetype __nonnull)initWithJavaUtilSet:(id<JavaUtilSet>)capture$0
                               withJavaUtilSet:(id<JavaUtilSet>)capture$1
                     withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$2
                           withSMSimiClassImpl:(SMSimiClassImpl *)capture$3
                              withJavaUtilList:(id<JavaUtilList>)capture$4 {
-  SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(self, capture$0, capture$1, capture$2, capture$3, capture$4);
+  SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(self, capture$0, capture$1, capture$2, capture$3, capture$4);
   return self;
 }
 
@@ -4234,9 +4385,9 @@ SMBaseClassesNativeImpl_26_1 *create_SMBaseClassesNativeImpl_26_1_initWithJavaUt
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jint size = [((id<JavaUtilSet>) nil_chk(val$params_)) size];
-  JavaUtilOptional *closest = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(val$constructors_)) stream])) minWithJavaUtilComparator:JavaUtilComparator_comparingIntWithJavaUtilFunctionToIntFunction_(new_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(size))];
+  JavaUtilOptional *closest = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(val$constructors_)) stream])) minWithJavaUtilComparator:JavaUtilComparator_comparingIntWithJavaUtilFunctionToIntFunction_(new_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(size))];
   if ([((JavaUtilOptional *) nil_chk(closest)) isPresent]) {
-    id<JavaUtilList> closestParams = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk([closest get]))->declaration_))->block_))->params_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_2_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+    id<JavaUtilList> closestParams = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk([closest get]))->declaration_))->block_))->params_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_2_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
     id<JavaUtilList> args = new_JavaUtilArrayList_init();
     for (NSString * __strong param in nil_chk(closestParams)) {
       [args addWithId:[((id<SMSimiProperty>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) getWithId:JreStrcat("$$", SMConstants_PRIVATE, param)])) getValue]];
@@ -4271,14 +4422,14 @@ SMBaseClassesNativeImpl_26_1 *create_SMBaseClassesNativeImpl_26_1_initWithJavaUt
     { "val$clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$initArgs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x1012, -1, -1, 6, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Set<LSimiFunction;>;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_26;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_26_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 5, 7, -1, 8, -1, -1 };
-  return &_SMBaseClassesNativeImpl_26_2;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Set<LSimiFunction;>;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_27;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_27_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 5, 7, -1, 8, -1, -1 };
+  return &_SMBaseClassesNativeImpl_27_2;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_26_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+void SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_27_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
   self->val$params_ = capture$0;
   self->val$constructors_ = capture$1;
   self->val$fields_ = capture$2;
@@ -4287,15 +4438,15 @@ void SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUt
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_26_2 *new_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
+SMBaseClassesNativeImpl_27_2 *new_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
 }
 
-SMBaseClassesNativeImpl_26_2 *create_SMBaseClassesNativeImpl_26_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
+SMBaseClassesNativeImpl_27_2 *create_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
 }
 
-@implementation SMBaseClassesNativeImpl_26_2_$Lambda$1
+@implementation SMBaseClassesNativeImpl_27_2_$Lambda$1
 
 - (jint)applyAsIntWithId:(SMSimiFunction *)f {
   return JavaLangMath_absWithInt_([((SMSimiFunction *) nil_chk(f)) arity] - val$size_);
@@ -4303,25 +4454,25 @@ SMBaseClassesNativeImpl_26_2 *create_SMBaseClassesNativeImpl_26_2_initWithJavaUt
 
 @end
 
-void SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_26_2_$Lambda$1 *self, jint capture$0) {
+void SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_27_2_$Lambda$1 *self, jint capture$0) {
   self->val$size_ = capture$0;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_26_2_$Lambda$1 *new_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_2_$Lambda$1, initWithInt_, capture$0)
+SMBaseClassesNativeImpl_27_2_$Lambda$1 *new_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_2_$Lambda$1, initWithInt_, capture$0)
 }
 
-SMBaseClassesNativeImpl_26_2_$Lambda$1 *create_SMBaseClassesNativeImpl_26_2_$Lambda$1_initWithInt_(jint capture$0) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_2_$Lambda$1, initWithInt_, capture$0)
+SMBaseClassesNativeImpl_27_2_$Lambda$1 *create_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_2_$Lambda$1, initWithInt_, capture$0)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_2_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_27_2_$Lambda$2)
 
-@implementation SMBaseClassesNativeImpl_26_2_$Lambda$2
+@implementation SMBaseClassesNativeImpl_27_2_$Lambda$2
 
-- (id)applyWithId:(SMToken *)t {
-  return ((SMToken *) nil_chk(t))->lexeme_;
+- (id)applyWithId:(SMExpr *)a {
+  return SMBlockImpl_getParamLexemeWithSMExpr_(a);
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -4333,29 +4484,29 @@ J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_2_$Lambda$2)
 }
 
 + (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_26_2_$Lambda$2 class]) {
-    SMBaseClassesNativeImpl_26_2_$Lambda$2_instance = new_SMBaseClassesNativeImpl_26_2_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_2_$Lambda$2)
+  if (self == [SMBaseClassesNativeImpl_27_2_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_27_2_$Lambda$2_instance = new_SMBaseClassesNativeImpl_27_2_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_27_2_$Lambda$2)
   }
 }
 
 @end
 
-void SMBaseClassesNativeImpl_26_2_$Lambda$2_init(SMBaseClassesNativeImpl_26_2_$Lambda$2 *self) {
+void SMBaseClassesNativeImpl_27_2_$Lambda$2_init(SMBaseClassesNativeImpl_27_2_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_26_2_$Lambda$2 *new_SMBaseClassesNativeImpl_26_2_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_2_$Lambda$2, init)
+SMBaseClassesNativeImpl_27_2_$Lambda$2 *new_SMBaseClassesNativeImpl_27_2_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_2_$Lambda$2, init)
 }
 
-SMBaseClassesNativeImpl_26_2_$Lambda$2 *create_SMBaseClassesNativeImpl_26_2_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_2_$Lambda$2, init)
+SMBaseClassesNativeImpl_27_2_$Lambda$2 *create_SMBaseClassesNativeImpl_27_2_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_2_$Lambda$2, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$1)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_27_$Lambda$1)
 
-@implementation SMBaseClassesNativeImpl_26_$Lambda$1
+@implementation SMBaseClassesNativeImpl_27_$Lambda$1
 
 - (id)applyWithId:(SMSimiFunction *)f {
   return ((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk(f))->declaration_))->block_))->params_;
@@ -4370,29 +4521,29 @@ J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_26_$Lambda$1 class]) {
-    SMBaseClassesNativeImpl_26_$Lambda$1_instance = new_SMBaseClassesNativeImpl_26_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_$Lambda$1)
+  if (self == [SMBaseClassesNativeImpl_27_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_27_$Lambda$1_instance = new_SMBaseClassesNativeImpl_27_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_27_$Lambda$1)
   }
 }
 
 @end
 
-void SMBaseClassesNativeImpl_26_$Lambda$1_init(SMBaseClassesNativeImpl_26_$Lambda$1 *self) {
+void SMBaseClassesNativeImpl_27_$Lambda$1_init(SMBaseClassesNativeImpl_27_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_26_$Lambda$1 *new_SMBaseClassesNativeImpl_26_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_$Lambda$1, init)
+SMBaseClassesNativeImpl_27_$Lambda$1 *new_SMBaseClassesNativeImpl_27_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_$Lambda$1, init)
 }
 
-SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBaseClassesNativeImpl_26_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_$Lambda$1, init)
+SMBaseClassesNativeImpl_27_$Lambda$1 *create_SMBaseClassesNativeImpl_27_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_27_$Lambda$2)
 
-@implementation SMBaseClassesNativeImpl_26_$Lambda$2
+@implementation SMBaseClassesNativeImpl_27_$Lambda$2
 
 - (id)applyWithId:(id<JavaUtilList>)a {
   return [((id<JavaUtilList>) nil_chk(a)) stream];
@@ -4407,32 +4558,32 @@ J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$2)
 }
 
 + (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_26_$Lambda$2 class]) {
-    SMBaseClassesNativeImpl_26_$Lambda$2_instance = new_SMBaseClassesNativeImpl_26_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_$Lambda$2)
+  if (self == [SMBaseClassesNativeImpl_27_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_27_$Lambda$2_instance = new_SMBaseClassesNativeImpl_27_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_27_$Lambda$2)
   }
 }
 
 @end
 
-void SMBaseClassesNativeImpl_26_$Lambda$2_init(SMBaseClassesNativeImpl_26_$Lambda$2 *self) {
+void SMBaseClassesNativeImpl_27_$Lambda$2_init(SMBaseClassesNativeImpl_27_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_26_$Lambda$2 *new_SMBaseClassesNativeImpl_26_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_$Lambda$2, init)
+SMBaseClassesNativeImpl_27_$Lambda$2 *new_SMBaseClassesNativeImpl_27_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_$Lambda$2, init)
 }
 
-SMBaseClassesNativeImpl_26_$Lambda$2 *create_SMBaseClassesNativeImpl_26_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_$Lambda$2, init)
+SMBaseClassesNativeImpl_27_$Lambda$2 *create_SMBaseClassesNativeImpl_27_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_$Lambda$2, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$3)
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_27_$Lambda$3)
 
-@implementation SMBaseClassesNativeImpl_26_$Lambda$3
+@implementation SMBaseClassesNativeImpl_27_$Lambda$3
 
-- (id)applyWithId:(SMToken *)t {
-  return ((SMToken *) nil_chk(t))->lexeme_;
+- (id)applyWithId:(SMExpr *)a {
+  return SMBlockImpl_getParamLexemeWithSMExpr_(a);
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -4444,30 +4595,30 @@ J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$3)
 }
 
 + (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_26_$Lambda$3 class]) {
-    SMBaseClassesNativeImpl_26_$Lambda$3_instance = new_SMBaseClassesNativeImpl_26_$Lambda$3_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_$Lambda$3)
+  if (self == [SMBaseClassesNativeImpl_27_$Lambda$3 class]) {
+    SMBaseClassesNativeImpl_27_$Lambda$3_instance = new_SMBaseClassesNativeImpl_27_$Lambda$3_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_27_$Lambda$3)
   }
 }
 
 @end
 
-void SMBaseClassesNativeImpl_26_$Lambda$3_init(SMBaseClassesNativeImpl_26_$Lambda$3 *self) {
+void SMBaseClassesNativeImpl_27_$Lambda$3_init(SMBaseClassesNativeImpl_27_$Lambda$3 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_26_$Lambda$3 *new_SMBaseClassesNativeImpl_26_$Lambda$3_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_$Lambda$3, init)
+SMBaseClassesNativeImpl_27_$Lambda$3 *new_SMBaseClassesNativeImpl_27_$Lambda$3_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_$Lambda$3, init)
 }
 
-SMBaseClassesNativeImpl_26_$Lambda$3 *create_SMBaseClassesNativeImpl_26_$Lambda$3_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_$Lambda$3, init)
+SMBaseClassesNativeImpl_27_$Lambda$3 *create_SMBaseClassesNativeImpl_27_$Lambda$3_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_$Lambda$3, init)
 }
 
-@implementation SMBaseClassesNativeImpl_27
+@implementation SMBaseClassesNativeImpl_28
 
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(self, outer$);
+  SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -4479,65 +4630,6 @@ SMBaseClassesNativeImpl_26_$Lambda$3 *create_SMBaseClassesNativeImpl_26_$Lambda$
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_init()));
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_27 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_27;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_27 *self, SMBaseClassesNativeImpl *outer$) {
-  self->this$0_ = outer$;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_27 *new_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27, initWithSMBaseClassesNativeImpl_, outer$)
-}
-
-SMBaseClassesNativeImpl_27 *create_SMBaseClassesNativeImpl_27_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27, initWithSMBaseClassesNativeImpl_, outer$)
-}
-
-@implementation SMBaseClassesNativeImpl_28
-
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(self, outer$);
-  return self;
-}
-
-- (jint)arity {
-  return 1;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  jint capacity = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithInt_(capacity)));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4589,15 +4681,14 @@ SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 2;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jint capacity = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  SMSimiValue *fillValue = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue];
-  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithJavaUtilCollection_(JavaUtilCollections_nCopiesWithInt_withId_(capacity, fillValue))));
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithInt_(capacity)));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4655,13 +4746,9 @@ SMBaseClassesNativeImpl_29 *create_SMBaseClassesNativeImpl_29_initWithSMBaseClas
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getNumber])) intValue];
-  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
-  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
-    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, new_JavaUtilArrayList_initWithJavaUtilCollection_([((JavaUtilArrayList *) nil_chk(((SMSimiObjectImpl_Array *) nil_chk([self_ asArray]))->fields_)) subListWithInt:start withInt:stop - 1])));
-  }
-  return nil;
+  jint capacity = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  SMSimiValue *fillValue = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithJavaUtilCollection_(JavaUtilCollections_nCopiesWithInt_withId_(capacity, fillValue))));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4713,14 +4800,19 @@ SMBaseClassesNativeImpl_30 *create_SMBaseClassesNativeImpl_30_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 0;
+  return 2;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_SMSimiValue_Number_initWithDouble_([((NSString *) nil_chk(value)) java_length]);
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getNumber])) intValue];
+  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
+    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, new_JavaUtilArrayList_initWithJavaUtilCollection_([((JavaUtilArrayList *) nil_chk(((SMSimiObjectImpl_Array *) nil_chk([self_ asArray]))->fields_)) subListWithInt:start withInt:stop - 1])));
+  }
+  return nil;
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4744,7 +4836,7 @@ SMBaseClassesNativeImpl_30 *create_SMBaseClassesNativeImpl_30_initWithSMBaseClas
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_31 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_31;
 }
@@ -4772,15 +4864,14 @@ SMBaseClassesNativeImpl_31 *create_SMBaseClassesNativeImpl_31_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *suffix = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_hasSuffix:suffix]);
+  return new_SMSimiValue_Number_initWithDouble_([((NSString *) nil_chk(value)) java_length]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4839,19 +4930,8 @@ SMBaseClassesNativeImpl_32 *create_SMBaseClassesNativeImpl_32_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  SMSimiObjectImpl *argsObject = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
-  IOSObjectArray *args = [IOSObjectArray newArrayWithLength:[((SMSimiObjectImpl *) nil_chk(argsObject)) length] type:NSObject_class_()];
-  jint i = 0;
-  for (SMSimiValue * __strong simiValue in nil_chk([argsObject values])) {
-    if ([simiValue isKindOfClass:[SMSimiValue_Number class]]) {
-      (void) IOSObjectArray_Set(args, i, [((SMSimiValue *) nil_chk(simiValue)) getNumber]);
-    }
-    else {
-      (void) IOSObjectArray_Set(args, 1, [((SMSimiValue *) nil_chk(simiValue)) description]);
-    }
-    i++;
-  }
-  return new_SMSimiValue_String_initWithNSString_(NSString_java_formatWithNSString_withNSObjectArray_(value, args));
+  NSString *suffix = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_hasSuffix:suffix]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4903,20 +4983,26 @@ SMBaseClassesNativeImpl_33 *create_SMBaseClassesNativeImpl_33_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 2;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  jint index = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
-  jint i = [((NSString *) nil_chk(value)) java_indexOfString:str fromIndex:index];
-  if (i == -1) {
-    return nil;
+  SMSimiObjectImpl *argsObject = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  IOSObjectArray *args = [IOSObjectArray newArrayWithLength:[((SMSimiObjectImpl *) nil_chk(argsObject)) length] type:NSObject_class_()];
+  jint i = 0;
+  for (SMSimiValue * __strong simiValue in nil_chk([argsObject values])) {
+    if ([simiValue isKindOfClass:[SMSimiValue_Number class]]) {
+      (void) IOSObjectArray_Set(args, i, [((SMSimiValue *) nil_chk(simiValue)) getNumber]);
+    }
+    else {
+      (void) IOSObjectArray_Set(args, 1, [((SMSimiValue *) nil_chk(simiValue)) description]);
+    }
+    i++;
   }
-  return new_SMSimiValue_Number_initWithDouble_(i);
+  return new_SMSimiValue_String_initWithNSString_(NSString_java_formatWithNSString_withNSObjectArray_(value, args));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4977,7 +5063,7 @@ SMBaseClassesNativeImpl_34 *create_SMBaseClassesNativeImpl_34_initWithSMBaseClas
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
   jint index = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
-  jint i = [((NSString *) nil_chk(value)) java_lastIndexOfString:str fromIndex:index];
+  jint i = [((NSString *) nil_chk(value)) java_indexOfString:str fromIndex:index];
   if (i == -1) {
     return nil;
   }
@@ -5040,9 +5126,13 @@ SMBaseClassesNativeImpl_35 *create_SMBaseClassesNativeImpl_35_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
-  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk([((NSString *) nil_chk(value)) java_substring:0 endIndex:start])) java_concat:[value java_substring:stop endIndex:[value java_length]]]);
+  NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  jint index = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  jint i = [((NSString *) nil_chk(value)) java_lastIndexOfString:str fromIndex:index];
+  if (i == -1) {
+    return nil;
+  }
+  return new_SMSimiValue_Number_initWithDouble_(i);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5101,9 +5191,9 @@ SMBaseClassesNativeImpl_36 *create_SMBaseClassesNativeImpl_36_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *old = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  NSString *newStr = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getString];
-  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_replace:old withSequence:newStr]);
+  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk([((NSString *) nil_chk(value)) java_substring:0 endIndex:start])) java_concat:[value java_substring:stop endIndex:[value java_length]]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5155,17 +5245,16 @@ SMBaseClassesNativeImpl_37 *create_SMBaseClassesNativeImpl_37_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 1;
+  return 2;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiClassImpl *objectClass = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getGlobalWithNSString:SMConstants_CLASS_OBJECT])) getValue])) getObject], [SMSimiClassImpl class]);
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *separator = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  JavaUtilArrayList *split = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk(JavaUtilArrays_streamWithNSObjectArray_([((NSString *) nil_chk(value)) java_split:JavaUtilRegexPattern_quoteWithNSString_(separator)]))) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_38_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMBaseClassesNativeImpl_38_$Lambda$2, instance))];
-  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, split));
+  NSString *old = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  NSString *newStr = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getString];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_replace:old withSequence:newStr]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5209,72 +5298,6 @@ SMBaseClassesNativeImpl_38 *create_SMBaseClassesNativeImpl_38_initWithSMBaseClas
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_38, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_38_$Lambda$1)
-
-@implementation SMBaseClassesNativeImpl_38_$Lambda$1
-
-- (id)applyWithId:(NSString *)a {
-  return new_SMSimiValue_String_initWithNSString_(a);
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_38_$Lambda$1 class]) {
-    SMBaseClassesNativeImpl_38_$Lambda$1_instance = new_SMBaseClassesNativeImpl_38_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_38_$Lambda$1)
-  }
-}
-
-@end
-
-void SMBaseClassesNativeImpl_38_$Lambda$1_init(SMBaseClassesNativeImpl_38_$Lambda$1 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_38_$Lambda$1 *new_SMBaseClassesNativeImpl_38_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_38_$Lambda$1, init)
-}
-
-SMBaseClassesNativeImpl_38_$Lambda$1 *create_SMBaseClassesNativeImpl_38_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_38_$Lambda$1, init)
-}
-
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_38_$Lambda$2)
-
-@implementation SMBaseClassesNativeImpl_38_$Lambda$2
-
-- (id)get {
-  return new_JavaUtilArrayList_init();
-}
-
-+ (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_38_$Lambda$2 class]) {
-    SMBaseClassesNativeImpl_38_$Lambda$2_instance = new_SMBaseClassesNativeImpl_38_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_38_$Lambda$2)
-  }
-}
-
-@end
-
-void SMBaseClassesNativeImpl_38_$Lambda$2_init(SMBaseClassesNativeImpl_38_$Lambda$2 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_38_$Lambda$2 *new_SMBaseClassesNativeImpl_38_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_38_$Lambda$2, init)
-}
-
-SMBaseClassesNativeImpl_38_$Lambda$2 *create_SMBaseClassesNativeImpl_38_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_38_$Lambda$2, init)
-}
-
 @implementation SMBaseClassesNativeImpl_39
 
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
@@ -5289,9 +5312,11 @@ SMBaseClassesNativeImpl_38_$Lambda$2 *create_SMBaseClassesNativeImpl_38_$Lambda$
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
+  SMSimiClassImpl *objectClass = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getGlobalWithNSString:SMConstants_CLASS_OBJECT])) getValue])) getObject], [SMSimiClassImpl class]);
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *prefix = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_hasPrefix:prefix]);
+  NSString *separator = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  JavaUtilArrayList *split = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk(JavaUtilArrays_streamWithNSObjectArray_([((NSString *) nil_chk(value)) java_split:JavaUtilRegexPattern_quoteWithNSString_(separator)]))) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_39_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMBaseClassesNativeImpl_39_$Lambda$2, instance))];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, split));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5335,6 +5360,72 @@ SMBaseClassesNativeImpl_39 *create_SMBaseClassesNativeImpl_39_initWithSMBaseClas
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_39, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_39_$Lambda$1)
+
+@implementation SMBaseClassesNativeImpl_39_$Lambda$1
+
+- (id)applyWithId:(NSString *)a {
+  return new_SMSimiValue_String_initWithNSString_(a);
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_39_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_39_$Lambda$1_instance = new_SMBaseClassesNativeImpl_39_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_39_$Lambda$1)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_39_$Lambda$1_init(SMBaseClassesNativeImpl_39_$Lambda$1 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_39_$Lambda$1 *new_SMBaseClassesNativeImpl_39_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_39_$Lambda$1, init)
+}
+
+SMBaseClassesNativeImpl_39_$Lambda$1 *create_SMBaseClassesNativeImpl_39_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_39_$Lambda$1, init)
+}
+
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_39_$Lambda$2)
+
+@implementation SMBaseClassesNativeImpl_39_$Lambda$2
+
+- (id)get {
+  return new_JavaUtilArrayList_init();
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_39_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_39_$Lambda$2_instance = new_SMBaseClassesNativeImpl_39_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_39_$Lambda$2)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_39_$Lambda$2_init(SMBaseClassesNativeImpl_39_$Lambda$2 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_39_$Lambda$2 *new_SMBaseClassesNativeImpl_39_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_39_$Lambda$2, init)
+}
+
+SMBaseClassesNativeImpl_39_$Lambda$2 *create_SMBaseClassesNativeImpl_39_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_39_$Lambda$2, init)
+}
+
 @implementation SMBaseClassesNativeImpl_40
 
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
@@ -5343,16 +5434,15 @@ SMBaseClassesNativeImpl_39 *create_SMBaseClassesNativeImpl_39_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 2;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
-  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_substring:start endIndex:stop]);
+  NSString *prefix = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_hasPrefix:prefix]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5404,14 +5494,16 @@ SMBaseClassesNativeImpl_40 *create_SMBaseClassesNativeImpl_40_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 0;
+  return 2;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) lowercaseString]);
+  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_substring:start endIndex:stop]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5470,7 +5562,7 @@ SMBaseClassesNativeImpl_41 *create_SMBaseClassesNativeImpl_41_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) uppercaseString]);
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) lowercaseString]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5529,7 +5621,7 @@ SMBaseClassesNativeImpl_42 *create_SMBaseClassesNativeImpl_42_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_trim]);
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) uppercaseString]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5588,13 +5680,72 @@ SMBaseClassesNativeImpl_43 *create_SMBaseClassesNativeImpl_43_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_trim]);
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_44 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_44;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_44 *self, SMBaseClassesNativeImpl *outer$) {
+  self->this$0_ = outer$;
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_44 *new_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_44, initWithSMBaseClassesNativeImpl_, outer$)
+}
+
+SMBaseClassesNativeImpl_44 *create_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_44, initWithSMBaseClassesNativeImpl_, outer$)
+}
+
+@implementation SMBaseClassesNativeImpl_45
+
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(self, outer$);
+  return self;
+}
+
+- (jint)arity {
+  return 0;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   {
     IOSCharArray *a__ = [((NSString *) nil_chk(value)) java_toCharArray];
     jchar const *b__ = ((IOSCharArray *) nil_chk(a__))->buffer_;
     jchar const *e__ = b__ + a__->size_;
     while (b__ < e__) {
       jchar c = *b__++;
-      if (!SMBaseClassesNativeImpl_44_isAlphaWithChar_(self, c)) {
+      if (!SMBaseClassesNativeImpl_45_isAlphaWithChar_(self, c)) {
         return new_SMSimiValue_Number_initWithBoolean_(false);
       }
     }
@@ -5603,7 +5754,7 @@ SMBaseClassesNativeImpl_43 *create_SMBaseClassesNativeImpl_43_initWithSMBaseClas
 }
 
 - (jboolean)isAlphaWithChar:(jchar)c {
-  return SMBaseClassesNativeImpl_44_isAlphaWithChar_(self, c);
+  return SMBaseClassesNativeImpl_45_isAlphaWithChar_(self, c);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5630,33 +5781,33 @@ SMBaseClassesNativeImpl_43 *create_SMBaseClassesNativeImpl_43_initWithSMBaseClas
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isAlpha", "C", "LSMBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_44 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
-  return &_SMBaseClassesNativeImpl_44;
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_45 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
+  return &_SMBaseClassesNativeImpl_45;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_44 *self, SMBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_45 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_44 *new_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_44, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_45 *new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_45, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-SMBaseClassesNativeImpl_44 *create_SMBaseClassesNativeImpl_44_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_44, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_45 *create_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_45, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-jboolean SMBaseClassesNativeImpl_44_isAlphaWithChar_(SMBaseClassesNativeImpl_44 *self, jchar c) {
+jboolean SMBaseClassesNativeImpl_45_isAlphaWithChar_(SMBaseClassesNativeImpl_45 *self, jchar c) {
   return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 }
 
-@implementation SMBaseClassesNativeImpl_45
+@implementation SMBaseClassesNativeImpl_46
 
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(self, outer$);
+  SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -5674,7 +5825,7 @@ jboolean SMBaseClassesNativeImpl_44_isAlphaWithChar_(SMBaseClassesNativeImpl_44 
     jchar const *e__ = b__ + a__->size_;
     while (b__ < e__) {
       jchar c = *b__++;
-      if (!SMBaseClassesNativeImpl_45_isDigitWithChar_(self, c)) {
+      if (!SMBaseClassesNativeImpl_46_isDigitWithChar_(self, c)) {
         return new_SMSimiValue_Number_initWithBoolean_(false);
       }
     }
@@ -5683,7 +5834,7 @@ jboolean SMBaseClassesNativeImpl_44_isAlphaWithChar_(SMBaseClassesNativeImpl_44 
 }
 
 - (jboolean)isDigitWithChar:(jchar)c {
-  return SMBaseClassesNativeImpl_45_isDigitWithChar_(self, c);
+  return SMBaseClassesNativeImpl_46_isDigitWithChar_(self, c);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5710,73 +5861,7 @@ jboolean SMBaseClassesNativeImpl_44_isAlphaWithChar_(SMBaseClassesNativeImpl_44 
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isDigit", "C", "LSMBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_45 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
-  return &_SMBaseClassesNativeImpl_45;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_45 *self, SMBaseClassesNativeImpl *outer$) {
-  self->this$0_ = outer$;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_45 *new_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_45, initWithSMBaseClassesNativeImpl_, outer$)
-}
-
-SMBaseClassesNativeImpl_45 *create_SMBaseClassesNativeImpl_45_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_45, initWithSMBaseClassesNativeImpl_, outer$)
-}
-
-jboolean SMBaseClassesNativeImpl_45_isDigitWithChar_(SMBaseClassesNativeImpl_45 *self, jchar c) {
-  return c >= '0' && c <= '9';
-}
-
-@implementation SMBaseClassesNativeImpl_46
-
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_46_initWithSMBaseClassesNativeImpl_(self, outer$);
-  return self;
-}
-
-- (jint)arity {
-  return 0;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  JavaTextStringCharacterIterator *iterator = new_JavaTextStringCharacterIterator_initWithNSString_(value);
-  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  (void) [fields putWithId:SMConstants_NEXT withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_46_1_initWithJavaTextStringCharacterIterator_(iterator), nil, nil)];
-  return new_SMSimiValue_Object_initWithSMSimiObject_(new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_46 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_46 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
   return &_SMBaseClassesNativeImpl_46;
 }
 
@@ -5795,66 +5880,8 @@ SMBaseClassesNativeImpl_46 *create_SMBaseClassesNativeImpl_46_initWithSMBaseClas
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_46, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation SMBaseClassesNativeImpl_46_1
-
-- (instancetype __nonnull)initWithJavaTextStringCharacterIterator:(JavaTextStringCharacterIterator *)capture$0 {
-  SMBaseClassesNativeImpl_46_1_initWithJavaTextStringCharacterIterator_(self, capture$0);
-  return self;
-}
-
-- (jint)arity {
-  return 0;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  jchar next = [((JavaTextStringCharacterIterator *) nil_chk(val$iterator_)) next];
-  if (next != JavaTextCharacterIterator_DONE) {
-    return new_SMSimiValue_String_initWithNSString_(JreStrcat("C", next));
-  }
-  return nil;
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaTextStringCharacterIterator:);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "val$iterator_", "LJavaTextStringCharacterIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_46;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_46_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_46_1;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_46_1_initWithJavaTextStringCharacterIterator_(SMBaseClassesNativeImpl_46_1 *self, JavaTextStringCharacterIterator *capture$0) {
-  self->val$iterator_ = capture$0;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_46_1 *new_SMBaseClassesNativeImpl_46_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_46_1, initWithJavaTextStringCharacterIterator_, capture$0)
-}
-
-SMBaseClassesNativeImpl_46_1 *create_SMBaseClassesNativeImpl_46_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_46_1, initWithJavaTextStringCharacterIterator_, capture$0)
+jboolean SMBaseClassesNativeImpl_46_isDigitWithChar_(SMBaseClassesNativeImpl_46 *self, jchar c) {
+  return c >= '0' && c <= '9';
 }
 
 @implementation SMBaseClassesNativeImpl_47
@@ -5865,15 +5892,17 @@ SMBaseClassesNativeImpl_46_1 *create_SMBaseClassesNativeImpl_46_1_initWithJavaTe
 }
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_contains:str]);
+  JavaTextStringCharacterIterator *iterator = new_JavaTextStringCharacterIterator_initWithNSString_(value);
+  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
+  (void) [fields putWithId:SMConstants_NEXT withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_47_1_initWithJavaTextStringCharacterIterator_(iterator), nil, nil)];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5917,23 +5946,25 @@ SMBaseClassesNativeImpl_47 *create_SMBaseClassesNativeImpl_47_initWithSMBaseClas
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_47, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation SMBaseClassesNativeImpl_48
+@implementation SMBaseClassesNativeImpl_47_1
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_48_init(self);
+- (instancetype __nonnull)initWithJavaTextStringCharacterIterator:(JavaTextStringCharacterIterator *)capture$0 {
+  SMBaseClassesNativeImpl_47_1_initWithJavaTextStringCharacterIterator_(self, capture$0);
   return self;
 }
-J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
+  jchar next = [((JavaTextStringCharacterIterator *) nil_chk(val$iterator_)) next];
+  if (next != JavaTextCharacterIterator_DONE) {
+    return new_SMSimiValue_String_initWithNSString_(JreStrcat("C", next));
+  }
+  return nil;
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5950,27 +5981,91 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init);
+  methods[0].selector = @selector(initWithJavaTextStringCharacterIterator:);
   methods[1].selector = @selector(arity);
   methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "val$iterator_", "LJavaTextStringCharacterIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_47;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_47_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_47_1;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_47_1_initWithJavaTextStringCharacterIterator_(SMBaseClassesNativeImpl_47_1 *self, JavaTextStringCharacterIterator *capture$0) {
+  self->val$iterator_ = capture$0;
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_47_1 *new_SMBaseClassesNativeImpl_47_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_47_1, initWithJavaTextStringCharacterIterator_, capture$0)
+}
+
+SMBaseClassesNativeImpl_47_1 *create_SMBaseClassesNativeImpl_47_1_initWithJavaTextStringCharacterIterator_(JavaTextStringCharacterIterator *capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_47_1, initWithJavaTextStringCharacterIterator_, capture$0)
+}
+
+@implementation SMBaseClassesNativeImpl_48
+
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_48_initWithSMBaseClassesNativeImpl_(self, outer$);
+  return self;
+}
+
+- (jint)arity {
+  return 1;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
+  NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
+  return new_SMSimiValue_Number_initWithBoolean_([((NSString *) nil_chk(value)) java_contains:str]);
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+  };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_48 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_48 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_48;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_48_init(SMBaseClassesNativeImpl_48 *self) {
+void SMBaseClassesNativeImpl_48_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_48 *self, SMBaseClassesNativeImpl *outer$) {
+  self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_48 *new_SMBaseClassesNativeImpl_48_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_48, init)
+SMBaseClassesNativeImpl_48 *new_SMBaseClassesNativeImpl_48_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_48, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-SMBaseClassesNativeImpl_48 *create_SMBaseClassesNativeImpl_48_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_48, init)
+SMBaseClassesNativeImpl_48 *create_SMBaseClassesNativeImpl_48_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_48, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
 @implementation SMBaseClassesNativeImpl_49
@@ -5989,7 +6084,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -6031,8 +6126,64 @@ SMBaseClassesNativeImpl_49 *create_SMBaseClassesNativeImpl_49_init() {
 
 @implementation SMBaseClassesNativeImpl_50
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_50_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
+- (jint)arity {
+  return 1;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_50 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_50;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_50_init(SMBaseClassesNativeImpl_50 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_50 *new_SMBaseClassesNativeImpl_50_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_50, init)
+}
+
+SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_50, init)
+}
+
+@implementation SMBaseClassesNativeImpl_51
+
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_50_initWithSMBaseClassesNativeImpl_(self, outer$);
+  SMBaseClassesNativeImpl_51_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -6077,30 +6228,30 @@ SMBaseClassesNativeImpl_49 *create_SMBaseClassesNativeImpl_49_init() {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_50 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_50;
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_51 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_51;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_50_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_50 *self, SMBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_51_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_51 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_50 *new_SMBaseClassesNativeImpl_50_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_50, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_51 *new_SMBaseClassesNativeImpl_51_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_51, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_50, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_51 *create_SMBaseClassesNativeImpl_51_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_51, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation SMBaseClassesNativeImpl_51
+@implementation SMBaseClassesNativeImpl_52
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_51_init(self);
+  SMBaseClassesNativeImpl_52_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -6116,8 +6267,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   SMSimiNativeObject *object = new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
   SMSimiValue *objectValue = new_SMSimiValue_Object_initWithSMSimiObject_(object);
   JavaLangStringBuilder *sb = new_JavaLangStringBuilder_init();
-  (void) [fields putWithId:@"add" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_51_1_initWithJavaLangStringBuilder_withSMSimiValue_(sb, objectValue), @"add", object)];
-  (void) [fields putWithId:@"build" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_51_2_initWithJavaLangStringBuilder_(sb), @"build", object)];
+  (void) [fields putWithId:@"add" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_52_1_initWithJavaLangStringBuilder_withSMSimiValue_(sb, objectValue), @"add", object)];
+  (void) [fields putWithId:@"build" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_52_2_initWithJavaLangStringBuilder_(sb), @"build", object)];
   return objectValue;
 }
 
@@ -6140,29 +6291,29 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_51 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_51;
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_52 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_52;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_51_init(SMBaseClassesNativeImpl_51 *self) {
+void SMBaseClassesNativeImpl_52_init(SMBaseClassesNativeImpl_52 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_51 *new_SMBaseClassesNativeImpl_51_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_51, init)
+SMBaseClassesNativeImpl_52 *new_SMBaseClassesNativeImpl_52_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_52, init)
 }
 
-SMBaseClassesNativeImpl_51 *create_SMBaseClassesNativeImpl_51_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_51, init)
+SMBaseClassesNativeImpl_52 *create_SMBaseClassesNativeImpl_52_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_52, init)
 }
 
-@implementation SMBaseClassesNativeImpl_51_1
+@implementation SMBaseClassesNativeImpl_52_1
 
 - (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0
                                         withSMSimiValue:(SMSimiValue *)capture$1 {
-  SMBaseClassesNativeImpl_51_1_initWithJavaLangStringBuilder_withSMSimiValue_(self, capture$0, capture$1);
+  SMBaseClassesNativeImpl_52_1_initWithJavaLangStringBuilder_withSMSimiValue_(self, capture$0, capture$1);
   return self;
 }
 
@@ -6205,31 +6356,31 @@ SMBaseClassesNativeImpl_51 *create_SMBaseClassesNativeImpl_51_init() {
     { "val$sb_", "LJavaLangStringBuilder;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$objectValue_", "LSMSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_51;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_51_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_51_1;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_52;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_52_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_52_1;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_51_1_initWithJavaLangStringBuilder_withSMSimiValue_(SMBaseClassesNativeImpl_51_1 *self, JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
+void SMBaseClassesNativeImpl_52_1_initWithJavaLangStringBuilder_withSMSimiValue_(SMBaseClassesNativeImpl_52_1 *self, JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
   self->val$sb_ = capture$0;
   self->val$objectValue_ = capture$1;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_51_1 *new_SMBaseClassesNativeImpl_51_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_51_1, initWithJavaLangStringBuilder_withSMSimiValue_, capture$0, capture$1)
+SMBaseClassesNativeImpl_52_1 *new_SMBaseClassesNativeImpl_52_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_52_1, initWithJavaLangStringBuilder_withSMSimiValue_, capture$0, capture$1)
 }
 
-SMBaseClassesNativeImpl_51_1 *create_SMBaseClassesNativeImpl_51_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_51_1, initWithJavaLangStringBuilder_withSMSimiValue_, capture$0, capture$1)
+SMBaseClassesNativeImpl_52_1 *create_SMBaseClassesNativeImpl_52_1_initWithJavaLangStringBuilder_withSMSimiValue_(JavaLangStringBuilder *capture$0, SMSimiValue *capture$1) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_52_1, initWithJavaLangStringBuilder_withSMSimiValue_, capture$0, capture$1)
 }
 
-@implementation SMBaseClassesNativeImpl_51_2
+@implementation SMBaseClassesNativeImpl_52_2
 
 - (instancetype __nonnull)initWithJavaLangStringBuilder:(JavaLangStringBuilder *)capture$0 {
-  SMBaseClassesNativeImpl_51_2_initWithJavaLangStringBuilder_(self, capture$0);
+  SMBaseClassesNativeImpl_52_2_initWithJavaLangStringBuilder_(self, capture$0);
   return self;
 }
 
@@ -6264,81 +6415,24 @@ SMBaseClassesNativeImpl_51_1 *create_SMBaseClassesNativeImpl_51_1_initWithJavaLa
   static const J2ObjcFieldInfo fields[] = {
     { "val$sb_", "LJavaLangStringBuilder;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_51;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_51_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_51_2;
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_52;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_52_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_52_2;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_51_2_initWithJavaLangStringBuilder_(SMBaseClassesNativeImpl_51_2 *self, JavaLangStringBuilder *capture$0) {
+void SMBaseClassesNativeImpl_52_2_initWithJavaLangStringBuilder_(SMBaseClassesNativeImpl_52_2 *self, JavaLangStringBuilder *capture$0) {
   self->val$sb_ = capture$0;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_51_2 *new_SMBaseClassesNativeImpl_51_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_51_2, initWithJavaLangStringBuilder_, capture$0)
+SMBaseClassesNativeImpl_52_2 *new_SMBaseClassesNativeImpl_52_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_52_2, initWithJavaLangStringBuilder_, capture$0)
 }
 
-SMBaseClassesNativeImpl_51_2 *create_SMBaseClassesNativeImpl_51_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_51_2, initWithJavaLangStringBuilder_, capture$0)
-}
-
-@implementation SMBaseClassesNativeImpl_52
-
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_52_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
-
-- (jint)arity {
-  return 1;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  jint max = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  return new_SMSimiValue_Number_initWithDouble_([((JavaUtilConcurrentThreadLocalRandom *) nil_chk(JavaUtilConcurrentThreadLocalRandom_current())) nextIntWithInt:max]);
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_52 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_52;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_52_init(SMBaseClassesNativeImpl_52 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_52 *new_SMBaseClassesNativeImpl_52_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_52, init)
-}
-
-SMBaseClassesNativeImpl_52 *create_SMBaseClassesNativeImpl_52_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_52, init)
+SMBaseClassesNativeImpl_52_2 *create_SMBaseClassesNativeImpl_52_2_initWithJavaLangStringBuilder_(JavaLangStringBuilder *capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_52_2, initWithJavaLangStringBuilder_, capture$0)
 }
 
 @implementation SMBaseClassesNativeImpl_53
@@ -6357,7 +6451,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
+  jint max = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  return new_SMSimiValue_Number_initWithDouble_([((JavaUtilConcurrentThreadLocalRandom *) nil_chk(JavaUtilConcurrentThreadLocalRandom_current())) nextIntWithInt:max]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -6413,7 +6508,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -6455,8 +6550,64 @@ SMBaseClassesNativeImpl_54 *create_SMBaseClassesNativeImpl_54_init() {
 
 @implementation SMBaseClassesNativeImpl_55
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_55_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
+- (jint)arity {
+  return 1;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_55 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_55;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_55_init(SMBaseClassesNativeImpl_55 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_55 *new_SMBaseClassesNativeImpl_55_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_55, init)
+}
+
+SMBaseClassesNativeImpl_55 *create_SMBaseClassesNativeImpl_55_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_55, init)
+}
+
+@implementation SMBaseClassesNativeImpl_56
+
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_(self, outer$);
+  SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -6493,30 +6644,30 @@ SMBaseClassesNativeImpl_54 *create_SMBaseClassesNativeImpl_54_init() {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_55 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_55;
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_56 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_56;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_55 *self, SMBaseClassesNativeImpl *outer$) {
+void SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_56 *self, SMBaseClassesNativeImpl *outer$) {
   self->this$0_ = outer$;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_55 *new_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_55, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_56 *new_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_56, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-SMBaseClassesNativeImpl_55 *create_SMBaseClassesNativeImpl_55_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_55, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_56, initWithSMBaseClassesNativeImpl_, outer$)
 }
 
-@implementation SMBaseClassesNativeImpl_56
+@implementation SMBaseClassesNativeImpl_57
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_56_init(self);
+  SMBaseClassesNativeImpl_57_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -6553,29 +6704,29 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getExceptionClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_56 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_56;
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_57 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_57;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_56_init(SMBaseClassesNativeImpl_56 *self) {
+void SMBaseClassesNativeImpl_57_init(SMBaseClassesNativeImpl_57 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_56 *new_SMBaseClassesNativeImpl_56_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_56, init)
+SMBaseClassesNativeImpl_57 *new_SMBaseClassesNativeImpl_57_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_57, init)
 }
 
-SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_56, init)
+SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_57, init)
 }
 
-@implementation SMBaseClassesNativeImpl_57
+@implementation SMBaseClassesNativeImpl_58
 
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
                                     withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0 {
-  SMBaseClassesNativeImpl_57_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, outer$, capture$0);
+  SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, outer$, capture$0);
   return self;
 }
 
@@ -6612,31 +6763,31 @@ SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_init() {
     { "val$binary_", "LJavaUtilMap_Entry;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
   };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/BiFunction<Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;>;>;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_57 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
-  return &_SMBaseClassesNativeImpl_57;
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_58 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
+  return &_SMBaseClassesNativeImpl_58;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_57_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_57 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+void SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_58 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
   self->this$0_ = outer$;
   self->val$binary_ = capture$0;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_57 *new_SMBaseClassesNativeImpl_57_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_57, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
+SMBaseClassesNativeImpl_58 *new_SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_58, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
 }
 
-SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_57, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
+SMBaseClassesNativeImpl_58 *create_SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_58, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
 }
 
-@implementation SMBaseClassesNativeImpl_58
+@implementation SMBaseClassesNativeImpl_59
 
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$
                                     withJavaUtilMap_Entry:(id<JavaUtilMap_Entry>)capture$0 {
-  SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, outer$, capture$0);
+  SMBaseClassesNativeImpl_59_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(self, outer$, capture$0);
   return self;
 }
 
@@ -6673,31 +6824,31 @@ SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_initWithSMBaseClas
     { "val$unary_", "LJavaUtilMap_Entry;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
   };
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/Function<Ljava/lang/Double;Ljava/lang/Double;>;>;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_58 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
-  return &_SMBaseClassesNativeImpl_58;
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_59 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
+  return &_SMBaseClassesNativeImpl_59;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_58 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+void SMBaseClassesNativeImpl_59_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl_59 *self, SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
   self->this$0_ = outer$;
   self->val$unary_ = capture$0;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_58 *new_SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_58, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
+SMBaseClassesNativeImpl_59 *new_SMBaseClassesNativeImpl_59_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_59, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
 }
 
-SMBaseClassesNativeImpl_58 *create_SMBaseClassesNativeImpl_58_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_58, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
+SMBaseClassesNativeImpl_59 *create_SMBaseClassesNativeImpl_59_initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_(SMBaseClassesNativeImpl *outer$, id<JavaUtilMap_Entry> capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_59, initWithSMBaseClassesNativeImpl_withJavaUtilMap_Entry_, outer$, capture$0)
 }
 
-@implementation SMBaseClassesNativeImpl_59
+@implementation SMBaseClassesNativeImpl_60
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_59_init(self);
+  SMBaseClassesNativeImpl_60_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -6732,22 +6883,22 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_59 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_59;
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_60 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_60;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_59_init(SMBaseClassesNativeImpl_59 *self) {
+void SMBaseClassesNativeImpl_60_init(SMBaseClassesNativeImpl_60 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_59 *new_SMBaseClassesNativeImpl_59_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_59, init)
+SMBaseClassesNativeImpl_60 *new_SMBaseClassesNativeImpl_60_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_60, init)
 }
 
-SMBaseClassesNativeImpl_59 *create_SMBaseClassesNativeImpl_59_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_59, init)
+SMBaseClassesNativeImpl_60 *create_SMBaseClassesNativeImpl_60_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_60, init)
 }
 
 J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$1)
