@@ -11,6 +11,8 @@
 		6A59D75C20E7DD74008FB2AB /* SM_File.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A59D75A20E7DD74008FB2AB /* SM_File.m */; };
 		6A59D75F20E7E2E6008FB2AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A59D75E20E7E2E6008FB2AB /* UIKit.framework */; };
 		6A71C0E020FB574200BBDC87 /* libiOSSimi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A71C0A720FB574200BBDC87 /* libiOSSimi.a */; };
+		6A981A632125B7E300ED3FF4 /* SM_WriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A981A612125B7E300ED3FF4 /* SM_WriteStream.h */; };
+		6A981A642125B7E300ED3FF4 /* SM_WriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A981A622125B7E300ED3FF4 /* SM_WriteStream.m */; };
 		6AB172A021246C4700F32968 /* SimiCallable.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB1726A21246C4200F32968 /* SimiCallable.h */; };
 		6AB172A121246C4700F32968 /* ErrorWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB1726B21246C4200F32968 /* ErrorWatcher.h */; };
 		6AB172A221246C4700F32968 /* SimiMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB1726C21246C4200F32968 /* SimiMapper.h */; };
@@ -74,6 +76,8 @@
 		6A59D75A20E7DD74008FB2AB /* SM_File.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SM_File.m; sourceTree = "<group>"; };
 		6A59D75E20E7E2E6008FB2AB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A71C0A720FB574200BBDC87 /* libiOSSimi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiOSSimi.a; sourceTree = "<group>"; };
+		6A981A612125B7E300ED3FF4 /* SM_WriteStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SM_WriteStream.h; sourceTree = "<group>"; };
+		6A981A622125B7E300ED3FF4 /* SM_WriteStream.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SM_WriteStream.m; sourceTree = "<group>"; };
 		6AB1726A21246C4200F32968 /* SimiCallable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiCallable.h; sourceTree = "<group>"; };
 		6AB1726B21246C4200F32968 /* ErrorWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorWatcher.h; sourceTree = "<group>"; };
 		6AB1726C21246C4200F32968 /* SimiMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimiMapper.h; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				6A59D6E620E7DBD7008FB2AB /* Info.plist */,
 				6A59D75920E7DD74008FB2AB /* SM_File.h */,
 				6A59D75A20E7DD74008FB2AB /* SM_File.m */,
+				6A981A612125B7E300ED3FF4 /* SM_WriteStream.h */,
+				6A981A622125B7E300ED3FF4 /* SM_WriteStream.m */,
 			);
 			path = SimiFile;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 				6AB172CE21246C4800F32968 /* ErrorHub.h in Headers */,
 				6AB172C921246C4800F32968 /* SimiStatement.h in Headers */,
 				6AB172A821246C4700F32968 /* Resolver.h in Headers */,
+				6A981A632125B7E300ED3FF4 /* SM_WriteStream.h in Headers */,
 				6AB172D521246C4800F32968 /* BlockImpl.h in Headers */,
 				6AB172BA21246C4700F32968 /* Token.h in Headers */,
 				6AB172B821246C4700F32968 /* SimiJavaClass.h in Headers */,
@@ -382,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A59D75C20E7DD74008FB2AB /* SM_File.m in Sources */,
+				6A981A642125B7E300ED3FF4 /* SM_WriteStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

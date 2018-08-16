@@ -64,7 +64,8 @@
     [req setURL:[NSURL URLWithString:[[[object getWithNSString:@"url" withSMSimiEnvironment:env] getValue] getString]]];
     [req setHTTPMethod:verb];
     if ([verb isEqualToString:@"PUT"] || [verb isEqualToString:@"POST"]) {
-        [req setHTTPBody:[[[[object getWithNSString:@"body" withSMSimiEnvironment:env] getValue] getString] dataUsingEncoding:NSUTF8StringEncoding]];
+        [req setHTTPBody:[[[[object getWithNSString:@"json" withSMSimiEnvironment:env] getValue] getString] dataUsingEncoding:NSUTF8StringEncoding]];
+        [req setValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
     }
     id<SMSimiObject> headers = [[[object getWithNSString:@"headers" withSMSimiEnvironment:env] getValue] getObject];
     for (SMSimiValue *header in [headers keys] ) {

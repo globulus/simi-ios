@@ -16,8 +16,4 @@
 + (SMSimiValue *)readString:(id<SMSimiObject>)sender
           interpreter:(id<SMBlockInterpreter>)interpeter
                        path:(id<SMSimiProperty>)path;
-
-+ (SMSimiValue *)write:(id<SMSimiObject>)sender
-           interpreter:(id<SMBlockInterpreter>)interpeter
-                  text:(id<SMSimiProperty>)text;
 @end
