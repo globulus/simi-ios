@@ -235,16 +235,16 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
   return self;
 }
 
+// THIS HAS TO BE FIXED BECAUSE IT THROWS BAD_ACCESS IF USED IN J2OBJC ORIGINAL FORM
 - (NSString *)description {
-  NSString *text = JreStrcat("D", value_);
-  if ([text java_hasSuffix:@".0"]) {
-    text = [text java_substring:0 endIndex:[text java_length] - 2];
-  }
-  return text;
+    if (floor(value_) == value_) {
+        return [NSString stringWithFormat:@"%.0f", value_];
+    }
+   return [NSString stringWithFormat:@"%f", value_];
 }
 
 - (jboolean)isEqual:(id)obj {
-  if (obj == nil || !([obj isKindOfClass:[SMSimiValue_Number class]])) {
+  if (obj == nil /*|| !([obj isKindOfClass:[SMSimiValue_Number class]])*/) {
     return false;
   }
   return JavaLangDouble_compareWithDouble_withDouble_(value_, ((SMSimiValue_Number *) cast_chk(obj, [SMSimiValue_Number class]))->value_) == 0;
