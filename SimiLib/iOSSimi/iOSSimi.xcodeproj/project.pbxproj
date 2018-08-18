@@ -131,6 +131,8 @@
 		6A731F1A20E80CB600F11E94 /* JavaNativeModulesManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */; };
 		6AB171FA21246AD500F32968 /* JavaNativeModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB171F921246AD500F32968 /* JavaNativeModulesManager.m */; };
 		6AB171FD21246AEF00F32968 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB171FB21246AEE00F32968 /* Native.m */; };
+		6ACE44242126E8D400113E98 /* iOSSimi_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACE44232126E8D400113E98 /* iOSSimi_Mac.h */; };
+		6ACE44262126E8D400113E98 /* iOSSimi_Mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACE44252126E8D400113E98 /* iOSSimi_Mac.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -327,10 +329,20 @@
 		6AB171F921246AD500F32968 /* JavaNativeModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JavaNativeModulesManager.m; sourceTree = "<group>"; };
 		6AB171FB21246AEE00F32968 /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Native.m; sourceTree = "<group>"; };
 		6AB171FC21246AEE00F32968 /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
+		6ACE44212126E8D400113E98 /* libiOSSimi Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libiOSSimi Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ACE44232126E8D400113E98 /* iOSSimi_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSSimi_Mac.h; sourceTree = "<group>"; };
+		6ACE44252126E8D400113E98 /* iOSSimi_Mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSSimi_Mac.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6A59D5B620E7D183008FB2AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ACE441E2126E8D400113E98 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -344,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				6A59D5BB20E7D183008FB2AB /* iOSSimi */,
+				6ACE44222126E8D400113E98 /* iOSSimi Mac */,
 				6A59D5BA20E7D183008FB2AB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -352,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				6A59D5B920E7D183008FB2AB /* libiOSSimi.a */,
+				6ACE44212126E8D400113E98 /* libiOSSimi Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -500,7 +514,27 @@
 			path = simi;
 			sourceTree = "<group>";
 		};
+		6ACE44222126E8D400113E98 /* iOSSimi Mac */ = {
+			isa = PBXGroup;
+			children = (
+				6ACE44232126E8D400113E98 /* iOSSimi_Mac.h */,
+				6ACE44252126E8D400113E98 /* iOSSimi_Mac.m */,
+			);
+			path = "iOSSimi Mac";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6ACE441F2126E8D400113E98 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ACE44242126E8D400113E98 /* iOSSimi_Mac.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		6A59D5B820E7D183008FB2AB /* iOSSimi */ = {
@@ -521,6 +555,23 @@
 			productReference = 6A59D5B920E7D183008FB2AB /* libiOSSimi.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		6ACE44202126E8D400113E98 /* iOSSimi Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6ACE44292126E8D400113E98 /* Build configuration list for PBXNativeTarget "iOSSimi Mac" */;
+			buildPhases = (
+				6ACE441D2126E8D400113E98 /* Sources */,
+				6ACE441E2126E8D400113E98 /* Frameworks */,
+				6ACE441F2126E8D400113E98 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOSSimi Mac";
+			productName = "iOSSimi Mac";
+			productReference = 6ACE44212126E8D400113E98 /* libiOSSimi Mac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -534,6 +585,9 @@
 						CreatedOnToolsVersion = 9.4.1;
 					};
 					6A59D66720E7D655008FB2AB = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					6ACE44202126E8D400113E98 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
 				};
@@ -552,6 +606,7 @@
 			targets = (
 				6A59D5B820E7D183008FB2AB /* iOSSimi */,
 				6A59D66720E7D655008FB2AB /* fatiOSSimi */,
+				6ACE44202126E8D400113E98 /* iOSSimi Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -634,6 +689,14 @@
 				6A59D65320E7D1CA008FB2AB /* BaseClassesNativeImpl.m in Sources */,
 				6A59D63420E7D1CA008FB2AB /* Constants.m in Sources */,
 				6A59D64820E7D1CA008FB2AB /* Break.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ACE441D2126E8D400113E98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ACE44262126E8D400113E98 /* iOSSimi_Mac.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +871,34 @@
 			};
 			name = Release;
 		};
+		6ACE44272126E8D400113E98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N43KYHR3HM;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6ACE44282126E8D400113E98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N43KYHR3HM;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -834,6 +925,15 @@
 			buildConfigurations = (
 				6A59D66920E7D655008FB2AB /* Debug */,
 				6A59D66A20E7D655008FB2AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ACE44292126E8D400113E98 /* Build configuration list for PBXNativeTarget "iOSSimi Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ACE44272126E8D400113E98 /* Debug */,
+				6ACE44282126E8D400113E98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

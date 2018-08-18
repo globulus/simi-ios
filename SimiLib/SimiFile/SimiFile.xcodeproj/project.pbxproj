@@ -67,6 +67,8 @@
 		6AB172D321246C4800F32968 /* GenerateAst.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB1729D21246C4700F32968 /* GenerateAst.h */; };
 		6AB172D421246C4800F32968 /* JavaNativeModulesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB1729E21246C4700F32968 /* JavaNativeModulesManager.h */; };
 		6AB172D521246C4800F32968 /* BlockImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB1729F21246C4700F32968 /* BlockImpl.h */; };
+		6ACE44352126EB4700113E98 /* SimiFile_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACE44332126EB4700113E98 /* SimiFile_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ACE443A2126EB5F00113E98 /* libiOSSimi Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACE44392126EB5F00113E98 /* libiOSSimi Mac.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +134,10 @@
 		6AB1729D21246C4700F32968 /* GenerateAst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateAst.h; sourceTree = "<group>"; };
 		6AB1729E21246C4700F32968 /* JavaNativeModulesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JavaNativeModulesManager.h; sourceTree = "<group>"; };
 		6AB1729F21246C4700F32968 /* BlockImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockImpl.h; sourceTree = "<group>"; };
+		6ACE44312126EB4700113E98 /* SimiFile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimiFile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ACE44332126EB4700113E98 /* SimiFile_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimiFile_Mac.h; sourceTree = "<group>"; };
+		6ACE44342126EB4700113E98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6ACE44392126EB5F00113E98 /* libiOSSimi Mac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libiOSSimi Mac.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6ACE442D2126EB4700113E98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ACE443A2126EB5F00113E98 /* libiOSSimi Mac.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -151,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				6A59D6E420E7DBD7008FB2AB /* SimiFile */,
+				6ACE44322126EB4700113E98 /* SimiFile Mac */,
 				6A59D6E320E7DBD7008FB2AB /* Products */,
 				6A59D75D20E7E2E6008FB2AB /* Frameworks */,
 			);
@@ -160,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				6A59D6E220E7DBD7008FB2AB /* SimiFile.framework */,
+				6ACE44312126EB4700113E98 /* SimiFile.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,6 +185,7 @@
 			children = (
 				6A71C0A820FB574200BBDC87 /* include */,
 				6A71C0A720FB574200BBDC87 /* libiOSSimi.a */,
+				6ACE44392126EB5F00113E98 /* libiOSSimi Mac.a */,
 				6A59D6E620E7DBD7008FB2AB /* Info.plist */,
 				6A59D75920E7DD74008FB2AB /* SM_File.h */,
 				6A59D75A20E7DD74008FB2AB /* SM_File.m */,
@@ -255,6 +272,15 @@
 			path = iOSSimi;
 			sourceTree = "<group>";
 		};
+		6ACE44322126EB4700113E98 /* SimiFile Mac */ = {
+			isa = PBXGroup;
+			children = (
+				6ACE44332126EB4700113E98 /* SimiFile_Mac.h */,
+				6ACE44342126EB4700113E98 /* Info.plist */,
+			);
+			path = "SimiFile Mac";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -321,6 +347,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6ACE442E2126EB4700113E98 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ACE44352126EB4700113E98 /* SimiFile_Mac.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -342,6 +376,24 @@
 			productReference = 6A59D6E220E7DBD7008FB2AB /* SimiFile.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		6ACE44302126EB4700113E98 /* SimiFile Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6ACE44382126EB4700113E98 /* Build configuration list for PBXNativeTarget "SimiFile Mac" */;
+			buildPhases = (
+				6ACE442C2126EB4700113E98 /* Sources */,
+				6ACE442D2126EB4700113E98 /* Frameworks */,
+				6ACE442E2126EB4700113E98 /* Headers */,
+				6ACE442F2126EB4700113E98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SimiFile Mac";
+			productName = "SimiFile Mac";
+			productReference = 6ACE44312126EB4700113E98 /* SimiFile.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -352,6 +404,9 @@
 				ORGANIZATIONNAME = "Gordan Glavaš";
 				TargetAttributes = {
 					6A59D6E120E7DBD7008FB2AB = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					6ACE44302126EB4700113E98 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
 				};
@@ -369,12 +424,20 @@
 			projectRoot = "";
 			targets = (
 				6A59D6E120E7DBD7008FB2AB /* SimiFile */,
+				6ACE44302126EB4700113E98 /* SimiFile Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6A59D6E020E7DBD7008FB2AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ACE442F2126EB4700113E98 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -390,6 +453,13 @@
 			files = (
 				6A59D75C20E7DD74008FB2AB /* SM_File.m in Sources */,
 				6A981A642125B7E300ED3FF4 /* SM_WriteStream.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ACE442C2126EB4700113E98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +656,70 @@
 			};
 			name = Release;
 		};
+		6ACE44362126EB4700113E98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "SimiFile Mac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimiFile",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.globulus.SimiFile-Mac";
+				PRODUCT_NAME = SimiFile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6ACE44372126EB4700113E98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "SimiFile Mac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimiFile",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.globulus.SimiFile-Mac";
+				PRODUCT_NAME = SimiFile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -603,6 +737,15 @@
 			buildConfigurations = (
 				6A59D6EB20E7DBD7008FB2AB /* Debug */,
 				6A59D6EC20E7DBD7008FB2AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ACE44382126EB4700113E98 /* Build configuration list for PBXNativeTarget "SimiFile Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ACE44362126EB4700113E98 /* Debug */,
+				6ACE44372126EB4700113E98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

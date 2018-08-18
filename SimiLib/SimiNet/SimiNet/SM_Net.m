@@ -69,7 +69,7 @@
     }
     id<SMSimiObject> headers = [[[object getWithNSString:@"headers" withSMSimiEnvironment:env] getValue] getObject];
     for (SMSimiValue *header in [headers keys] ) {
-        [req setValue:[header getString] forHTTPHeaderField:[[[headers getWithNSString:[header getString] withSMSimiEnvironment:env] getValue] getString]];
+        [req setValue:[[[headers getWithNSString:[header getString] withSMSimiEnvironment:env] getValue] getString] forHTTPHeaderField:[header getString]];
     }
     
     NSURLSession *session = [NSURLSession sharedSession];
