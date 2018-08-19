@@ -30,7 +30,7 @@
     if (![fileManager fileExistsAtPath:dir]) {
         [fileManager createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:nil];
     }
-    [[[text getValue] getString] writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:&error];
+    [[[text getValue] getString] writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
     if (error) {
         NSLog(@"%@", error);
     }
