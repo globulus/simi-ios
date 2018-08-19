@@ -79,7 +79,7 @@
                                       NSLog(@"NET %@ GOT RESPONSE", verb);
                                       NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                       JavaUtilLinkedHashMap *props = [[JavaUtilLinkedHashMap alloc] init];
-                                      [props putWithId:@"code" withId:[[SMSimiValue_Number alloc] initWithDouble:httpResponse.statusCode]];
+                                      [props putWithId:@"code" withId:[[SMSimiValue_Number alloc] initWithLong:httpResponse.statusCode]];
                                       [props putWithId:@"body" withId:[[SMSimiValue_String alloc] initWithNSString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]]];
                                       SMSimiValue *simiResponse = [[SMSimiValue_Object alloc] initWithSMSimiObject:[interpeter newObjectWithBoolean:true withJavaUtilLinkedHashMap:props]];
                                       [[[callback getValue] getCallable] callWithSMBlockInterpreter:interpeter withJavaUtilList:[JavaUtilCollections singletonListWithId:simiResponse] withBoolean:false];

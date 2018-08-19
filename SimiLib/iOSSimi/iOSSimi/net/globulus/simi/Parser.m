@@ -1104,7 +1104,7 @@ SMExpr *SMParser_assignment(SMParser *self) {
         SMExpr *prop = [objectLiteral->props_ getWithInt:i];
         SMToken *name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(prop, [SMExpr_Variable class]))))->name_;
         SMExpr *getByName = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(name, value, prop, nil);
-        SMExpr *getByIndex = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(name, value, new_SMExpr_Literal_initWithSMSimiValue_(new_SMSimiValue_Number_initWithDouble_(i)), nil);
+        SMExpr *getByIndex = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(name, value, new_SMExpr_Literal_initWithSMSimiValue_(new_SMSimiValue_Number_initWithLong_(i)), nil);
         SMExpr *nilCoalescence = new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(getByName, new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, QUESTION_QUESTION), nil, nil, ((SMToken *) nil_chk(name))->line_), getByIndex);
         [assigns addWithId:new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, nilCoalescence, annotations)];
       }

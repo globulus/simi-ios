@@ -314,10 +314,10 @@ id<SMSimiProperty> SMSimiMapper_toSimiPropertyWithId_withSMBlockInterpreter_(id 
 id<SMSimiProperty> SMSimiMapper_toSimiPropertyWithId_withSMSimiClassImpl_(id value, SMSimiClassImpl *objectClass) {
   SMSimiMapper_initialize();
   if ([value isKindOfClass:[JavaLangInteger class]]) {
-    return new_SMSimiValue_Number_initWithDouble_([((JavaLangInteger *) nil_chk(((JavaLangInteger *) cast_chk(value, [JavaLangInteger class])))) doubleValue]);
+    return new_SMSimiValue_Number_initWithLong_([((JavaLangInteger *) nil_chk(((JavaLangInteger *) cast_chk(value, [JavaLangInteger class])))) longLongValue]);
   }
   else if ([value isKindOfClass:[JavaLangLong class]]) {
-    return new_SMSimiValue_Number_initWithDouble_([((JavaLangLong *) nil_chk(((JavaLangLong *) cast_chk(value, [JavaLangLong class])))) doubleValue]);
+    return new_SMSimiValue_Number_initWithLong_([((JavaLangLong *) nil_chk(((JavaLangLong *) cast_chk(value, [JavaLangLong class])))) longLongValue]);
   }
   else if ([value isKindOfClass:[JavaLangFloat class]]) {
     return new_SMSimiValue_Number_initWithDouble_([((JavaLangFloat *) nil_chk(((JavaLangFloat *) cast_chk(value, [JavaLangFloat class])))) doubleValue]);
@@ -326,7 +326,7 @@ id<SMSimiProperty> SMSimiMapper_toSimiPropertyWithId_withSMSimiClassImpl_(id val
     return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk((JavaLangDouble *) cast_chk(value, [JavaLangDouble class]))) doubleValue]);
   }
   else if ([value isKindOfClass:[JavaLangBoolean class]]) {
-    return new_SMSimiValue_Number_initWithDouble_([((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(value, [JavaLangBoolean class]))) booleanValue] ? 1 : 0);
+    return new_SMSimiValue_Number_initWithLong_([((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(value, [JavaLangBoolean class]))) booleanValue] ? 1 : 0);
   }
   else if ([value isKindOfClass:[NSString class]]) {
     return new_SMSimiValue_String_initWithNSString_((NSString *) cast_chk(value, [NSString class]));
@@ -348,7 +348,7 @@ id<SMSimiProperty> SMSimiMapper_toSimiPropertyWithId_withSMSimiClassImpl_(id val
 id SMSimiMapper_fromSimiValueWithSMSimiValue_(SMSimiValue *value) {
   SMSimiMapper_initialize();
   if ([value isKindOfClass:[SMSimiValue_Number class]]) {
-    return [((SMSimiValue *) nil_chk(value)) getNumber];
+    return [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(value)) getNumber])) getJavaValue];
   }
   else if ([value isKindOfClass:[SMSimiValue_String class]]) {
     return [((SMSimiValue *) nil_chk(value)) getString];

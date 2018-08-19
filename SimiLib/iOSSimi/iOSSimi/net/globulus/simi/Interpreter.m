@@ -8,7 +8,6 @@
 #include "J2ObjC_source.h"
 #include "java/io/PrintStream.h"
 #include "java/lang/Boolean.h"
-#include "java/lang/Double.h"
 #include "java/lang/FunctionalInterface.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
@@ -704,11 +703,11 @@ SMInterpreter *SMInterpreter_sharedInstance;
 }
 
 - (id<SMSimiProperty>)visitIfStmtWithSMStmt_If:(SMStmt_If *)stmt {
-  if ([((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([self visitElsifStmtWithSMStmt_Elsif:((SMStmt_If *) nil_chk(stmt))->ifstmt_])) getValue])) getNumber])) doubleValue] != 0) {
+  if ([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([self visitElsifStmtWithSMStmt_Elsif:((SMStmt_If *) nil_chk(stmt))->ifstmt_])) getValue])) getNumber])) asLong] != 0) {
     return nil;
   }
   for (SMStmt_Elsif * __strong elsif in nil_chk(stmt->elsifs_)) {
-    if ([((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([self visitElsifStmtWithSMStmt_Elsif:elsif])) getValue])) getNumber])) doubleValue] != 0) {
+    if ([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([self visitElsifStmtWithSMStmt_Elsif:elsif])) getValue])) getNumber])) asLong] != 0) {
       return nil;
     }
   }
@@ -944,23 +943,23 @@ SMInterpreter *SMInterpreter_sharedInstance;
     return new_SMSimiValue_Number_initWithBoolean_(!SMInterpreter_isInWithSMSimiValue_withSMSimiValue_withSMExpr_Binary_(self, left, right, expr));
     case SMTokenType_Enum_GREATER:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithBoolean_([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue] > [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+    return [((SMSimiValue_Number *) nil_chk([left getNumber])) greaterThanWithSMSimiValue_Number:[right getNumber]];
     case SMTokenType_Enum_GREATER_EQUAL:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithBoolean_([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue] >= [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+    return [((SMSimiValue_Number *) nil_chk([left getNumber])) greaterOrEqualWithSMSimiValue_Number:[right getNumber]];
     case SMTokenType_Enum_LESS:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithBoolean_([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue] < [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+    return [((SMSimiValue_Number *) nil_chk([left getNumber])) lessThanWithSMSimiValue_Number:[right getNumber]];
     case SMTokenType_Enum_LESS_EQUAL:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithBoolean_([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue] <= [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+    return [((SMSimiValue_Number *) nil_chk([left getNumber])) lessOrEqualWithSMSimiValue_Number:[right getNumber]];
     case SMTokenType_Enum_MINUS:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue] - [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+    return [((SMSimiValue_Number *) nil_chk([left getNumber])) subtractWithSMSimiValue_Number:[right getNumber]];
     case SMTokenType_Enum_PLUS:
     {
       if ([left isKindOfClass:[SMSimiValue_Number class]] && [right isKindOfClass:[SMSimiValue_Number class]]) {
-        return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue] + [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+        return [((SMSimiValue_Number *) nil_chk([left getNumber])) addWithSMSimiValue_Number:[right getNumber]];
       }
       NSString *leftStr = (left != nil) ? [left description] : @"nil";
       NSString *rightStr = (right != nil) ? [right description] : @"nil";
@@ -968,16 +967,16 @@ SMInterpreter *SMInterpreter_sharedInstance;
     }
     case SMTokenType_Enum_SLASH:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue] / [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+    return [((SMSimiValue_Number *) nil_chk([left getNumber])) divideWithSMSimiValue_Number:[right getNumber]];
     case SMTokenType_Enum_SLASH_SLASH:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([left getNumber])) longLongValue] / [((JavaLangDouble *) nil_chk([right getNumber])) longLongValue]);
+    return new_SMSimiValue_Number_initWithLong_([((SMSimiValue_Number *) nil_chk([left getNumber])) asLong] / [((SMSimiValue_Number *) nil_chk([right getNumber])) asLong]);
     case SMTokenType_Enum_STAR:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue] * [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+    return [((SMSimiValue_Number *) nil_chk([left getNumber])) multiplyWithSMSimiValue_Number:[right getNumber]];
     case SMTokenType_Enum_MOD:
     SMInterpreter_checkNumberOperandsWithSMToken_withSMSimiValue_withSMSimiValue_(self, expr->operator__, left, right);
-    return new_SMSimiValue_Number_initWithDouble_(fmod([((JavaLangDouble *) nil_chk([left getNumber])) doubleValue], [((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]));
+    return [((SMSimiValue_Number *) nil_chk([left getNumber])) modWithSMSimiValue_Number:[right getNumber]];
     case SMTokenType_Enum_QUESTION_QUESTION:
     return right;
   }
@@ -1161,7 +1160,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
     return new_SMSimiValue_Number_initWithBoolean_(!SMInterpreter_isTruthyWithSMSimiProperty_(right));
     case SMTokenType_Enum_MINUS:
     SMInterpreter_checkNumberOperandWithSMToken_withSMSimiValue_(self, expr->operator__, right);
-    return new_SMSimiValue_Number_initWithDouble_(-[((JavaLangDouble *) nil_chk([right getNumber])) doubleValue]);
+    return [((SMSimiValue_Number *) nil_chk([right getNumber])) negate];
     case SMTokenType_Enum_QUESTION:
     return (right == nil) ? JreLoadStatic(SMTempNull, INSTANCE) : right;
   }
@@ -1713,7 +1712,7 @@ jboolean SMInterpreter_isTruthyWithSMSimiProperty_(id<SMSimiProperty> object) {
     return false;
   }
   @try {
-    jdouble value = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([object getValue])) getNumber])) doubleValue];
+    jlong value = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([object getValue])) getNumber])) asLong];
     return value != 0;
   }
   @catch (SMSimiValue_IncompatibleValuesException *e) {
@@ -1730,7 +1729,7 @@ jboolean SMInterpreter_isEqualWithSMSimiValue_withSMSimiValue_withSMExpr_Binary_
   }
   if ([a isKindOfClass:[SMSimiValue_Object class]]) {
     SMToken *equals = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, IDENTIFIER), SMConstants_EQUALS, nil, ((SMToken *) nil_chk(((SMExpr_Binary *) nil_chk(expr))->operator__))->line_);
-    return [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(self, [((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([a getObject], [SMSimiObjectImpl class])))) getWithSMToken:equals withJavaLangInteger:JavaLangInteger_valueOfWithInt_(1) withSMEnvironment:self->environment_])) getValue], equals, JavaUtilCollections_singletonListWithId_(b)))) getValue])) getNumber])) doubleValue] != 0;
+    return [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(self, [((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([a getObject], [SMSimiObjectImpl class])))) getWithSMToken:equals withJavaLangInteger:JavaLangInteger_valueOfWithInt_(1) withSMEnvironment:self->environment_])) getValue], equals, JavaUtilCollections_singletonListWithId_(b)))) getValue])) getNumber])) asLong] != 0;
   }
   return [a isEqual:b];
 }
@@ -1746,7 +1745,7 @@ SMSimiValue *SMInterpreter_compareWithSMSimiValue_withSMSimiValue_withSMExpr_Bin
     SMToken *compareTo = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, IDENTIFIER), SMConstants_COMPARE_TO, nil, ((SMToken *) nil_chk(((SMExpr_Binary *) nil_chk(expr))->operator__))->line_);
     return [((id<SMSimiProperty>) nil_chk(SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(self, [((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([a getObject], [SMSimiObjectImpl class])))) getWithSMToken:compareTo withJavaLangInteger:JavaLangInteger_valueOfWithInt_(1) withSMEnvironment:self->environment_])) getValue], compareTo, JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ a, b } count:2 type:SMSimiProperty_class_()])))) getValue];
   }
-  return new_SMSimiValue_Number_initWithDouble_([a compareToWithId:b]);
+  return new_SMSimiValue_Number_initWithLong_([a compareToWithId:b]);
 }
 
 jboolean SMInterpreter_isInstanceWithSMSimiValue_withSMSimiValue_withSMExpr_Binary_(SMInterpreter *self, SMSimiValue *a, SMSimiValue *b, SMExpr_Binary *expr) {
@@ -1776,7 +1775,8 @@ jboolean SMInterpreter_isInWithSMSimiValue_withSMSimiValue_withSMExpr_Binary_(SM
     object = (SMSimiObjectImpl *) cast_chk(SMSimiObjectImpl_getOrConvertObjectWithSMSimiProperty_withSMInterpreter_(b, self), [SMSimiObjectImpl class]);
   }
   SMToken *has = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, IDENTIFIER), SMConstants_HAS, nil, ((SMToken *) nil_chk(((SMExpr_Binary *) nil_chk(expr))->operator__))->line_);
-  return [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(self, [((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(object)) getWithSMToken:has withJavaLangInteger:JavaLangInteger_valueOfWithInt_(1) withSMEnvironment:self->environment_])) getValue], has, JavaUtilCollections_singletonListWithId_(a)))) getValue])) getNumber])) doubleValue] != 0;
+  id<SMSimiProperty> p = SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(self, [((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(object)) getWithSMToken:has withJavaLangInteger:JavaLangInteger_valueOfWithInt_(1) withSMEnvironment:self->environment_])) getValue], has, JavaUtilCollections_singletonListWithId_(a));
+  return [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(p)) getValue])) getNumber])) asLong] != 0;
 }
 
 NSString *SMInterpreter_stringifyWithSMSimiProperty_(SMInterpreter *self, id<SMSimiProperty> object) {
@@ -1861,7 +1861,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithDouble_((jdouble) JavaLangSystem_currentTimeMillis() / 1000.0);
+  return new_SMSimiValue_Number_initWithLong_(JavaLangSystem_currentTimeMillis());
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1919,7 +1919,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_String_initWithNSString_([((JavaUtilUUID *) nil_chk(JavaUtilUUID_randomUUID())) description]);
+    return new_SMSimiValue_String_initWithNSString_([[NSUUID UUID] UUIDString]);
 }
 
 + (const J2ObjcClassInfo *)__metadata {

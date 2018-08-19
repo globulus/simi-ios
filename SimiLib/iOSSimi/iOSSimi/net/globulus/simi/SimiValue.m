@@ -6,6 +6,8 @@
 #include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/lang/Double.h"
+#include "java/lang/Long.h"
+#include "java/lang/Math.h"
 #include "java/lang/RuntimeException.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/List.h"
@@ -14,6 +16,17 @@
 #include "SimiValue.h"
 
 #pragma clang diagnostic ignored "-Wprotocol"
+
+@interface SMSimiValue_Number () {
+ @public
+  JavaLangDouble *valueDouble_;
+  JavaLangLong *valueLong_;
+}
+
+@end
+
+J2OBJC_FIELD_SETTER(SMSimiValue_Number, valueDouble_, JavaLangDouble *)
+J2OBJC_FIELD_SETTER(SMSimiValue_Number, valueLong_, JavaLangLong *)
 
 @interface SMSimiValue_Callable () {
  @public
@@ -64,9 +77,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], SMSimiValue_String_class_());
 }
 
-- (JavaLangDouble *)getNumber {
+- (SMSimiValue_Number *)getNumber {
   if ([self isKindOfClass:[SMSimiValue_Number class]]) {
-    return JavaLangDouble_valueOfWithDouble_(((SMSimiValue_Number *) cast_chk(self, [SMSimiValue_Number class]))->value_);
+    return (SMSimiValue_Number *) cast_chk(self, [SMSimiValue_Number class]);
   }
   @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], SMSimiValue_Number_class_());
 }
@@ -94,7 +107,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 5, -1, -1 },
     { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaLangDouble;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObject;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiCallable;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
@@ -137,10 +150,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue)
 }
 
 - (jboolean)isEqual:(id)obj {
-  if (obj == nil || !([obj isKindOfClass:[SMSimiValue_String class]])) {
+  if (!([obj isKindOfClass:[SMSimiValue_String class]])) {
     return false;
   }
-  return [((NSString *) nil_chk(value_)) isEqual:((SMSimiValue_String *) cast_chk(obj, [SMSimiValue_String class]))->value_];
+  return [((NSString *) nil_chk(value_)) isEqual:((SMSimiValue_String *) nil_chk(((SMSimiValue_String *) cast_chk(obj, [SMSimiValue_String class]))))->value_];
 }
 
 - (SMSimiValue *)copy__ {
@@ -230,28 +243,43 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
   return self;
 }
 
+- (instancetype __nonnull)initWithLong:(jlong)value {
+  SMSimiValue_Number_initWithLong_(self, value);
+  return self;
+}
+
 - (instancetype __nonnull)initWithBoolean:(jboolean)value {
   SMSimiValue_Number_initWithBoolean_(self, value);
   return self;
 }
 
-// THIS HAS TO BE FIXED BECAUSE IT THROWS BAD_ACCESS IF USED IN J2OBJC ORIGINAL FORM
+- (jdouble)asDouble {
+  return (valueDouble_ != nil) ? [((JavaLangDouble *) nil_chk(valueDouble_)) doubleValue] : ([((JavaLangLong *) nil_chk(valueLong_)) longLongValue] * 1.0);
+}
+
+- (jlong)asLong {
+  return (valueLong_ != nil) ? [((JavaLangLong *) nil_chk(valueLong_)) longLongValue] : JavaLangMath_roundWithDouble_([((JavaLangDouble *) nil_chk(valueDouble_)) doubleValue]);
+}
+
 - (NSString *)description {
-    if (floor(value_) == value_) {
-        return [NSString stringWithFormat:@"%.0f", value_];
-    }
-   return [NSString stringWithFormat:@"%f", value_];
+  return (valueDouble_ != nil) ? [((JavaLangDouble *) nil_chk(valueDouble_)) description] : [((JavaLangLong *) nil_chk(valueLong_)) description];
 }
 
 - (jboolean)isEqual:(id)obj {
-  if (obj == nil /*|| !([obj isKindOfClass:[SMSimiValue_Number class]])*/) {
+  if (obj == nil) {
     return false;
   }
-  return JavaLangDouble_compareWithDouble_withDouble_(value_, ((SMSimiValue_Number *) cast_chk(obj, [SMSimiValue_Number class]))->value_) == 0;
+  if (valueLong_ != nil) {
+    return JavaLangLong_compareWithLong_withLong_([valueLong_ longLongValue], [((SMSimiValue_Number *) nil_chk(((SMSimiValue_Number *) cast_chk(obj, [SMSimiValue_Number class])))) asLong]) == 0;
+  }
+  return JavaLangDouble_compareWithDouble_withDouble_([((JavaLangDouble *) nil_chk(valueDouble_)) doubleValue], [((SMSimiValue_Number *) nil_chk(((SMSimiValue_Number *) cast_chk(obj, [SMSimiValue_Number class])))) asDouble]) == 0;
 }
 
 - (SMSimiValue *)copy__ {
-  return new_SMSimiValue_Number_initWithDouble_(value_);
+  if (valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithLong_([valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk(valueDouble_)) doubleValue]);
 }
 
 - (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
@@ -263,7 +291,10 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
   if (!([o isKindOfClass:[SMSimiValue_Number class]])) {
     @throw new_SMSimiValue_IncompatibleValuesException_initWithIOSClass_withIOSClass_([self java_getClass], [((SMSimiValue *) nil_chk(o)) java_getClass]);
   }
-  return JavaLangDouble_compareWithDouble_withDouble_(self->value_, ((SMSimiValue_Number *) nil_chk(((SMSimiValue_Number *) cast_chk(o, [SMSimiValue_Number class]))))->value_);
+  if (valueLong_ != nil) {
+    return JavaLangLong_compareWithLong_withLong_([valueLong_ longLongValue], [((SMSimiValue_Number *) nil_chk(((SMSimiValue_Number *) cast_chk(o, [SMSimiValue_Number class])))) asLong]);
+  }
+  return JavaLangDouble_compareWithDouble_withDouble_([((JavaLangDouble *) nil_chk(valueDouble_)) doubleValue], [((SMSimiValue_Number *) nil_chk(((SMSimiValue_Number *) cast_chk(o, [SMSimiValue_Number class])))) asDouble]);
 }
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
@@ -271,36 +302,139 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
   return [self description];
 }
 
+- (SMSimiValue_Number *)lessThanWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithBoolean_([valueLong_ longLongValue] < [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithBoolean_([self asDouble] < [((SMSimiValue_Number *) nil_chk(o)) asDouble]);
+}
+
+- (SMSimiValue_Number *)lessOrEqualWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithBoolean_([valueLong_ longLongValue] <= [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithBoolean_([self asDouble] <= [((SMSimiValue_Number *) nil_chk(o)) asDouble]);
+}
+
+- (SMSimiValue_Number *)greaterThanWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithBoolean_([valueLong_ longLongValue] > [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithBoolean_([self asDouble] > [((SMSimiValue_Number *) nil_chk(o)) asDouble]);
+}
+
+- (SMSimiValue_Number *)greaterOrEqualWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithBoolean_([valueLong_ longLongValue] >= [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithBoolean_([self asDouble] >= [((SMSimiValue_Number *) nil_chk(o)) asDouble]);
+}
+
+- (SMSimiValue_Number *)addWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithLong_([valueLong_ longLongValue] + [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithDouble_([self asDouble] + [self asDouble]);
+}
+
+- (SMSimiValue_Number *)subtractWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithLong_([valueLong_ longLongValue] - [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithDouble_([self asDouble] - [self asDouble]);
+}
+
+- (SMSimiValue_Number *)multiplyWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithLong_([valueLong_ longLongValue] * [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithDouble_([self asDouble] * [self asDouble]);
+}
+
+- (SMSimiValue_Number *)divideWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithLong_([valueLong_ longLongValue] / [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithDouble_([self asDouble] / [self asDouble]);
+}
+
+- (SMSimiValue_Number *)modWithSMSimiValue_Number:(SMSimiValue_Number *)o {
+  if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithLong_([valueLong_ longLongValue] % [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithDouble_(fmod([self asDouble], [self asDouble]));
+}
+
+- (SMSimiValue_Number *)negate {
+  if (valueLong_ != nil) {
+    return new_SMSimiValue_Number_initWithLong_(-[valueLong_ longLongValue]);
+  }
+  return new_SMSimiValue_Number_initWithDouble_(-[((JavaLangDouble *) nil_chk(valueDouble_)) doubleValue]);
+}
+
+- (id)getJavaValue {
+  return JavaLangDouble_valueOfWithDouble_((valueLong_ != nil) ? [((JavaLangLong *) nil_chk(valueLong_)) longLongValue] : [((JavaLangDouble *) nil_chk(valueDouble_)) doubleValue]);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
     { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 2, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 5, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x1, 6, 1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, 7, 8, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 9, 10, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 2, -1, -1, -1, -1 },
+    { NULL, "D", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 3, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 6, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x1, 7, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 14, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 15, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 16, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 17, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 18, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 19, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 20, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, 21, 13, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue_Number;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithDouble:);
-  methods[1].selector = @selector(initWithBoolean:);
-  methods[2].selector = @selector(description);
-  methods[3].selector = @selector(isEqual:);
-  methods[4].selector = @selector(copy__);
-  methods[5].selector = @selector(cloneWithBoolean:);
-  methods[6].selector = @selector(compareToWithId:);
-  methods[7].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[1].selector = @selector(initWithLong:);
+  methods[2].selector = @selector(initWithBoolean:);
+  methods[3].selector = @selector(asDouble);
+  methods[4].selector = @selector(asLong);
+  methods[5].selector = @selector(description);
+  methods[6].selector = @selector(isEqual:);
+  methods[7].selector = @selector(copy__);
+  methods[8].selector = @selector(cloneWithBoolean:);
+  methods[9].selector = @selector(compareToWithId:);
+  methods[10].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[11].selector = @selector(lessThanWithSMSimiValue_Number:);
+  methods[12].selector = @selector(lessOrEqualWithSMSimiValue_Number:);
+  methods[13].selector = @selector(greaterThanWithSMSimiValue_Number:);
+  methods[14].selector = @selector(greaterOrEqualWithSMSimiValue_Number:);
+  methods[15].selector = @selector(addWithSMSimiValue_Number:);
+  methods[16].selector = @selector(subtractWithSMSimiValue_Number:);
+  methods[17].selector = @selector(multiplyWithSMSimiValue_Number:);
+  methods[18].selector = @selector(divideWithSMSimiValue_Number:);
+  methods[19].selector = @selector(modWithSMSimiValue_Number:);
+  methods[20].selector = @selector(negate);
+  methods[21].selector = @selector(getJavaValue);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "value_", "D", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
-    { "TRUE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 11, -1, -1 },
-    { "FALSE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 12, -1, -1 },
+    { "valueDouble_", "LJavaLangDouble;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "valueLong_", "LJavaLangLong;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "TRUE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 22, -1, -1 },
+    { "FALSE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 23, -1, -1 },
   };
-  static const void *ptrTable[] = { "D", "Z", "toString", "equals", "LNSObject;", "copy", "clone", "compareTo", "LSMSimiValue;", "toCode", "IZ", &SMSimiValue_Number_TRUE, &SMSimiValue_Number_FALSE };
-  static const J2ObjcClassInfo _SMSimiValue_Number = { "Number", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 8, 3, 8, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "D", "J", "Z", "toString", "equals", "LNSObject;", "copy", "clone", "compareTo", "LSMSimiValue;", "toCode", "IZ", "lessThan", "LSMSimiValue_Number;", "lessOrEqual", "greaterThan", "greaterOrEqual", "add", "subtract", "multiply", "divide", "mod", &SMSimiValue_Number_TRUE, &SMSimiValue_Number_FALSE };
+  static const J2ObjcClassInfo _SMSimiValue_Number = { "Number", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 22, 4, 9, -1, -1, -1, -1 };
   return &_SMSimiValue_Number;
 }
 
@@ -316,7 +450,8 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
 
 void SMSimiValue_Number_initWithDouble_(SMSimiValue_Number *self, jdouble value) {
   SMSimiValue_init(self);
-  self->value_ = value;
+  self->valueDouble_ = JavaLangDouble_valueOfWithDouble_(value);
+  self->valueLong_ = nil;
 }
 
 SMSimiValue_Number *new_SMSimiValue_Number_initWithDouble_(jdouble value) {
@@ -327,9 +462,22 @@ SMSimiValue_Number *create_SMSimiValue_Number_initWithDouble_(jdouble value) {
   J2OBJC_CREATE_IMPL(SMSimiValue_Number, initWithDouble_, value)
 }
 
-void SMSimiValue_Number_initWithBoolean_(SMSimiValue_Number *self, jboolean value) {
+void SMSimiValue_Number_initWithLong_(SMSimiValue_Number *self, jlong value) {
   SMSimiValue_init(self);
-  self->value_ = value ? 1 : 0;
+  self->valueLong_ = JavaLangLong_valueOfWithLong_(value);
+  self->valueDouble_ = nil;
+}
+
+SMSimiValue_Number *new_SMSimiValue_Number_initWithLong_(jlong value) {
+  J2OBJC_NEW_IMPL(SMSimiValue_Number, initWithLong_, value)
+}
+
+SMSimiValue_Number *create_SMSimiValue_Number_initWithLong_(jlong value) {
+  J2OBJC_CREATE_IMPL(SMSimiValue_Number, initWithLong_, value)
+}
+
+void SMSimiValue_Number_initWithBoolean_(SMSimiValue_Number *self, jboolean value) {
+  SMSimiValue_Number_initWithLong_(self, value ? 1LL : 0LL);
 }
 
 SMSimiValue_Number *new_SMSimiValue_Number_initWithBoolean_(jboolean value) {

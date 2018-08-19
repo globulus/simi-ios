@@ -5,6 +5,8 @@
 
 #include "J2ObjC_source.h"
 #include "java/lang/Double.h"
+#include "java/lang/Long.h"
+#include "java/lang/NumberFormatException.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashMap.h"
 #include "java/util/List.h"
@@ -538,7 +540,15 @@ void SMScanner_number(SMScanner *self) {
     }
     while (SMScanner_isDigitOrUnderscoreWithChar_(self, SMScanner_peek(self))) SMScanner_advance(self);
   }
-  SMScanner_addTokenWithSMTokenType_withSMSimiValue_(self, JreLoadEnum(SMTokenType, NUMBER), new_SMSimiValue_Number_initWithDouble_(JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([((NSString *) nil_chk(self->source_)) java_substring:self->start_ endIndex:self->current_])) java_replace:@"_" withSequence:@""])));
+  NSString *numberString = [((NSString *) nil_chk([((NSString *) nil_chk(self->source_)) java_substring:self->start_ endIndex:self->current_])) java_replace:@"_" withSequence:@""];
+  SMSimiValue_Number *literal;
+  @try {
+    literal = new_SMSimiValue_Number_initWithLong_(JavaLangLong_parseLongWithNSString_(numberString));
+  }
+  @catch (JavaLangNumberFormatException *e) {
+    literal = new_SMSimiValue_Number_initWithDouble_(JavaLangDouble_parseDoubleWithNSString_(numberString));
+  }
+  SMScanner_addTokenWithSMTokenType_withSMSimiValue_(self, JreLoadEnum(SMTokenType, NUMBER), literal);
 }
 
 NSString *SMScanner_escapedStringWithInt_withInt_(SMScanner *self, jint start, jint stop) {

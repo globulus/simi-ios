@@ -802,7 +802,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
         NSString *value = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([fields_ getWithId:SMConstants_PRIVATE])) getValue])) getString];
         return new_SMSimiValue_String_initWithNSString_(JreStrcat("C", [((NSString *) nil_chk(value)) charAtWithInt:index]));
       }
-      return [self bindWithNSString:implicitKey withSMSimiProperty:[new_JavaUtilArrayList_initWithJavaUtilCollection_([fields_ values]) getWithInt:index]];
+      id<JavaUtilList> values = new_JavaUtilArrayList_initWithJavaUtilCollection_([fields_ values]);
+      if ([values size] > index) {
+        return [self bindWithNSString:implicitKey withSMSimiProperty:[values getWithInt:index]];
+      }
+      return nil;
     }
   }
   @catch (JavaLangNumberFormatException *ignored) {
@@ -909,7 +913,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
   if (index == -1) {
     return nil;
   }
-  return new_SMSimiValue_Number_initWithDouble_(index);
+  return new_SMSimiValue_Number_initWithLong_(index);
 }
 
 - (SMSimiObjectImpl *)reversed {
@@ -1362,7 +1366,7 @@ SMSimiObjectImpl_Dictionary_$Lambda$7 *create_SMSimiObjectImpl_Dictionary_$Lambd
   jint size = [self length];
   JavaUtilArrayList *values = new_JavaUtilArrayList_initWithInt_(size);
   for (jint i = 0; i < size; i++) {
-    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(objectClass, new_SMSimiValue_Number_initWithDouble_(i), [((id<SMSimiProperty>) nil_chk([((JavaUtilArrayList *) nil_chk(fields_)) getWithInt:i])) getValue]))];
+    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(objectClass, new_SMSimiValue_Number_initWithLong_(i), [((id<SMSimiProperty>) nil_chk([((JavaUtilArrayList *) nil_chk(fields_)) getWithInt:i])) getValue]))];
   }
   return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, values);
 }
@@ -1376,7 +1380,7 @@ SMSimiObjectImpl_Dictionary_$Lambda$7 *create_SMSimiObjectImpl_Dictionary_$Lambd
   if (index == -1) {
     return nil;
   }
-  return new_SMSimiValue_Number_initWithDouble_(index);
+  return new_SMSimiValue_Number_initWithLong_(index);
 }
 
 - (SMSimiObjectImpl *)reversed {
@@ -1528,7 +1532,7 @@ J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Array_$Lambda$1)
 @implementation SMSimiObjectImpl_Array_$Lambda$1
 
 - (id)applyWithInt:(jint)a {
-  return new_SMSimiValue_Number_initWithDouble_(a);
+  return new_SMSimiValue_Number_initWithLong_(a);
 }
 
 + (void)initialize {

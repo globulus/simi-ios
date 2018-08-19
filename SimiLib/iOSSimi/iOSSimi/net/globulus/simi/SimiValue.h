@@ -45,7 +45,7 @@
 #define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
-@class JavaLangDouble;
+@class SMSimiValue_Number;
 @protocol JavaUtilList;
 @protocol SMSimiCallable;
 @protocol SMSimiObject;
@@ -62,7 +62,7 @@
 
 - (id<SMSimiCallable>)getCallable;
 
-- (JavaLangDouble *)getNumber;
+- (SMSimiValue_Number *)getNumber;
 
 - (id<SMSimiObject>)getObject;
 
@@ -140,10 +140,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_String)
 
 @class SMSimiValue;
 
-@interface SMSimiValue_Number : SMSimiValue {
- @public
-  jdouble value_;
-}
+@interface SMSimiValue_Number : SMSimiValue
 
 + (SMSimiValue_Number *)TRUE_;
 
@@ -155,13 +152,41 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_String)
 
 - (instancetype __nonnull)initWithDouble:(jdouble)value;
 
+- (instancetype __nonnull)initWithLong:(jlong)value;
+
+- (SMSimiValue_Number *)addWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
+- (jdouble)asDouble;
+
+- (jlong)asLong;
+
 - (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
 - (jint)compareToWithId:(SMSimiValue *)o;
 
 - (SMSimiValue *)copy__ OBJC_METHOD_FAMILY_NONE;
 
+- (SMSimiValue_Number *)divideWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
 - (jboolean)isEqual:(id)obj;
+
+- (id)getJavaValue;
+
+- (SMSimiValue_Number *)greaterOrEqualWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
+- (SMSimiValue_Number *)greaterThanWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
+- (SMSimiValue_Number *)lessOrEqualWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
+- (SMSimiValue_Number *)lessThanWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
+- (SMSimiValue_Number *)modWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
+- (SMSimiValue_Number *)multiplyWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
+- (SMSimiValue_Number *)negate;
+
+- (SMSimiValue_Number *)subtractWithSMSimiValue_Number:(SMSimiValue_Number *)o;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -191,6 +216,12 @@ FOUNDATION_EXPORT void SMSimiValue_Number_initWithDouble_(SMSimiValue_Number *se
 FOUNDATION_EXPORT SMSimiValue_Number *new_SMSimiValue_Number_initWithDouble_(jdouble value) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT SMSimiValue_Number *create_SMSimiValue_Number_initWithDouble_(jdouble value);
+
+FOUNDATION_EXPORT void SMSimiValue_Number_initWithLong_(SMSimiValue_Number *self, jlong value);
+
+FOUNDATION_EXPORT SMSimiValue_Number *new_SMSimiValue_Number_initWithLong_(jlong value) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT SMSimiValue_Number *create_SMSimiValue_Number_initWithLong_(jlong value);
 
 FOUNDATION_EXPORT void SMSimiValue_Number_initWithBoolean_(SMSimiValue_Number *self, jboolean value);
 

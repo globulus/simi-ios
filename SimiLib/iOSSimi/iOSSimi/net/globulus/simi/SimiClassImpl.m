@@ -368,15 +368,17 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
     if (((SMSimiFunction *) nil_chk(initializer->function_))->isNative_) {
       SMInterpreter *in = (SMInterpreter *) cast_chk(interpreter, [SMInterpreter class]);
       for (id<SMNativeModulesManager> __strong manager in nil_chk(((SMInterpreter *) nil_chk(in))->nativeModulesManagers_)) {
-          @try {
-            id<SMSimiProperty> inst = [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:name_ withNSString:SMConstants_INIT withSMSimiObject:self withSMInterpreter:in withJavaUtilList:arguments];
-            if (inst != nil) {
-              instance = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([inst getValue])) getObject], [SMSimiObjectImpl class]);
-              if (instance != nil) {
-                break;
-              }
+        @try {
+          id<SMSimiProperty> inst = [((id<SMNativeModulesManager>) nil_chk(manager)) callWithNSString:name_ withNSString:SMConstants_INIT withSMSimiObject:self withSMInterpreter:in withJavaUtilList:arguments];
+          if (inst != nil) {
+            instance = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([inst getValue])) getObject], [SMSimiObjectImpl class]);
+            if (instance != nil) {
+              break;
             }
-          } @catch (JavaLangIllegalArgumentException *ignored) { }
+          }
+        }
+        @catch (JavaLangIllegalArgumentException *ignored) {
+        }
       }
     }
     else {

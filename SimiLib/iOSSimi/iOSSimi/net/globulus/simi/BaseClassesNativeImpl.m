@@ -8,6 +8,7 @@
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/Double.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/NumberFormatException.h"
 #include "java/lang/StringBuilder.h"
@@ -2559,13 +2560,13 @@ SMSimiValue *SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterprete
 }
 
 SMSimiValue *SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(SMBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionBiFunction> op) {
-  jdouble a = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
-  jdouble b = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) doubleValue];
+  jdouble a = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asDouble];
+  jdouble b = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) asDouble];
   return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([((id<JavaUtilFunctionBiFunction>) nil_chk(op)) applyWithId:JavaLangDouble_valueOfWithDouble_(a) withId:JavaLangDouble_valueOfWithDouble_(b)])) doubleValue]);
 }
 
 SMSimiValue *SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(SMBaseClassesNativeImpl *self, id<JavaUtilList> arguments, id<JavaUtilFunctionFunction> op) {
-  jdouble a = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
+  jdouble a = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asDouble];
   return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk([((id<JavaUtilFunctionFunction>) nil_chk(op)) applyWithId:JavaLangDouble_valueOfWithDouble_(a)])) doubleValue]);
 }
 
@@ -2588,7 +2589,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Number_initWithDouble_([((SMSimiObjectImpl *) nil_chk(self_)) length]);
+  return new_SMSimiValue_Number_initWithLong_([((SMSimiObjectImpl *) nil_chk(self_)) length]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3979,7 +3980,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+  return new_SMSimiValue_Number_initWithLong_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4687,7 +4688,7 @@ SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClas
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  jint capacity = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  jint capacity = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asLong]);
   return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithInt_(capacity)));
 }
 
@@ -4746,7 +4747,7 @@ SMBaseClassesNativeImpl_29 *create_SMBaseClassesNativeImpl_29_initWithSMBaseClas
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  jint capacity = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
+  jint capacity = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asLong]);
   SMSimiValue *fillValue = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue];
   return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_initWithJavaUtilCollection_(JavaUtilCollections_nCopiesWithInt_withId_(capacity, fillValue))));
 }
@@ -4807,8 +4808,8 @@ SMBaseClassesNativeImpl_30 *create_SMBaseClassesNativeImpl_30_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getNumber])) intValue];
-  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  jint start = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getNumber])) asLong]);
+  jint stop = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) asLong]);
   if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
     return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, new_JavaUtilArrayList_initWithJavaUtilCollection_([((JavaUtilArrayList *) nil_chk(((SMSimiObjectImpl_Array *) nil_chk([self_ asArray]))->fields_)) subListWithInt:start withInt:stop - 1])));
   }
@@ -4871,7 +4872,7 @@ SMBaseClassesNativeImpl_31 *create_SMBaseClassesNativeImpl_31_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  return new_SMSimiValue_Number_initWithDouble_([((NSString *) nil_chk(value)) java_length]);
+  return new_SMSimiValue_Number_initWithLong_([((NSString *) nil_chk(value)) java_length]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4995,7 +4996,7 @@ SMBaseClassesNativeImpl_33 *create_SMBaseClassesNativeImpl_33_initWithSMBaseClas
   jint i = 0;
   for (SMSimiValue * __strong simiValue in nil_chk([argsObject values])) {
     if ([simiValue isKindOfClass:[SMSimiValue_Number class]]) {
-      (void) IOSObjectArray_Set(args, i, [((SMSimiValue *) nil_chk(simiValue)) getNumber]);
+      (void) IOSObjectArray_Set(args, i, JavaLangDouble_valueOfWithDouble_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(simiValue)) getNumber])) asDouble]));
     }
     else {
       (void) IOSObjectArray_Set(args, 1, [((SMSimiValue *) nil_chk(simiValue)) description]);
@@ -5062,12 +5063,12 @@ SMBaseClassesNativeImpl_34 *create_SMBaseClassesNativeImpl_34_initWithSMBaseClas
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  jint index = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  jint index = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) asLong]);
   jint i = [((NSString *) nil_chk(value)) java_indexOfString:str fromIndex:index];
   if (i == -1) {
     return nil;
   }
-  return new_SMSimiValue_Number_initWithDouble_(i);
+  return new_SMSimiValue_Number_initWithLong_(i);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5127,12 +5128,12 @@ SMBaseClassesNativeImpl_35 *create_SMBaseClassesNativeImpl_35_initWithSMBaseClas
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   NSString *str = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getString];
-  jint index = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  jint index = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) asLong]);
   jint i = [((NSString *) nil_chk(value)) java_lastIndexOfString:str fromIndex:index];
   if (i == -1) {
     return nil;
   }
-  return new_SMSimiValue_Number_initWithDouble_(i);
+  return new_SMSimiValue_Number_initWithLong_(i);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5191,8 +5192,8 @@ SMBaseClassesNativeImpl_36 *create_SMBaseClassesNativeImpl_36_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  jint start = (jint) [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asLong];
+  jint stop = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) asLong]);
   return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk([((NSString *) nil_chk(value)) java_substring:0 endIndex:start])) java_concat:[value java_substring:stop endIndex:[value java_length]]]);
 }
 
@@ -5501,8 +5502,8 @@ SMBaseClassesNativeImpl_40 *create_SMBaseClassesNativeImpl_40_initWithSMBaseClas
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
-  jint start = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  jint stop = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) intValue];
+  jint start = (jint) [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asLong];
+  jint stop = (jint) [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) asLong];
   return new_SMSimiValue_String_initWithNSString_([((NSString *) nil_chk(value)) java_substring:start endIndex:stop]);
 }
 
@@ -6140,7 +6141,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+  return new_SMSimiValue_Number_initWithLong_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -6196,13 +6197,19 @@ SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_init() {
                                      withBoolean:(jboolean)rethrow {
   NSString *string = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
   @try {
-    jdouble number = JavaLangDouble_parseDoubleWithNSString_(string);
-    return new_SMSimiValue_Number_initWithDouble_(number);
+    jlong number = JavaLangLong_parseLongWithNSString_(string);
+    return new_SMSimiValue_Number_initWithLong_(number);
   }
   @catch (JavaLangNumberFormatException *e) {
-    SMSimiException *se = new_SMSimiException_initWithSMSimiClass_withNSString_((id<SMSimiClass>) cast_check([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiEnvironment>) nil_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment])) tryGetWithNSString:SMConstants_EXCEPTION_NUMBER_FORMAT])) getValue])) getObject], SMSimiClass_class_()), @"Invalid number format!");
-    [interpreter raiseExceptionWithSMSimiException:se];
-    return nil;
+    @try {
+      jdouble number = JavaLangDouble_parseDoubleWithNSString_(string);
+      return new_SMSimiValue_Number_initWithDouble_(number);
+    }
+    @catch (JavaLangNumberFormatException *e2) {
+      SMSimiException *se = new_SMSimiException_initWithSMSimiClass_withNSString_((id<SMSimiClass>) cast_check([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiEnvironment>) nil_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment])) tryGetWithNSString:SMConstants_EXCEPTION_NUMBER_FORMAT])) getValue])) getObject], SMSimiClass_class_()), @"Invalid number format!");
+      [interpreter raiseExceptionWithSMSimiException:se];
+      return nil;
+    }
   }
 }
 
@@ -6451,8 +6458,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  jint max = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) intValue];
-  return new_SMSimiValue_Number_initWithDouble_([((JavaUtilConcurrentThreadLocalRandom *) nil_chk(JavaUtilConcurrentThreadLocalRandom_current())) nextIntWithInt:max]);
+  jint max = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asLong]);
+  return new_SMSimiValue_Number_initWithLong_([((JavaUtilConcurrentThreadLocalRandom *) nil_chk(JavaUtilConcurrentThreadLocalRandom_current())) nextIntWithInt:max]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -6564,7 +6571,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithDouble_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+  return new_SMSimiValue_Number_initWithLong_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -6619,7 +6626,7 @@ SMBaseClassesNativeImpl_55 *create_SMBaseClassesNativeImpl_55_init() {
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiValue *value = SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments);
-  return new_SMSimiValue_String_initWithNSString_([((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk(value)) getNumber])) description]);
+  return new_SMSimiValue_String_initWithNSString_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(value)) getNumber])) description]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -6860,8 +6867,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  jdouble a = [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) doubleValue];
-  return new_SMSimiValue_Number_initWithDouble_(JavaLangMath_roundWithDouble_(a));
+  jdouble a = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asDouble];
+  return new_SMSimiValue_Number_initWithLong_(JavaLangMath_roundWithDouble_(a));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -7852,7 +7859,7 @@ SMBaseClassesNativeImpl_$Lambda$26 *create_SMBaseClassesNativeImpl_$Lambda$26_in
 
 - (jint)compareWithId:(SMSimiValue *)o1
                withId:(SMSimiValue *)o2 {
-  return [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ o1, o2 } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) intValue];
+  return JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ o1, o2 } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) asLong]);
 }
 
 - (id<JavaUtilComparator>)reversed {
@@ -7941,7 +7948,7 @@ SMBaseClassesNativeImpl_$Lambda$28 *create_SMBaseClassesNativeImpl_$Lambda$28_in
 
 - (jint)compareWithId:(id<JavaUtilMap_Entry>)o1
                withId:(id<JavaUtilMap_Entry>)o2 {
-  return [((JavaLangDouble *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o1)) getKey]), [o1 getValue])), create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o2)) getKey]), [o2 getValue])) } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) intValue];
+  return JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o1)) getKey]), [o1 getValue])), create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o2)) getKey]), [o2 getValue])) } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) asLong]);
 }
 
 - (id<JavaUtilComparator>)reversed {
