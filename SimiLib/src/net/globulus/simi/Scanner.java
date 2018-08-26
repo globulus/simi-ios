@@ -46,10 +46,12 @@ class Scanner {
   }
   private final String source;
   private final List<Token> tokens = new ArrayList<>();
-//> scan-state
+
   private int start = 0;
   private int current = 0;
   private int line = 1;
+  private int stringInterpolationParentheses = 0;
+  private char lastStringOpener = '"';
 
   Scanner(String source) {
     this.source = source;
@@ -70,8 +72,22 @@ class Scanner {
   private void scanToken() {
     char c = advance();
     switch (c) {
-      case '(': addToken(TokenType.LEFT_PAREN); break;
-      case ')': addToken(TokenType.RIGHT_PAREN); break;
+      case '(': {
+        addToken(TokenType.LEFT_PAREN);
+        if (stringInterpolationParentheses > 0) {
+          stringInterpolationParentheses++;
+        }
+      } break;
+      case ')': {
+        addToken(TokenType.RIGHT_PAREN);
+        if (stringInterpolationParentheses > 0) {
+          stringInterpolationParentheses--;
+          if (stringInterpolationParentheses == 0) {
+            addToken(TokenType.PLUS);
+            string(lastStringOpener);
+          }
+        }
+      } break;
       case '[': addToken(TokenType.LEFT_BRACKET); break;
       case ']': addToken(TokenType.RIGHT_BRACKET); break;
       case ',': addToken(TokenType.COMMA); break;
@@ -82,7 +98,17 @@ class Scanner {
         addToken(TokenType.DOT);
       break;
 //> two-char-tokens
-      case '?': addToken(match('?') ? TokenType.QUESTION_QUESTION : TokenType.QUESTION); break;
+      case '?': {
+        if (match('?')) {
+          if (match('=')) {
+            addToken(TokenType.QUESTION_QUESTION_EQUAL);
+          } else {
+            addToken(TokenType.QUESTION_QUESTION);
+          }
+        } else {
+          addToken(TokenType.QUESTION);
+        }
+      } break;
       case '=': addToken(match('=') ? TokenType.EQUAL_EQUAL : TokenType.EQUAL); break;
       case '<': {
         if (match('>')) {
@@ -107,7 +133,11 @@ class Scanner {
       case '-': addToken(match('=') ? TokenType.MINUS_EQUAL : TokenType.MINUS); break;
       case '/': {
         if (match('/')) {
-          addToken(TokenType.SLASH_SLASH);
+          if ((match('='))) {
+            addToken(TokenType.SLASH_SLASH_EQUAL);
+          } else {
+            addToken(TokenType.SLASH_SLASH);
+          }
         } else if (match('=')) {
           addToken(TokenType.SLASH_EQUAL);
         } else {
@@ -138,19 +168,16 @@ class Scanner {
             } else {
                 identifier();
             }
-        }
-            break;
-//< two-char-tokens
-      case '#':
-          // A comment goes until the end of the line.
+        } break;
+      case '#': {
+        // A comment goes until the end of the line.
         while (peek() != '\n' && !isAtEnd()) advance();
-        break;
-
-      case '\\':
+      } break;
+      case '\\': {
         if (match('\n')) {
           line++;
         }
-        break;
+      } break;
 
       case ' ':
       case '\r':
@@ -158,13 +185,12 @@ class Scanner {
         // Ignore whitespace.
         break;
 
-      case '\n':
+      case '\n': {
         line++;
         addToken(TokenType.NEWLINE);
-        break;
+      } break;
       default:
-
-      if (isStringDelim(c)) {
+       if (isStringDelim(c)) {
         string(c);
       } else if (isDigit(c)) {
           number();
@@ -236,8 +262,20 @@ class Scanner {
     while (peek() != opener && !isAtEnd()) {
       if (peek() == '\n') {
         line++;
-      } else if (peek() == '\\' && peekNext() == opener) {
-        advance();
+      } else if (peek() == '\\') {
+        char next = peekNext();
+        if (next == opener) {
+          advance();
+        } else if (next == '(') { // String interpolation
+          String valueSoFar = escapedString(start + 1, current);
+          addToken(TokenType.STRING, new SimiValue.String(valueSoFar));
+          addToken(TokenType.PLUS);
+          advance(); // Skip the \
+          advance(); // Skip the (
+          addToken(TokenType.LEFT_PAREN);
+          stringInterpolationParentheses = 1;
+          return;
+        }
       }
       advance();
     }

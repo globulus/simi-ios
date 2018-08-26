@@ -646,6 +646,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
       methodName = ((SimiValue.Callable) callee).name;
       instance = ((SimiValue.Callable) callee).getInstance();
     } else if (callee instanceof TempNull) {
+      raiseNilReferenceException(paren);
       return TempNull.INSTANCE;
     } else {
       return callee;
@@ -699,11 +700,13 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
   }
 
   private List<SimiProperty> decomposeArguments(SimiCallable callable, List<SimiProperty> arguments) {
-    if (arguments.size() == 1 && arguments.get(0).getValue() instanceof SimiValue.Object) {
-      SimiObject argObject = arguments.get(0).getValue().getObject();
-      List<SimiValue> values = argObject.values();
-      if (argObject.values().size() == callable.arity()) {
-        return values.stream().map(v -> (SimiProperty) v).collect(Collectors.toList());
+    if (arguments.size() == 1) {
+      SimiValue value = arguments.get(0).getValue();
+      if (value instanceof SimiValue.Object) {
+        List<SimiValue> values = value.getObject().values();
+        if (values.size() == callable.arity()) {
+          return values.stream().map(v -> (SimiProperty) v).collect(Collectors.toList());
+        }
       }
     }
     return arguments;
@@ -730,6 +733,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
     SimiProperty object = evaluate(expr.object);
     Token name = evaluateGetSetName(expr.origin, expr.name);
     if (object instanceof TempNull) {
+      raiseNilReferenceException(expr.origin);
       return TempNull.INSTANCE;
     }
     try {
@@ -1160,6 +1164,11 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
       }
     }
     return clazz;
+  }
+
+  private void raiseNilReferenceException(Token token) {
+    String message = "Nil reference found at line " + token.line + ": " + token.toString();
+    raisedExceptions.push(new SimiException((SimiClass) environment.tryGet(Constants.EXCEPTION_NIL_REFERENCE).getValue().getObject(), message));
   }
 
   @FunctionalInterface

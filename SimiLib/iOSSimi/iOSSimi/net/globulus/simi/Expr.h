@@ -12,6 +12,9 @@
 #define INCLUDE_ALL_NetGlobulusSimiExpr 1
 #endif
 #undef RESTRICT_NetGlobulusSimiExpr
+#ifdef INCLUDE_SMExpr_Yield
+#define INCLUDE_SMExpr 1
+#endif
 #ifdef INCLUDE_SMExpr_ObjectLiteral
 #define INCLUDE_SMExpr 1
 #endif
@@ -1059,6 +1062,61 @@ FOUNDATION_EXPORT SMExpr_ObjectLiteral *new_SMExpr_ObjectLiteral_initWithSMToken
 FOUNDATION_EXPORT SMExpr_ObjectLiteral *create_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectLiteral)
+
+#endif
+
+#if !defined (SMExpr_Yield_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Yield))
+#define SMExpr_Yield_
+
+@class IOSObjectArray;
+@class SMExpr;
+@class SMExpr_Call;
+@class SMToken;
+@protocol SMExpr_Visitor;
+
+@interface SMExpr_Yield : SMExpr {
+ @public
+  SMExpr *var_;
+  SMToken *assign_;
+  SMToken *keyword_;
+  SMExpr_Call *value_;
+}
+
+#pragma mark Public
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
+#pragma mark Package-Private
+
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)var
+                             withSMToken:(SMToken *)assign
+                             withSMToken:(SMToken *)keyword
+                         withSMExpr_Call:(SMExpr_Call *)value;
+
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype __nonnull)init NS_UNAVAILABLE;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMExpr_Yield)
+
+J2OBJC_FIELD_SETTER(SMExpr_Yield, var_, SMExpr *)
+J2OBJC_FIELD_SETTER(SMExpr_Yield, assign_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Yield, keyword_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Yield, value_, SMExpr_Call *)
+
+FOUNDATION_EXPORT void SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(SMExpr_Yield *self, SMExpr *var, SMToken *assign, SMToken *keyword, SMExpr_Call *value);
+
+FOUNDATION_EXPORT SMExpr_Yield *new_SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(SMExpr *var, SMToken *assign, SMToken *keyword, SMExpr_Call *value) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT SMExpr_Yield *create_SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(SMExpr *var, SMToken *assign, SMToken *keyword, SMExpr_Call *value);
+
+J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Yield)
 
 #endif
 

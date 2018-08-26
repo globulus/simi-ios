@@ -162,6 +162,8 @@
                                  withSMExpr:(SMExpr *)expr
             withSMInterpreter_ClassImporter:(id<SMInterpreter_ClassImporter>)classImporter;
 
+- (void)raiseNilReferenceExceptionWithSMToken:(SMToken *)token;
+
 @end
 
 J2OBJC_FIELD_SETTER(SMInterpreter, globals_, SMEnvironment *)
@@ -221,6 +223,8 @@ __attribute__((unused)) static void SMInterpreter_applyAnnotationsWithId_(SMInte
 __attribute__((unused)) static id<JavaUtilList> SMInterpreter_getAnnotationsWithId_(SMInterpreter *self, id key);
 
 __attribute__((unused)) static SMSimiClassImpl *SMInterpreter_importClassWithSMToken_withSMExpr_withSMInterpreter_ClassImporter_(SMInterpreter *self, SMToken *keyword, SMExpr *expr, id<SMInterpreter_ClassImporter> classImporter);
+
+__attribute__((unused)) static void SMInterpreter_raiseNilReferenceExceptionWithSMToken_(SMInterpreter *self, SMToken *token);
 
 @interface SMInterpreter_1 : NSObject < SMSimiCallable >
 
@@ -1023,6 +1027,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
   id<SMSimiProperty> object = SMInterpreter_evaluateWithSMExpr_(self, ((SMExpr_Get *) nil_chk(expr))->object_);
   SMToken *name = SMInterpreter_evaluateGetSetNameWithSMToken_withSMExpr_(self, expr->origin_, expr->name_);
   if ([object isKindOfClass:[SMTempNull class]]) {
+    SMInterpreter_raiseNilReferenceExceptionWithSMToken_(self, expr->origin_);
     return JreLoadStatic(SMTempNull, INSTANCE);
   }
   @try {
@@ -1338,6 +1343,10 @@ SMInterpreter *SMInterpreter_sharedInstance;
   return SMInterpreter_importClassWithSMToken_withSMExpr_withSMInterpreter_ClassImporter_(self, keyword, expr, classImporter);
 }
 
+- (void)raiseNilReferenceExceptionWithSMToken:(SMToken *)token {
+  SMInterpreter_raiseNilReferenceExceptionWithSMToken_(self, token);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
@@ -1410,6 +1419,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
     { NULL, "LJavaUtilList;", 0x81, 130, 131, -1, 132, -1, -1 },
     { NULL, "V", 0x1, 133, 3, -1, 134, -1, -1 },
     { NULL, "LSMSimiClassImpl;", 0x2, 135, 136, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 137, 138, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1484,23 +1494,24 @@ SMInterpreter *SMInterpreter_sharedInstance;
   methods[67].selector = @selector(defineTempVarsWithSMSimiPropertyArray:);
   methods[68].selector = @selector(undefineTempVarsWithJavaUtilList:);
   methods[69].selector = @selector(importClassWithSMToken:withSMExpr:withSMInterpreter_ClassImporter:);
+  methods[70].selector = @selector(raiseNilReferenceExceptionWithSMToken:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "nativeModulesManagers_", "LJavaUtilCollection;", .constantValue.asLong = 0, 0x10, -1, -1, 137, -1 },
+    { "nativeModulesManagers_", "LJavaUtilCollection;", .constantValue.asLong = 0, 0x10, -1, -1, 139, -1 },
     { "globals_", "LSMEnvironment;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "environment_", "LSMEnvironment;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "locals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 138, -1 },
+    { "locals_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 140, -1 },
     { "baseClassesNativeImpl_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
-    { "loopBlocks_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 139, -1 },
-    { "raisedExceptions_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 140, -1 },
-    { "yieldedStmts_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 141, -1 },
-    { "annotations_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 142, -1 },
-    { "annotationsBuffer_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 143, -1 },
+    { "loopBlocks_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 141, -1 },
+    { "raisedExceptions_", "LJavaUtilStack;", .constantValue.asLong = 0, 0x12, -1, -1, 142, -1 },
+    { "yieldedStmts_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 143, -1 },
+    { "annotations_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 144, -1 },
+    { "annotationsBuffer_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 145, -1 },
     { "addClassesToRootEnv_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "sharedInstance", "LSMInterpreter;", .constantValue.asLong = 0, 0x8, -1, 144, -1, -1 },
+    { "sharedInstance", "LSMInterpreter;", .constantValue.asLong = 0, 0x8, -1, 146, -1, -1 },
   };
-  static const void *ptrTable[] = { "LJavaUtilCollection;", "(Ljava/util/Collection<LNativeModulesManager;>;)V", "interpret", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)LSimiProperty;", "LJavaUtilList;Z", "(Ljava/util/List<LStmt;>;Z)LSimiProperty;", "evaluate", "LSMExpr;", "LSMExpr;[LNSObject;", "execute", "LSMStmt;", "resolve", "LSMExpr;I", "executeBlock", "LSMSimiBlock;LSMSimiEnvironment;I", "getGlobal", "LNSString;", "raiseException", "LSMSimiException;", "newObject", "ZLJavaUtilLinkedHashMap;", "(ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "newArray", "ZLJavaUtilArrayList;", "(ZLjava/util/ArrayList<LSimiValue;>;)LSimiObject;", "newInstance", "LSMSimiClass;LJavaUtilLinkedHashMap;", "(LSimiClass;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitImportStmt", "LSMStmt_Import;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitYieldStmt", "LSMStmt_Yield;", "visitWhileStmt", "LSMStmt_While;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "call", "LSMSimiProperty;LJavaUtilList;LSMToken;", "(LSimiProperty;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LJavaUtilList;LSMToken;", "(LSimiValue;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LSMToken;LJavaUtilList;", "(LSimiValue;LToken;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "decomposeArguments", "LSMSimiCallable;LJavaUtilList;", "(LSimiCallable;Ljava/util/List<LSimiProperty;>;)Ljava/util/List<LSimiProperty;>;", "invokeNativeCall", "LNSString;LNSString;LSMSimiObject;LJavaUtilList;", "(Ljava/lang/String;Ljava/lang/String;LSimiObject;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "visitGetExpr", "LSMExpr_Get;", "evaluateGetSetName", "LSMToken;LSMExpr;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "executeRescueBlock", "LSMStmt_Rescue;LSMSimiException;", "lookUpVariable", "checkNumberOperand", "LSMToken;LSMSimiValue;", "checkNumberOperands", "LSMToken;LSMSimiValue;LSMSimiValue;", "isTruthy", "LSMSimiProperty;", "isEqual", "LSMSimiValue;LSMSimiValue;LSMExpr_Binary;", "compare", "isInstance", "isIn", "stringify", "isBaseClass", "putBlock", "LSMStmt_BlockStmt;LSMBlockImpl;", "applyAnnotations", "LNSObject;", "getAnnotations", "(Ljava/lang/Object;)Ljava/util/List<LSimiObject;>;", "defineTempVars", "[LSMSimiProperty;", "([LSimiProperty;)Ljava/util/List<Ljava/lang/String;>;", "undefineTempVars", "(Ljava/util/List<Ljava/lang/String;>;)V", "importClass", "LSMToken;LSMExpr;LSMInterpreter_ClassImporter;", "Ljava/util/Collection<LNativeModulesManager;>;", "Ljava/util/Map<LExpr;Ljava/lang/Integer;>;", "Ljava/util/Stack<LSimiBlock;>;", "Ljava/util/Stack<LSimiException;>;", "Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;", "Ljava/util/Map<Ljava/lang/Object;Ljava/util/List<LSimiObject;>;>;", "Ljava/util/List<LSimiObject;>;", &SMInterpreter_sharedInstance, "LSMInterpreter_ClassImporter;", "Ljava/lang/Object;LBlockInterpreter;LExpr$Visitor<LSimiProperty;>;LStmt$Visitor<LSimiProperty;>;" };
-  static const J2ObjcClassInfo _SMInterpreter = { "Interpreter", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 70, 12, -1, 145, -1, 146, -1 };
+  static const void *ptrTable[] = { "LJavaUtilCollection;", "(Ljava/util/Collection<LNativeModulesManager;>;)V", "interpret", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)LSimiProperty;", "LJavaUtilList;Z", "(Ljava/util/List<LStmt;>;Z)LSimiProperty;", "evaluate", "LSMExpr;", "LSMExpr;[LNSObject;", "execute", "LSMStmt;", "resolve", "LSMExpr;I", "executeBlock", "LSMSimiBlock;LSMSimiEnvironment;I", "getGlobal", "LNSString;", "raiseException", "LSMSimiException;", "newObject", "ZLJavaUtilLinkedHashMap;", "(ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "newArray", "ZLJavaUtilArrayList;", "(ZLjava/util/ArrayList<LSimiValue;>;)LSimiObject;", "newInstance", "LSMSimiClass;LJavaUtilLinkedHashMap;", "(LSimiClass;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObject;", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitImportStmt", "LSMStmt_Import;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitYieldStmt", "LSMStmt_Yield;", "visitWhileStmt", "LSMStmt_While;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "call", "LSMSimiProperty;LJavaUtilList;LSMToken;", "(LSimiProperty;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LJavaUtilList;LSMToken;", "(LSimiValue;Ljava/util/List<LExpr;>;LToken;)LSimiProperty;", "LSMSimiValue;LSMToken;LJavaUtilList;", "(LSimiValue;LToken;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "decomposeArguments", "LSMSimiCallable;LJavaUtilList;", "(LSimiCallable;Ljava/util/List<LSimiProperty;>;)Ljava/util/List<LSimiProperty;>;", "invokeNativeCall", "LNSString;LNSString;LSMSimiObject;LJavaUtilList;", "(Ljava/lang/String;Ljava/lang/String;LSimiObject;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "visitGetExpr", "LSMExpr_Get;", "evaluateGetSetName", "LSMToken;LSMExpr;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "executeRescueBlock", "LSMStmt_Rescue;LSMSimiException;", "lookUpVariable", "checkNumberOperand", "LSMToken;LSMSimiValue;", "checkNumberOperands", "LSMToken;LSMSimiValue;LSMSimiValue;", "isTruthy", "LSMSimiProperty;", "isEqual", "LSMSimiValue;LSMSimiValue;LSMExpr_Binary;", "compare", "isInstance", "isIn", "stringify", "isBaseClass", "putBlock", "LSMStmt_BlockStmt;LSMBlockImpl;", "applyAnnotations", "LNSObject;", "getAnnotations", "(Ljava/lang/Object;)Ljava/util/List<LSimiObject;>;", "defineTempVars", "[LSMSimiProperty;", "([LSimiProperty;)Ljava/util/List<Ljava/lang/String;>;", "undefineTempVars", "(Ljava/util/List<Ljava/lang/String;>;)V", "importClass", "LSMToken;LSMExpr;LSMInterpreter_ClassImporter;", "raiseNilReferenceException", "LSMToken;", "Ljava/util/Collection<LNativeModulesManager;>;", "Ljava/util/Map<LExpr;Ljava/lang/Integer;>;", "Ljava/util/Stack<LSimiBlock;>;", "Ljava/util/Stack<LSimiException;>;", "Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;", "Ljava/util/Map<Ljava/lang/Object;Ljava/util/List<LSimiObject;>;>;", "Ljava/util/List<LSimiObject;>;", &SMInterpreter_sharedInstance, "LSMInterpreter_ClassImporter;", "Ljava/lang/Object;LBlockInterpreter;LExpr$Visitor<LSimiProperty;>;LStmt$Visitor<LSimiProperty;>;" };
+  static const J2ObjcClassInfo _SMInterpreter = { "Interpreter", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 71, 12, -1, 147, -1, 148, -1 };
   return &_SMInterpreter;
 }
 
@@ -1582,6 +1593,7 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
     instance = [((SMSimiValue_Callable *) cast_chk(callee, [SMSimiValue_Callable class])) getInstance];
   }
   else if ([callee isKindOfClass:[SMTempNull class]]) {
+    SMInterpreter_raiseNilReferenceExceptionWithSMToken_(self, paren);
     return JreLoadStatic(SMTempNull, INSTANCE);
   }
   else {
@@ -1631,11 +1643,13 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
 }
 
 id<JavaUtilList> SMInterpreter_decomposeArgumentsWithSMSimiCallable_withJavaUtilList_(SMInterpreter *self, id<SMSimiCallable> callable, id<JavaUtilList> arguments) {
-  if ([((id<JavaUtilList>) nil_chk(arguments)) size] == 1 && [[((id<SMSimiProperty>) nil_chk([arguments getWithInt:0])) getValue] isKindOfClass:[SMSimiValue_Object class]]) {
-    id<SMSimiObject> argObject = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:0])) getValue])) getObject];
-    id<JavaUtilList> values = [((id<SMSimiObject>) nil_chk(argObject)) values];
-    if ([((id<JavaUtilList>) nil_chk([argObject values])) size] == [((id<SMSimiCallable>) nil_chk(callable)) arity]) {
-      return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(values)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMInterpreter_$Lambda$5, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  if ([((id<JavaUtilList>) nil_chk(arguments)) size] == 1) {
+    SMSimiValue *value = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:0])) getValue];
+    if ([value isKindOfClass:[SMSimiValue_Object class]]) {
+      id<JavaUtilList> values = [((id<SMSimiObject>) nil_chk([((SMSimiValue *) nil_chk(value)) getObject])) values];
+      if ([((id<JavaUtilList>) nil_chk(values)) size] == [((id<SMSimiCallable>) nil_chk(callable)) arity]) {
+        return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([values stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMInterpreter_$Lambda$5, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+      }
     }
   }
   return arguments;
@@ -1836,6 +1850,11 @@ SMSimiClassImpl *SMInterpreter_importClassWithSMToken_withSMExpr_withSMInterpret
     }
   }
   return clazz;
+}
+
+void SMInterpreter_raiseNilReferenceExceptionWithSMToken_(SMInterpreter *self, SMToken *token) {
+  NSString *message = JreStrcat("$I$$", @"Nil reference found at line ", ((SMToken *) nil_chk(token))->line_, @": ", [token description]);
+  (void) [((JavaUtilStack *) nil_chk(self->raisedExceptions_)) pushWithId:new_SMSimiException_initWithSMSimiClass_withNSString_((id<SMSimiClass>) cast_check([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((SMEnvironment *) nil_chk(self->environment_)) tryGetWithNSString:SMConstants_EXCEPTION_NIL_REFERENCE])) getValue])) getObject], SMSimiClass_class_()), message)];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMInterpreter)

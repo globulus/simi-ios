@@ -132,7 +132,7 @@
 
 - (SMToken *)previous;
 
-- (SMToken *)operatorFromAssignWithSMToken:(SMToken *)assignOp;
++ (SMToken *)operatorFromAssignWithSMToken:(SMToken *)assignOp;
 
 - (SMParser_ParseError *)errorWithSMToken:(SMToken *)token
                              withNSString:(NSString *)message;
@@ -254,7 +254,7 @@ __attribute__((unused)) static jboolean SMParser_peekSequenceWithSMTokenTypeArra
 
 __attribute__((unused)) static SMToken *SMParser_previous(SMParser *self);
 
-__attribute__((unused)) static SMToken *SMParser_operatorFromAssignWithSMToken_(SMParser *self, SMToken *assignOp);
+__attribute__((unused)) static SMToken *SMParser_operatorFromAssignWithSMToken_(SMToken *assignOp);
 
 __attribute__((unused)) static SMParser_ParseError *SMParser_errorWithSMToken_withNSString_(SMParser *self, SMToken *token, NSString *message);
 
@@ -498,8 +498,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMParser_ParseError)
   return SMParser_previous(self);
 }
 
-- (SMToken *)operatorFromAssignWithSMToken:(SMToken *)assignOp {
-  return SMParser_operatorFromAssignWithSMToken_(self, assignOp);
++ (SMToken *)operatorFromAssignWithSMToken:(SMToken *)assignOp {
+  return SMParser_operatorFromAssignWithSMToken_(assignOp);
 }
 
 - (SMParser_ParseError *)errorWithSMToken:(SMToken *)token
@@ -519,6 +519,13 @@ J2OBJC_TYPE_LITERAL_HEADER(SMParser_ParseError)
                  withJavaUtilList:(id<JavaUtilList>)params
                  withJavaUtilList:(id<JavaUtilList>)stmts {
   SMParser_addParamChecksWithSMToken_withJavaUtilList_withJavaUtilList_(self, declaration, params, stmts);
+}
+
++ (SMExpr *)getAssignExprWithSMParser:(SMParser *)parser
+                           withSMExpr:(SMExpr *)expr
+                          withSMToken:(SMToken *)equals
+                           withSMExpr:(SMExpr *)value {
+  return SMParser_getAssignExprWithSMParser_withSMExpr_withSMToken_withSMExpr_(parser, expr, equals, value);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -571,11 +578,12 @@ J2OBJC_TYPE_LITERAL_HEADER(SMParser_ParseError)
     { NULL, "LSMToken;", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x82, 31, 25, -1, -1, -1, -1 },
     { NULL, "LSMToken;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMToken;", 0x2, 32, 33, -1, -1, -1, -1 },
+    { NULL, "LSMToken;", 0xa, 32, 33, -1, -1, -1, -1 },
     { NULL, "LSMParser_ParseError;", 0x2, 34, 16, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x2, -1, -1, -1, 35, -1, -1 },
     { NULL, "V", 0x2, 36, 37, -1, 38, -1, -1 },
+    { NULL, "LSMExpr;", 0x8, 39, 40, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -633,17 +641,18 @@ J2OBJC_TYPE_LITERAL_HEADER(SMParser_ParseError)
   methods[50].selector = @selector(synchronize);
   methods[51].selector = @selector(getAnnotations);
   methods[52].selector = @selector(addParamChecksWithSMToken:withJavaUtilList:withJavaUtilList:);
+  methods[53].selector = @selector(getAssignExprWithSMParser:withSMExpr:withSMToken:withSMExpr:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "LAMBDA", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 39, -1, -1 },
-    { "FUNCTION", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 40, -1, -1 },
-    { "METHOD", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 41, -1, -1 },
-    { "tokens_", "LJavaUtilList;", .constantValue.asLong = 0, 0x12, -1, -1, 42, -1 },
+    { "LAMBDA", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 41, -1, -1 },
+    { "FUNCTION", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 42, -1, -1 },
+    { "METHOD", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 43, -1, -1 },
+    { "tokens_", "LJavaUtilList;", .constantValue.asLong = 0, 0x12, -1, -1, 44, -1 },
     { "current_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 43, -1 },
+    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 45, -1 },
   };
-  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LToken;>;)V", "()Ljava/util/List<LStmt;>;", "statement", "Z", "printStatement", "returnStatement", "yieldStatement", "expressionStatement", "checkStatementEnd", "function", "LNSString;", "block", "LNSString;Z", "LSMToken;LNSString;ZZ", "getBlockStatements", "LSMToken;LNSString;", "(LToken;Ljava/lang/String;)Ljava/util/List<LStmt;>;", "params", "(Ljava/lang/String;Z)Ljava/util/List<LExpr;>;", "or", "and", "finishCall", "LSMExpr;", "matchSequence", "[LSMTokenType;", "match", "consume", "LSMTokenType;LNSString;", "check", "LSMTokenType;", "peekSequence", "operatorFromAssign", "LSMToken;", "error", "()Ljava/util/List<LStmt$Annotation;>;", "addParamChecks", "LSMToken;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LStmt;>;)V", &SMParser_LAMBDA, &SMParser_FUNCTION, &SMParser_METHOD, "Ljava/util/List<LToken;>;", "Ljava/util/List<LStmt$Annotation;>;", "LSMParser_ParseError;" };
-  static const J2ObjcClassInfo _SMParser = { "Parser", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 53, 6, -1, 44, -1, -1, -1 };
+  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LToken;>;)V", "()Ljava/util/List<LStmt;>;", "statement", "Z", "printStatement", "returnStatement", "yieldStatement", "expressionStatement", "checkStatementEnd", "function", "LNSString;", "block", "LNSString;Z", "LSMToken;LNSString;ZZ", "getBlockStatements", "LSMToken;LNSString;", "(LToken;Ljava/lang/String;)Ljava/util/List<LStmt;>;", "params", "(Ljava/lang/String;Z)Ljava/util/List<LExpr;>;", "or", "and", "finishCall", "LSMExpr;", "matchSequence", "[LSMTokenType;", "match", "consume", "LSMTokenType;LNSString;", "check", "LSMTokenType;", "peekSequence", "operatorFromAssign", "LSMToken;", "error", "()Ljava/util/List<LStmt$Annotation;>;", "addParamChecks", "LSMToken;LJavaUtilList;LJavaUtilList;", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LStmt;>;)V", "getAssignExpr", "LSMParser;LSMExpr;LSMToken;LSMExpr;", &SMParser_LAMBDA, &SMParser_FUNCTION, &SMParser_METHOD, "Ljava/util/List<LToken;>;", "Ljava/util/List<LStmt$Annotation;>;", "LSMParser_ParseError;" };
+  static const J2ObjcClassInfo _SMParser = { "Parser", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 54, 6, -1, 46, -1, -1, -1 };
   return &_SMParser;
 }
 
@@ -1068,49 +1077,20 @@ JavaLangInteger *SMParser_peekParams(SMParser *self) {
 
 SMExpr *SMParser_assignment(SMParser *self) {
   SMExpr *expr = SMParser_or__(self);
-  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, EQUAL), JreLoadEnum(SMTokenType, PLUS_EQUAL), JreLoadEnum(SMTokenType, MINUS_EQUAL), JreLoadEnum(SMTokenType, STAR_EQUAL), JreLoadEnum(SMTokenType, SLASH_EQUAL), JreLoadEnum(SMTokenType, MOD_EQUAL) } count:6 type:SMTokenType_class_()])) {
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, EQUAL), JreLoadEnum(SMTokenType, PLUS_EQUAL), JreLoadEnum(SMTokenType, MINUS_EQUAL), JreLoadEnum(SMTokenType, STAR_EQUAL), JreLoadEnum(SMTokenType, SLASH_EQUAL), JreLoadEnum(SMTokenType, SLASH_SLASH_EQUAL), JreLoadEnum(SMTokenType, MOD_EQUAL), JreLoadEnum(SMTokenType, QUESTION_QUESTION_EQUAL) } count:8 type:SMTokenType_class_()])) {
     SMToken *equals = SMParser_previous(self);
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, YIELD) } count:1 type:SMTokenType_class_()])) {
+      SMToken *keyword = SMParser_previous(self);
+      SMExpr *call = SMParser_call(self);
+      if ([call isKindOfClass:[SMExpr_Call class]]) {
+        return new_SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(expr, equals, keyword, (SMExpr_Call *) cast_chk(call, [SMExpr_Call class]));
+      }
+      else {
+        [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:keyword withNSString:@"yield expressions must involve a call!"];
+      }
+    }
     SMExpr *value = SMParser_assignment(self);
-    if ([expr isKindOfClass:[SMExpr_Literal class]] && [((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(expr, [SMExpr_Literal class]))))->value_ isKindOfClass:[SMSimiValue_String class]]) {
-      SMToken *literal = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, STRING), nil, ((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(expr, [SMExpr_Literal class]))))->value_, ((SMToken *) nil_chk(equals))->line_);
-      return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(literal, value, SMParser_getAnnotations(self));
-    }
-    else if ([expr isKindOfClass:[SMExpr_Variable class]]) {
-      SMToken *name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(expr, [SMExpr_Variable class]))))->name_;
-      if (((SMToken *) nil_chk(equals))->type_ == JreLoadEnum(SMTokenType, EQUAL)) {
-        return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, value, SMParser_getAnnotations(self));
-      }
-      else {
-        return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(expr, SMParser_operatorFromAssignWithSMToken_(self, equals), value), SMParser_getAnnotations(self));
-      }
-    }
-    else if ([expr isKindOfClass:[SMExpr_Get class]]) {
-      if (((SMToken *) nil_chk(equals))->type_ == JreLoadEnum(SMTokenType, EQUAL)) {
-        SMExpr_Get *get = (SMExpr_Get *) cast_chk(expr, [SMExpr_Get class]);
-        return new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(((SMExpr_Get *) nil_chk(get))->origin_, get->object_, get->name_, value);
-      }
-      else {
-        [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:equals withNSString:@"Cannot use compound assignment operators with setters!"];
-      }
-    }
-    else if ([expr isKindOfClass:[SMExpr_ObjectLiteral class]]) {
-      SMExpr_ObjectLiteral *objectLiteral = (SMExpr_ObjectLiteral *) cast_chk(expr, [SMExpr_ObjectLiteral class]);
-      if (((SMExpr_ObjectLiteral *) nil_chk(objectLiteral))->isDictionary_ || ((SMToken *) nil_chk(objectLiteral->opener_))->type_ == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
-        [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithInt:((SMToken *) nil_chk(equals))->line_ withNSString:@"Invalid object decomposition syntax."];
-      }
-      id<JavaUtilList> assigns = new_JavaUtilArrayList_init();
-      id<JavaUtilList> annotations = SMParser_getAnnotations(self);
-      for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(objectLiteral->props_)) size]; i++) {
-        SMExpr *prop = [objectLiteral->props_ getWithInt:i];
-        SMToken *name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(prop, [SMExpr_Variable class]))))->name_;
-        SMExpr *getByName = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(name, value, prop, nil);
-        SMExpr *getByIndex = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(name, value, new_SMExpr_Literal_initWithSMSimiValue_(new_SMSimiValue_Number_initWithLong_(i)), nil);
-        SMExpr *nilCoalescence = new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(getByName, new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, QUESTION_QUESTION), nil, nil, ((SMToken *) nil_chk(name))->line_), getByIndex);
-        [assigns addWithId:new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, nilCoalescence, annotations)];
-      }
-      return new_SMExpr_ObjectDecomp_initWithJavaUtilList_(assigns);
-    }
-    [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:equals withNSString:@"Invalid assignment target."];
+    return SMParser_getAssignExprWithSMParser_withSMExpr_withSMToken_withSMExpr_(self, expr, equals, value);
   }
   return expr;
 }
@@ -1416,7 +1396,8 @@ SMToken *SMParser_previous(SMParser *self) {
   return [((id<JavaUtilList>) nil_chk(self->tokens_)) getWithInt:self->current_ - 1];
 }
 
-SMToken *SMParser_operatorFromAssignWithSMToken_(SMParser *self, SMToken *assignOp) {
+SMToken *SMParser_operatorFromAssignWithSMToken_(SMToken *assignOp) {
+  SMParser_initialize();
   SMTokenType *type;
   switch ([((SMToken *) nil_chk(assignOp))->type_ ordinal]) {
     case SMTokenType_Enum_PLUS_EQUAL:
@@ -1431,8 +1412,14 @@ SMToken *SMParser_operatorFromAssignWithSMToken_(SMParser *self, SMToken *assign
     case SMTokenType_Enum_SLASH_EQUAL:
     type = JreLoadEnum(SMTokenType, SLASH);
     break;
+    case SMTokenType_Enum_SLASH_SLASH_EQUAL:
+    type = JreLoadEnum(SMTokenType, SLASH_SLASH);
+    break;
     case SMTokenType_Enum_MOD_EQUAL:
     type = JreLoadEnum(SMTokenType, MOD);
+    break;
+    case SMTokenType_Enum_QUESTION_QUESTION_EQUAL:
+    type = JreLoadEnum(SMTokenType, QUESTION_QUESTION);
     break;
     default:
     @throw new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"Unable to process assignment operator: ", assignOp->type_));
@@ -1483,6 +1470,51 @@ void SMParser_addParamChecksWithSMToken_withJavaUtilList_withJavaUtilList_(SMPar
       [((id<JavaUtilList>) nil_chk(stmts)) addWithInt:0 withId:new_SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(new_SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(paramName, new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, ISNOT), nil, nil, ((SMToken *) nil_chk(declaration))->line_), paramType), new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(typeCheck->operator__, JavaUtilCollections_emptyList(), exceptionStmt, true)), JavaUtilCollections_emptyList(), nil)];
     }
   }
+}
+
+SMExpr *SMParser_getAssignExprWithSMParser_withSMExpr_withSMToken_withSMExpr_(SMParser *parser, SMExpr *expr, SMToken *equals, SMExpr *value) {
+  SMParser_initialize();
+  if ([expr isKindOfClass:[SMExpr_Literal class]] && [((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(expr, [SMExpr_Literal class]))))->value_ isKindOfClass:[SMSimiValue_String class]]) {
+    SMToken *literal = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, STRING), nil, ((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(expr, [SMExpr_Literal class]))))->value_, ((SMToken *) nil_chk(equals))->line_);
+    return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(literal, value, (parser != nil) ? SMParser_getAnnotations(nil_chk(parser)) : nil);
+  }
+  else if ([expr isKindOfClass:[SMExpr_Variable class]]) {
+    SMToken *name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(expr, [SMExpr_Variable class]))))->name_;
+    if (((SMToken *) nil_chk(equals))->type_ == JreLoadEnum(SMTokenType, EQUAL)) {
+      return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, value, (parser != nil) ? SMParser_getAnnotations(nil_chk(parser)) : nil);
+    }
+    else {
+      return new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(expr, SMParser_operatorFromAssignWithSMToken_(equals), value), (parser != nil) ? SMParser_getAnnotations(nil_chk(parser)) : nil);
+    }
+  }
+  else if ([expr isKindOfClass:[SMExpr_Get class]]) {
+    if (((SMToken *) nil_chk(equals))->type_ == JreLoadEnum(SMTokenType, EQUAL)) {
+      SMExpr_Get *get = (SMExpr_Get *) cast_chk(expr, [SMExpr_Get class]);
+      return new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(((SMExpr_Get *) nil_chk(get))->origin_, get->object_, get->name_, value);
+    }
+    else {
+      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:equals withNSString:@"Cannot use compound assignment operators with setters!"];
+    }
+  }
+  else if ([expr isKindOfClass:[SMExpr_ObjectLiteral class]]) {
+    SMExpr_ObjectLiteral *objectLiteral = (SMExpr_ObjectLiteral *) cast_chk(expr, [SMExpr_ObjectLiteral class]);
+    if (((SMExpr_ObjectLiteral *) nil_chk(objectLiteral))->isDictionary_ || ((SMToken *) nil_chk(objectLiteral->opener_))->type_ == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
+      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithInt:((SMToken *) nil_chk(equals))->line_ withNSString:@"Invalid object decomposition syntax."];
+    }
+    id<JavaUtilList> assigns = new_JavaUtilArrayList_init();
+    id<JavaUtilList> annotations = (parser != nil) ? SMParser_getAnnotations(nil_chk(parser)) : nil;
+    for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(objectLiteral->props_)) size]; i++) {
+      SMExpr *prop = [objectLiteral->props_ getWithInt:i];
+      SMToken *name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(prop, [SMExpr_Variable class]))))->name_;
+      SMExpr *getByName = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(name, value, prop, nil);
+      SMExpr *getByIndex = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(name, value, new_SMExpr_Literal_initWithSMSimiValue_(new_SMSimiValue_Number_initWithLong_(i)), nil);
+      SMExpr *nilCoalescence = new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(getByName, new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, QUESTION_QUESTION), nil, nil, ((SMToken *) nil_chk(name))->line_), getByIndex);
+      [assigns addWithId:new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(name, nilCoalescence, annotations)];
+    }
+    return new_SMExpr_ObjectDecomp_initWithJavaUtilList_(assigns);
+  }
+  [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:equals withNSString:@"Invalid assignment target."];
+  return nil;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMParser)

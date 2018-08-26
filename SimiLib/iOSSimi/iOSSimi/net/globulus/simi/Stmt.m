@@ -16,6 +16,7 @@
 #include "java/util/stream/Collectors.h"
 #include "java/util/stream/Stream.h"
 #include "Expr.h"
+#include "SimiStatement.h"
 #include "Stmt.h"
 #include "Token.h"
 #include "TokenType.h"
@@ -135,7 +136,7 @@ __attribute__((unused)) static SMStmt_Function_$Lambda$1 *create_SMStmt_Function
 
 @interface SMStmt_Elsif_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
 
-- (jboolean)testWithId:(SMStmt *)s;
+- (jboolean)testWithId:(id<SMSimiStatement>)s;
 
 @end
 
@@ -153,7 +154,7 @@ __attribute__((unused)) static SMStmt_Elsif_$Lambda$1 *create_SMStmt_Elsif_$Lamb
 
 @interface SMStmt_Elsif_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(SMStmt *)s;
+- (id)applyWithId:(id<SMSimiStatement>)s;
 
 @end
 
@@ -171,7 +172,7 @@ __attribute__((unused)) static SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lamb
 
 @interface SMStmt_If_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
 
-- (jboolean)testWithId:(SMStmt *)s;
+- (jboolean)testWithId:(id<SMSimiStatement>)s;
 
 @end
 
@@ -189,7 +190,7 @@ __attribute__((unused)) static SMStmt_If_$Lambda$1 *create_SMStmt_If_$Lambda$1_i
 
 @interface SMStmt_If_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(SMStmt *)s;
+- (id)applyWithId:(id<SMSimiStatement>)s;
 
 @end
 
@@ -224,7 +225,7 @@ __attribute__((unused)) static SMStmt_If_$Lambda$3 *create_SMStmt_If_$Lambda$3_i
 
 @interface SMStmt_While_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
 
-- (jboolean)testWithId:(SMStmt *)s;
+- (jboolean)testWithId:(id<SMSimiStatement>)s;
 
 @end
 
@@ -242,7 +243,7 @@ __attribute__((unused)) static SMStmt_While_$Lambda$1 *create_SMStmt_While_$Lamb
 
 @interface SMStmt_While_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(SMStmt *)s;
+- (id)applyWithId:(id<SMSimiStatement>)s;
 
 @end
 
@@ -260,7 +261,7 @@ __attribute__((unused)) static SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lamb
 
 @interface SMStmt_For_$Lambda$1 : NSObject < JavaUtilFunctionPredicate >
 
-- (jboolean)testWithId:(SMStmt *)s;
+- (jboolean)testWithId:(id<SMSimiStatement>)s;
 
 @end
 
@@ -278,7 +279,7 @@ __attribute__((unused)) static SMStmt_For_$Lambda$1 *create_SMStmt_For_$Lambda$1
 
 @interface SMStmt_For_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(SMStmt *)s;
+- (id)applyWithId:(id<SMSimiStatement>)s;
 
 @end
 
@@ -959,7 +960,7 @@ SMStmt_Function_$Lambda$1 *create_SMStmt_Function_$Lambda$1_initWithInt_(jint ca
 }
 
 - (id<JavaUtilList>)getChildren {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(thenBranch_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_Elsif_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_Elsif_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk([((SMExpr_Block *) nil_chk(thenBranch_)) getStatements])) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_Elsif_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_Elsif_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
@@ -1013,7 +1014,7 @@ J2OBJC_INITIALIZED_DEFN(SMStmt_Elsif_$Lambda$1)
 
 @implementation SMStmt_Elsif_$Lambda$1
 
-- (jboolean)testWithId:(SMStmt *)s {
+- (jboolean)testWithId:(id<SMSimiStatement>)s {
   return [SMStmt_BlockStmt_class_() isInstance:s];
 }
 
@@ -1054,7 +1055,7 @@ J2OBJC_INITIALIZED_DEFN(SMStmt_Elsif_$Lambda$2)
 
 @implementation SMStmt_Elsif_$Lambda$2
 
-- (id)applyWithId:(SMStmt *)s {
+- (id)applyWithId:(id<SMSimiStatement>)s {
   return (id<SMStmt_BlockStmt>) cast_check(s, SMStmt_BlockStmt_class_());
 }
 
@@ -1106,7 +1107,7 @@ SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init() {
   [children addWithId:ifstmt_];
   [children addAllWithJavaUtilCollection:elsifs_];
   if (elseBranch_ != nil) {
-    [children addAllWithJavaUtilCollection:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(elseBranch_->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_If_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_If_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()]];
+    [children addAllWithJavaUtilCollection:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk([elseBranch_ getStatements])) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_If_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_If_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()]];
   }
   return children;
 }
@@ -1164,7 +1165,7 @@ J2OBJC_INITIALIZED_DEFN(SMStmt_If_$Lambda$1)
 
 @implementation SMStmt_If_$Lambda$1
 
-- (jboolean)testWithId:(SMStmt *)s {
+- (jboolean)testWithId:(id<SMSimiStatement>)s {
   return [SMStmt_BlockStmt_class_() isInstance:s];
 }
 
@@ -1205,7 +1206,7 @@ J2OBJC_INITIALIZED_DEFN(SMStmt_If_$Lambda$2)
 
 @implementation SMStmt_If_$Lambda$2
 
-- (id)applyWithId:(SMStmt *)s {
+- (id)applyWithId:(id<SMSimiStatement>)s {
   return (id<SMStmt_BlockStmt>) cast_check(s, SMStmt_BlockStmt_class_());
 }
 
@@ -1510,7 +1511,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Return)
 }
 
 - (id<JavaUtilList>)getChildren {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(body_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_While_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_While_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk([((SMExpr_Block *) nil_chk(body_)) getStatements])) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_While_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_While_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
@@ -1564,7 +1565,7 @@ J2OBJC_INITIALIZED_DEFN(SMStmt_While_$Lambda$1)
 
 @implementation SMStmt_While_$Lambda$1
 
-- (jboolean)testWithId:(SMStmt *)s {
+- (jboolean)testWithId:(id<SMSimiStatement>)s {
   return [SMStmt_BlockStmt_class_() isInstance:s];
 }
 
@@ -1605,7 +1606,7 @@ J2OBJC_INITIALIZED_DEFN(SMStmt_While_$Lambda$2)
 
 @implementation SMStmt_While_$Lambda$2
 
-- (id)applyWithId:(SMStmt *)s {
+- (id)applyWithId:(id<SMSimiStatement>)s {
   return (id<SMStmt_BlockStmt>) cast_check(s, SMStmt_BlockStmt_class_());
 }
 
@@ -1653,7 +1654,7 @@ SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init() {
 }
 
 - (id<JavaUtilList>)getChildren {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(body_))->statements_)) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_For_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_For_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk([((SMExpr_Block *) nil_chk(body_)) getStatements])) stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMStmt_For_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMStmt_For_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
@@ -1709,7 +1710,7 @@ J2OBJC_INITIALIZED_DEFN(SMStmt_For_$Lambda$1)
 
 @implementation SMStmt_For_$Lambda$1
 
-- (jboolean)testWithId:(SMStmt *)s {
+- (jboolean)testWithId:(id<SMSimiStatement>)s {
   return [SMStmt_BlockStmt_class_() isInstance:s];
 }
 
@@ -1750,7 +1751,7 @@ J2OBJC_INITIALIZED_DEFN(SMStmt_For_$Lambda$2)
 
 @implementation SMStmt_For_$Lambda$2
 
-- (id)applyWithId:(SMStmt *)s {
+- (id)applyWithId:(id<SMSimiStatement>)s {
   return (id<SMStmt_BlockStmt>) cast_check(s, SMStmt_BlockStmt_class_());
 }
 

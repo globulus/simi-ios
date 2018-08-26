@@ -150,7 +150,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue)
 }
 
 - (jboolean)isEqual:(id)obj {
-  if (!([obj isKindOfClass:[SMSimiValue_String class]])) {
+  if (obj == nil) {
     return false;
   }
   return [((NSString *) nil_chk(value_)) isEqual:((SMSimiValue_String *) nil_chk(((SMSimiValue_String *) cast_chk(obj, [SMSimiValue_String class]))))->value_];
@@ -353,7 +353,7 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
 
 - (SMSimiValue_Number *)divideWithSMSimiValue_Number:(SMSimiValue_Number *)o {
   if (valueLong_ != nil && ((SMSimiValue_Number *) nil_chk(o))->valueLong_ != nil) {
-    return new_SMSimiValue_Number_initWithLong_([valueLong_ longLongValue] / [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
+    return new_SMSimiValue_Number_initWithDouble_([valueLong_ longLongValue] * 1.0 / [((SMSimiValue_Number *) nil_chk(o))->valueLong_ longLongValue]);
   }
   return new_SMSimiValue_Number_initWithDouble_([self asDouble] / [self asDouble]);
 }
@@ -373,7 +373,10 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
 }
 
 - (id)getJavaValue {
-  return JavaLangDouble_valueOfWithDouble_((valueLong_ != nil) ? [((JavaLangLong *) nil_chk(valueLong_)) longLongValue] : [((JavaLangDouble *) nil_chk(valueDouble_)) doubleValue]);
+  if (valueLong_ != nil) {
+    return valueLong_;
+  }
+  return valueDouble_;
 }
 
 + (const J2ObjcClassInfo *)__metadata {

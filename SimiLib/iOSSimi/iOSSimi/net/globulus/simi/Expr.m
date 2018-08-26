@@ -7,9 +7,14 @@
 #include "J2ObjC_source.h"
 #include "java/lang/Boolean.h"
 #include "java/lang/Integer.h"
+#include "java/lang/Math.h"
 #include "java/lang/RuntimeException.h"
 #include "java/lang/StringBuilder.h"
+#include "java/lang/System.h"
+#include "java/util/ArrayList.h"
+#include "java/util/Collections.h"
 #include "java/util/List.h"
+#include "java/util/Random.h"
 #include "java/util/function/Function.h"
 #include "java/util/stream/Collector.h"
 #include "java/util/stream/Collectors.h"
@@ -18,6 +23,7 @@
 #include "Codifiable.h"
 #include "Expr.h"
 #include "Native.h"
+#include "Parser.h"
 #include "Pass.h"
 #include "SimiValue.h"
 #include "Stmt.h"
@@ -29,6 +35,19 @@
 @interface SMExpr_Visitor : NSObject
 
 @end
+
+@interface SMExpr_Block () {
+ @public
+  id<JavaUtilList> processedStatements_;
+}
+
+- (id<JavaUtilList>)processStatements;
+
+@end
+
+J2OBJC_FIELD_SETTER(SMExpr_Block, processedStatements_, id<JavaUtilList>)
+
+__attribute__((unused)) static id<JavaUtilList> SMExpr_Block_processStatements(SMExpr_Block *self);
 
 @interface SMExpr_Block_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
 
@@ -181,7 +200,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr_Visitor;LSMExpr_Block;LSMExpr_Annotations;LSMExpr_Assign;LSMExpr_ObjectDecomp;LSMExpr_Binary;LSMExpr_Call;LSMExpr_Get;LSMExpr_Grouping;LSMExpr_Gu;LSMExpr_Ivic;LSMExpr_Literal;LSMExpr_Logical;LSMExpr_Set;LSMExpr_Super;LSMExpr_Self;LSMExpr_Unary;LSMExpr_Variable;LSMExpr_ObjectLiteral;" };
+  static const void *ptrTable[] = { "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr_Visitor;LSMExpr_Block;LSMExpr_Annotations;LSMExpr_Assign;LSMExpr_ObjectDecomp;LSMExpr_Binary;LSMExpr_Call;LSMExpr_Get;LSMExpr_Grouping;LSMExpr_Gu;LSMExpr_Ivic;LSMExpr_Literal;LSMExpr_Logical;LSMExpr_Set;LSMExpr_Super;LSMExpr_Self;LSMExpr_Unary;LSMExpr_Variable;LSMExpr_ObjectLiteral;LSMExpr_Yield;" };
   static const J2ObjcClassInfo _SMExpr = { "Expr", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x400, 2, 0, -1, 3, -1, -1, -1 };
   return &_SMExpr;
 }
@@ -264,7 +283,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
 }
 
 - (id<JavaUtilList>)getStatements {
-  return statements_;
+  return processedStatements_;
 }
 
 - (void)yieldWithInt:(jint)index {
@@ -320,6 +339,10 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
   return [self toCodeWithInt:indentationLevel withBoolean:ignoreFirst withNSString:nil];
 }
 
+- (id<JavaUtilList>)processStatements {
+  return SMExpr_Block_processStatements(self);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
@@ -330,6 +353,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x0, 8, 9, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 8, 10, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilList;", 0x2, -1, -1, -1, 11, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -342,16 +366,18 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
   methods[5].selector = @selector(isEmpty);
   methods[6].selector = @selector(toCodeWithInt:withBoolean:withNSString:);
   methods[7].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[8].selector = @selector(processStatements);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "declaration_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "params_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 11, -1 },
-    { "statements_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 12, -1 },
+    { "params_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 12, -1 },
+    { "statements_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 13, -1 },
     { "canReturn_", "Z", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "isNative_", "Z", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "processedStatements_", "LJavaUtilList;", .constantValue.asLong = 0, 0x12, -1, -1, 13, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;Z", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LStmt;>;Z)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<+LSimiStatement;>;", "yield", "I", "toCode", "IZLNSString;", "IZ", "Ljava/util/List<LExpr;>;", "Ljava/util/List<LStmt;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Block = { "Block", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 8, 5, 13, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;Z", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LStmt;>;Z)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<+LSimiStatement;>;", "yield", "I", "toCode", "IZLNSString;", "IZ", "()Ljava/util/List<LStmt;>;", "Ljava/util/List<LExpr;>;", "Ljava/util/List<LStmt;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Block = { "Block", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 9, 6, 14, -1, -1, -1, -1 };
   return &_SMExpr_Block;
 }
 
@@ -364,6 +390,7 @@ void SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_
   self->statements_ = statements;
   self->canReturn_ = canReturn;
   self->isNative_ = ([((id<JavaUtilList>) nil_chk(statements)) size] == 1 && [[statements getWithInt:0] isKindOfClass:[SMStmt_Expression class]] && [((SMStmt_Expression *) nil_chk(((SMStmt_Expression *) cast_chk([statements getWithInt:0], [SMStmt_Expression class]))))->expression_ isKindOfClass:[SMExpr_Literal class]] && [((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(((SMStmt_Expression *) nil_chk(((SMStmt_Expression *) cast_chk([statements getWithInt:0], [SMStmt_Expression class]))))->expression_, [SMExpr_Literal class]))))->value_ isKindOfClass:[SMNative class]]);
+  self->processedStatements_ = SMExpr_Block_processStatements(self);
 }
 
 SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn) {
@@ -372,6 +399,30 @@ SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList
 
 SMExpr_Block *create_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn) {
   J2OBJC_CREATE_IMPL(SMExpr_Block, initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_, declaration, params, statements, canReturn)
+}
+
+id<JavaUtilList> SMExpr_Block_processStatements(SMExpr_Block *self) {
+  id<JavaUtilList> localStatements = new_JavaUtilArrayList_init();
+  jint size = [((id<JavaUtilList>) nil_chk(self->statements_)) size];
+  for (jint i = 0; i < size; i++) {
+    SMStmt *stmt = [self->statements_ getWithInt:i];
+    if ([stmt isKindOfClass:[SMStmt_Expression class]] && [((SMStmt_Expression *) nil_chk(((SMStmt_Expression *) cast_chk(stmt, [SMStmt_Expression class]))))->expression_ isKindOfClass:[SMExpr_Yield class]]) {
+      SMExpr_Yield *expr = (SMExpr_Yield *) cast_chk(((SMStmt_Expression *) nil_chk(((SMStmt_Expression *) cast_chk(stmt, [SMStmt_Expression class]))))->expression_, [SMExpr_Yield class]);
+      SMExpr_Variable *response = new_SMExpr_Variable_initWithSMToken_(SMToken_namedWithNSString_(JreStrcat("$JCJ", @"response_", JavaLangSystem_currentTimeMillis(), '_', JavaLangMath_absWithLong_([new_JavaUtilRandom_init() nextLong]))));
+      SMStmt *assignment = new_SMStmt_Expression_initWithSMExpr_(SMParser_getAssignExprWithSMParser_withSMExpr_withSMToken_withSMExpr_(nil, ((SMExpr_Yield *) nil_chk(expr))->var_, expr->assign_, response));
+      id<JavaUtilList> otherStmts = new_JavaUtilArrayList_initWithInt_(size - i + 1);
+      [otherStmts addWithId:assignment];
+      [otherStmts addAllWithJavaUtilCollection:[self->statements_ subListWithInt:i + 1 withInt:size]];
+      SMExpr_Call *call = new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(((SMExpr_Call *) nil_chk(expr->value_))->callee_, expr->value_->paren_, new_JavaUtilArrayList_initWithJavaUtilCollection_(expr->value_->arguments_));
+      [((id<JavaUtilList>) nil_chk(call->arguments_)) addWithId:new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, DEF), nil, nil, ((SMToken *) nil_chk(expr->assign_))->line_), JavaUtilCollections_singletonListWithId_(response), otherStmts, true)];
+      [localStatements addWithId:new_SMStmt_Expression_initWithSMExpr_(call)];
+      break;
+    }
+    else {
+      [localStatements addWithId:stmt];
+    }
+  }
+  return localStatements;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Block)
@@ -1626,3 +1677,67 @@ SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithBoole
 SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1) {
   J2OBJC_CREATE_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithBoolean_withInt_, capture$0, capture$1)
 }
+
+@implementation SMExpr_Yield
+
+- (instancetype __nonnull)initWithSMExpr:(SMExpr *)var
+                             withSMToken:(SMToken *)assign
+                             withSMToken:(SMToken *)keyword
+                         withSMExpr_Call:(SMExpr_Call *)value {
+  SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(self, var, assign, keyword, value);
+  return self;
+}
+
+- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
+             withNSObjectArray:(IOSObjectArray *)args {
+  return nil;
+}
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  return JreStrcat("$C$C$C$", [((SMExpr *) nil_chk(var_)) toCodeWithInt:indentationLevel withBoolean:false], ' ', [((SMTokenType *) nil_chk(((SMToken *) nil_chk(assign_))->type_)) toCodeWithInt:0 withBoolean:false], ' ', [((SMToken *) nil_chk(keyword_))->type_ toCodeWithInt:0 withBoolean:false], ' ', [((SMExpr_Call *) nil_chk(value_)) toCodeWithInt:0 withBoolean:false]);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithSMExpr:withSMToken:withSMToken:withSMExpr_Call:);
+  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
+  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "var_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "assign_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "value_", "LSMExpr_Call;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "LSMExpr;LSMToken;LSMToken;LSMExpr_Call;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 4, 6, -1, -1, -1, -1 };
+  return &_SMExpr_Yield;
+}
+
+@end
+
+void SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(SMExpr_Yield *self, SMExpr *var, SMToken *assign, SMToken *keyword, SMExpr_Call *value) {
+  SMExpr_init(self);
+  self->var_ = var;
+  self->assign_ = assign;
+  self->keyword_ = keyword;
+  self->value_ = value;
+}
+
+SMExpr_Yield *new_SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(SMExpr *var, SMToken *assign, SMToken *keyword, SMExpr_Call *value) {
+  J2OBJC_NEW_IMPL(SMExpr_Yield, initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_, var, assign, keyword, value)
+}
+
+SMExpr_Yield *create_SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(SMExpr *var, SMToken *assign, SMToken *keyword, SMExpr_Call *value) {
+  J2OBJC_CREATE_IMPL(SMExpr_Yield, initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_, var, assign, keyword, value)
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Yield)

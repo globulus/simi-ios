@@ -77,6 +77,8 @@
 
 + (NSString *)EXCEPTION_NUMBER_FORMAT;
 
++ (NSString *)EXCEPTION_NIL_REFERENCE;
+
 + (NSString *)EXCEPTION_TYPE_MISMATCH;
 
 @end
@@ -217,6 +219,11 @@ inline NSString *SMConstants_get_EXCEPTION_NUMBER_FORMAT(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_NUMBER_FORMAT;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_NUMBER_FORMAT, NSString *)
+
+inline NSString *SMConstants_get_EXCEPTION_NIL_REFERENCE(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_NIL_REFERENCE;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_NIL_REFERENCE, NSString *)
 
 inline NSString *SMConstants_get_EXCEPTION_TYPE_MISMATCH(void);
 /*! INTERNAL ONLY - Use accessor function from above. */

@@ -189,7 +189,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
   if (newScope) {
     SMResolver_beginScope(self);
   }
-  [self resolveWithJavaUtilList:((SMExpr_Block *) nil_chk(stmt))->statements_];
+  [self resolveWithJavaUtilList:[((SMExpr_Block *) nil_chk(stmt)) getStatements]];
   if (newScope) {
     SMResolver_endScope(self);
   }

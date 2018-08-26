@@ -26,6 +26,8 @@
   jint start_;
   jint current_;
   jint line_;
+  jint stringInterpolationParentheses_;
+  jchar lastStringOpener_;
 }
 
 - (void)scanToken;
@@ -148,8 +150,21 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
     if (SMScanner_peek(self) == 0x000a) {
       line_++;
     }
-    else if (SMScanner_peek(self) == '\\' && SMScanner_peekNext(self) == opener) {
-      SMScanner_advance(self);
+    else if (SMScanner_peek(self) == '\\') {
+      jchar next = SMScanner_peekNext(self);
+      if (next == opener) {
+        SMScanner_advance(self);
+      }
+      else if (next == '(') {
+        NSString *valueSoFar = SMScanner_escapedStringWithInt_withInt_(self, start_ + 1, current_);
+        SMScanner_addTokenWithSMTokenType_withSMSimiValue_(self, JreLoadEnum(SMTokenType, STRING), new_SMSimiValue_String_initWithNSString_(valueSoFar));
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, PLUS));
+        SMScanner_advance(self);
+        SMScanner_advance(self);
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN));
+        stringInterpolationParentheses_ = 1;
+        return;
+      }
     }
     SMScanner_advance(self);
   }
@@ -280,9 +295,11 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
     { "start_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "current_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "line_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "stringInterpolationParentheses_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "lastStringOpener_", "C", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LNSString;", "scanTokens", "Z", "(Z)Ljava/util/List<LToken;>;", "string", "C", "escapedString", "II", "keywordString", "LSMTokenType;", "matchPeek", "match", "isAlpha", "isAlphaNumeric", "isDigit", "isDigitOrUnderscore", "isStringDelim", "addToken", "LSMTokenType;LSMSimiValue;", &SMScanner_keywords, "Ljava/util/Map<Ljava/lang/String;LTokenType;>;", "Ljava/util/List<LToken;>;" };
-  static const J2ObjcClassInfo _SMScanner = { "Scanner", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 21, 6, -1, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMScanner = { "Scanner", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 21, 8, -1, -1, -1, -1, -1 };
   return &_SMScanner;
 }
 
@@ -335,6 +352,8 @@ void SMScanner_initWithNSString_(SMScanner *self, NSString *source) {
   self->start_ = 0;
   self->current_ = 0;
   self->line_ = 1;
+  self->stringInterpolationParentheses_ = 0;
+  self->lastStringOpener_ = '"';
   self->source_ = source;
 }
 
@@ -350,10 +369,24 @@ void SMScanner_scanToken(SMScanner *self) {
   jchar c = SMScanner_advance(self);
   switch (c) {
     case '(':
-    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN));
+    {
+      SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN));
+      if (self->stringInterpolationParentheses_ > 0) {
+        self->stringInterpolationParentheses_++;
+      }
+    }
     break;
     case ')':
-    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN));
+    {
+      SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN));
+      if (self->stringInterpolationParentheses_ > 0) {
+        self->stringInterpolationParentheses_--;
+        if (self->stringInterpolationParentheses_ == 0) {
+          SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, PLUS));
+          [self stringWithChar:self->lastStringOpener_];
+        }
+      }
+    }
     break;
     case '[':
     SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_BRACKET));
@@ -375,7 +408,19 @@ void SMScanner_scanToken(SMScanner *self) {
     SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOT));
     break;
     case '?':
-    SMScanner_addTokenWithSMTokenType_(self, SMScanner_matchWithChar_(self, '?') ? JreLoadEnum(SMTokenType, QUESTION_QUESTION) : JreLoadEnum(SMTokenType, QUESTION));
+    {
+      if (SMScanner_matchWithChar_(self, '?')) {
+        if (SMScanner_matchWithChar_(self, '=')) {
+          SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, QUESTION_QUESTION_EQUAL));
+        }
+        else {
+          SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, QUESTION_QUESTION));
+        }
+      }
+      else {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, QUESTION));
+      }
+    }
     break;
     case '=':
     SMScanner_addTokenWithSMTokenType_(self, SMScanner_matchWithChar_(self, '=') ? JreLoadEnum(SMTokenType, EQUAL_EQUAL) : JreLoadEnum(SMTokenType, EQUAL));
@@ -418,7 +463,12 @@ void SMScanner_scanToken(SMScanner *self) {
     case '/':
     {
       if (SMScanner_matchWithChar_(self, '/')) {
-        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, SLASH_SLASH));
+        if ((SMScanner_matchWithChar_(self, '='))) {
+          SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, SLASH_SLASH_EQUAL));
+        }
+        else {
+          SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, SLASH_SLASH));
+        }
       }
       else if (SMScanner_matchWithChar_(self, '=')) {
         SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, SLASH_EQUAL));
@@ -465,11 +515,15 @@ void SMScanner_scanToken(SMScanner *self) {
     }
     break;
     case '#':
-    while (SMScanner_peek(self) != 0x000a && !SMScanner_isAtEnd(self)) SMScanner_advance(self);
+    {
+      while (SMScanner_peek(self) != 0x000a && !SMScanner_isAtEnd(self)) SMScanner_advance(self);
+    }
     break;
     case '\\':
-    if (SMScanner_matchWithChar_(self, 0x000a)) {
-      self->line_++;
+    {
+      if (SMScanner_matchWithChar_(self, 0x000a)) {
+        self->line_++;
+      }
     }
     break;
     case ' ':
@@ -477,8 +531,10 @@ void SMScanner_scanToken(SMScanner *self) {
     case 0x0009:
     break;
     case 0x000a:
-    self->line_++;
-    SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, NEWLINE));
+    {
+      self->line_++;
+      SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, NEWLINE));
+    }
     break;
     default:
     if (SMScanner_isStringDelimWithChar_(self, c)) {
