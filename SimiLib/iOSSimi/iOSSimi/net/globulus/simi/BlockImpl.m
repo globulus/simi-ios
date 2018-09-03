@@ -111,7 +111,7 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
     }
   }
   SMBlockImpl_clearYield(self);
-  return nil;
+  return [environment getWithSMToken:SMToken_self__()];
 }
 
 - (id<JavaUtilList>)getStatements {
