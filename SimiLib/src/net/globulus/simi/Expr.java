@@ -47,11 +47,22 @@ abstract class Expr implements Codifiable {
             this.params = params;
             this.statements = statements;
             this.canReturn = canReturn;
-            this.isNative = (statements.size() == 1
-                    && statements.get(0) instanceof Stmt.Expression
-                    && ((Stmt.Expression) statements.get(0)).expression instanceof Expr.Literal
-                    && ((Literal) ((Stmt.Expression) statements.get(0)).expression).value instanceof Native);
 
+            boolean isNative = false;
+            if (statements.size() == 1) {
+              Stmt stmt = statements.get(0);
+              Expr expr = null;
+              if (stmt instanceof Stmt.Expression) {
+                expr = ((Stmt.Expression) stmt).expression;
+              } else if (stmt instanceof Stmt.Return) {
+                expr = ((Stmt.Return) stmt).value;
+              }
+              if (expr instanceof Expr.Literal && ((Literal) expr).value instanceof Native) {
+                isNative = true;
+              }
+            }
+
+            this.isNative = isNative;
             processedStatements = processStatements();
         }
 
@@ -184,11 +195,13 @@ abstract class Expr implements Codifiable {
   static class Assign extends Expr {
 
     final Token name;
+    final Token operator;
     final Expr value;
     final List<Stmt.Annotation> annotations;
 
-    Assign(Token name, Expr value, List<Stmt.Annotation> annotations) {
+    Assign(Token name, Token operator, Expr value, List<Stmt.Annotation> annotations) {
       this.name = name;
+      this.operator = operator;
       this.value = value;
       this.annotations = annotations;
     }
@@ -208,7 +221,7 @@ abstract class Expr implements Codifiable {
               )
               .append(Codifiable.getIndentation(indentationLevel))
               .append(name.lexeme)
-              .append(" ").append(TokenType.EQUAL.toCode()).append(" ")
+              .append(" ").append(operator.type.toCode()).append(" ")
               .append(value.toCode(0, false))
               .toString();
     }

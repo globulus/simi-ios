@@ -64,6 +64,11 @@
             withSMToken:(SMToken *)name
      withSMSimiProperty:(id<SMSimiProperty>)prop;
 
+- (void)assignAtWithInt:(jint)distance
+            withSMToken:(SMToken *)name
+     withSMSimiProperty:(id<SMSimiProperty>)prop
+            withBoolean:(jboolean)allowImmutable;
+
 - (void)endBlockWithSMStmt_BlockStmt:(id<SMStmt_BlockStmt>)stmt
                      withJavaUtilMap:(id<JavaUtilMap>)yieldedStmts;
 

@@ -389,7 +389,21 @@ void SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_
   self->params_ = params;
   self->statements_ = statements;
   self->canReturn_ = canReturn;
-  self->isNative_ = ([((id<JavaUtilList>) nil_chk(statements)) size] == 1 && [[statements getWithInt:0] isKindOfClass:[SMStmt_Expression class]] && [((SMStmt_Expression *) nil_chk(((SMStmt_Expression *) cast_chk([statements getWithInt:0], [SMStmt_Expression class]))))->expression_ isKindOfClass:[SMExpr_Literal class]] && [((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(((SMStmt_Expression *) nil_chk(((SMStmt_Expression *) cast_chk([statements getWithInt:0], [SMStmt_Expression class]))))->expression_, [SMExpr_Literal class]))))->value_ isKindOfClass:[SMNative class]]);
+  jboolean isNative = false;
+  if ([((id<JavaUtilList>) nil_chk(statements)) size] == 1) {
+    SMStmt *stmt = [statements getWithInt:0];
+    SMExpr *expr = nil;
+    if ([stmt isKindOfClass:[SMStmt_Expression class]]) {
+      expr = ((SMStmt_Expression *) nil_chk(((SMStmt_Expression *) cast_chk(stmt, [SMStmt_Expression class]))))->expression_;
+    }
+    else if ([stmt isKindOfClass:[SMStmt_Return class]]) {
+      expr = ((SMStmt_Return *) nil_chk(((SMStmt_Return *) cast_chk(stmt, [SMStmt_Return class]))))->value_;
+    }
+    if ([expr isKindOfClass:[SMExpr_Literal class]] && [((SMExpr_Literal *) nil_chk(((SMExpr_Literal *) cast_chk(expr, [SMExpr_Literal class]))))->value_ isKindOfClass:[SMNative class]]) {
+      isNative = true;
+    }
+  }
+  self->isNative_ = isNative;
   self->processedStatements_ = SMExpr_Block_processStatements(self);
 }
 
@@ -588,9 +602,10 @@ SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init() {
 @implementation SMExpr_Assign
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)name
+                              withSMToken:(SMToken *)operator_
                                withSMExpr:(SMExpr *)value
                          withJavaUtilList:(id<JavaUtilList>)annotations {
-  SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(self, name, value, annotations);
+  SMExpr_Assign_initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_(self, name, operator_, value, annotations);
   return self;
 }
 
@@ -601,7 +616,7 @@ SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init() {
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst {
-  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_init() appendWithNSString:annotations_ != nil ? [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([annotations_ stream])) mapWithJavaUtilFunctionFunction:new_SMExpr_Assign_$Lambda$1_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_([((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode])] : @""])) appendWithNSString:SMCodifiable_getIndentationWithInt_(indentationLevel)])) appendWithNSString:((SMToken *) nil_chk(name_))->lexeme_])) appendWithNSString:@" "])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, EQUAL))) toCode]])) appendWithNSString:@" "])) appendWithNSString:[((SMExpr *) nil_chk(value_)) toCodeWithInt:0 withBoolean:false]])) description];
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_init() appendWithNSString:annotations_ != nil ? [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([annotations_ stream])) mapWithJavaUtilFunctionFunction:new_SMExpr_Assign_$Lambda$1_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_([((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode])] : @""])) appendWithNSString:SMCodifiable_getIndentationWithInt_(indentationLevel)])) appendWithNSString:((SMToken *) nil_chk(name_))->lexeme_])) appendWithNSString:@" "])) appendWithNSString:[((SMTokenType *) nil_chk(((SMToken *) nil_chk(operator__))->type_)) toCode]])) appendWithNSString:@" "])) appendWithNSString:[((SMExpr *) nil_chk(value_)) toCodeWithInt:0 withBoolean:false]])) description];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -613,35 +628,37 @@ SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init() {
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMToken:withSMExpr:withJavaUtilList:);
+  methods[0].selector = @selector(initWithSMToken:withSMToken:withSMExpr:withJavaUtilList:);
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "operator__", "LSMToken;", .constantValue.asLong = 0, 0x10, 7, -1, -1, -1 },
     { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
+    { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 8, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LSMExpr;LJavaUtilList;", "(LToken;LExpr;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LStmt$Annotation;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Assign = { "Assign", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 3, 8, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LSMToken;LSMExpr;LJavaUtilList;", "(LToken;LToken;LExpr;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "operator", "Ljava/util/List<LStmt$Annotation;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_Assign = { "Assign", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 3, 4, 9, -1, -1, -1, -1 };
   return &_SMExpr_Assign;
 }
 
 @end
 
-void SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMExpr_Assign *self, SMToken *name, SMExpr *value, id<JavaUtilList> annotations) {
+void SMExpr_Assign_initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_(SMExpr_Assign *self, SMToken *name, SMToken *operator_, SMExpr *value, id<JavaUtilList> annotations) {
   SMExpr_init(self);
   self->name_ = name;
+  self->operator__ = operator_;
   self->value_ = value;
   self->annotations_ = annotations;
 }
 
-SMExpr_Assign *new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMExpr *value, id<JavaUtilList> annotations) {
-  J2OBJC_NEW_IMPL(SMExpr_Assign, initWithSMToken_withSMExpr_withJavaUtilList_, name, value, annotations)
+SMExpr_Assign *new_SMExpr_Assign_initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMToken *operator_, SMExpr *value, id<JavaUtilList> annotations) {
+  J2OBJC_NEW_IMPL(SMExpr_Assign, initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_, name, operator_, value, annotations)
 }
 
-SMExpr_Assign *create_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMExpr *value, id<JavaUtilList> annotations) {
-  J2OBJC_CREATE_IMPL(SMExpr_Assign, initWithSMToken_withSMExpr_withJavaUtilList_, name, value, annotations)
+SMExpr_Assign *create_SMExpr_Assign_initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMToken *operator_, SMExpr *value, id<JavaUtilList> annotations) {
+  J2OBJC_CREATE_IMPL(SMExpr_Assign, initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_, name, operator_, value, annotations)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Assign)

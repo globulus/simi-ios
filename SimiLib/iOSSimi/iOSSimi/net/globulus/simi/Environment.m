@@ -8,7 +8,6 @@
 #include "java/util/List.h"
 #include "java/util/Map.h"
 #include "BlockImpl.h"
-#include "Constants.h"
 #include "Environment.h"
 #include "Expr.h"
 #include "RuntimeError.h"
@@ -17,6 +16,7 @@
 #include "SparseArray.h"
 #include "Stmt.h"
 #include "Token.h"
+#include "TokenType.h"
 
 @interface SMEnvironment () {
  @public
@@ -67,11 +67,11 @@ J2OBJC_IGNORE_DESIGNATED_END
               withBoolean:(jboolean)allowImmutable {
   NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
   if ([((id<JavaUtilMap>) nil_chk(props_)) containsKeyWithId:key]) {
-    if (allowImmutable || [((NSString *) nil_chk(key)) java_hasPrefix:SMConstants_MUTABLE]) {
+    if (allowImmutable) {
       (void) [props_ putWithId:key withId:prop];
     }
     else {
-      @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, JreStrcat("$$$", @"Cannot assign to a const, use ", SMConstants_MUTABLE, @" at the start of var name!"));
+      @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, JreStrcat("$$C", @"Cannot assign to a const, use ", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, DOLLAR_EQUAL))) toCode], '!'));
     }
   }
   else {
@@ -105,7 +105,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)assignAtWithInt:(jint)distance
             withSMToken:(SMToken *)name
      withSMSimiProperty:(id<SMSimiProperty>)prop {
-  [((SMEnvironment *) nil_chk([self ancestorWithInt:distance])) assignWithSMToken:name withSMSimiProperty:prop withBoolean:false];
+  [self assignAtWithInt:distance withSMToken:name withSMSimiProperty:prop withBoolean:false];
+}
+
+- (void)assignAtWithInt:(jint)distance
+            withSMToken:(SMToken *)name
+     withSMSimiProperty:(id<SMSimiProperty>)prop
+            withBoolean:(jboolean)allowImmutable {
+  [((SMEnvironment *) nil_chk([self ancestorWithInt:distance])) assignWithSMToken:name withSMSimiProperty:prop withBoolean:allowImmutable];
 }
 
 - (id<SMSimiProperty>)tryGetWithNSString:(NSString *)name {
@@ -168,11 +175,12 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "LSMEnvironment;", 0x0, 9, 10, -1, -1, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x0, 11, 12, -1, -1, -1, -1 },
     { NULL, "V", 0x0, 13, 14, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 15, 2, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 16, -1, -1, -1, -1, -1 },
-    { NULL, "LSMBlockImpl;", 0x0, 17, 18, -1, 19, -1, -1 },
-    { NULL, "V", 0x0, 20, 21, -1, 22, -1, -1 },
-    { NULL, "V", 0x2, 23, 21, -1, 22, -1, -1 },
+    { NULL, "V", 0x0, 13, 15, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 16, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 17, -1, -1, -1, -1, -1 },
+    { NULL, "LSMBlockImpl;", 0x0, 18, 19, -1, 20, -1, -1 },
+    { NULL, "V", 0x0, 21, 22, -1, 23, -1, -1 },
+    { NULL, "V", 0x2, 24, 22, -1, 23, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -186,20 +194,21 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[6].selector = @selector(ancestorWithInt:);
   methods[7].selector = @selector(getAtWithInt:withNSString:);
   methods[8].selector = @selector(assignAtWithInt:withSMToken:withSMSimiProperty:);
-  methods[9].selector = @selector(tryGetWithNSString:);
-  methods[10].selector = @selector(description);
-  methods[11].selector = @selector(getOrAssignBlockWithSMStmt_BlockStmt:withSMExpr_Block:withJavaUtilMap:);
-  methods[12].selector = @selector(endBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
-  methods[13].selector = @selector(popBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
+  methods[9].selector = @selector(assignAtWithInt:withSMToken:withSMSimiProperty:withBoolean:);
+  methods[10].selector = @selector(tryGetWithNSString:);
+  methods[11].selector = @selector(description);
+  methods[12].selector = @selector(getOrAssignBlockWithSMStmt_BlockStmt:withSMExpr_Block:withJavaUtilMap:);
+  methods[13].selector = @selector(endBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
+  methods[14].selector = @selector(popBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "enclosing_", "LSMEnvironment;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
-    { "props_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 24, -1 },
-    { "statementBlocks_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 25, -1 },
+    { "props_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 25, -1 },
+    { "statementBlocks_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 26, -1 },
     { "depth_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMEnvironment;", "has", "LNSString;", "get", "LSMToken;", "assign", "LSMToken;LSMSimiProperty;Z", "define", "LNSString;LSMSimiProperty;", "ancestor", "I", "getAt", "ILNSString;", "assignAt", "ILSMToken;LSMSimiProperty;", "tryGet", "toString", "getOrAssignBlock", "LSMStmt_BlockStmt;LSMExpr_Block;LJavaUtilMap;", "(LStmt$BlockStmt;LExpr$Block;Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;)LBlockImpl;", "endBlock", "LSMStmt_BlockStmt;LJavaUtilMap;", "(LStmt$BlockStmt;Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;)V", "popBlock", "Ljava/util/Map<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/Map<LStmt$BlockStmt;LBlockImpl;>;" };
-  static const J2ObjcClassInfo _SMEnvironment = { "Environment", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 14, 4, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMEnvironment;", "has", "LNSString;", "get", "LSMToken;", "assign", "LSMToken;LSMSimiProperty;Z", "define", "LNSString;LSMSimiProperty;", "ancestor", "I", "getAt", "ILNSString;", "assignAt", "ILSMToken;LSMSimiProperty;", "ILSMToken;LSMSimiProperty;Z", "tryGet", "toString", "getOrAssignBlock", "LSMStmt_BlockStmt;LSMExpr_Block;LJavaUtilMap;", "(LStmt$BlockStmt;LExpr$Block;Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;)LBlockImpl;", "endBlock", "LSMStmt_BlockStmt;LJavaUtilMap;", "(LStmt$BlockStmt;Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;)V", "popBlock", "Ljava/util/Map<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/Map<LStmt$BlockStmt;LBlockImpl;>;" };
+  static const J2ObjcClassInfo _SMEnvironment = { "Environment", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 15, 4, -1, -1, -1, -1, -1 };
   return &_SMEnvironment;
 }
 

@@ -23,6 +23,7 @@
 #include "Resolver.h"
 #include "Stmt.h"
 #include "Token.h"
+#include "TokenType.h"
 
 @class SMResolver_ClassType;
 @class SMResolver_FunctionType;
@@ -50,7 +51,8 @@
 - (void)endScope;
 
 - (jboolean)declareWithSMToken:(SMToken *)name
-                   withBoolean:(jboolean)autodefine;
+                   withBoolean:(jboolean)autodefine
+                   withBoolean:(jboolean)mutable_;
 
 - (void)defineWithSMToken:(SMToken *)name;
 
@@ -76,7 +78,7 @@ __attribute__((unused)) static void SMResolver_beginScope(SMResolver *self);
 
 __attribute__((unused)) static void SMResolver_endScope(SMResolver *self);
 
-__attribute__((unused)) static jboolean SMResolver_declareWithSMToken_withBoolean_(SMResolver *self, SMToken *name, jboolean autodefine);
+__attribute__((unused)) static jboolean SMResolver_declareWithSMToken_withBoolean_withBoolean_(SMResolver *self, SMToken *name, jboolean autodefine, jboolean mutable_);
 
 __attribute__((unused)) static void SMResolver_defineWithSMToken_(SMResolver *self, SMToken *name);
 
@@ -206,7 +208,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
 
 - (JavaLangVoid *)visitClassStmtWithSMStmt_Class:(SMStmt_Class *)stmt
                                      withBoolean:(jboolean)addToEnv {
-  SMResolver_declareWithSMToken_withBoolean_(self, ((SMStmt_Class *) nil_chk(stmt))->name_, false);
+  SMResolver_declareWithSMToken_withBoolean_withBoolean_(self, ((SMStmt_Class *) nil_chk(stmt))->name_, false, false);
   SMResolver_defineWithSMToken_(self, stmt->name_);
   SMResolver_ClassType *enclosingClass = currentClass_;
   currentClass_ = JreLoadEnum(SMResolver_ClassType, CLASS);
@@ -228,6 +230,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
     }
     SMResolver_resolveFunctionWithSMStmt_Function_withSMResolver_FunctionType_(self, method, declaration);
   }
+  for (SMStmt_Class * __strong innerClass in nil_chk(stmt->innerClasses_)) {
+    (void) [self visitClassStmtWithSMStmt_Class:innerClass withBoolean:true];
+  }
   SMResolver_endScope(self);
   if (hasSuperclass) SMResolver_endScope(self);
   currentClass_ = enclosingClass;
@@ -244,7 +249,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
 }
 
 - (JavaLangVoid *)visitFunctionStmtWithSMStmt_Function:(SMStmt_Function *)stmt {
-  SMResolver_declareWithSMToken_withBoolean_(self, ((SMStmt_Function *) nil_chk(stmt))->name_, false);
+  SMResolver_declareWithSMToken_withBoolean_withBoolean_(self, ((SMStmt_Function *) nil_chk(stmt))->name_, false, false);
   SMResolver_defineWithSMToken_(self, stmt->name_);
   SMResolver_resolveFunctionWithSMStmt_Function_withSMResolver_FunctionType_(self, stmt, JreLoadEnum(SMResolver_FunctionType, FUNCTION));
   return nil;
@@ -281,9 +286,6 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
 
 - (JavaLangVoid *)visitReturnStmtWithSMStmt_Return:(SMStmt_Return *)stmt {
   if (((SMStmt_Return *) nil_chk(stmt))->value_ != nil) {
-    if (currentFunction_ == JreLoadEnum(SMResolver_FunctionType, INITIALIZER)) {
-      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:stmt->keyword_ withNSString:@"Cannot return a value from an initializer."];
-    }
     SMResolver_resolveWithSMExpr_withNSObjectArray_(self, stmt->value_, [IOSObjectArray newArrayWithLength:0 type:NSObject_class_()]);
   }
   return nil;
@@ -317,7 +319,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
 }
 
 - (JavaLangVoid *)visitAssignExprWithSMExpr_Assign:(SMExpr_Assign *)expr {
-  if (!SMResolver_declareWithSMToken_withBoolean_(self, ((SMExpr_Assign *) nil_chk(expr))->name_, true)) {
+  if (!SMResolver_declareWithSMToken_withBoolean_withBoolean_(self, ((SMExpr_Assign *) nil_chk(expr))->name_, true, ((SMToken *) nil_chk(expr->operator__))->type_ == JreLoadEnum(SMTokenType, DOLLAR_EQUAL))) {
     [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:expr->name_ withNSString:@"Constant with this name already declared in this scope."];
   }
   SMResolver_resolveWithSMExpr_withNSObjectArray_(self, expr->value_, [IOSObjectArray newArrayWithLength:0 type:NSObject_class_()]);
@@ -397,6 +399,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
 }
 
 - (JavaLangVoid *)visitObjectLiteralExprWithSMExpr_ObjectLiteral:(SMExpr_ObjectLiteral *)expr {
+  for (SMExpr * __strong prop in nil_chk(((SMExpr_ObjectLiteral *) nil_chk(expr))->props_)) {
+    SMExpr *toResolve = expr->isDictionary_ ? ((SMExpr_Assign *) nil_chk(((SMExpr_Assign *) cast_chk(prop, [SMExpr_Assign class]))))->value_ : prop;
+    SMResolver_resolveWithSMExpr_withNSObjectArray_(self, toResolve, [IOSObjectArray newArrayWithLength:0 type:NSObject_class_()]);
+  }
   return nil;
 }
 
@@ -427,8 +433,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
 }
 
 - (jboolean)declareWithSMToken:(SMToken *)name
-                   withBoolean:(jboolean)autodefine {
-  return SMResolver_declareWithSMToken_withBoolean_(self, name, autodefine);
+                   withBoolean:(jboolean)autodefine
+                   withBoolean:(jboolean)mutable_ {
+  return SMResolver_declareWithSMToken_withBoolean_withBoolean_(self, name, autodefine, mutable_);
 }
 
 - (void)defineWithSMToken:(SMToken *)name {
@@ -529,7 +536,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
   methods[37].selector = @selector(resolveFunctionWithSMStmt_Function:withSMResolver_FunctionType:);
   methods[38].selector = @selector(beginScope);
   methods[39].selector = @selector(endScope);
-  methods[40].selector = @selector(declareWithSMToken:withBoolean:);
+  methods[40].selector = @selector(declareWithSMToken:withBoolean:withBoolean:);
   methods[41].selector = @selector(defineWithSMToken:);
   methods[42].selector = @selector(resolveLocalWithSMExpr:withSMToken:);
   #pragma clang diagnostic pop
@@ -540,7 +547,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
     { "currentFunction_", "LSMResolver_FunctionType;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "currentClass_", "LSMResolver_ClassType;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMInterpreter;", "resolve", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)V", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitImportStmt", "LSMStmt_Import;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitWhileStmt", "LSMStmt_While;", "visitYieldStmt", "LSMStmt_Yield;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "visitGetExpr", "LSMExpr_Get;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "LSMStmt;", "LSMExpr;[LNSObject;", "resolveFunctionBlock", "LSMExpr_Block;", "resolveFunction", "LSMStmt_Function;LSMResolver_FunctionType;", "declare", "LSMToken;Z", "define", "LSMToken;", "resolveLocal", "LSMExpr;LSMToken;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Stack<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Boolean;>;>;", "LSMResolver_FunctionType;LSMResolver_ClassType;", "Ljava/lang/Object;LExpr$Visitor<Ljava/lang/Void;>;LStmt$Visitor<Ljava/lang/Void;>;" };
+  static const void *ptrTable[] = { "LSMInterpreter;", "resolve", "LJavaUtilList;", "(Ljava/util/List<LStmt;>;)V", "visitBlockExpr", "LSMExpr_Block;ZZ", "visitAnnotationStmt", "LSMStmt_Annotation;", "visitBreakStmt", "LSMStmt_Break;", "visitClassStmt", "LSMStmt_Class;Z", "visitContinueStmt", "LSMStmt_Continue;", "visitExpressionStmt", "LSMStmt_Expression;", "visitFunctionStmt", "LSMStmt_Function;", "visitElsifStmt", "LSMStmt_Elsif;", "visitIfStmt", "LSMStmt_If;", "visitImportStmt", "LSMStmt_Import;", "visitPrintStmt", "LSMStmt_Print;", "visitRescueStmt", "LSMStmt_Rescue;", "visitReturnStmt", "LSMStmt_Return;", "visitWhileStmt", "LSMStmt_While;", "visitYieldStmt", "LSMStmt_Yield;", "visitForStmt", "LSMStmt_For;", "visitAnnotationsExpr", "LSMExpr_Annotations;", "visitAssignExpr", "LSMExpr_Assign;", "visitBinaryExpr", "LSMExpr_Binary;", "visitCallExpr", "LSMExpr_Call;", "visitGetExpr", "LSMExpr_Get;", "visitGroupingExpr", "LSMExpr_Grouping;", "visitGuExpr", "LSMExpr_Gu;", "visitIvicExpr", "LSMExpr_Ivic;", "visitLiteralExpr", "LSMExpr_Literal;", "visitLogicalExpr", "LSMExpr_Logical;", "visitSetExpr", "LSMExpr_Set;", "visitSuperExpr", "LSMExpr_Super;", "visitSelfExpr", "LSMExpr_Self;", "visitUnaryExpr", "LSMExpr_Unary;", "visitVariableExpr", "LSMExpr_Variable;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "LSMStmt;", "LSMExpr;[LNSObject;", "resolveFunctionBlock", "LSMExpr_Block;", "resolveFunction", "LSMStmt_Function;LSMResolver_FunctionType;", "declare", "LSMToken;ZZ", "define", "LSMToken;", "resolveLocal", "LSMExpr;LSMToken;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Stack<Ljava/util/Map<Ljava/lang/String;Ljava/lang/Boolean;>;>;", "LSMResolver_FunctionType;LSMResolver_ClassType;", "Ljava/lang/Object;LExpr$Visitor<Ljava/lang/Void;>;LStmt$Visitor<Ljava/lang/Void;>;" };
   static const J2ObjcClassInfo _SMResolver = { "Resolver", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 43, 5, -1, 82, -1, 83, -1 };
   return &_SMResolver;
 }
@@ -582,7 +589,7 @@ void SMResolver_resolveFunctionBlockWithSMExpr_Block_(SMResolver *self, SMExpr_B
     else {
       name = ((SMExpr_Variable *) nil_chk(((SMExpr_Variable *) cast_chk(((SMExpr_Binary *) nil_chk(((SMExpr_Binary *) cast_chk(param, [SMExpr_Binary class]))))->left_, [SMExpr_Variable class]))))->name_;
     }
-    SMResolver_declareWithSMToken_withBoolean_(self, name, false);
+    SMResolver_declareWithSMToken_withBoolean_withBoolean_(self, name, false, false);
     SMResolver_defineWithSMToken_(self, name);
   }
   SMResolver_resolveWithSMExpr_withNSObjectArray_(self, block, [IOSObjectArray newArrayWithObjects:(id[]){ JavaLangBoolean_valueOfWithBoolean_(false) } count:1 type:NSObject_class_()]);
@@ -604,9 +611,8 @@ void SMResolver_endScope(SMResolver *self) {
   (void) [((JavaUtilStack *) nil_chk(self->scopes_)) pop];
 }
 
-jboolean SMResolver_declareWithSMToken_withBoolean_(SMResolver *self, SMToken *name, jboolean autodefine) {
+jboolean SMResolver_declareWithSMToken_withBoolean_withBoolean_(SMResolver *self, SMToken *name, jboolean autodefine, jboolean mutable_) {
   NSString *var = ((SMToken *) nil_chk(name))->lexeme_;
-  jboolean mutable_ = [((NSString *) nil_chk(var)) java_hasPrefix:SMConstants_MUTABLE];
   if ([((JavaUtilStack *) nil_chk(self->scopes_)) isEmpty]) {
     if ([((id<JavaUtilSet>) nil_chk(self->globalScope_)) containsWithId:var]) {
       return mutable_;
@@ -614,9 +620,11 @@ jboolean SMResolver_declareWithSMToken_withBoolean_(SMResolver *self, SMToken *n
     [((id<JavaUtilSet>) nil_chk(self->globalScope_)) addWithId:var];
     return true;
   }
-  for (id<JavaUtilMap> __strong scope in self->scopes_) {
-    if ([((id<JavaUtilMap>) nil_chk(scope)) containsKeyWithId:var]) {
-      return mutable_;
+  if (mutable_) {
+    for (id<JavaUtilMap> __strong scope in self->scopes_) {
+      if ([((id<JavaUtilMap>) nil_chk(scope)) containsKeyWithId:var]) {
+        return true;
+      }
     }
   }
   id<JavaUtilMap> scope = [self->scopes_ peek];

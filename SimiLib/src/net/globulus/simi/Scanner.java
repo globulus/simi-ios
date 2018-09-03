@@ -163,7 +163,10 @@ class Scanner {
         }
       } break;
         case '$': {
-            if (match('[')) {
+            if (match('=')) {
+              addToken(TokenType.DOLLAR_EQUAL);
+            }
+            else if (match('[')) {
                 addToken(TokenType.DOLLAR_LEFT_BRACKET);
             } else {
                 identifier();

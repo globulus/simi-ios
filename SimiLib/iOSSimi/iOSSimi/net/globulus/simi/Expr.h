@@ -299,6 +299,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Annotations)
 @interface SMExpr_Assign : SMExpr {
  @public
   SMToken *name_;
+  SMToken *operator__;
   SMExpr *value_;
   id<JavaUtilList> annotations_;
 }
@@ -311,6 +312,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Annotations)
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)name
+                              withSMToken:(SMToken *)operator_
                                withSMExpr:(SMExpr *)value
                          withJavaUtilList:(id<JavaUtilList>)annotations;
 
@@ -326,14 +328,15 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Annotations)
 J2OBJC_EMPTY_STATIC_INIT(SMExpr_Assign)
 
 J2OBJC_FIELD_SETTER(SMExpr_Assign, name_, SMToken *)
+J2OBJC_FIELD_SETTER(SMExpr_Assign, operator__, SMToken *)
 J2OBJC_FIELD_SETTER(SMExpr_Assign, value_, SMExpr *)
 J2OBJC_FIELD_SETTER(SMExpr_Assign, annotations_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMExpr_Assign *self, SMToken *name, SMExpr *value, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT void SMExpr_Assign_initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_(SMExpr_Assign *self, SMToken *name, SMToken *operator_, SMExpr *value, id<JavaUtilList> annotations);
 
-FOUNDATION_EXPORT SMExpr_Assign *new_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMExpr *value, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_Assign *new_SMExpr_Assign_initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMToken *operator_, SMExpr *value, id<JavaUtilList> annotations) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMExpr_Assign *create_SMExpr_Assign_initWithSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMExpr *value, id<JavaUtilList> annotations);
+FOUNDATION_EXPORT SMExpr_Assign *create_SMExpr_Assign_initWithSMToken_withSMToken_withSMExpr_withJavaUtilList_(SMToken *name, SMToken *operator_, SMExpr *value, id<JavaUtilList> annotations);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Assign)
 

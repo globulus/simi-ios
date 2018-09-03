@@ -907,13 +907,13 @@ SMInterpreter *SMInterpreter_sharedInstance;
     assignAnnotations = [prop getAnnotations];
   }
   id<SMSimiProperty> newProp = new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(value, assignAnnotations);
-  if ([((NSString *) nil_chk(((SMToken *) nil_chk(expr->name_))->lexeme_)) java_hasPrefix:SMConstants_MUTABLE]) {
+  if (((SMToken *) nil_chk(expr->operator__))->type_ == JreLoadEnum(SMTokenType, DOLLAR_EQUAL)) {
     JavaLangInteger *distance = [((id<JavaUtilMap>) nil_chk(locals_)) getWithId:expr];
     if (distance != nil) {
-      [((SMEnvironment *) nil_chk(environment_)) assignAtWithInt:[distance intValue] withSMToken:expr->name_ withSMSimiProperty:newProp];
+      [((SMEnvironment *) nil_chk(environment_)) assignAtWithInt:[distance intValue] withSMToken:expr->name_ withSMSimiProperty:newProp withBoolean:true];
     }
     else {
-      [((SMEnvironment *) nil_chk(globals_)) assignWithSMToken:expr->name_ withSMSimiProperty:newProp withBoolean:false];
+      [((SMEnvironment *) nil_chk(globals_)) assignWithSMToken:expr->name_ withSMSimiProperty:newProp withBoolean:true];
     }
   }
   else {

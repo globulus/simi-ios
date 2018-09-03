@@ -23,8 +23,6 @@
 
 @interface SMConstants : NSObject
 
-+ (NSString *)MUTABLE;
-
 + (NSString *)PRIVATE;
 
 + (NSString *)IMPLICIT;
@@ -84,11 +82,6 @@
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(SMConstants)
-
-inline NSString *SMConstants_get_MUTABLE(void);
-/*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT NSString *SMConstants_MUTABLE;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, MUTABLE, NSString *)
 
 inline NSString *SMConstants_get_PRIVATE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */

@@ -506,7 +506,10 @@ void SMScanner_scanToken(SMScanner *self) {
     break;
     case '$':
     {
-      if (SMScanner_matchWithChar_(self, '[')) {
+      if (SMScanner_matchWithChar_(self, '=')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOLLAR_EQUAL));
+      }
+      else if (SMScanner_matchWithChar_(self, '[')) {
         SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET));
       }
       else {
