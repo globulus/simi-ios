@@ -13,6 +13,7 @@
 #include "java/util/ArrayList.h"
 #include "java/util/Collections.h"
 #include "java/util/List.h"
+#include "Debugger.h"
 #include "ErrorHub.h"
 #include "ErrorWatcher.h"
 #include "Interpreter.h"
@@ -45,10 +46,19 @@
 
 @end
 
+inline NSString *SMSimi_get_FILE_SIMI(void);
+static NSString *SMSimi_FILE_SIMI = @"Simi";
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimi, FILE_SIMI, NSString *)
+
 inline SMInterpreter *SMSimi_get_interpreter(void);
 inline SMInterpreter *SMSimi_set_interpreter(SMInterpreter *value);
 static SMInterpreter *SMSimi_interpreter;
 J2OBJC_STATIC_FIELD_OBJ(SMSimi, interpreter, SMInterpreter *)
+
+inline SMDebugger *SMSimi_get_debugger(void);
+inline SMDebugger *SMSimi_set_debugger(SMDebugger *value);
+static SMDebugger *SMSimi_debugger;
+J2OBJC_STATIC_FIELD_OBJ(SMSimi, debugger, SMDebugger *)
 
 inline id<SMErrorWatcher> SMSimi_get_WATCHER(void);
 static id<SMErrorWatcher> SMSimi_WATCHER;
@@ -163,18 +173,21 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[6].selector = @selector(scanImportsWithJavaUtilList:withJavaUtilList:withSMNativeModulesManager:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "interpreter", "LSMInterpreter;", .constantValue.asLong = 0, 0xa, -1, 11, -1, -1 },
-    { "hadError", "Z", .constantValue.asLong = 0, 0x8, -1, 12, -1, -1 },
-    { "hadRuntimeError", "Z", .constantValue.asLong = 0, 0x8, -1, 13, -1, -1 },
-    { "WATCHER", "LSMErrorWatcher;", .constantValue.asLong = 0, 0x1a, -1, 14, -1, -1 },
+    { "FILE_SIMI", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
+    { "interpreter", "LSMInterpreter;", .constantValue.asLong = 0, 0xa, -1, 12, -1, -1 },
+    { "debugger", "LSMDebugger;", .constantValue.asLong = 0, 0xa, -1, 13, -1, -1 },
+    { "hadError", "Z", .constantValue.asLong = 0, 0x8, -1, 14, -1, -1 },
+    { "hadRuntimeError", "Z", .constantValue.asLong = 0, 0x8, -1, 15, -1, -1 },
+    { "WATCHER", "LSMErrorWatcher;", .constantValue.asLong = 0, 0x1a, -1, 16, -1, -1 },
   };
-  static const void *ptrTable[] = { "main", "[LNSString;", "LJavaIoIOException;", "readFile", "LNSString;Z", "runFile", "LNSString;", "run", "scanImports", "LJavaUtilList;LJavaUtilList;LSMNativeModulesManager;", "(Ljava/util/List<LToken;>;Ljava/util/List<Ljava/lang/String;>;LNativeModulesManager;)Ljava/util/List<LToken;>;", &SMSimi_interpreter, &SMSimi_hadError, &SMSimi_hadRuntimeError, &SMSimi_WATCHER };
-  static const J2ObjcClassInfo _SMSimi = { "Simi", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 7, 4, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "main", "[LNSString;", "LJavaIoIOException;", "readFile", "LNSString;Z", "runFile", "LNSString;", "run", "scanImports", "LJavaUtilList;LJavaUtilList;LSMNativeModulesManager;", "(Ljava/util/List<LToken;>;Ljava/util/List<Ljava/lang/String;>;LNativeModulesManager;)Ljava/util/List<LToken;>;", &SMSimi_FILE_SIMI, &SMSimi_interpreter, &SMSimi_debugger, &SMSimi_hadError, &SMSimi_hadRuntimeError, &SMSimi_WATCHER };
+  static const J2ObjcClassInfo _SMSimi = { "Simi", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 7, 6, -1, -1, -1, -1, -1 };
   return &_SMSimi;
 }
 
 + (void)initialize {
   if (self == [SMSimi class]) {
+    SMSimi_debugger = new_SMDebugger_init();
     SMSimi_WATCHER = new_SMSimi_1_init();
     J2OBJC_SET_INITIALIZED(SMSimi)
   }
@@ -238,15 +251,15 @@ void SMSimi_runWithNSString_(NSString *source) {
   id<JavaUtilList> imports = new_JavaUtilArrayList_init();
   jlong time = JavaLangSystem_currentTimeMillis();
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"Scanning and resolving imports..."];
-  SMScanner *scanner = new_SMScanner_initWithNSString_(source);
+  SMScanner *scanner = new_SMScanner_initWithNSString_withNSString_withSMDebugger_(SMSimi_FILE_SIMI, source, SMSimi_debugger);
   id<JavaUtilList> tokens = SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_([scanner scanTokensWithBoolean:true], imports, nativeModulesManager);
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
   time = JavaLangSystem_currentTimeMillis();
   [JreLoadStatic(JavaLangSystem, out) printWithNSString:@"Parsing..."];
-  SMParser *parser = new_SMParser_initWithJavaUtilList_(tokens);
+  SMParser *parser = new_SMParser_initWithJavaUtilList_withSMDebugger_(tokens, SMSimi_debugger);
   id<JavaUtilList> statements = [parser parse];
   if (SMSimi_hadError) return;
-  SMSimi_interpreter = new_SMInterpreter_initWithJavaUtilCollection_(JavaUtilCollections_singletonListWithId_(nativeModulesManager));
+  SMSimi_interpreter = new_SMInterpreter_initWithJavaUtilCollection_withSMDebugger_(JavaUtilCollections_singletonListWithId_(nativeModulesManager), SMSimi_debugger);
   SMResolver *resolver = new_SMResolver_initWithSMInterpreter_(SMSimi_interpreter);
   [resolver resolveWithJavaUtilList:statements];
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
@@ -279,7 +292,7 @@ id<JavaUtilList> SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativ
       [((id<SMNativeModulesManager>) nil_chk(nativeModulesManager)) load__WithNSString:pathString withBoolean:true];
     }
     else if ([pathString java_hasSuffix:@".simi"]) {
-      id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_(SMSimi_readFileWithNSString_withBoolean_(location, false)) scanTokensWithBoolean:false];
+      id<JavaUtilList> tokens = [new_SMScanner_initWithNSString_withNSString_withSMDebugger_(pathString, SMSimi_readFileWithNSString_withBoolean_(location, false), SMSimi_debugger) scanTokensWithBoolean:false];
       [result addAllWithJavaUtilCollection:SMSimi_scanImportsWithJavaUtilList_withJavaUtilList_withSMNativeModulesManager_(tokens, imports, nativeModulesManager)];
     }
   }
@@ -306,7 +319,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error {
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$IC", [((SMRuntimeError *) nil_chk(error)) getMessage], @"\n[line ", ((SMToken *) nil_chk(error->token_))->line_, ']')];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$$$IC", [((SMRuntimeError *) nil_chk(error)) getMessage], @"\n[", ((SMToken *) nil_chk(error->token_))->file_, @" line ", error->token_->line_, ']')];
   *JreLoadStaticRef(SMSimi, hadRuntimeError) = true;
 }
 

@@ -198,7 +198,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
 
 - (jboolean)canReturn;
 
+- (jint)getLineNumber;
+
 - (id<JavaUtilList>)getStatements;
+
+- (jboolean)hasBreakPoint;
 
 - (jboolean)isEmpty;
 
@@ -257,6 +261,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Block)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -305,6 +313,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Annotations)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -356,6 +368,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Assign)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -402,6 +418,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectDecomp)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -454,6 +474,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Binary)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -508,6 +532,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Call)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -558,6 +586,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Get)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -601,6 +633,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Grouping)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -646,6 +682,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Gu)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -689,6 +729,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Ivic)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -736,6 +780,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Literal)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -788,6 +836,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Logical)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -843,6 +895,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Set)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -894,6 +950,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Super)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -942,6 +1002,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Self)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -987,6 +1051,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Unary)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -1034,6 +1102,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Variable)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -1086,6 +1158,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectLiteral)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;

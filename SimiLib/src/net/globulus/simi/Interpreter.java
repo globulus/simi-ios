@@ -3,9 +3,16 @@ package net.globulus.simi;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.Visitor<SimiProperty> {
+class Interpreter implements
+        BlockInterpreter,
+        Expr.Visitor<SimiProperty>,
+        Stmt.Visitor<SimiProperty>,
+        Debugger.Evaluator {
+
+    private static final String FILE_RUNTIME = "Runtime";
 
   final Collection<NativeModulesManager> nativeModulesManagers;
+  private List<Stmt> statements;
   private final Environment globals = new Environment();
   private Environment environment = globals;
   private final Map<Expr, Integer> locals = new HashMap<>();
@@ -19,11 +26,17 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
 
   private boolean addClassesToRootEnv;
 
+  private Debugger debugger;
+
   static Interpreter sharedInstance;
 
-  Interpreter(Collection<NativeModulesManager> nativeModulesManagers) {
+  Interpreter(Collection<NativeModulesManager> nativeModulesManagers, Debugger debugger) {
     sharedInstance = this;
     this.nativeModulesManagers = nativeModulesManagers;
+    this.debugger = debugger;
+    if (debugger != null) {
+        debugger.setEvaluator(this);
+    }
     globals.define("clock", new SimiValue.Callable(new SimiCallable() {
 
       @Override
@@ -70,6 +83,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
 
   SimiProperty interpret(List<Stmt> statements, boolean addClassesToRootEnv) {
     this.addClassesToRootEnv = addClassesToRootEnv;
+    this.statements = statements;
     SimiProperty result = null;
     try {
       for (Stmt statement : statements) {
@@ -96,7 +110,27 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
   }
 
   private SimiProperty execute(Stmt stmt) {
+      debug(stmt);
     return stmt.accept(this);
+  }
+
+  private void debug(Stmt stmt) {
+    if (debugger == null) {
+        return;
+    }
+//    int index = statements.indexOf(stmt);
+    Codifiable[] before = null;
+//    if (index > 1) {
+//      before = new Codifiable[] { statements.get(index - 2), statements.get(index - 1) };
+//    }
+    Codifiable[] after = null;
+//    if (index < statements.size() - 2) {
+//      after = new Codifiable[] { statements.get(index + 1), statements.get(index + 2) };
+//    }
+    debugger.push(new Debugger.Frame(environment.deepClone(), stmt, before, after));
+    if (stmt.hasBreakPoint()) {
+        debugger.triggerBreakpoint(stmt);
+    }
   }
 
   void resolve(Expr expr, int depth) {
@@ -115,7 +149,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
           if (raisedExceptions.isEmpty()) {
             Stmt statement = (Stmt) statements.get(i);
             execute(statement);
-          } else {
+          } else { // Look for nearest rescue block
             Stmt.Rescue rescue = null;
             for (; i < size; i++) {
               Stmt statement = (Stmt) statements.get(i);
@@ -124,7 +158,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
                 break;
               }
             }
-            if (rescue != null) {
+            if (rescue != null) { // If not rescue block is available in this scope, maybe one is in scopes above
               SimiException e = raisedExceptions.pop();
               executeRescueBlock(rescue, e);
             } else if (block.canReturn()) {
@@ -421,7 +455,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
   public SimiProperty visitWhileStmt(Stmt.While stmt) {
     loopBlocks.push(stmt.body);
     BlockImpl block = this.environment.getOrAssignBlock(stmt, stmt.body, yieldedStmts);
-    while (isTruthy(evaluate(stmt.condition).getValue())) {
+    while (isTruthy(evaluate(stmt.condition))) {
       try {
         block.call(this, null, true);
       } catch (Return | Yield returnYield) {
@@ -446,7 +480,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
     BlockImpl block = this.environment.getOrAssignBlock(stmt, stmt.body, yieldedStmts);
 
     List<Expr> emptyArgs = new ArrayList<>();
-    Token nextToken = new Token(TokenType.IDENTIFIER, Constants.NEXT, null, stmt.var.name.line);
+    Token nextToken = new Token(TokenType.IDENTIFIER, Constants.NEXT, null, stmt.var.name.line, stmt.var.name.file);
     String nextMethodName = "#next" + block.closure.depth;
     SimiProperty nextMethod = block.closure.tryGet(nextMethodName);
     if (nextMethod == null) {
@@ -456,7 +490,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
       }
       nextMethod = iterable.get(nextToken, 0, environment);
       if (nextMethod == null) {
-        Token iterateToken = new Token(TokenType.IDENTIFIER, Constants.ITERATE, null, stmt.var.name.line);
+        Token iterateToken = new Token(TokenType.IDENTIFIER, Constants.ITERATE, null, stmt.var.name.line, stmt.var.name.file);
         SimiObjectImpl iterator = (SimiObjectImpl) call(iterable.get(iterateToken, 0, environment), emptyArgs, iterateToken)
                 .getValue().getObject();
         nextMethod = iterator.get(nextToken, 0, environment);
@@ -679,18 +713,24 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
           }
         }
         boolean isBaseClass = isBaseClass(clazz.name);
-        if (!isBaseClass) {
-          return invokeNativeCall(clazz.name, methodName, instance, decomposedArgs);
+        Environment previous = environment;
+        environment = new Environment(previous);
+        SimiProperty result;
+        if (isBaseClass) {
+          String className = isBaseClass ? clazz.name : Constants.CLASS_OBJECT;
+          SimiCallable nativeMethod = baseClassesNativeImpl.get(className, methodName, callable.arity());
+          if (nativeMethod == null) {
+            nativeMethod = baseClassesNativeImpl.get(Constants.CLASS_GLOBALS, methodName, callable.arity());
+          }
+          List<SimiProperty> nativeArgs = new ArrayList<>();
+          nativeArgs.add(new SimiValue.Object(instance));
+          nativeArgs.addAll(decomposedArgs);
+          result = nativeMethod.call(this, nativeArgs, false);
+        } else {
+          result = invokeNativeCall(clazz.name, methodName, instance, decomposedArgs);
         }
-        String className = isBaseClass ? clazz.name : Constants.CLASS_OBJECT;
-        SimiCallable nativeMethod = baseClassesNativeImpl.get(className, methodName, callable.arity());
-        if (nativeMethod == null) {
-          nativeMethod = baseClassesNativeImpl.get(Constants.CLASS_GLOBALS, methodName, callable.arity());
-        }
-        List<SimiProperty> nativeArgs = new ArrayList<>();
-        nativeArgs.add(new SimiValue.Object(instance));
-        nativeArgs.addAll(decomposedArgs);
-        return nativeMethod.call(this, nativeArgs, false);
+        environment = previous;
+        return result;
       } else {
         return invokeNativeCall(Constants.GLOBALS_CLASS_NAME, methodName,
                 null, decomposedArgs);
@@ -764,7 +804,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
       } else {
         throw new RuntimeError(origin,"Unable to parse getter/setter, invalid value: " + val);
       }
-      return new Token(TokenType.IDENTIFIER, lexeme, null, origin.line);
+      return new Token(TokenType.IDENTIFIER, lexeme, null, origin.line, origin.file);
     }
   }
 
@@ -779,8 +819,8 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
   @Override
   public SimiProperty visitGuExpr(Expr.Gu expr) {
     String string = evaluate(expr.expr).getValue().getString();
-    Scanner scanner = new Scanner(string + "\n");
-    Parser parser = new Parser(scanner.scanTokens(true));
+    Scanner scanner = new Scanner(FILE_RUNTIME, string + "\n", null);
+    Parser parser = new Parser(scanner.scanTokens(true), null);
     for (Stmt stmt : parser.parse()) {
         if (stmt instanceof Stmt.Annotation) {
             visitAnnotationStmt((Stmt.Annotation) stmt);
@@ -1029,7 +1069,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
       return false;
     }
     if (a instanceof SimiValue.Object) {
-      Token equals = new Token(TokenType.IDENTIFIER, Constants.EQUALS, null, expr.operator.line);
+      Token equals = new Token(TokenType.IDENTIFIER, Constants.EQUALS, null, expr.operator.line, expr.operator.file);
       return call(((SimiObjectImpl) a.getObject()).get(equals, 1, environment).getValue(),
               equals, Collections.singletonList(b)).getValue().getNumber().asLong() != 0;
     }
@@ -1045,7 +1085,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
       return SimiValue.Number.FALSE;
     }
     if (a instanceof SimiValue.Object) {
-      Token compareTo = new Token(TokenType.IDENTIFIER, Constants.COMPARE_TO, null, expr.operator.line);
+      Token compareTo = new Token(TokenType.IDENTIFIER, Constants.COMPARE_TO, null, expr.operator.line, expr.operator.file);
       return call(((SimiObjectImpl) a.getObject()).get(compareTo, 1, environment).getValue(), compareTo, Arrays.asList(a, b)).getValue();
     }
     return new SimiValue.Number(a.compareTo(b));
@@ -1078,7 +1118,7 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
         object = (SimiObjectImpl) SimiObjectImpl.getOrConvertObject(b, this);
 //          throw new RuntimeError(expr.operator, "Right side must be an Object!");
       }
-      Token has = new Token(TokenType.IDENTIFIER, Constants.HAS, null, expr.operator.line);
+      Token has = new Token(TokenType.IDENTIFIER, Constants.HAS, null, expr.operator.line, expr.operator.file);
       SimiProperty p = call(object.get(has, 1, environment).getValue(), has, Collections.singletonList(a));
       return p.getValue().getNumber().asLong() != 0;
   }
@@ -1167,11 +1207,28 @@ class Interpreter implements BlockInterpreter, Expr.Visitor<SimiProperty>, Stmt.
   }
 
   private void raiseNilReferenceException(Token token) {
-    String message = "Nil reference found at line " + token.line + ": " + token.toString();
+    String message = "Nil reference found at " + token.file + " line " + token.line + ": " + token.toString();
     raisedExceptions.push(new SimiException((SimiClass) environment.tryGet(Constants.EXCEPTION_NIL_REFERENCE).getValue().getObject(), message));
   }
 
-  @FunctionalInterface
+    @Override
+    public String eval(String input, Environment environment) {
+        Environment currentEnv = this.environment;
+        this.environment = environment;
+        Scanner scanner = new Scanner(FILE_RUNTIME, input + "\n", null);
+        Parser parser = new Parser(scanner.scanTokens(true), null);
+        SimiProperty result = execute(parser.parse().get(0));
+        String text = (result != null) ? result.toString() : TempNull.INSTANCE.toCode(0, true);
+        this.environment = currentEnv;
+        return text;
+    }
+
+    @Override
+    public Environment getGlobalEnvironment() {
+        return globals;
+    }
+
+    @FunctionalInterface
   private interface ClassImporter {
     void importValue(String key, SimiProperty prop);
   }

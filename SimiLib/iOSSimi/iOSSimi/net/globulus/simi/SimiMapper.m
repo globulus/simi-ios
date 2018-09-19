@@ -11,6 +11,7 @@
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Long.h"
+#include "java/lang/Math.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashMap.h"
 #include "java/util/LinkedHashMap.h"
@@ -323,7 +324,11 @@ id<SMSimiProperty> SMSimiMapper_toSimiPropertyWithId_withSMSimiClassImpl_(id val
     return new_SMSimiValue_Number_initWithDouble_([((JavaLangFloat *) nil_chk(((JavaLangFloat *) cast_chk(value, [JavaLangFloat class])))) doubleValue]);
   }
   else if ([value isKindOfClass:[JavaLangDouble class]]) {
-    return new_SMSimiValue_Number_initWithDouble_([((JavaLangDouble *) nil_chk((JavaLangDouble *) cast_chk(value, [JavaLangDouble class]))) doubleValue]);
+    jdouble num = [((JavaLangDouble *) nil_chk((JavaLangDouble *) cast_chk(value, [JavaLangDouble class]))) doubleValue];
+    if (num == JavaLangMath_floorWithDouble_(num)) {
+      return new_SMSimiValue_Number_initWithLong_(JavaLangMath_roundWithDouble_(num));
+    }
+    return new_SMSimiValue_Number_initWithDouble_(num);
   }
   else if ([value isKindOfClass:[JavaLangBoolean class]]) {
     return new_SMSimiValue_Number_initWithLong_([((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(value, [JavaLangBoolean class]))) booleanValue] ? 1 : 0);

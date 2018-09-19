@@ -14,8 +14,9 @@
 - (instancetype __nonnull)initWithSMTokenType:(SMTokenType *)type
                                  withNSString:(NSString *)lexeme
                               withSMSimiValue:(SMSimiValue *)literal
-                                      withInt:(jint)line {
-  SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(self, type, lexeme, literal, line);
+                                      withInt:(jint)line
+                                 withNSString:(NSString *)file {
+  SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(self, type, lexeme, literal, line, file);
   return self;
 }
 
@@ -56,7 +57,7 @@
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMTokenType:withNSString:withSMSimiValue:withInt:);
+  methods[0].selector = @selector(initWithSMTokenType:withNSString:withSMSimiValue:withInt:withNSString:);
   methods[1].selector = @selector(self__);
   methods[2].selector = @selector(superToken);
   methods[3].selector = @selector(selfDef);
@@ -69,53 +70,57 @@
     { "lexeme_", "LNSString;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "literal_", "LSMSimiValue;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "line_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "file_", "LNSString;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "hasBreakpoint_", "Z", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMTokenType;LNSString;LSMSimiValue;I", "self", "nativeCall", "LNSString;", "named", "toString" };
-  static const J2ObjcClassInfo _SMToken = { "Token", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 7, 4, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMTokenType;LNSString;LSMSimiValue;ILNSString;", "self", "nativeCall", "LNSString;", "named", "toString" };
+  static const J2ObjcClassInfo _SMToken = { "Token", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 7, 6, -1, -1, -1, -1, -1 };
   return &_SMToken;
 }
 
 @end
 
-void SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMToken *self, SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line) {
+void SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(SMToken *self, SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line, NSString *file) {
   NSObject_init(self);
+  self->hasBreakpoint_ = false;
   self->type_ = type;
   self->lexeme_ = lexeme;
   self->literal_ = literal;
   self->line_ = line;
+  self->file_ = file;
 }
 
-SMToken *new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line) {
-  J2OBJC_NEW_IMPL(SMToken, initWithSMTokenType_withNSString_withSMSimiValue_withInt_, type, lexeme, literal, line)
+SMToken *new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line, NSString *file) {
+  J2OBJC_NEW_IMPL(SMToken, initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_, type, lexeme, literal, line, file)
 }
 
-SMToken *create_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line) {
-  J2OBJC_CREATE_IMPL(SMToken, initWithSMTokenType_withNSString_withSMSimiValue_withInt_, type, lexeme, literal, line)
+SMToken *create_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line, NSString *file) {
+  J2OBJC_CREATE_IMPL(SMToken, initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_, type, lexeme, literal, line, file)
 }
 
 SMToken *SMToken_self__() {
   SMToken_initialize();
-  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, SELF), SMConstants_SELF, nil, 0);
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, SELF), SMConstants_SELF, nil, 0, nil);
 }
 
 SMToken *SMToken_superToken() {
   SMToken_initialize();
-  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, SUPER), SMConstants_SUPER, nil, 0);
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, SUPER), SMConstants_SUPER, nil, 0, nil);
 }
 
 SMToken *SMToken_selfDef() {
   SMToken_initialize();
-  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, DEF), SMConstants_SELF_DEF, nil, 0);
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, DEF), SMConstants_SELF_DEF, nil, 0, nil);
 }
 
 SMToken *SMToken_nativeCallWithNSString_(NSString *name) {
   SMToken_initialize();
-  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, DEF), name, nil, 0);
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, DEF), name, nil, 0, nil);
 }
 
 SMToken *SMToken_namedWithNSString_(NSString *name) {
   SMToken_initialize();
-  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, IDENTIFIER), name, nil, 0);
+  return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, IDENTIFIER), name, nil, 0, nil);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMToken)

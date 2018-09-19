@@ -17,7 +17,7 @@ class Environment implements SimiEnvironment {
 
   Environment(Environment enclosing) {
     this.enclosing = enclosing;
-    depth = enclosing.depth + 1;
+    depth = (enclosing != null) ? (enclosing.depth + 1) : 0;
   }
 
   boolean has(String key) {
@@ -104,7 +104,17 @@ class Environment implements SimiEnvironment {
     if (enclosing != null) {
       result += " -> " + enclosing.toString();
     }
+    return result;
+  }
 
+  String toStringWithoutGlobal() {
+    if (enclosing == null) {
+      return "Global";
+    }
+    String result = props.toString();
+    if (enclosing.enclosing != null) {
+      result += " -> " + enclosing.toStringWithoutGlobal();
+    }
     return result;
   }
 
@@ -138,5 +148,14 @@ class Environment implements SimiEnvironment {
     if (blocks != null) {
       blocks.remove(this.depth);
     }
+  }
+
+  Environment deepClone() {
+    Environment clone = new Environment(enclosing);
+    for (Map.Entry<String, SimiProperty> entry : props.entrySet()) {
+      SimiProperty value = entry.getValue();
+      clone.props.put(entry.getKey(), (value == null) ? null : value.clone(false));
+    }
+    return clone;
   }
 }

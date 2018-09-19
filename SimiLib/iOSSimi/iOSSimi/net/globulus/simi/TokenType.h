@@ -263,6 +263,10 @@ typedef NS_ENUM(NSUInteger, SMTokenType_Enum) {
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCode;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel

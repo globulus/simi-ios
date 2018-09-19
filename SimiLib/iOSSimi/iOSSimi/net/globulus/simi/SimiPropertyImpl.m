@@ -28,7 +28,7 @@ J2OBJC_FIELD_SETTER(SMSimiPropertyImpl, annotations_, id<JavaUtilList>)
 }
 
 - (SMSimiPropertyImpl *)cloneWithBoolean:(jboolean)mutable_ {
-  return new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_([((SMSimiValue *) nil_chk(value_)) cloneWithBoolean:mutable_], annotations_);
+  return new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_((value_ != nil) ? [((SMSimiValue *) nil_chk(value_)) cloneWithBoolean:mutable_] : nil, annotations_);
 }
 
 - (jint)compareToWithId:(SMSimiPropertyImpl *)o {
@@ -37,7 +37,7 @@ J2OBJC_FIELD_SETTER(SMSimiPropertyImpl, annotations_, id<JavaUtilList>)
 }
 
 - (NSString *)description {
-  return [((SMSimiValue *) nil_chk(value_)) description];
+  return (value_ == nil) ? nil : [((SMSimiValue *) nil_chk(value_)) description];
 }
 
 - (SMSimiValue *)getValue {

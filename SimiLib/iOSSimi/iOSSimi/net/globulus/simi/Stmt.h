@@ -83,6 +83,10 @@
 
 @interface SMStmt : NSObject < SMSimiStatement, SMCodifiable >
 
+#pragma mark Public
+
+- (NSUInteger)hash;
+
 #pragma mark Package-Private
 
 - (instancetype __nonnull)init;
@@ -193,6 +197,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_BlockStmt)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -236,6 +244,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Annotation)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -288,6 +300,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Break)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -347,6 +363,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Class)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -390,6 +410,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Continue)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -438,6 +462,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Expression)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -492,6 +520,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Function)
 
 - (id<JavaUtilList>)getChildren;
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -544,6 +576,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Elsif)
 
 - (id<JavaUtilList>)getChildren;
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -592,6 +628,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_If)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -637,6 +677,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Print)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -686,6 +730,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Rescue)
 
 #pragma mark Public
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -733,6 +781,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Import)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -784,6 +836,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Return)
 #pragma mark Public
 
 - (id<JavaUtilList>)getChildren;
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
@@ -838,6 +894,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_While)
 
 - (id<JavaUtilList>)getChildren;
 
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
+
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
@@ -887,6 +947,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_For)
 }
 
 #pragma mark Public
+
+- (jint)getLineNumber;
+
+- (jboolean)hasBreakPoint;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;

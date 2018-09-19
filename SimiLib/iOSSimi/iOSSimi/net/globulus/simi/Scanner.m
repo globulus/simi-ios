@@ -13,6 +13,7 @@
 #include "java/util/Map.h"
 #include "java/util/Set.h"
 #include "Constants.h"
+#include "Debugger.h"
 #include "ErrorHub.h"
 #include "Scanner.h"
 #include "SimiValue.h"
@@ -21,7 +22,9 @@
 
 @interface SMScanner () {
  @public
+  NSString *fileName_;
   NSString *source_;
+  SMDebugger *debugger_;
   id<JavaUtilList> tokens_;
   jint start_;
   jint current_;
@@ -70,7 +73,9 @@
 
 @end
 
+J2OBJC_FIELD_SETTER(SMScanner, fileName_, NSString *)
 J2OBJC_FIELD_SETTER(SMScanner, source_, NSString *)
+J2OBJC_FIELD_SETTER(SMScanner, debugger_, SMDebugger *)
 J2OBJC_FIELD_SETTER(SMScanner, tokens_, id<JavaUtilList>)
 
 inline id<JavaUtilMap> SMScanner_get_keywords(void);
@@ -117,8 +122,10 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
 
 @implementation SMScanner
 
-- (instancetype __nonnull)initWithNSString:(NSString *)source {
-  SMScanner_initWithNSString_(self, source);
+- (instancetype __nonnull)initWithNSString:(NSString *)fileName
+                              withNSString:(NSString *)source
+                            withSMDebugger:(SMDebugger *)debugger {
+  SMScanner_initWithNSString_withNSString_withSMDebugger_(self, fileName, source, debugger);
   return self;
 }
 
@@ -128,7 +135,7 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
     SMScanner_scanToken(self);
   }
   if (addEof) {
-    [((id<JavaUtilList>) nil_chk(tokens_)) addWithId:new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(JreLoadEnum(SMTokenType, EOF), @"", nil, line_)];
+    [((id<JavaUtilList>) nil_chk(tokens_)) addWithId:new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, EOF), @"", nil, line_, fileName_)];
   }
   return tokens_;
 }
@@ -266,7 +273,7 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithNSString:);
+  methods[0].selector = @selector(initWithNSString:withNSString:withSMDebugger:);
   methods[1].selector = @selector(scanTokensWithBoolean:);
   methods[2].selector = @selector(scanToken);
   methods[3].selector = @selector(identifier);
@@ -290,7 +297,9 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keywords", "LJavaUtilMap;", .constantValue.asLong = 0, 0x1a, -1, 19, 20, -1 },
+    { "fileName_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "source_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "debugger_", "LSMDebugger;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "tokens_", "LJavaUtilList;", .constantValue.asLong = 0, 0x12, -1, -1, 21, -1 },
     { "start_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "current_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
@@ -298,8 +307,8 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
     { "stringInterpolationParentheses_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "lastStringOpener_", "C", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNSString;", "scanTokens", "Z", "(Z)Ljava/util/List<LToken;>;", "string", "C", "escapedString", "II", "keywordString", "LSMTokenType;", "matchPeek", "match", "isAlpha", "isAlphaNumeric", "isDigit", "isDigitOrUnderscore", "isStringDelim", "addToken", "LSMTokenType;LSMSimiValue;", &SMScanner_keywords, "Ljava/util/Map<Ljava/lang/String;LTokenType;>;", "Ljava/util/List<LToken;>;" };
-  static const J2ObjcClassInfo _SMScanner = { "Scanner", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 21, 8, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LNSString;LNSString;LSMDebugger;", "scanTokens", "Z", "(Z)Ljava/util/List<LToken;>;", "string", "C", "escapedString", "II", "keywordString", "LSMTokenType;", "matchPeek", "match", "isAlpha", "isAlphaNumeric", "isDigit", "isDigitOrUnderscore", "isStringDelim", "addToken", "LSMTokenType;LSMSimiValue;", &SMScanner_keywords, "Ljava/util/Map<Ljava/lang/String;LTokenType;>;", "Ljava/util/List<LToken;>;" };
+  static const J2ObjcClassInfo _SMScanner = { "Scanner", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 21, 10, -1, -1, -1, -1, -1 };
   return &_SMScanner;
 }
 
@@ -346,7 +355,7 @@ J2OBJC_INITIALIZED_DEFN(SMScanner)
 
 @end
 
-void SMScanner_initWithNSString_(SMScanner *self, NSString *source) {
+void SMScanner_initWithNSString_withNSString_withSMDebugger_(SMScanner *self, NSString *fileName, NSString *source, SMDebugger *debugger) {
   NSObject_init(self);
   self->tokens_ = new_JavaUtilArrayList_init();
   self->start_ = 0;
@@ -354,15 +363,17 @@ void SMScanner_initWithNSString_(SMScanner *self, NSString *source) {
   self->line_ = 1;
   self->stringInterpolationParentheses_ = 0;
   self->lastStringOpener_ = '"';
+  self->fileName_ = fileName;
   self->source_ = source;
+  self->debugger_ = debugger;
 }
 
-SMScanner *new_SMScanner_initWithNSString_(NSString *source) {
-  J2OBJC_NEW_IMPL(SMScanner, initWithNSString_, source)
+SMScanner *new_SMScanner_initWithNSString_withNSString_withSMDebugger_(NSString *fileName, NSString *source, SMDebugger *debugger) {
+  J2OBJC_NEW_IMPL(SMScanner, initWithNSString_withNSString_withSMDebugger_, fileName, source, debugger)
 }
 
-SMScanner *create_SMScanner_initWithNSString_(NSString *source) {
-  J2OBJC_CREATE_IMPL(SMScanner, initWithNSString_, source)
+SMScanner *create_SMScanner_initWithNSString_withNSString_withSMDebugger_(NSString *fileName, NSString *source, SMDebugger *debugger) {
+  J2OBJC_CREATE_IMPL(SMScanner, initWithNSString_withNSString_withSMDebugger_, fileName, source, debugger)
 }
 
 void SMScanner_scanToken(SMScanner *self) {
@@ -519,7 +530,24 @@ void SMScanner_scanToken(SMScanner *self) {
     break;
     case '#':
     {
-      while (SMScanner_peek(self) != 0x000a && !SMScanner_isAtEnd(self)) SMScanner_advance(self);
+      while (SMScanner_peek(self) != 0x000a && !SMScanner_isAtEnd(self)) {
+        SMScanner_advance(self);
+      }
+      if (self->debugger_ != nil) {
+        NSString *comment = [((NSString *) nil_chk(self->source_)) java_substring:self->start_ + 1 endIndex:self->current_];
+        if ([((NSString *) nil_chk([((NSString *) nil_chk(comment)) java_trim])) java_hasPrefix:SMDebugger_BREAKPOINT_LEXEME]) {
+          jint size = [((id<JavaUtilList>) nil_chk(self->tokens_)) size];
+          for (jint i = size - 1; i >= 0; i--) {
+            SMToken *token = [self->tokens_ getWithInt:i];
+            if (((SMToken *) nil_chk(token))->line_ == self->line_) {
+              token->hasBreakpoint_ = true;
+            }
+            else {
+              break;
+            }
+          }
+        }
+      }
     }
     break;
     case '\\':
@@ -689,7 +717,7 @@ void SMScanner_addTokenWithSMTokenType_(SMScanner *self, SMTokenType *type) {
 
 void SMScanner_addTokenWithSMTokenType_withSMSimiValue_(SMScanner *self, SMTokenType *type, SMSimiValue *literal) {
   NSString *text = [((NSString *) nil_chk(self->source_)) java_substring:self->start_ endIndex:self->current_];
-  [((id<JavaUtilList>) nil_chk(self->tokens_)) addWithId:new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(type, text, literal, self->line_)];
+  [((id<JavaUtilList>) nil_chk(self->tokens_)) addWithId:new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(type, text, literal, self->line_, self->fileName_)];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMScanner)

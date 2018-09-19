@@ -9,7 +9,10 @@ import java.util.List;
 
 public class Simi {
 
+  private static final String FILE_SIMI = "Simi";
+
   private static Interpreter interpreter;
+  private static Debugger debugger = new Debugger();
   static boolean hadError = false;
   static boolean hadRuntimeError = false;
 
@@ -60,18 +63,18 @@ public class Simi {
 
       long time = System.currentTimeMillis();
       System.out.print("Scanning and resolving imports...");
-    Scanner scanner = new Scanner(source);
+    Scanner scanner = new Scanner(FILE_SIMI, source, debugger);
     List<Token> tokens = scanImports(scanner.scanTokens(true), imports, nativeModulesManager);
     System.out.println(" " + (System.currentTimeMillis() - time) + " ms");
     time = System.currentTimeMillis();
     System.out.print("Parsing...");
-    Parser parser = new Parser(tokens);
+    Parser parser = new Parser(tokens, debugger);
     List<Stmt> statements = parser.parse();
 
     // Stop if there was a syntax error.
     if (hadError) return;
 
-    interpreter = new Interpreter(Collections.singletonList(nativeModulesManager));
+    interpreter = new Interpreter(Collections.singletonList(nativeModulesManager), debugger);
 
     Resolver resolver = new Resolver(interpreter);
     resolver.resolve(statements);
@@ -109,7 +112,7 @@ public class Simi {
       if (pathString.endsWith(".jar")) {
           nativeModulesManager.load(pathString, true);
       } else if (pathString.endsWith(".simi")) {
-          List<Token> tokens = new Scanner(readFile(location, false)).scanTokens(false);
+          List<Token> tokens = new Scanner(pathString, readFile(location, false), debugger).scanTokens(false);
           result.addAll(scanImports(tokens, imports, nativeModulesManager));
       }
     }
@@ -129,7 +132,7 @@ public class Simi {
     public void runtimeError(RuntimeError error) {
 
       System.err.println(error.getMessage() +
-              "\n[line " + error.token.line + "]");
+              "\n[" + error.token.file + " line " + error.token.line + "]");
       hadRuntimeError = true;
     }
   };

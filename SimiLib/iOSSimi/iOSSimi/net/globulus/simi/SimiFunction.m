@@ -10,6 +10,7 @@
 #include "Constants.h"
 #include "Environment.h"
 #include "Expr.h"
+#include "SimiCallable.h"
 #include "SimiFunction.h"
 #include "SimiObjectImpl.h"
 #include "SimiProperty.h"
@@ -77,6 +78,14 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst {
   return [((SMStmt_Function *) nil_chk(declaration_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
+}
+
+- (jint)getLineNumber {
+  return SMSimiCallable_getLineNumber(self);
+}
+
+- (jboolean)hasBreakPoint {
+  return SMSimiCallable_hasBreakPoint(self);
 }
 
 + (const J2ObjcClassInfo *)__metadata {

@@ -21,6 +21,7 @@
 #if !defined (SMScanner_) && (INCLUDE_ALL_NetGlobulusSimiScanner || defined(INCLUDE_SMScanner))
 #define SMScanner_
 
+@class SMDebugger;
 @protocol JavaUtilList;
 
 @interface SMScanner : NSObject
@@ -31,7 +32,9 @@
 
 #pragma mark Package-Private
 
-- (instancetype __nonnull)initWithNSString:(NSString *)source;
+- (instancetype __nonnull)initWithNSString:(NSString *)fileName
+                              withNSString:(NSString *)source
+                            withSMDebugger:(SMDebugger *)debugger;
 
 - (id<JavaUtilList>)scanTokensWithBoolean:(jboolean)addEof;
 
@@ -43,11 +46,11 @@
 
 J2OBJC_STATIC_INIT(SMScanner)
 
-FOUNDATION_EXPORT void SMScanner_initWithNSString_(SMScanner *self, NSString *source);
+FOUNDATION_EXPORT void SMScanner_initWithNSString_withNSString_withSMDebugger_(SMScanner *self, NSString *fileName, NSString *source, SMDebugger *debugger);
 
-FOUNDATION_EXPORT SMScanner *new_SMScanner_initWithNSString_(NSString *source) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMScanner *new_SMScanner_initWithNSString_withNSString_withSMDebugger_(NSString *fileName, NSString *source, SMDebugger *debugger) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMScanner *create_SMScanner_initWithNSString_(NSString *source);
+FOUNDATION_EXPORT SMScanner *create_SMScanner_initWithNSString_withNSString_withSMDebugger_(NSString *fileName, NSString *source, SMDebugger *debugger);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMScanner)
 

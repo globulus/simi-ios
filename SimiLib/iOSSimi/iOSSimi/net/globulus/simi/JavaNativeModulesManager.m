@@ -18,11 +18,17 @@
 #include "java/util/List.h"
 #include "java/util/Map.h"
 #include "Constants.h"
+#include "Environment.h"
 #include "Interpreter.h"
 #include "JavaNativeModulesManager.h"
 #include "SimiApiClass.h"
+#include "SimiClass.h"
+#include "SimiClassImpl.h"
+#include "SimiEnvironment.h"
 #include "SimiObject.h"
 #include "SimiProperty.h"
+#include "SimiValue.h"
+#include "Token.h"
 
 @interface SMJavaNativeModulesManager () {
  @public
@@ -148,6 +154,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   else {
     id<SMSimiApiClass> apiClass = [((id<JavaUtilMap>) nil_chk(classes_)) getWithId:className_];
     if (apiClass != nil) {
+      SMEnvironment *environment = (SMEnvironment *) cast_chk([((SMInterpreter *) nil_chk(interpreter)) getEnvironment], [SMEnvironment class]);
+      [((SMEnvironment *) nil_chk(environment)) assignWithSMToken:SMToken_self__() withSMSimiProperty:new_SMSimiValue_Object_initWithSMSimiObject_(self_) withBoolean:true];
+      SMSimiClassImpl *clazz = (SMSimiClassImpl *) cast_chk([((id<SMSimiObject>) nil_chk(self_)) getSimiClass], [SMSimiClassImpl class]);
+      if (clazz != nil) {
+        [environment assignWithSMToken:SMToken_superToken() withSMSimiProperty:new_SMSimiClassImpl_SuperClassesList_initWithJavaUtilList_(clazz->superclasses_) withBoolean:true];
+      }
       return [apiClass callWithNSString:className_ withNSString:methodName withSMSimiObject:self_ withSMBlockInterpreter:interpreter withJavaUtilList:args];
     }
   }

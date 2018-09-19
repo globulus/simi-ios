@@ -47,7 +47,11 @@
 - (id<SMSimiProperty>)getWithNSString:(NSString *)key
                 withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
+- (jint)getLineNumber;
+
 - (id<SMSimiClass>)getSimiClass;
+
+- (jboolean)hasBreakPoint;
 
 - (id<JavaUtilList>)keys;
 

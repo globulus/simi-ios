@@ -459,8 +459,11 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
 
 - (void)checkMutabilityWithSMToken:(SMToken *)name
                  withSMEnvironment:(SMEnvironment *)environment {
-  if (self->immutable_ && [((SMSimiValue *) nil_chk([((SMEnvironment *) nil_chk(environment)) getWithSMToken:SMToken_self__()])) getObject] != self) {
-    @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Trying to alter an immutable object!");
+  if (self->immutable_) {
+    SMSimiValue *self_ = [((SMEnvironment *) nil_chk(environment)) getWithSMToken:SMToken_self__()];
+    if (self_ != nil && [self_ getObject] != self) {
+      @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Trying to alter an immutable object!");
+    }
   }
 }
 
@@ -555,9 +558,11 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
 }
 
 - (NSString *)description {
-  SMSimiMethod *method = [((SMSimiClassImpl *) nil_chk(clazz_)) findMethodWithSMSimiObjectImpl:self withNSString:SMConstants_TO_STRING withJavaLangInteger:JavaLangInteger_valueOfWithInt_(0)];
-  if (method != nil && !((SMSimiFunction *) nil_chk(method->function_))->isNative_) {
-    return [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([method callWithSMBlockInterpreter:JreLoadStatic(SMInterpreter, sharedInstance) withJavaUtilList:new_JavaUtilArrayList_init() withBoolean:false])) getValue])) getString];
+  if (clazz_ != nil) {
+    SMSimiMethod *method = [clazz_ findMethodWithSMSimiObjectImpl:self withNSString:SMConstants_TO_STRING withJavaLangInteger:JavaLangInteger_valueOfWithInt_(0)];
+    if (method != nil && !((SMSimiFunction *) nil_chk(method->function_))->isNative_) {
+      return [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([method callWithSMBlockInterpreter:JreLoadStatic(SMInterpreter, sharedInstance) withJavaUtilList:new_JavaUtilArrayList_init() withBoolean:false])) getValue])) getString];
+    }
   }
   JavaLangStringBuilder *sb = new_JavaLangStringBuilder_init();
   (void) [sb appendWithNSString:@"[\n"];
@@ -611,6 +616,14 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
   return SMSimiObjectImpl_getOrConvertObjectWithSMSimiProperty_withSMInterpreter_(prop, interpreter);
 }
 
+- (jint)getLineNumber {
+  return -1;
+}
+
+- (jboolean)hasBreakPoint {
+  return false;
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x2, -1, 0, -1, -1, -1, -1 },
@@ -656,6 +669,8 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
     { NULL, "LSMSimiProperty;", 0x1, 15, 52, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 20, 53, -1, -1, -1, -1 },
     { NULL, "LSMSimiObject;", 0x8, 54, 55, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -703,13 +718,15 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
   methods[40].selector = @selector(getWithNSString:withSMSimiEnvironment:);
   methods[41].selector = @selector(setWithNSString:withSMSimiProperty:withSMSimiEnvironment:);
   methods[42].selector = @selector(getOrConvertObjectWithSMSimiProperty:withSMInterpreter:);
+  methods[43].selector = @selector(getLineNumber);
+  methods[44].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "immutable_", "Z", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMSimiClassImpl;Z", "instance", "LSMSimiClassImpl;LJavaUtilLinkedHashMap;", "(LSimiClassImpl;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObjectImpl;", "pair", "LSMSimiClassImpl;LNSString;LSMSimiProperty;", "decomposedPair", "LSMSimiClassImpl;LSMSimiValue;LSMSimiValue;", "fromMap", "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObjectImpl;", "fromArray", "LSMSimiClassImpl;ZLJavaUtilArrayList;", "(LSimiClassImpl;ZLjava/util/ArrayList<+LSimiProperty;>;)LSimiObjectImpl;", "empty", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "getFromClass", "bind", "LNSString;LSMSimiProperty;", "set", "LSMToken;LSMSimiProperty;LSMEnvironment;", "setField", "is", "LSMSimiClassImpl;", "clear", "LSMEnvironment;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "checkMutability", "LSMToken;LSMEnvironment;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "valuesMatch", "LSMSimiValue;LSMSimiValue;", "LSMSimiProperty;LSMSimiProperty;", "append", "LSMSimiProperty;", "appendImpl", "addAll", "LSMSimiObjectImpl;", "toString", "LNSString;LSMSimiEnvironment;", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "getOrConvertObject", "LSMSimiProperty;LSMInterpreter;", "LSMSimiObjectImpl_Dictionary;LSMSimiObjectImpl_Array;LSMSimiObjectImpl_InitiallyEmpty;" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl = { "SimiObjectImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x400, 43, 2, -1, 56, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMSimiObjectImpl = { "SimiObjectImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x400, 45, 2, -1, 56, -1, -1, -1 };
   return &_SMSimiObjectImpl;
 }
 

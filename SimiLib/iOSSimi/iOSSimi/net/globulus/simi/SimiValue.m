@@ -70,6 +70,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   return nil;
 }
 
+- (jint)getLineNumber {
+  return -1;
+}
+
+- (jboolean)hasBreakPoint {
+  return false;
+}
+
 - (NSString *)getString {
   if ([self isKindOfClass:[SMSimiValue_String class]]) {
     return ((SMSimiValue_String *) cast_chk(self, [SMSimiValue_String class]))->value_;
@@ -106,6 +114,8 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "LSMSimiValue;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 5, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue_Number;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiObject;", 0x1, -1, -1, -1, -1, -1, -1 },
@@ -120,13 +130,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[3].selector = @selector(getValue);
   methods[4].selector = @selector(setValueWithSMSimiValue:);
   methods[5].selector = @selector(getAnnotations);
-  methods[6].selector = @selector(getString);
-  methods[7].selector = @selector(getNumber);
-  methods[8].selector = @selector(getObject);
-  methods[9].selector = @selector(getCallable);
+  methods[6].selector = @selector(getLineNumber);
+  methods[7].selector = @selector(hasBreakPoint);
+  methods[8].selector = @selector(getString);
+  methods[9].selector = @selector(getNumber);
+  methods[10].selector = @selector(getObject);
+  methods[11].selector = @selector(getCallable);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "copy", "clone", "Z", "setValue", "LSMSimiValue;", "()Ljava/util/List<LSimiObject;>;", "LSMSimiValue_String;LSMSimiValue_Number;LSMSimiValue_Object;LSMSimiValue_Callable;LSMSimiValue_IncompatibleValuesException;", "Ljava/lang/Object;LSimiProperty;LCodifiable;Ljava/lang/Comparable<LSimiValue;>;" };
-  static const J2ObjcClassInfo _SMSimiValue = { "SimiValue", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x401, 10, 0, -1, 6, -1, 7, -1 };
+  static const J2ObjcClassInfo _SMSimiValue = { "SimiValue", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x401, 12, 0, -1, 6, -1, 7, -1 };
   return &_SMSimiValue;
 }
 
@@ -379,6 +391,10 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
   return valueDouble_;
 }
 
+- (jboolean)isInteger {
+  return valueLong_ != nil;
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
@@ -403,6 +419,7 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
     { NULL, "LSMSimiValue_Number;", 0x1, 21, 13, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue_Number;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -429,6 +446,7 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
   methods[19].selector = @selector(modWithSMSimiValue_Number:);
   methods[20].selector = @selector(negate);
   methods[21].selector = @selector(getJavaValue);
+  methods[22].selector = @selector(isInteger);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "valueDouble_", "LJavaLangDouble;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
@@ -437,7 +455,7 @@ SMSimiValue_Number *SMSimiValue_Number_FALSE;
     { "FALSE", "LSMSimiValue_Number;", .constantValue.asLong = 0, 0x19, -1, 23, -1, -1 },
   };
   static const void *ptrTable[] = { "D", "J", "Z", "toString", "equals", "LNSObject;", "copy", "clone", "compareTo", "LSMSimiValue;", "toCode", "IZ", "lessThan", "LSMSimiValue_Number;", "lessOrEqual", "greaterThan", "greaterOrEqual", "add", "subtract", "multiply", "divide", "mod", &SMSimiValue_Number_TRUE, &SMSimiValue_Number_FALSE };
-  static const J2ObjcClassInfo _SMSimiValue_Number = { "Number", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 22, 4, 9, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMSimiValue_Number = { "Number", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 23, 4, 9, -1, -1, -1, -1 };
   return &_SMSimiValue_Number;
 }
 
@@ -501,7 +519,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Number)
 }
 
 - (NSString *)description {
-  return [((id<SMSimiObject>) nil_chk(value_)) description];
+  return (value_ != nil) ? [((id<SMSimiObject>) nil_chk(value_)) description] : @"nil";
 }
 
 - (jboolean)isEqual:(id)obj {
@@ -513,7 +531,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Number)
 }
 
 - (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
-  return new_SMSimiValue_Object_initWithSMSimiObject_([((id<SMSimiObject>) nil_chk(value_)) cloneWithBoolean:mutable_]);
+  return (value_ != nil) ? new_SMSimiValue_Object_initWithSMSimiObject_([((id<SMSimiObject>) nil_chk(value_)) cloneWithBoolean:mutable_]) : nil;
 }
 
 - (jint)compareToWithId:(SMSimiValue *)o {

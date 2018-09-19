@@ -24,6 +24,16 @@ public abstract class SimiValue implements SimiProperty, Codifiable, Comparable<
         return null;
     }
 
+    @Override
+    public int getLineNumber() {
+        return -1;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+        return false;
+    }
+
     public java.lang.String getString() {
         if (this instanceof String) {
             return ((String) this).value;
@@ -247,6 +257,10 @@ public abstract class SimiValue implements SimiProperty, Codifiable, Comparable<
             }
             return valueDouble;
         }
+
+        public boolean isInteger() {
+            return valueLong != null;
+        }
     }
 
     public static class Object extends SimiValue {
@@ -259,7 +273,7 @@ public abstract class SimiValue implements SimiProperty, Codifiable, Comparable<
 
         @Override
         public java.lang.String toString() {
-            return value.toString();
+            return (value != null) ? value.toString() : "nil";
         }
 
         @Override
@@ -274,7 +288,7 @@ public abstract class SimiValue implements SimiProperty, Codifiable, Comparable<
 
         @Override
         public SimiValue clone(boolean mutable) {
-            return new Object(value.clone(mutable));
+            return (value != null) ? new Object(value.clone(mutable)) : null;
         }
 
         @Override

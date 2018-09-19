@@ -50,6 +50,8 @@
 
 + (void)load__WithNSStringArray:(IOSObjectArray *)files;
 
++ (void)setDebugModeWithBoolean:(jboolean)debug;
+
 + (void)setImportResolverWithSMActiveSimi_ImportResolver:(id<SMActiveSimi_ImportResolver>)ir;
 
 #pragma mark Package-Private
@@ -73,6 +75,8 @@ inline jboolean *SMActiveSimi_getRef_hadRuntimeError(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT jboolean SMActiveSimi_hadRuntimeError;
 J2OBJC_STATIC_FIELD_PRIMITIVE(SMActiveSimi, hadRuntimeError, jboolean)
+
+FOUNDATION_EXPORT void SMActiveSimi_setDebugModeWithBoolean_(jboolean debug);
 
 FOUNDATION_EXPORT void SMActiveSimi_load__WithNSStringArray_(IOSObjectArray *files);
 

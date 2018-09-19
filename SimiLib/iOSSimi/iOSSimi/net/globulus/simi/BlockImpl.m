@@ -131,6 +131,14 @@ __attribute__((unused)) static void SMBlockImpl_clearYield(SMBlockImpl *self);
   return SMBlockImpl_getParamLexemeWithSMExpr_(param);
 }
 
+- (jint)getLineNumber {
+  return SMSimiCallable_getLineNumber(self);
+}
+
+- (jboolean)hasBreakPoint {
+  return SMSimiCallable_hasBreakPoint(self);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },

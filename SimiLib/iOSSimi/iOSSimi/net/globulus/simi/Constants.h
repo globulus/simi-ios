@@ -39,6 +39,8 @@
 
 + (NSString *)VALUE;
 
++ (NSString *)SET;
+
 + (NSString *)ITERATE;
 
 + (NSString *)NEXT;
@@ -122,6 +124,11 @@ inline NSString *SMConstants_get_VALUE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_VALUE;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, VALUE, NSString *)
+
+inline NSString *SMConstants_get_SET(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_SET;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, SET, NSString *)
 
 inline NSString *SMConstants_get_ITERATE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */

@@ -6,6 +6,7 @@
 #include "J2ObjC_source.h"
 #include "java/util/List.h"
 #include "BlockInterpreter.h"
+#include "SimiCallable.h"
 #include "SimiClassImpl.h"
 #include "SimiFunction.h"
 #include "SimiMethod.h"
@@ -36,6 +37,14 @@
 
 - (NSString *)description {
   return [((SMSimiFunction *) nil_chk(function_)) description];
+}
+
+- (jint)getLineNumber {
+  return SMSimiCallable_getLineNumber(self);
+}
+
+- (jboolean)hasBreakPoint {
+  return SMSimiCallable_hasBreakPoint(self);
 }
 
 + (const J2ObjcClassInfo *)__metadata {

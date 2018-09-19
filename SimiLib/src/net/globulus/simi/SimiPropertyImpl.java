@@ -1,10 +1,5 @@
 package net.globulus.simi;
 
-import net.globulus.simi.SimiObject;
-import net.globulus.simi.SimiProperty;
-import net.globulus.simi.SimiValue;
-
-import java.util.Collections;
 import java.util.List;
 
 final class SimiPropertyImpl implements SimiProperty, Comparable<SimiPropertyImpl> {
@@ -18,7 +13,7 @@ final class SimiPropertyImpl implements SimiProperty, Comparable<SimiPropertyImp
     }
 
     public SimiPropertyImpl clone(boolean mutable) {
-        return new SimiPropertyImpl(value.clone(mutable), annotations);
+        return new SimiPropertyImpl((value != null) ? value.clone(mutable) : null, annotations);
     }
 
     @Override
@@ -28,7 +23,7 @@ final class SimiPropertyImpl implements SimiProperty, Comparable<SimiPropertyImp
 
     @Override
     public String toString() {
-        return value.toString();
+        return (value == null) ? null : value.toString();
     }
 
     @Override

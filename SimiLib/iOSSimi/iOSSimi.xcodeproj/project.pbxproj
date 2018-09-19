@@ -129,6 +129,7 @@
 		6A59D69F20E7D766008FB2AB /* Simi.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A59D62B20E7D1CA008FB2AB /* Simi.h */; };
 		6A731F1920E80C7600F11E94 /* JavaNativeModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A731F1820E80C7600F11E94 /* JavaNativeModulesManager.m */; };
 		6A731F1A20E80CB600F11E94 /* JavaNativeModulesManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */; };
+		6AB0568A21523B2700A6E7EE /* Debugger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB0568821523B2700A6E7EE /* Debugger.m */; };
 		6AB171FA21246AD500F32968 /* JavaNativeModulesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB171F921246AD500F32968 /* JavaNativeModulesManager.m */; };
 		6AB171FD21246AEF00F32968 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB171FB21246AEE00F32968 /* Native.m */; };
 		6ACE44242126E8D400113E98 /* iOSSimi_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACE44232126E8D400113E98 /* iOSSimi_Mac.h */; };
@@ -145,7 +146,7 @@
 				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME is not correctly defined, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${DERIVED_FILES_DIR} -sourcepath \"${PROJECT_DIR}/Simi/src\" --no-package-directories -g ${INPUT_FILE_PATH};";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME is not correctly defined, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${DERIVED_FILES_DIR} -sourcepath \"${PROJECT_DIR}/Simi/src\" --no-package-directories -g ${INPUT_FILE_PATH};\n";
 		};
 /* End PBXBuildRule section */
 
@@ -326,6 +327,8 @@
 		6A59D62F20E7D1CA008FB2AB /* Return.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Return.m; sourceTree = "<group>"; };
 		6A731F1720E80C7600F11E94 /* JavaNativeModulesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JavaNativeModulesManager.h; sourceTree = "<group>"; };
 		6A731F1820E80C7600F11E94 /* JavaNativeModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JavaNativeModulesManager.m; sourceTree = "<group>"; };
+		6AB0568821523B2700A6E7EE /* Debugger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debugger.m; sourceTree = "<group>"; };
+		6AB0568921523B2700A6E7EE /* Debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugger.h; sourceTree = "<group>"; };
 		6AB171F921246AD500F32968 /* JavaNativeModulesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JavaNativeModulesManager.m; sourceTree = "<group>"; };
 		6AB171FB21246AEE00F32968 /* Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Native.m; sourceTree = "<group>"; };
 		6AB171FC21246AEE00F32968 /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
@@ -401,6 +404,8 @@
 		6A59D5CB20E7D1CA008FB2AB /* simi */ = {
 			isa = PBXGroup;
 			children = (
+				6AB0568921523B2700A6E7EE /* Debugger.h */,
+				6AB0568821523B2700A6E7EE /* Debugger.m */,
 				6AB171F921246AD500F32968 /* JavaNativeModulesManager.m */,
 				6A0A04C420FB44DD001B720E /* CocoaModulesManager.h */,
 				6A0A04C520FB44DE001B720E /* CocoaModulesManager.m */,
@@ -652,6 +657,7 @@
 				6A59D64E20E7D1CA008FB2AB /* SimiApiClass.m in Sources */,
 				6A0A04C620FB44DE001B720E /* CocoaModulesManager.m in Sources */,
 				6A59D65020E7D1CA008FB2AB /* SimiClassImpl.m in Sources */,
+				6AB0568A21523B2700A6E7EE /* Debugger.m in Sources */,
 				6A59D64F20E7D1CA008FB2AB /* Codifiable.m in Sources */,
 				6A59D64720E7D1CA008FB2AB /* SimiNativeClass.m in Sources */,
 				6A731F1920E80C7600F11E94 /* JavaNativeModulesManager.m in Sources */,

@@ -11,6 +11,7 @@ final class Constants {
     public static final String SUPER = "super";
     public static final String KEY = "key";
     public static final String VALUE = "value";
+    public static final String SET = "set";
 
     public static final String ITERATE = "iterate";
     public static final String NEXT = "next";
@@ -26,11 +27,12 @@ final class Constants {
     public static final String CLASS_NUMBER = "Number";
     public static final String CLASS_CLASS = "Class";
     public static final String CLASS_EXCEPTION = "Exception";
-		public static final String GLOBALS_CLASS_NAME = "Globals";
+    public static final String GLOBALS_CLASS_NAME = "Globals";
     public static final String CLASS_GLOBALS = GLOBALS_CLASS_NAME;
 
     public static final String PACKAGE_SIMI_API = "net.globulus.simi.api";
     public static final String API_CLASS_NAME = "JavaApi";
+
     public static final String EXCEPTION_NUMBER_FORMAT = "NumberFormatException";
     public static final String EXCEPTION_NIL_REFERENCE = "NilReferenceException";
     public static final String EXCEPTION_TYPE_MISMATCH = "TypeMismatchException";

@@ -422,6 +422,14 @@ SMTokenType *SMTokenType_values_[75];
   return JreStrcat("$$", SMCodifiable_getIndentationWithInt_(indentationLevel), [self toCode]);
 }
 
+- (jint)getLineNumber {
+  return -1;
+}
+
+- (jboolean)hasBreakPoint {
+  return false;
+}
+
 + (IOSObjectArray *)values {
   return SMTokenType_values();
 }
@@ -438,6 +446,8 @@ SMTokenType *SMTokenType_values_[75];
   static J2ObjcMethodInfo methods[] = {
     { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "[LSMTokenType;", 0x9, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMTokenType;", 0x9, 2, 3, -1, -1, -1, -1 },
   };
@@ -446,8 +456,10 @@ SMTokenType *SMTokenType_values_[75];
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(toCode);
   methods[1].selector = @selector(toCodeWithInt:withBoolean:);
-  methods[2].selector = @selector(values);
-  methods[3].selector = @selector(valueOfWithNSString:);
+  methods[2].selector = @selector(getLineNumber);
+  methods[3].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(values);
+  methods[5].selector = @selector(valueOfWithNSString:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "LEFT_PAREN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 4, -1, -1 },
@@ -527,7 +539,7 @@ SMTokenType *SMTokenType_values_[75];
     { "EOF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 78, -1, -1 },
   };
   static const void *ptrTable[] = { "toCode", "IZ", "valueOf", "LNSString;", &JreEnum(SMTokenType, LEFT_PAREN), &JreEnum(SMTokenType, RIGHT_PAREN), &JreEnum(SMTokenType, LEFT_BRACKET), &JreEnum(SMTokenType, RIGHT_BRACKET), &JreEnum(SMTokenType, COMMA), &JreEnum(SMTokenType, DOT), &JreEnum(SMTokenType, COLON), &JreEnum(SMTokenType, NEWLINE), &JreEnum(SMTokenType, BANG), &JreEnum(SMTokenType, BANG_BANG), &JreEnum(SMTokenType, BANG_EQUAL), &JreEnum(SMTokenType, EQUAL), &JreEnum(SMTokenType, EQUAL_EQUAL), &JreEnum(SMTokenType, GREATER), &JreEnum(SMTokenType, GREATER_EQUAL), &JreEnum(SMTokenType, LESS), &JreEnum(SMTokenType, LESS_EQUAL), &JreEnum(SMTokenType, LESS_GREATER), &JreEnum(SMTokenType, PLUS), &JreEnum(SMTokenType, PLUS_EQUAL), &JreEnum(SMTokenType, MINUS), &JreEnum(SMTokenType, MINUS_EQUAL), &JreEnum(SMTokenType, STAR), &JreEnum(SMTokenType, STAR_STAR), &JreEnum(SMTokenType, STAR_EQUAL), &JreEnum(SMTokenType, SLASH), &JreEnum(SMTokenType, SLASH_SLASH), &JreEnum(SMTokenType, SLASH_EQUAL), &JreEnum(SMTokenType, SLASH_SLASH_EQUAL), &JreEnum(SMTokenType, MOD), &JreEnum(SMTokenType, MOD_MOD), &JreEnum(SMTokenType, MOD_EQUAL), &JreEnum(SMTokenType, DOLLAR_LEFT_BRACKET), &JreEnum(SMTokenType, DOLLAR_EQUAL), &JreEnum(SMTokenType, QUESTION), &JreEnum(SMTokenType, QUESTION_QUESTION), &JreEnum(SMTokenType, QUESTION_QUESTION_EQUAL), &JreEnum(SMTokenType, IDENTIFIER), &JreEnum(SMTokenType, STRING), &JreEnum(SMTokenType, NUMBER), &JreEnum(SMTokenType, AND), &JreEnum(SMTokenType, BREAK), &JreEnum(SMTokenType, CLASS), &JreEnum(SMTokenType, CLASS_FINAL), &JreEnum(SMTokenType, CLASS_OPEN), &JreEnum(SMTokenType, CONTINUE), &JreEnum(SMTokenType, ELSE), &JreEnum(SMTokenType, FALSE), &JreEnum(SMTokenType, DEF), &JreEnum(SMTokenType, FOR), &JreEnum(SMTokenType, RESCUE), &JreEnum(SMTokenType, IF), &JreEnum(SMTokenType, NIL), &JreEnum(SMTokenType, OR), &JreEnum(SMTokenType, PRINT), &JreEnum(SMTokenType, RETURN), &JreEnum(SMTokenType, SUPER), &JreEnum(SMTokenType, SELF), &JreEnum(SMTokenType, TRUE), &JreEnum(SMTokenType, WHILE), &JreEnum(SMTokenType, PASS), &JreEnum(SMTokenType, IN), &JreEnum(SMTokenType, IS), &JreEnum(SMTokenType, NOT), &JreEnum(SMTokenType, ELSIF), &JreEnum(SMTokenType, END), &JreEnum(SMTokenType, ISNOT), &JreEnum(SMTokenType, NOTIN), &JreEnum(SMTokenType, NATIVE), &JreEnum(SMTokenType, IMPORT), &JreEnum(SMTokenType, YIELD), &JreEnum(SMTokenType, WHEN), &JreEnum(SMTokenType, GU), &JreEnum(SMTokenType, IVIC), &JreEnum(SMTokenType, EOF), "Ljava/lang/Enum<LTokenType;>;LCodifiable;" };
-  static const J2ObjcClassInfo _SMTokenType = { "TokenType", "net.globulus.simi", ptrTable, methods, fields, 7, 0x4010, 4, 75, -1, -1, -1, 79, -1 };
+  static const J2ObjcClassInfo _SMTokenType = { "TokenType", "net.globulus.simi", ptrTable, methods, fields, 7, 0x4010, 6, 75, -1, -1, -1, 79, -1 };
   return &_SMTokenType;
 }
 

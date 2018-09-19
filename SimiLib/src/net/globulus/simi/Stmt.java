@@ -8,6 +8,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
 
   abstract <R> R accept(Visitor<R> visitor, Object... args);
 
+  @Override
+  public int hashCode() {
+    return super.hashCode() + toCode(0, true).hashCode();
+  }
+
   interface Visitor<R> {
     R visitAnnotationStmt(Annotation stmt);
     R visitBreakStmt(Break stmt);
@@ -46,6 +51,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return TokenType.BANG.toCode(indentationLevel, false) + expr.toCode(indentationLevel, true) + TokenType.NEWLINE.toCode();
     }
+
+    @Override
+    public int getLineNumber() {
+      return expr.getLineNumber();
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return false;
+    }
   }
 
   static class Break extends Stmt {
@@ -63,6 +78,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return name.type.toCode(indentationLevel, false) + TokenType.NEWLINE.toCode();
+    }
+
+    @Override
+    public int getLineNumber() {
+      return name.line;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return name.hasBreakpoint;
     }
   }
 
@@ -126,6 +151,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
               .append(TokenType.NEWLINE.toCode())
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return opener.line;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return opener.hasBreakpoint;
+    }
   }
 
   static class Continue extends Stmt {
@@ -144,6 +179,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return name.type.toCode(indentationLevel, false) + TokenType.NEWLINE.toCode();
     }
+
+    @Override
+    public int getLineNumber() {
+      return name.line;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return name.hasBreakpoint;
+    }
   }
 
   static class Expression extends Stmt {
@@ -161,6 +206,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return expression.toCode(indentationLevel, false) + TokenType.NEWLINE.toCode();
+    }
+
+    @Override
+    public int getLineNumber() {
+      return expression.getLineNumber();
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return expression.hasBreakPoint();
     }
   }
 
@@ -189,6 +244,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
               .append(block.toCode(indentationLevel, false, name.lexeme))
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return name.line;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return name.hasBreakpoint;
+    }
   }
 
     static class Elsif extends Stmt implements BlockStmt {
@@ -216,6 +281,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
       @Override
       public String toCode(int indentationLevel, boolean ignoreFirst) {
         return condition.toCode(indentationLevel, ignoreFirst) + thenBranch.toCode(indentationLevel, true);
+      }
+
+      @Override
+      public int getLineNumber() {
+        return condition.getLineNumber();
+      }
+
+      @Override
+      public boolean hasBreakPoint() {
+        return condition.hasBreakPoint();
       }
     }
 
@@ -259,6 +334,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
               .append(elseBranch != null ? TokenType.ELSE.toCode(indentationLevel, false) + elseBranch.toCode(indentationLevel, true) : "")
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return ifstmt.getLineNumber();
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return ifstmt.hasBreakPoint();
+    }
   }
 
   static class Print extends Stmt {
@@ -276,6 +361,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return TokenType.PRINT.toCode(indentationLevel, false) + " " + expression.toCode(0, false) + TokenType.NEWLINE.toCode();
+    }
+
+    @Override
+    public int getLineNumber() {
+      return expression.getLineNumber();
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return expression.hasBreakPoint();
     }
   }
 
@@ -297,6 +392,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return keyword.type.toCode() + " " + block.toCode(indentationLevel, true);
     }
+
+    @Override
+    public int getLineNumber() {
+      return keyword.line;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return keyword.hasBreakpoint;
+    }
   }
 
   static class Import extends Stmt {
@@ -317,6 +422,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return keyword.type.toCode(indentationLevel, false) + " " + value.toCode(0, false) + TokenType.NEWLINE.toCode();
     }
+
+    @Override
+    public int getLineNumber() {
+      return keyword.line;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return keyword.hasBreakpoint;
+    }
   }
 
   static class Return extends Stmt {
@@ -335,7 +450,19 @@ abstract class Stmt implements SimiStatement, Codifiable {
 
     @Override
     public String toCode(int indentationLevel, boolean ignoreFirst) {
-      return keyword.type.toCode(indentationLevel, false) + " " + value.toCode(0, false) + TokenType.NEWLINE.toCode();
+      return keyword.type.toCode(indentationLevel, false) + " "
+              + ((value != null) ? value.toCode(0, false) : TempNull.INSTANCE.toCode(0, false))
+              + TokenType.NEWLINE.toCode();
+    }
+
+    @Override
+    public int getLineNumber() {
+      return keyword.line;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return keyword.hasBreakpoint;
     }
   }
 
@@ -368,6 +495,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
               .append(condition.toCode(indentationLevel, false))
               .append(body.toCode(indentationLevel, true))
               .toString();
+    }
+
+    @Override
+    public int getLineNumber() {
+      return condition.getLineNumber();
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return condition.hasBreakPoint();
     }
   }
 
@@ -405,6 +542,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
               .append(body.toCode(indentationLevel, true))
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return var.getLineNumber();
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return var.hasBreakPoint();
+    }
   }
 
   static class Yield extends Stmt {
@@ -424,6 +571,16 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return keyword.type.toCode(indentationLevel, false) + " " + value.toCode(0, false) + TokenType.NEWLINE.toCode();
+    }
+
+    @Override
+    public int getLineNumber() {
+      return keyword.line;
+    }
+
+    @Override
+    public boolean hasBreakPoint() {
+      return keyword.hasBreakpoint;
     }
   }
 }

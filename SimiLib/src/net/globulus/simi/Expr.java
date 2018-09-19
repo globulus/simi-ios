@@ -95,11 +95,11 @@ abstract class Expr implements Codifiable {
         if (!(stmt instanceof Stmt.Expression)) {
           return false;
         }
-        Stmt.Expression expr = (Stmt.Expression) stmt;
-        if (!(expr.expression instanceof Expr.Literal)) {
+        Expr expr = ((Stmt.Expression) stmt).expression;
+        if (!(expr instanceof Expr.Literal)) {
           return false;
         }
-        return ((Expr.Literal) expr.expression).value instanceof Pass;
+        return ((Expr.Literal) expr).value instanceof Pass;
       }
 
       String toCode(int indentationLevel, boolean ignoreFirst, String name) {
@@ -143,7 +143,17 @@ abstract class Expr implements Codifiable {
           return toCode(indentationLevel, ignoreFirst, null);
       }
 
-      private List<Stmt> processStatements() {
+      @Override
+      public int getLineNumber() {
+        return declaration.line;
+      }
+
+        @Override
+        public boolean hasBreakPoint() {
+            return declaration.hasBreakpoint;
+        }
+
+        private List<Stmt> processStatements() {
           List<Stmt> localStatements = new ArrayList<>();
           final int size = statements.size();
           for (int i = 0; i < size; i++) {
@@ -157,7 +167,7 @@ abstract class Expr implements Codifiable {
               otherStmts.addAll(statements.subList(i + 1, size));
               Expr.Call call = new Expr.Call(expr.value.callee, expr.value.paren, new ArrayList<>(expr.value.arguments));
               call.arguments.add(new Expr.Block(
-                      new Token(TokenType.DEF, null, null, expr.assign.line),
+                      new Token(TokenType.DEF, null, null, expr.assign.line, expr.assign.file),
                       Collections.singletonList(response),
                       otherStmts,
                       true));
@@ -190,6 +200,16 @@ abstract class Expr implements Codifiable {
                       .map(t -> t.lexeme)
                       .collect(Collectors.joining(TokenType.DOT.toCode()));
       }
+
+      @Override
+      public int getLineNumber() {
+        return tokens.get(0).line;
+      }
+
+        @Override
+        public boolean hasBreakPoint() {
+            return false;
+        }
     }
 
   static class Assign extends Expr {
@@ -225,6 +245,16 @@ abstract class Expr implements Codifiable {
               .append(value.toCode(0, false))
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return name.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return name.hasBreakpoint;
+      }
   }
 
   static class ObjectDecomp extends Expr {
@@ -255,6 +285,16 @@ abstract class Expr implements Codifiable {
               .append(((Get)((Binary) assigns.get(0).value).left).object.toCode(0, false))
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return assigns.get(0).getLineNumber();
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return assigns.get(0).hasBreakPoint();
+      }
   }
 
   static class Binary extends Expr {
@@ -277,6 +317,16 @@ abstract class Expr implements Codifiable {
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return left.toCode(indentationLevel, ignoreFirst) + " " + operator.type.toCode() + " " + right.toCode(0, false);
     }
+
+    @Override
+    public int getLineNumber() {
+      return operator.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return operator.hasBreakpoint;
+      }
   }
 
   static class Call extends Expr {
@@ -306,6 +356,16 @@ abstract class Expr implements Codifiable {
               .append(TokenType.RIGHT_PAREN.toCode())
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return paren.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return paren.hasBreakpoint;
+      }
   }
 
   static class Get extends Expr {
@@ -330,6 +390,16 @@ abstract class Expr implements Codifiable {
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return object.toCode(indentationLevel, ignoreFirst) + TokenType.DOT.toCode() + name.toCode(0, false);
     }
+
+    @Override
+    public int getLineNumber() {
+      return origin.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return origin.hasBreakpoint;
+      }
   }
 
   static class Grouping extends Expr {
@@ -353,6 +423,16 @@ abstract class Expr implements Codifiable {
               .append(TokenType.RIGHT_PAREN.toCode())
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return expression.getLineNumber();
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return expression.hasBreakPoint();
+      }
   }
 
   static class Gu extends Expr {
@@ -374,6 +454,16 @@ abstract class Expr implements Codifiable {
               .append(expr.toCode(0, false))
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return expr.getLineNumber();
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return expr.hasBreakPoint();
+      }
   }
 
   static class Ivic extends Expr {
@@ -395,6 +485,16 @@ abstract class Expr implements Codifiable {
             .append(expr.toCode(0, false))
             .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return expr.getLineNumber();
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return expr.hasBreakPoint();
+      }
   }
 
   static class Literal extends Expr {
@@ -416,6 +516,16 @@ abstract class Expr implements Codifiable {
       }
       return value.toCode(indentationLevel, ignoreFirst);
     }
+
+    @Override
+    public int getLineNumber() {
+      return (value == null) ? -1 : value.getLineNumber();
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return (value != null) && value.hasBreakPoint();
+      }
   }
 
   static class Logical extends Expr {
@@ -443,6 +553,16 @@ abstract class Expr implements Codifiable {
               .append(left.toCode(0, false))
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return operator.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return operator.hasBreakpoint;
+      }
   }
 
   static class Set extends Expr {
@@ -472,6 +592,16 @@ abstract class Expr implements Codifiable {
               .append(value.toCode(0, false))
               .toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return origin.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return origin.hasBreakpoint;
+      }
   }
 
   static class Super extends Expr {
@@ -501,6 +631,16 @@ abstract class Expr implements Codifiable {
       sb.append(TokenType.DOT.toCode()).append(method.lexeme);
       return sb.toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return keyword.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return keyword.hasBreakpoint;
+      }
   }
 
   static class Self extends Expr {
@@ -527,6 +667,16 @@ abstract class Expr implements Codifiable {
       }
       return sb.toString();
     }
+
+    @Override
+    public int getLineNumber() {
+      return keyword.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return keyword.hasBreakpoint;
+      }
   }
 
   static class Unary extends Expr {
@@ -547,6 +697,16 @@ abstract class Expr implements Codifiable {
     public String toCode(int indentationLevel, boolean ignoreFirst) {
       return  operator.type.toCode(indentationLevel, ignoreFirst) + " " + right.toCode(0, false);
     }
+
+    @Override
+    public int getLineNumber() {
+      return operator.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return operator.hasBreakpoint;
+      }
   }
 
     static class Variable extends Expr {
@@ -565,6 +725,16 @@ abstract class Expr implements Codifiable {
       public String toCode(int indentationLevel, boolean ignoreFirst) {
         return (ignoreFirst ? "" : Codifiable.getIndentation(indentationLevel)) + name.lexeme;
       }
+
+      @Override
+      public int getLineNumber() {
+        return name.line;
+      }
+
+        @Override
+        public boolean hasBreakPoint() {
+            return name.hasBreakpoint;
+        }
     }
 
     static class ObjectLiteral extends Expr {
@@ -596,6 +766,16 @@ abstract class Expr implements Codifiable {
                 .append(TokenType.RIGHT_BRACKET.toCode(indentationLevel, false))
                 .toString();
       }
+
+      @Override
+      public int getLineNumber() {
+        return opener.line;
+      }
+
+        @Override
+        public boolean hasBreakPoint() {
+            return opener.hasBreakpoint;
+        }
     }
 
   static class Yield extends Expr {
@@ -626,5 +806,15 @@ abstract class Expr implements Codifiable {
               + " "
               + value.toCode(0, false);
     }
+
+    @Override
+    public int getLineNumber() {
+      return keyword.line;
+    }
+
+      @Override
+      public boolean hasBreakPoint() {
+          return keyword.hasBreakpoint;
+      }
   }
 }

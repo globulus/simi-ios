@@ -7,6 +7,7 @@
 #include "java/util/HashMap.h"
 #include "java/util/List.h"
 #include "java/util/Map.h"
+#include "java/util/Set.h"
 #include "BlockImpl.h"
 #include "Environment.h"
 #include "Expr.h"
@@ -133,6 +134,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   return result;
 }
 
+- (NSString *)toStringWithoutGlobal {
+  if (enclosing_ == nil) {
+    return @"Global";
+  }
+  NSString *result = [((id<JavaUtilMap>) nil_chk(props_)) description];
+  if (enclosing_->enclosing_ != nil) {
+    (void) JreStrAppendStrong(&result, "$$", @" -> ", [enclosing_ toStringWithoutGlobal]);
+  }
+  return result;
+}
+
 - (SMBlockImpl *)getOrAssignBlockWithSMStmt_BlockStmt:(id<SMStmt_BlockStmt>)stmt
                                      withSMExpr_Block:(SMExpr_Block *)declaration
                                       withJavaUtilMap:(id<JavaUtilMap>)yieldedStmts {
@@ -164,6 +176,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   SMEnvironment_popBlockWithSMStmt_BlockStmt_withJavaUtilMap_(self, stmt, yieldedStmts);
 }
 
+- (SMEnvironment *)deepClone {
+  SMEnvironment *clone = new_SMEnvironment_initWithSMEnvironment_(enclosing_);
+  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((id<JavaUtilMap>) nil_chk(props_)) entrySet])) {
+    id<SMSimiProperty> value = [((id<JavaUtilMap_Entry>) nil_chk(entry_)) getValue];
+    (void) [clone->props_ putWithId:[entry_ getKey] withId:(value == nil) ? nil : [((id<SMSimiProperty>) nil_chk(value)) cloneWithBoolean:false]];
+  }
+  return clone;
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
@@ -178,9 +199,11 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x0, 13, 15, -1, -1, -1, -1 },
     { NULL, "LSMSimiProperty;", 0x1, 16, 2, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 17, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMBlockImpl;", 0x0, 18, 19, -1, 20, -1, -1 },
     { NULL, "V", 0x0, 21, 22, -1, 23, -1, -1 },
     { NULL, "V", 0x2, 24, 22, -1, 23, -1, -1 },
+    { NULL, "LSMEnvironment;", 0x0, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -197,9 +220,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[9].selector = @selector(assignAtWithInt:withSMToken:withSMSimiProperty:withBoolean:);
   methods[10].selector = @selector(tryGetWithNSString:);
   methods[11].selector = @selector(description);
-  methods[12].selector = @selector(getOrAssignBlockWithSMStmt_BlockStmt:withSMExpr_Block:withJavaUtilMap:);
-  methods[13].selector = @selector(endBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
-  methods[14].selector = @selector(popBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
+  methods[12].selector = @selector(toStringWithoutGlobal);
+  methods[13].selector = @selector(getOrAssignBlockWithSMStmt_BlockStmt:withSMExpr_Block:withJavaUtilMap:);
+  methods[14].selector = @selector(endBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
+  methods[15].selector = @selector(popBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
+  methods[16].selector = @selector(deepClone);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "enclosing_", "LSMEnvironment;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -208,7 +233,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "depth_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMEnvironment;", "has", "LNSString;", "get", "LSMToken;", "assign", "LSMToken;LSMSimiProperty;Z", "define", "LNSString;LSMSimiProperty;", "ancestor", "I", "getAt", "ILNSString;", "assignAt", "ILSMToken;LSMSimiProperty;", "ILSMToken;LSMSimiProperty;Z", "tryGet", "toString", "getOrAssignBlock", "LSMStmt_BlockStmt;LSMExpr_Block;LJavaUtilMap;", "(LStmt$BlockStmt;LExpr$Block;Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;)LBlockImpl;", "endBlock", "LSMStmt_BlockStmt;LJavaUtilMap;", "(LStmt$BlockStmt;Ljava/util/Map<LStmt$BlockStmt;LSparseArray<LBlockImpl;>;>;)V", "popBlock", "Ljava/util/Map<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/Map<LStmt$BlockStmt;LBlockImpl;>;" };
-  static const J2ObjcClassInfo _SMEnvironment = { "Environment", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 15, 4, -1, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMEnvironment = { "Environment", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 17, 4, -1, -1, -1, -1, -1 };
   return &_SMEnvironment;
 }
 
@@ -235,7 +260,7 @@ void SMEnvironment_initWithSMEnvironment_(SMEnvironment *self, SMEnvironment *en
   self->props_ = new_JavaUtilHashMap_init();
   self->statementBlocks_ = new_JavaUtilHashMap_init();
   self->enclosing_ = enclosing;
-  self->depth_ = ((SMEnvironment *) nil_chk(enclosing))->depth_ + 1;
+  self->depth_ = (enclosing != nil) ? (((SMEnvironment *) nil_chk(enclosing))->depth_ + 1) : 0;
 }
 
 SMEnvironment *new_SMEnvironment_initWithSMEnvironment_(SMEnvironment *enclosing) {

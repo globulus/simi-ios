@@ -44,7 +44,10 @@ class Scanner {
     keywords.put("while",  TokenType.WHILE);
     keywords.put("yield",  TokenType.YIELD);
   }
+
+  private final String fileName;
   private final String source;
+  private final Debugger debugger;
   private final List<Token> tokens = new ArrayList<>();
 
   private int start = 0;
@@ -53,9 +56,12 @@ class Scanner {
   private int stringInterpolationParentheses = 0;
   private char lastStringOpener = '"';
 
-  Scanner(String source) {
+  Scanner(String fileName, String source, Debugger debugger) {
+    this.fileName = fileName;
     this.source = source;
+    this.debugger = debugger;
   }
+
   List<Token> scanTokens(boolean addEof) {
     while (!isAtEnd()) {
       // We are at the beginning of the next lexeme.
@@ -64,7 +70,7 @@ class Scanner {
     }
 
     if (addEof) {
-      tokens.add(new Token(TokenType.EOF, "", null, line));
+      tokens.add(new Token(TokenType.EOF, "", null, line, fileName));
     }
     return tokens;
   }
@@ -97,7 +103,6 @@ class Scanner {
         addToken(TokenType.SELF);
         addToken(TokenType.DOT);
       break;
-//> two-char-tokens
       case '?': {
         if (match('?')) {
           if (match('=')) {
@@ -174,7 +179,23 @@ class Scanner {
         } break;
       case '#': {
         // A comment goes until the end of the line.
-        while (peek() != '\n' && !isAtEnd()) advance();
+        while (peek() != '\n' && !isAtEnd()) {
+            advance();
+        }
+        if (debugger != null) {
+            String comment = source.substring(start + 1, current);
+            if (comment.trim().startsWith(Debugger.BREAKPOINT_LEXEME)) {
+                int size = tokens.size();
+                for (int i = size - 1; i >= 0; i--) {
+                  Token token = tokens.get(i);
+                  if (token.line == line) {
+                    token.hasBreakpoint = true;
+                  } else {
+                    break;
+                  }
+                }
+            }
+        }
       } break;
       case '\\': {
         if (match('\n')) {
@@ -381,6 +402,6 @@ class Scanner {
 
   private void addToken(TokenType type, SimiValue literal) {
     String text = source.substring(start, current);
-    tokens.add(new Token(type, text, literal, line));
+    tokens.add(new Token(type, text, literal, line, fileName));
   }
 }

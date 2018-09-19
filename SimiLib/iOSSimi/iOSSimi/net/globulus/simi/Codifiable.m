@@ -17,16 +17,20 @@
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "LNSString;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x9, 2, 3, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(toCodeWithInt:withBoolean:);
-  methods[1].selector = @selector(getIndentationWithInt:);
+  methods[1].selector = @selector(getLineNumber);
+  methods[2].selector = @selector(hasBreakPoint);
+  methods[3].selector = @selector(getIndentationWithInt:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "toCode", "IZ", "getIndentation", "I" };
-  static const J2ObjcClassInfo _SMCodifiable = { "Codifiable", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMCodifiable = { "Codifiable", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 4, 0, -1, -1, -1, -1, -1 };
   return &_SMCodifiable;
 }
 

@@ -8,7 +8,10 @@ import java.util.Map;
 
 public class ActiveSimi {
 
+    private static final String FILE_ACTIVE_SIMI = "ActiveSimi";
+
     private static Interpreter interpreter;
+    private static Debugger debugger;
     static boolean hadError = false;
     static boolean hadRuntimeError = false;
     private static ImportResolver importResolver;
@@ -16,6 +19,14 @@ public class ActiveSimi {
     private static List<String> resolvedImports = new ArrayList<>();
 
     private ActiveSimi() { }
+
+    public static void setDebugMode(boolean debug) {
+        if (debug) {
+            debugger = new Debugger();
+        } else {
+            debugger = null;
+        }
+    }
 
     public static void load(String... files) {
         ErrorHub.sharedInstance().removeWatcher(WATCHER);
@@ -77,7 +88,7 @@ public class ActiveSimi {
             nativeModulesManagers.put("jar", new JavaNativeModulesManager());
             nativeModulesManagers.put("framework", new CocoaNativeModulesManager());
 
-            interpreter = new Interpreter(nativeModulesManagers.values());
+            interpreter = new Interpreter(nativeModulesManagers.values(), debugger);
         } else {
             for (NativeModulesManager manager : interpreter.nativeModulesManagers) {
                 if (manager instanceof JavaNativeModulesManager) {
@@ -88,9 +99,9 @@ public class ActiveSimi {
             }
         }
 
-        Scanner scanner = new Scanner(source);
+        Scanner scanner = new Scanner(FILE_ACTIVE_SIMI, source, debugger);
         List<Token> tokens = scanImports(scanner.scanTokens(true), nativeModulesManagers);
-        Parser parser = new Parser(tokens);
+        Parser parser = new Parser(tokens, debugger);
         List<Stmt> statements = parser.parse();
 
         // Stop if there was a syntax error.
@@ -104,8 +115,8 @@ public class ActiveSimi {
     }
 
     private static SimiProperty runExpression(String expression) {
-        List<Token> tokens  = new Scanner(expression).scanTokens(true);
-        List<Stmt> statements = new Parser(tokens).parse();
+        List<Token> tokens  = new Scanner(FILE_ACTIVE_SIMI, expression, debugger).scanTokens(true);
+        List<Stmt> statements = new Parser(tokens, debugger).parse();
         return interpreter.interpret(statements);
     }
 
@@ -131,7 +142,7 @@ public class ActiveSimi {
             // Path path = Paths.get(location);
             String pathString = location.toLowerCase();
             if (pathString.endsWith(".simi")) {
-                List<Token> tokens = new Scanner(readFile(location)).scanTokens(false);
+                List<Token> tokens = new Scanner(pathString, readFile(location), debugger).scanTokens(false);
                 result.addAll(scanImports(tokens, nativeModulesManagers));
             } else if (nativeModulesManagers != null) {
                 String extension = pathString.substring(pathString.lastIndexOf('.') + 1);
@@ -158,7 +169,7 @@ public class ActiveSimi {
         public void runtimeError(RuntimeError error) {
 
             System.err.println(error.getMessage() +
-                    "\n[line " + error.token.line + "]");
+                    "\n[" + error.token.file + " line " + error.token.line + "]");
             hadRuntimeError = true;
         }
     };
