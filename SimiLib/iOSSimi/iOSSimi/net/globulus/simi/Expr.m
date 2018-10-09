@@ -157,7 +157,6 @@ __attribute__((unused)) static SMExpr_Call_$Lambda$1 *create_SMExpr_Call_$Lambda
 
 @interface SMExpr_ObjectLiteral_$Lambda$1 : NSObject < JavaUtilFunctionFunction > {
  @public
-  jboolean val$needsNewline_;
   jint val$indentationLevel_;
 }
 
@@ -167,11 +166,11 @@ __attribute__((unused)) static SMExpr_Call_$Lambda$1 *create_SMExpr_Call_$Lambda
 
 J2OBJC_EMPTY_STATIC_INIT(SMExpr_ObjectLiteral_$Lambda$1)
 
-__attribute__((unused)) static void SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(SMExpr_ObjectLiteral_$Lambda$1 *self, jboolean capture$0, jint capture$1);
+__attribute__((unused)) static void SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(SMExpr_ObjectLiteral_$Lambda$1 *self, jint capture$0);
 
-__attribute__((unused)) static SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1);
+__attribute__((unused)) static SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(jint capture$0);
 
 @implementation SMExpr
 
@@ -343,6 +342,10 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
   return ((SMToken *) nil_chk(declaration_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(declaration_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(declaration_))->hasBreakpoint_;
 }
@@ -362,6 +365,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
     { NULL, "LNSString;", 0x0, 8, 9, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 8, 10, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x2, -1, -1, -1, 11, -1, -1 },
   };
@@ -377,8 +381,9 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
   methods[6].selector = @selector(toCodeWithInt:withBoolean:withNSString:);
   methods[7].selector = @selector(toCodeWithInt:withBoolean:);
   methods[8].selector = @selector(getLineNumber);
-  methods[9].selector = @selector(hasBreakPoint);
-  methods[10].selector = @selector(processStatements);
+  methods[9].selector = @selector(getFileName);
+  methods[10].selector = @selector(hasBreakPoint);
+  methods[11].selector = @selector(processStatements);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "declaration_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -389,7 +394,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMExpr_Visitor)
     { "processedStatements_", "LJavaUtilList;", .constantValue.asLong = 0, 0x12, -1, -1, 13, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LJavaUtilList;LJavaUtilList;Z", "(LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LStmt;>;Z)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<+LSimiStatement;>;", "yield", "I", "toCode", "IZLNSString;", "IZ", "()Ljava/util/List<LStmt;>;", "Ljava/util/List<LExpr;>;", "Ljava/util/List<LStmt;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Block = { "Block", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 11, 6, 14, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Block = { "Block", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 12, 6, 14, -1, -1, -1, -1 };
   return &_SMExpr_Block;
 }
 
@@ -540,6 +545,10 @@ SMExpr_Block_$Lambda$2 *create_SMExpr_Block_$Lambda$2_initWithInt_(jint capture$
   return ((SMToken *) nil_chk([((id<JavaUtilList>) nil_chk(tokens_)) getWithInt:0]))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk([((id<JavaUtilList>) nil_chk(tokens_)) getWithInt:0]))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return false;
 }
@@ -550,6 +559,7 @@ SMExpr_Block_$Lambda$2 *create_SMExpr_Block_$Lambda$2_initWithInt_(jint capture$
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -559,13 +569,14 @@ SMExpr_Block_$Lambda$2 *create_SMExpr_Block_$Lambda$2_initWithInt_(jint capture$
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "tokens_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
   };
   static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LToken;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LToken;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Annotations = { "Annotations", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 8, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Annotations = { "Annotations", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 8, -1, -1, -1, -1 };
   return &_SMExpr_Annotations;
 }
 
@@ -647,6 +658,10 @@ SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init() {
   return ((SMToken *) nil_chk(name_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(name_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(name_))->hasBreakpoint_;
 }
@@ -657,6 +672,7 @@ SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init() {
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -666,7 +682,8 @@ SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init() {
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -675,7 +692,7 @@ SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init() {
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 8, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMToken;LSMExpr;LJavaUtilList;", "(LToken;LToken;LExpr;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "operator", "Ljava/util/List<LStmt$Annotation;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Assign = { "Assign", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 4, 9, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Assign = { "Assign", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 4, 9, -1, -1, -1, -1 };
   return &_SMExpr_Assign;
 }
 
@@ -753,6 +770,10 @@ SMExpr_Assign_$Lambda$1 *create_SMExpr_Assign_$Lambda$1_initWithInt_(jint captur
   return [((SMExpr_Assign *) nil_chk([((id<JavaUtilList>) nil_chk(assigns_)) getWithInt:0])) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr_Assign *) nil_chk([((id<JavaUtilList>) nil_chk(assigns_)) getWithInt:0])) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr_Assign *) nil_chk([((id<JavaUtilList>) nil_chk(assigns_)) getWithInt:0])) hasBreakPoint];
 }
@@ -763,6 +784,7 @@ SMExpr_Assign_$Lambda$1 *create_SMExpr_Assign_$Lambda$1_initWithInt_(jint captur
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -772,13 +794,14 @@ SMExpr_Assign_$Lambda$1 *create_SMExpr_Assign_$Lambda$1_initWithInt_(jint captur
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "assigns_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
   };
   static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LExpr$Assign;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LExpr$Assign;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_ObjectDecomp = { "ObjectDecomp", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 8, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_ObjectDecomp = { "ObjectDecomp", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 8, -1, -1, -1, -1 };
   return &_SMExpr_ObjectDecomp;
 }
 
@@ -859,6 +882,10 @@ SMExpr_ObjectDecomp_$Lambda$1 *create_SMExpr_ObjectDecomp_$Lambda$1_init() {
   return ((SMToken *) nil_chk(operator__))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(operator__))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(operator__))->hasBreakpoint_;
 }
@@ -869,6 +896,7 @@ SMExpr_ObjectDecomp_$Lambda$1 *create_SMExpr_ObjectDecomp_$Lambda$1_init() {
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -878,7 +906,8 @@ SMExpr_ObjectDecomp_$Lambda$1 *create_SMExpr_ObjectDecomp_$Lambda$1_init() {
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "left_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -886,7 +915,7 @@ SMExpr_ObjectDecomp_$Lambda$1 *create_SMExpr_ObjectDecomp_$Lambda$1_init() {
     { "right_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;LSMToken;LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "operator", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Binary = { "Binary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 3, 7, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Binary = { "Binary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 3, 7, -1, -1, -1, -1 };
   return &_SMExpr_Binary;
 }
 
@@ -925,11 +954,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Binary)
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst {
-  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMExpr *) nil_chk(callee_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst]) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, LEFT_PAREN))) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(arguments_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMExpr_Call_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$C", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], ' '))]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_PAREN))) toCode]])) description];
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMExpr *) nil_chk(callee_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst]) appendWithNSString:[((SMTokenType *) nil_chk(((SMToken *) nil_chk(paren_))->type_)) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(arguments_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMExpr_Call_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$C", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], ' '))]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_PAREN))) toCode]])) description];
 }
 
 - (jint)getLineNumber {
   return ((SMToken *) nil_chk(paren_))->line_;
+}
+
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(paren_))->file_;
 }
 
 - (jboolean)hasBreakPoint {
@@ -942,6 +975,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Binary)
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -951,7 +985,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Binary)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "callee_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -959,7 +994,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Binary)
     { "arguments_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;LSMToken;LJavaUtilList;", "(LExpr;LToken;Ljava/util/List<LExpr;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LExpr;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Call = { "Call", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 3, 8, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Call = { "Call", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 3, 8, -1, -1, -1, -1 };
   return &_SMExpr_Call;
 }
 
@@ -1043,6 +1078,10 @@ SMExpr_Call_$Lambda$1 *create_SMExpr_Call_$Lambda$1_init() {
   return ((SMToken *) nil_chk(origin_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(origin_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(origin_))->hasBreakpoint_;
 }
@@ -1053,6 +1092,7 @@ SMExpr_Call_$Lambda$1 *create_SMExpr_Call_$Lambda$1_init() {
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1062,7 +1102,8 @@ SMExpr_Call_$Lambda$1 *create_SMExpr_Call_$Lambda$1_init() {
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "origin_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -1071,7 +1112,7 @@ SMExpr_Call_$Lambda$1 *create_SMExpr_Call_$Lambda$1_init() {
     { "arity_", "LJavaLangInteger;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMExpr;LSMExpr;LJavaLangInteger;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Get = { "Get", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 4, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Get = { "Get", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 4, 6, -1, -1, -1, -1 };
   return &_SMExpr_Get;
 }
 
@@ -1116,6 +1157,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Get)
   return [((SMExpr *) nil_chk(expression_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr *) nil_chk(expression_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr *) nil_chk(expression_)) hasBreakPoint];
 }
@@ -1126,6 +1171,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Get)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1135,13 +1181,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Get)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expression_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ" };
-  static const J2ObjcClassInfo _SMExpr_Grouping = { "Grouping", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 0, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Grouping = { "Grouping", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 0, -1, -1, -1, -1 };
   return &_SMExpr_Grouping;
 }
 
@@ -1183,6 +1230,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Grouping)
   return [((SMExpr *) nil_chk(expr_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr *) nil_chk(expr_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr *) nil_chk(expr_)) hasBreakPoint];
 }
@@ -1193,6 +1244,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Grouping)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1202,13 +1254,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Grouping)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expr_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ" };
-  static const J2ObjcClassInfo _SMExpr_Gu = { "Gu", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 0, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Gu = { "Gu", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 0, -1, -1, -1, -1 };
   return &_SMExpr_Gu;
 }
 
@@ -1250,6 +1303,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Gu)
   return [((SMExpr *) nil_chk(expr_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr *) nil_chk(expr_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr *) nil_chk(expr_)) hasBreakPoint];
 }
@@ -1260,6 +1317,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Gu)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1269,13 +1327,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Gu)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expr_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ" };
-  static const J2ObjcClassInfo _SMExpr_Ivic = { "Ivic", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 0, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Ivic = { "Ivic", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 0, -1, -1, -1, -1 };
   return &_SMExpr_Ivic;
 }
 
@@ -1320,6 +1379,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Ivic)
   return (value_ == nil) ? -1 : [((SMSimiValue *) nil_chk(value_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return (value_ == nil) ? nil : [((SMSimiValue *) nil_chk(value_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return (value_ != nil) && [((SMSimiValue *) nil_chk(value_)) hasBreakPoint];
 }
@@ -1330,6 +1393,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Ivic)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1339,13 +1403,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Ivic)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "value_", "LSMSimiValue;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMSimiValue;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Literal = { "Literal", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Literal = { "Literal", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 6, -1, -1, -1, -1 };
   return &_SMExpr_Literal;
 }
 
@@ -1389,6 +1454,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Literal)
   return ((SMToken *) nil_chk(operator__))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(operator__))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(operator__))->hasBreakpoint_;
 }
@@ -1399,6 +1468,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Literal)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1408,7 +1478,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Literal)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "left_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -1416,7 +1487,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Literal)
     { "right_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;LSMToken;LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "operator", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Logical = { "Logical", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 3, 7, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Logical = { "Logical", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 3, 7, -1, -1, -1, -1 };
   return &_SMExpr_Logical;
 }
 
@@ -1463,6 +1534,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Logical)
   return ((SMToken *) nil_chk(origin_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(origin_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(origin_))->hasBreakpoint_;
 }
@@ -1473,6 +1548,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Logical)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1482,7 +1558,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Logical)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "origin_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -1491,7 +1568,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Logical)
     { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMExpr;LSMExpr;LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Set = { "Set", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 4, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Set = { "Set", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 4, 6, -1, -1, -1, -1 };
   return &_SMExpr_Set;
 }
 
@@ -1544,6 +1621,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Set)
   return ((SMToken *) nil_chk(keyword_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(keyword_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(keyword_))->hasBreakpoint_;
 }
@@ -1554,6 +1635,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Set)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1563,7 +1645,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Set)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -1572,7 +1655,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Set)
     { "arity_", "LJavaLangInteger;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMToken;LSMToken;LJavaLangInteger;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "superclass", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Super = { "Super", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 4, 7, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Super = { "Super", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 4, 7, -1, -1, -1, -1 };
   return &_SMExpr_Super;
 }
 
@@ -1622,6 +1705,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Super)
   return ((SMToken *) nil_chk(keyword_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(keyword_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(keyword_))->hasBreakpoint_;
 }
@@ -1632,6 +1719,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Super)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1641,14 +1729,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Super)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "specifier_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMToken;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Self = { "Self", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 2, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Self = { "Self", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 6, -1, -1, -1, -1 };
   return &_SMExpr_Self;
 }
 
@@ -1692,6 +1781,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Self)
   return ((SMToken *) nil_chk(operator__))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(operator__))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(operator__))->hasBreakpoint_;
 }
@@ -1702,6 +1795,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Self)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1711,14 +1805,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Self)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "operator__", "LSMToken;", .constantValue.asLong = 0, 0x10, 6, -1, -1, -1 },
     { "right_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "operator", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Unary = { "Unary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 2, 7, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Unary = { "Unary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 7, -1, -1, -1, -1 };
   return &_SMExpr_Unary;
 }
 
@@ -1761,6 +1856,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Unary)
   return ((SMToken *) nil_chk(name_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(name_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(name_))->hasBreakpoint_;
 }
@@ -1771,6 +1870,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Unary)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1780,13 +1880,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Unary)
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Variable = { "Variable", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Variable = { "Variable", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 6, -1, -1, -1, -1 };
   return &_SMExpr_Variable;
 }
 
@@ -1810,9 +1911,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Variable)
 @implementation SMExpr_ObjectLiteral
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)opener
-                         withJavaUtilList:(id<JavaUtilList>)props
-                              withBoolean:(jboolean)isDictionary {
-  SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(self, opener, props, isDictionary);
+                         withJavaUtilList:(id<JavaUtilList>)props {
+  SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_(self, opener, props);
   return self;
 }
 
@@ -1823,12 +1923,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Variable)
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst {
-  jboolean needsNewline = isDictionary_ && ![((id<JavaUtilList>) nil_chk(props_)) isEmpty];
-  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMTokenType *) nil_chk(((SMToken *) nil_chk(opener_))->type_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst]) appendWithNSString:needsNewline ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode] : @""])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(props_)) stream])) mapWithJavaUtilFunctionFunction:new_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(needsNewline, indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], (needsNewline ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode] : @" ")))]])) appendWithNSString:needsNewline ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode] : @""])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) description];
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_([((SMTokenType *) nil_chk(((SMToken *) nil_chk(opener_))->type_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst]) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(props_)) stream])) mapWithJavaUtilFunctionFunction:new_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]))]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) description];
 }
 
 - (jint)getLineNumber {
   return ((SMToken *) nil_chk(opener_))->line_;
+}
+
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(opener_))->file_;
 }
 
 - (jboolean)hasBreakPoint {
@@ -1841,42 +1944,42 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Variable)
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMToken:withJavaUtilList:withBoolean:);
+  methods[0].selector = @selector(initWithSMToken:withJavaUtilList:);
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "opener_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "props_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
-    { "isDictionary_", "Z", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;Z", "(LToken;Ljava/util/List<LExpr;>;Z)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LExpr;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_ObjectLiteral = { "ObjectLiteral", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 3, 8, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMToken;LJavaUtilList;", "(LToken;Ljava/util/List<LExpr;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LExpr;>;", "LSMExpr;" };
+  static const J2ObjcClassInfo _SMExpr_ObjectLiteral = { "ObjectLiteral", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 8, -1, -1, -1, -1 };
   return &_SMExpr_ObjectLiteral;
 }
 
 @end
 
-void SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMExpr_ObjectLiteral *self, SMToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
+void SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_(SMExpr_ObjectLiteral *self, SMToken *opener, id<JavaUtilList> props) {
   SMExpr_init(self);
   self->opener_ = opener;
   self->props_ = props;
-  self->isDictionary_ = isDictionary;
 }
 
-SMExpr_ObjectLiteral *new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
-  J2OBJC_NEW_IMPL(SMExpr_ObjectLiteral, initWithSMToken_withJavaUtilList_withBoolean_, opener, props, isDictionary)
+SMExpr_ObjectLiteral *new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_(SMToken *opener, id<JavaUtilList> props) {
+  J2OBJC_NEW_IMPL(SMExpr_ObjectLiteral, initWithSMToken_withJavaUtilList_, opener, props)
 }
 
-SMExpr_ObjectLiteral *create_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary) {
-  J2OBJC_CREATE_IMPL(SMExpr_ObjectLiteral, initWithSMToken_withJavaUtilList_withBoolean_, opener, props, isDictionary)
+SMExpr_ObjectLiteral *create_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_(SMToken *opener, id<JavaUtilList> props) {
+  J2OBJC_CREATE_IMPL(SMExpr_ObjectLiteral, initWithSMToken_withJavaUtilList_, opener, props)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_ObjectLiteral)
@@ -1884,7 +1987,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_ObjectLiteral)
 @implementation SMExpr_ObjectLiteral_$Lambda$1
 
 - (id)applyWithId:(SMExpr *)p {
-  return [((SMExpr *) nil_chk(p)) toCodeWithInt:val$needsNewline_ ? val$indentationLevel_ + 1 : 0 withBoolean:false];
+  return [((SMExpr *) nil_chk(p)) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -1897,18 +2000,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_ObjectLiteral)
 
 @end
 
-void SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(SMExpr_ObjectLiteral_$Lambda$1 *self, jboolean capture$0, jint capture$1) {
-  self->val$needsNewline_ = capture$0;
-  self->val$indentationLevel_ = capture$1;
+void SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(SMExpr_ObjectLiteral_$Lambda$1 *self, jint capture$0) {
+  self->val$indentationLevel_ = capture$0;
   NSObject_init(self);
 }
 
-SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1) {
-  J2OBJC_NEW_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithBoolean_withInt_, capture$0, capture$1)
+SMExpr_ObjectLiteral_$Lambda$1 *new_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithInt_, capture$0)
 }
 
-SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBoolean_withInt_(jboolean capture$0, jint capture$1) {
-  J2OBJC_CREATE_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithBoolean_withInt_, capture$0, capture$1)
+SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMExpr_ObjectLiteral_$Lambda$1, initWithInt_, capture$0)
 }
 
 @implementation SMExpr_Yield
@@ -1935,6 +2037,10 @@ SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBo
   return ((SMToken *) nil_chk(keyword_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(keyword_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(keyword_))->hasBreakpoint_;
 }
@@ -1945,6 +2051,7 @@ SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBo
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1954,7 +2061,8 @@ SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBo
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "var_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -1963,7 +2071,7 @@ SMExpr_ObjectLiteral_$Lambda$1 *create_SMExpr_ObjectLiteral_$Lambda$1_initWithBo
     { "value_", "LSMExpr_Call;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;LSMToken;LSMToken;LSMExpr_Call;", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 4, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMExpr_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 4, 6, -1, -1, -1, -1 };
   return &_SMExpr_Yield;
 }
 

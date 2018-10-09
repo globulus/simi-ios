@@ -26,6 +26,12 @@
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
+- (jint)getLineNumber;
+
+- (NSString *)getFileName;
+
+- (jboolean)hasBreakPoint;
+
 @end
 
 @interface SMCodifiable : NSObject

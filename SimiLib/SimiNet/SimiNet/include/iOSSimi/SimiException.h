@@ -44,10 +44,18 @@
 
 - (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
 
+- (jint)compareToWithId:(id<SMSimiObject>)o;
+
 - (id<SMSimiProperty>)getWithNSString:(NSString *)key
                 withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
+- (NSString *)getFileName;
+
+- (jint)getLineNumber;
+
 - (id<SMSimiClass>)getSimiClass;
+
+- (jboolean)hasBreakPoint;
 
 - (id<JavaUtilList>)keys;
 

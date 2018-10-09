@@ -134,13 +134,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   return result;
 }
 
-- (NSString *)toStringWithoutGlobal {
+- (NSString *)toStringWithoutValuesOrGlobal {
   if (enclosing_ == nil) {
     return @"Global";
   }
-  NSString *result = [((id<JavaUtilMap>) nil_chk(props_)) description];
+  NSString *result = [((id<JavaUtilSet>) nil_chk([((id<JavaUtilMap>) nil_chk(props_)) keySet])) description];
   if (enclosing_->enclosing_ != nil) {
-    (void) JreStrAppendStrong(&result, "$$", @" -> ", [enclosing_ toStringWithoutGlobal]);
+    (void) JreStrAppendStrong(&result, "$$", @" -> ", [enclosing_ toStringWithoutValuesOrGlobal]);
   }
   return result;
 }
@@ -220,7 +220,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[9].selector = @selector(assignAtWithInt:withSMToken:withSMSimiProperty:withBoolean:);
   methods[10].selector = @selector(tryGetWithNSString:);
   methods[11].selector = @selector(description);
-  methods[12].selector = @selector(toStringWithoutGlobal);
+  methods[12].selector = @selector(toStringWithoutValuesOrGlobal);
   methods[13].selector = @selector(getOrAssignBlockWithSMStmt_BlockStmt:withSMExpr_Block:withJavaUtilMap:);
   methods[14].selector = @selector(endBlockWithSMStmt_BlockStmt:withJavaUtilMap:);
   methods[15].selector = @selector(popBlockWithSMStmt_BlockStmt:withJavaUtilMap:);

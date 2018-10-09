@@ -361,9 +361,10 @@ class Parser {
           statements.add(new Stmt.Expression(new Expr.Set(name,
                   new Expr.Self(Token.self(), null), paramName, paramName)));
         }
-      } else if (name.lexeme.startsWith(Constants.SET) && block.params.size() == 1) {
+      } else if ((name.lexeme.startsWith(Constants.SET) || name.lexeme.startsWith(Constants.PRIVATE + Constants.SET))
+              && block.params.size() == 1) {
           statements = new ArrayList<>();
-          int offset = Constants.SET.length();
+          int offset = name.lexeme.startsWith(Constants.SET) ? Constants.SET.length() : (Constants.PRIVATE.length() + Constants.SET.length());
         Token valueName = new Token(TokenType.IDENTIFIER, name.lexeme.substring(offset, offset + 1).toLowerCase()
                 + name.lexeme.substring(offset + 1), null, name.line, name.file);
         Expr.Variable paramName = extractParamName(block.params.get(0));
@@ -459,10 +460,10 @@ class Parser {
   }
 
   private Integer peekParams() {
-    if (!check(LEFT_PAREN)) {
+    if (!check(LEFT_PAREN) && !check(DOLLAR_LEFT_PAREN)) {
       return null;
     }
-    if (peekSequence(LEFT_PAREN, RIGHT_PAREN)) {
+    if (peekSequence(LEFT_PAREN, RIGHT_PAREN) || peekSequence(DOLLAR_LEFT_PAREN, RIGHT_PAREN)) {
       return 0;
     }
     int len = tokens.size();
@@ -470,7 +471,7 @@ class Parser {
     int parenCount = 0;
     for (int i = current + 1; i < len; i++) {
       TokenType type = tokens.get(i).type;
-      if (type == LEFT_PAREN || type == LEFT_BRACKET || type == DOLLAR_LEFT_BRACKET) {
+      if (type == LEFT_PAREN || type == LEFT_BRACKET || type == DOLLAR_LEFT_PAREN || type == DOLLAR_LEFT_BRACKET) {
         parenCount++;
       } else if (type == RIGHT_PAREN || type == RIGHT_BRACKET) {
         if (parenCount == 0) {
@@ -604,7 +605,7 @@ class Parser {
   private Expr call() {
     Expr expr = primary();
     while (true) {
-      if (match(LEFT_PAREN)) {
+      if (match(LEFT_PAREN, DOLLAR_LEFT_PAREN)) {
         expr = finishCall(expr);
       } else if (match(DOT)) {
           Token dot = previous();
@@ -626,6 +627,7 @@ class Parser {
   }
 
     private Expr finishCall(Expr callee) {
+        Token paren = previous();
         List<Expr> arguments = new ArrayList<>();
         if (!check(RIGHT_PAREN)) {
             do {
@@ -633,7 +635,7 @@ class Parser {
                 arguments.add(expression());
             } while (match(COMMA));
         }
-        Token paren = consume(RIGHT_PAREN, "Expect ')' after arguments.");
+        consume(RIGHT_PAREN, "Expect ')' after arguments.");
         return new Expr.Call(callee, paren, arguments);
     }
 
@@ -721,19 +723,17 @@ class Parser {
   private Expr objectLiteral() {
       Token opener = previous();
       List<Expr> props = new ArrayList<>();
-      boolean dictionary = true;
       if (!check(RIGHT_BRACKET)) {
         matchAllNewlines();
-        dictionary = peekSequence(IDENTIFIER, EQUAL) || peekSequence(STRING, EQUAL);
         do {
           matchAllNewlines();
-          props.add(dictionary ? assignment() : or());
+          props.add(assignment());
           matchAllNewlines();
         } while (match(COMMA));
         matchAllNewlines();
       }
       consume(RIGHT_BRACKET, "Expect ']' at the end of object.");
-      return new Expr.ObjectLiteral(opener, props, dictionary);
+      return new Expr.ObjectLiteral(opener, props);
   }
 
   private void matchAllNewlines() {
@@ -878,14 +878,18 @@ class Parser {
         Expr.Binary typeCheck = (Expr.Binary) param;
         Expr paramName = typeCheck.left;
         Expr paramType = typeCheck.right;
+        Token paren = new Token(LEFT_PAREN, null, null, declaration.line, declaration.file);
           List<Stmt> exceptionStmt = Collections.singletonList(new Stmt.Expression(
                   new Expr.Call(new Expr.Get(declaration,
-                          new Expr.Call(new Expr.Variable(Token.named(Constants.EXCEPTION_TYPE_MISMATCH)), declaration,
+                          new Expr.Call(new Expr.Variable(Token.named(Constants.EXCEPTION_TYPE_MISMATCH)), paren,
                                   Arrays.asList(paramName, typeCheck.right)), new Expr.Variable(Token.named(Constants.RAISE)), 0),
-                  declaration, Collections.emptyList())
+                  paren, Collections.emptyList())
           ));
           stmts.add(0, new Stmt.If(
-                  new Stmt.Elsif(new Expr.Binary(paramName, new Token(ISNOT, null, null, declaration.line, declaration.file), paramType),
+                  new Stmt.Elsif(new Expr.Binary(
+                            new Expr.Binary(paramName, new Token(BANG_EQUAL, null, null, declaration.line, declaration.file), new Expr.Literal(null)),
+                            new Token(AND, null, null, declaration.line, declaration.file),
+                            new Expr.Binary(paramName, new Token(ISNOT, null, null, declaration.line, declaration.file), paramType)),
                           new Expr.Block(typeCheck.operator, Collections.emptyList(),
                                   exceptionStmt, true)), Collections.emptyList(), null));
       }
@@ -914,7 +918,7 @@ class Parser {
       }
     } else if (expr instanceof Expr.ObjectLiteral) { // Object decomposition
       Expr.ObjectLiteral objectLiteral = (Expr.ObjectLiteral) expr;
-      if (objectLiteral.isDictionary || objectLiteral.opener.type == DOLLAR_LEFT_BRACKET) {
+      if (/*objectLiteral.isDictionary || */objectLiteral.opener.type == DOLLAR_LEFT_BRACKET) {
         ErrorHub.sharedInstance().error(equals.line, "Invalid object decomposition syntax.");
       }
       List<Expr.Assign> assigns = new ArrayList<>();

@@ -18,19 +18,21 @@
     { NULL, "LSMSimiProperty;", 0x401, 0, 1, -1, 2, -1, -1 },
     { NULL, "LNSString;", 0x1, 3, 4, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(arity);
-  methods[1].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[1].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ" };
-  static const J2ObjcClassInfo _SMSimiCallable = { "SimiCallable", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 5, 0, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ" };
+  static const J2ObjcClassInfo _SMSimiCallable = { "SimiCallable", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 6, 0, -1, -1, -1, -1, -1 };
   return &_SMSimiCallable;
 }
 
@@ -42,6 +44,10 @@ NSString *SMSimiCallable_toCodeWithInt_withBoolean_(id<SMSimiCallable> self, jin
 
 jint SMSimiCallable_getLineNumber(id<SMSimiCallable> self) {
   return -1;
+}
+
+NSString *SMSimiCallable_getFileName(id<SMSimiCallable> self) {
+  return nil;
 }
 
 jboolean SMSimiCallable_hasBreakPoint(id<SMSimiCallable> self) {

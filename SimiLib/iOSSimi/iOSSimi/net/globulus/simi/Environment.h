@@ -85,7 +85,7 @@
 
 - (jboolean)hasWithNSString:(NSString *)key;
 
-- (NSString *)toStringWithoutGlobal;
+- (NSString *)toStringWithoutValuesOrGlobal;
 
 @end
 

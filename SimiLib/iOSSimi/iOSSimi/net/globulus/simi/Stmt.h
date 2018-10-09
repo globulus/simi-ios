@@ -197,6 +197,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_BlockStmt)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -244,6 +246,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Annotation)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -300,6 +304,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Break)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -363,6 +369,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Class)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -410,6 +418,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Continue)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -462,6 +472,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Expression)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -520,6 +532,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Function)
 
 - (id<JavaUtilList>)getChildren;
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -576,6 +590,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Elsif)
 
 - (id<JavaUtilList>)getChildren;
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -628,6 +644,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_If)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -677,6 +695,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Print)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -730,6 +750,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Rescue)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -781,6 +803,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Import)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -836,6 +860,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_Return)
 #pragma mark Public
 
 - (id<JavaUtilList>)getChildren;
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -894,6 +920,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_While)
 
 - (id<JavaUtilList>)getChildren;
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -947,6 +975,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMStmt_For)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 

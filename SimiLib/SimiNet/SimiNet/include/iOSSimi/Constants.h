@@ -23,8 +23,6 @@
 
 @interface SMConstants : NSObject
 
-+ (NSString *)MUTABLE;
-
 + (NSString *)PRIVATE;
 
 + (NSString *)IMPLICIT;
@@ -40,6 +38,8 @@
 + (NSString *)KEY;
 
 + (NSString *)VALUE;
+
++ (NSString *)SET;
 
 + (NSString *)ITERATE;
 
@@ -77,16 +77,13 @@
 
 + (NSString *)EXCEPTION_NUMBER_FORMAT;
 
++ (NSString *)EXCEPTION_NIL_REFERENCE;
+
 + (NSString *)EXCEPTION_TYPE_MISMATCH;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(SMConstants)
-
-inline NSString *SMConstants_get_MUTABLE(void);
-/*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT NSString *SMConstants_MUTABLE;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, MUTABLE, NSString *)
 
 inline NSString *SMConstants_get_PRIVATE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
@@ -127,6 +124,11 @@ inline NSString *SMConstants_get_VALUE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_VALUE;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, VALUE, NSString *)
+
+inline NSString *SMConstants_get_SET(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_SET;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, SET, NSString *)
 
 inline NSString *SMConstants_get_ITERATE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
@@ -217,6 +219,11 @@ inline NSString *SMConstants_get_EXCEPTION_NUMBER_FORMAT(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_NUMBER_FORMAT;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_NUMBER_FORMAT, NSString *)
+
+inline NSString *SMConstants_get_EXCEPTION_NIL_REFERENCE(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_NIL_REFERENCE;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_NIL_REFERENCE, NSString *)
 
 inline NSString *SMConstants_get_EXCEPTION_TYPE_MISMATCH(void);
 /*! INTERNAL ONLY - Use accessor function from above. */

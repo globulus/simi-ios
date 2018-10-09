@@ -400,7 +400,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMResolver_ClassType)
 
 - (JavaLangVoid *)visitObjectLiteralExprWithSMExpr_ObjectLiteral:(SMExpr_ObjectLiteral *)expr {
   for (SMExpr * __strong prop in nil_chk(((SMExpr_ObjectLiteral *) nil_chk(expr))->props_)) {
-    SMExpr *toResolve = expr->isDictionary_ ? ((SMExpr_Assign *) nil_chk(((SMExpr_Assign *) cast_chk(prop, [SMExpr_Assign class]))))->value_ : prop;
+    SMExpr *toResolve = ([prop isKindOfClass:[SMExpr_Assign class]]) ? ((SMExpr_Assign *) nil_chk(((SMExpr_Assign *) cast_chk(prop, [SMExpr_Assign class]))))->value_ : prop;
     SMResolver_resolveWithSMExpr_withNSObjectArray_(self, toResolve, [IOSObjectArray newArrayWithLength:0 type:NSObject_class_()]);
   }
   return nil;

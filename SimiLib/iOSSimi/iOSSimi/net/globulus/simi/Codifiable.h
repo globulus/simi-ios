@@ -28,6 +28,8 @@
 
 - (jint)getLineNumber;
 
+- (NSString *)getFileName;
+
 - (jboolean)hasBreakPoint;
 
 @end

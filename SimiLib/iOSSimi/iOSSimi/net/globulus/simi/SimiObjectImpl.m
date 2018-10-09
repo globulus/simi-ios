@@ -3,12 +3,13 @@
 //  source: src/SimiObjectImpl.java
 //
 
+#include "IOSClass.h"
 #include "J2ObjC_source.h"
-#include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
+#include "java/lang/Math.h"
 #include "java/lang/NumberFormatException.h"
-#include "java/lang/RuntimeException.h"
 #include "java/lang/StringBuilder.h"
+#include "java/util/AbstractMap.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Collection.h"
 #include "java/util/Collections.h"
@@ -19,14 +20,17 @@
 #include "java/util/List.h"
 #include "java/util/ListIterator.h"
 #include "java/util/Map.h"
+#include "java/util/Objects.h"
 #include "java/util/Set.h"
 #include "java/util/function/Consumer.h"
 #include "java/util/function/Function.h"
-#include "java/util/function/IntFunction.h"
+#include "java/util/function/Predicate.h"
 #include "java/util/function/Supplier.h"
+#include "java/util/function/ToDoubleFunction.h"
+#include "java/util/function/ToIntFunction.h"
+#include "java/util/function/ToLongFunction.h"
 #include "java/util/stream/Collector.h"
 #include "java/util/stream/Collectors.h"
-#include "java/util/stream/IntStream.h"
 #include "java/util/stream/Stream.h"
 #include "BlockImpl.h"
 #include "Codifiable.h"
@@ -52,104 +56,165 @@
 
 @interface SMSimiObjectImpl ()
 
-- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                      withBoolean:(jboolean)immutable;
+- (id<SMSimiProperty>)getFromClassWithSMToken:(SMToken *)name
+                          withJavaLangInteger:(JavaLangInteger *)arity;
+
+- (id<SMSimiProperty>)bindWithNSString:(NSString *)key
+                    withSMSimiProperty:(id<SMSimiProperty>)prop;
+
+- (void)setFieldWithNSString:(NSString *)key
+          withSMSimiProperty:(id<SMSimiProperty>)prop;
+
+- (void)checkMutabilityWithSMToken:(SMToken *)name
+             withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
+
+- (jboolean)valuesMatchWithSMSimiValue:(SMSimiValue *)a
+                       withSMSimiValue:(SMSimiValue *)b;
+
+- (jboolean)valuesMatchWithSMSimiProperty:(id<SMSimiProperty>)a
+                       withSMSimiProperty:(id<SMSimiProperty>)b;
 
 @end
 
-__attribute__((unused)) static void SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_(SMSimiObjectImpl *self, SMSimiClassImpl *clazz, jboolean immutable);
+__attribute__((unused)) static id<SMSimiProperty> SMSimiObjectImpl_getFromClassWithSMToken_withJavaLangInteger_(SMSimiObjectImpl *self, SMToken *name, JavaLangInteger *arity);
 
-@interface SMSimiObjectImpl_Dictionary_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+__attribute__((unused)) static id<SMSimiProperty> SMSimiObjectImpl_bindWithNSString_withSMSimiProperty_(SMSimiObjectImpl *self, NSString *key, id<SMSimiProperty> prop);
+
+__attribute__((unused)) static void SMSimiObjectImpl_setFieldWithNSString_withSMSimiProperty_(SMSimiObjectImpl *self, NSString *key, id<SMSimiProperty> prop);
+
+__attribute__((unused)) static void SMSimiObjectImpl_checkMutabilityWithSMToken_withSMSimiEnvironment_(SMSimiObjectImpl *self, SMToken *name, id<SMSimiEnvironment> environment);
+
+__attribute__((unused)) static jboolean SMSimiObjectImpl_valuesMatchWithSMSimiValue_withSMSimiValue_(SMSimiObjectImpl *self, SMSimiValue *a, SMSimiValue *b);
+
+__attribute__((unused)) static jboolean SMSimiObjectImpl_valuesMatchWithSMSimiProperty_withSMSimiProperty_(SMSimiObjectImpl *self, id<SMSimiProperty> a, id<SMSimiProperty> b);
+
+@interface SMSimiObjectImpl_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(NSString *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Dictionary_$Lambda$1)
+J2OBJC_STATIC_INIT(SMSimiObjectImpl_$Lambda$1)
 
-inline SMSimiObjectImpl_Dictionary_$Lambda$1 *SMSimiObjectImpl_Dictionary_$Lambda$1_get_instance(void);
-static SMSimiObjectImpl_Dictionary_$Lambda$1 *SMSimiObjectImpl_Dictionary_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Dictionary_$Lambda$1, instance, SMSimiObjectImpl_Dictionary_$Lambda$1 *)
+inline SMSimiObjectImpl_$Lambda$1 *SMSimiObjectImpl_$Lambda$1_get_instance(void);
+static SMSimiObjectImpl_$Lambda$1 *SMSimiObjectImpl_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_$Lambda$1, instance, SMSimiObjectImpl_$Lambda$1 *)
 
-__attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$1_init(SMSimiObjectImpl_Dictionary_$Lambda$1 *self);
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$1_init(SMSimiObjectImpl_$Lambda$1 *self);
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$1 *new_SMSimiObjectImpl_Dictionary_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$1 *new_SMSimiObjectImpl_$Lambda$1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$1 *create_SMSimiObjectImpl_Dictionary_$Lambda$1_init(void);
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$1 *create_SMSimiObjectImpl_$Lambda$1_init(void);
 
-@interface SMSimiObjectImpl_Dictionary_$Lambda$2 : NSObject < JavaUtilFunctionSupplier >
+@interface SMSimiObjectImpl_$Lambda$2 : NSObject < JavaUtilFunctionSupplier >
 
 - (id)get;
 
 @end
 
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Dictionary_$Lambda$2)
+J2OBJC_STATIC_INIT(SMSimiObjectImpl_$Lambda$2)
 
-inline SMSimiObjectImpl_Dictionary_$Lambda$2 *SMSimiObjectImpl_Dictionary_$Lambda$2_get_instance(void);
-static SMSimiObjectImpl_Dictionary_$Lambda$2 *SMSimiObjectImpl_Dictionary_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Dictionary_$Lambda$2, instance, SMSimiObjectImpl_Dictionary_$Lambda$2 *)
+inline SMSimiObjectImpl_$Lambda$2 *SMSimiObjectImpl_$Lambda$2_get_instance(void);
+static SMSimiObjectImpl_$Lambda$2 *SMSimiObjectImpl_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_$Lambda$2, instance, SMSimiObjectImpl_$Lambda$2 *)
 
-__attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$2_init(SMSimiObjectImpl_Dictionary_$Lambda$2 *self);
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$2_init(SMSimiObjectImpl_$Lambda$2 *self);
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$2 *new_SMSimiObjectImpl_Dictionary_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$2 *new_SMSimiObjectImpl_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$2 *create_SMSimiObjectImpl_Dictionary_$Lambda$2_init(void);
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$2 *create_SMSimiObjectImpl_$Lambda$2_init(void);
 
-@interface SMSimiObjectImpl_Dictionary_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
+@interface SMSimiObjectImpl_$Lambda$3 : NSObject < JavaUtilFunctionPredicate >
+
+- (jboolean)testWithId:(id<SMSimiProperty>)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMSimiObjectImpl_$Lambda$3)
+
+inline SMSimiObjectImpl_$Lambda$3 *SMSimiObjectImpl_$Lambda$3_get_instance(void);
+static SMSimiObjectImpl_$Lambda$3 *SMSimiObjectImpl_$Lambda$3_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_$Lambda$3, instance, SMSimiObjectImpl_$Lambda$3 *)
+
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$3_init(SMSimiObjectImpl_$Lambda$3 *self);
+
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$3 *new_SMSimiObjectImpl_$Lambda$3_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$3 *create_SMSimiObjectImpl_$Lambda$3_init(void);
+
+@interface SMSimiObjectImpl_$Lambda$4 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(id<SMSimiProperty>)a;
 
 @end
 
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Dictionary_$Lambda$3)
+J2OBJC_STATIC_INIT(SMSimiObjectImpl_$Lambda$4)
 
-inline SMSimiObjectImpl_Dictionary_$Lambda$3 *SMSimiObjectImpl_Dictionary_$Lambda$3_get_instance(void);
-static SMSimiObjectImpl_Dictionary_$Lambda$3 *SMSimiObjectImpl_Dictionary_$Lambda$3_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Dictionary_$Lambda$3, instance, SMSimiObjectImpl_Dictionary_$Lambda$3 *)
+inline SMSimiObjectImpl_$Lambda$4 *SMSimiObjectImpl_$Lambda$4_get_instance(void);
+static SMSimiObjectImpl_$Lambda$4 *SMSimiObjectImpl_$Lambda$4_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_$Lambda$4, instance, SMSimiObjectImpl_$Lambda$4 *)
 
-__attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$3_init(SMSimiObjectImpl_Dictionary_$Lambda$3 *self);
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$4_init(SMSimiObjectImpl_$Lambda$4 *self);
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$3 *new_SMSimiObjectImpl_Dictionary_$Lambda$3_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$4 *new_SMSimiObjectImpl_$Lambda$4_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$3 *create_SMSimiObjectImpl_Dictionary_$Lambda$3_init(void);
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$4 *create_SMSimiObjectImpl_$Lambda$4_init(void);
 
-@interface SMSimiObjectImpl_Dictionary_$Lambda$4 : NSObject < JavaUtilFunctionSupplier >
+@interface SMSimiObjectImpl_$Lambda$5 : NSObject < JavaUtilFunctionSupplier >
 
 - (id)get;
 
 @end
 
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Dictionary_$Lambda$4)
+J2OBJC_STATIC_INIT(SMSimiObjectImpl_$Lambda$5)
 
-inline SMSimiObjectImpl_Dictionary_$Lambda$4 *SMSimiObjectImpl_Dictionary_$Lambda$4_get_instance(void);
-static SMSimiObjectImpl_Dictionary_$Lambda$4 *SMSimiObjectImpl_Dictionary_$Lambda$4_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Dictionary_$Lambda$4, instance, SMSimiObjectImpl_Dictionary_$Lambda$4 *)
+inline SMSimiObjectImpl_$Lambda$5 *SMSimiObjectImpl_$Lambda$5_get_instance(void);
+static SMSimiObjectImpl_$Lambda$5 *SMSimiObjectImpl_$Lambda$5_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_$Lambda$5, instance, SMSimiObjectImpl_$Lambda$5 *)
 
-__attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$4_init(SMSimiObjectImpl_Dictionary_$Lambda$4 *self);
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$5_init(SMSimiObjectImpl_$Lambda$5 *self);
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$4 *new_SMSimiObjectImpl_Dictionary_$Lambda$4_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$5 *new_SMSimiObjectImpl_$Lambda$5_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$4 *create_SMSimiObjectImpl_Dictionary_$Lambda$4_init(void);
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$5 *create_SMSimiObjectImpl_$Lambda$5_init(void);
 
-@interface SMSimiObjectImpl_Dictionary_$Lambda$5 : NSObject < JavaUtilFunctionFunction >
+@interface SMSimiObjectImpl_$Lambda$6 : NSObject < JavaUtilFunctionFunction >
 
-- (id)applyWithId:(id<SMSimiProperty>)p;
+- (id)applyWithId:(id<SMSimiProperty>)a;
 
 @end
 
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Dictionary_$Lambda$5)
+J2OBJC_STATIC_INIT(SMSimiObjectImpl_$Lambda$6)
 
-inline SMSimiObjectImpl_Dictionary_$Lambda$5 *SMSimiObjectImpl_Dictionary_$Lambda$5_get_instance(void);
-static SMSimiObjectImpl_Dictionary_$Lambda$5 *SMSimiObjectImpl_Dictionary_$Lambda$5_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Dictionary_$Lambda$5, instance, SMSimiObjectImpl_Dictionary_$Lambda$5 *)
+inline SMSimiObjectImpl_$Lambda$6 *SMSimiObjectImpl_$Lambda$6_get_instance(void);
+static SMSimiObjectImpl_$Lambda$6 *SMSimiObjectImpl_$Lambda$6_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_$Lambda$6, instance, SMSimiObjectImpl_$Lambda$6 *)
 
-__attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$5_init(SMSimiObjectImpl_Dictionary_$Lambda$5 *self);
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$6_init(SMSimiObjectImpl_$Lambda$6 *self);
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$5 *new_SMSimiObjectImpl_Dictionary_$Lambda$5_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$6 *new_SMSimiObjectImpl_$Lambda$6_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$5 *create_SMSimiObjectImpl_Dictionary_$Lambda$5_init(void);
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$6 *create_SMSimiObjectImpl_$Lambda$6_init(void);
 
-@interface SMSimiObjectImpl_Dictionary_$Lambda$6 : NSObject < JavaUtilFunctionConsumer > {
+@interface SMSimiObjectImpl_$Lambda$7 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(id<JavaUtilMap_Entry>)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMSimiObjectImpl_$Lambda$7)
+
+inline SMSimiObjectImpl_$Lambda$7 *SMSimiObjectImpl_$Lambda$7_get_instance(void);
+static SMSimiObjectImpl_$Lambda$7 *SMSimiObjectImpl_$Lambda$7_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_$Lambda$7, instance, SMSimiObjectImpl_$Lambda$7 *)
+
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$7_init(SMSimiObjectImpl_$Lambda$7 *self);
+
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$7 *new_SMSimiObjectImpl_$Lambda$7_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$7 *create_SMSimiObjectImpl_$Lambda$7_init(void);
+
+@interface SMSimiObjectImpl_$Lambda$8 : NSObject < JavaUtilFunctionConsumer > {
  @public
   JavaUtilLinkedHashMap *val$sortedFields_;
 }
@@ -158,15 +223,51 @@ __attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$5 *create_SMS
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Dictionary_$Lambda$6)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_$Lambda$8)
 
-__attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(SMSimiObjectImpl_Dictionary_$Lambda$6 *self, JavaUtilLinkedHashMap *capture$0);
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$8_initWithJavaUtilLinkedHashMap_(SMSimiObjectImpl_$Lambda$8 *self, JavaUtilLinkedHashMap *capture$0);
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$6 *new_SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$8 *new_SMSimiObjectImpl_$Lambda$8_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0);
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$8 *create_SMSimiObjectImpl_$Lambda$8_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0);
 
-@interface SMSimiObjectImpl_Dictionary_$Lambda$7 : NSObject < JavaUtilFunctionFunction > {
+@interface SMSimiObjectImpl_$Lambda$9 : NSObject < JavaUtilComparator > {
+ @public
+  id<JavaUtilComparator> val$comparator_;
+}
+
+- (jint)compareWithId:(id<SMSimiProperty>)o1
+               withId:(id<SMSimiProperty>)o2;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_$Lambda$9)
+
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$9_initWithJavaUtilComparator_(SMSimiObjectImpl_$Lambda$9 *self, id<JavaUtilComparator> capture$0);
+
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$9 *new_SMSimiObjectImpl_$Lambda$9_initWithJavaUtilComparator_(id<JavaUtilComparator> capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$9 *create_SMSimiObjectImpl_$Lambda$9_initWithJavaUtilComparator_(id<JavaUtilComparator> capture$0);
+
+@interface SMSimiObjectImpl_$Lambda$10 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(id<SMSimiProperty>)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMSimiObjectImpl_$Lambda$10)
+
+inline SMSimiObjectImpl_$Lambda$10 *SMSimiObjectImpl_$Lambda$10_get_instance(void);
+static SMSimiObjectImpl_$Lambda$10 *SMSimiObjectImpl_$Lambda$10_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_$Lambda$10, instance, SMSimiObjectImpl_$Lambda$10 *)
+
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$10_init(SMSimiObjectImpl_$Lambda$10 *self);
+
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$10 *new_SMSimiObjectImpl_$Lambda$10_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$10 *create_SMSimiObjectImpl_$Lambda$10_init(void);
+
+@interface SMSimiObjectImpl_$Lambda$11 : NSObject < JavaUtilFunctionFunction > {
  @public
   NSString *val$indentation_;
   jint val$indentationLevel_;
@@ -176,87 +277,15 @@ __attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMS
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Dictionary_$Lambda$7)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_$Lambda$11)
 
-__attribute__((unused)) static void SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(SMSimiObjectImpl_Dictionary_$Lambda$7 *self, NSString *capture$0, jint capture$1);
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$11_initWithNSString_withInt_(SMSimiObjectImpl_$Lambda$11 *self, NSString *capture$0, jint capture$1);
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$7 *new_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(NSString *capture$0, jint capture$1) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$11 *new_SMSimiObjectImpl_$Lambda$11_initWithNSString_withInt_(NSString *capture$0, jint capture$1) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMSimiObjectImpl_Dictionary_$Lambda$7 *create_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(NSString *capture$0, jint capture$1);
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$11 *create_SMSimiObjectImpl_$Lambda$11_initWithNSString_withInt_(NSString *capture$0, jint capture$1);
 
-@interface SMSimiObjectImpl_Array_$Lambda$1 : NSObject < JavaUtilFunctionIntFunction >
-
-- (id)applyWithInt:(jint)a;
-
-@end
-
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Array_$Lambda$1)
-
-inline SMSimiObjectImpl_Array_$Lambda$1 *SMSimiObjectImpl_Array_$Lambda$1_get_instance(void);
-static SMSimiObjectImpl_Array_$Lambda$1 *SMSimiObjectImpl_Array_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Array_$Lambda$1, instance, SMSimiObjectImpl_Array_$Lambda$1 *)
-
-__attribute__((unused)) static void SMSimiObjectImpl_Array_$Lambda$1_init(SMSimiObjectImpl_Array_$Lambda$1 *self);
-
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$1 *new_SMSimiObjectImpl_Array_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$1 *create_SMSimiObjectImpl_Array_$Lambda$1_init(void);
-
-@interface SMSimiObjectImpl_Array_$Lambda$2 : NSObject < JavaUtilFunctionSupplier >
-
-- (id)get;
-
-@end
-
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Array_$Lambda$2)
-
-inline SMSimiObjectImpl_Array_$Lambda$2 *SMSimiObjectImpl_Array_$Lambda$2_get_instance(void);
-static SMSimiObjectImpl_Array_$Lambda$2 *SMSimiObjectImpl_Array_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Array_$Lambda$2, instance, SMSimiObjectImpl_Array_$Lambda$2 *)
-
-__attribute__((unused)) static void SMSimiObjectImpl_Array_$Lambda$2_init(SMSimiObjectImpl_Array_$Lambda$2 *self);
-
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$2 *new_SMSimiObjectImpl_Array_$Lambda$2_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$2 *create_SMSimiObjectImpl_Array_$Lambda$2_init(void);
-
-@interface SMSimiObjectImpl_Array_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(id<SMSimiProperty>)a;
-
-@end
-
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Array_$Lambda$3)
-
-inline SMSimiObjectImpl_Array_$Lambda$3 *SMSimiObjectImpl_Array_$Lambda$3_get_instance(void);
-static SMSimiObjectImpl_Array_$Lambda$3 *SMSimiObjectImpl_Array_$Lambda$3_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Array_$Lambda$3, instance, SMSimiObjectImpl_Array_$Lambda$3 *)
-
-__attribute__((unused)) static void SMSimiObjectImpl_Array_$Lambda$3_init(SMSimiObjectImpl_Array_$Lambda$3 *self);
-
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$3 *new_SMSimiObjectImpl_Array_$Lambda$3_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$3 *create_SMSimiObjectImpl_Array_$Lambda$3_init(void);
-
-@interface SMSimiObjectImpl_Array_$Lambda$4 : NSObject < JavaUtilFunctionSupplier >
-
-- (id)get;
-
-@end
-
-J2OBJC_STATIC_INIT(SMSimiObjectImpl_Array_$Lambda$4)
-
-inline SMSimiObjectImpl_Array_$Lambda$4 *SMSimiObjectImpl_Array_$Lambda$4_get_instance(void);
-static SMSimiObjectImpl_Array_$Lambda$4 *SMSimiObjectImpl_Array_$Lambda$4_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiObjectImpl_Array_$Lambda$4, instance, SMSimiObjectImpl_Array_$Lambda$4 *)
-
-__attribute__((unused)) static void SMSimiObjectImpl_Array_$Lambda$4_init(SMSimiObjectImpl_Array_$Lambda$4 *self);
-
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$4 *new_SMSimiObjectImpl_Array_$Lambda$4_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init(void);
-
-@interface SMSimiObjectImpl_Array_$Lambda$5 : NSObject < JavaUtilFunctionFunction > {
+@interface SMSimiObjectImpl_$Lambda$12 : NSObject < JavaUtilFunctionFunction > {
  @public
   jint val$indentationLevel_;
 }
@@ -265,37 +294,21 @@ __attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiOb
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Array_$Lambda$5)
+J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_$Lambda$12)
 
-__attribute__((unused)) static void SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(SMSimiObjectImpl_Array_$Lambda$5 *self, jint capture$0);
+__attribute__((unused)) static void SMSimiObjectImpl_$Lambda$12_initWithInt_(SMSimiObjectImpl_$Lambda$12 *self, jint capture$0);
 
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$5 *new_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$12 *new_SMSimiObjectImpl_$Lambda$12_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMSimiObjectImpl_Array_$Lambda$5 *create_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(jint capture$0);
-
-@interface SMSimiObjectImpl_InitiallyEmpty () {
- @public
-  SMSimiObjectImpl *underlying_;
-}
-
-- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                      withBoolean:(jboolean)immutable;
-
-@end
-
-J2OBJC_FIELD_SETTER(SMSimiObjectImpl_InitiallyEmpty, underlying_, SMSimiObjectImpl *)
-
-__attribute__((unused)) static void SMSimiObjectImpl_InitiallyEmpty_initWithSMSimiClassImpl_withBoolean_(SMSimiObjectImpl_InitiallyEmpty *self, SMSimiClassImpl *clazz, jboolean immutable);
-
-__attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *new_SMSimiObjectImpl_InitiallyEmpty_initWithSMSimiClassImpl_withBoolean_(SMSimiClassImpl *clazz, jboolean immutable) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObjectImpl_InitiallyEmpty_initWithSMSimiClassImpl_withBoolean_(SMSimiClassImpl *clazz, jboolean immutable);
+__attribute__((unused)) static SMSimiObjectImpl_$Lambda$12 *create_SMSimiObjectImpl_$Lambda$12_initWithInt_(jint capture$0);
 
 @implementation SMSimiObjectImpl
 
 - (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                      withBoolean:(jboolean)immutable {
-  SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_(self, clazz, immutable);
+                                      withBoolean:(jboolean)immutable
+                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)fields
+                            withJavaUtilArrayList:(JavaUtilArrayList *)line {
+  SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(self, clazz, immutable, fields, line);
   return self;
 }
 
@@ -312,8 +325,8 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
 
 + (SMSimiObjectImpl *)decomposedPairWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass
                                         withSMSimiValue:(SMSimiValue *)key
-                                        withSMSimiValue:(SMSimiValue *)value {
-  return SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(objectClass, key, value);
+                                     withSMSimiProperty:(id<SMSimiProperty>)value {
+  return SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, key, value);
 }
 
 + (SMSimiObjectImpl *)fromMapWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
@@ -324,54 +337,66 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
 
 + (SMSimiObjectImpl *)fromArrayWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
                                        withBoolean:(jboolean)immutable
-                             withJavaUtilArrayList:(JavaUtilArrayList *)fields {
-  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz, immutable, fields);
-}
-
-+ (SMSimiObjectImpl *)emptyWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                   withBoolean:(jboolean)immutable {
-  return SMSimiObjectImpl_emptyWithSMSimiClassImpl_withBoolean_(clazz, immutable);
+                             withJavaUtilArrayList:(JavaUtilArrayList *)line {
+  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz, immutable, line);
 }
 
 - (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
                  withJavaLangInteger:(JavaLangInteger *)arity
                    withSMEnvironment:(SMEnvironment *)environment {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
+  if ([((NSString *) nil_chk(key)) isEqual:@"class"]) {
+    return new_SMSimiValue_Object_initWithSMSimiObject_(clazz_);
+  }
+  @try {
+    jint index = JavaLangInteger_parseIntWithNSString_(key);
+    if (index < [((JavaUtilArrayList *) nil_chk(line_)) size]) {
+      return SMSimiObjectImpl_bindWithNSString_withSMSimiProperty_(self, key, [line_ getWithInt:index]);
+    }
+    NSString *implicitKey = JreStrcat("$I", SMConstants_IMPLICIT, index);
+    if ([((JavaUtilLinkedHashMap *) nil_chk(fields_)) containsKeyWithId:implicitKey]) {
+      return SMSimiObjectImpl_bindWithNSString_withSMSimiProperty_(self, implicitKey, [fields_ getWithId:implicitKey]);
+    }
+    else {
+      if (clazz_ != nil && [((NSString *) nil_chk(clazz_->name_)) isEqual:SMConstants_CLASS_STRING]) {
+        NSString *value = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([fields_ getWithId:SMConstants_PRIVATE])) getValue])) getString];
+        return new_SMSimiValue_String_initWithNSString_(JreStrcat("C", [((NSString *) nil_chk(value)) charAtWithInt:index]));
+      }
+      id<JavaUtilList> values = new_JavaUtilArrayList_initWithJavaUtilCollection_([fields_ values]);
+      if ([values size] > index) {
+        return SMSimiObjectImpl_bindWithNSString_withSMSimiProperty_(self, implicitKey, [values getWithInt:index]);
+      }
+      return nil;
+    }
+  }
+  @catch (JavaLangNumberFormatException *ignored) {
+  }
+  if ([key java_hasPrefix:SMConstants_PRIVATE]) {
+    id<SMSimiObject> self_ = [((SMSimiValue *) nil_chk([((SMEnvironment *) nil_chk(environment)) getWithSMToken:SMToken_self__()])) getObject];
+    if (self_ != self && self_ != clazz_) {
+      @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Trying to access a private property!");
+    }
+  }
+  if ([((JavaUtilLinkedHashMap *) nil_chk(fields_)) containsKeyWithId:key]) {
+    return SMSimiObjectImpl_bindWithNSString_withSMSimiProperty_(self, key, [fields_ getWithId:key]);
+  }
+  return SMSimiObjectImpl_getFromClassWithSMToken_withJavaLangInteger_(self, name, arity);
 }
 
 - (id<SMSimiProperty>)getFromClassWithSMToken:(SMToken *)name
-                          withJavaLangInteger:(JavaLangInteger *)arity
-                            withSMEnvironment:(SMEnvironment *)environment {
-  NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
-  if (clazz_ != nil) {
-    if ([((JavaUtilLinkedHashMap *) nil_chk(clazz_->fields_)) containsKeyWithId:key]) {
-      return [self bindWithNSString:key withSMSimiProperty:[clazz_->fields_ getWithId:key]];
-    }
-    SMSimiMethod *method = [clazz_ findMethodWithSMSimiObjectImpl:self withNSString:key withJavaLangInteger:arity];
-    if (method != nil) {
-      return new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(method, key, self), ((SMSimiFunction *) nil_chk(method->function_))->annotations_);
-    }
-  }
-  return nil;
+                          withJavaLangInteger:(JavaLangInteger *)arity {
+  return SMSimiObjectImpl_getFromClassWithSMToken_withJavaLangInteger_(self, name, arity);
 }
 
 - (id<SMSimiProperty>)bindWithNSString:(NSString *)key
                     withSMSimiProperty:(id<SMSimiProperty>)prop {
-  if (prop != nil && [[prop getValue] isKindOfClass:[SMSimiValue_Callable class]]) {
-    id<SMSimiCallable> callable = [((SMSimiValue *) nil_chk([prop getValue])) getCallable];
-    if ([callable isKindOfClass:[SMBlockImpl class]]) {
-      return new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_([((SMBlockImpl *) nil_chk(((SMBlockImpl *) cast_chk(callable, [SMBlockImpl class])))) bindWithSMSimiObjectImpl:self], key, self), [prop getAnnotations]);
-    }
-  }
-  return prop;
+  return SMSimiObjectImpl_bindWithNSString_withSMSimiProperty_(self, key, prop);
 }
 
 - (void)setWithSMToken:(SMToken *)name
     withSMSimiProperty:(id<SMSimiProperty>)prop
      withSMEnvironment:(SMEnvironment *)environment {
-  [self checkMutabilityWithSMToken:name withSMEnvironment:environment];
+  SMSimiObjectImpl_checkMutabilityWithSMToken_withSMSimiEnvironment_(self, name, environment);
   NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
   if ([((NSString *) nil_chk(key)) isEqual:SMConstants_PRIVATE] && clazz_ != nil && ([((NSString *) nil_chk(clazz_->name_)) isEqual:SMConstants_CLASS_STRING] || [clazz_->name_ isEqual:SMConstants_CLASS_NUMBER])) {
     @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Cannot modify self._ of Strings and Numbers!");
@@ -390,13 +415,12 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
       @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Trying to access a private property!");
     }
   }
-  [self setFieldWithNSString:key withSMSimiProperty:prop];
+  SMSimiObjectImpl_setFieldWithNSString_withSMSimiProperty_(self, key, prop);
 }
 
 - (void)setFieldWithNSString:(NSString *)key
           withSMSimiProperty:(id<SMSimiProperty>)prop {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
+  SMSimiObjectImpl_setFieldWithNSString_withSMSimiProperty_(self, key, prop);
 }
 
 - (jboolean)isWithSMSimiClassImpl:(SMSimiClassImpl *)clazz {
@@ -422,146 +446,173 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
 }
 
 - (void)clearWithSMEnvironment:(SMEnvironment *)environment {
-  [self checkMutabilityWithSMToken:SMToken_self__() withSMEnvironment:environment];
-  [self clearImpl];
-}
-
-- (void)clearImpl {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
+  SMSimiObjectImpl_checkMutabilityWithSMToken_withSMSimiEnvironment_(self, SMToken_self__(), environment);
+  [((JavaUtilLinkedHashMap *) nil_chk(fields_)) clear];
+  [((JavaUtilArrayList *) nil_chk(line_)) clear];
 }
 
 - (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
                        withJavaUtilList:(id<JavaUtilList>)fieldsToMatch {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  if ([self isArray] && [((SMSimiObjectImpl *) nil_chk(other)) isArray]) {
+    jint length = [self length];
+    if ([((SMSimiObjectImpl *) nil_chk(other)) length] != length) {
+      return false;
+    }
+    for (jint i = 0; i < length; i++) {
+      if (!SMSimiObjectImpl_valuesMatchWithSMSimiProperty_withSMSimiProperty_(self, [((JavaUtilArrayList *) nil_chk(line_)) getWithInt:i], [other->line_ getWithInt:i])) {
+        return false;
+      }
+    }
+  }
+  else {
+    for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) {
+      if (fieldsToMatch != nil && ![fieldsToMatch containsWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]]) {
+        continue;
+      }
+      id<SMSimiProperty> prop = [((SMSimiObjectImpl *) nil_chk(other))->fields_ getWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]];
+      if (!SMSimiObjectImpl_valuesMatchWithSMSimiProperty_withSMSimiProperty_(self, prop, [entry_ getValue])) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
-- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
-                        withSMToken:(SMToken *)at {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object {
+  return ([object isKindOfClass:[SMSimiValue_String class]] && [((id<JavaUtilSet>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) keySet])) containsWithId:[((SMSimiValue *) nil_chk(object)) getString]]) || [((JavaUtilArrayList *) nil_chk(line_)) containsWithId:object];
+}
+
+- (SMSimiObjectImpl *)getLine {
+  return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(clazz_, immutable_, nil, line_);
 }
 
 - (jboolean)isArray {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  return [((JavaUtilLinkedHashMap *) nil_chk(fields_)) isEmpty];
 }
 
 - (jint)length {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  return [((JavaUtilLinkedHashMap *) nil_chk(fields_)) size] + [((JavaUtilArrayList *) nil_chk(line_)) size];
 }
 
 - (void)checkMutabilityWithSMToken:(SMToken *)name
-                 withSMEnvironment:(SMEnvironment *)environment {
-  if (self->immutable_) {
-    SMSimiValue *self_ = [((SMEnvironment *) nil_chk(environment)) getWithSMToken:SMToken_self__()];
-    if (self_ != nil && [self_ getObject] != self) {
-      @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Trying to alter an immutable object!");
-    }
-  }
+             withSMSimiEnvironment:(id<SMSimiEnvironment>)environment {
+  SMSimiObjectImpl_checkMutabilityWithSMToken_withSMSimiEnvironment_(self, name, environment);
 }
 
 - (JavaUtilArrayList *)keys {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  id<JavaUtilSet> keys = new_JavaUtilHashSet_initWithJavaUtilCollection_([((JavaUtilLinkedHashMap *) nil_chk(fields_)) keySet]);
+  if (clazz_ != nil) {
+    [keys addAllWithJavaUtilCollection:[clazz_ allKeys]];
+  }
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([keys stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiObjectImpl_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMSimiObjectImpl_$Lambda$2, instance))];
 }
 
 - (JavaUtilArrayList *)values {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  id<JavaUtilCollection> values = new_JavaUtilArrayList_initWithJavaUtilCollection_([((JavaUtilLinkedHashMap *) nil_chk(fields_)) values]);
+  [values addAllWithJavaUtilCollection:line_];
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([values stream])) filterWithJavaUtilFunctionPredicate:JreLoadStatic(SMSimiObjectImpl_$Lambda$3, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiObjectImpl_$Lambda$4, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMSimiObjectImpl_$Lambda$5, instance))];
 }
 
 - (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, [self getEnumeratedValuesWithSMSimiClassImpl:objectClass]);
+}
+
+- (JavaUtilArrayList *)getEnumeratedValuesWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
+  JavaUtilArrayList *values = new_JavaUtilArrayList_initWithInt_([self length]);
+  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) {
+    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]), [((id<SMSimiProperty>) nil_chk([entry_ getValue])) getValue]))];
+  }
+  jint lineSize = [((JavaUtilArrayList *) nil_chk(line_)) size];
+  for (jint i = 0; i < lineSize; i++) {
+    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_Number_initWithLong_(i), [((id<SMSimiProperty>) nil_chk([line_ getWithInt:i])) getValue]))];
+  }
+  return values;
 }
 
 - (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  JavaUtilLinkedHashMap *zipFields = new_JavaUtilLinkedHashMap_init();
+  for (id<SMSimiProperty> __strong prop in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) values])) {
+    SMSimiObjectImpl *obj = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(prop)) getValue])) getObject], [SMSimiObjectImpl class]);
+    (void) [zipFields putWithId:[((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(obj))->fields_ getWithId:SMConstants_KEY])) getValue])) getString] withId:[obj->fields_ getWithId:SMConstants_VALUE]];
+  }
+  return SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(objectClass, true, zipFields);
 }
 
 - (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  if ([self isArray]) {
+    jint index = [((JavaUtilArrayList *) nil_chk(line_)) indexOfWithId:value];
+    if (index == -1) {
+      return nil;
+    }
+    return new_SMSimiValue_Number_initWithLong_(index);
+  }
+  else {
+    jint index = [((id<JavaUtilList>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilCollection>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiObjectImpl_$Lambda$6, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()])) indexOfWithId:value];
+    if (index == -1) {
+      return nil;
+    }
+    return new_SMSimiValue_Number_initWithLong_(index);
+  }
 }
 
 - (SMSimiObjectImpl *)reversed {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  id<JavaUtilListIterator> iter = [new_JavaUtilArrayList_initWithJavaUtilCollection_([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet]) listIteratorWithInt:[fields_ size]];
+  JavaUtilLinkedHashMap *reversedFields = new_JavaUtilLinkedHashMap_init();
+  while ([((id<JavaUtilListIterator>) nil_chk(iter)) hasPrevious]) {
+    id<JavaUtilMap_Entry> entry_ = [iter previous];
+    (void) [reversedFields putWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey] withId:[entry_ getValue]];
+  }
+  JavaUtilArrayList *reversedArray = new_JavaUtilArrayList_initWithJavaUtilCollection_(line_);
+  JavaUtilCollections_reverseWithJavaUtilList_(reversedArray);
+  return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(clazz_, immutable_, reversedFields, reversedArray);
 }
 
 - (id<JavaUtilIterator>)iterate {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  return [self isArray] ? [((JavaUtilArrayList *) nil_chk(line_)) iterator] : [((JavaUtilArrayList *) nil_chk([self keys])) iterator];
 }
 
 - (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  JavaUtilLinkedHashMap *sortedFields = new_JavaUtilLinkedHashMap_init();
+  id<JavaUtilComparator> fieldComp = (comparator != nil) ? comparator : JavaUtilComparator_comparingWithJavaUtilFunctionFunction_(JreLoadStatic(SMSimiObjectImpl_$Lambda$7, instance));
+  [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) stream])) sortedWithJavaUtilComparator:fieldComp])) forEachWithJavaUtilFunctionConsumer:new_SMSimiObjectImpl_$Lambda$8_initWithJavaUtilLinkedHashMap_(sortedFields)];
+  id<JavaUtilComparator> lineComp = (comparator != nil) ? new_SMSimiObjectImpl_$Lambda$9_initWithJavaUtilComparator_(comparator) : JavaUtilComparator_comparingWithJavaUtilFunctionFunction_(JreLoadStatic(SMSimiObjectImpl_$Lambda$10, instance));
+  JavaUtilArrayList *sortedLine = new_JavaUtilArrayList_initWithJavaUtilCollection_(line_);
+  [sortedLine sortWithJavaUtilComparator:lineComp];
+  return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(clazz_, immutable_, sortedFields, sortedLine);
 }
 
 - (jboolean)valuesMatchWithSMSimiValue:(SMSimiValue *)a
                        withSMSimiValue:(SMSimiValue *)b {
-  if ([a isKindOfClass:[SMSimiValue_Object class]]) {
-    if (!([b isKindOfClass:[SMSimiValue_Object class]])) {
-      return false;
-    }
-    SMSimiObjectImpl *object = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk(a)) getObject], [SMSimiObjectImpl class]);
-    return [((SMSimiObjectImpl *) nil_chk(object)) matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk(b)) getObject], [SMSimiObjectImpl class]) withJavaUtilList:nil];
-  }
-  else {
-    return [((SMSimiValue *) nil_chk(a)) isEqual:b];
-  }
+  return SMSimiObjectImpl_valuesMatchWithSMSimiValue_withSMSimiValue_(self, a, b);
 }
 
 - (jboolean)valuesMatchWithSMSimiProperty:(id<SMSimiProperty>)a
                        withSMSimiProperty:(id<SMSimiProperty>)b {
-  if (a == nil && b == nil) {
-    return true;
-  }
-  if (a == nil || b == nil) {
-    return false;
-  }
-  return [self valuesMatchWithSMSimiValue:[a getValue] withSMSimiValue:[b getValue]];
+  return SMSimiObjectImpl_valuesMatchWithSMSimiProperty_withSMSimiProperty_(self, a, b);
 }
 
-- (void)appendWithSMSimiProperty:(id<SMSimiProperty>)elem {
-  if (immutable_) {
-    @throw new_JavaLangRuntimeException_initWithNSString_(@"Trying to append to an immutable object!");
+- (void)appendWithSMSimiProperty:(id<SMSimiProperty>)elem
+           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment {
+  SMSimiObjectImpl_checkMutabilityWithSMToken_withSMSimiEnvironment_(self, SMToken_self__(), environment);
+  [((JavaUtilArrayList *) nil_chk(line_)) addWithId:elem];
+}
+
+- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
+             withSMSimiEnvironment:(id<SMSimiEnvironment>)environment {
+  SMSimiObjectImpl_checkMutabilityWithSMToken_withSMSimiEnvironment_(self, SMToken_self__(), environment);
+  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(((SMSimiObjectImpl *) nil_chk(other))->fields_)) entrySet])) {
+    if (![fields_ containsKeyWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]]) {
+      (void) [fields_ putWithId:[entry_ getKey] withId:[entry_ getValue]];
+    }
   }
-  [self appendImplWithSMSimiProperty:elem];
-}
-
-- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-}
-
-- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
+  [((JavaUtilArrayList *) nil_chk(line_)) addAllWithJavaUtilCollection:other->line_];
 }
 
 - (NSString *)description {
   if (clazz_ != nil) {
     SMSimiMethod *method = [clazz_ findMethodWithSMSimiObjectImpl:self withNSString:SMConstants_TO_STRING withJavaLangInteger:JavaLangInteger_valueOfWithInt_(0)];
     if (method != nil && !((SMSimiFunction *) nil_chk(method->function_))->isNative_) {
-      return [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([method callWithSMBlockInterpreter:JreLoadStatic(SMInterpreter, sharedInstance) withJavaUtilList:new_JavaUtilArrayList_init() withBoolean:false])) getValue])) getString];
+      return [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([method callWithSMBlockInterpreter:JreLoadStatic(SMInterpreter, sharedInstance) withSMSimiEnvironment:nil withJavaUtilList:new_JavaUtilArrayList_init() withBoolean:false])) getValue])) getString];
     }
   }
   JavaLangStringBuilder *sb = new_JavaLangStringBuilder_init();
@@ -576,21 +627,14 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
 }
 
 - (NSString *)printFields {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
-}
-
-- (SMSimiObjectImpl_Dictionary *)asDictionary {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
-}
-
-- (SMSimiObjectImpl_Array *)asArray {
-  // can't call an abstract method
-  [self doesNotRecognizeSelector:_cmd];
-  return 0;
+  JavaLangStringBuilder *sb = new_JavaLangStringBuilder_init();
+  for (NSString * __strong key in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) keySet])) {
+    (void) [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([sb appendWithNSString:@"\t"])) appendWithNSString:key])) appendWithNSString:@" = "])) appendWithId:[fields_ getWithId:key]])) appendWithNSString:@"\n"];
+  }
+  for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(line_)) size]; i++) {
+    (void) [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([sb appendWithNSString:@"\t"])) appendWithInt:i])) appendWithNSString:@" = "])) appendWithId:[line_ getWithInt:i]])) appendWithNSString:@"\n"];
+  }
+  return [sb description];
 }
 
 - (id<SMSimiClass>)getSimiClass {
@@ -616,90 +660,144 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
   return SMSimiObjectImpl_getOrConvertObjectWithSMSimiProperty_withSMInterpreter_(prop, interpreter);
 }
 
+- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_ {
+  JavaUtilLinkedHashMap *fieldsClone = new_JavaUtilLinkedHashMap_init();
+  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) {
+    id<SMSimiProperty> value = [((id<JavaUtilMap_Entry>) nil_chk(entry_)) getValue];
+    (void) [fieldsClone putWithId:[entry_ getKey] withId:(value != nil) ? [((id<SMSimiProperty>) nil_chk(value)) cloneWithBoolean:mutable_] : nil];
+  }
+  JavaUtilArrayList *lineClone = new_JavaUtilArrayList_init();
+  for (id<SMSimiProperty> __strong field in nil_chk(line_)) {
+    [lineClone addWithId:[((id<SMSimiProperty>) nil_chk(field)) cloneWithBoolean:mutable_]];
+  }
+  return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(clazz_, mutable_, fieldsClone, lineClone);
+}
+
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst {
+  NSString *indentation = SMCodifiable_getIndentationWithInt_(indentationLevel + 1);
+  jboolean isArray = [self isArray];
+  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_(ignoreFirst ? @"" : SMCodifiable_getIndentationWithInt_(indentationLevel)) appendWithNSString:immutable_ ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, LEFT_BRACKET))) toCode] : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET))) toCode]])) appendWithNSString:isArray ? @"" : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]])) appendWithNSString:(clazz_ != nil && ![((NSString *) nil_chk(clazz_->name_)) isEqual:SMConstants_CLASS_OBJECT]) ? (JreStrcat("$$$C$$", indentation, @"\"class\" = gu \"", ((SMSimiClassImpl *) nil_chk(clazz_))->name_, '"', ([((JavaUtilLinkedHashMap *) nil_chk(fields_)) isEmpty] ? @"" : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode]), [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode])) : @""])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) stream])) mapWithJavaUtilFunctionFunction:new_SMSimiObjectImpl_$Lambda$11_initWithNSString_withInt_(indentation, indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]))]])) appendWithNSString:([fields_ isEmpty] || [((JavaUtilArrayList *) nil_chk(line_)) isEmpty]) ? @"" : [JreLoadEnum(SMTokenType, COMMA) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk(line_)) stream])) mapWithJavaUtilFunctionFunction:new_SMSimiObjectImpl_$Lambda$12_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$C", [JreLoadEnum(SMTokenType, COMMA) toCode], ' '))]])) appendWithNSString:isArray ? @"" : [JreLoadEnum(SMTokenType, NEWLINE) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCode]])) description];
+}
+
 - (jint)getLineNumber {
   return -1;
+}
+
+- (NSString *)getFileName {
+  return nil;
 }
 
 - (jboolean)hasBreakPoint {
   return false;
 }
 
+- (jint)compareToWithId:(id<SMSimiObject>)o {
+  (void) cast_check(o, SMSimiObject_class_());
+  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk(o, [SMSimiObjectImpl class]);
+  id<JavaUtilIterator> it = [((id<JavaUtilSet>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) iterator];
+  id<JavaUtilIterator> oit = [((id<JavaUtilSet>) nil_chk([((SMSimiObjectImpl *) nil_chk(other))->fields_ entrySet])) iterator];
+  for (jint len = JavaLangMath_minWithInt_withInt_([fields_ size], [other->fields_ size]); len > 0; len--) {
+    id<JavaUtilMap_Entry> entry_ = [((id<JavaUtilIterator>) nil_chk(it)) next];
+    id<JavaUtilMap_Entry> oentry = [((id<JavaUtilIterator>) nil_chk(oit)) next];
+    jint keyComp = [((NSString *) nil_chk([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey])) compareToWithId:[((id<JavaUtilMap_Entry>) nil_chk(oentry)) getKey]];
+    if (keyComp == 0) {
+      jint valComp = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([entry_ getValue])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([oentry getValue])) getValue]];
+      if (valComp != 0) {
+        return valComp;
+      }
+    }
+    else {
+      return keyComp;
+    }
+  }
+  jint len = JavaLangMath_minWithInt_withInt_([((JavaUtilArrayList *) nil_chk(line_)) size], [other->line_ size]);
+  for (jint i = 0; i < len; i++) {
+    jint valComp = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([line_ getWithInt:i])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([other->line_ getWithInt:i])) getValue]];
+    if (valComp != 0) {
+      return valComp;
+    }
+  }
+  return 0;
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x2, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x8, 1, 2, -1, 3, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x8, 4, 5, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x8, 6, 7, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x8, 8, 9, -1, 10, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x8, 11, 12, -1, 13, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x8, 14, 0, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x400, 15, 16, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x0, 17, 16, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x0, 18, 19, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 20, 21, -1, -1, -1, -1 },
-    { NULL, "V", 0x400, 22, 19, -1, -1, -1, -1 },
-    { NULL, "Z", 0x0, 23, 24, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x8, 2, 3, -1, 4, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x8, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x8, 7, 8, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x8, 9, 10, -1, 11, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x8, 12, 13, -1, 14, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x0, 15, 16, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 17, 18, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x2, 19, 20, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 21, 22, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 23, 20, -1, -1, -1, -1 },
+    { NULL, "Z", 0x0, 24, 25, -1, -1, -1, -1 },
     { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 25, 26, -1, -1, -1, -1 },
-    { NULL, "V", 0x400, -1, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x400, 27, 28, -1, 29, -1, -1 },
-    { NULL, "Z", 0x400, 30, 31, -1, -1, -1, -1 },
-    { NULL, "Z", 0x400, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x400, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 32, 33, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x401, -1, -1, -1, 34, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x401, -1, -1, -1, 34, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x400, 35, 24, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x400, 36, 24, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x400, 37, 38, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x400, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilIterator;", 0x400, -1, -1, -1, 39, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x400, 40, 41, -1, 42, -1, -1 },
-    { NULL, "Z", 0x0, 43, 44, -1, -1, -1, -1 },
-    { NULL, "Z", 0x0, 43, 45, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 46, 47, -1, -1, -1, -1 },
-    { NULL, "V", 0x400, 48, 47, -1, -1, -1, -1 },
-    { NULL, "V", 0x400, 49, 50, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 51, -1, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x400, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl_Dictionary;", 0x400, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl_Array;", 0x400, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 26, 27, -1, -1, -1, -1 },
+    { NULL, "Z", 0x0, 28, 29, -1, 30, -1, -1 },
+    { NULL, "Z", 0x0, 31, 32, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 33, 34, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 35, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 35, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x0, 36, 25, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilArrayList;", 0x0, 37, 25, -1, 38, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x0, 39, 25, -1, -1, -1, -1 },
+    { NULL, "LSMSimiValue;", 0x0, 40, 32, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilIterator;", 0x0, -1, -1, -1, 41, -1, -1 },
+    { NULL, "LSMSimiObjectImpl;", 0x0, 42, 43, -1, 44, -1, -1 },
+    { NULL, "Z", 0x2, 45, 46, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 45, 47, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 48, 49, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 50, 51, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 52, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiClass;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 15, 52, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 20, 53, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObject;", 0x8, 54, 55, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 15, 53, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 21, 54, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x8, 55, 56, -1, -1, -1, -1 },
+    { NULL, "LSMSimiObject;", 0x1, 57, 58, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 59, 60, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 61, 62, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMSimiClassImpl:withBoolean:);
+  methods[0].selector = @selector(initWithSMSimiClassImpl:withBoolean:withJavaUtilLinkedHashMap:withJavaUtilArrayList:);
   methods[1].selector = @selector(instanceWithSMSimiClassImpl:withJavaUtilLinkedHashMap:);
   methods[2].selector = @selector(pairWithSMSimiClassImpl:withNSString:withSMSimiProperty:);
-  methods[3].selector = @selector(decomposedPairWithSMSimiClassImpl:withSMSimiValue:withSMSimiValue:);
+  methods[3].selector = @selector(decomposedPairWithSMSimiClassImpl:withSMSimiValue:withSMSimiProperty:);
   methods[4].selector = @selector(fromMapWithSMSimiClassImpl:withBoolean:withJavaUtilLinkedHashMap:);
   methods[5].selector = @selector(fromArrayWithSMSimiClassImpl:withBoolean:withJavaUtilArrayList:);
-  methods[6].selector = @selector(emptyWithSMSimiClassImpl:withBoolean:);
-  methods[7].selector = @selector(getWithSMToken:withJavaLangInteger:withSMEnvironment:);
-  methods[8].selector = @selector(getFromClassWithSMToken:withJavaLangInteger:withSMEnvironment:);
-  methods[9].selector = @selector(bindWithNSString:withSMSimiProperty:);
-  methods[10].selector = @selector(setWithSMToken:withSMSimiProperty:withSMEnvironment:);
-  methods[11].selector = @selector(setFieldWithNSString:withSMSimiProperty:);
-  methods[12].selector = @selector(isWithSMSimiClassImpl:);
-  methods[13].selector = @selector(isNumber);
-  methods[14].selector = @selector(isString);
-  methods[15].selector = @selector(clearWithSMEnvironment:);
-  methods[16].selector = @selector(clearImpl);
-  methods[17].selector = @selector(matchesWithSMSimiObjectImpl:withJavaUtilList:);
-  methods[18].selector = @selector(containsWithSMSimiValue:withSMToken:);
-  methods[19].selector = @selector(isArray);
-  methods[20].selector = @selector(length);
-  methods[21].selector = @selector(checkMutabilityWithSMToken:withSMEnvironment:);
-  methods[22].selector = @selector(keys);
-  methods[23].selector = @selector(values);
-  methods[24].selector = @selector(enumerateWithSMSimiClassImpl:);
+  methods[6].selector = @selector(getWithSMToken:withJavaLangInteger:withSMEnvironment:);
+  methods[7].selector = @selector(getFromClassWithSMToken:withJavaLangInteger:);
+  methods[8].selector = @selector(bindWithNSString:withSMSimiProperty:);
+  methods[9].selector = @selector(setWithSMToken:withSMSimiProperty:withSMEnvironment:);
+  methods[10].selector = @selector(setFieldWithNSString:withSMSimiProperty:);
+  methods[11].selector = @selector(isWithSMSimiClassImpl:);
+  methods[12].selector = @selector(isNumber);
+  methods[13].selector = @selector(isString);
+  methods[14].selector = @selector(clearWithSMEnvironment:);
+  methods[15].selector = @selector(matchesWithSMSimiObjectImpl:withJavaUtilList:);
+  methods[16].selector = @selector(containsWithSMSimiValue:);
+  methods[17].selector = @selector(getLine);
+  methods[18].selector = @selector(isArray);
+  methods[19].selector = @selector(length);
+  methods[20].selector = @selector(checkMutabilityWithSMToken:withSMSimiEnvironment:);
+  methods[21].selector = @selector(keys);
+  methods[22].selector = @selector(values);
+  methods[23].selector = @selector(enumerateWithSMSimiClassImpl:);
+  methods[24].selector = @selector(getEnumeratedValuesWithSMSimiClassImpl:);
   methods[25].selector = @selector(zipWithSMSimiClassImpl:);
   methods[26].selector = @selector(indexOfWithSMSimiValue:);
   methods[27].selector = @selector(reversed);
@@ -707,70 +805,154 @@ __attribute__((unused)) static SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObj
   methods[29].selector = @selector(sortedWithJavaUtilComparator:);
   methods[30].selector = @selector(valuesMatchWithSMSimiValue:withSMSimiValue:);
   methods[31].selector = @selector(valuesMatchWithSMSimiProperty:withSMSimiProperty:);
-  methods[32].selector = @selector(appendWithSMSimiProperty:);
-  methods[33].selector = @selector(appendImplWithSMSimiProperty:);
-  methods[34].selector = @selector(addAllWithSMSimiObjectImpl:);
-  methods[35].selector = @selector(description);
-  methods[36].selector = @selector(printFields);
-  methods[37].selector = @selector(asDictionary);
-  methods[38].selector = @selector(asArray);
-  methods[39].selector = @selector(getSimiClass);
-  methods[40].selector = @selector(getWithNSString:withSMSimiEnvironment:);
-  methods[41].selector = @selector(setWithNSString:withSMSimiProperty:withSMSimiEnvironment:);
-  methods[42].selector = @selector(getOrConvertObjectWithSMSimiProperty:withSMInterpreter:);
-  methods[43].selector = @selector(getLineNumber);
+  methods[32].selector = @selector(appendWithSMSimiProperty:withSMSimiEnvironment:);
+  methods[33].selector = @selector(addAllWithSMSimiObjectImpl:withSMSimiEnvironment:);
+  methods[34].selector = @selector(description);
+  methods[35].selector = @selector(printFields);
+  methods[36].selector = @selector(getSimiClass);
+  methods[37].selector = @selector(getWithNSString:withSMSimiEnvironment:);
+  methods[38].selector = @selector(setWithNSString:withSMSimiProperty:withSMSimiEnvironment:);
+  methods[39].selector = @selector(getOrConvertObjectWithSMSimiProperty:withSMInterpreter:);
+  methods[40].selector = @selector(cloneWithBoolean:);
+  methods[41].selector = @selector(toCodeWithInt:withBoolean:);
+  methods[42].selector = @selector(getLineNumber);
+  methods[43].selector = @selector(getFileName);
   methods[44].selector = @selector(hasBreakPoint);
+  methods[45].selector = @selector(compareToWithId:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "immutable_", "Z", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x10, -1, -1, 63, -1 },
+    { "line_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x10, -1, -1, 64, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;Z", "instance", "LSMSimiClassImpl;LJavaUtilLinkedHashMap;", "(LSimiClassImpl;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObjectImpl;", "pair", "LSMSimiClassImpl;LNSString;LSMSimiProperty;", "decomposedPair", "LSMSimiClassImpl;LSMSimiValue;LSMSimiValue;", "fromMap", "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObjectImpl;", "fromArray", "LSMSimiClassImpl;ZLJavaUtilArrayList;", "(LSimiClassImpl;ZLjava/util/ArrayList<+LSimiProperty;>;)LSimiObjectImpl;", "empty", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "getFromClass", "bind", "LNSString;LSMSimiProperty;", "set", "LSMToken;LSMSimiProperty;LSMEnvironment;", "setField", "is", "LSMSimiClassImpl;", "clear", "LSMEnvironment;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "checkMutability", "LSMToken;LSMEnvironment;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "valuesMatch", "LSMSimiValue;LSMSimiValue;", "LSMSimiProperty;LSMSimiProperty;", "append", "LSMSimiProperty;", "appendImpl", "addAll", "LSMSimiObjectImpl;", "toString", "LNSString;LSMSimiEnvironment;", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "getOrConvertObject", "LSMSimiProperty;LSMInterpreter;", "LSMSimiObjectImpl_Dictionary;LSMSimiObjectImpl_Array;LSMSimiObjectImpl_InitiallyEmpty;" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl = { "SimiObjectImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x400, 45, 2, -1, 56, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;LJavaUtilArrayList;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;Ljava/util/ArrayList<LSimiProperty;>;)V", "instance", "LSMSimiClassImpl;LJavaUtilLinkedHashMap;", "(LSimiClassImpl;Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObjectImpl;", "pair", "LSMSimiClassImpl;LNSString;LSMSimiProperty;", "decomposedPair", "LSMSimiClassImpl;LSMSimiValue;LSMSimiProperty;", "fromMap", "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)LSimiObjectImpl;", "fromArray", "LSMSimiClassImpl;ZLJavaUtilArrayList;", "(LSimiClassImpl;ZLjava/util/ArrayList<+LSimiProperty;>;)LSimiObjectImpl;", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "getFromClass", "LSMToken;LJavaLangInteger;", "bind", "LNSString;LSMSimiProperty;", "set", "LSMToken;LSMSimiProperty;LSMEnvironment;", "setField", "is", "LSMSimiClassImpl;", "clear", "LSMEnvironment;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;", "checkMutability", "LSMToken;LSMSimiEnvironment;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "getEnumeratedValues", "(LSimiClassImpl;)Ljava/util/ArrayList<LSimiProperty;>;", "zip", "indexOf", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<-Ljava/util/Map$Entry<Ljava/lang/String;LSimiProperty;>;>;)LSimiObjectImpl;", "valuesMatch", "LSMSimiValue;LSMSimiValue;", "LSMSimiProperty;LSMSimiProperty;", "append", "LSMSimiProperty;LSMSimiEnvironment;", "addAll", "LSMSimiObjectImpl;LSMSimiEnvironment;", "toString", "LNSString;LSMSimiEnvironment;", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "getOrConvertObject", "LSMSimiProperty;LSMInterpreter;", "clone", "Z", "toCode", "IZ", "compareTo", "LSMSimiObject;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/ArrayList<LSimiProperty;>;" };
+  static const J2ObjcClassInfo _SMSimiObjectImpl = { "SimiObjectImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 46, 4, -1, -1, -1, -1, -1 };
   return &_SMSimiObjectImpl;
 }
 
 @end
 
-void SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_(SMSimiObjectImpl *self, SMSimiClassImpl *clazz, jboolean immutable) {
+void SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(SMSimiObjectImpl *self, SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields, JavaUtilArrayList *line) {
   NSObject_init(self);
   self->clazz_ = clazz;
   self->immutable_ = immutable;
+  self->fields_ = (fields != nil) ? fields : new_JavaUtilLinkedHashMap_init();
+  self->line_ = (line != nil) ? line : new_JavaUtilArrayList_init();
+}
+
+SMSimiObjectImpl *new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields, JavaUtilArrayList *line) {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl, initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_, clazz, immutable, fields, line)
+}
+
+SMSimiObjectImpl *create_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields, JavaUtilArrayList *line) {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl, initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_, clazz, immutable, fields, line)
 }
 
 SMSimiObjectImpl *SMSimiObjectImpl_instanceWithSMSimiClassImpl_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, JavaUtilLinkedHashMap *props) {
   SMSimiObjectImpl_initialize();
-  return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz, true, props);
+  return SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz, true, props);
 }
 
 SMSimiObjectImpl *SMSimiObjectImpl_pairWithSMSimiClassImpl_withNSString_withSMSimiProperty_(SMSimiClassImpl *objectClass, NSString *key, id<SMSimiProperty> prop) {
   SMSimiObjectImpl_initialize();
   JavaUtilLinkedHashMap *field = new_JavaUtilLinkedHashMap_init();
   (void) [field putWithId:key withId:prop];
-  return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(objectClass, true, field);
+  return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(objectClass, true, field, nil);
 }
 
-SMSimiObjectImpl *SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(SMSimiClassImpl *objectClass, SMSimiValue *key, SMSimiValue *value) {
+SMSimiObjectImpl *SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(SMSimiClassImpl *objectClass, SMSimiValue *key, id<SMSimiProperty> value) {
   SMSimiObjectImpl_initialize();
   JavaUtilLinkedHashMap *prop = new_JavaUtilLinkedHashMap_init();
   (void) [prop putWithId:SMConstants_KEY withId:key];
   (void) [prop putWithId:SMConstants_VALUE withId:value];
-  return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(objectClass, true, prop);
+  return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(objectClass, true, prop, nil);
 }
 
 SMSimiObjectImpl *SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *props) {
   SMSimiObjectImpl_initialize();
-  return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz, immutable, props);
+  return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(clazz, immutable, props, nil);
 }
 
-SMSimiObjectImpl *SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields) {
+SMSimiObjectImpl *SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *line) {
   SMSimiObjectImpl_initialize();
-  return new_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz, immutable, fields);
+  return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(clazz, immutable, nil, new_JavaUtilArrayList_initWithJavaUtilCollection_(line));
 }
 
-SMSimiObjectImpl *SMSimiObjectImpl_emptyWithSMSimiClassImpl_withBoolean_(SMSimiClassImpl *clazz, jboolean immutable) {
-  SMSimiObjectImpl_initialize();
-  return new_SMSimiObjectImpl_InitiallyEmpty_initWithSMSimiClassImpl_withBoolean_(clazz, immutable);
+id<SMSimiProperty> SMSimiObjectImpl_getFromClassWithSMToken_withJavaLangInteger_(SMSimiObjectImpl *self, SMToken *name, JavaLangInteger *arity) {
+  NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
+  if (self->clazz_ != nil) {
+    if ([((JavaUtilLinkedHashMap *) nil_chk(self->clazz_->fields_)) containsKeyWithId:key]) {
+      return SMSimiObjectImpl_bindWithNSString_withSMSimiProperty_(self, key, [self->clazz_->fields_ getWithId:key]);
+    }
+    SMSimiMethod *method = [self->clazz_ findMethodWithSMSimiObjectImpl:self withNSString:key withJavaLangInteger:arity];
+    if (method != nil) {
+      return new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(method, key, self), ((SMSimiFunction *) nil_chk(method->function_))->annotations_);
+    }
+  }
+  return nil;
+}
+
+id<SMSimiProperty> SMSimiObjectImpl_bindWithNSString_withSMSimiProperty_(SMSimiObjectImpl *self, NSString *key, id<SMSimiProperty> prop) {
+  if (prop != nil && [[prop getValue] isKindOfClass:[SMSimiValue_Callable class]]) {
+    id<SMSimiCallable> callable = [((SMSimiValue *) nil_chk([prop getValue])) getCallable];
+    if ([callable isKindOfClass:[SMBlockImpl class]]) {
+      return new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_([((SMBlockImpl *) nil_chk(((SMBlockImpl *) cast_chk(callable, [SMBlockImpl class])))) bindWithSMSimiObjectImpl:self], key, self), [prop getAnnotations]);
+    }
+  }
+  return prop;
+}
+
+void SMSimiObjectImpl_setFieldWithNSString_withSMSimiProperty_(SMSimiObjectImpl *self, NSString *key, id<SMSimiProperty> prop) {
+  @try {
+    jint index = JavaLangInteger_parseIntWithNSString_(key);
+    if (prop == nil) {
+      (void) [((JavaUtilArrayList *) nil_chk(self->line_)) removeWithInt:index];
+    }
+    else {
+      (void) [((JavaUtilArrayList *) nil_chk(self->line_)) setWithInt:index withId:prop];
+    }
+  }
+  @catch (JavaLangNumberFormatException *ignored) {
+    if (prop == nil) {
+      (void) [((JavaUtilLinkedHashMap *) nil_chk(self->fields_)) removeWithId:key];
+    }
+    else {
+      (void) [((JavaUtilLinkedHashMap *) nil_chk(self->fields_)) putWithId:key withId:prop];
+    }
+  }
+}
+
+void SMSimiObjectImpl_checkMutabilityWithSMToken_withSMSimiEnvironment_(SMSimiObjectImpl *self, SMToken *name, id<SMSimiEnvironment> environment) {
+  if (self->immutable_) {
+    SMSimiValue *self_ = [((SMEnvironment *) nil_chk(((SMEnvironment *) cast_chk(environment, [SMEnvironment class])))) getWithSMToken:SMToken_self__()];
+    if (self_ != nil && [self_ getObject] != self) {
+      @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Trying to alter an immutable object!");
+    }
+  }
+}
+
+jboolean SMSimiObjectImpl_valuesMatchWithSMSimiValue_withSMSimiValue_(SMSimiObjectImpl *self, SMSimiValue *a, SMSimiValue *b) {
+  if ([a isKindOfClass:[SMSimiValue_Object class]]) {
+    if (!([b isKindOfClass:[SMSimiValue_Object class]])) {
+      return false;
+    }
+    SMSimiObjectImpl *object = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk(a)) getObject], [SMSimiObjectImpl class]);
+    return [((SMSimiObjectImpl *) nil_chk(object)) matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk(b)) getObject], [SMSimiObjectImpl class]) withJavaUtilList:nil];
+  }
+  else {
+    return [((SMSimiValue *) nil_chk(a)) isEqual:b];
+  }
+}
+
+jboolean SMSimiObjectImpl_valuesMatchWithSMSimiProperty_withSMSimiProperty_(SMSimiObjectImpl *self, id<SMSimiProperty> a, id<SMSimiProperty> b) {
+  if (a == nil && b == nil) {
+    return true;
+  }
+  if (a == nil || b == nil) {
+    return false;
+  }
+  return SMSimiObjectImpl_valuesMatchWithSMSimiValue_withSMSimiValue_(self, [a getValue], [b getValue]);
 }
 
 id<SMSimiObject> SMSimiObjectImpl_getOrConvertObjectWithSMSimiProperty_withSMInterpreter_(id<SMSimiProperty> prop, SMInterpreter *interpreter) {
@@ -792,297 +974,9 @@ id<SMSimiObject> SMSimiObjectImpl_getOrConvertObjectWithSMSimiProperty_withSMInt
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl)
 
-@implementation SMSimiObjectImpl_Dictionary
+J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_$Lambda$1)
 
-- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                      withBoolean:(jboolean)immutable
-                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)fields {
-  SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(self, clazz, immutable, fields);
-  return self;
-}
-
-- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
-                 withJavaLangInteger:(JavaLangInteger *)arity
-                   withSMEnvironment:(SMEnvironment *)environment {
-  NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
-  if ([((NSString *) nil_chk(key)) isEqual:@"class"]) {
-    return new_SMSimiValue_Object_initWithSMSimiObject_(clazz_);
-  }
-  @try {
-    jint index = JavaLangInteger_parseIntWithNSString_(key);
-    NSString *implicitKey = JreStrcat("$I", SMConstants_IMPLICIT, index);
-    if ([((JavaUtilLinkedHashMap *) nil_chk(fields_)) containsKeyWithId:implicitKey]) {
-      return [self bindWithNSString:implicitKey withSMSimiProperty:[fields_ getWithId:implicitKey]];
-    }
-    else {
-      if (clazz_ != nil && [((NSString *) nil_chk(clazz_->name_)) isEqual:SMConstants_CLASS_STRING]) {
-        NSString *value = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([fields_ getWithId:SMConstants_PRIVATE])) getValue])) getString];
-        return new_SMSimiValue_String_initWithNSString_(JreStrcat("C", [((NSString *) nil_chk(value)) charAtWithInt:index]));
-      }
-      id<JavaUtilList> values = new_JavaUtilArrayList_initWithJavaUtilCollection_([fields_ values]);
-      if ([values size] > index) {
-        return [self bindWithNSString:implicitKey withSMSimiProperty:[values getWithInt:index]];
-      }
-      return nil;
-    }
-  }
-  @catch (JavaLangNumberFormatException *ignored) {
-  }
-  if ([key java_hasPrefix:SMConstants_PRIVATE]) {
-    id<SMSimiObject> self_ = [((SMSimiValue *) nil_chk([((SMEnvironment *) nil_chk(environment)) getWithSMToken:SMToken_self__()])) getObject];
-    if (self_ != self && self_ != clazz_) {
-      @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Trying to access a private property!");
-    }
-  }
-  if ([((JavaUtilLinkedHashMap *) nil_chk(fields_)) containsKeyWithId:key]) {
-    return [self bindWithNSString:key withSMSimiProperty:[fields_ getWithId:key]];
-  }
-  return [self getFromClassWithSMToken:name withJavaLangInteger:arity withSMEnvironment:environment];
-}
-
-- (void)setFieldWithNSString:(NSString *)key
-          withSMSimiProperty:(id<SMSimiProperty>)prop {
-  if (prop == nil) {
-    (void) [((JavaUtilLinkedHashMap *) nil_chk(fields_)) removeWithId:key];
-  }
-  else {
-    (void) [((JavaUtilLinkedHashMap *) nil_chk(fields_)) putWithId:key withId:prop];
-  }
-}
-
-- (void)clearImpl {
-  [((JavaUtilLinkedHashMap *) nil_chk(fields_)) clear];
-}
-
-- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
-                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch {
-  if (!([other isKindOfClass:[SMSimiObjectImpl_Dictionary class]])) {
-    return false;
-  }
-  SMSimiObjectImpl_Dictionary *dictionary = (SMSimiObjectImpl_Dictionary *) cast_chk(other, [SMSimiObjectImpl_Dictionary class]);
-  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) {
-    if (fieldsToMatch != nil && ![fieldsToMatch containsWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]]) {
-      continue;
-    }
-    id<SMSimiProperty> prop = [((SMSimiObjectImpl_Dictionary *) nil_chk(dictionary))->fields_ getWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]];
-    if (![self valuesMatchWithSMSimiProperty:prop withSMSimiProperty:[entry_ getValue]]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
-                        withSMToken:(SMToken *)at {
-  if (!([object isKindOfClass:[SMSimiValue_String class]])) {
-    @throw new_SMRuntimeError_initWithSMToken_withNSString_(at, @"Left side must be a string!");
-  }
-  return [((id<JavaUtilSet>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) keySet])) containsWithId:[((SMSimiValue *) nil_chk(object)) getString]];
-}
-
-- (jboolean)isArray {
-  return false;
-}
-
-- (jint)length {
-  return [((JavaUtilLinkedHashMap *) nil_chk(fields_)) size];
-}
-
-- (JavaUtilArrayList *)keys {
-  id<JavaUtilSet> keys = new_JavaUtilHashSet_initWithJavaUtilCollection_([((JavaUtilLinkedHashMap *) nil_chk(fields_)) keySet]);
-  if (clazz_ != nil) {
-    [keys addAllWithJavaUtilCollection:[clazz_ allKeys]];
-  }
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([keys stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiObjectImpl_Dictionary_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMSimiObjectImpl_Dictionary_$Lambda$2, instance))];
-}
-
-- (JavaUtilArrayList *)values {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilCollection>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiObjectImpl_Dictionary_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMSimiObjectImpl_Dictionary_$Lambda$4, instance))];
-}
-
-- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, [self getEnumeratedValuesWithSMSimiClassImpl:objectClass]);
-}
-
-- (JavaUtilArrayList *)getEnumeratedValuesWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  jint size = [self length];
-  JavaUtilArrayList *values = new_JavaUtilArrayList_initWithInt_(size);
-  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) {
-    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(objectClass, new_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]), [((id<SMSimiProperty>) nil_chk([entry_ getValue])) getValue]))];
-  }
-  return values;
-}
-
-- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  if ([self length] == 0) {
-    return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(objectClass, true, new_JavaUtilLinkedHashMap_init());
-  }
-  JavaUtilLinkedHashMap *zipFields = new_JavaUtilLinkedHashMap_init();
-  for (id<SMSimiProperty> __strong prop in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) values])) {
-    SMSimiObjectImpl_Dictionary *obj = [((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(prop)) getValue])) getObject], [SMSimiObjectImpl class])))) asDictionary];
-    (void) [zipFields putWithId:[((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl_Dictionary *) nil_chk(obj))->fields_ getWithId:SMConstants_KEY])) getValue])) getString] withId:[obj->fields_ getWithId:SMConstants_VALUE]];
-  }
-  return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(objectClass, true, zipFields);
-}
-
-- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value {
-  jint index = [((id<JavaUtilList>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilCollection>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiObjectImpl_Dictionary_$Lambda$5, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()])) indexOfWithId:value];
-  if (index == -1) {
-    return nil;
-  }
-  return new_SMSimiValue_Number_initWithLong_(index);
-}
-
-- (SMSimiObjectImpl *)reversed {
-  id<JavaUtilListIterator> iter = [new_JavaUtilArrayList_initWithJavaUtilCollection_([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet]) listIteratorWithInt:[fields_ size]];
-  JavaUtilLinkedHashMap *reversedFields = new_JavaUtilLinkedHashMap_init();
-  while ([((id<JavaUtilListIterator>) nil_chk(iter)) hasPrevious]) {
-    id<JavaUtilMap_Entry> entry_ = [iter previous];
-    (void) [reversedFields putWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey] withId:[entry_ getValue]];
-  }
-  return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz_, immutable_, reversedFields);
-}
-
-- (id<JavaUtilIterator>)iterate {
-  return [((JavaUtilArrayList *) nil_chk([self keys])) iterator];
-}
-
-- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator {
-  JavaUtilLinkedHashMap *sortedFields = new_JavaUtilLinkedHashMap_init();
-  [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) stream])) sortedWithJavaUtilComparator:comparator])) forEachWithJavaUtilFunctionConsumer:new_SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(sortedFields)];
-  return SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz_, true, sortedFields);
-}
-
-- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem {
-  (void) [((JavaUtilLinkedHashMap *) nil_chk(fields_)) putWithId:JreStrcat("$I", SMConstants_IMPLICIT, [fields_ size]) withId:elem];
-}
-
-- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other {
-  if ([((SMSimiObjectImpl *) nil_chk(other)) isArray]) {
-    @throw new_JavaLangRuntimeException_initWithNSString_(@"Trying to add an array to object!");
-  }
-  else {
-    for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(((SMSimiObjectImpl_Dictionary *) cast_chk(other, [SMSimiObjectImpl_Dictionary class]))->fields_)) entrySet])) {
-      if (![fields_ containsKeyWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]]) {
-        (void) [fields_ putWithId:[entry_ getKey] withId:[entry_ getValue]];
-      }
-    }
-  }
-}
-
-- (NSString *)printFields {
-  JavaLangStringBuilder *sb = new_JavaLangStringBuilder_init();
-  for (NSString * __strong key in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) keySet])) {
-    (void) [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([sb appendWithNSString:@"\t"])) appendWithNSString:key])) appendWithNSString:@" = "])) appendWithId:[fields_ getWithId:key]])) appendWithNSString:@"\n"];
-  }
-  return [sb description];
-}
-
-- (SMSimiObjectImpl_Dictionary *)asDictionary {
-  return self;
-}
-
-- (SMSimiObjectImpl_Array *)asArray {
-  @throw new_JavaLangIllegalArgumentException_initWithNSString_(@"Cannot cast Dictionary to Array!");
-}
-
-- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_ {
-  JavaUtilLinkedHashMap *fieldsClone = new_JavaUtilLinkedHashMap_init();
-  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) {
-    (void) [fieldsClone putWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey] withId:[((id<SMSimiProperty>) nil_chk([entry_ getValue])) cloneWithBoolean:mutable_]];
-  }
-  return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz_, mutable_, fieldsClone);
-}
-
-- (NSString *)toCodeWithInt:(jint)indentationLevel
-                withBoolean:(jboolean)ignoreFirst {
-  NSString *indentation = SMCodifiable_getIndentationWithInt_(indentationLevel + 1);
-  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_(ignoreFirst ? @"" : SMCodifiable_getIndentationWithInt_(indentationLevel)) appendWithNSString:immutable_ ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, LEFT_BRACKET))) toCode] : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET))) toCode]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]])) appendWithNSString:clazz_ != nil ? JreStrcat("$$$C$$", indentation, @"\"class\" = gu \"", clazz_->name_, '"', ([((JavaUtilLinkedHashMap *) nil_chk(fields_)) isEmpty] ? @"" : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode]), [JreLoadEnum(SMTokenType, NEWLINE) toCode]) : @""])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) stream])) mapWithJavaUtilFunctionFunction:new_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(indentation, indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], [JreLoadEnum(SMTokenType, NEWLINE) toCode]))]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[JreLoadEnum(SMTokenType, NEWLINE) toCode]])) description];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x0, 2, 3, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 4, 5, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x0, 6, 7, -1, 8, -1, -1 },
-    { NULL, "Z", 0x0, 9, 10, -1, -1, -1, -1 },
-    { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 12, 13, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x4, 14, 13, -1, 15, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 16, 13, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x0, 17, 18, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilIterator;", 0x0, -1, -1, -1, 19, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 20, 21, -1, 22, -1, -1 },
-    { NULL, "V", 0x0, 23, 24, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 25, 26, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl_Dictionary;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl_Array;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObject;", 0x1, 27, 28, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 29, 30, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMSimiClassImpl:withBoolean:withJavaUtilLinkedHashMap:);
-  methods[1].selector = @selector(getWithSMToken:withJavaLangInteger:withSMEnvironment:);
-  methods[2].selector = @selector(setFieldWithNSString:withSMSimiProperty:);
-  methods[3].selector = @selector(clearImpl);
-  methods[4].selector = @selector(matchesWithSMSimiObjectImpl:withJavaUtilList:);
-  methods[5].selector = @selector(containsWithSMSimiValue:withSMToken:);
-  methods[6].selector = @selector(isArray);
-  methods[7].selector = @selector(length);
-  methods[8].selector = @selector(keys);
-  methods[9].selector = @selector(values);
-  methods[10].selector = @selector(enumerateWithSMSimiClassImpl:);
-  methods[11].selector = @selector(getEnumeratedValuesWithSMSimiClassImpl:);
-  methods[12].selector = @selector(zipWithSMSimiClassImpl:);
-  methods[13].selector = @selector(indexOfWithSMSimiValue:);
-  methods[14].selector = @selector(reversed);
-  methods[15].selector = @selector(iterate);
-  methods[16].selector = @selector(sortedWithJavaUtilComparator:);
-  methods[17].selector = @selector(appendImplWithSMSimiProperty:);
-  methods[18].selector = @selector(addAllWithSMSimiObjectImpl:);
-  methods[19].selector = @selector(printFields);
-  methods[20].selector = @selector(asDictionary);
-  methods[21].selector = @selector(asArray);
-  methods[22].selector = @selector(cloneWithBoolean:);
-  methods[23].selector = @selector(toCodeWithInt:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x10, -1, -1, 31, -1 },
-  };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilLinkedHashMap;", "(LSimiClassImpl;ZLjava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "getEnumeratedValues", "(LSimiClassImpl;)Ljava/util/ArrayList<LSimiProperty;>;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "toCode", "IZ", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl_Dictionary = { "Dictionary", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 24, 1, 26, -1, -1, -1, -1 };
-  return &_SMSimiObjectImpl_Dictionary;
-}
-
-@end
-
-void SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiObjectImpl_Dictionary *self, SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields) {
-  SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_(self, clazz, immutable);
-  self->fields_ = fields;
-}
-
-SMSimiObjectImpl_Dictionary *new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields) {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary, initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_, clazz, immutable, fields)
-}
-
-SMSimiObjectImpl_Dictionary *create_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields) {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary, initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_, clazz, immutable, fields)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl_Dictionary)
-
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$1)
-
-@implementation SMSimiObjectImpl_Dictionary_$Lambda$1
+@implementation SMSimiObjectImpl_$Lambda$1
 
 - (id)applyWithId:(NSString *)a {
   return new_SMSimiValue_String_initWithNSString_(a);
@@ -1097,58 +991,99 @@ J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$1)
 }
 
 + (void)initialize {
-  if (self == [SMSimiObjectImpl_Dictionary_$Lambda$1 class]) {
-    SMSimiObjectImpl_Dictionary_$Lambda$1_instance = new_SMSimiObjectImpl_Dictionary_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Dictionary_$Lambda$1)
+  if (self == [SMSimiObjectImpl_$Lambda$1 class]) {
+    SMSimiObjectImpl_$Lambda$1_instance = new_SMSimiObjectImpl_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_$Lambda$1)
   }
 }
 
 @end
 
-void SMSimiObjectImpl_Dictionary_$Lambda$1_init(SMSimiObjectImpl_Dictionary_$Lambda$1 *self) {
+void SMSimiObjectImpl_$Lambda$1_init(SMSimiObjectImpl_$Lambda$1 *self) {
   NSObject_init(self);
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$1 *new_SMSimiObjectImpl_Dictionary_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$1, init)
+SMSimiObjectImpl_$Lambda$1 *new_SMSimiObjectImpl_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$1, init)
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$1 *create_SMSimiObjectImpl_Dictionary_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$1, init)
+SMSimiObjectImpl_$Lambda$1 *create_SMSimiObjectImpl_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$2)
+J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_$Lambda$2)
 
-@implementation SMSimiObjectImpl_Dictionary_$Lambda$2
+@implementation SMSimiObjectImpl_$Lambda$2
 
 - (id)get {
   return new_JavaUtilArrayList_init();
 }
 
 + (void)initialize {
-  if (self == [SMSimiObjectImpl_Dictionary_$Lambda$2 class]) {
-    SMSimiObjectImpl_Dictionary_$Lambda$2_instance = new_SMSimiObjectImpl_Dictionary_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Dictionary_$Lambda$2)
+  if (self == [SMSimiObjectImpl_$Lambda$2 class]) {
+    SMSimiObjectImpl_$Lambda$2_instance = new_SMSimiObjectImpl_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_$Lambda$2)
   }
 }
 
 @end
 
-void SMSimiObjectImpl_Dictionary_$Lambda$2_init(SMSimiObjectImpl_Dictionary_$Lambda$2 *self) {
+void SMSimiObjectImpl_$Lambda$2_init(SMSimiObjectImpl_$Lambda$2 *self) {
   NSObject_init(self);
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$2 *new_SMSimiObjectImpl_Dictionary_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$2, init)
+SMSimiObjectImpl_$Lambda$2 *new_SMSimiObjectImpl_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$2, init)
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$2 *create_SMSimiObjectImpl_Dictionary_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$2, init)
+SMSimiObjectImpl_$Lambda$2 *create_SMSimiObjectImpl_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$2, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$3)
+J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_$Lambda$3)
 
-@implementation SMSimiObjectImpl_Dictionary_$Lambda$3
+@implementation SMSimiObjectImpl_$Lambda$3
+
+- (jboolean)testWithId:(id<SMSimiProperty>)a {
+  return JavaUtilObjects_nonNullWithId_(a);
+}
+
+- (id<JavaUtilFunctionPredicate>)and__WithJavaUtilFunctionPredicate:(id<JavaUtilFunctionPredicate>)arg0 {
+  return JavaUtilFunctionPredicate_and__WithJavaUtilFunctionPredicate_(self, arg0);
+}
+
+- (id<JavaUtilFunctionPredicate>)negate {
+  return JavaUtilFunctionPredicate_negate(self);
+}
+
+- (id<JavaUtilFunctionPredicate>)or__WithJavaUtilFunctionPredicate:(id<JavaUtilFunctionPredicate>)arg0 {
+  return JavaUtilFunctionPredicate_or__WithJavaUtilFunctionPredicate_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMSimiObjectImpl_$Lambda$3 class]) {
+    SMSimiObjectImpl_$Lambda$3_instance = new_SMSimiObjectImpl_$Lambda$3_init();
+    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_$Lambda$3)
+  }
+}
+
+@end
+
+void SMSimiObjectImpl_$Lambda$3_init(SMSimiObjectImpl_$Lambda$3 *self) {
+  NSObject_init(self);
+}
+
+SMSimiObjectImpl_$Lambda$3 *new_SMSimiObjectImpl_$Lambda$3_init() {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$3, init)
+}
+
+SMSimiObjectImpl_$Lambda$3 *create_SMSimiObjectImpl_$Lambda$3_init() {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$3, init)
+}
+
+J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_$Lambda$4)
+
+@implementation SMSimiObjectImpl_$Lambda$4
 
 - (id)applyWithId:(id<SMSimiProperty>)a {
   return [((id<SMSimiProperty>) nil_chk(a)) getValue];
@@ -1163,61 +1098,61 @@ J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$3)
 }
 
 + (void)initialize {
-  if (self == [SMSimiObjectImpl_Dictionary_$Lambda$3 class]) {
-    SMSimiObjectImpl_Dictionary_$Lambda$3_instance = new_SMSimiObjectImpl_Dictionary_$Lambda$3_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Dictionary_$Lambda$3)
+  if (self == [SMSimiObjectImpl_$Lambda$4 class]) {
+    SMSimiObjectImpl_$Lambda$4_instance = new_SMSimiObjectImpl_$Lambda$4_init();
+    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_$Lambda$4)
   }
 }
 
 @end
 
-void SMSimiObjectImpl_Dictionary_$Lambda$3_init(SMSimiObjectImpl_Dictionary_$Lambda$3 *self) {
+void SMSimiObjectImpl_$Lambda$4_init(SMSimiObjectImpl_$Lambda$4 *self) {
   NSObject_init(self);
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$3 *new_SMSimiObjectImpl_Dictionary_$Lambda$3_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$3, init)
+SMSimiObjectImpl_$Lambda$4 *new_SMSimiObjectImpl_$Lambda$4_init() {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$4, init)
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$3 *create_SMSimiObjectImpl_Dictionary_$Lambda$3_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$3, init)
+SMSimiObjectImpl_$Lambda$4 *create_SMSimiObjectImpl_$Lambda$4_init() {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$4, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$4)
+J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_$Lambda$5)
 
-@implementation SMSimiObjectImpl_Dictionary_$Lambda$4
+@implementation SMSimiObjectImpl_$Lambda$5
 
 - (id)get {
   return new_JavaUtilArrayList_init();
 }
 
 + (void)initialize {
-  if (self == [SMSimiObjectImpl_Dictionary_$Lambda$4 class]) {
-    SMSimiObjectImpl_Dictionary_$Lambda$4_instance = new_SMSimiObjectImpl_Dictionary_$Lambda$4_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Dictionary_$Lambda$4)
+  if (self == [SMSimiObjectImpl_$Lambda$5 class]) {
+    SMSimiObjectImpl_$Lambda$5_instance = new_SMSimiObjectImpl_$Lambda$5_init();
+    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_$Lambda$5)
   }
 }
 
 @end
 
-void SMSimiObjectImpl_Dictionary_$Lambda$4_init(SMSimiObjectImpl_Dictionary_$Lambda$4 *self) {
+void SMSimiObjectImpl_$Lambda$5_init(SMSimiObjectImpl_$Lambda$5 *self) {
   NSObject_init(self);
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$4 *new_SMSimiObjectImpl_Dictionary_$Lambda$4_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$4, init)
+SMSimiObjectImpl_$Lambda$5 *new_SMSimiObjectImpl_$Lambda$5_init() {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$5, init)
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$4 *create_SMSimiObjectImpl_Dictionary_$Lambda$4_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$4, init)
+SMSimiObjectImpl_$Lambda$5 *create_SMSimiObjectImpl_$Lambda$5_init() {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$5, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$5)
+J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_$Lambda$6)
 
-@implementation SMSimiObjectImpl_Dictionary_$Lambda$5
+@implementation SMSimiObjectImpl_$Lambda$6
 
-- (id)applyWithId:(id<SMSimiProperty>)p {
-  return [((id<SMSimiProperty>) nil_chk(p)) getValue];
+- (id)applyWithId:(id<SMSimiProperty>)a {
+  return [((id<SMSimiProperty>) nil_chk(a)) getValue];
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -1229,27 +1164,64 @@ J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Dictionary_$Lambda$5)
 }
 
 + (void)initialize {
-  if (self == [SMSimiObjectImpl_Dictionary_$Lambda$5 class]) {
-    SMSimiObjectImpl_Dictionary_$Lambda$5_instance = new_SMSimiObjectImpl_Dictionary_$Lambda$5_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Dictionary_$Lambda$5)
+  if (self == [SMSimiObjectImpl_$Lambda$6 class]) {
+    SMSimiObjectImpl_$Lambda$6_instance = new_SMSimiObjectImpl_$Lambda$6_init();
+    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_$Lambda$6)
   }
 }
 
 @end
 
-void SMSimiObjectImpl_Dictionary_$Lambda$5_init(SMSimiObjectImpl_Dictionary_$Lambda$5 *self) {
+void SMSimiObjectImpl_$Lambda$6_init(SMSimiObjectImpl_$Lambda$6 *self) {
   NSObject_init(self);
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$5 *new_SMSimiObjectImpl_Dictionary_$Lambda$5_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$5, init)
+SMSimiObjectImpl_$Lambda$6 *new_SMSimiObjectImpl_$Lambda$6_init() {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$6, init)
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$5 *create_SMSimiObjectImpl_Dictionary_$Lambda$5_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$5, init)
+SMSimiObjectImpl_$Lambda$6 *create_SMSimiObjectImpl_$Lambda$6_init() {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$6, init)
 }
 
-@implementation SMSimiObjectImpl_Dictionary_$Lambda$6
+J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_$Lambda$7)
+
+@implementation SMSimiObjectImpl_$Lambda$7
+
+- (id)applyWithId:(id<JavaUtilMap_Entry>)a {
+  return [((id<JavaUtilMap_Entry>) nil_chk(a)) getKey];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMSimiObjectImpl_$Lambda$7 class]) {
+    SMSimiObjectImpl_$Lambda$7_instance = new_SMSimiObjectImpl_$Lambda$7_init();
+    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_$Lambda$7)
+  }
+}
+
+@end
+
+void SMSimiObjectImpl_$Lambda$7_init(SMSimiObjectImpl_$Lambda$7 *self) {
+  NSObject_init(self);
+}
+
+SMSimiObjectImpl_$Lambda$7 *new_SMSimiObjectImpl_$Lambda$7_init() {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$7, init)
+}
+
+SMSimiObjectImpl_$Lambda$7 *create_SMSimiObjectImpl_$Lambda$7_init() {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$7, init)
+}
+
+@implementation SMSimiObjectImpl_$Lambda$8
 
 - (void)acceptWithId:(id<JavaUtilMap_Entry>)e {
   (void) [((JavaUtilLinkedHashMap *) nil_chk(val$sortedFields_)) putWithId:[((id<JavaUtilMap_Entry>) nil_chk(e)) getKey] withId:[e getValue]];
@@ -1261,20 +1233,108 @@ SMSimiObjectImpl_Dictionary_$Lambda$5 *create_SMSimiObjectImpl_Dictionary_$Lambd
 
 @end
 
-void SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(SMSimiObjectImpl_Dictionary_$Lambda$6 *self, JavaUtilLinkedHashMap *capture$0) {
+void SMSimiObjectImpl_$Lambda$8_initWithJavaUtilLinkedHashMap_(SMSimiObjectImpl_$Lambda$8 *self, JavaUtilLinkedHashMap *capture$0) {
   self->val$sortedFields_ = capture$0;
   NSObject_init(self);
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$6 *new_SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0) {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$6, initWithJavaUtilLinkedHashMap_, capture$0)
+SMSimiObjectImpl_$Lambda$8 *new_SMSimiObjectImpl_$Lambda$8_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0) {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$8, initWithJavaUtilLinkedHashMap_, capture$0)
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambda$6_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0) {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$6, initWithJavaUtilLinkedHashMap_, capture$0)
+SMSimiObjectImpl_$Lambda$8 *create_SMSimiObjectImpl_$Lambda$8_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *capture$0) {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$8, initWithJavaUtilLinkedHashMap_, capture$0)
 }
 
-@implementation SMSimiObjectImpl_Dictionary_$Lambda$7
+@implementation SMSimiObjectImpl_$Lambda$9
+
+- (jint)compareWithId:(id<SMSimiProperty>)o1
+               withId:(id<SMSimiProperty>)o2 {
+  return [((id<JavaUtilComparator>) nil_chk(val$comparator_)) compareWithId:new_JavaUtilAbstractMap_SimpleEntry_initWithId_withId_(SMConstants_IMPLICIT, o1) withId:new_JavaUtilAbstractMap_SimpleEntry_initWithId_withId_(SMConstants_IMPLICIT, o2)];
+}
+
+- (id<JavaUtilComparator>)reversed {
+  return JavaUtilComparator_reversed(self);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilComparator:(id<JavaUtilComparator>)arg0 {
+  return JavaUtilComparator_thenComparingWithJavaUtilComparator_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0
+                                             withJavaUtilComparator:(id<JavaUtilComparator>)arg1 {
+  return JavaUtilComparator_thenComparingWithJavaUtilFunctionFunction_withJavaUtilComparator_(self, arg0, arg1);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilComparator_thenComparingWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingIntWithJavaUtilFunctionToIntFunction:(id<JavaUtilFunctionToIntFunction>)arg0 {
+  return JavaUtilComparator_thenComparingIntWithJavaUtilFunctionToIntFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingLongWithJavaUtilFunctionToLongFunction:(id<JavaUtilFunctionToLongFunction>)arg0 {
+  return JavaUtilComparator_thenComparingLongWithJavaUtilFunctionToLongFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingDoubleWithJavaUtilFunctionToDoubleFunction:(id<JavaUtilFunctionToDoubleFunction>)arg0 {
+  return JavaUtilComparator_thenComparingDoubleWithJavaUtilFunctionToDoubleFunction_(self, arg0);
+}
+
+@end
+
+void SMSimiObjectImpl_$Lambda$9_initWithJavaUtilComparator_(SMSimiObjectImpl_$Lambda$9 *self, id<JavaUtilComparator> capture$0) {
+  self->val$comparator_ = capture$0;
+  NSObject_init(self);
+}
+
+SMSimiObjectImpl_$Lambda$9 *new_SMSimiObjectImpl_$Lambda$9_initWithJavaUtilComparator_(id<JavaUtilComparator> capture$0) {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$9, initWithJavaUtilComparator_, capture$0)
+}
+
+SMSimiObjectImpl_$Lambda$9 *create_SMSimiObjectImpl_$Lambda$9_initWithJavaUtilComparator_(id<JavaUtilComparator> capture$0) {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$9, initWithJavaUtilComparator_, capture$0)
+}
+
+J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_$Lambda$10)
+
+@implementation SMSimiObjectImpl_$Lambda$10
+
+- (id)applyWithId:(id<SMSimiProperty>)a {
+  return [((id<SMSimiProperty>) nil_chk(a)) getValue];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMSimiObjectImpl_$Lambda$10 class]) {
+    SMSimiObjectImpl_$Lambda$10_instance = new_SMSimiObjectImpl_$Lambda$10_init();
+    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_$Lambda$10)
+  }
+}
+
+@end
+
+void SMSimiObjectImpl_$Lambda$10_init(SMSimiObjectImpl_$Lambda$10 *self) {
+  NSObject_init(self);
+}
+
+SMSimiObjectImpl_$Lambda$10 *new_SMSimiObjectImpl_$Lambda$10_init() {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$10, init)
+}
+
+SMSimiObjectImpl_$Lambda$10 *create_SMSimiObjectImpl_$Lambda$10_init() {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$10, init)
+}
+
+@implementation SMSimiObjectImpl_$Lambda$11
 
 - (id)applyWithId:(id<JavaUtilMap_Entry>)e {
   return JreStrcat("$$C$C$", val$indentation_, [((id<JavaUtilMap_Entry>) nil_chk(e)) getKey], ' ', [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, EQUAL))) toCode], ' ', [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([e getValue])) getValue])) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:true]);
@@ -1290,385 +1350,21 @@ SMSimiObjectImpl_Dictionary_$Lambda$6 *create_SMSimiObjectImpl_Dictionary_$Lambd
 
 @end
 
-void SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(SMSimiObjectImpl_Dictionary_$Lambda$7 *self, NSString *capture$0, jint capture$1) {
+void SMSimiObjectImpl_$Lambda$11_initWithNSString_withInt_(SMSimiObjectImpl_$Lambda$11 *self, NSString *capture$0, jint capture$1) {
   self->val$indentation_ = capture$0;
   self->val$indentationLevel_ = capture$1;
   NSObject_init(self);
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$7 *new_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(NSString *capture$0, jint capture$1) {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$7, initWithNSString_withInt_, capture$0, capture$1)
+SMSimiObjectImpl_$Lambda$11 *new_SMSimiObjectImpl_$Lambda$11_initWithNSString_withInt_(NSString *capture$0, jint capture$1) {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$11, initWithNSString_withInt_, capture$0, capture$1)
 }
 
-SMSimiObjectImpl_Dictionary_$Lambda$7 *create_SMSimiObjectImpl_Dictionary_$Lambda$7_initWithNSString_withInt_(NSString *capture$0, jint capture$1) {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Dictionary_$Lambda$7, initWithNSString_withInt_, capture$0, capture$1)
+SMSimiObjectImpl_$Lambda$11 *create_SMSimiObjectImpl_$Lambda$11_initWithNSString_withInt_(NSString *capture$0, jint capture$1) {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$11, initWithNSString_withInt_, capture$0, capture$1)
 }
 
-@implementation SMSimiObjectImpl_Array
-
-- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                      withBoolean:(jboolean)immutable
-                            withJavaUtilArrayList:(JavaUtilArrayList *)fields {
-  SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(self, clazz, immutable, fields);
-  return self;
-}
-
-- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
-                 withJavaLangInteger:(JavaLangInteger *)arity
-                   withSMEnvironment:(SMEnvironment *)environment {
-  NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
-  @try {
-    jint index = JavaLangInteger_parseIntWithNSString_(key);
-    return [self bindWithNSString:key withSMSimiProperty:[((JavaUtilArrayList *) nil_chk(fields_)) getWithInt:index]];
-  }
-  @catch (JavaLangNumberFormatException *ignored) {
-  }
-  return [self getFromClassWithSMToken:name withJavaLangInteger:arity withSMEnvironment:environment];
-}
-
-- (void)setFieldWithNSString:(NSString *)key
-          withSMSimiProperty:(id<SMSimiProperty>)prop {
-  jint index = JavaLangInteger_parseIntWithNSString_(key);
-  if (prop == nil) {
-    (void) [((JavaUtilArrayList *) nil_chk(fields_)) removeWithInt:index];
-  }
-  else {
-    (void) [((JavaUtilArrayList *) nil_chk(fields_)) setWithInt:index withId:prop];
-  }
-}
-
-- (void)clearImpl {
-  [((JavaUtilArrayList *) nil_chk(fields_)) clear];
-}
-
-- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
-                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch {
-  if (![((SMSimiObjectImpl *) nil_chk(other)) isArray]) {
-    return false;
-  }
-  jint length = [self length];
-  if ([other length] != length) {
-    return false;
-  }
-  for (jint i = 0; i < length; i++) {
-    if (![self valuesMatchWithSMSimiProperty:[((JavaUtilArrayList *) nil_chk(fields_)) getWithInt:i] withSMSimiProperty:[((SMSimiObjectImpl_Array *) cast_chk(other, [SMSimiObjectImpl_Array class]))->fields_ getWithInt:i]]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
-                        withSMToken:(SMToken *)at {
-  return [((JavaUtilArrayList *) nil_chk(fields_)) containsWithId:object];
-}
-
-- (jboolean)isArray {
-  return true;
-}
-
-- (jint)length {
-  return [((JavaUtilArrayList *) nil_chk(fields_)) size];
-}
-
-- (JavaUtilArrayList *)keys {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamIntStream>) nil_chk(JavaUtilStreamIntStream_rangeWithInt_withInt_(0, [self length]))) mapToObjWithJavaUtilFunctionIntFunction:JreLoadStatic(SMSimiObjectImpl_Array_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMSimiObjectImpl_Array_$Lambda$2, instance))];
-}
-
-- (JavaUtilArrayList *)values {
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk(fields_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiObjectImpl_Array_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toCollectionWithJavaUtilFunctionSupplier_(JreLoadStatic(SMSimiObjectImpl_Array_$Lambda$4, instance))];
-}
-
-- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  jint size = [self length];
-  JavaUtilArrayList *values = new_JavaUtilArrayList_initWithInt_(size);
-  for (jint i = 0; i < size; i++) {
-    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(objectClass, new_SMSimiValue_Number_initWithLong_(i), [((id<SMSimiProperty>) nil_chk([((JavaUtilArrayList *) nil_chk(fields_)) getWithInt:i])) getValue]))];
-  }
-  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, values);
-}
-
-- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  @throw new_JavaLangRuntimeException_initWithNSString_(@"Can only zip arrays!");
-}
-
-- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value {
-  jint index = [((JavaUtilArrayList *) nil_chk(fields_)) indexOfWithId:value];
-  if (index == -1) {
-    return nil;
-  }
-  return new_SMSimiValue_Number_initWithLong_(index);
-}
-
-- (SMSimiObjectImpl *)reversed {
-  JavaUtilArrayList *reversed = new_JavaUtilArrayList_initWithJavaUtilCollection_(fields_);
-  JavaUtilCollections_reverseWithJavaUtilList_(reversed);
-  return new_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz_, immutable_, reversed);
-}
-
-- (id<JavaUtilIterator>)iterate {
-  return [((JavaUtilArrayList *) nil_chk(fields_)) iterator];
-}
-
-- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator {
-  JavaUtilArrayList *sorted = [self values];
-  [((JavaUtilArrayList *) nil_chk(sorted)) sortWithJavaUtilComparator:comparator];
-  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz_, true, new_JavaUtilArrayList_initWithJavaUtilCollection_(sorted));
-}
-
-- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem {
-  [((JavaUtilArrayList *) nil_chk(fields_)) addWithId:[((id<SMSimiProperty>) nil_chk(elem)) getValue]];
-}
-
-- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other {
-  if ([((SMSimiObjectImpl *) nil_chk(other)) isArray]) {
-    SMSimiObjectImpl_Array *array;
-    if ([other isKindOfClass:[SMSimiObjectImpl_InitiallyEmpty class]]) {
-      array = [other asArray];
-    }
-    else {
-      array = (SMSimiObjectImpl_Array *) cast_chk(other, [SMSimiObjectImpl_Array class]);
-    }
-    [((JavaUtilArrayList *) nil_chk(fields_)) addAllWithJavaUtilCollection:((SMSimiObjectImpl_Array *) nil_chk(array))->fields_];
-  }
-  else {
-    @throw new_JavaLangRuntimeException_initWithNSString_(@"Trying to add a dictionary to an array!");
-  }
-}
-
-- (NSString *)printFields {
-  JavaLangStringBuilder *sb = new_JavaLangStringBuilder_init();
-  jint size = [self length];
-  for (jint i = 0; i < size; i++) {
-    (void) [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([sb appendWithNSString:@"\t"])) appendWithInt:i])) appendWithNSString:@" = "])) appendWithId:[((JavaUtilArrayList *) nil_chk(fields_)) getWithInt:i]])) appendWithNSString:@"\n"];
-  }
-  return [sb description];
-}
-
-- (SMSimiObjectImpl_Dictionary *)asDictionary {
-  @throw new_JavaLangIllegalArgumentException_initWithNSString_(@"Cannot cast Array to Dictionary!");
-}
-
-- (SMSimiObjectImpl_Array *)asArray {
-  return self;
-}
-
-- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_ {
-  JavaUtilArrayList *fieldsClone = new_JavaUtilArrayList_init();
-  for (id<SMSimiProperty> __strong field in nil_chk(fields_)) {
-    [fieldsClone addWithId:[((id<SMSimiProperty>) nil_chk(field)) cloneWithBoolean:mutable_]];
-  }
-  return new_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz_, mutable_, fieldsClone);
-}
-
-- (NSString *)toCodeWithInt:(jint)indentationLevel
-                withBoolean:(jboolean)ignoreFirst {
-  return [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([new_JavaLangStringBuilder_initWithNSString_(ignoreFirst ? @"" : SMCodifiable_getIndentationWithInt_(indentationLevel)) appendWithNSString:immutable_ ? [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, LEFT_BRACKET))) toCode] : [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET))) toCode]])) appendWithNSString:[((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk(fields_)) stream])) mapWithJavaUtilFunctionFunction:new_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(indentationLevel)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_(JreStrcat("$C", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, COMMA))) toCode], ' '))]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, RIGHT_BRACKET))) toCodeWithInt:indentationLevel withBoolean:false]])) appendWithNSString:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, NEWLINE))) toCode]])) description];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x0, 2, 3, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 4, 5, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x0, 6, 7, -1, 8, -1, -1 },
-    { NULL, "Z", 0x0, 9, 10, -1, -1, -1, -1 },
-    { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 11, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 12, 13, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 14, 13, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x0, 15, 16, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilIterator;", 0x0, -1, -1, -1, 17, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 18, 19, -1, 20, -1, -1 },
-    { NULL, "V", 0x0, 21, 22, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 23, 24, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl_Dictionary;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl_Array;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObject;", 0x1, 25, 26, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 27, 28, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMSimiClassImpl:withBoolean:withJavaUtilArrayList:);
-  methods[1].selector = @selector(getWithSMToken:withJavaLangInteger:withSMEnvironment:);
-  methods[2].selector = @selector(setFieldWithNSString:withSMSimiProperty:);
-  methods[3].selector = @selector(clearImpl);
-  methods[4].selector = @selector(matchesWithSMSimiObjectImpl:withJavaUtilList:);
-  methods[5].selector = @selector(containsWithSMSimiValue:withSMToken:);
-  methods[6].selector = @selector(isArray);
-  methods[7].selector = @selector(length);
-  methods[8].selector = @selector(keys);
-  methods[9].selector = @selector(values);
-  methods[10].selector = @selector(enumerateWithSMSimiClassImpl:);
-  methods[11].selector = @selector(zipWithSMSimiClassImpl:);
-  methods[12].selector = @selector(indexOfWithSMSimiValue:);
-  methods[13].selector = @selector(reversed);
-  methods[14].selector = @selector(iterate);
-  methods[15].selector = @selector(sortedWithJavaUtilComparator:);
-  methods[16].selector = @selector(appendImplWithSMSimiProperty:);
-  methods[17].selector = @selector(addAllWithSMSimiObjectImpl:);
-  methods[18].selector = @selector(printFields);
-  methods[19].selector = @selector(asDictionary);
-  methods[20].selector = @selector(asArray);
-  methods[21].selector = @selector(cloneWithBoolean:);
-  methods[22].selector = @selector(toCodeWithInt:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "fields_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x10, -1, -1, 29, -1 },
-  };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;ZLJavaUtilArrayList;", "(LSimiClassImpl;ZLjava/util/ArrayList<+LSimiProperty;>;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "toCode", "IZ", "Ljava/util/ArrayList<LSimiProperty;>;" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl_Array = { "Array", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 23, 1, 24, -1, -1, -1, -1 };
-  return &_SMSimiObjectImpl_Array;
-}
-
-@end
-
-void SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiObjectImpl_Array *self, SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields) {
-  SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_(self, clazz, immutable);
-  self->fields_ = new_JavaUtilArrayList_initWithJavaUtilCollection_(fields);
-}
-
-SMSimiObjectImpl_Array *new_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields) {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Array, initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_, clazz, immutable, fields)
-}
-
-SMSimiObjectImpl_Array *create_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields) {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Array, initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_, clazz, immutable, fields)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl_Array)
-
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Array_$Lambda$1)
-
-@implementation SMSimiObjectImpl_Array_$Lambda$1
-
-- (id)applyWithInt:(jint)a {
-  return new_SMSimiValue_Number_initWithLong_(a);
-}
-
-+ (void)initialize {
-  if (self == [SMSimiObjectImpl_Array_$Lambda$1 class]) {
-    SMSimiObjectImpl_Array_$Lambda$1_instance = new_SMSimiObjectImpl_Array_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Array_$Lambda$1)
-  }
-}
-
-@end
-
-void SMSimiObjectImpl_Array_$Lambda$1_init(SMSimiObjectImpl_Array_$Lambda$1 *self) {
-  NSObject_init(self);
-}
-
-SMSimiObjectImpl_Array_$Lambda$1 *new_SMSimiObjectImpl_Array_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Array_$Lambda$1, init)
-}
-
-SMSimiObjectImpl_Array_$Lambda$1 *create_SMSimiObjectImpl_Array_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Array_$Lambda$1, init)
-}
-
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Array_$Lambda$2)
-
-@implementation SMSimiObjectImpl_Array_$Lambda$2
-
-- (id)get {
-  return new_JavaUtilArrayList_init();
-}
-
-+ (void)initialize {
-  if (self == [SMSimiObjectImpl_Array_$Lambda$2 class]) {
-    SMSimiObjectImpl_Array_$Lambda$2_instance = new_SMSimiObjectImpl_Array_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Array_$Lambda$2)
-  }
-}
-
-@end
-
-void SMSimiObjectImpl_Array_$Lambda$2_init(SMSimiObjectImpl_Array_$Lambda$2 *self) {
-  NSObject_init(self);
-}
-
-SMSimiObjectImpl_Array_$Lambda$2 *new_SMSimiObjectImpl_Array_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Array_$Lambda$2, init)
-}
-
-SMSimiObjectImpl_Array_$Lambda$2 *create_SMSimiObjectImpl_Array_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Array_$Lambda$2, init)
-}
-
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Array_$Lambda$3)
-
-@implementation SMSimiObjectImpl_Array_$Lambda$3
-
-- (id)applyWithId:(id<SMSimiProperty>)a {
-  return [((id<SMSimiProperty>) nil_chk(a)) getValue];
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMSimiObjectImpl_Array_$Lambda$3 class]) {
-    SMSimiObjectImpl_Array_$Lambda$3_instance = new_SMSimiObjectImpl_Array_$Lambda$3_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Array_$Lambda$3)
-  }
-}
-
-@end
-
-void SMSimiObjectImpl_Array_$Lambda$3_init(SMSimiObjectImpl_Array_$Lambda$3 *self) {
-  NSObject_init(self);
-}
-
-SMSimiObjectImpl_Array_$Lambda$3 *new_SMSimiObjectImpl_Array_$Lambda$3_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Array_$Lambda$3, init)
-}
-
-SMSimiObjectImpl_Array_$Lambda$3 *create_SMSimiObjectImpl_Array_$Lambda$3_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Array_$Lambda$3, init)
-}
-
-J2OBJC_INITIALIZED_DEFN(SMSimiObjectImpl_Array_$Lambda$4)
-
-@implementation SMSimiObjectImpl_Array_$Lambda$4
-
-- (id)get {
-  return new_JavaUtilArrayList_init();
-}
-
-+ (void)initialize {
-  if (self == [SMSimiObjectImpl_Array_$Lambda$4 class]) {
-    SMSimiObjectImpl_Array_$Lambda$4_instance = new_SMSimiObjectImpl_Array_$Lambda$4_init();
-    J2OBJC_SET_INITIALIZED(SMSimiObjectImpl_Array_$Lambda$4)
-  }
-}
-
-@end
-
-void SMSimiObjectImpl_Array_$Lambda$4_init(SMSimiObjectImpl_Array_$Lambda$4 *self) {
-  NSObject_init(self);
-}
-
-SMSimiObjectImpl_Array_$Lambda$4 *new_SMSimiObjectImpl_Array_$Lambda$4_init() {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Array_$Lambda$4, init)
-}
-
-SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init() {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Array_$Lambda$4, init)
-}
-
-@implementation SMSimiObjectImpl_Array_$Lambda$5
+@implementation SMSimiObjectImpl_$Lambda$12
 
 - (id)applyWithId:(id<SMSimiProperty>)i {
   return [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(i)) getValue])) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
@@ -1684,271 +1380,15 @@ SMSimiObjectImpl_Array_$Lambda$4 *create_SMSimiObjectImpl_Array_$Lambda$4_init()
 
 @end
 
-void SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(SMSimiObjectImpl_Array_$Lambda$5 *self, jint capture$0) {
+void SMSimiObjectImpl_$Lambda$12_initWithInt_(SMSimiObjectImpl_$Lambda$12 *self, jint capture$0) {
   self->val$indentationLevel_ = capture$0;
   NSObject_init(self);
 }
 
-SMSimiObjectImpl_Array_$Lambda$5 *new_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(jint capture$0) {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_Array_$Lambda$5, initWithInt_, capture$0)
+SMSimiObjectImpl_$Lambda$12 *new_SMSimiObjectImpl_$Lambda$12_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMSimiObjectImpl_$Lambda$12, initWithInt_, capture$0)
 }
 
-SMSimiObjectImpl_Array_$Lambda$5 *create_SMSimiObjectImpl_Array_$Lambda$5_initWithInt_(jint capture$0) {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_Array_$Lambda$5, initWithInt_, capture$0)
+SMSimiObjectImpl_$Lambda$12 *create_SMSimiObjectImpl_$Lambda$12_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_$Lambda$12, initWithInt_, capture$0)
 }
-
-@implementation SMSimiObjectImpl_InitiallyEmpty
-
-- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                      withBoolean:(jboolean)immutable {
-  SMSimiObjectImpl_InitiallyEmpty_initWithSMSimiClassImpl_withBoolean_(self, clazz, immutable);
-  return self;
-}
-
-- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
-                 withJavaLangInteger:(JavaLangInteger *)arity
-                   withSMEnvironment:(SMEnvironment *)environment {
-  if (underlying_ == nil) {
-    return [self getFromClassWithSMToken:name withJavaLangInteger:arity withSMEnvironment:environment];
-  }
-  return [underlying_ getWithSMToken:name withJavaLangInteger:arity withSMEnvironment:environment];
-}
-
-- (void)setFieldWithNSString:(NSString *)key
-          withSMSimiProperty:(id<SMSimiProperty>)prop {
-  if (underlying_ == nil) {
-    JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-    (void) [fields putWithId:key withId:prop];
-    underlying_ = SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz_, immutable_, fields);
-  }
-  else {
-    [underlying_ setFieldWithNSString:key withSMSimiProperty:prop];
-  }
-}
-
-- (void)clearImpl {
-  if (underlying_ != nil) {
-    [underlying_ clearImpl];
-  }
-}
-
-- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
-                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch {
-  return [((SMSimiObjectImpl *) nil_chk(other)) length] == 0;
-}
-
-- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
-                        withSMToken:(SMToken *)at {
-  if (underlying_ == nil) {
-    return false;
-  }
-  return [underlying_ containsWithSMSimiValue:object withSMToken:at];
-}
-
-- (jboolean)isArray {
-  if (underlying_ == nil) {
-    return true;
-  }
-  return [underlying_ isArray];
-}
-
-- (jint)length {
-  if (underlying_ == nil) {
-    return 0;
-  }
-  return [underlying_ length];
-}
-
-- (JavaUtilArrayList *)keys {
-  if (underlying_ == nil) {
-    return new_JavaUtilArrayList_init();
-  }
-  return [underlying_ keys];
-}
-
-- (JavaUtilArrayList *)values {
-  if (underlying_ == nil) {
-    return new_JavaUtilArrayList_init();
-  }
-  return [underlying_ values];
-}
-
-- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  if (underlying_ == nil) {
-    return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz_, immutable_, new_JavaUtilArrayList_init());
-  }
-  return [underlying_ enumerateWithSMSimiClassImpl:objectClass];
-}
-
-- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
-  if (underlying_ == nil) {
-    return SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz_, immutable_, new_JavaUtilLinkedHashMap_init());
-  }
-  return [underlying_ enumerateWithSMSimiClassImpl:objectClass];
-}
-
-- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value {
-  if (underlying_ == nil) {
-    return nil;
-  }
-  return [underlying_ indexOfWithSMSimiValue:value];
-}
-
-- (SMSimiObjectImpl *)reversed {
-  if (underlying_ == nil) {
-    return SMSimiObjectImpl_emptyWithSMSimiClassImpl_withBoolean_(clazz_, immutable_);
-  }
-  return [underlying_ reversed];
-}
-
-- (id<JavaUtilIterator>)iterate {
-  if (underlying_ == nil) {
-    return [new_JavaUtilArrayList_init() iterator];
-  }
-  return [underlying_ iterate];
-}
-
-- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator {
-  if (underlying_ == nil) {
-    return SMSimiObjectImpl_emptyWithSMSimiClassImpl_withBoolean_(clazz_, immutable_);
-  }
-  return [underlying_ sortedWithJavaUtilComparator:comparator];
-}
-
-- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem {
-  if (underlying_ == nil) {
-    JavaUtilArrayList *fields = new_JavaUtilArrayList_init();
-    [fields addWithId:elem];
-    underlying_ = SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz_, immutable_, fields);
-  }
-  else {
-    [underlying_ appendImplWithSMSimiProperty:elem];
-  }
-}
-
-- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other {
-  if (underlying_ == nil) {
-    if ([((SMSimiObjectImpl *) nil_chk(other)) isArray]) {
-      underlying_ = SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz_, immutable_, new_JavaUtilArrayList_initWithJavaUtilCollection_([((SMSimiObjectImpl *) nil_chk(underlying_)) values]));
-    }
-    else {
-      JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_initWithJavaUtilMap_(((SMSimiObjectImpl_Dictionary *) nil_chk([other asDictionary]))->fields_);
-      underlying_ = SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz_, immutable_, fields);
-    }
-  }
-  else {
-    [underlying_ addAllWithSMSimiObjectImpl:other];
-  }
-}
-
-- (NSString *)printFields {
-  if (underlying_ == nil) {
-    return @"";
-  }
-  return [underlying_ printFields];
-}
-
-- (SMSimiObjectImpl_Dictionary *)asDictionary {
-  if (underlying_ == nil) {
-    return (SMSimiObjectImpl_Dictionary *) cast_chk(SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(clazz_, immutable_, new_JavaUtilLinkedHashMap_init()), [SMSimiObjectImpl_Dictionary class]);
-  }
-  return [underlying_ asDictionary];
-}
-
-- (SMSimiObjectImpl_Array *)asArray {
-  if (underlying_ == nil) {
-    return (SMSimiObjectImpl_Array *) cast_chk(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(clazz_, immutable_, new_JavaUtilArrayList_init()), [SMSimiObjectImpl_Array class]);
-  }
-  return [underlying_ asArray];
-}
-
-- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_ {
-  SMSimiObjectImpl_InitiallyEmpty *clone = (SMSimiObjectImpl_InitiallyEmpty *) cast_chk(SMSimiObjectImpl_emptyWithSMSimiClassImpl_withBoolean_(clazz_, mutable_), [SMSimiObjectImpl_InitiallyEmpty class]);
-  ((SMSimiObjectImpl_InitiallyEmpty *) nil_chk(clone))->underlying_ = (underlying_ != nil) ? (SMSimiObjectImpl *) cast_chk([((SMSimiObjectImpl *) nil_chk(underlying_)) cloneWithBoolean:mutable_], [SMSimiObjectImpl class]) : nil;
-  return clone;
-}
-
-- (NSString *)toCodeWithInt:(jint)indentationLevel
-                withBoolean:(jboolean)ignoreFirst {
-  if (underlying_ == nil) {
-    return @"";
-  }
-  return [underlying_ toCodeWithInt:indentationLevel withBoolean:ignoreFirst];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x2, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x0, 1, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 3, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x0, 5, 6, -1, 7, -1, -1 },
-    { NULL, "Z", 0x0, 8, 9, -1, -1, -1, -1 },
-    { NULL, "Z", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 10, -1, -1 },
-    { NULL, "LJavaUtilArrayList;", 0x1, -1, -1, -1, 10, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 11, 12, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 13, 12, -1, -1, -1, -1 },
-    { NULL, "LSMSimiValue;", 0x0, 14, 15, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilIterator;", 0x0, -1, -1, -1, 16, -1, -1 },
-    { NULL, "LSMSimiObjectImpl;", 0x0, 17, 18, -1, 19, -1, -1 },
-    { NULL, "V", 0x0, 20, 21, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 22, 23, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl_Dictionary;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObjectImpl_Array;", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiObject;", 0x1, 24, 25, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, 26, 27, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMSimiClassImpl:withBoolean:);
-  methods[1].selector = @selector(getWithSMToken:withJavaLangInteger:withSMEnvironment:);
-  methods[2].selector = @selector(setFieldWithNSString:withSMSimiProperty:);
-  methods[3].selector = @selector(clearImpl);
-  methods[4].selector = @selector(matchesWithSMSimiObjectImpl:withJavaUtilList:);
-  methods[5].selector = @selector(containsWithSMSimiValue:withSMToken:);
-  methods[6].selector = @selector(isArray);
-  methods[7].selector = @selector(length);
-  methods[8].selector = @selector(keys);
-  methods[9].selector = @selector(values);
-  methods[10].selector = @selector(enumerateWithSMSimiClassImpl:);
-  methods[11].selector = @selector(zipWithSMSimiClassImpl:);
-  methods[12].selector = @selector(indexOfWithSMSimiValue:);
-  methods[13].selector = @selector(reversed);
-  methods[14].selector = @selector(iterate);
-  methods[15].selector = @selector(sortedWithJavaUtilComparator:);
-  methods[16].selector = @selector(appendImplWithSMSimiProperty:);
-  methods[17].selector = @selector(addAllWithSMSimiObjectImpl:);
-  methods[18].selector = @selector(printFields);
-  methods[19].selector = @selector(asDictionary);
-  methods[20].selector = @selector(asArray);
-  methods[21].selector = @selector(cloneWithBoolean:);
-  methods[22].selector = @selector(toCodeWithInt:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "underlying_", "LSMSimiObjectImpl;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;Z", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "setField", "LNSString;LSMSimiProperty;", "matches", "LSMSimiObjectImpl;LJavaUtilList;", "(LSimiObjectImpl;Ljava/util/List<Ljava/lang/String;>;)Z", "contains", "LSMSimiValue;LSMToken;", "()Ljava/util/ArrayList<LSimiValue;>;", "enumerate", "LSMSimiClassImpl;", "zip", "indexOf", "LSMSimiValue;", "()Ljava/util/Iterator<*>;", "sorted", "LJavaUtilComparator;", "(Ljava/util/Comparator<*>;)LSimiObjectImpl;", "appendImpl", "LSMSimiProperty;", "addAll", "LSMSimiObjectImpl;", "clone", "Z", "toCode", "IZ" };
-  static const J2ObjcClassInfo _SMSimiObjectImpl_InitiallyEmpty = { "InitiallyEmpty", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 23, 1, 23, -1, -1, -1, -1 };
-  return &_SMSimiObjectImpl_InitiallyEmpty;
-}
-
-@end
-
-void SMSimiObjectImpl_InitiallyEmpty_initWithSMSimiClassImpl_withBoolean_(SMSimiObjectImpl_InitiallyEmpty *self, SMSimiClassImpl *clazz, jboolean immutable) {
-  SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_(self, clazz, immutable);
-}
-
-SMSimiObjectImpl_InitiallyEmpty *new_SMSimiObjectImpl_InitiallyEmpty_initWithSMSimiClassImpl_withBoolean_(SMSimiClassImpl *clazz, jboolean immutable) {
-  J2OBJC_NEW_IMPL(SMSimiObjectImpl_InitiallyEmpty, initWithSMSimiClassImpl_withBoolean_, clazz, immutable)
-}
-
-SMSimiObjectImpl_InitiallyEmpty *create_SMSimiObjectImpl_InitiallyEmpty_initWithSMSimiClassImpl_withBoolean_(SMSimiClassImpl *clazz, jboolean immutable) {
-  J2OBJC_CREATE_IMPL(SMSimiObjectImpl_InitiallyEmpty, initWithSMSimiClassImpl_withBoolean_, clazz, immutable)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiObjectImpl_InitiallyEmpty)

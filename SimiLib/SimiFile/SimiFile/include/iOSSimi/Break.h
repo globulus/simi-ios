@@ -33,9 +33,9 @@
 
 - (instancetype __nonnull)init;
 
-// Disallowed inherited constructors, do not use.
+- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)cause;
 
-- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
+// Disallowed inherited constructors, do not use.
 
 - (instancetype __nonnull)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
@@ -56,6 +56,12 @@ FOUNDATION_EXPORT void SMBreak_init(SMBreak *self);
 FOUNDATION_EXPORT SMBreak *new_SMBreak_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT SMBreak *create_SMBreak_init(void);
+
+FOUNDATION_EXPORT void SMBreak_initWithJavaLangThrowable_(SMBreak *self, JavaLangThrowable *cause);
+
+FOUNDATION_EXPORT SMBreak *new_SMBreak_initWithJavaLangThrowable_(JavaLangThrowable *cause) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT SMBreak *create_SMBreak_initWithJavaLangThrowable_(JavaLangThrowable *cause);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMBreak)
 

@@ -431,6 +431,10 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMStmt_BlockStmt)
   return [((SMExpr *) nil_chk(expr_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr *) nil_chk(expr_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return false;
 }
@@ -441,6 +445,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMStmt_BlockStmt)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -450,13 +455,14 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMStmt_BlockStmt)
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expr_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Annotation = { "Annotation", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Annotation = { "Annotation", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Annotation;
 }
 
@@ -498,6 +504,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Annotation)
   return ((SMToken *) nil_chk(name_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(name_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(name_))->hasBreakpoint_;
 }
@@ -508,6 +518,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Annotation)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -517,13 +528,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Annotation)
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Break = { "Break", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Break = { "Break", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Break;
 }
 
@@ -576,6 +588,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Break)
   return ((SMToken *) nil_chk(opener_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(opener_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(opener_))->hasBreakpoint_;
 }
@@ -586,6 +602,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Break)
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -595,7 +612,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Break)
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "opener_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -608,7 +626,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Break)
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 11, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMToken;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;LJavaUtilList;", "(LToken;LToken;Ljava/util/List<LExpr;>;Ljava/util/List<LExpr;>;Ljava/util/List<LExpr$Assign;>;Ljava/util/List<LStmt$Class;>;Ljava/util/List<LStmt$Function;>;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LExpr;>;", "Ljava/util/List<LExpr$Assign;>;", "Ljava/util/List<LStmt$Class;>;", "Ljava/util/List<LStmt$Function;>;", "Ljava/util/List<LStmt$Annotation;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Class = { "Class", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 8, 12, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Class = { "Class", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 8, 12, -1, -1, -1, -1 };
   return &_SMStmt_Class;
 }
 
@@ -810,6 +828,10 @@ SMStmt_Class_$Lambda$5 *create_SMStmt_Class_$Lambda$5_initWithInt_(jint capture$
   return ((SMToken *) nil_chk(name_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(name_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(name_))->hasBreakpoint_;
 }
@@ -820,6 +842,7 @@ SMStmt_Class_$Lambda$5 *create_SMStmt_Class_$Lambda$5_initWithInt_(jint capture$
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -829,13 +852,14 @@ SMStmt_Class_$Lambda$5 *create_SMStmt_Class_$Lambda$5_initWithInt_(jint capture$
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Continue = { "Continue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Continue = { "Continue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Continue;
 }
 
@@ -877,6 +901,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Continue)
   return [((SMExpr *) nil_chk(expression_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr *) nil_chk(expression_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr *) nil_chk(expression_)) hasBreakPoint];
 }
@@ -887,6 +915,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Continue)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -896,13 +925,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Continue)
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expression_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Expression = { "Expression", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Expression = { "Expression", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Expression;
 }
 
@@ -946,6 +976,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Expression)
   return ((SMToken *) nil_chk(name_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(name_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(name_))->hasBreakpoint_;
 }
@@ -956,6 +990,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Expression)
     { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -965,7 +1000,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Expression)
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "name_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -973,7 +1009,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Expression)
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMExpr_Block;LJavaUtilList;", "(LToken;LExpr$Block;Ljava/util/List<LStmt$Annotation;>;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LStmt$Annotation;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Function = { "Function", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 3, 8, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Function = { "Function", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 3, 8, -1, -1, -1, -1 };
   return &_SMStmt_Function;
 }
 
@@ -1051,6 +1087,10 @@ SMStmt_Function_$Lambda$1 *create_SMStmt_Function_$Lambda$1_initWithInt_(jint ca
   return [((SMExpr *) nil_chk(condition_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr *) nil_chk(condition_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr *) nil_chk(condition_)) hasBreakPoint];
 }
@@ -1062,6 +1102,7 @@ SMStmt_Function_$Lambda$1 *create_SMStmt_Function_$Lambda$1_initWithInt_(jint ca
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1072,14 +1113,15 @@ SMStmt_Function_$Lambda$1 *create_SMStmt_Function_$Lambda$1_initWithInt_(jint ca
   methods[2].selector = @selector(getChildren);
   methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   methods[4].selector = @selector(getLineNumber);
-  methods[5].selector = @selector(hasBreakPoint);
+  methods[5].selector = @selector(getFileName);
+  methods[6].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "condition_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "thenBranch_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Elsif = { "Elsif", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 7, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Elsif = { "Elsif", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 7, 2, 7, -1, -1, -1, -1 };
   return &_SMStmt_Elsif;
 }
 
@@ -1212,6 +1254,10 @@ SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init() {
   return [((SMStmt_Elsif *) nil_chk(ifstmt_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMStmt_Elsif *) nil_chk(ifstmt_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMStmt_Elsif *) nil_chk(ifstmt_)) hasBreakPoint];
 }
@@ -1223,6 +1269,7 @@ SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init() {
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 5, -1, -1 },
     { NULL, "LNSString;", 0x1, 6, 7, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1233,7 +1280,8 @@ SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init() {
   methods[2].selector = @selector(getChildren);
   methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   methods[4].selector = @selector(getLineNumber);
-  methods[5].selector = @selector(hasBreakPoint);
+  methods[5].selector = @selector(getFileName);
+  methods[6].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "ifstmt_", "LSMStmt_Elsif;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -1241,7 +1289,7 @@ SMStmt_Elsif_$Lambda$2 *create_SMStmt_Elsif_$Lambda$2_init() {
     { "elseBranch_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMStmt_Elsif;LJavaUtilList;LSMExpr_Block;", "(LStmt$Elsif;Ljava/util/List<LStmt$Elsif;>;LExpr$Block;)V", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "toCode", "IZ", "Ljava/util/List<LStmt$Elsif;>;", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_If = { "If", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 3, 9, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_If = { "If", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 7, 3, 9, -1, -1, -1, -1 };
   return &_SMStmt_If;
 }
 
@@ -1392,6 +1440,10 @@ SMStmt_If_$Lambda$3 *create_SMStmt_If_$Lambda$3_initWithInt_(jint capture$0) {
   return [((SMExpr *) nil_chk(expression_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr *) nil_chk(expression_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr *) nil_chk(expression_)) hasBreakPoint];
 }
@@ -1402,6 +1454,7 @@ SMStmt_If_$Lambda$3 *create_SMStmt_If_$Lambda$3_initWithInt_(jint capture$0) {
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1411,13 +1464,14 @@ SMStmt_If_$Lambda$3 *create_SMStmt_If_$Lambda$3_initWithInt_(jint capture$0) {
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "expression_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Print = { "Print", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 1, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Print = { "Print", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 6, -1, -1, -1, -1 };
   return &_SMStmt_Print;
 }
 
@@ -1460,6 +1514,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Print)
   return ((SMToken *) nil_chk(keyword_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(keyword_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(keyword_))->hasBreakpoint_;
 }
@@ -1470,6 +1528,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Print)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1479,14 +1538,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Print)
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "block_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Rescue = { "Rescue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 2, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Rescue = { "Rescue", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 6, -1, -1, -1, -1 };
   return &_SMStmt_Rescue;
 }
 
@@ -1530,6 +1590,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Rescue)
   return ((SMToken *) nil_chk(keyword_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(keyword_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(keyword_))->hasBreakpoint_;
 }
@@ -1540,6 +1604,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Rescue)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1549,14 +1614,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Rescue)
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Import = { "Import", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 2, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Import = { "Import", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 6, -1, -1, -1, -1 };
   return &_SMStmt_Import;
 }
 
@@ -1600,6 +1666,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Import)
   return ((SMToken *) nil_chk(keyword_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(keyword_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(keyword_))->hasBreakpoint_;
 }
@@ -1610,6 +1680,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Import)
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1619,14 +1690,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Import)
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Return = { "Return", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 2, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Return = { "Return", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 6, -1, -1, -1, -1 };
   return &_SMStmt_Return;
 }
 
@@ -1674,6 +1746,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Return)
   return [((SMExpr *) nil_chk(condition_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr *) nil_chk(condition_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr *) nil_chk(condition_)) hasBreakPoint];
 }
@@ -1685,6 +1761,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Return)
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1695,14 +1772,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMStmt_Return)
   methods[2].selector = @selector(getChildren);
   methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   methods[4].selector = @selector(getLineNumber);
-  methods[5].selector = @selector(hasBreakPoint);
+  methods[5].selector = @selector(getFileName);
+  methods[6].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "condition_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "body_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_While = { "While", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 7, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_While = { "While", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 7, 2, 7, -1, -1, -1, -1 };
   return &_SMStmt_While;
 }
 
@@ -1829,6 +1907,10 @@ SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init() {
   return [((SMExpr_Variable *) nil_chk(var_)) getLineNumber];
 }
 
+- (NSString *)getFileName {
+  return [((SMExpr_Variable *) nil_chk(var_)) getFileName];
+}
+
 - (jboolean)hasBreakPoint {
   return [((SMExpr_Variable *) nil_chk(var_)) hasBreakPoint];
 }
@@ -1840,6 +1922,7 @@ SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init() {
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 4, -1, -1 },
     { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1850,7 +1933,8 @@ SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init() {
   methods[2].selector = @selector(getChildren);
   methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   methods[4].selector = @selector(getLineNumber);
-  methods[5].selector = @selector(hasBreakPoint);
+  methods[5].selector = @selector(getFileName);
+  methods[6].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "var_", "LSMExpr_Variable;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
@@ -1858,7 +1942,7 @@ SMStmt_While_$Lambda$2 *create_SMStmt_While_$Lambda$2_init() {
     { "body_", "LSMExpr_Block;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMExpr_Variable;LSMExpr;LSMExpr_Block;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "()Ljava/util/List<LStmt$BlockStmt;>;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_For = { "For", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 3, 7, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_For = { "For", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 7, 3, 7, -1, -1, -1, -1 };
   return &_SMStmt_For;
 }
 
@@ -1981,6 +2065,10 @@ SMStmt_For_$Lambda$2 *create_SMStmt_For_$Lambda$2_init() {
   return ((SMToken *) nil_chk(keyword_))->line_;
 }
 
+- (NSString *)getFileName {
+  return ((SMToken *) nil_chk(keyword_))->file_;
+}
+
 - (jboolean)hasBreakPoint {
   return ((SMToken *) nil_chk(keyword_))->hasBreakpoint_;
 }
@@ -1991,6 +2079,7 @@ SMStmt_For_$Lambda$2 *create_SMStmt_For_$Lambda$2_init() {
     { NULL, "LNSObject;", 0x80, 1, 2, -1, 3, -1, -1 },
     { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -2000,14 +2089,15 @@ SMStmt_For_$Lambda$2 *create_SMStmt_For_$Lambda$2_init() {
   methods[1].selector = @selector(acceptWithSMStmt_Visitor:withNSObjectArray:);
   methods[2].selector = @selector(toCodeWithInt:withBoolean:);
   methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(hasBreakPoint);
+  methods[4].selector = @selector(getFileName);
+  methods[5].selector = @selector(hasBreakPoint);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "keyword_", "LSMToken;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "value_", "LSMExpr;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMToken;LSMExpr;", "accept", "LSMStmt_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LStmt$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "LSMStmt;" };
-  static const J2ObjcClassInfo _SMStmt_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 5, 2, 6, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _SMStmt_Yield = { "Yield", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 2, 6, -1, -1, -1, -1 };
   return &_SMStmt_Yield;
 }
 

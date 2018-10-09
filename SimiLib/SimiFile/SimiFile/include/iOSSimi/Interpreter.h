@@ -33,9 +33,15 @@
 #define INCLUDE_SMStmt_Visitor 1
 #include "Stmt.h"
 
+#define RESTRICT_NetGlobulusSimiDebugger 1
+#define INCLUDE_SMDebugger_Evaluator 1
+#include "Debugger.h"
+
 @class IOSObjectArray;
 @class JavaUtilArrayList;
 @class JavaUtilLinkedHashMap;
+@class SMDebugger;
+@class SMEnvironment;
 @class SMExpr;
 @class SMExpr_Annotations;
 @class SMExpr_Assign;
@@ -79,7 +85,7 @@
 @protocol SMSimiObject;
 @protocol SMSimiProperty;
 
-@interface SMInterpreter : NSObject < SMBlockInterpreter, SMExpr_Visitor, SMStmt_Visitor > {
+@interface SMInterpreter : NSObject < SMBlockInterpreter, SMExpr_Visitor, SMStmt_Visitor, SMDebugger_Evaluator > {
  @public
   id<JavaUtilCollection> nativeModulesManagers_;
 }
@@ -92,6 +98,9 @@
 
 - (id<JavaUtilList>)defineTempVarsWithSMSimiPropertyArray:(IOSObjectArray *)vars;
 
+- (NSString *)evalWithNSString:(NSString *)input
+             withSMEnvironment:(SMEnvironment *)environment;
+
 - (void)executeBlockWithSMSimiBlock:(id<SMSimiBlock>)block
               withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                             withInt:(jint)startAt;
@@ -99,6 +108,8 @@
 - (id<SMSimiEnvironment>)getEnvironment;
 
 - (id<SMSimiProperty>)getGlobalWithNSString:(NSString *)name;
+
+- (SMEnvironment *)getGlobalEnvironment;
 
 - (id<SMSimiObject>)newArrayWithBoolean:(jboolean)immutable
                   withJavaUtilArrayList:(JavaUtilArrayList *)props OBJC_METHOD_FAMILY_NONE;
@@ -182,7 +193,8 @@
 
 #pragma mark Package-Private
 
-- (instancetype __nonnull)initWithJavaUtilCollection:(id<JavaUtilCollection>)nativeModulesManagers;
+- (instancetype __nonnull)initWithJavaUtilCollection:(id<JavaUtilCollection>)nativeModulesManagers
+                                      withSMDebugger:(SMDebugger *)debugger;
 
 - (id<SMSimiProperty>)interpretWithJavaUtilList:(id<JavaUtilList>)statements;
 
@@ -210,11 +222,11 @@ inline SMInterpreter *SMInterpreter_set_sharedInstance(SMInterpreter *value);
 FOUNDATION_EXPORT SMInterpreter *SMInterpreter_sharedInstance;
 J2OBJC_STATIC_FIELD_OBJ(SMInterpreter, sharedInstance, SMInterpreter *)
 
-FOUNDATION_EXPORT void SMInterpreter_initWithJavaUtilCollection_(SMInterpreter *self, id<JavaUtilCollection> nativeModulesManagers);
+FOUNDATION_EXPORT void SMInterpreter_initWithJavaUtilCollection_withSMDebugger_(SMInterpreter *self, id<JavaUtilCollection> nativeModulesManagers, SMDebugger *debugger);
 
-FOUNDATION_EXPORT SMInterpreter *new_SMInterpreter_initWithJavaUtilCollection_(id<JavaUtilCollection> nativeModulesManagers) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMInterpreter *new_SMInterpreter_initWithJavaUtilCollection_withSMDebugger_(id<JavaUtilCollection> nativeModulesManagers, SMDebugger *debugger) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMInterpreter *create_SMInterpreter_initWithJavaUtilCollection_(id<JavaUtilCollection> nativeModulesManagers);
+FOUNDATION_EXPORT SMInterpreter *create_SMInterpreter_initWithJavaUtilCollection_withSMDebugger_(id<JavaUtilCollection> nativeModulesManagers, SMDebugger *debugger);
 
 FOUNDATION_EXPORT jboolean SMInterpreter_isTruthyWithSMSimiProperty_(id<SMSimiProperty> object);
 

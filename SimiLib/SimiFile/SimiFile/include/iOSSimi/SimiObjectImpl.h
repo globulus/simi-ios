@@ -12,15 +12,6 @@
 #define INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl 1
 #endif
 #undef RESTRICT_NetGlobulusSimiSimiObjectImpl
-#ifdef INCLUDE_SMSimiObjectImpl_InitiallyEmpty
-#define INCLUDE_SMSimiObjectImpl 1
-#endif
-#ifdef INCLUDE_SMSimiObjectImpl_Array
-#define INCLUDE_SMSimiObjectImpl 1
-#endif
-#ifdef INCLUDE_SMSimiObjectImpl_Dictionary
-#define INCLUDE_SMSimiObjectImpl 1
-#endif
 
 #if __has_feature(nullability)
 #pragma clang diagnostic push
@@ -40,8 +31,6 @@
 @class SMEnvironment;
 @class SMInterpreter;
 @class SMSimiClassImpl;
-@class SMSimiObjectImpl_Array;
-@class SMSimiObjectImpl_Dictionary;
 @class SMSimiValue;
 @class SMToken;
 @protocol JavaUtilComparator;
@@ -55,14 +44,26 @@
  @public
   SMSimiClassImpl *clazz_;
   jboolean immutable_;
+  JavaUtilLinkedHashMap *fields_;
+  JavaUtilArrayList *line_;
 }
 
 #pragma mark Public
 
+- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
+
+- (jint)compareToWithId:(id<SMSimiObject>)o;
+
 - (id<SMSimiProperty>)getWithNSString:(NSString *)key
                 withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
+- (NSString *)getFileName;
+
+- (jint)getLineNumber;
+
 - (id<SMSimiClass>)getSimiClass;
+
+- (jboolean)hasBreakPoint;
 
 - (JavaUtilArrayList *)keys;
 
@@ -70,47 +71,39 @@
      withSMSimiProperty:(id<SMSimiProperty>)prop
   withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
+- (NSString *)toCodeWithInt:(jint)indentationLevel
+                withBoolean:(jboolean)ignoreFirst;
+
 - (NSString *)description;
 
 - (JavaUtilArrayList *)values;
 
 #pragma mark Package-Private
 
-- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other;
+- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
+                                      withBoolean:(jboolean)immutable
+                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)fields
+                            withJavaUtilArrayList:(JavaUtilArrayList *)line;
 
-- (void)appendWithSMSimiProperty:(id<SMSimiProperty>)elem;
+- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
+             withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
-- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem;
-
-- (SMSimiObjectImpl_Array *)asArray;
-
-- (SMSimiObjectImpl_Dictionary *)asDictionary;
-
-- (id<SMSimiProperty>)bindWithNSString:(NSString *)key
-                    withSMSimiProperty:(id<SMSimiProperty>)prop;
-
-- (void)checkMutabilityWithSMToken:(SMToken *)name
-                 withSMEnvironment:(SMEnvironment *)environment;
+- (void)appendWithSMSimiProperty:(id<SMSimiProperty>)elem
+           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment;
 
 - (void)clearWithSMEnvironment:(SMEnvironment *)environment;
 
-- (void)clearImpl;
-
-- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
-                        withSMToken:(SMToken *)at;
+- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object;
 
 + (SMSimiObjectImpl *)decomposedPairWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass
                                         withSMSimiValue:(SMSimiValue *)key
-                                        withSMSimiValue:(SMSimiValue *)value;
-
-+ (SMSimiObjectImpl *)emptyWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                   withBoolean:(jboolean)immutable;
+                                     withSMSimiProperty:(id<SMSimiProperty>)value;
 
 - (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
 
 + (SMSimiObjectImpl *)fromArrayWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
                                        withBoolean:(jboolean)immutable
-                             withJavaUtilArrayList:(JavaUtilArrayList *)fields;
+                             withJavaUtilArrayList:(JavaUtilArrayList *)line;
 
 + (SMSimiObjectImpl *)fromMapWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
                                      withBoolean:(jboolean)immutable
@@ -120,9 +113,9 @@
                  withJavaLangInteger:(JavaLangInteger *)arity
                    withSMEnvironment:(SMEnvironment *)environment;
 
-- (id<SMSimiProperty>)getFromClassWithSMToken:(SMToken *)name
-                          withJavaLangInteger:(JavaLangInteger *)arity
-                            withSMEnvironment:(SMEnvironment *)environment;
+- (JavaUtilArrayList *)getEnumeratedValuesWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
+
+- (SMSimiObjectImpl *)getLine;
 
 + (id<SMSimiObject>)getOrConvertObjectWithSMSimiProperty:(id<SMSimiProperty>)prop
                                        withSMInterpreter:(SMInterpreter *)interpreter;
@@ -159,321 +152,43 @@
     withSMSimiProperty:(id<SMSimiProperty>)prop
      withSMEnvironment:(SMEnvironment *)environment;
 
-- (void)setFieldWithNSString:(NSString *)key
-          withSMSimiProperty:(id<SMSimiProperty>)prop;
-
 - (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
 
-- (jboolean)valuesMatchWithSMSimiProperty:(id<SMSimiProperty>)a
-                       withSMSimiProperty:(id<SMSimiProperty>)b;
-
-- (jboolean)valuesMatchWithSMSimiValue:(SMSimiValue *)a
-                       withSMSimiValue:(SMSimiValue *)b;
-
 - (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl)
 
 J2OBJC_FIELD_SETTER(SMSimiObjectImpl, clazz_, SMSimiClassImpl *)
+J2OBJC_FIELD_SETTER(SMSimiObjectImpl, fields_, JavaUtilLinkedHashMap *)
+J2OBJC_FIELD_SETTER(SMSimiObjectImpl, line_, JavaUtilArrayList *)
+
+FOUNDATION_EXPORT void SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(SMSimiObjectImpl *self, SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields, JavaUtilArrayList *line);
+
+FOUNDATION_EXPORT SMSimiObjectImpl *new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields, JavaUtilArrayList *line) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT SMSimiObjectImpl *create_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields, JavaUtilArrayList *line);
 
 FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_instanceWithSMSimiClassImpl_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, JavaUtilLinkedHashMap *props);
 
 FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_pairWithSMSimiClassImpl_withNSString_withSMSimiProperty_(SMSimiClassImpl *objectClass, NSString *key, id<SMSimiProperty> prop);
 
-FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(SMSimiClassImpl *objectClass, SMSimiValue *key, SMSimiValue *value);
+FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(SMSimiClassImpl *objectClass, SMSimiValue *key, id<SMSimiProperty> value);
 
 FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *props);
 
-FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
-
-FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_emptyWithSMSimiClassImpl_withBoolean_(SMSimiClassImpl *clazz, jboolean immutable);
+FOUNDATION_EXPORT SMSimiObjectImpl *SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *line);
 
 FOUNDATION_EXPORT id<SMSimiObject> SMSimiObjectImpl_getOrConvertObjectWithSMSimiProperty_withSMInterpreter_(id<SMSimiProperty> prop, SMInterpreter *interpreter);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl)
 
 @compatibility_alias NetGlobulusSimiSimiObjectImpl SMSimiObjectImpl;
-
-#endif
-
-#if !defined (SMSimiObjectImpl_Dictionary_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_SMSimiObjectImpl_Dictionary))
-#define SMSimiObjectImpl_Dictionary_
-
-@class JavaLangInteger;
-@class JavaUtilArrayList;
-@class JavaUtilLinkedHashMap;
-@class SMEnvironment;
-@class SMSimiClassImpl;
-@class SMSimiObjectImpl;
-@class SMSimiObjectImpl_Array;
-@class SMSimiValue;
-@class SMToken;
-@protocol JavaUtilComparator;
-@protocol JavaUtilIterator;
-@protocol JavaUtilList;
-@protocol SMSimiObject;
-@protocol SMSimiProperty;
-
-@interface SMSimiObjectImpl_Dictionary : SMSimiObjectImpl {
- @public
-  JavaUtilLinkedHashMap *fields_;
-}
-
-#pragma mark Public
-
-- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
-
-- (JavaUtilArrayList *)keys;
-
-- (NSString *)toCodeWithInt:(jint)indentationLevel
-                withBoolean:(jboolean)ignoreFirst;
-
-- (JavaUtilArrayList *)values;
-
-#pragma mark Protected
-
-- (JavaUtilArrayList *)getEnumeratedValuesWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
-
-#pragma mark Package-Private
-
-- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                      withBoolean:(jboolean)immutable
-                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)fields;
-
-- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other;
-
-- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem;
-
-- (SMSimiObjectImpl_Array *)asArray;
-
-- (SMSimiObjectImpl_Dictionary *)asDictionary;
-
-- (void)clearImpl;
-
-- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
-                        withSMToken:(SMToken *)at;
-
-- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
-
-- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
-                 withJavaLangInteger:(JavaLangInteger *)arity
-                   withSMEnvironment:(SMEnvironment *)environment;
-
-- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value;
-
-- (jboolean)isArray;
-
-- (id<JavaUtilIterator>)iterate;
-
-- (jint)length;
-
-- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
-                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
-
-- (NSString *)printFields;
-
-- (SMSimiObjectImpl *)reversed;
-
-- (void)setFieldWithNSString:(NSString *)key
-          withSMSimiProperty:(id<SMSimiProperty>)prop;
-
-- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
-
-- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Dictionary)
-
-J2OBJC_FIELD_SETTER(SMSimiObjectImpl_Dictionary, fields_, JavaUtilLinkedHashMap *)
-
-FOUNDATION_EXPORT void SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiObjectImpl_Dictionary *self, SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields);
-
-FOUNDATION_EXPORT SMSimiObjectImpl_Dictionary *new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields) NS_RETURNS_RETAINED;
-
-FOUNDATION_EXPORT SMSimiObjectImpl_Dictionary *create_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilLinkedHashMap *fields);
-
-J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_Dictionary)
-
-#endif
-
-#if !defined (SMSimiObjectImpl_Array_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_SMSimiObjectImpl_Array))
-#define SMSimiObjectImpl_Array_
-
-@class JavaLangInteger;
-@class JavaUtilArrayList;
-@class SMEnvironment;
-@class SMSimiClassImpl;
-@class SMSimiObjectImpl;
-@class SMSimiObjectImpl_Dictionary;
-@class SMSimiValue;
-@class SMToken;
-@protocol JavaUtilComparator;
-@protocol JavaUtilIterator;
-@protocol JavaUtilList;
-@protocol SMSimiObject;
-@protocol SMSimiProperty;
-
-@interface SMSimiObjectImpl_Array : SMSimiObjectImpl {
- @public
-  JavaUtilArrayList *fields_;
-}
-
-#pragma mark Public
-
-- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
-
-- (JavaUtilArrayList *)keys;
-
-- (NSString *)toCodeWithInt:(jint)indentationLevel
-                withBoolean:(jboolean)ignoreFirst;
-
-- (JavaUtilArrayList *)values;
-
-#pragma mark Package-Private
-
-- (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)clazz
-                                      withBoolean:(jboolean)immutable
-                            withJavaUtilArrayList:(JavaUtilArrayList *)fields;
-
-- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other;
-
-- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem;
-
-- (SMSimiObjectImpl_Array *)asArray;
-
-- (SMSimiObjectImpl_Dictionary *)asDictionary;
-
-- (void)clearImpl;
-
-- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
-                        withSMToken:(SMToken *)at;
-
-- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
-
-- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
-                 withJavaLangInteger:(JavaLangInteger *)arity
-                   withSMEnvironment:(SMEnvironment *)environment;
-
-- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value;
-
-- (jboolean)isArray;
-
-- (id<JavaUtilIterator>)iterate;
-
-- (jint)length;
-
-- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
-                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
-
-- (NSString *)printFields;
-
-- (SMSimiObjectImpl *)reversed;
-
-- (void)setFieldWithNSString:(NSString *)key
-          withSMSimiProperty:(id<SMSimiProperty>)prop;
-
-- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
-
-- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_Array)
-
-J2OBJC_FIELD_SETTER(SMSimiObjectImpl_Array, fields_, JavaUtilArrayList *)
-
-FOUNDATION_EXPORT void SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiObjectImpl_Array *self, SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
-
-FOUNDATION_EXPORT SMSimiObjectImpl_Array *new_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields) NS_RETURNS_RETAINED;
-
-FOUNDATION_EXPORT SMSimiObjectImpl_Array *create_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMSimiClassImpl *clazz, jboolean immutable, JavaUtilArrayList *fields);
-
-J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_Array)
-
-#endif
-
-#if !defined (SMSimiObjectImpl_InitiallyEmpty_) && (INCLUDE_ALL_NetGlobulusSimiSimiObjectImpl || defined(INCLUDE_SMSimiObjectImpl_InitiallyEmpty))
-#define SMSimiObjectImpl_InitiallyEmpty_
-
-@class JavaLangInteger;
-@class JavaUtilArrayList;
-@class SMEnvironment;
-@class SMSimiClassImpl;
-@class SMSimiObjectImpl;
-@class SMSimiObjectImpl_Array;
-@class SMSimiObjectImpl_Dictionary;
-@class SMSimiValue;
-@class SMToken;
-@protocol JavaUtilComparator;
-@protocol JavaUtilIterator;
-@protocol JavaUtilList;
-@protocol SMSimiObject;
-@protocol SMSimiProperty;
-
-@interface SMSimiObjectImpl_InitiallyEmpty : SMSimiObjectImpl
-
-#pragma mark Public
-
-- (id<SMSimiObject>)cloneWithBoolean:(jboolean)mutable_;
-
-- (JavaUtilArrayList *)keys;
-
-- (NSString *)toCodeWithInt:(jint)indentationLevel
-                withBoolean:(jboolean)ignoreFirst;
-
-- (JavaUtilArrayList *)values;
-
-#pragma mark Package-Private
-
-- (void)addAllWithSMSimiObjectImpl:(SMSimiObjectImpl *)other;
-
-- (void)appendImplWithSMSimiProperty:(id<SMSimiProperty>)elem;
-
-- (SMSimiObjectImpl_Array *)asArray;
-
-- (SMSimiObjectImpl_Dictionary *)asDictionary;
-
-- (void)clearImpl;
-
-- (jboolean)containsWithSMSimiValue:(SMSimiValue *)object
-                        withSMToken:(SMToken *)at;
-
-- (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
-
-- (id<SMSimiProperty>)getWithSMToken:(SMToken *)name
-                 withJavaLangInteger:(JavaLangInteger *)arity
-                   withSMEnvironment:(SMEnvironment *)environment;
-
-- (SMSimiValue *)indexOfWithSMSimiValue:(SMSimiValue *)value;
-
-- (jboolean)isArray;
-
-- (id<JavaUtilIterator>)iterate;
-
-- (jint)length;
-
-- (jboolean)matchesWithSMSimiObjectImpl:(SMSimiObjectImpl *)other
-                       withJavaUtilList:(id<JavaUtilList>)fieldsToMatch;
-
-- (NSString *)printFields;
-
-- (SMSimiObjectImpl *)reversed;
-
-- (void)setFieldWithNSString:(NSString *)key
-          withSMSimiProperty:(id<SMSimiProperty>)prop;
-
-- (SMSimiObjectImpl *)sortedWithJavaUtilComparator:(id<JavaUtilComparator>)comparator;
-
-- (SMSimiObjectImpl *)zipWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMSimiObjectImpl_InitiallyEmpty)
-
-J2OBJC_TYPE_LITERAL_HEADER(SMSimiObjectImpl_InitiallyEmpty)
 
 #endif
 

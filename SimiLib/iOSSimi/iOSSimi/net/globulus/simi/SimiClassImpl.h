@@ -22,7 +22,7 @@
 #define SMSimiClassImpl_
 
 #define RESTRICT_NetGlobulusSimiSimiObjectImpl 1
-#define INCLUDE_SMSimiObjectImpl_Dictionary 1
+#define INCLUDE_SMSimiObjectImpl 1
 #include "SimiObjectImpl.h"
 
 #define RESTRICT_NetGlobulusSimiSimiClass 1
@@ -35,7 +35,6 @@
 @class SMEnvironment;
 @class SMSimiClassImpl_Type;
 @class SMSimiMethod;
-@class SMSimiObjectImpl;
 @class SMStmt_Class;
 @class SMToken;
 @protocol JavaUtilList;
@@ -44,7 +43,7 @@
 @protocol SMBlockInterpreter;
 @protocol SMSimiProperty;
 
-@interface SMSimiClassImpl : SMSimiObjectImpl_Dictionary < SMSimiClass > {
+@interface SMSimiClassImpl : SMSimiObjectImpl < SMSimiClass > {
  @public
   SMSimiClassImpl_Type *type_;
   NSString *name_;
@@ -52,8 +51,6 @@
   SMStmt_Class *stmt_;
   id<JavaUtilMap> methods_;
 }
-
-+ (SMSimiClassImpl *)CLASS;
 
 #pragma mark Public
 
@@ -96,7 +93,8 @@
 
 - (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)arg0
                                       withBoolean:(jboolean)arg1
-                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)arg2 NS_UNAVAILABLE;
+                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)arg2
+                            withJavaUtilArrayList:(JavaUtilArrayList *)arg3 NS_UNAVAILABLE;
 
 @end
 
@@ -107,11 +105,6 @@ J2OBJC_FIELD_SETTER(SMSimiClassImpl, name_, NSString *)
 J2OBJC_FIELD_SETTER(SMSimiClassImpl, superclasses_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(SMSimiClassImpl, stmt_, SMStmt_Class *)
 J2OBJC_FIELD_SETTER(SMSimiClassImpl, methods_, id<JavaUtilMap>)
-
-inline SMSimiClassImpl *SMSimiClassImpl_get_CLASS(void);
-/*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT SMSimiClassImpl *SMSimiClassImpl_CLASS;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiClassImpl, CLASS, SMSimiClassImpl *)
 
 FOUNDATION_EXPORT void SMSimiClassImpl_initWithSMSimiClassImpl_Type_withNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_withSMStmt_Class_(SMSimiClassImpl *self, SMSimiClassImpl_Type *type, NSString *name, id<JavaUtilList> superclasses, id<JavaUtilMap> constants, id<JavaUtilMap> methods, SMStmt_Class *stmt);
 
@@ -141,8 +134,6 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiClassImpl)
 
 #pragma mark Public
 
-- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)value;
-
 - (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_;
 
 - (jint)compareToWithId:(SMSimiValue *)o;
@@ -151,6 +142,10 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiClassImpl)
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
+
+#pragma mark Package-Private
+
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)value;
 
 // Disallowed inherited constructors, do not use.
 

@@ -27,6 +27,7 @@
 
 @protocol JavaUtilList;
 @protocol SMBlockInterpreter;
+@protocol SMSimiEnvironment;
 @protocol SMSimiProperty;
 
 @protocol SMSimiCallable < SMCodifiable, JavaObject >
@@ -34,17 +35,30 @@
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst;
 
+- (jint)getLineNumber;
+
+- (NSString *)getFileName;
+
+- (jboolean)hasBreakPoint;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(SMSimiCallable)
 
 FOUNDATION_EXPORT NSString *SMSimiCallable_toCodeWithInt_withBoolean_(id<SMSimiCallable> self, jint indentationLevel, jboolean ignoreFirst);
+
+FOUNDATION_EXPORT jint SMSimiCallable_getLineNumber(id<SMSimiCallable> self);
+
+FOUNDATION_EXPORT NSString *SMSimiCallable_getFileName(id<SMSimiCallable> self);
+
+FOUNDATION_EXPORT jboolean SMSimiCallable_hasBreakPoint(id<SMSimiCallable> self);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMSimiCallable)
 

@@ -30,6 +30,8 @@
   NSString *lexeme_;
   SMSimiValue *literal_;
   jint line_;
+  NSString *file_;
+  jboolean hasBreakpoint_;
 }
 
 #pragma mark Public
@@ -41,7 +43,8 @@
 - (instancetype __nonnull)initWithSMTokenType:(SMTokenType *)type
                                  withNSString:(NSString *)lexeme
                               withSMSimiValue:(SMSimiValue *)literal
-                                      withInt:(jint)line;
+                                      withInt:(jint)line
+                                 withNSString:(NSString *)file;
 
 + (SMToken *)namedWithNSString:(NSString *)name;
 
@@ -64,12 +67,13 @@ J2OBJC_EMPTY_STATIC_INIT(SMToken)
 J2OBJC_FIELD_SETTER(SMToken, type_, SMTokenType *)
 J2OBJC_FIELD_SETTER(SMToken, lexeme_, NSString *)
 J2OBJC_FIELD_SETTER(SMToken, literal_, SMSimiValue *)
+J2OBJC_FIELD_SETTER(SMToken, file_, NSString *)
 
-FOUNDATION_EXPORT void SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMToken *self, SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line);
+FOUNDATION_EXPORT void SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(SMToken *self, SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line, NSString *file);
 
-FOUNDATION_EXPORT SMToken *new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMToken *new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line, NSString *file) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMToken *create_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line);
+FOUNDATION_EXPORT SMToken *create_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(SMTokenType *type, NSString *lexeme, SMSimiValue *literal, jint line, NSString *file);
 
 FOUNDATION_EXPORT SMToken *SMToken_self__(void);
 

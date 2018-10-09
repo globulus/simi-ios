@@ -22,13 +22,14 @@
 #define SMSimiNativeObject_
 
 #define RESTRICT_NetGlobulusSimiSimiObjectImpl 1
-#define INCLUDE_SMSimiObjectImpl_Dictionary 1
+#define INCLUDE_SMSimiObjectImpl 1
 #include "SimiObjectImpl.h"
 
+@class JavaUtilArrayList;
 @class JavaUtilLinkedHashMap;
 @class SMSimiClassImpl;
 
-@interface SMSimiNativeObject : SMSimiObjectImpl_Dictionary
+@interface SMSimiNativeObject : SMSimiObjectImpl
 
 #pragma mark Package-Private
 
@@ -38,7 +39,8 @@
 
 - (instancetype __nonnull)initWithSMSimiClassImpl:(SMSimiClassImpl *)arg0
                                       withBoolean:(jboolean)arg1
-                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)arg2 NS_UNAVAILABLE;
+                        withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)arg2
+                            withJavaUtilArrayList:(JavaUtilArrayList *)arg3 NS_UNAVAILABLE;
 
 @end
 

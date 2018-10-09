@@ -16,7 +16,7 @@ __attribute__((unused)) static SMTokenType *new_SMTokenType_initWithNSString_wit
 
 J2OBJC_INITIALIZED_DEFN(SMTokenType)
 
-SMTokenType *SMTokenType_values_[75];
+SMTokenType *SMTokenType_values_[76];
 
 @implementation SMTokenType
 
@@ -146,6 +146,10 @@ SMTokenType *SMTokenType_values_[75];
 
 + (SMTokenType *)MOD_EQUAL {
   return JreEnum(SMTokenType, MOD_EQUAL);
+}
+
++ (SMTokenType *)DOLLAR_LEFT_PAREN {
+  return JreEnum(SMTokenType, DOLLAR_LEFT_PAREN);
 }
 
 + (SMTokenType *)DOLLAR_LEFT_BRACKET {
@@ -386,6 +390,8 @@ SMTokenType *SMTokenType_values_[75];
     return @"%%";
     case SMTokenType_Enum_MOD_EQUAL:
     return @"%=";
+    case SMTokenType_Enum_DOLLAR_LEFT_PAREN:
+    return @"$(";
     case SMTokenType_Enum_DOLLAR_LEFT_BRACKET:
     return @"$[";
     case SMTokenType_Enum_DOLLAR_EQUAL:
@@ -426,6 +432,10 @@ SMTokenType *SMTokenType_values_[75];
   return -1;
 }
 
+- (NSString *)getFileName {
+  return nil;
+}
+
 - (jboolean)hasBreakPoint {
   return false;
 }
@@ -447,6 +457,7 @@ SMTokenType *SMTokenType_values_[75];
     { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, 0, 1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "[LSMTokenType;", 0x9, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMTokenType;", 0x9, 2, 3, -1, -1, -1, -1 },
@@ -457,9 +468,10 @@ SMTokenType *SMTokenType_values_[75];
   methods[0].selector = @selector(toCode);
   methods[1].selector = @selector(toCodeWithInt:withBoolean:);
   methods[2].selector = @selector(getLineNumber);
-  methods[3].selector = @selector(hasBreakPoint);
-  methods[4].selector = @selector(values);
-  methods[5].selector = @selector(valueOfWithNSString:);
+  methods[3].selector = @selector(getFileName);
+  methods[4].selector = @selector(hasBreakPoint);
+  methods[5].selector = @selector(values);
+  methods[6].selector = @selector(valueOfWithNSString:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "LEFT_PAREN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 4, -1, -1 },
@@ -494,52 +506,53 @@ SMTokenType *SMTokenType_values_[75];
     { "MOD", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 33, -1, -1 },
     { "MOD_MOD", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 34, -1, -1 },
     { "MOD_EQUAL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 35, -1, -1 },
-    { "DOLLAR_LEFT_BRACKET", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 36, -1, -1 },
-    { "DOLLAR_EQUAL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 37, -1, -1 },
-    { "QUESTION", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 38, -1, -1 },
-    { "QUESTION_QUESTION", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 39, -1, -1 },
-    { "QUESTION_QUESTION_EQUAL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 40, -1, -1 },
-    { "IDENTIFIER", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 41, -1, -1 },
-    { "STRING", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 42, -1, -1 },
-    { "NUMBER", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 43, -1, -1 },
-    { "AND", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 44, -1, -1 },
-    { "BREAK", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 45, -1, -1 },
-    { "CLASS", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 46, -1, -1 },
-    { "CLASS_FINAL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 47, -1, -1 },
-    { "CLASS_OPEN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 48, -1, -1 },
-    { "CONTINUE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 49, -1, -1 },
-    { "ELSE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 50, -1, -1 },
-    { "FALSE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 51, -1, -1 },
-    { "DEF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 52, -1, -1 },
-    { "FOR", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 53, -1, -1 },
-    { "RESCUE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 54, -1, -1 },
-    { "IF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 55, -1, -1 },
-    { "NIL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 56, -1, -1 },
-    { "OR", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 57, -1, -1 },
-    { "PRINT", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 58, -1, -1 },
-    { "RETURN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 59, -1, -1 },
-    { "SUPER", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 60, -1, -1 },
-    { "SELF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 61, -1, -1 },
-    { "TRUE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 62, -1, -1 },
-    { "WHILE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 63, -1, -1 },
-    { "PASS", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 64, -1, -1 },
-    { "IN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 65, -1, -1 },
-    { "IS", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 66, -1, -1 },
-    { "NOT", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 67, -1, -1 },
-    { "ELSIF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 68, -1, -1 },
-    { "END", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 69, -1, -1 },
-    { "ISNOT", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 70, -1, -1 },
-    { "NOTIN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 71, -1, -1 },
-    { "NATIVE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 72, -1, -1 },
-    { "IMPORT", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 73, -1, -1 },
-    { "YIELD", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 74, -1, -1 },
-    { "WHEN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 75, -1, -1 },
-    { "GU", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 76, -1, -1 },
-    { "IVIC", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 77, -1, -1 },
-    { "EOF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 78, -1, -1 },
+    { "DOLLAR_LEFT_PAREN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 36, -1, -1 },
+    { "DOLLAR_LEFT_BRACKET", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 37, -1, -1 },
+    { "DOLLAR_EQUAL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 38, -1, -1 },
+    { "QUESTION", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 39, -1, -1 },
+    { "QUESTION_QUESTION", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 40, -1, -1 },
+    { "QUESTION_QUESTION_EQUAL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 41, -1, -1 },
+    { "IDENTIFIER", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 42, -1, -1 },
+    { "STRING", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 43, -1, -1 },
+    { "NUMBER", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 44, -1, -1 },
+    { "AND", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 45, -1, -1 },
+    { "BREAK", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 46, -1, -1 },
+    { "CLASS", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 47, -1, -1 },
+    { "CLASS_FINAL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 48, -1, -1 },
+    { "CLASS_OPEN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 49, -1, -1 },
+    { "CONTINUE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 50, -1, -1 },
+    { "ELSE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 51, -1, -1 },
+    { "FALSE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 52, -1, -1 },
+    { "DEF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 53, -1, -1 },
+    { "FOR", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 54, -1, -1 },
+    { "RESCUE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 55, -1, -1 },
+    { "IF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 56, -1, -1 },
+    { "NIL", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 57, -1, -1 },
+    { "OR", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 58, -1, -1 },
+    { "PRINT", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 59, -1, -1 },
+    { "RETURN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 60, -1, -1 },
+    { "SUPER", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 61, -1, -1 },
+    { "SELF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 62, -1, -1 },
+    { "TRUE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 63, -1, -1 },
+    { "WHILE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 64, -1, -1 },
+    { "PASS", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 65, -1, -1 },
+    { "IN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 66, -1, -1 },
+    { "IS", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 67, -1, -1 },
+    { "NOT", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 68, -1, -1 },
+    { "ELSIF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 69, -1, -1 },
+    { "END", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 70, -1, -1 },
+    { "ISNOT", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 71, -1, -1 },
+    { "NOTIN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 72, -1, -1 },
+    { "NATIVE", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 73, -1, -1 },
+    { "IMPORT", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 74, -1, -1 },
+    { "YIELD", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 75, -1, -1 },
+    { "WHEN", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 76, -1, -1 },
+    { "GU", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 77, -1, -1 },
+    { "IVIC", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 78, -1, -1 },
+    { "EOF", "LSMTokenType;", .constantValue.asLong = 0, 0x4019, -1, 79, -1, -1 },
   };
-  static const void *ptrTable[] = { "toCode", "IZ", "valueOf", "LNSString;", &JreEnum(SMTokenType, LEFT_PAREN), &JreEnum(SMTokenType, RIGHT_PAREN), &JreEnum(SMTokenType, LEFT_BRACKET), &JreEnum(SMTokenType, RIGHT_BRACKET), &JreEnum(SMTokenType, COMMA), &JreEnum(SMTokenType, DOT), &JreEnum(SMTokenType, COLON), &JreEnum(SMTokenType, NEWLINE), &JreEnum(SMTokenType, BANG), &JreEnum(SMTokenType, BANG_BANG), &JreEnum(SMTokenType, BANG_EQUAL), &JreEnum(SMTokenType, EQUAL), &JreEnum(SMTokenType, EQUAL_EQUAL), &JreEnum(SMTokenType, GREATER), &JreEnum(SMTokenType, GREATER_EQUAL), &JreEnum(SMTokenType, LESS), &JreEnum(SMTokenType, LESS_EQUAL), &JreEnum(SMTokenType, LESS_GREATER), &JreEnum(SMTokenType, PLUS), &JreEnum(SMTokenType, PLUS_EQUAL), &JreEnum(SMTokenType, MINUS), &JreEnum(SMTokenType, MINUS_EQUAL), &JreEnum(SMTokenType, STAR), &JreEnum(SMTokenType, STAR_STAR), &JreEnum(SMTokenType, STAR_EQUAL), &JreEnum(SMTokenType, SLASH), &JreEnum(SMTokenType, SLASH_SLASH), &JreEnum(SMTokenType, SLASH_EQUAL), &JreEnum(SMTokenType, SLASH_SLASH_EQUAL), &JreEnum(SMTokenType, MOD), &JreEnum(SMTokenType, MOD_MOD), &JreEnum(SMTokenType, MOD_EQUAL), &JreEnum(SMTokenType, DOLLAR_LEFT_BRACKET), &JreEnum(SMTokenType, DOLLAR_EQUAL), &JreEnum(SMTokenType, QUESTION), &JreEnum(SMTokenType, QUESTION_QUESTION), &JreEnum(SMTokenType, QUESTION_QUESTION_EQUAL), &JreEnum(SMTokenType, IDENTIFIER), &JreEnum(SMTokenType, STRING), &JreEnum(SMTokenType, NUMBER), &JreEnum(SMTokenType, AND), &JreEnum(SMTokenType, BREAK), &JreEnum(SMTokenType, CLASS), &JreEnum(SMTokenType, CLASS_FINAL), &JreEnum(SMTokenType, CLASS_OPEN), &JreEnum(SMTokenType, CONTINUE), &JreEnum(SMTokenType, ELSE), &JreEnum(SMTokenType, FALSE), &JreEnum(SMTokenType, DEF), &JreEnum(SMTokenType, FOR), &JreEnum(SMTokenType, RESCUE), &JreEnum(SMTokenType, IF), &JreEnum(SMTokenType, NIL), &JreEnum(SMTokenType, OR), &JreEnum(SMTokenType, PRINT), &JreEnum(SMTokenType, RETURN), &JreEnum(SMTokenType, SUPER), &JreEnum(SMTokenType, SELF), &JreEnum(SMTokenType, TRUE), &JreEnum(SMTokenType, WHILE), &JreEnum(SMTokenType, PASS), &JreEnum(SMTokenType, IN), &JreEnum(SMTokenType, IS), &JreEnum(SMTokenType, NOT), &JreEnum(SMTokenType, ELSIF), &JreEnum(SMTokenType, END), &JreEnum(SMTokenType, ISNOT), &JreEnum(SMTokenType, NOTIN), &JreEnum(SMTokenType, NATIVE), &JreEnum(SMTokenType, IMPORT), &JreEnum(SMTokenType, YIELD), &JreEnum(SMTokenType, WHEN), &JreEnum(SMTokenType, GU), &JreEnum(SMTokenType, IVIC), &JreEnum(SMTokenType, EOF), "Ljava/lang/Enum<LTokenType;>;LCodifiable;" };
-  static const J2ObjcClassInfo _SMTokenType = { "TokenType", "net.globulus.simi", ptrTable, methods, fields, 7, 0x4010, 6, 75, -1, -1, -1, 79, -1 };
+  static const void *ptrTable[] = { "toCode", "IZ", "valueOf", "LNSString;", &JreEnum(SMTokenType, LEFT_PAREN), &JreEnum(SMTokenType, RIGHT_PAREN), &JreEnum(SMTokenType, LEFT_BRACKET), &JreEnum(SMTokenType, RIGHT_BRACKET), &JreEnum(SMTokenType, COMMA), &JreEnum(SMTokenType, DOT), &JreEnum(SMTokenType, COLON), &JreEnum(SMTokenType, NEWLINE), &JreEnum(SMTokenType, BANG), &JreEnum(SMTokenType, BANG_BANG), &JreEnum(SMTokenType, BANG_EQUAL), &JreEnum(SMTokenType, EQUAL), &JreEnum(SMTokenType, EQUAL_EQUAL), &JreEnum(SMTokenType, GREATER), &JreEnum(SMTokenType, GREATER_EQUAL), &JreEnum(SMTokenType, LESS), &JreEnum(SMTokenType, LESS_EQUAL), &JreEnum(SMTokenType, LESS_GREATER), &JreEnum(SMTokenType, PLUS), &JreEnum(SMTokenType, PLUS_EQUAL), &JreEnum(SMTokenType, MINUS), &JreEnum(SMTokenType, MINUS_EQUAL), &JreEnum(SMTokenType, STAR), &JreEnum(SMTokenType, STAR_STAR), &JreEnum(SMTokenType, STAR_EQUAL), &JreEnum(SMTokenType, SLASH), &JreEnum(SMTokenType, SLASH_SLASH), &JreEnum(SMTokenType, SLASH_EQUAL), &JreEnum(SMTokenType, SLASH_SLASH_EQUAL), &JreEnum(SMTokenType, MOD), &JreEnum(SMTokenType, MOD_MOD), &JreEnum(SMTokenType, MOD_EQUAL), &JreEnum(SMTokenType, DOLLAR_LEFT_PAREN), &JreEnum(SMTokenType, DOLLAR_LEFT_BRACKET), &JreEnum(SMTokenType, DOLLAR_EQUAL), &JreEnum(SMTokenType, QUESTION), &JreEnum(SMTokenType, QUESTION_QUESTION), &JreEnum(SMTokenType, QUESTION_QUESTION_EQUAL), &JreEnum(SMTokenType, IDENTIFIER), &JreEnum(SMTokenType, STRING), &JreEnum(SMTokenType, NUMBER), &JreEnum(SMTokenType, AND), &JreEnum(SMTokenType, BREAK), &JreEnum(SMTokenType, CLASS), &JreEnum(SMTokenType, CLASS_FINAL), &JreEnum(SMTokenType, CLASS_OPEN), &JreEnum(SMTokenType, CONTINUE), &JreEnum(SMTokenType, ELSE), &JreEnum(SMTokenType, FALSE), &JreEnum(SMTokenType, DEF), &JreEnum(SMTokenType, FOR), &JreEnum(SMTokenType, RESCUE), &JreEnum(SMTokenType, IF), &JreEnum(SMTokenType, NIL), &JreEnum(SMTokenType, OR), &JreEnum(SMTokenType, PRINT), &JreEnum(SMTokenType, RETURN), &JreEnum(SMTokenType, SUPER), &JreEnum(SMTokenType, SELF), &JreEnum(SMTokenType, TRUE), &JreEnum(SMTokenType, WHILE), &JreEnum(SMTokenType, PASS), &JreEnum(SMTokenType, IN), &JreEnum(SMTokenType, IS), &JreEnum(SMTokenType, NOT), &JreEnum(SMTokenType, ELSIF), &JreEnum(SMTokenType, END), &JreEnum(SMTokenType, ISNOT), &JreEnum(SMTokenType, NOTIN), &JreEnum(SMTokenType, NATIVE), &JreEnum(SMTokenType, IMPORT), &JreEnum(SMTokenType, YIELD), &JreEnum(SMTokenType, WHEN), &JreEnum(SMTokenType, GU), &JreEnum(SMTokenType, IVIC), &JreEnum(SMTokenType, EOF), "Ljava/lang/Enum<LTokenType;>;LCodifiable;" };
+  static const J2ObjcClassInfo _SMTokenType = { "TokenType", "net.globulus.simi", ptrTable, methods, fields, 7, 0x4010, 7, 76, -1, -1, -1, 80, -1 };
   return &_SMTokenType;
 }
 
@@ -577,49 +590,50 @@ SMTokenType *SMTokenType_values_[75];
     JreEnum(SMTokenType, MOD) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 29), 29);
     JreEnum(SMTokenType, MOD_MOD) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 30), 30);
     JreEnum(SMTokenType, MOD_EQUAL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 31), 31);
-    JreEnum(SMTokenType, DOLLAR_LEFT_BRACKET) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 32), 32);
-    JreEnum(SMTokenType, DOLLAR_EQUAL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 33), 33);
-    JreEnum(SMTokenType, QUESTION) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 34), 34);
-    JreEnum(SMTokenType, QUESTION_QUESTION) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 35), 35);
-    JreEnum(SMTokenType, QUESTION_QUESTION_EQUAL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 36), 36);
-    JreEnum(SMTokenType, IDENTIFIER) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 37), 37);
-    JreEnum(SMTokenType, STRING) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 38), 38);
-    JreEnum(SMTokenType, NUMBER) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 39), 39);
-    JreEnum(SMTokenType, AND) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 40), 40);
-    JreEnum(SMTokenType, BREAK) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 41), 41);
-    JreEnum(SMTokenType, CLASS) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 42), 42);
-    JreEnum(SMTokenType, CLASS_FINAL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 43), 43);
-    JreEnum(SMTokenType, CLASS_OPEN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 44), 44);
-    JreEnum(SMTokenType, CONTINUE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 45), 45);
-    JreEnum(SMTokenType, ELSE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 46), 46);
-    JreEnum(SMTokenType, FALSE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 47), 47);
-    JreEnum(SMTokenType, DEF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 48), 48);
-    JreEnum(SMTokenType, FOR) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 49), 49);
-    JreEnum(SMTokenType, RESCUE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 50), 50);
-    JreEnum(SMTokenType, IF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 51), 51);
-    JreEnum(SMTokenType, NIL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 52), 52);
-    JreEnum(SMTokenType, OR) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 53), 53);
-    JreEnum(SMTokenType, PRINT) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 54), 54);
-    JreEnum(SMTokenType, RETURN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 55), 55);
-    JreEnum(SMTokenType, SUPER) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 56), 56);
-    JreEnum(SMTokenType, SELF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 57), 57);
-    JreEnum(SMTokenType, TRUE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 58), 58);
-    JreEnum(SMTokenType, WHILE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 59), 59);
-    JreEnum(SMTokenType, PASS) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 60), 60);
-    JreEnum(SMTokenType, IN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 61), 61);
-    JreEnum(SMTokenType, IS) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 62), 62);
-    JreEnum(SMTokenType, NOT) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 63), 63);
-    JreEnum(SMTokenType, ELSIF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 64), 64);
-    JreEnum(SMTokenType, END) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 65), 65);
-    JreEnum(SMTokenType, ISNOT) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 66), 66);
-    JreEnum(SMTokenType, NOTIN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 67), 67);
-    JreEnum(SMTokenType, NATIVE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 68), 68);
-    JreEnum(SMTokenType, IMPORT) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 69), 69);
-    JreEnum(SMTokenType, YIELD) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 70), 70);
-    JreEnum(SMTokenType, WHEN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 71), 71);
-    JreEnum(SMTokenType, GU) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 72), 72);
-    JreEnum(SMTokenType, IVIC) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 73), 73);
-    JreEnum(SMTokenType, EOF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 74), 74);
+    JreEnum(SMTokenType, DOLLAR_LEFT_PAREN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 32), 32);
+    JreEnum(SMTokenType, DOLLAR_LEFT_BRACKET) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 33), 33);
+    JreEnum(SMTokenType, DOLLAR_EQUAL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 34), 34);
+    JreEnum(SMTokenType, QUESTION) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 35), 35);
+    JreEnum(SMTokenType, QUESTION_QUESTION) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 36), 36);
+    JreEnum(SMTokenType, QUESTION_QUESTION_EQUAL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 37), 37);
+    JreEnum(SMTokenType, IDENTIFIER) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 38), 38);
+    JreEnum(SMTokenType, STRING) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 39), 39);
+    JreEnum(SMTokenType, NUMBER) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 40), 40);
+    JreEnum(SMTokenType, AND) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 41), 41);
+    JreEnum(SMTokenType, BREAK) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 42), 42);
+    JreEnum(SMTokenType, CLASS) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 43), 43);
+    JreEnum(SMTokenType, CLASS_FINAL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 44), 44);
+    JreEnum(SMTokenType, CLASS_OPEN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 45), 45);
+    JreEnum(SMTokenType, CONTINUE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 46), 46);
+    JreEnum(SMTokenType, ELSE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 47), 47);
+    JreEnum(SMTokenType, FALSE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 48), 48);
+    JreEnum(SMTokenType, DEF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 49), 49);
+    JreEnum(SMTokenType, FOR) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 50), 50);
+    JreEnum(SMTokenType, RESCUE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 51), 51);
+    JreEnum(SMTokenType, IF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 52), 52);
+    JreEnum(SMTokenType, NIL) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 53), 53);
+    JreEnum(SMTokenType, OR) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 54), 54);
+    JreEnum(SMTokenType, PRINT) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 55), 55);
+    JreEnum(SMTokenType, RETURN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 56), 56);
+    JreEnum(SMTokenType, SUPER) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 57), 57);
+    JreEnum(SMTokenType, SELF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 58), 58);
+    JreEnum(SMTokenType, TRUE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 59), 59);
+    JreEnum(SMTokenType, WHILE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 60), 60);
+    JreEnum(SMTokenType, PASS) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 61), 61);
+    JreEnum(SMTokenType, IN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 62), 62);
+    JreEnum(SMTokenType, IS) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 63), 63);
+    JreEnum(SMTokenType, NOT) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 64), 64);
+    JreEnum(SMTokenType, ELSIF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 65), 65);
+    JreEnum(SMTokenType, END) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 66), 66);
+    JreEnum(SMTokenType, ISNOT) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 67), 67);
+    JreEnum(SMTokenType, NOTIN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 68), 68);
+    JreEnum(SMTokenType, NATIVE) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 69), 69);
+    JreEnum(SMTokenType, IMPORT) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 70), 70);
+    JreEnum(SMTokenType, YIELD) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 71), 71);
+    JreEnum(SMTokenType, WHEN) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 72), 72);
+    JreEnum(SMTokenType, GU) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 73), 73);
+    JreEnum(SMTokenType, IVIC) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 74), 74);
+    JreEnum(SMTokenType, EOF) = new_SMTokenType_initWithNSString_withInt_(JreEnumConstantName(SMTokenType_class_(), 75), 75);
     J2OBJC_SET_INITIALIZED(SMTokenType)
   }
 }
@@ -636,12 +650,12 @@ SMTokenType *new_SMTokenType_initWithNSString_withInt_(NSString *__name, jint __
 
 IOSObjectArray *SMTokenType_values() {
   SMTokenType_initialize();
-  return [IOSObjectArray arrayWithObjects:SMTokenType_values_ count:75 type:SMTokenType_class_()];
+  return [IOSObjectArray arrayWithObjects:SMTokenType_values_ count:76 type:SMTokenType_class_()];
 }
 
 SMTokenType *SMTokenType_valueOfWithNSString_(NSString *name) {
   SMTokenType_initialize();
-  for (int i = 0; i < 75; i++) {
+  for (int i = 0; i < 76; i++) {
     SMTokenType *e = SMTokenType_values_[i];
     if ([name isEqual:[e name]]) {
       return e;
@@ -653,7 +667,7 @@ SMTokenType *SMTokenType_valueOfWithNSString_(NSString *name) {
 
 SMTokenType *SMTokenType_fromOrdinal(NSUInteger ordinal) {
   SMTokenType_initialize();
-  if (ordinal >= 75) {
+  if (ordinal >= 76) {
     return nil;
   }
   return SMTokenType_values_[ordinal];

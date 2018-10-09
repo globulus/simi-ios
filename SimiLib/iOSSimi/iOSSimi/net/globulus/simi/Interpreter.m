@@ -249,6 +249,7 @@ __attribute__((unused)) static void SMInterpreter_raiseNilReferenceExceptionWith
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -272,6 +273,7 @@ __attribute__((unused)) static SMInterpreter_1 *create_SMInterpreter_1_init(void
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -508,7 +510,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
             @throw new_SMReturn_initWithSMSimiProperty_(nil);
           }
           else {
-            @throw new_SMBreak_init();
+            @throw new_SMBreak_initWithJavaLangThrowable_([raisedExceptions_ peek]);
           }
         }
       }
@@ -699,7 +701,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
   if (SMInterpreter_isTruthyWithSMSimiProperty_(SMInterpreter_evaluateWithSMExpr_(self, ((SMStmt_Elsif *) nil_chk(stmt))->condition_))) {
     SMBlockImpl *block = [((SMEnvironment *) nil_chk(self->environment_)) getOrAssignBlockWithSMStmt_BlockStmt:stmt withSMExpr_Block:stmt->thenBranch_ withJavaUtilMap:yieldedStmts_];
     @try {
-      (void) [((SMBlockImpl *) nil_chk(block)) callWithSMBlockInterpreter:self withJavaUtilList:nil withBoolean:true];
+      (void) [((SMBlockImpl *) nil_chk(block)) callWithSMBlockInterpreter:self withSMSimiEnvironment:nil withJavaUtilList:nil withBoolean:true];
     }
     @catch (SMReturn *returnYield) {
       if ([returnYield isKindOfClass:[SMReturn class]]) {
@@ -737,7 +739,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
   if (stmt->elseBranch_ != nil) {
     SMBlockImpl *elseBlock = [((SMEnvironment *) nil_chk(self->environment_)) getOrAssignBlockWithSMStmt_BlockStmt:stmt withSMExpr_Block:stmt->elseBranch_ withJavaUtilMap:yieldedStmts_];
     @try {
-      (void) [((SMBlockImpl *) nil_chk(elseBlock)) callWithSMBlockInterpreter:self withJavaUtilList:nil withBoolean:true];
+      (void) [((SMBlockImpl *) nil_chk(elseBlock)) callWithSMBlockInterpreter:self withSMSimiEnvironment:nil withJavaUtilList:nil withBoolean:true];
     }
     @catch (SMReturn *returnYield) {
       if ([returnYield isKindOfClass:[SMReturn class]]) {
@@ -799,7 +801,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
   SMBlockImpl *block = [((SMEnvironment *) nil_chk(self->environment_)) getOrAssignBlockWithSMStmt_BlockStmt:stmt withSMExpr_Block:stmt->body_ withJavaUtilMap:yieldedStmts_];
   while (SMInterpreter_isTruthyWithSMSimiProperty_(SMInterpreter_evaluateWithSMExpr_(self, stmt->condition_))) {
     @try {
-      (void) [((SMBlockImpl *) nil_chk(block)) callWithSMBlockInterpreter:self withJavaUtilList:nil withBoolean:true];
+      (void) [((SMBlockImpl *) nil_chk(block)) callWithSMBlockInterpreter:self withSMSimiEnvironment:nil withJavaUtilList:nil withBoolean:true];
     }
     @catch (SMReturn *returnYield) {
       if ([returnYield isKindOfClass:[SMReturn class]]) {
@@ -860,7 +862,7 @@ SMInterpreter *SMInterpreter_sharedInstance;
     }
     [block->closure_ assignWithSMToken:stmt->var_->name_ withSMSimiProperty:var withBoolean:true];
     @try {
-      (void) [block callWithSMBlockInterpreter:self withJavaUtilList:nil withBoolean:true];
+      (void) [block callWithSMBlockInterpreter:self withSMSimiEnvironment:nil withJavaUtilList:nil withBoolean:true];
     }
     @catch (SMReturn *returnYield) {
       if ([returnYield isKindOfClass:[SMReturn class]]) {
@@ -1007,8 +1009,14 @@ SMInterpreter *SMInterpreter_sharedInstance;
 }
 
 - (id<SMSimiProperty>)visitCallExprWithSMExpr_Call:(SMExpr_Call *)expr {
+  if (debugger_ != nil) {
+    [debugger_ pushCallWithSMDebugger_Frame:new_SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_([((SMEnvironment *) nil_chk(environment_)) deepClone], expr, nil, nil)];
+  }
   id<SMSimiProperty> callee = SMInterpreter_evaluateWithSMExpr_(self, ((SMExpr_Call *) nil_chk(expr))->callee_);
   id<SMSimiProperty> result = SMInterpreter_callWithSMSimiProperty_withJavaUtilList_withSMToken_(self, callee, expr->arguments_, expr->paren_);
+  if (debugger_ != nil) {
+    [debugger_ popCall];
+  }
   return result;
 }
 
@@ -1199,58 +1207,46 @@ SMInterpreter *SMInterpreter_sharedInstance;
   jboolean immutable = ((SMToken *) nil_chk(((SMExpr_ObjectLiteral *) nil_chk(expr))->opener_))->type_ == JreLoadEnum(SMTokenType, LEFT_BRACKET);
   SMSimiClassImpl *objectClass = SMInterpreter_getObjectClass(self);
   SMSimiObjectImpl *object;
-  if ([((id<JavaUtilList>) nil_chk(expr->props_)) isEmpty]) {
-    object = SMSimiObjectImpl_emptyWithSMSimiClassImpl_withBoolean_(objectClass, immutable);
-  }
-  else {
-    JavaUtilLinkedHashMap *mapFields = new_JavaUtilLinkedHashMap_init();
-    JavaUtilArrayList *arrayFields = new_JavaUtilArrayList_init();
-    jint count = 0;
-    for (SMExpr * __strong propExpr in expr->props_) {
-      NSString *key;
-      SMExpr *valueExpr;
-      if (expr->isDictionary_) {
-        SMExpr_Assign *assign = (SMExpr_Assign *) cast_chk(propExpr, [SMExpr_Assign class]);
-        key = ((SMToken *) nil_chk(((SMExpr_Assign *) nil_chk(assign))->name_))->lexeme_;
-        if (key == nil) {
-          key = [((SMSimiValue *) nil_chk(assign->name_->literal_)) getString];
-        }
-        valueExpr = assign->value_;
+  JavaUtilLinkedHashMap *mapFields = new_JavaUtilLinkedHashMap_init();
+  JavaUtilArrayList *arrayFields = new_JavaUtilArrayList_init();
+  for (SMExpr * __strong propExpr in nil_chk(expr->props_)) {
+    NSString *key;
+    SMExpr *valueExpr;
+    if ([propExpr isKindOfClass:[SMExpr_Assign class]]) {
+      SMExpr_Assign *assign = (SMExpr_Assign *) cast_chk(propExpr, [SMExpr_Assign class]);
+      key = ((SMToken *) nil_chk(((SMExpr_Assign *) nil_chk(assign))->name_))->lexeme_;
+      if (key == nil) {
+        key = [((SMSimiValue *) nil_chk(assign->name_->literal_)) getString];
       }
-      else {
-        key = JreStrcat("$I", SMConstants_IMPLICIT, count);
-        valueExpr = propExpr;
-      }
-      id<SMSimiProperty> prop;
-      if ([valueExpr isKindOfClass:[SMExpr_Block class]]) {
-        prop = new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_((SMExpr_Block *) cast_chk(valueExpr, [SMExpr_Block class]), environment_), key, nil);
-      }
-      else {
-        prop = SMInterpreter_evaluateWithSMExpr_(self, valueExpr);
-      }
-      if ([((NSString *) nil_chk(key)) isEqual:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, CLASS))) toCode]] && [[((id<SMSimiProperty>) nil_chk(prop)) getValue] isKindOfClass:[SMSimiValue_Object class]] && [[((SMSimiValue *) nil_chk([prop getValue])) getObject] isKindOfClass:[SMSimiClassImpl class]]) {
-        objectClass = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(prop)) getValue])) getObject], [SMSimiClassImpl class]);
-      }
-      else {
-        if (expr->isDictionary_) {
-          (void) [mapFields putWithId:key withId:prop];
-        }
-        else {
-          [arrayFields addWithId:prop];
-        }
-        count++;
-      }
-    }
-    if (expr->isDictionary_) {
-      object = SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(objectClass, immutable, mapFields);
+      valueExpr = assign->value_;
     }
     else {
-      object = SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, immutable, arrayFields);
+      key = nil;
+      valueExpr = propExpr;
     }
-    for (SMSimiValue * __strong value in nil_chk([((SMSimiObjectImpl *) nil_chk(object)) values])) {
-      if ([value isKindOfClass:[SMSimiValue_Callable class]]) {
-        [((SMSimiValue_Callable *) nil_chk(((SMSimiValue_Callable *) cast_chk(value, [SMSimiValue_Callable class])))) bindWithSMSimiObject:object];
+    id<SMSimiProperty> prop;
+    if ([valueExpr isKindOfClass:[SMExpr_Block class]]) {
+      prop = new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBlockImpl_initWithSMExpr_Block_withSMEnvironment_((SMExpr_Block *) cast_chk(valueExpr, [SMExpr_Block class]), environment_), key, nil);
+    }
+    else {
+      prop = SMInterpreter_evaluateWithSMExpr_(self, valueExpr);
+    }
+    if (key != nil && [key isEqual:[((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, CLASS))) toCode]] && [[((id<SMSimiProperty>) nil_chk(prop)) getValue] isKindOfClass:[SMSimiValue_Object class]] && [[((SMSimiValue *) nil_chk([prop getValue])) getObject] isKindOfClass:[SMSimiClassImpl class]]) {
+      objectClass = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(prop)) getValue])) getObject], [SMSimiClassImpl class]);
+    }
+    else {
+      if (key != nil) {
+        (void) [mapFields putWithId:key withId:prop];
       }
+      else {
+        [arrayFields addWithId:prop];
+      }
+    }
+  }
+  object = new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(objectClass, immutable, mapFields, arrayFields);
+  for (SMSimiValue * __strong value in nil_chk([object values])) {
+    if ([value isKindOfClass:[SMSimiValue_Callable class]]) {
+      [((SMSimiValue_Callable *) nil_chk(((SMSimiValue_Callable *) cast_chk(value, [SMSimiValue_Callable class])))) bindWithSMSimiObject:object];
     }
   }
   return new_SMSimiValue_Object_initWithSMSimiObject_(object);
@@ -1609,7 +1605,7 @@ void SMInterpreter_debugWithSMStmt_(SMInterpreter *self, SMStmt *stmt) {
   }
   IOSObjectArray *before = nil;
   IOSObjectArray *after = nil;
-  [self->debugger_ pushWithSMDebugger_Frame:new_SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_([((SMEnvironment *) nil_chk(self->environment_)) deepClone], stmt, before, after)];
+  [self->debugger_ pushLineWithSMDebugger_Frame:new_SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_([((SMEnvironment *) nil_chk(self->environment_)) deepClone], stmt, before, after)];
   if ([((SMStmt *) nil_chk(stmt)) hasBreakPoint]) {
     [((SMDebugger *) nil_chk(self->debugger_)) triggerBreakpointWithSMStmt:stmt];
   }
@@ -1660,6 +1656,7 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
   else {
     return callee;
   }
+  SMEnvironment *env = (((SMToken *) nil_chk(paren))->type_ == JreLoadEnum(SMTokenType, DOLLAR_LEFT_PAREN)) ? new_SMEnvironment_initWithSMEnvironment_(self->environment_) : nil;
   id<JavaUtilList> decomposedArgs = arguments;
   if ([((id<JavaUtilList>) nil_chk(arguments)) size] != [((id<SMSimiCallable>) nil_chk(callable)) arity]) {
     decomposedArgs = SMInterpreter_decomposeArgumentsWithSMSimiCallable_withJavaUtilList_(self, callable, arguments);
@@ -1695,7 +1692,7 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
         id<JavaUtilList> nativeArgs = new_JavaUtilArrayList_init();
         [nativeArgs addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(instance)];
         [nativeArgs addAllWithJavaUtilCollection:decomposedArgs];
-        result = [((id<SMSimiCallable>) nil_chk(nativeMethod)) callWithSMBlockInterpreter:self withJavaUtilList:nativeArgs withBoolean:false];
+        result = [((id<SMSimiCallable>) nil_chk(nativeMethod)) callWithSMBlockInterpreter:self withSMSimiEnvironment:env withJavaUtilList:nativeArgs withBoolean:false];
       }
       else {
         result = SMInterpreter_invokeNativeCallWithNSString_withNSString_withSMSimiObject_withJavaUtilList_(self, clazz->name_, methodName, instance, decomposedArgs);
@@ -1707,7 +1704,7 @@ id<SMSimiProperty> SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilLis
       return SMInterpreter_invokeNativeCallWithNSString_withNSString_withSMSimiObject_withJavaUtilList_(self, SMConstants_GLOBALS_CLASS_NAME, methodName, nil, decomposedArgs);
     }
   }
-  return [callable callWithSMBlockInterpreter:self withJavaUtilList:decomposedArgs withBoolean:false];
+  return [callable callWithSMBlockInterpreter:self withSMSimiEnvironment:env withJavaUtilList:decomposedArgs withBoolean:false];
 }
 
 id<JavaUtilList> SMInterpreter_decomposeArgumentsWithSMSimiCallable_withJavaUtilList_(SMInterpreter *self, id<SMSimiCallable> callable, id<JavaUtilList> arguments) {
@@ -1825,7 +1822,7 @@ SMSimiValue *SMInterpreter_compareWithSMSimiValue_withSMSimiValue_withSMExpr_Bin
   }
   if ([a isKindOfClass:[SMSimiValue_Object class]]) {
     SMToken *compareTo = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, IDENTIFIER), SMConstants_COMPARE_TO, nil, ((SMToken *) nil_chk(((SMExpr_Binary *) nil_chk(expr))->operator__))->line_, expr->operator__->file_);
-    return [((id<SMSimiProperty>) nil_chk(SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(self, [((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([a getObject], [SMSimiObjectImpl class])))) getWithSMToken:compareTo withJavaLangInteger:JavaLangInteger_valueOfWithInt_(1) withSMEnvironment:self->environment_])) getValue], compareTo, JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ a, b } count:2 type:SMSimiProperty_class_()])))) getValue];
+    return [((id<SMSimiProperty>) nil_chk(SMInterpreter_callWithSMSimiValue_withSMToken_withJavaUtilList_(self, [((id<SMSimiProperty>) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([a getObject], [SMSimiObjectImpl class])))) getWithSMToken:compareTo withJavaLangInteger:JavaLangInteger_valueOfWithInt_(1) withSMEnvironment:self->environment_])) getValue], compareTo, JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ b } count:1 type:SMSimiProperty_class_()])))) getValue];
   }
   return new_SMSimiValue_Number_initWithLong_([a compareToWithId:b]);
 }
@@ -1946,6 +1943,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return new_SMSimiValue_Number_initWithLong_(JavaLangSystem_currentTimeMillis());
@@ -1953,6 +1951,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -1972,9 +1974,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(toCodeWithInt:withBoolean:);
   methods[2].selector = @selector(arity);
-  methods[3].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[3].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "toCode", "IZ", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMInterpreter;", "initWithJavaUtilCollection:withSMDebugger:" };
+  static const void *ptrTable[] = { "toCode", "IZ", "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMInterpreter;", "initWithJavaUtilCollection:withSMDebugger:" };
   static const J2ObjcClassInfo _SMInterpreter_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 4, 0, 5, -1, 6, -1, -1 };
   return &_SMInterpreter_1;
 }
@@ -2012,6 +2014,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return new_SMSimiValue_String_initWithNSString_([[NSUUID UUID] UUIDString]);
@@ -2019,6 +2022,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -2038,9 +2045,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(toCodeWithInt:withBoolean:);
   methods[2].selector = @selector(arity);
-  methods[3].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[3].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "toCode", "IZ", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMInterpreter;", "initWithJavaUtilCollection:withSMDebugger:" };
+  static const void *ptrTable[] = { "toCode", "IZ", "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMInterpreter;", "initWithJavaUtilCollection:withSMDebugger:" };
   static const J2ObjcClassInfo _SMInterpreter_2 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 4, 0, 5, -1, 6, -1, -1 };
   return &_SMInterpreter_2;
 }

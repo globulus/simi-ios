@@ -30,6 +30,7 @@
 @class SMStmt_Function;
 @protocol JavaUtilList;
 @protocol SMBlockInterpreter;
+@protocol SMSimiEnvironment;
 @protocol SMSimiProperty;
 
 @interface SMSimiFunction : NSObject < SMSimiCallable > {
@@ -44,6 +45,7 @@
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 

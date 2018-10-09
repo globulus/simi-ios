@@ -62,6 +62,8 @@
 
 - (id<SMSimiCallable>)getCallable;
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (SMSimiValue_Number *)getNumber;

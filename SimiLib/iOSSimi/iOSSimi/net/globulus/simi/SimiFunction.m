@@ -11,6 +11,7 @@
 #include "Environment.h"
 #include "Expr.h"
 #include "SimiCallable.h"
+#include "SimiEnvironment.h"
 #include "SimiFunction.h"
 #include "SimiObjectImpl.h"
 #include "SimiProperty.h"
@@ -66,9 +67,10 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  id<SMSimiProperty> prop = [((SMBlockImpl *) nil_chk(block_)) callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:rethrow withSMSimiCallable:self];
+  id<SMSimiProperty> prop = [((SMBlockImpl *) nil_chk(block_)) callWithSMBlockInterpreter:interpreter withSMSimiEnvironment:environment withJavaUtilList:arguments withBoolean:rethrow withSMSimiCallable:self];
   if (isInitializer_) {
     return [((SMEnvironment *) nil_chk(block_->closure_)) getAtWithInt:0 withNSString:SMConstants_SELF];
   }
@@ -82,6 +84,10 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -106,7 +112,7 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
   methods[2].selector = @selector(bindWithSMSimiObjectImpl:);
   methods[3].selector = @selector(description);
   methods[4].selector = @selector(arity);
-  methods[5].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[5].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   methods[6].selector = @selector(toCodeWithInt:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
@@ -116,7 +122,7 @@ __attribute__((unused)) static SMSimiFunction *create_SMSimiFunction_initWithSMS
     { "isNative_", "Z", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
     { "annotations_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 11, -1 },
   };
-  static const void *ptrTable[] = { "LSMStmt_Function;LSMEnvironment;ZZLJavaUtilList;", "(LStmt$Function;LEnvironment;ZZLjava/util/List<LSimiObject;>;)V", "LSMSimiFunction;LSMBlockImpl;", "bind", "LSMSimiObjectImpl;", "toString", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ", "Ljava/util/List<LSimiObject;>;" };
+  static const void *ptrTable[] = { "LSMStmt_Function;LSMEnvironment;ZZLJavaUtilList;", "(LStmt$Function;LEnvironment;ZZLjava/util/List<LSimiObject;>;)V", "LSMSimiFunction;LSMBlockImpl;", "bind", "LSMSimiObjectImpl;", "toString", "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ", "Ljava/util/List<LSimiObject;>;" };
   static const J2ObjcClassInfo _SMSimiFunction = { "SimiFunction", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 7, 5, -1, -1, -1, -1, -1 };
   return &_SMSimiFunction;
 }

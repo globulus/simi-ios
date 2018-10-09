@@ -1015,9 +1015,9 @@ SMStmt_Function *SMParser_functionWithNSString_(SMParser *self, NSString *kind) 
         [statements addWithId:new_SMStmt_Expression_initWithSMExpr_(new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(name, new_SMExpr_Self_initWithSMToken_withSMToken_(SMToken_self__(), nil), paramName, paramName))];
       }
     }
-    else if ([name->lexeme_ java_hasPrefix:SMConstants_SET] && [((id<JavaUtilList>) nil_chk(block->params_)) size] == 1) {
+    else if (([name->lexeme_ java_hasPrefix:SMConstants_SET] || [name->lexeme_ java_hasPrefix:JreStrcat("$$", SMConstants_PRIVATE, SMConstants_SET)]) && [((id<JavaUtilList>) nil_chk(block->params_)) size] == 1) {
       statements = new_JavaUtilArrayList_init();
-      jint offset = [((NSString *) nil_chk(SMConstants_SET)) java_length];
+      jint offset = [name->lexeme_ java_hasPrefix:SMConstants_SET] ? [((NSString *) nil_chk(SMConstants_SET)) java_length] : ([((NSString *) nil_chk(SMConstants_PRIVATE)) java_length] + [((NSString *) nil_chk(SMConstants_SET)) java_length]);
       SMToken *valueName = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, IDENTIFIER), JreStrcat("$$", [((NSString *) nil_chk([name->lexeme_ java_substring:offset endIndex:offset + 1])) lowercaseString], [name->lexeme_ java_substring:offset + 1]), nil, name->line_, name->file_);
       SMExpr_Variable *paramName = SMParser_extractParamNameWithSMExpr_(self, [((id<JavaUtilList>) nil_chk(block->params_)) getWithInt:0]);
       [statements addWithId:new_SMStmt_Expression_initWithSMExpr_(new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(name, new_SMExpr_Self_initWithSMToken_withSMToken_(SMToken_self__(), nil), new_SMExpr_Variable_initWithSMToken_(valueName), paramName))];
@@ -1111,10 +1111,10 @@ id<JavaUtilList> SMParser_paramsWithNSString_withBoolean_(SMParser *self, NSStri
 }
 
 JavaLangInteger *SMParser_peekParams(SMParser *self) {
-  if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN))) {
+  if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, LEFT_PAREN)) && !SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOLLAR_LEFT_PAREN))) {
     return nil;
   }
-  if (SMParser_peekSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_PAREN), JreLoadEnum(SMTokenType, RIGHT_PAREN) } count:2 type:SMTokenType_class_()])) {
+  if (SMParser_peekSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_PAREN), JreLoadEnum(SMTokenType, RIGHT_PAREN) } count:2 type:SMTokenType_class_()]) || SMParser_peekSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DOLLAR_LEFT_PAREN), JreLoadEnum(SMTokenType, RIGHT_PAREN) } count:2 type:SMTokenType_class_()])) {
     return JavaLangInteger_valueOfWithInt_(0);
   }
   jint len = [((id<JavaUtilList>) nil_chk(self->tokens_)) size];
@@ -1122,7 +1122,7 @@ JavaLangInteger *SMParser_peekParams(SMParser *self) {
   jint parenCount = 0;
   for (jint i = self->current_ + 1; i < len; i++) {
     SMTokenType *type = ((SMToken *) nil_chk([self->tokens_ getWithInt:i]))->type_;
-    if (type == JreLoadEnum(SMTokenType, LEFT_PAREN) || type == JreLoadEnum(SMTokenType, LEFT_BRACKET) || type == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
+    if (type == JreLoadEnum(SMTokenType, LEFT_PAREN) || type == JreLoadEnum(SMTokenType, LEFT_BRACKET) || type == JreLoadEnum(SMTokenType, DOLLAR_LEFT_PAREN) || type == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
       parenCount++;
     }
     else if (type == JreLoadEnum(SMTokenType, RIGHT_PAREN) || type == JreLoadEnum(SMTokenType, RIGHT_BRACKET)) {
@@ -1259,7 +1259,7 @@ SMExpr *SMParser_unary(SMParser *self) {
 SMExpr *SMParser_call(SMParser *self) {
   SMExpr *expr = SMParser_primary(self);
   while (true) {
-    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_PAREN) } count:1 type:SMTokenType_class_()])) {
+    if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, LEFT_PAREN), JreLoadEnum(SMTokenType, DOLLAR_LEFT_PAREN) } count:2 type:SMTokenType_class_()])) {
       expr = SMParser_finishCallWithSMExpr_(self, expr);
     }
     else if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DOT) } count:1 type:SMTokenType_class_()])) {
@@ -1285,6 +1285,7 @@ SMExpr *SMParser_call(SMParser *self) {
 }
 
 SMExpr *SMParser_finishCallWithSMExpr_(SMParser *self, SMExpr *callee) {
+  SMToken *paren = SMParser_previous(self);
   id<JavaUtilList> arguments = new_JavaUtilArrayList_init();
   if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN))) {
     do {
@@ -1293,7 +1294,7 @@ SMExpr *SMParser_finishCallWithSMExpr_(SMParser *self, SMExpr *callee) {
     }
     while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, COMMA) } count:1 type:SMTokenType_class_()]));
   }
-  SMToken *paren = SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN), @"Expect ')' after arguments.");
+  (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, RIGHT_PAREN), @"Expect ')' after arguments.");
   return new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(callee, paren, arguments);
 }
 
@@ -1369,20 +1370,18 @@ SMExpr *SMParser_primary(SMParser *self) {
 SMExpr *SMParser_objectLiteral(SMParser *self) {
   SMToken *opener = SMParser_previous(self);
   id<JavaUtilList> props = new_JavaUtilArrayList_init();
-  jboolean dictionary = true;
   if (!SMParser_checkWithSMTokenType_(self, JreLoadEnum(SMTokenType, RIGHT_BRACKET))) {
     SMParser_matchAllNewlines(self);
-    dictionary = (SMParser_peekSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IDENTIFIER), JreLoadEnum(SMTokenType, EQUAL) } count:2 type:SMTokenType_class_()]) || SMParser_peekSequenceWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, STRING), JreLoadEnum(SMTokenType, EQUAL) } count:2 type:SMTokenType_class_()]));
     do {
       SMParser_matchAllNewlines(self);
-      [props addWithId:dictionary ? SMParser_assignment(self) : SMParser_or__(self)];
+      [props addWithId:SMParser_assignment(self)];
       SMParser_matchAllNewlines(self);
     }
     while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, COMMA) } count:1 type:SMTokenType_class_()]));
     SMParser_matchAllNewlines(self);
   }
   (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, RIGHT_BRACKET), @"Expect ']' at the end of object.");
-  return new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(opener, props, dictionary);
+  return new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_(opener, props);
 }
 
 void SMParser_matchAllNewlines(SMParser *self) {
@@ -1531,8 +1530,9 @@ void SMParser_addParamChecksWithSMToken_withJavaUtilList_withJavaUtilList_(SMPar
       SMExpr_Binary *typeCheck = (SMExpr_Binary *) cast_chk(param, [SMExpr_Binary class]);
       SMExpr *paramName = ((SMExpr_Binary *) nil_chk(typeCheck))->left_;
       SMExpr *paramType = typeCheck->right_;
-      id<JavaUtilList> exceptionStmt = JavaUtilCollections_singletonListWithId_(new_SMStmt_Expression_initWithSMExpr_(new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(declaration, new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(new_SMExpr_Variable_initWithSMToken_(SMToken_namedWithNSString_(SMConstants_EXCEPTION_TYPE_MISMATCH)), declaration, JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ paramName, typeCheck->right_ } count:2 type:SMExpr_class_()])), new_SMExpr_Variable_initWithSMToken_(SMToken_namedWithNSString_(SMConstants_RAISE)), JavaLangInteger_valueOfWithInt_(0)), declaration, JavaUtilCollections_emptyList())));
-      [((id<JavaUtilList>) nil_chk(stmts)) addWithInt:0 withId:new_SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(new_SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(paramName, new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, ISNOT), nil, nil, ((SMToken *) nil_chk(declaration))->line_, declaration->file_), paramType), new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(typeCheck->operator__, JavaUtilCollections_emptyList(), exceptionStmt, true)), JavaUtilCollections_emptyList(), nil)];
+      SMToken *paren = new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, LEFT_PAREN), nil, nil, ((SMToken *) nil_chk(declaration))->line_, declaration->file_);
+      id<JavaUtilList> exceptionStmt = JavaUtilCollections_singletonListWithId_(new_SMStmt_Expression_initWithSMExpr_(new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(declaration, new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(new_SMExpr_Variable_initWithSMToken_(SMToken_namedWithNSString_(SMConstants_EXCEPTION_TYPE_MISMATCH)), paren, JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ paramName, typeCheck->right_ } count:2 type:SMExpr_class_()])), new_SMExpr_Variable_initWithSMToken_(SMToken_namedWithNSString_(SMConstants_RAISE)), JavaLangInteger_valueOfWithInt_(0)), paren, JavaUtilCollections_emptyList())));
+      [((id<JavaUtilList>) nil_chk(stmts)) addWithInt:0 withId:new_SMStmt_If_initWithSMStmt_Elsif_withJavaUtilList_withSMExpr_Block_(new_SMStmt_Elsif_initWithSMExpr_withSMExpr_Block_(new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(paramName, new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, BANG_EQUAL), nil, nil, declaration->line_, declaration->file_), new_SMExpr_Literal_initWithSMSimiValue_(nil)), new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, AND), nil, nil, declaration->line_, declaration->file_), new_SMExpr_Binary_initWithSMExpr_withSMToken_withSMExpr_(paramName, new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, ISNOT), nil, nil, declaration->line_, declaration->file_), paramType)), new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(typeCheck->operator__, JavaUtilCollections_emptyList(), exceptionStmt, true)), JavaUtilCollections_emptyList(), nil)];
     }
   }
 }
@@ -1563,7 +1563,7 @@ SMExpr *SMParser_getAssignExprWithSMParser_withSMExpr_withSMToken_withSMExpr_(SM
   }
   else if ([expr isKindOfClass:[SMExpr_ObjectLiteral class]]) {
     SMExpr_ObjectLiteral *objectLiteral = (SMExpr_ObjectLiteral *) cast_chk(expr, [SMExpr_ObjectLiteral class]);
-    if (((SMExpr_ObjectLiteral *) nil_chk(objectLiteral))->isDictionary_ || ((SMToken *) nil_chk(objectLiteral->opener_))->type_ == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
+    if (((SMToken *) nil_chk(((SMExpr_ObjectLiteral *) nil_chk(objectLiteral))->opener_))->type_ == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
       [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithInt:((SMToken *) nil_chk(equals))->line_ withNSString:@"Invalid object decomposition syntax."];
     }
     id<JavaUtilList> assigns = new_JavaUtilArrayList_init();

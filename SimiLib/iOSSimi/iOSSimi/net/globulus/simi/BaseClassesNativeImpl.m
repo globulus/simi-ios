@@ -58,7 +58,6 @@
 #include "SimiPropertyImpl.h"
 #include "SimiValue.h"
 #include "Stmt.h"
-#include "Token.h"
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
@@ -123,6 +122,7 @@ __attribute__((unused)) static SMSimiValue *SMBaseClassesNativeImpl_doMathWithJa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -146,6 +146,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_1 *create_SMBaseClassesNa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -169,6 +170,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_2 *create_SMBaseClassesNa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -210,6 +212,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_3_$Lambda$1 *create_SMBas
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -233,6 +236,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_4 *create_SMBaseClassesNa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -256,6 +260,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_5 *create_SMBaseClassesNa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -276,6 +281,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_6 *create_SMBaseClassesNa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -296,6 +302,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_7 *create_SMBaseClassesNa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -316,6 +323,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_8 *create_SMBaseClassesNa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -336,6 +344,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_9 *create_SMBaseClassesNa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -356,6 +365,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_10 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -369,16 +379,14 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_11 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_init(void);
 
-@interface SMBaseClassesNativeImpl_12 : NSObject < SMSimiCallable > {
- @public
-  SMBaseClassesNativeImpl *this$0_;
-}
+@interface SMBaseClassesNativeImpl_12 : NSObject < SMSimiCallable >
 
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
+- (instancetype __nonnull)init;
 
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -386,11 +394,11 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_11 *create_SMBaseClassesN
 
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_12)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_12 *self, SMBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_12_init(SMBaseClassesNativeImpl_12 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_12 *new_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_12 *new_SMBaseClassesNativeImpl_12_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_12 *create_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_12 *create_SMBaseClassesNativeImpl_12_init(void);
 
 @interface SMBaseClassesNativeImpl_13 : NSObject < SMSimiCallable > {
  @public
@@ -402,6 +410,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_12 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -425,6 +434,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_13 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -438,13 +448,17 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_14 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_14 *create_SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
-@interface SMBaseClassesNativeImpl_15 : NSObject < SMSimiCallable >
+@interface SMBaseClassesNativeImpl_15 : NSObject < SMSimiCallable > {
+ @public
+  SMBaseClassesNativeImpl *this$0_;
+}
 
-- (instancetype __nonnull)init;
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
 
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -452,11 +466,11 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_14 *create_SMBaseClassesN
 
 J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_15)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_15_init(SMBaseClassesNativeImpl_15 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_15_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_15 *self, SMBaseClassesNativeImpl *outer$);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_15 *new_SMBaseClassesNativeImpl_15_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_15 *new_SMBaseClassesNativeImpl_15_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_15 *create_SMBaseClassesNativeImpl_15_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_15 *create_SMBaseClassesNativeImpl_15_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
 
 @interface SMBaseClassesNativeImpl_16 : NSObject < SMSimiCallable >
 
@@ -465,6 +479,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_15 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -485,6 +500,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_16 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -505,6 +521,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_17 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -525,6 +542,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_18 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -545,6 +563,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_19 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -558,29 +577,6 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_20 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_20 *create_SMBaseClassesNativeImpl_20_init(void);
 
-@interface SMBaseClassesNativeImpl_20_1 : NSObject < SMSimiCallable > {
- @public
-  id<JavaUtilIterator> val$iterator_;
-}
-
-- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_20_1)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_20_1 *self, id<JavaUtilIterator> capture$0);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_20_1 *new_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_20_1 *create_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0);
-
 @interface SMBaseClassesNativeImpl_21 : NSObject < SMSimiCallable >
 
 - (instancetype __nonnull)init;
@@ -588,6 +584,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_20_1 *create_SMBaseClasse
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -601,6 +598,30 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_21 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_21 *create_SMBaseClassesNativeImpl_21_init(void);
 
+@interface SMBaseClassesNativeImpl_21_1 : NSObject < SMSimiCallable > {
+ @public
+  id<JavaUtilIterator> val$iterator_;
+}
+
+- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_21_1)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_21_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_21_1 *self, id<JavaUtilIterator> capture$0);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_21_1 *new_SMBaseClassesNativeImpl_21_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_21_1 *create_SMBaseClassesNativeImpl_21_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0);
+
 @interface SMBaseClassesNativeImpl_22 : NSObject < SMSimiCallable >
 
 - (instancetype __nonnull)init;
@@ -608,6 +629,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_21 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -628,6 +650,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_22 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -648,6 +671,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_23 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -668,6 +692,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_24 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -688,6 +713,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_25 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -701,24 +727,6 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_26 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_26 *create_SMBaseClassesNativeImpl_26_init(void);
 
-@interface SMBaseClassesNativeImpl_26_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(SMSimiValue *)a;
-
-@end
-
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_26_$Lambda$1)
-
-inline SMBaseClassesNativeImpl_26_$Lambda$1 *SMBaseClassesNativeImpl_26_$Lambda$1_get_instance(void);
-static SMBaseClassesNativeImpl_26_$Lambda$1 *SMBaseClassesNativeImpl_26_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_26_$Lambda$1, instance, SMBaseClassesNativeImpl_26_$Lambda$1 *)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_26_$Lambda$1_init(SMBaseClassesNativeImpl_26_$Lambda$1 *self);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *new_SMBaseClassesNativeImpl_26_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBaseClassesNativeImpl_26_$Lambda$1_init(void);
-
 @interface SMBaseClassesNativeImpl_27 : NSObject < SMSimiCallable >
 
 - (instancetype __nonnull)init;
@@ -726,6 +734,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -739,7 +748,46 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_27 *new_SMBaseClassesNati
 
 __attribute__((unused)) static SMBaseClassesNativeImpl_27 *create_SMBaseClassesNativeImpl_27_init(void);
 
-@interface SMBaseClassesNativeImpl_27_1 : NSObject < SMSimiCallable > {
+@interface SMBaseClassesNativeImpl_27_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+
+- (id)applyWithId:(SMSimiValue *)a;
+
+@end
+
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_$Lambda$1)
+
+inline SMBaseClassesNativeImpl_27_$Lambda$1 *SMBaseClassesNativeImpl_27_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_27_$Lambda$1 *SMBaseClassesNativeImpl_27_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_$Lambda$1, instance, SMBaseClassesNativeImpl_27_$Lambda$1 *)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_27_$Lambda$1_init(SMBaseClassesNativeImpl_27_$Lambda$1 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$1 *new_SMBaseClassesNativeImpl_27_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$1 *create_SMBaseClassesNativeImpl_27_$Lambda$1_init(void);
+
+@interface SMBaseClassesNativeImpl_28 : NSObject < SMSimiCallable >
+
+- (instancetype __nonnull)init;
+
+- (jint)arity;
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_28)
+
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_init(SMBaseClassesNativeImpl_28 *self);
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_28 *new_SMBaseClassesNativeImpl_28_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_init(void);
+
+@interface SMBaseClassesNativeImpl_28_1 : NSObject < SMSimiCallable > {
  @public
   JavaUtilLinkedHashMap *val$fields_;
   NSString *val$param_;
@@ -755,20 +803,21 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_27 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27_1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_28_1)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_27_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_28_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_1 *new_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_1 *new_SMBaseClassesNativeImpl_28_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_1 *create_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_1 *create_SMBaseClassesNativeImpl_28_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3);
 
-@interface SMBaseClassesNativeImpl_27_2 : NSObject < SMSimiCallable > {
+@interface SMBaseClassesNativeImpl_28_2 : NSObject < SMSimiCallable > {
  @public
   id<JavaUtilSet> val$params_;
   id<JavaUtilSet> val$constructors_;
@@ -786,20 +835,21 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_27_1 *create_SMBaseClasse
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27_2)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_28_2)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_27_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_28_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_2 *new_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_2 *new_SMBaseClassesNativeImpl_28_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_2 *create_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_2 *create_SMBaseClassesNativeImpl_28_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4);
 
-@interface SMBaseClassesNativeImpl_27_2_$Lambda$1 : NSObject < JavaUtilFunctionToIntFunction > {
+@interface SMBaseClassesNativeImpl_28_2_$Lambda$1 : NSObject < JavaUtilFunctionToIntFunction > {
  @public
   jint val$size_;
 }
@@ -808,108 +858,85 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_27_2 *create_SMBaseClasse
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_27_2_$Lambda$1)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_28_2_$Lambda$1)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_27_2_$Lambda$1 *self, jint capture$0);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_28_2_$Lambda$1 *self, jint capture$0);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_2_$Lambda$1 *new_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_2_$Lambda$1 *new_SMBaseClassesNativeImpl_28_2_$Lambda$1_initWithInt_(jint capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_2_$Lambda$1 *create_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(jint capture$0);
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_2_$Lambda$1 *create_SMBaseClassesNativeImpl_28_2_$Lambda$1_initWithInt_(jint capture$0);
 
-@interface SMBaseClassesNativeImpl_27_2_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_28_2_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(SMExpr *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_2_$Lambda$2)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_28_2_$Lambda$2)
 
-inline SMBaseClassesNativeImpl_27_2_$Lambda$2 *SMBaseClassesNativeImpl_27_2_$Lambda$2_get_instance(void);
-static SMBaseClassesNativeImpl_27_2_$Lambda$2 *SMBaseClassesNativeImpl_27_2_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_2_$Lambda$2, instance, SMBaseClassesNativeImpl_27_2_$Lambda$2 *)
+inline SMBaseClassesNativeImpl_28_2_$Lambda$2 *SMBaseClassesNativeImpl_28_2_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_28_2_$Lambda$2 *SMBaseClassesNativeImpl_28_2_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_28_2_$Lambda$2, instance, SMBaseClassesNativeImpl_28_2_$Lambda$2 *)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_27_2_$Lambda$2_init(SMBaseClassesNativeImpl_27_2_$Lambda$2 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_2_$Lambda$2_init(SMBaseClassesNativeImpl_28_2_$Lambda$2 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_2_$Lambda$2 *new_SMBaseClassesNativeImpl_27_2_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_2_$Lambda$2 *new_SMBaseClassesNativeImpl_28_2_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_2_$Lambda$2 *create_SMBaseClassesNativeImpl_27_2_$Lambda$2_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_2_$Lambda$2 *create_SMBaseClassesNativeImpl_28_2_$Lambda$2_init(void);
 
-@interface SMBaseClassesNativeImpl_27_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_28_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(SMSimiFunction *)f;
 
 @end
 
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_$Lambda$1)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_28_$Lambda$1)
 
-inline SMBaseClassesNativeImpl_27_$Lambda$1 *SMBaseClassesNativeImpl_27_$Lambda$1_get_instance(void);
-static SMBaseClassesNativeImpl_27_$Lambda$1 *SMBaseClassesNativeImpl_27_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_$Lambda$1, instance, SMBaseClassesNativeImpl_27_$Lambda$1 *)
+inline SMBaseClassesNativeImpl_28_$Lambda$1 *SMBaseClassesNativeImpl_28_$Lambda$1_get_instance(void);
+static SMBaseClassesNativeImpl_28_$Lambda$1 *SMBaseClassesNativeImpl_28_$Lambda$1_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_28_$Lambda$1, instance, SMBaseClassesNativeImpl_28_$Lambda$1 *)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_27_$Lambda$1_init(SMBaseClassesNativeImpl_27_$Lambda$1 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_$Lambda$1_init(SMBaseClassesNativeImpl_28_$Lambda$1 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$1 *new_SMBaseClassesNativeImpl_27_$Lambda$1_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_$Lambda$1 *new_SMBaseClassesNativeImpl_28_$Lambda$1_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$1 *create_SMBaseClassesNativeImpl_27_$Lambda$1_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_$Lambda$1 *create_SMBaseClassesNativeImpl_28_$Lambda$1_init(void);
 
-@interface SMBaseClassesNativeImpl_27_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_28_$Lambda$2 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(id<JavaUtilList>)a;
 
 @end
 
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_$Lambda$2)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_28_$Lambda$2)
 
-inline SMBaseClassesNativeImpl_27_$Lambda$2 *SMBaseClassesNativeImpl_27_$Lambda$2_get_instance(void);
-static SMBaseClassesNativeImpl_27_$Lambda$2 *SMBaseClassesNativeImpl_27_$Lambda$2_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_$Lambda$2, instance, SMBaseClassesNativeImpl_27_$Lambda$2 *)
+inline SMBaseClassesNativeImpl_28_$Lambda$2 *SMBaseClassesNativeImpl_28_$Lambda$2_get_instance(void);
+static SMBaseClassesNativeImpl_28_$Lambda$2 *SMBaseClassesNativeImpl_28_$Lambda$2_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_28_$Lambda$2, instance, SMBaseClassesNativeImpl_28_$Lambda$2 *)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_27_$Lambda$2_init(SMBaseClassesNativeImpl_27_$Lambda$2 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_$Lambda$2_init(SMBaseClassesNativeImpl_28_$Lambda$2 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$2 *new_SMBaseClassesNativeImpl_27_$Lambda$2_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_$Lambda$2 *new_SMBaseClassesNativeImpl_28_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$2 *create_SMBaseClassesNativeImpl_27_$Lambda$2_init(void);
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_$Lambda$2 *create_SMBaseClassesNativeImpl_28_$Lambda$2_init(void);
 
-@interface SMBaseClassesNativeImpl_27_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
+@interface SMBaseClassesNativeImpl_28_$Lambda$3 : NSObject < JavaUtilFunctionFunction >
 
 - (id)applyWithId:(SMExpr *)a;
 
 @end
 
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_27_$Lambda$3)
+J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_28_$Lambda$3)
 
-inline SMBaseClassesNativeImpl_27_$Lambda$3 *SMBaseClassesNativeImpl_27_$Lambda$3_get_instance(void);
-static SMBaseClassesNativeImpl_27_$Lambda$3 *SMBaseClassesNativeImpl_27_$Lambda$3_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_27_$Lambda$3, instance, SMBaseClassesNativeImpl_27_$Lambda$3 *)
+inline SMBaseClassesNativeImpl_28_$Lambda$3 *SMBaseClassesNativeImpl_28_$Lambda$3_get_instance(void);
+static SMBaseClassesNativeImpl_28_$Lambda$3 *SMBaseClassesNativeImpl_28_$Lambda$3_instance;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_28_$Lambda$3, instance, SMBaseClassesNativeImpl_28_$Lambda$3 *)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_27_$Lambda$3_init(SMBaseClassesNativeImpl_27_$Lambda$3 *self);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_28_$Lambda$3_init(SMBaseClassesNativeImpl_28_$Lambda$3 *self);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$3 *new_SMBaseClassesNativeImpl_27_$Lambda$3_init(void) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_$Lambda$3 *new_SMBaseClassesNativeImpl_28_$Lambda$3_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_27_$Lambda$3 *create_SMBaseClassesNativeImpl_27_$Lambda$3_init(void);
-
-@interface SMBaseClassesNativeImpl_28 : NSObject < SMSimiCallable > {
- @public
-  SMBaseClassesNativeImpl *this$0_;
-}
-
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$;
-
-- (jint)arity;
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_28)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_28 *self, SMBaseClassesNativeImpl *outer$);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_28 *new_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$);
+__attribute__((unused)) static SMBaseClassesNativeImpl_28_$Lambda$3 *create_SMBaseClassesNativeImpl_28_$Lambda$3_init(void);
 
 @interface SMBaseClassesNativeImpl_29 : NSObject < SMSimiCallable > {
  @public
@@ -921,6 +948,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_28 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -944,6 +972,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_29 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -967,6 +996,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_30 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -990,6 +1020,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_31 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1013,6 +1044,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_32 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1036,6 +1068,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_33 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1059,6 +1092,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_34 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1082,6 +1116,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_35 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1105,6 +1140,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_36 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1128,6 +1164,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_37 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1151,6 +1188,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_38 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1210,6 +1248,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_39_$Lambda$2 *create_SMBa
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1233,6 +1272,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_40 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1256,6 +1296,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_41 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1279,6 +1320,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_42 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1302,6 +1344,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_43 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1325,6 +1368,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_44 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1352,6 +1396,7 @@ __attribute__((unused)) static jboolean SMBaseClassesNativeImpl_45_isAlphaWithCh
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1379,6 +1424,7 @@ __attribute__((unused)) static jboolean SMBaseClassesNativeImpl_46_isDigitWithCh
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1402,6 +1448,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_47 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1425,6 +1472,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_47_1 *create_SMBaseClasse
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1445,6 +1493,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_48 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1465,6 +1514,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_49 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1488,6 +1538,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_50 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1508,6 +1559,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_51 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1533,6 +1585,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_52 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1556,6 +1609,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_52_1 *create_SMBaseClasse
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1579,6 +1633,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_52_2 *create_SMBaseClasse
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1599,6 +1654,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_53 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1619,6 +1675,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_54 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1639,6 +1696,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_55 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1662,6 +1720,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_56 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1685,6 +1744,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_57 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1708,6 +1768,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_58 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1731,6 +1792,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_59 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1754,6 +1816,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_60 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1777,6 +1840,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_61 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1800,6 +1864,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_62 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1823,6 +1888,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_63 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1843,6 +1909,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_64 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1868,6 +1935,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_65 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1893,6 +1961,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_66 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -1913,6 +1982,7 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_67 *create_SMBaseClassesN
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -2403,43 +2473,6 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$26 *create_SMBase
  @public
   id<SMSimiCallable> val$comparator_;
   id<SMBlockInterpreter> val$interpreter_;
-}
-
-- (jint)compareWithId:(SMSimiValue *)o1
-               withId:(SMSimiValue *)o2;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$27)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(SMBaseClassesNativeImpl_$Lambda$27 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$27 *new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$27 *create_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1);
-
-@interface SMBaseClassesNativeImpl_$Lambda$28 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(id<JavaUtilMap_Entry>)a;
-
-@end
-
-J2OBJC_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$28)
-
-inline SMBaseClassesNativeImpl_$Lambda$28 *SMBaseClassesNativeImpl_$Lambda$28_get_instance(void);
-static SMBaseClassesNativeImpl_$Lambda$28 *SMBaseClassesNativeImpl_$Lambda$28_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMBaseClassesNativeImpl_$Lambda$28, instance, SMBaseClassesNativeImpl_$Lambda$28 *)
-
-__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$28_init(SMBaseClassesNativeImpl_$Lambda$28 *self);
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$28 *new_SMBaseClassesNativeImpl_$Lambda$28_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$28 *create_SMBaseClassesNativeImpl_$Lambda$28_init(void);
-
-@interface SMBaseClassesNativeImpl_$Lambda$29 : NSObject < JavaUtilComparator > {
- @public
-  id<SMSimiCallable> val$comparator_;
-  id<SMBlockInterpreter> val$interpreter_;
   SMSimiClassImpl *val$objectClass_;
 }
 
@@ -2448,13 +2481,13 @@ __attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$28 *create_SMBase
 
 @end
 
-J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$29)
+J2OBJC_EMPTY_STATIC_INIT(SMBaseClassesNativeImpl_$Lambda$27)
 
-__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(SMBaseClassesNativeImpl_$Lambda$29 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2);
+__attribute__((unused)) static void SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(SMBaseClassesNativeImpl_$Lambda$27 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2);
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$29 *new_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) NS_RETURNS_RETAINED;
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$27 *new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$29 *create_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2);
+__attribute__((unused)) static SMBaseClassesNativeImpl_$Lambda$27 *create_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2);
 
 @implementation SMBaseClassesNativeImpl
 
@@ -2589,28 +2622,28 @@ SMSimiNativeClass *SMBaseClassesNativeImpl_getObjectClass(SMBaseClassesNativeImp
   (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"values", 0) withId:new_SMBaseClassesNativeImpl_4_initWithSMBaseClassesNativeImpl_(self)];
   (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"enumerate", 0) withId:new_SMBaseClassesNativeImpl_5_initWithSMBaseClassesNativeImpl_(self)];
   (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"zip", 0) withId:new_SMBaseClassesNativeImpl_6_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"append", 1) withId:new_SMBaseClassesNativeImpl_7_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"addAll", 1) withId:new_SMBaseClassesNativeImpl_8_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clear", 0) withId:new_SMBaseClassesNativeImpl_9_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"indexOf", 1) withId:new_SMBaseClassesNativeImpl_10_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"reversed", 0) withId:new_SMBaseClassesNativeImpl_11_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 0) withId:new_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 1) withId:new_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"uniques", 0) withId:new_SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(self)];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 0) withId:new_SMBaseClassesNativeImpl_15_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 1) withId:new_SMBaseClassesNativeImpl_16_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isMutable", 0) withId:new_SMBaseClassesNativeImpl_17_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isArray", 0) withId:new_SMBaseClassesNativeImpl_18_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"class", 0) withId:new_SMBaseClassesNativeImpl_19_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_ITERATE, 0) withId:new_SMBaseClassesNativeImpl_20_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_HAS, 1) withId:new_SMBaseClassesNativeImpl_21_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_22_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_23_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_TO_STRING, 0) withId:new_SMBaseClassesNativeImpl_24_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 1) withId:new_SMBaseClassesNativeImpl_25_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 2) withId:new_SMBaseClassesNativeImpl_26_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_SMBaseClassesNativeImpl_27_init()];
-  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 0) withId:new_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"ruler", 0) withId:new_SMBaseClassesNativeImpl_7_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"append", 1) withId:new_SMBaseClassesNativeImpl_8_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"addAll", 1) withId:new_SMBaseClassesNativeImpl_9_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clear", 0) withId:new_SMBaseClassesNativeImpl_10_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"indexOf", 1) withId:new_SMBaseClassesNativeImpl_11_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"reversed", 0) withId:new_SMBaseClassesNativeImpl_12_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 0) withId:new_SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"sorted", 1) withId:new_SMBaseClassesNativeImpl_14_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"uniques", 0) withId:new_SMBaseClassesNativeImpl_15_initWithSMBaseClassesNativeImpl_(self)];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 0) withId:new_SMBaseClassesNativeImpl_16_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"clone", 1) withId:new_SMBaseClassesNativeImpl_17_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isMutable", 0) withId:new_SMBaseClassesNativeImpl_18_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"isArray", 0) withId:new_SMBaseClassesNativeImpl_19_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"class", 0) withId:new_SMBaseClassesNativeImpl_20_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_ITERATE, 0) withId:new_SMBaseClassesNativeImpl_21_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_HAS, 1) withId:new_SMBaseClassesNativeImpl_22_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_EQUALS, 1) withId:new_SMBaseClassesNativeImpl_23_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_COMPARE_TO, 1) withId:new_SMBaseClassesNativeImpl_24_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(SMConstants_TO_STRING, 0) withId:new_SMBaseClassesNativeImpl_25_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 1) withId:new_SMBaseClassesNativeImpl_26_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"matches", 2) withId:new_SMBaseClassesNativeImpl_27_init()];
+  (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"builder", 0) withId:new_SMBaseClassesNativeImpl_28_init()];
   (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 1) withId:new_SMBaseClassesNativeImpl_29_initWithSMBaseClassesNativeImpl_(self)];
   (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"array", 2) withId:new_SMBaseClassesNativeImpl_30_initWithSMBaseClassesNativeImpl_(self)];
   (void) [methods putWithId:new_SMOverloadableFunction_initWithNSString_withInt_(@"slice", 2) withId:new_SMBaseClassesNativeImpl_31_initWithSMBaseClassesNativeImpl_(self)];
@@ -2713,26 +2746,11 @@ SMSimiClassImpl *SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(S
 SMSimiValue *SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(SMBaseClassesNativeImpl *self, id<SMBlockInterpreter> interpreter, id<JavaUtilList> arguments, id<SMSimiCallable> comparator) {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
   SMSimiClassImpl *objectClass = SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(self, interpreter);
-  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
-    id<JavaUtilComparator> nativeComparator;
-    if (comparator == nil) {
-      nativeComparator = JavaUtilComparator_naturalOrder();
-    }
-    else {
-      nativeComparator = new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(comparator, interpreter);
-    }
-    return new_SMSimiValue_Object_initWithSMSimiObject_([self_ sortedWithJavaUtilComparator:nativeComparator]);
+  id<JavaUtilComparator> nativeComparator = nil;
+  if (comparator != nil) {
+    nativeComparator = new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(comparator, interpreter, objectClass);
   }
-  else {
-    id<JavaUtilComparator> nativeComparator;
-    if (comparator == nil) {
-      nativeComparator = JavaUtilComparator_comparingWithJavaUtilFunctionFunction_(JreLoadStatic(SMBaseClassesNativeImpl_$Lambda$28, instance));
-    }
-    else {
-      nativeComparator = new_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(comparator, interpreter, objectClass);
-    }
-    return new_SMSimiValue_Object_initWithSMSimiObject_([self_ sortedWithJavaUtilComparator:nativeComparator]);
-  }
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) sortedWithJavaUtilComparator:nativeComparator]);
 }
 
 SMSimiValue *SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(SMBaseClassesNativeImpl *self, id<SMBlockInterpreter> interpreter, id<JavaUtilList> arguments) {
@@ -2778,6 +2796,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
@@ -2791,6 +2810,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -2808,9 +2831,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_1;
 }
@@ -2841,6 +2864,7 @@ SMBaseClassesNativeImpl_1 *create_SMBaseClassesNativeImpl_1_init() {
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
@@ -2854,6 +2878,10 @@ SMBaseClassesNativeImpl_1 *create_SMBaseClassesNativeImpl_1_init() {
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -2871,12 +2899,12 @@ SMBaseClassesNativeImpl_1 *create_SMBaseClassesNativeImpl_1_init() {
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_2;
 }
@@ -2908,6 +2936,7 @@ SMBaseClassesNativeImpl_2 *create_SMBaseClassesNativeImpl_2_initWithSMBaseClasse
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
@@ -2934,6 +2963,10 @@ SMBaseClassesNativeImpl_2 *create_SMBaseClassesNativeImpl_2_initWithSMBaseClasse
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -2949,12 +2982,12 @@ SMBaseClassesNativeImpl_2 *create_SMBaseClassesNativeImpl_2_initWithSMBaseClasse
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_3 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_3;
 }
@@ -3023,6 +3056,7 @@ SMBaseClassesNativeImpl_3_$Lambda$1 *create_SMBaseClassesNativeImpl_3_$Lambda$1_
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
@@ -3036,6 +3070,10 @@ SMBaseClassesNativeImpl_3_$Lambda$1 *create_SMBaseClassesNativeImpl_3_$Lambda$1_
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3053,12 +3091,12 @@ SMBaseClassesNativeImpl_3_$Lambda$1 *create_SMBaseClassesNativeImpl_3_$Lambda$1_
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_4 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_4;
 }
@@ -3090,6 +3128,7 @@ SMBaseClassesNativeImpl_4 *create_SMBaseClassesNativeImpl_4_initWithSMBaseClasse
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
@@ -3103,6 +3142,10 @@ SMBaseClassesNativeImpl_4 *create_SMBaseClassesNativeImpl_4_initWithSMBaseClasse
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3120,12 +3163,12 @@ SMBaseClassesNativeImpl_4 *create_SMBaseClassesNativeImpl_4_initWithSMBaseClasse
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_5 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_5;
 }
@@ -3157,6 +3200,7 @@ SMBaseClassesNativeImpl_5 *create_SMBaseClassesNativeImpl_5_initWithSMBaseClasse
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
@@ -3170,6 +3214,10 @@ SMBaseClassesNativeImpl_5 *create_SMBaseClassesNativeImpl_5_initWithSMBaseClasse
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3187,12 +3235,12 @@ SMBaseClassesNativeImpl_5 *create_SMBaseClassesNativeImpl_5_initWithSMBaseClasse
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_6 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_6;
 }
@@ -3222,15 +3270,15 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  [((SMSimiObjectImpl *) nil_chk(self_)) appendWithSMSimiProperty:[arguments getWithInt:1]];
-  return [arguments getWithInt:0];
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) getLine]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3240,6 +3288,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3257,9 +3309,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_7 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_7;
 }
@@ -3292,11 +3344,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  SMSimiObjectImpl *obj = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
-  [((SMSimiObjectImpl *) nil_chk(self_)) addAllWithSMSimiObjectImpl:obj];
+  [((SMSimiObjectImpl *) nil_chk(self_)) appendWithSMSimiProperty:[arguments getWithInt:1] withSMSimiEnvironment:[((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment]];
   return [arguments getWithInt:0];
 }
 
@@ -3307,6 +3359,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3324,9 +3380,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_8 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_8;
 }
@@ -3355,15 +3411,17 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  [((SMSimiObjectImpl *) nil_chk(self_)) clearWithSMEnvironment:(SMEnvironment *) cast_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment], [SMEnvironment class])];
-  return nil;
+  SMSimiObjectImpl *obj = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  [((SMSimiObjectImpl *) nil_chk(self_)) addAllWithSMSimiObjectImpl:obj withSMSimiEnvironment:[((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment]];
+  return [arguments getWithInt:0];
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3373,6 +3431,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3390,9 +3452,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_9 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_9;
 }
@@ -3421,15 +3483,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  SMSimiValue *value = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue];
-  return [((SMSimiObjectImpl *) nil_chk(self_)) indexOfWithSMSimiValue:value];
+  [((SMSimiObjectImpl *) nil_chk(self_)) clearWithSMEnvironment:(SMEnvironment *) cast_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getEnvironment], [SMEnvironment class])];
+  return nil;
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3439,6 +3502,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3456,9 +3523,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_10 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_10;
 }
@@ -3487,14 +3554,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) reversed]);
+  SMSimiValue *value = [((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue];
+  return [((SMSimiObjectImpl *) nil_chk(self_)) indexOfWithSMSimiValue:value];
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3504,6 +3573,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3521,9 +3594,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_11 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_11;
 }
@@ -3544,8 +3617,78 @@ SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_init() {
 
 @implementation SMBaseClassesNativeImpl_12
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_12_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
+- (jint)arity {
+  return 0;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) reversed]);
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
+- (jint)getLineNumber {
+  return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
+- (jboolean)hasBreakPoint {
+  return SMSimiCallable_hasBreakPoint(self);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_12 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_12;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_12_init(SMBaseClassesNativeImpl_12 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_12 *new_SMBaseClassesNativeImpl_12_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_12, init)
+}
+
+SMBaseClassesNativeImpl_12 *create_SMBaseClassesNativeImpl_12_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_12, init)
+}
+
+@implementation SMBaseClassesNativeImpl_13
+
 - (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(self, outer$);
+  SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(self, outer$);
   return self;
 }
 
@@ -3554,6 +3697,7 @@ SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_init() {
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, nil);
@@ -3568,71 +3712,8 @@ SMBaseClassesNativeImpl_11 *create_SMBaseClassesNativeImpl_11_init() {
   return SMSimiCallable_getLineNumber(self);
 }
 
-- (jboolean)hasBreakPoint {
-  return SMSimiCallable_hasBreakPoint(self);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_12 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_12;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_12 *self, SMBaseClassesNativeImpl *outer$) {
-  self->this$0_ = outer$;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_12 *new_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_12, initWithSMBaseClassesNativeImpl_, outer$)
-}
-
-SMBaseClassesNativeImpl_12 *create_SMBaseClassesNativeImpl_12_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_12, initWithSMBaseClassesNativeImpl_, outer$)
-}
-
-@implementation SMBaseClassesNativeImpl_13
-
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_13_initWithSMBaseClassesNativeImpl_(self, outer$);
-  return self;
-}
-
-- (jint)arity {
-  return 1;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  id<SMSimiCallable> comparator = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getCallable];
-  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, comparator);
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-- (jint)getLineNumber {
-  return SMSimiCallable_getLineNumber(self);
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3650,12 +3731,12 @@ SMBaseClassesNativeImpl_12 *create_SMBaseClassesNativeImpl_12_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_13 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_13;
 }
@@ -3683,17 +3764,15 @@ SMBaseClassesNativeImpl_13 *create_SMBaseClassesNativeImpl_13_initWithSMBaseClas
 }
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
-    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), self_->immutable_, new_JavaUtilArrayList_initWithJavaUtilCollection_([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([self_ values])) stream])) distinct])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()])));
-  }
-  return [arguments getWithInt:0];
+  id<SMSimiCallable> comparator = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getCallable];
+  return SMBaseClassesNativeImpl_sortWithSMBlockInterpreter_withJavaUtilList_withSMSimiCallable_(this$0_, interpreter, arguments, comparator);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3703,6 +3782,10 @@ SMBaseClassesNativeImpl_13 *create_SMBaseClassesNativeImpl_13_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3720,12 +3803,12 @@ SMBaseClassesNativeImpl_13 *create_SMBaseClassesNativeImpl_13_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_14 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_14;
 }
@@ -3747,9 +3830,84 @@ SMBaseClassesNativeImpl_14 *create_SMBaseClassesNativeImpl_14_initWithSMBaseClas
 
 @implementation SMBaseClassesNativeImpl_15
 
+- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
+  SMBaseClassesNativeImpl_15_initWithSMBaseClassesNativeImpl_(self, outer$);
+  return self;
+}
+
+- (jint)arity {
+  return 0;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
+    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), self_->immutable_, new_JavaUtilArrayList_initWithJavaUtilCollection_([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([self_ values])) stream])) distinct])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()])));
+  }
+  return [arguments getWithInt:0];
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
+- (jint)getLineNumber {
+  return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
+- (jboolean)hasBreakPoint {
+  return SMSimiCallable_hasBreakPoint(self);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_15 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  return &_SMBaseClassesNativeImpl_15;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_15_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_15 *self, SMBaseClassesNativeImpl *outer$) {
+  self->this$0_ = outer$;
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_15 *new_SMBaseClassesNativeImpl_15_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_15, initWithSMBaseClassesNativeImpl_, outer$)
+}
+
+SMBaseClassesNativeImpl_15 *create_SMBaseClassesNativeImpl_15_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_15, initWithSMBaseClassesNativeImpl_, outer$)
+}
+
+@implementation SMBaseClassesNativeImpl_16
+
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_15_init(self);
+  SMBaseClassesNativeImpl_16_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
@@ -3759,6 +3917,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
@@ -3774,70 +3933,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return SMSimiCallable_getLineNumber(self);
 }
 
-- (jboolean)hasBreakPoint {
-  return SMSimiCallable_hasBreakPoint(self);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_15 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
-  return &_SMBaseClassesNativeImpl_15;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_15_init(SMBaseClassesNativeImpl_15 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_15 *new_SMBaseClassesNativeImpl_15_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_15, init)
-}
-
-SMBaseClassesNativeImpl_15 *create_SMBaseClassesNativeImpl_15_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_15, init)
-}
-
-@implementation SMBaseClassesNativeImpl_16
-
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype __nonnull)init {
-  SMBaseClassesNativeImpl_16_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
-
-- (jint)arity {
-  return 1;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  jboolean mutable_ = SMInterpreter_isTruthyWithSMSimiProperty_([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]);
-  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:mutable_]);
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-- (jint)getLineNumber {
-  return SMSimiCallable_getLineNumber(self);
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3855,9 +3952,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_16 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_16;
 }
@@ -3886,13 +3983,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithBoolean_(!((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]))))->immutable_);
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  jboolean mutable_ = SMInterpreter_isTruthyWithSMSimiProperty_([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]);
+  return new_SMSimiValue_Object_initWithSMSimiObject_([((SMSimiObjectImpl *) nil_chk(self_)) cloneWithBoolean:mutable_]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3902,6 +4002,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3919,9 +4023,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_17 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_17;
 }
@@ -3954,9 +4058,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class])))) isArray]);
+  return new_SMSimiValue_Number_initWithBoolean_(!((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]))))->immutable_);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -3966,6 +4071,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -3983,9 +4092,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_18 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_18;
 }
@@ -4018,14 +4127,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  id<SMSimiObject> self_ = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject];
-  id<SMSimiClass> clazz = [((id<SMSimiObject>) nil_chk(self_)) getSimiClass];
-  if (clazz == nil) {
-    return nil;
-  }
-  return new_SMSimiValue_Object_initWithSMSimiObject_(clazz);
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class])))) isArray]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4035,6 +4140,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4052,9 +4161,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_19 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_19;
 }
@@ -4087,14 +4196,15 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  jboolean isArray = [((SMSimiObjectImpl *) nil_chk(self_)) isArray];
-  id<JavaUtilIterator> iterator = [self_ iterate];
-  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  (void) [fields putWithId:SMConstants_NEXT withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(iterator), nil, nil)];
-  return new_SMSimiValue_Object_initWithSMSimiObject_(new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
+  id<SMSimiObject> self_ = [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject];
+  id<SMSimiClass> clazz = [((id<SMSimiObject>) nil_chk(self_)) getSimiClass];
+  if (clazz == nil) {
+    return nil;
+  }
+  return new_SMSimiValue_Object_initWithSMSimiObject_(clazz);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4104,6 +4214,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4121,9 +4235,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_20 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_20;
 }
@@ -4142,75 +4256,6 @@ SMBaseClassesNativeImpl_20 *create_SMBaseClassesNativeImpl_20_init() {
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_20, init)
 }
 
-@implementation SMBaseClassesNativeImpl_20_1
-
-- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0 {
-  SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(self, capture$0);
-  return self;
-}
-
-- (jint)arity {
-  return 0;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  if ([((id<JavaUtilIterator>) nil_chk(val$iterator_)) hasNext]) {
-    return (id<SMSimiProperty>) cast_check([val$iterator_ next], SMSimiProperty_class_());
-  }
-  return nil;
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-- (jint)getLineNumber {
-  return SMSimiCallable_getLineNumber(self);
-}
-
-- (jboolean)hasBreakPoint {
-  return SMSimiCallable_hasBreakPoint(self);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaUtilIterator:);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "val$iterator_", "LJavaUtilIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Iterator<*>;", "LSMBaseClassesNativeImpl_20;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_20_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 4, -1, 5, -1, -1 };
-  return &_SMBaseClassesNativeImpl_20_1;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_20_1 *self, id<JavaUtilIterator> capture$0) {
-  self->val$iterator_ = capture$0;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_20_1 *new_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_20_1, initWithJavaUtilIterator_, capture$0)
-}
-
-SMBaseClassesNativeImpl_20_1 *create_SMBaseClassesNativeImpl_20_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_20_1, initWithJavaUtilIterator_, capture$0)
-}
-
 @implementation SMBaseClassesNativeImpl_21
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -4221,14 +4266,19 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) containsWithSMSimiValue:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue] withSMToken:SMToken_nativeCallWithNSString_(SMConstants_HAS)]);
+  jboolean isArray = [((SMSimiObjectImpl *) nil_chk(self_)) isArray];
+  id<JavaUtilIterator> iterator = [self_ iterate];
+  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
+  (void) [fields putWithId:SMConstants_NEXT withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_21_1_initWithJavaUtilIterator_(iterator), nil, nil)];
+  return new_SMSimiValue_Object_initWithSMSimiObject_(new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields));
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4238,6 +4288,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4255,9 +4309,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_21 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_21;
 }
@@ -4276,6 +4330,80 @@ SMBaseClassesNativeImpl_21 *create_SMBaseClassesNativeImpl_21_init() {
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_21, init)
 }
 
+@implementation SMBaseClassesNativeImpl_21_1
+
+- (instancetype __nonnull)initWithJavaUtilIterator:(id<JavaUtilIterator>)capture$0 {
+  SMBaseClassesNativeImpl_21_1_initWithJavaUtilIterator_(self, capture$0);
+  return self;
+}
+
+- (jint)arity {
+  return 0;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  if ([((id<JavaUtilIterator>) nil_chk(val$iterator_)) hasNext]) {
+    return (id<SMSimiProperty>) cast_check([val$iterator_ next], SMSimiProperty_class_());
+  }
+  return nil;
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
+- (jint)getLineNumber {
+  return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
+- (jboolean)hasBreakPoint {
+  return SMSimiCallable_hasBreakPoint(self);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithJavaUtilIterator:);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "val$iterator_", "LJavaUtilIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
+  };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Iterator<*>;", "LSMBaseClassesNativeImpl_21;", "callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_21_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 4, -1, 5, -1, -1 };
+  return &_SMBaseClassesNativeImpl_21_1;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_21_1_initWithJavaUtilIterator_(SMBaseClassesNativeImpl_21_1 *self, id<JavaUtilIterator> capture$0) {
+  self->val$iterator_ = capture$0;
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_21_1 *new_SMBaseClassesNativeImpl_21_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_21_1, initWithJavaUtilIterator_, capture$0)
+}
+
+SMBaseClassesNativeImpl_21_1 *create_SMBaseClassesNativeImpl_21_1_initWithJavaUtilIterator_(id<JavaUtilIterator> capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_21_1, initWithJavaUtilIterator_, capture$0)
+}
+
 @implementation SMBaseClassesNativeImpl_22
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -4290,9 +4418,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) containsWithSMSimiValue:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4302,6 +4432,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4319,9 +4453,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_22 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_22;
 }
@@ -4354,9 +4488,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Number_initWithLong_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
+  return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4366,6 +4501,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4383,9 +4522,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_23 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_23;
 }
@@ -4414,13 +4553,14 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_String_initWithNSString_([((id<SMSimiObject>) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject])) description]);
+  return new_SMSimiValue_Number_initWithLong_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4430,6 +4570,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4447,9 +4591,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_24 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_24;
 }
@@ -4478,15 +4622,14 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 1;
+  return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
-  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:nil]);
+  return new_SMSimiValue_String_initWithNSString_([((id<SMSimiObject>) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject])) description]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4496,6 +4639,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4513,9 +4660,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_25 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_25;
 }
@@ -4544,16 +4691,20 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 2;
+  return 1;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
-  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
-  id<JavaUtilList> fieldsToMatch = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getObject], [SMSimiObjectImpl class])))) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_26_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
-  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:fieldsToMatch]);
+  id<SMSimiProperty> otherProp = [arguments getWithInt:1];
+  if (otherProp == nil) {
+    return new_SMSimiValue_Number_initWithBoolean_(false);
+  }
+  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([otherProp getValue])) getObject], [SMSimiObjectImpl class]);
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:nil]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4563,6 +4714,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4580,9 +4735,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_26 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_26;
 }
@@ -4601,43 +4756,6 @@ SMBaseClassesNativeImpl_26 *create_SMBaseClassesNativeImpl_26_init() {
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_26_$Lambda$1)
-
-@implementation SMBaseClassesNativeImpl_26_$Lambda$1
-
-- (id)applyWithId:(SMSimiValue *)a {
-  return [((SMSimiValue *) nil_chk(a)) getString];
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_26_$Lambda$1 class]) {
-    SMBaseClassesNativeImpl_26_$Lambda$1_instance = new_SMBaseClassesNativeImpl_26_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_26_$Lambda$1)
-  }
-}
-
-@end
-
-void SMBaseClassesNativeImpl_26_$Lambda$1_init(SMBaseClassesNativeImpl_26_$Lambda$1 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_26_$Lambda$1 *new_SMBaseClassesNativeImpl_26_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_26_$Lambda$1, init)
-}
-
-SMBaseClassesNativeImpl_26_$Lambda$1 *create_SMBaseClassesNativeImpl_26_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_26_$Lambda$1, init)
-}
-
 @implementation SMBaseClassesNativeImpl_27
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -4648,24 +4766,17 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
-  return 0;
+  return 2;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  SMSimiClassImpl *clazz = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiClassImpl class]);
-  id<JavaUtilSet> constructors = [((SMSimiClassImpl *) nil_chk(clazz)) getConstructors];
-  id<JavaUtilSet> params = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(constructors)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_$Lambda$1, instance)])) flatMapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_$Lambda$2, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toSet()];
-  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
-  SMSimiNativeObject *object = new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
-  SMSimiValue *objectValue = new_SMSimiValue_Object_initWithSMSimiObject_(object);
-  id<JavaUtilList> initArgs = new_JavaUtilArrayList_init();
-  for (NSString * __strong param in nil_chk(params)) {
-    (void) [fields putWithId:param withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(fields, param, initArgs, objectValue), param, object)];
-  }
-  (void) [fields putWithId:@"build" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(params, constructors, fields, clazz, initArgs), @"build", object)];
-  return objectValue;
+  SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
+  SMSimiObjectImpl *other = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getObject], [SMSimiObjectImpl class]);
+  id<JavaUtilList> fieldsToMatch = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getObject], [SMSimiObjectImpl class])))) values])) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  return new_SMSimiValue_Number_initWithBoolean_([((SMSimiObjectImpl *) nil_chk(self_)) matchesWithSMSimiObjectImpl:other withJavaUtilList:fieldsToMatch]);
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -4675,6 +4786,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -4692,9 +4807,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_27 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_27;
 }
@@ -4713,236 +4828,12 @@ SMBaseClassesNativeImpl_27 *create_SMBaseClassesNativeImpl_27_init() {
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27, init)
 }
 
-@implementation SMBaseClassesNativeImpl_27_1
-
-- (instancetype __nonnull)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$0
-                                           withNSString:(NSString *)capture$1
-                                       withJavaUtilList:(id<JavaUtilList>)capture$2
-                                        withSMSimiValue:(SMSimiValue *)capture$3 {
-  SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(self, capture$0, capture$1, capture$2, capture$3);
-  return self;
-}
-
-- (jint)arity {
-  return 1;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  id<SMSimiProperty> arg = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
-  (void) [((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) putWithId:JreStrcat("$$", SMConstants_PRIVATE, val$param_) withId:arg];
-  [((id<JavaUtilList>) nil_chk(val$initArgs_)) addWithId:arg];
-  return val$objectValue_;
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-- (jint)getLineNumber {
-  return SMSimiCallable_getLineNumber(self);
-}
-
-- (jboolean)hasBreakPoint {
-  return SMSimiCallable_hasBreakPoint(self);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaUtilLinkedHashMap:withNSString:withJavaUtilList:withSMSimiValue:);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "val$fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
-    { "val$param_", "LNSString;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-    { "val$initArgs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x1012, -1, -1, 4, -1 },
-    { "val$objectValue_", "LSMSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_27;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_27_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 4, 5, -1, 6, -1, -1 };
-  return &_SMBaseClassesNativeImpl_27_1;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_27_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
-  self->val$fields_ = capture$0;
-  self->val$param_ = capture$1;
-  self->val$initArgs_ = capture$2;
-  self->val$objectValue_ = capture$3;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_27_1 *new_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
-}
-
-SMBaseClassesNativeImpl_27_1 *create_SMBaseClassesNativeImpl_27_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
-}
-
-@implementation SMBaseClassesNativeImpl_27_2
-
-- (instancetype __nonnull)initWithJavaUtilSet:(id<JavaUtilSet>)capture$0
-                              withJavaUtilSet:(id<JavaUtilSet>)capture$1
-                    withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$2
-                          withSMSimiClassImpl:(SMSimiClassImpl *)capture$3
-                             withJavaUtilList:(id<JavaUtilList>)capture$4 {
-  SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(self, capture$0, capture$1, capture$2, capture$3, capture$4);
-  return self;
-}
-
-- (jint)arity {
-  return 0;
-}
-
-- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
-                                withJavaUtilList:(id<JavaUtilList>)arguments
-                                     withBoolean:(jboolean)rethrow {
-  jint size = [((id<JavaUtilSet>) nil_chk(val$params_)) size];
-  JavaUtilOptional *closest = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(val$constructors_)) stream])) minWithJavaUtilComparator:JavaUtilComparator_comparingIntWithJavaUtilFunctionToIntFunction_(new_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(size))];
-  if ([((JavaUtilOptional *) nil_chk(closest)) isPresent]) {
-    id<JavaUtilList> closestParams = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk([closest get]))->declaration_))->block_))->params_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_27_2_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
-    id<JavaUtilList> args = new_JavaUtilArrayList_init();
-    for (NSString * __strong param in nil_chk(closestParams)) {
-      [args addWithId:[((id<SMSimiProperty>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) getWithId:JreStrcat("$$", SMConstants_PRIVATE, param)])) getValue]];
-    }
-    return [((SMSimiClassImpl *) nil_chk(val$clazz_)) init__WithSMBlockInterpreter:interpreter withJavaUtilList:args];
-  }
-  return [((SMSimiClassImpl *) nil_chk(val$clazz_)) init__WithSMBlockInterpreter:interpreter withJavaUtilList:val$initArgs_];
-}
-
-- (NSString *)toCodeWithInt:(jint)arg0
-                withBoolean:(jboolean)arg1 {
-  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
-}
-
-- (jint)getLineNumber {
-  return SMSimiCallable_getLineNumber(self);
-}
-
-- (jboolean)hasBreakPoint {
-  return SMSimiCallable_hasBreakPoint(self);
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaUtilSet:withJavaUtilSet:withJavaUtilLinkedHashMap:withSMSimiClassImpl:withJavaUtilList:);
-  methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "val$params_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
-    { "val$constructors_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x1012, -1, -1, 4, -1 },
-    { "val$fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x1012, -1, -1, 5, -1 },
-    { "val$clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-    { "val$initArgs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x1012, -1, -1, 6, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Set<LSimiFunction;>;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_27;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_27_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 5, 7, -1, 8, -1, -1 };
-  return &_SMBaseClassesNativeImpl_27_2;
-}
-
-@end
-
-void SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_27_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
-  self->val$params_ = capture$0;
-  self->val$constructors_ = capture$1;
-  self->val$fields_ = capture$2;
-  self->val$clazz_ = capture$3;
-  self->val$initArgs_ = capture$4;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_27_2 *new_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
-}
-
-SMBaseClassesNativeImpl_27_2 *create_SMBaseClassesNativeImpl_27_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
-}
-
-@implementation SMBaseClassesNativeImpl_27_2_$Lambda$1
-
-- (jint)applyAsIntWithId:(SMSimiFunction *)f {
-  return JavaLangMath_absWithInt_([((SMSimiFunction *) nil_chk(f)) arity] - val$size_);
-}
-
-@end
-
-void SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_27_2_$Lambda$1 *self, jint capture$0) {
-  self->val$size_ = capture$0;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_27_2_$Lambda$1 *new_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(jint capture$0) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_2_$Lambda$1, initWithInt_, capture$0)
-}
-
-SMBaseClassesNativeImpl_27_2_$Lambda$1 *create_SMBaseClassesNativeImpl_27_2_$Lambda$1_initWithInt_(jint capture$0) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_2_$Lambda$1, initWithInt_, capture$0)
-}
-
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_27_2_$Lambda$2)
-
-@implementation SMBaseClassesNativeImpl_27_2_$Lambda$2
-
-- (id)applyWithId:(SMExpr *)a {
-  return SMBlockImpl_getParamLexemeWithSMExpr_(a);
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_27_2_$Lambda$2 class]) {
-    SMBaseClassesNativeImpl_27_2_$Lambda$2_instance = new_SMBaseClassesNativeImpl_27_2_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_27_2_$Lambda$2)
-  }
-}
-
-@end
-
-void SMBaseClassesNativeImpl_27_2_$Lambda$2_init(SMBaseClassesNativeImpl_27_2_$Lambda$2 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_27_2_$Lambda$2 *new_SMBaseClassesNativeImpl_27_2_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_2_$Lambda$2, init)
-}
-
-SMBaseClassesNativeImpl_27_2_$Lambda$2 *create_SMBaseClassesNativeImpl_27_2_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_2_$Lambda$2, init)
-}
-
 J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_27_$Lambda$1)
 
 @implementation SMBaseClassesNativeImpl_27_$Lambda$1
 
-- (id)applyWithId:(SMSimiFunction *)f {
-  return ((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk(f))->declaration_))->block_))->params_;
+- (id)applyWithId:(SMSimiValue *)a {
+  return [((SMSimiValue *) nil_chk(a)) getString];
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
@@ -4974,95 +4865,35 @@ SMBaseClassesNativeImpl_27_$Lambda$1 *create_SMBaseClassesNativeImpl_27_$Lambda$
   J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_$Lambda$1, init)
 }
 
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_27_$Lambda$2)
-
-@implementation SMBaseClassesNativeImpl_27_$Lambda$2
-
-- (id)applyWithId:(id<JavaUtilList>)a {
-  return [((id<JavaUtilList>) nil_chk(a)) stream];
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_27_$Lambda$2 class]) {
-    SMBaseClassesNativeImpl_27_$Lambda$2_instance = new_SMBaseClassesNativeImpl_27_$Lambda$2_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_27_$Lambda$2)
-  }
-}
-
-@end
-
-void SMBaseClassesNativeImpl_27_$Lambda$2_init(SMBaseClassesNativeImpl_27_$Lambda$2 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_27_$Lambda$2 *new_SMBaseClassesNativeImpl_27_$Lambda$2_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_$Lambda$2, init)
-}
-
-SMBaseClassesNativeImpl_27_$Lambda$2 *create_SMBaseClassesNativeImpl_27_$Lambda$2_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_$Lambda$2, init)
-}
-
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_27_$Lambda$3)
-
-@implementation SMBaseClassesNativeImpl_27_$Lambda$3
-
-- (id)applyWithId:(SMExpr *)a {
-  return SMBlockImpl_getParamLexemeWithSMExpr_(a);
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_27_$Lambda$3 class]) {
-    SMBaseClassesNativeImpl_27_$Lambda$3_instance = new_SMBaseClassesNativeImpl_27_$Lambda$3_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_27_$Lambda$3)
-  }
-}
-
-@end
-
-void SMBaseClassesNativeImpl_27_$Lambda$3_init(SMBaseClassesNativeImpl_27_$Lambda$3 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_27_$Lambda$3 *new_SMBaseClassesNativeImpl_27_$Lambda$3_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_27_$Lambda$3, init)
-}
-
-SMBaseClassesNativeImpl_27_$Lambda$3 *create_SMBaseClassesNativeImpl_27_$Lambda$3_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_27_$Lambda$3, init)
-}
-
 @implementation SMBaseClassesNativeImpl_28
 
-- (instancetype __nonnull)initWithSMBaseClassesNativeImpl:(SMBaseClassesNativeImpl *)outer$ {
-  SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(self, outer$);
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype __nonnull)init {
+  SMBaseClassesNativeImpl_28_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)arity {
   return 0;
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), false, new_JavaUtilArrayList_init()));
+  SMSimiClassImpl *clazz = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiClassImpl class]);
+  id<JavaUtilSet> constructors = [((SMSimiClassImpl *) nil_chk(clazz)) getConstructors];
+  id<JavaUtilSet> params = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(constructors)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_28_$Lambda$1, instance)])) flatMapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_28_$Lambda$2, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_28_$Lambda$3, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toSet()];
+  JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
+  SMSimiNativeObject *object = new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(fields);
+  SMSimiValue *objectValue = new_SMSimiValue_Object_initWithSMSimiObject_(object);
+  id<JavaUtilList> initArgs = new_JavaUtilArrayList_init();
+  for (NSString * __strong param in nil_chk(params)) {
+    (void) [fields putWithId:param withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_28_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(fields, param, initArgs, objectValue), param, object)];
+  }
+  (void) [fields putWithId:@"build" withId:new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(new_SMBaseClassesNativeImpl_28_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(params, constructors, fields, clazz, initArgs), @"build", object)];
+  return objectValue;
 }
 
 - (NSString *)toCodeWithInt:(jint)arg0
@@ -5072,6 +4903,10 @@ SMBaseClassesNativeImpl_27_$Lambda$3 *create_SMBaseClassesNativeImpl_27_$Lambda$
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -5087,31 +4922,372 @@ SMBaseClassesNativeImpl_27_$Lambda$3 *create_SMBaseClassesNativeImpl_27_$Lambda$
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
+  methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
-  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_28 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_28 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_28;
 }
 
 @end
 
-void SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl_28 *self, SMBaseClassesNativeImpl *outer$) {
-  self->this$0_ = outer$;
+void SMBaseClassesNativeImpl_28_init(SMBaseClassesNativeImpl_28 *self) {
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_28 *new_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_28 *new_SMBaseClassesNativeImpl_28_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28, init)
 }
 
-SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClassesNativeImpl_(SMBaseClassesNativeImpl *outer$) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28, initWithSMBaseClassesNativeImpl_, outer$)
+SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28, init)
+}
+
+@implementation SMBaseClassesNativeImpl_28_1
+
+- (instancetype __nonnull)initWithJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$0
+                                           withNSString:(NSString *)capture$1
+                                       withJavaUtilList:(id<JavaUtilList>)capture$2
+                                        withSMSimiValue:(SMSimiValue *)capture$3 {
+  SMBaseClassesNativeImpl_28_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(self, capture$0, capture$1, capture$2, capture$3);
+  return self;
+}
+
+- (jint)arity {
+  return 1;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  id<SMSimiProperty> arg = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
+  (void) [((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) putWithId:JreStrcat("$$", SMConstants_PRIVATE, val$param_) withId:arg];
+  [((id<JavaUtilList>) nil_chk(val$initArgs_)) addWithId:arg];
+  return val$objectValue_;
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
+- (jint)getLineNumber {
+  return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
+- (jboolean)hasBreakPoint {
+  return SMSimiCallable_hasBreakPoint(self);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithJavaUtilLinkedHashMap:withNSString:withJavaUtilList:withSMSimiValue:);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "val$fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
+    { "val$param_", "LNSString;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "val$initArgs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x1012, -1, -1, 4, -1 },
+    { "val$objectValue_", "LSMSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_28;", "callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_28_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 4, 5, -1, 6, -1, -1 };
+  return &_SMBaseClassesNativeImpl_28_1;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_28_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(SMBaseClassesNativeImpl_28_1 *self, JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
+  self->val$fields_ = capture$0;
+  self->val$param_ = capture$1;
+  self->val$initArgs_ = capture$2;
+  self->val$objectValue_ = capture$3;
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_28_1 *new_SMBaseClassesNativeImpl_28_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
+}
+
+SMBaseClassesNativeImpl_28_1 *create_SMBaseClassesNativeImpl_28_1_initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_(JavaUtilLinkedHashMap *capture$0, NSString *capture$1, id<JavaUtilList> capture$2, SMSimiValue *capture$3) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28_1, initWithJavaUtilLinkedHashMap_withNSString_withJavaUtilList_withSMSimiValue_, capture$0, capture$1, capture$2, capture$3)
+}
+
+@implementation SMBaseClassesNativeImpl_28_2
+
+- (instancetype __nonnull)initWithJavaUtilSet:(id<JavaUtilSet>)capture$0
+                              withJavaUtilSet:(id<JavaUtilSet>)capture$1
+                    withJavaUtilLinkedHashMap:(JavaUtilLinkedHashMap *)capture$2
+                          withSMSimiClassImpl:(SMSimiClassImpl *)capture$3
+                             withJavaUtilList:(id<JavaUtilList>)capture$4 {
+  SMBaseClassesNativeImpl_28_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(self, capture$0, capture$1, capture$2, capture$3, capture$4);
+  return self;
+}
+
+- (jint)arity {
+  return 0;
+}
+
+- (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
+                                withJavaUtilList:(id<JavaUtilList>)arguments
+                                     withBoolean:(jboolean)rethrow {
+  jint size = [((id<JavaUtilSet>) nil_chk(val$params_)) size];
+  JavaUtilOptional *closest = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilSet>) nil_chk(val$constructors_)) stream])) minWithJavaUtilComparator:JavaUtilComparator_comparingIntWithJavaUtilFunctionToIntFunction_(new_SMBaseClassesNativeImpl_28_2_$Lambda$1_initWithInt_(size))];
+  if ([((JavaUtilOptional *) nil_chk(closest)) isPresent]) {
+    id<JavaUtilList> closestParams = [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk([closest get]))->declaration_))->block_))->params_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMBaseClassesNativeImpl_28_2_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+    id<JavaUtilList> args = new_JavaUtilArrayList_init();
+    for (NSString * __strong param in nil_chk(closestParams)) {
+      [args addWithId:[((id<SMSimiProperty>) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(val$fields_)) getWithId:JreStrcat("$$", SMConstants_PRIVATE, param)])) getValue]];
+    }
+    return [((SMSimiClassImpl *) nil_chk(val$clazz_)) init__WithSMBlockInterpreter:interpreter withJavaUtilList:args];
+  }
+  return [((SMSimiClassImpl *) nil_chk(val$clazz_)) init__WithSMBlockInterpreter:interpreter withJavaUtilList:val$initArgs_];
+}
+
+- (NSString *)toCodeWithInt:(jint)arg0
+                withBoolean:(jboolean)arg1 {
+  return SMSimiCallable_toCodeWithInt_withBoolean_(self, arg0, arg1);
+}
+
+- (jint)getLineNumber {
+  return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
+- (jboolean)hasBreakPoint {
+  return SMSimiCallable_hasBreakPoint(self);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMSimiProperty;", 0x1, 0, 1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(initWithJavaUtilSet:withJavaUtilSet:withJavaUtilLinkedHashMap:withSMSimiClassImpl:withJavaUtilList:);
+  methods[1].selector = @selector(arity);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "val$params_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
+    { "val$constructors_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x1012, -1, -1, 4, -1 },
+    { "val$fields_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x1012, -1, -1, 5, -1 },
+    { "val$clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "val$initArgs_", "LJavaUtilList;", .constantValue.asLong = 0, 0x1012, -1, -1, 6, -1 },
+  };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Set<Ljava/lang/String;>;", "Ljava/util/Set<LSimiFunction;>;", "Ljava/util/LinkedHashMap<Ljava/lang/String;LSimiProperty;>;", "Ljava/util/List<LSimiProperty;>;", "LSMBaseClassesNativeImpl_28;", "callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:" };
+  static const J2ObjcClassInfo _SMBaseClassesNativeImpl_28_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 5, 7, -1, 8, -1, -1 };
+  return &_SMBaseClassesNativeImpl_28_2;
+}
+
+@end
+
+void SMBaseClassesNativeImpl_28_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(SMBaseClassesNativeImpl_28_2 *self, id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+  self->val$params_ = capture$0;
+  self->val$constructors_ = capture$1;
+  self->val$fields_ = capture$2;
+  self->val$clazz_ = capture$3;
+  self->val$initArgs_ = capture$4;
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_28_2 *new_SMBaseClassesNativeImpl_28_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
+}
+
+SMBaseClassesNativeImpl_28_2 *create_SMBaseClassesNativeImpl_28_2_initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_(id<JavaUtilSet> capture$0, id<JavaUtilSet> capture$1, JavaUtilLinkedHashMap *capture$2, SMSimiClassImpl *capture$3, id<JavaUtilList> capture$4) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28_2, initWithJavaUtilSet_withJavaUtilSet_withJavaUtilLinkedHashMap_withSMSimiClassImpl_withJavaUtilList_, capture$0, capture$1, capture$2, capture$3, capture$4)
+}
+
+@implementation SMBaseClassesNativeImpl_28_2_$Lambda$1
+
+- (jint)applyAsIntWithId:(SMSimiFunction *)f {
+  return JavaLangMath_absWithInt_([((SMSimiFunction *) nil_chk(f)) arity] - val$size_);
+}
+
+@end
+
+void SMBaseClassesNativeImpl_28_2_$Lambda$1_initWithInt_(SMBaseClassesNativeImpl_28_2_$Lambda$1 *self, jint capture$0) {
+  self->val$size_ = capture$0;
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_28_2_$Lambda$1 *new_SMBaseClassesNativeImpl_28_2_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28_2_$Lambda$1, initWithInt_, capture$0)
+}
+
+SMBaseClassesNativeImpl_28_2_$Lambda$1 *create_SMBaseClassesNativeImpl_28_2_$Lambda$1_initWithInt_(jint capture$0) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28_2_$Lambda$1, initWithInt_, capture$0)
+}
+
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_28_2_$Lambda$2)
+
+@implementation SMBaseClassesNativeImpl_28_2_$Lambda$2
+
+- (id)applyWithId:(SMExpr *)a {
+  return SMBlockImpl_getParamLexemeWithSMExpr_(a);
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_28_2_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_28_2_$Lambda$2_instance = new_SMBaseClassesNativeImpl_28_2_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_28_2_$Lambda$2)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_28_2_$Lambda$2_init(SMBaseClassesNativeImpl_28_2_$Lambda$2 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_28_2_$Lambda$2 *new_SMBaseClassesNativeImpl_28_2_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28_2_$Lambda$2, init)
+}
+
+SMBaseClassesNativeImpl_28_2_$Lambda$2 *create_SMBaseClassesNativeImpl_28_2_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28_2_$Lambda$2, init)
+}
+
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_28_$Lambda$1)
+
+@implementation SMBaseClassesNativeImpl_28_$Lambda$1
+
+- (id)applyWithId:(SMSimiFunction *)f {
+  return ((SMExpr_Block *) nil_chk(((SMStmt_Function *) nil_chk(((SMSimiFunction *) nil_chk(f))->declaration_))->block_))->params_;
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_28_$Lambda$1 class]) {
+    SMBaseClassesNativeImpl_28_$Lambda$1_instance = new_SMBaseClassesNativeImpl_28_$Lambda$1_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_28_$Lambda$1)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_28_$Lambda$1_init(SMBaseClassesNativeImpl_28_$Lambda$1 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_28_$Lambda$1 *new_SMBaseClassesNativeImpl_28_$Lambda$1_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28_$Lambda$1, init)
+}
+
+SMBaseClassesNativeImpl_28_$Lambda$1 *create_SMBaseClassesNativeImpl_28_$Lambda$1_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28_$Lambda$1, init)
+}
+
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_28_$Lambda$2)
+
+@implementation SMBaseClassesNativeImpl_28_$Lambda$2
+
+- (id)applyWithId:(id<JavaUtilList>)a {
+  return [((id<JavaUtilList>) nil_chk(a)) stream];
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_28_$Lambda$2 class]) {
+    SMBaseClassesNativeImpl_28_$Lambda$2_instance = new_SMBaseClassesNativeImpl_28_$Lambda$2_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_28_$Lambda$2)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_28_$Lambda$2_init(SMBaseClassesNativeImpl_28_$Lambda$2 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_28_$Lambda$2 *new_SMBaseClassesNativeImpl_28_$Lambda$2_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28_$Lambda$2, init)
+}
+
+SMBaseClassesNativeImpl_28_$Lambda$2 *create_SMBaseClassesNativeImpl_28_$Lambda$2_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28_$Lambda$2, init)
+}
+
+J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_28_$Lambda$3)
+
+@implementation SMBaseClassesNativeImpl_28_$Lambda$3
+
+- (id)applyWithId:(SMExpr *)a {
+  return SMBlockImpl_getParamLexemeWithSMExpr_(a);
+}
+
+- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
+}
+
++ (void)initialize {
+  if (self == [SMBaseClassesNativeImpl_28_$Lambda$3 class]) {
+    SMBaseClassesNativeImpl_28_$Lambda$3_instance = new_SMBaseClassesNativeImpl_28_$Lambda$3_init();
+    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_28_$Lambda$3)
+  }
+}
+
+@end
+
+void SMBaseClassesNativeImpl_28_$Lambda$3_init(SMBaseClassesNativeImpl_28_$Lambda$3 *self) {
+  NSObject_init(self);
+}
+
+SMBaseClassesNativeImpl_28_$Lambda$3 *new_SMBaseClassesNativeImpl_28_$Lambda$3_init() {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_28_$Lambda$3, init)
+}
+
+SMBaseClassesNativeImpl_28_$Lambda$3 *create_SMBaseClassesNativeImpl_28_$Lambda$3_init() {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_28_$Lambda$3, init)
 }
 
 @implementation SMBaseClassesNativeImpl_29
@@ -5126,6 +5302,7 @@ SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jint capacity = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asLong]);
@@ -5141,6 +5318,10 @@ SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -5156,12 +5337,12 @@ SMBaseClassesNativeImpl_28 *create_SMBaseClassesNativeImpl_28_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_29 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_29;
 }
@@ -5193,6 +5374,7 @@ SMBaseClassesNativeImpl_29 *create_SMBaseClassesNativeImpl_29_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jint capacity = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asLong]);
@@ -5207,6 +5389,10 @@ SMBaseClassesNativeImpl_29 *create_SMBaseClassesNativeImpl_29_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -5224,12 +5410,12 @@ SMBaseClassesNativeImpl_29 *create_SMBaseClassesNativeImpl_29_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_30 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_30;
 }
@@ -5261,13 +5447,14 @@ SMBaseClassesNativeImpl_30 *create_SMBaseClassesNativeImpl_30_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
   jint start = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue])) getNumber])) asLong]);
   jint stop = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([arguments getWithInt:2])) getValue])) getNumber])) asLong]);
   if ([((SMSimiObjectImpl *) nil_chk(self_)) isArray]) {
-    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, new_JavaUtilArrayList_initWithJavaUtilCollection_([((JavaUtilArrayList *) nil_chk(((SMSimiObjectImpl_Array *) nil_chk([self_ asArray]))->fields_)) subListWithInt:start withInt:stop - 1])));
+    return new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(SMBaseClassesNativeImpl_getObjectClassWithSMBlockInterpreter_(this$0_, interpreter), true, new_JavaUtilArrayList_initWithJavaUtilCollection_([((JavaUtilArrayList *) nil_chk(self_->line_)) subListWithInt:start withInt:stop])));
   }
   return nil;
 }
@@ -5279,6 +5466,10 @@ SMBaseClassesNativeImpl_30 *create_SMBaseClassesNativeImpl_30_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -5296,12 +5487,12 @@ SMBaseClassesNativeImpl_30 *create_SMBaseClassesNativeImpl_30_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getObjectClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_31 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_31;
 }
@@ -5333,6 +5524,7 @@ SMBaseClassesNativeImpl_31 *create_SMBaseClassesNativeImpl_31_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -5346,6 +5538,10 @@ SMBaseClassesNativeImpl_31 *create_SMBaseClassesNativeImpl_31_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -5363,12 +5559,12 @@ SMBaseClassesNativeImpl_31 *create_SMBaseClassesNativeImpl_31_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_32 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_32;
 }
@@ -5400,6 +5596,7 @@ SMBaseClassesNativeImpl_32 *create_SMBaseClassesNativeImpl_32_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -5414,6 +5611,10 @@ SMBaseClassesNativeImpl_32 *create_SMBaseClassesNativeImpl_32_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -5431,12 +5632,12 @@ SMBaseClassesNativeImpl_32 *create_SMBaseClassesNativeImpl_32_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_33 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_33;
 }
@@ -5468,6 +5669,7 @@ SMBaseClassesNativeImpl_33 *create_SMBaseClassesNativeImpl_33_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -5495,6 +5697,10 @@ SMBaseClassesNativeImpl_33 *create_SMBaseClassesNativeImpl_33_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -5510,12 +5716,12 @@ SMBaseClassesNativeImpl_33 *create_SMBaseClassesNativeImpl_33_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_34 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_34;
 }
@@ -5547,6 +5753,7 @@ SMBaseClassesNativeImpl_34 *create_SMBaseClassesNativeImpl_34_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -5568,6 +5775,10 @@ SMBaseClassesNativeImpl_34 *create_SMBaseClassesNativeImpl_34_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -5583,12 +5794,12 @@ SMBaseClassesNativeImpl_34 *create_SMBaseClassesNativeImpl_34_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_35 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_35;
 }
@@ -5620,6 +5831,7 @@ SMBaseClassesNativeImpl_35 *create_SMBaseClassesNativeImpl_35_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -5641,6 +5853,10 @@ SMBaseClassesNativeImpl_35 *create_SMBaseClassesNativeImpl_35_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -5656,12 +5872,12 @@ SMBaseClassesNativeImpl_35 *create_SMBaseClassesNativeImpl_35_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_36 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_36;
 }
@@ -5693,6 +5909,7 @@ SMBaseClassesNativeImpl_36 *create_SMBaseClassesNativeImpl_36_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -5710,6 +5927,10 @@ SMBaseClassesNativeImpl_36 *create_SMBaseClassesNativeImpl_36_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -5725,12 +5946,12 @@ SMBaseClassesNativeImpl_36 *create_SMBaseClassesNativeImpl_36_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_37 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_37;
 }
@@ -5762,6 +5983,7 @@ SMBaseClassesNativeImpl_37 *create_SMBaseClassesNativeImpl_37_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -5779,6 +6001,10 @@ SMBaseClassesNativeImpl_37 *create_SMBaseClassesNativeImpl_37_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -5794,12 +6020,12 @@ SMBaseClassesNativeImpl_37 *create_SMBaseClassesNativeImpl_37_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_38 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_38;
 }
@@ -5831,6 +6057,7 @@ SMBaseClassesNativeImpl_38 *create_SMBaseClassesNativeImpl_38_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiClassImpl *objectClass = (SMSimiClassImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMBlockInterpreter>) nil_chk(interpreter)) getGlobalWithNSString:SMConstants_CLASS_OBJECT])) getValue])) getObject], [SMSimiClassImpl class]);
@@ -5849,6 +6076,10 @@ SMBaseClassesNativeImpl_38 *create_SMBaseClassesNativeImpl_38_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -5864,12 +6095,12 @@ SMBaseClassesNativeImpl_38 *create_SMBaseClassesNativeImpl_38_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_39 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_39;
 }
@@ -5967,6 +6198,7 @@ SMBaseClassesNativeImpl_39_$Lambda$2 *create_SMBaseClassesNativeImpl_39_$Lambda$
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -5981,6 +6213,10 @@ SMBaseClassesNativeImpl_39_$Lambda$2 *create_SMBaseClassesNativeImpl_39_$Lambda$
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -5998,12 +6234,12 @@ SMBaseClassesNativeImpl_39_$Lambda$2 *create_SMBaseClassesNativeImpl_39_$Lambda$
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_40 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_40;
 }
@@ -6035,6 +6271,7 @@ SMBaseClassesNativeImpl_40 *create_SMBaseClassesNativeImpl_40_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6052,6 +6289,10 @@ SMBaseClassesNativeImpl_40 *create_SMBaseClassesNativeImpl_40_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -6067,12 +6308,12 @@ SMBaseClassesNativeImpl_40 *create_SMBaseClassesNativeImpl_40_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_41 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_41;
 }
@@ -6104,6 +6345,7 @@ SMBaseClassesNativeImpl_41 *create_SMBaseClassesNativeImpl_41_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6117,6 +6359,10 @@ SMBaseClassesNativeImpl_41 *create_SMBaseClassesNativeImpl_41_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -6134,12 +6380,12 @@ SMBaseClassesNativeImpl_41 *create_SMBaseClassesNativeImpl_41_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_42 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_42;
 }
@@ -6171,6 +6417,7 @@ SMBaseClassesNativeImpl_42 *create_SMBaseClassesNativeImpl_42_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6184,6 +6431,10 @@ SMBaseClassesNativeImpl_42 *create_SMBaseClassesNativeImpl_42_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -6201,12 +6452,12 @@ SMBaseClassesNativeImpl_42 *create_SMBaseClassesNativeImpl_42_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_43 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_43;
 }
@@ -6238,6 +6489,7 @@ SMBaseClassesNativeImpl_43 *create_SMBaseClassesNativeImpl_43_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6251,6 +6503,10 @@ SMBaseClassesNativeImpl_43 *create_SMBaseClassesNativeImpl_43_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -6268,12 +6524,12 @@ SMBaseClassesNativeImpl_43 *create_SMBaseClassesNativeImpl_43_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_44 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_44;
 }
@@ -6305,6 +6561,7 @@ SMBaseClassesNativeImpl_44 *create_SMBaseClassesNativeImpl_44_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6335,6 +6592,10 @@ SMBaseClassesNativeImpl_44 *create_SMBaseClassesNativeImpl_44_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -6351,13 +6612,13 @@ SMBaseClassesNativeImpl_44 *create_SMBaseClassesNativeImpl_44_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   methods[3].selector = @selector(isAlphaWithChar:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isAlpha", "C", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isAlpha", "C", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_45 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
   return &_SMBaseClassesNativeImpl_45;
 }
@@ -6393,6 +6654,7 @@ jboolean SMBaseClassesNativeImpl_45_isAlphaWithChar_(SMBaseClassesNativeImpl_45 
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6423,6 +6685,10 @@ jboolean SMBaseClassesNativeImpl_45_isAlphaWithChar_(SMBaseClassesNativeImpl_45 
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -6439,13 +6705,13 @@ jboolean SMBaseClassesNativeImpl_45_isAlphaWithChar_(SMBaseClassesNativeImpl_45 
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   methods[3].selector = @selector(isDigitWithChar:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isDigit", "C", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "isDigit", "C", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_46 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 4, 1, 5, -1, 6, -1, -1 };
   return &_SMBaseClassesNativeImpl_46;
 }
@@ -6481,6 +6747,7 @@ jboolean SMBaseClassesNativeImpl_46_isDigitWithChar_(SMBaseClassesNativeImpl_46 
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6499,6 +6766,10 @@ jboolean SMBaseClassesNativeImpl_46_isDigitWithChar_(SMBaseClassesNativeImpl_46 
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -6514,12 +6785,12 @@ jboolean SMBaseClassesNativeImpl_46_isDigitWithChar_(SMBaseClassesNativeImpl_46 
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_47 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_47;
 }
@@ -6551,6 +6822,7 @@ SMBaseClassesNativeImpl_47 *create_SMBaseClassesNativeImpl_47_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jchar next = [((JavaTextStringCharacterIterator *) nil_chk(val$iterator_)) next];
@@ -6569,6 +6841,10 @@ SMBaseClassesNativeImpl_47 *create_SMBaseClassesNativeImpl_47_initWithSMBaseClas
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -6584,12 +6860,12 @@ SMBaseClassesNativeImpl_47 *create_SMBaseClassesNativeImpl_47_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaTextStringCharacterIterator:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$iterator_", "LJavaTextStringCharacterIterator;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_47;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_47;", "callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_47_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_47_1;
 }
@@ -6621,6 +6897,7 @@ SMBaseClassesNativeImpl_47_1 *create_SMBaseClassesNativeImpl_47_1_initWithJavaTe
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6635,6 +6912,10 @@ SMBaseClassesNativeImpl_47_1 *create_SMBaseClassesNativeImpl_47_1_initWithJavaTe
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -6652,12 +6933,12 @@ SMBaseClassesNativeImpl_47_1 *create_SMBaseClassesNativeImpl_47_1_initWithJavaTe
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_48 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_48;
 }
@@ -6691,6 +6972,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
@@ -6703,6 +6985,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -6720,9 +7006,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_49 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_49;
 }
@@ -6755,6 +7041,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return new_SMSimiValue_Number_initWithLong_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
@@ -6767,6 +7054,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -6784,9 +7075,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_50 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_50;
 }
@@ -6817,6 +7108,7 @@ SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_init() {
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   NSString *string = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getString];
@@ -6846,6 +7138,10 @@ SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_init() {
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -6861,12 +7157,12 @@ SMBaseClassesNativeImpl_50 *create_SMBaseClassesNativeImpl_50_init() {
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_51 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_51;
 }
@@ -6900,6 +7196,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   JavaUtilLinkedHashMap *fields = new_JavaUtilLinkedHashMap_init();
@@ -6920,6 +7217,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -6935,9 +7236,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getStringClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_52 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_52;
 }
@@ -6969,6 +7270,7 @@ SMBaseClassesNativeImpl_52 *create_SMBaseClassesNativeImpl_52_init() {
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   id<SMSimiProperty> prop = [((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0];
@@ -6990,6 +7292,10 @@ SMBaseClassesNativeImpl_52 *create_SMBaseClassesNativeImpl_52_init() {
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -7005,13 +7311,13 @@ SMBaseClassesNativeImpl_52 *create_SMBaseClassesNativeImpl_52_init() {
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaLangStringBuilder:withSMSimiValue:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$sb_", "LJavaLangStringBuilder;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$objectValue_", "LSMSimiValue;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_52;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_52;", "callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_52_1 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_52_1;
 }
@@ -7044,6 +7350,7 @@ SMBaseClassesNativeImpl_52_1 *create_SMBaseClassesNativeImpl_52_1_initWithJavaLa
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return new_SMSimiValue_String_initWithNSString_([((JavaLangStringBuilder *) nil_chk(val$sb_)) description]);
@@ -7056,6 +7363,10 @@ SMBaseClassesNativeImpl_52_1 *create_SMBaseClassesNativeImpl_52_1_initWithJavaLa
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7073,12 +7384,12 @@ SMBaseClassesNativeImpl_52_1 *create_SMBaseClassesNativeImpl_52_1_initWithJavaLa
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaLangStringBuilder:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "val$sb_", "LJavaLangStringBuilder;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_52;", "callWithSMBlockInterpreter:withJavaUtilList:withBoolean:" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl_52;", "callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_52_2 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_52_2;
 }
@@ -7110,6 +7421,7 @@ SMBaseClassesNativeImpl_52_2 *create_SMBaseClassesNativeImpl_52_2_initWithJavaLa
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiValue_Number *value = [((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getNumber];
@@ -7123,6 +7435,10 @@ SMBaseClassesNativeImpl_52_2 *create_SMBaseClassesNativeImpl_52_2_initWithJavaLa
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7140,12 +7456,12 @@ SMBaseClassesNativeImpl_52_2 *create_SMBaseClassesNativeImpl_52_2_initWithJavaLa
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_53 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_53;
 }
@@ -7179,6 +7495,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jint max = JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asLong]);
@@ -7192,6 +7509,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7209,9 +7530,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_54 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_54;
 }
@@ -7244,6 +7565,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return new_SMSimiValue_Number_initWithBoolean_([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) isEqual:[arguments getWithInt:1]]);
@@ -7256,6 +7578,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7273,9 +7599,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_55 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_55;
 }
@@ -7308,6 +7634,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return new_SMSimiValue_Number_initWithLong_([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) compareToWithId:[((id<SMSimiProperty>) nil_chk([arguments getWithInt:1])) getValue]]);
@@ -7320,6 +7647,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7337,9 +7668,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_56 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_56;
 }
@@ -7370,6 +7701,7 @@ SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_init() {
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiValue *value = SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments);
@@ -7383,6 +7715,10 @@ SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_init() {
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7400,12 +7736,12 @@ SMBaseClassesNativeImpl_56 *create_SMBaseClassesNativeImpl_56_init() {
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_57 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_57;
 }
@@ -7437,6 +7773,7 @@ SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jlong value = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getNumber])) asLong];
@@ -7451,6 +7788,10 @@ SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7468,12 +7809,12 @@ SMBaseClassesNativeImpl_57 *create_SMBaseClassesNativeImpl_57_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_58 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_58;
 }
@@ -7505,6 +7846,7 @@ SMBaseClassesNativeImpl_58 *create_SMBaseClassesNativeImpl_58_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jlong value = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getNumber])) asLong];
@@ -7519,6 +7861,10 @@ SMBaseClassesNativeImpl_58 *create_SMBaseClassesNativeImpl_58_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7536,12 +7882,12 @@ SMBaseClassesNativeImpl_58 *create_SMBaseClassesNativeImpl_58_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_59 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_59;
 }
@@ -7573,6 +7919,7 @@ SMBaseClassesNativeImpl_59 *create_SMBaseClassesNativeImpl_59_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jlong value = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getNumber])) asLong];
@@ -7587,6 +7934,10 @@ SMBaseClassesNativeImpl_59 *create_SMBaseClassesNativeImpl_59_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7604,12 +7955,12 @@ SMBaseClassesNativeImpl_59 *create_SMBaseClassesNativeImpl_59_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_60 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_60;
 }
@@ -7641,6 +7992,7 @@ SMBaseClassesNativeImpl_60 *create_SMBaseClassesNativeImpl_60_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jlong value = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getNumber])) asLong];
@@ -7654,6 +8006,10 @@ SMBaseClassesNativeImpl_60 *create_SMBaseClassesNativeImpl_60_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7671,12 +8027,12 @@ SMBaseClassesNativeImpl_60 *create_SMBaseClassesNativeImpl_60_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_61 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_61;
 }
@@ -7708,6 +8064,7 @@ SMBaseClassesNativeImpl_61 *create_SMBaseClassesNativeImpl_61_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jlong value = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getNumber])) asLong];
@@ -7722,6 +8079,10 @@ SMBaseClassesNativeImpl_61 *create_SMBaseClassesNativeImpl_61_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7739,12 +8100,12 @@ SMBaseClassesNativeImpl_61 *create_SMBaseClassesNativeImpl_61_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_62 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_62;
 }
@@ -7776,6 +8137,7 @@ SMBaseClassesNativeImpl_62 *create_SMBaseClassesNativeImpl_62_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jlong value = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getNumber])) asLong];
@@ -7790,6 +8152,10 @@ SMBaseClassesNativeImpl_62 *create_SMBaseClassesNativeImpl_62_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7807,12 +8173,12 @@ SMBaseClassesNativeImpl_62 *create_SMBaseClassesNativeImpl_62_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_63 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_63;
 }
@@ -7844,6 +8210,7 @@ SMBaseClassesNativeImpl_63 *create_SMBaseClassesNativeImpl_63_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jlong value = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk(SMBaseClassesNativeImpl_prepareValueNativeCallWithSMBlockInterpreter_withJavaUtilList_(this$0_, interpreter, arguments))) getNumber])) asLong];
@@ -7858,6 +8225,10 @@ SMBaseClassesNativeImpl_63 *create_SMBaseClassesNativeImpl_63_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -7875,12 +8246,12 @@ SMBaseClassesNativeImpl_63 *create_SMBaseClassesNativeImpl_63_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getNumberClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_64 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 1, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_64;
 }
@@ -7914,6 +8285,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   SMSimiObjectImpl *self_ = (SMSimiObjectImpl *) cast_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:0])) getValue])) getObject], [SMSimiObjectImpl class]);
@@ -7931,6 +8303,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   return SMSimiCallable_getLineNumber(self);
 }
 
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
+}
+
 - (jboolean)hasBreakPoint {
   return SMSimiCallable_hasBreakPoint(self);
 }
@@ -7946,9 +8322,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getExceptionClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getExceptionClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_65 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_65;
 }
@@ -7980,6 +8356,7 @@ SMBaseClassesNativeImpl_65 *create_SMBaseClassesNativeImpl_65_init() {
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionBiFunction_(this$0_, arguments, [((id<JavaUtilMap_Entry>) nil_chk(val$binary_)) getValue]);
@@ -7992,6 +8369,10 @@ SMBaseClassesNativeImpl_65 *create_SMBaseClassesNativeImpl_65_init() {
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -8009,13 +8390,13 @@ SMBaseClassesNativeImpl_65 *create_SMBaseClassesNativeImpl_65_init() {
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:withJavaUtilMap_Entry:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$binary_", "LJavaUtilMap_Entry;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/BiFunction<Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;>;>;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/BiFunction<Ljava/lang/Double;Ljava/lang/Double;Ljava/lang/Double;>;>;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_66 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
   return &_SMBaseClassesNativeImpl_66;
 }
@@ -8049,6 +8430,7 @@ SMBaseClassesNativeImpl_66 *create_SMBaseClassesNativeImpl_66_initWithSMBaseClas
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   return SMBaseClassesNativeImpl_doMathWithJavaUtilList_withJavaUtilFunctionFunction_(this$0_, arguments, [((id<JavaUtilMap_Entry>) nil_chk(val$unary_)) getValue]);
@@ -8061,6 +8443,10 @@ SMBaseClassesNativeImpl_66 *create_SMBaseClassesNativeImpl_66_initWithSMBaseClas
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -8078,13 +8464,13 @@ SMBaseClassesNativeImpl_66 *create_SMBaseClassesNativeImpl_66_initWithSMBaseClas
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMBaseClassesNativeImpl:withJavaUtilMap_Entry:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LSMBaseClassesNativeImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$unary_", "LJavaUtilMap_Entry;", .constantValue.asLong = 0, 0x1012, -1, -1, 3, -1 },
   };
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/Function<Ljava/lang/Double;Ljava/lang/Double;>;>;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/util/function/Function<Ljava/lang/Double;Ljava/lang/Double;>;>;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_67 = { "", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8018, 3, 2, 4, -1, 5, -1, -1 };
   return &_SMBaseClassesNativeImpl_67;
 }
@@ -8119,6 +8505,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)env
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
   jdouble a = [((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<JavaUtilList>) nil_chk(arguments)) getWithInt:1])) getValue])) getNumber])) asDouble];
@@ -8132,6 +8519,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -8149,9 +8540,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
+  static const void *ptrTable[] = { "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "LSMBaseClassesNativeImpl;", "getGlobalsClass" };
   static const J2ObjcClassInfo _SMBaseClassesNativeImpl_68 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 3, -1, 4, -1, -1 };
   return &_SMBaseClassesNativeImpl_68;
 }
@@ -9119,98 +9510,9 @@ SMBaseClassesNativeImpl_$Lambda$26 *create_SMBaseClassesNativeImpl_$Lambda$26_in
 
 @implementation SMBaseClassesNativeImpl_$Lambda$27
 
-- (jint)compareWithId:(SMSimiValue *)o1
-               withId:(SMSimiValue *)o2 {
-  return JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ o1, o2 } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) asLong]);
-}
-
-- (id<JavaUtilComparator>)reversed {
-  return JavaUtilComparator_reversed(self);
-}
-
-- (id<JavaUtilComparator>)thenComparingWithJavaUtilComparator:(id<JavaUtilComparator>)arg0 {
-  return JavaUtilComparator_thenComparingWithJavaUtilComparator_(self, arg0);
-}
-
-- (id<JavaUtilComparator>)thenComparingWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0
-                                             withJavaUtilComparator:(id<JavaUtilComparator>)arg1 {
-  return JavaUtilComparator_thenComparingWithJavaUtilFunctionFunction_withJavaUtilComparator_(self, arg0, arg1);
-}
-
-- (id<JavaUtilComparator>)thenComparingWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilComparator_thenComparingWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilComparator>)thenComparingIntWithJavaUtilFunctionToIntFunction:(id<JavaUtilFunctionToIntFunction>)arg0 {
-  return JavaUtilComparator_thenComparingIntWithJavaUtilFunctionToIntFunction_(self, arg0);
-}
-
-- (id<JavaUtilComparator>)thenComparingLongWithJavaUtilFunctionToLongFunction:(id<JavaUtilFunctionToLongFunction>)arg0 {
-  return JavaUtilComparator_thenComparingLongWithJavaUtilFunctionToLongFunction_(self, arg0);
-}
-
-- (id<JavaUtilComparator>)thenComparingDoubleWithJavaUtilFunctionToDoubleFunction:(id<JavaUtilFunctionToDoubleFunction>)arg0 {
-  return JavaUtilComparator_thenComparingDoubleWithJavaUtilFunctionToDoubleFunction_(self, arg0);
-}
-
-@end
-
-void SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(SMBaseClassesNativeImpl_$Lambda$27 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1) {
-  self->val$comparator_ = capture$0;
-  self->val$interpreter_ = capture$1;
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_$Lambda$27 *new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$27, initWithSMSimiCallable_withSMBlockInterpreter_, capture$0, capture$1)
-}
-
-SMBaseClassesNativeImpl_$Lambda$27 *create_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$27, initWithSMSimiCallable_withSMBlockInterpreter_, capture$0, capture$1)
-}
-
-J2OBJC_INITIALIZED_DEFN(SMBaseClassesNativeImpl_$Lambda$28)
-
-@implementation SMBaseClassesNativeImpl_$Lambda$28
-
-- (id)applyWithId:(id<JavaUtilMap_Entry>)a {
-  return [((id<JavaUtilMap_Entry>) nil_chk(a)) getKey];
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMBaseClassesNativeImpl_$Lambda$28 class]) {
-    SMBaseClassesNativeImpl_$Lambda$28_instance = new_SMBaseClassesNativeImpl_$Lambda$28_init();
-    J2OBJC_SET_INITIALIZED(SMBaseClassesNativeImpl_$Lambda$28)
-  }
-}
-
-@end
-
-void SMBaseClassesNativeImpl_$Lambda$28_init(SMBaseClassesNativeImpl_$Lambda$28 *self) {
-  NSObject_init(self);
-}
-
-SMBaseClassesNativeImpl_$Lambda$28 *new_SMBaseClassesNativeImpl_$Lambda$28_init() {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$28, init)
-}
-
-SMBaseClassesNativeImpl_$Lambda$28 *create_SMBaseClassesNativeImpl_$Lambda$28_init() {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$28, init)
-}
-
-@implementation SMBaseClassesNativeImpl_$Lambda$29
-
 - (jint)compareWithId:(id<JavaUtilMap_Entry>)o1
                withId:(id<JavaUtilMap_Entry>)o2 {
-  return JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o1)) getKey]), [o1 getValue])), create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o2)) getKey]), [o2 getValue])) } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) asLong]);
+  return JavaLangMath_toIntExactWithLong_([((SMSimiValue_Number *) nil_chk([((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk([((id<SMSimiCallable>) nil_chk(val$comparator_)) callWithSMBlockInterpreter:val$interpreter_ withSMSimiEnvironment:nil withJavaUtilList:JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o1)) getKey]), [o1 getValue])), create_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(val$objectClass_, create_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(o2)) getKey]), [o2 getValue])) } count:2 type:SMSimiProperty_class_()]) withBoolean:false])) getValue])) getNumber])) asLong]);
 }
 
 - (id<JavaUtilComparator>)reversed {
@@ -9244,17 +9546,17 @@ SMBaseClassesNativeImpl_$Lambda$28 *create_SMBaseClassesNativeImpl_$Lambda$28_in
 
 @end
 
-void SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(SMBaseClassesNativeImpl_$Lambda$29 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
+void SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(SMBaseClassesNativeImpl_$Lambda$27 *self, id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
   self->val$comparator_ = capture$0;
   self->val$interpreter_ = capture$1;
   self->val$objectClass_ = capture$2;
   NSObject_init(self);
 }
 
-SMBaseClassesNativeImpl_$Lambda$29 *new_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
-  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$29, initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_, capture$0, capture$1, capture$2)
+SMBaseClassesNativeImpl_$Lambda$27 *new_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
+  J2OBJC_NEW_IMPL(SMBaseClassesNativeImpl_$Lambda$27, initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_, capture$0, capture$1, capture$2)
 }
 
-SMBaseClassesNativeImpl_$Lambda$29 *create_SMBaseClassesNativeImpl_$Lambda$29_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
-  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$29, initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_, capture$0, capture$1, capture$2)
+SMBaseClassesNativeImpl_$Lambda$27 *create_SMBaseClassesNativeImpl_$Lambda$27_initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_(id<SMSimiCallable> capture$0, id<SMBlockInterpreter> capture$1, SMSimiClassImpl *capture$2) {
+  J2OBJC_CREATE_IMPL(SMBaseClassesNativeImpl_$Lambda$27, initWithSMSimiCallable_withSMBlockInterpreter_withSMSimiClassImpl_, capture$0, capture$1, capture$2)
 }

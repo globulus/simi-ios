@@ -32,7 +32,7 @@
 @end
 
 void SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(SMSimiNativeObject *self, JavaUtilLinkedHashMap *props) {
-  SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(self, nil, true, props);
+  SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(self, nil, true, props, nil);
 }
 
 SMSimiNativeObject *new_SMSimiNativeObject_initWithJavaUtilLinkedHashMap_(JavaUtilLinkedHashMap *props) {

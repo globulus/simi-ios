@@ -520,6 +520,9 @@ void SMScanner_scanToken(SMScanner *self) {
       if (SMScanner_matchWithChar_(self, '=')) {
         SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOLLAR_EQUAL));
       }
+      else if (SMScanner_matchWithChar_(self, '(')) {
+        SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOLLAR_LEFT_PAREN));
+      }
       else if (SMScanner_matchWithChar_(self, '[')) {
         SMScanner_addTokenWithSMTokenType_(self, JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET));
       }
@@ -683,7 +686,7 @@ jchar SMScanner_peekNext(SMScanner *self) {
 }
 
 jboolean SMScanner_isAlphaWithChar_(SMScanner *self, jchar c) {
-  return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_' || c == '$';
+  return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_';
 }
 
 jboolean SMScanner_isAlphaNumericWithChar_(SMScanner *self, jchar c) {

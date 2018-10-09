@@ -5,6 +5,7 @@
 
 #include "J2ObjC_source.h"
 #include "java/lang/RuntimeException.h"
+#include "java/lang/Throwable.h"
 #include "Break.h"
 
 @implementation SMBreak
@@ -16,16 +17,24 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
+- (instancetype __nonnull)initWithJavaLangThrowable:(JavaLangThrowable *)cause {
+  SMBreak_initWithJavaLangThrowable_(self, cause);
+  return self;
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
+  methods[1].selector = @selector(initWithJavaLangThrowable:);
   #pragma clang diagnostic pop
-  static const J2ObjcClassInfo _SMBreak = { "Break", "net.globulus.simi", NULL, methods, NULL, 7, 0x0, 1, 0, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LJavaLangThrowable;" };
+  static const J2ObjcClassInfo _SMBreak = { "Break", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x0, 2, 0, -1, -1, -1, -1, -1 };
   return &_SMBreak;
 }
 
@@ -41,6 +50,18 @@ SMBreak *new_SMBreak_init() {
 
 SMBreak *create_SMBreak_init() {
   J2OBJC_CREATE_IMPL(SMBreak, init)
+}
+
+void SMBreak_initWithJavaLangThrowable_(SMBreak *self, JavaLangThrowable *cause) {
+  JavaLangRuntimeException_initWithJavaLangThrowable_(self, cause);
+}
+
+SMBreak *new_SMBreak_initWithJavaLangThrowable_(JavaLangThrowable *cause) {
+  J2OBJC_NEW_IMPL(SMBreak, initWithJavaLangThrowable_, cause)
+}
+
+SMBreak *create_SMBreak_initWithJavaLangThrowable_(JavaLangThrowable *cause) {
+  J2OBJC_CREATE_IMPL(SMBreak, initWithJavaLangThrowable_, cause)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMBreak)

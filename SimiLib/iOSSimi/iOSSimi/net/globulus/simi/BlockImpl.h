@@ -35,6 +35,7 @@
 @class SMSimiObjectImpl;
 @protocol JavaUtilList;
 @protocol SMBlockInterpreter;
+@protocol SMSimiEnvironment;
 @protocol SMSimiProperty;
 
 @interface SMBlockImpl : NSObject < SMSimiBlock, SMSimiCallable > {
@@ -48,6 +49,7 @@
 - (jint)arity;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow;
 
@@ -72,6 +74,7 @@
 - (SMBlockImpl *)bindWithSMSimiObjectImpl:(SMSimiObjectImpl *)instance;
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow
                               withSMSimiCallable:(id<SMSimiCallable>)invoker;

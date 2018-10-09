@@ -51,6 +51,7 @@ class Interpreter implements
 
       @Override
       public SimiProperty call(BlockInterpreter interpreter,
+                          SimiEnvironment environment,
                           List<SimiProperty> arguments,
                             boolean rethrow) {
         return new SimiValue.Number(System.currentTimeMillis());
@@ -70,6 +71,7 @@ class Interpreter implements
 
       @Override
       public SimiProperty call(BlockInterpreter interpreter,
+                               SimiEnvironment environment,
                                List<SimiProperty> arguments,
                                boolean rethrow) {
         return new SimiValue.String(UUID.randomUUID().toString());
@@ -127,7 +129,7 @@ class Interpreter implements
 //    if (index < statements.size() - 2) {
 //      after = new Codifiable[] { statements.get(index + 1), statements.get(index + 2) };
 //    }
-    debugger.push(new Debugger.Frame(environment.deepClone(), stmt, before, after));
+    debugger.pushLine(new Debugger.Frame(environment.deepClone(), stmt, before, after));
     if (stmt.hasBreakPoint()) {
         debugger.triggerBreakpoint(stmt);
     }
@@ -164,7 +166,7 @@ class Interpreter implements
             } else if (block.canReturn()) {
               throw new Return(null);
             } else {
-              throw new Break();
+              throw new Break(raisedExceptions.peek());
             }
           }
         } catch (Yield yield) {
@@ -371,7 +373,7 @@ class Interpreter implements
     if (isTruthy(evaluate(stmt.condition))) {
       BlockImpl block = this.environment.getOrAssignBlock(stmt, stmt.thenBranch, yieldedStmts);
       try {
-        block.call(this, null, true);
+        block.call(this, null, null, true);
       } catch (Return | Yield returnYield) {
         if (returnYield instanceof Return) {
           this.environment.endBlock(stmt, yieldedStmts);
@@ -399,7 +401,7 @@ class Interpreter implements
     if (stmt.elseBranch != null) {
       BlockImpl elseBlock = this.environment.getOrAssignBlock(stmt, stmt.elseBranch, yieldedStmts);
       try {
-        elseBlock.call(this, null, true);
+        elseBlock.call(this, null, null, true);
       } catch (Return | Yield returnYield) {
         if (returnYield instanceof Return) {
           this.environment.endBlock(stmt, yieldedStmts);
@@ -457,7 +459,7 @@ class Interpreter implements
     BlockImpl block = this.environment.getOrAssignBlock(stmt, stmt.body, yieldedStmts);
     while (isTruthy(evaluate(stmt.condition))) {
       try {
-        block.call(this, null, true);
+        block.call(this, null, null, true);
       } catch (Return | Yield returnYield) {
           if (returnYield instanceof Return) {
             this.environment.endBlock(stmt, yieldedStmts);
@@ -507,7 +509,7 @@ class Interpreter implements
       }
       block.closure.assign(stmt.var.name, var,true);
       try {
-        block.call(this, null, true);
+        block.call(this, null, null, true);
       } catch (Return | Yield returnYield) {
         if (returnYield instanceof Return) {
           this.environment.endBlock(stmt, yieldedStmts);
@@ -640,8 +642,14 @@ class Interpreter implements
 
   @Override
   public SimiProperty visitCallExpr(Expr.Call expr) {
+    if (debugger != null) {
+      debugger.pushCall(new Debugger.Frame(environment.deepClone(), expr, null, null));
+    }
     SimiProperty callee = evaluate(expr.callee);
     SimiProperty result = call(callee, expr.arguments, expr.paren);
+    if (debugger != null) {
+      debugger.popCall();
+    }
     return result;
   }
 
@@ -686,6 +694,8 @@ class Interpreter implements
       return callee;
     }
 
+    Environment env = (paren.type == TokenType.DOLLAR_LEFT_PAREN) ? new Environment(environment) : null;
+
     List<SimiProperty> decomposedArgs = arguments;
     if (arguments.size() != callable.arity()) {
       // See if we can decompose argument array/object into actual arguments
@@ -725,7 +735,7 @@ class Interpreter implements
           List<SimiProperty> nativeArgs = new ArrayList<>();
           nativeArgs.add(new SimiValue.Object(instance));
           nativeArgs.addAll(decomposedArgs);
-          result = nativeMethod.call(this, nativeArgs, false);
+          result = nativeMethod.call(this, env, nativeArgs, false);
         } else {
           result = invokeNativeCall(clazz.name, methodName, instance, decomposedArgs);
         }
@@ -736,7 +746,7 @@ class Interpreter implements
                 null, decomposedArgs);
       }
     }
-    return callable.call(this, decomposedArgs, false);
+    return callable.call(this, env, decomposedArgs, false);
   }
 
   private List<SimiProperty> decomposeArguments(SimiCallable callable, List<SimiProperty> arguments) {
@@ -955,54 +965,45 @@ class Interpreter implements
         boolean immutable = (expr.opener.type == TokenType.LEFT_BRACKET);
         SimiClassImpl objectClass = getObjectClass();
         SimiObjectImpl object;
-        if (expr.props.isEmpty()) {
-          object = SimiObjectImpl.empty(objectClass, immutable);
-        } else {
-          LinkedHashMap<String, SimiProperty> mapFields = new LinkedHashMap<>();
-          ArrayList<SimiProperty> arrayFields = new ArrayList<>();
-          int count = 0;
-          for (Expr propExpr : expr.props) {
-            String key;
-            Expr valueExpr;
-            if (expr.isDictionary) {
-              Expr.Assign assign = (Expr.Assign) propExpr;
-              key = assign.name.lexeme;
-              if (key == null) {
-                key = assign.name.literal.getString();
-              }
-              valueExpr = assign.value;
-            } else {
-              key = Constants.IMPLICIT + count;
-              valueExpr = propExpr;
+        LinkedHashMap<String, SimiProperty> mapFields = new LinkedHashMap<>();
+        ArrayList<SimiProperty> arrayFields = new ArrayList<>();
+        for (Expr propExpr : expr.props) {
+          String key;
+          Expr valueExpr;
+          if (propExpr instanceof Expr.Assign) {
+            Expr.Assign assign = (Expr.Assign) propExpr;
+            key = assign.name.lexeme;
+            if (key == null) {
+              key = assign.name.literal.getString();
             }
-            SimiProperty prop;
-            if (valueExpr instanceof Expr.Block) {
-              prop = new SimiValue.Callable(new BlockImpl((Expr.Block) valueExpr, environment), key, null);
-            } else {
-              prop = evaluate(valueExpr);
-            }
-            if (key.equals(TokenType.CLASS.toCode())
-                    && prop.getValue() instanceof SimiValue.Object
-                    && prop.getValue().getObject() instanceof SimiClassImpl) {
-              objectClass = (SimiClassImpl) prop.getValue().getObject();
-            } else {
-              if (expr.isDictionary) {
-                mapFields.put(key, prop);
-              } else {
-                arrayFields.add(prop);
-              }
-              count++;
-            }
-          }
-          if (expr.isDictionary) {
-            object = SimiObjectImpl.fromMap(objectClass, immutable, mapFields);
+            valueExpr = assign.value;
           } else {
-            object = SimiObjectImpl.fromArray(objectClass, immutable, arrayFields);
+            key = null;
+            valueExpr = propExpr;
           }
-          for (SimiValue value : object.values()) {
-            if (value instanceof SimiValue.Callable) {
-              ((SimiValue.Callable) value).bind(object);
+          SimiProperty prop;
+          if (valueExpr instanceof Expr.Block) {
+            prop = new SimiValue.Callable(new BlockImpl((Expr.Block) valueExpr, environment), key, null);
+          } else {
+            prop = evaluate(valueExpr);
+          }
+          if (key != null
+                  && key.equals(TokenType.CLASS.toCode())
+                  && prop.getValue() instanceof SimiValue.Object
+                  && prop.getValue().getObject() instanceof SimiClassImpl) {
+            objectClass = (SimiClassImpl) prop.getValue().getObject();
+          } else {
+            if (key != null) {
+              mapFields.put(key, prop);
+            } else {
+              arrayFields.add(prop);
             }
+          }
+        }
+        object = new SimiObjectImpl(objectClass, immutable, mapFields, arrayFields);
+        for (SimiValue value : object.values()) {
+          if (value instanceof SimiValue.Callable) {
+            ((SimiValue.Callable) value).bind(object);
           }
         }
         return new SimiValue.Object(object);
@@ -1086,7 +1087,7 @@ class Interpreter implements
     }
     if (a instanceof SimiValue.Object) {
       Token compareTo = new Token(TokenType.IDENTIFIER, Constants.COMPARE_TO, null, expr.operator.line, expr.operator.file);
-      return call(((SimiObjectImpl) a.getObject()).get(compareTo, 1, environment).getValue(), compareTo, Arrays.asList(a, b)).getValue();
+      return call(((SimiObjectImpl) a.getObject()).get(compareTo, 1, environment).getValue(), compareTo, Arrays.asList(b)).getValue();
     }
     return new SimiValue.Number(a.compareTo(b));
   }

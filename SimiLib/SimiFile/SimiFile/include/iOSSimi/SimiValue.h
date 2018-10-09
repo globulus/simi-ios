@@ -62,6 +62,10 @@
 
 - (id<SMSimiCallable>)getCallable;
 
+- (NSString *)getFileName;
+
+- (jint)getLineNumber;
+
 - (SMSimiValue_Number *)getNumber;
 
 - (id<SMSimiObject>)getObject;
@@ -69,6 +73,8 @@
 - (NSString *)getString;
 
 - (SMSimiValue *)getValue;
+
+- (jboolean)hasBreakPoint;
 
 - (void)setValueWithSMSimiValue:(SMSimiValue *)value;
 
@@ -170,9 +176,13 @@ J2OBJC_TYPE_LITERAL_HEADER(SMSimiValue_String)
 
 - (jboolean)isEqual:(id)obj;
 
+- (id)getJavaValue;
+
 - (SMSimiValue_Number *)greaterOrEqualWithSMSimiValue_Number:(SMSimiValue_Number *)o;
 
 - (SMSimiValue_Number *)greaterThanWithSMSimiValue_Number:(SMSimiValue_Number *)o;
+
+- (jboolean)isInteger;
 
 - (SMSimiValue_Number *)lessOrEqualWithSMSimiValue_Number:(SMSimiValue_Number *)o;
 

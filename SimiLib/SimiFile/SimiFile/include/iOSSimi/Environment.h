@@ -64,6 +64,13 @@
             withSMToken:(SMToken *)name
      withSMSimiProperty:(id<SMSimiProperty>)prop;
 
+- (void)assignAtWithInt:(jint)distance
+            withSMToken:(SMToken *)name
+     withSMSimiProperty:(id<SMSimiProperty>)prop
+            withBoolean:(jboolean)allowImmutable;
+
+- (SMEnvironment *)deepClone;
+
 - (void)endBlockWithSMStmt_BlockStmt:(id<SMStmt_BlockStmt>)stmt
                      withJavaUtilMap:(id<JavaUtilMap>)yieldedStmts;
 
@@ -77,6 +84,8 @@
                                       withJavaUtilMap:(id<JavaUtilMap>)yieldedStmts;
 
 - (jboolean)hasWithNSString:(NSString *)key;
+
+- (NSString *)toStringWithoutValuesOrGlobal;
 
 @end
 

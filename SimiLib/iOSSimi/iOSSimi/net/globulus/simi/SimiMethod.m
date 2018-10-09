@@ -8,6 +8,7 @@
 #include "BlockInterpreter.h"
 #include "SimiCallable.h"
 #include "SimiClassImpl.h"
+#include "SimiEnvironment.h"
 #include "SimiFunction.h"
 #include "SimiMethod.h"
 #include "SimiProperty.h"
@@ -25,9 +26,10 @@
 }
 
 - (id<SMSimiProperty>)callWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
+                           withSMSimiEnvironment:(id<SMSimiEnvironment>)environment
                                 withJavaUtilList:(id<JavaUtilList>)arguments
                                      withBoolean:(jboolean)rethrow {
-  return [((SMSimiFunction *) nil_chk(function_)) callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:rethrow];
+  return [((SMSimiFunction *) nil_chk(function_)) callWithSMBlockInterpreter:interpreter withSMSimiEnvironment:environment withJavaUtilList:arguments withBoolean:rethrow];
 }
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
@@ -41,6 +43,10 @@
 
 - (jint)getLineNumber {
   return SMSimiCallable_getLineNumber(self);
+}
+
+- (NSString *)getFileName {
+  return SMSimiCallable_getFileName(self);
 }
 
 - (jboolean)hasBreakPoint {
@@ -60,7 +66,7 @@
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithSMSimiClassImpl:withSMSimiFunction:);
   methods[1].selector = @selector(arity);
-  methods[2].selector = @selector(callWithSMBlockInterpreter:withJavaUtilList:withBoolean:);
+  methods[2].selector = @selector(callWithSMBlockInterpreter:withSMSimiEnvironment:withJavaUtilList:withBoolean:);
   methods[3].selector = @selector(toCodeWithInt:withBoolean:);
   methods[4].selector = @selector(description);
   #pragma clang diagnostic pop
@@ -68,7 +74,7 @@
     { "clazz_", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "function_", "LSMSimiFunction;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClassImpl;LSMSimiFunction;", "call", "LSMBlockInterpreter;LJavaUtilList;Z", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ", "toString" };
+  static const void *ptrTable[] = { "LSMSimiClassImpl;LSMSimiFunction;", "call", "LSMBlockInterpreter;LSMSimiEnvironment;LJavaUtilList;Z", "(LBlockInterpreter;LSimiEnvironment;Ljava/util/List<LSimiProperty;>;Z)LSimiProperty;", "toCode", "IZ", "toString" };
   static const J2ObjcClassInfo _SMSimiMethod = { "SimiMethod", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 5, 2, -1, -1, -1, -1, -1 };
   return &_SMSimiMethod;
 }

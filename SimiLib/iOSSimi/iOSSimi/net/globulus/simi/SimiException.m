@@ -3,6 +3,7 @@
 //  source: src/SimiException.java
 //
 
+#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/lang/AssertionError.h"
 #include "java/lang/RuntimeException.h"
@@ -70,8 +71,17 @@ J2OBJC_FIELD_SETTER(SMSimiException, clazz_, id<SMSimiClass>)
   return -1;
 }
 
+- (NSString *)getFileName {
+  return nil;
+}
+
 - (jboolean)hasBreakPoint {
   return false;
+}
+
+- (jint)compareToWithId:(id<SMSimiObject>)o {
+  (void) cast_check(o, SMSimiObject_class_());
+  return [((id<SMSimiClass>) nil_chk(clazz_)) compareToWithId:o];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -85,7 +95,9 @@ J2OBJC_FIELD_SETTER(SMSimiException, clazz_, id<SMSimiClass>)
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 7, -1, -1 },
     { NULL, "LNSString;", 0x1, 8, 9, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, 11, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -99,13 +111,15 @@ J2OBJC_FIELD_SETTER(SMSimiException, clazz_, id<SMSimiClass>)
   methods[6].selector = @selector(values);
   methods[7].selector = @selector(toCodeWithInt:withBoolean:);
   methods[8].selector = @selector(getLineNumber);
-  methods[9].selector = @selector(hasBreakPoint);
+  methods[9].selector = @selector(getFileName);
+  methods[10].selector = @selector(hasBreakPoint);
+  methods[11].selector = @selector(compareToWithId:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "clazz_", "LSMSimiClass;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClass;LNSString;", "get", "LNSString;LSMSimiEnvironment;", "set", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;", "toCode", "IZ" };
-  static const J2ObjcClassInfo _SMSimiException = { "SimiException", "net.globulus.simi", ptrTable, methods, fields, 7, 0x11, 10, 1, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClass;LNSString;", "get", "LNSString;LSMSimiEnvironment;", "set", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;", "toCode", "IZ", "compareTo", "LSMSimiObject;" };
+  static const J2ObjcClassInfo _SMSimiException = { "SimiException", "net.globulus.simi", ptrTable, methods, fields, 7, 0x11, 12, 1, -1, -1, -1, -1, -1 };
   return &_SMSimiException;
 }
 

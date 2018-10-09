@@ -21,13 +21,22 @@
 #if !defined (SMParser_) && (INCLUDE_ALL_NetGlobulusSimiParser || defined(INCLUDE_SMParser))
 #define SMParser_
 
+@class SMDebugger;
+@class SMExpr;
+@class SMToken;
 @protocol JavaUtilList;
 
 @interface SMParser : NSObject
 
 #pragma mark Package-Private
 
-- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tokens;
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tokens
+                                withSMDebugger:(SMDebugger *)debugger;
+
++ (SMExpr *)getAssignExprWithSMParser:(SMParser *)parser
+                           withSMExpr:(SMExpr *)expr
+                          withSMToken:(SMToken *)equals
+                           withSMExpr:(SMExpr *)value;
 
 - (id<JavaUtilList>)parse;
 
@@ -39,11 +48,13 @@
 
 J2OBJC_EMPTY_STATIC_INIT(SMParser)
 
-FOUNDATION_EXPORT void SMParser_initWithJavaUtilList_(SMParser *self, id<JavaUtilList> tokens);
+FOUNDATION_EXPORT void SMParser_initWithJavaUtilList_withSMDebugger_(SMParser *self, id<JavaUtilList> tokens, SMDebugger *debugger);
 
-FOUNDATION_EXPORT SMParser *new_SMParser_initWithJavaUtilList_(id<JavaUtilList> tokens) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMParser *new_SMParser_initWithJavaUtilList_withSMDebugger_(id<JavaUtilList> tokens, SMDebugger *debugger) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMParser *create_SMParser_initWithJavaUtilList_(id<JavaUtilList> tokens);
+FOUNDATION_EXPORT SMParser *create_SMParser_initWithJavaUtilList_withSMDebugger_(id<JavaUtilList> tokens, SMDebugger *debugger);
+
+FOUNDATION_EXPORT SMExpr *SMParser_getAssignExprWithSMParser_withSMExpr_withSMToken_withSMExpr_(SMParser *parser, SMExpr *expr, SMToken *equals, SMExpr *value);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMParser)
 

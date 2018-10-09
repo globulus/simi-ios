@@ -5,7 +5,7 @@ import java.util.List;
 public interface SimiCallable extends Codifiable {
 
   int arity();
-  SimiProperty call(BlockInterpreter interpreter, List<SimiProperty> arguments, boolean rethrow);
+  SimiProperty call(BlockInterpreter interpreter, SimiEnvironment environment, List<SimiProperty> arguments, boolean rethrow);
 
   default String toCode(int indentationLevel, boolean ignoreFirst) {
     return null;
@@ -13,6 +13,7 @@ public interface SimiCallable extends Codifiable {
   default int getLineNumber() {
     return -1;
   }
+  default String getFileName() { return null; }
   default boolean hasBreakPoint() {
     return false;
   }

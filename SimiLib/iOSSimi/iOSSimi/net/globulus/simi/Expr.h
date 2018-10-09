@@ -198,6 +198,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Visitor)
 
 - (jboolean)canReturn;
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (id<JavaUtilList>)getStatements;
@@ -261,6 +263,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Block)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -313,6 +317,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Annotations)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -368,6 +374,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Assign)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -418,6 +426,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectDecomp)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -474,6 +484,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Binary)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -532,6 +544,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Call)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -586,6 +600,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Get)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -633,6 +649,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Grouping)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -682,6 +700,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Gu)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -729,6 +749,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Ivic)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -780,6 +802,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Literal)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -836,6 +860,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Logical)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -895,6 +921,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Set)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -950,6 +978,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Super)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -1002,6 +1032,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Self)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -1052,6 +1084,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Unary)
 
 #pragma mark Public
 
+- (NSString *)getFileName;
+
 - (jint)getLineNumber;
 
 - (jboolean)hasBreakPoint;
@@ -1098,10 +1132,11 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Variable)
  @public
   SMToken *opener_;
   id<JavaUtilList> props_;
-  jboolean isDictionary_;
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 
@@ -1113,8 +1148,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Variable)
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMToken:(SMToken *)opener
-                         withJavaUtilList:(id<JavaUtilList>)props
-                              withBoolean:(jboolean)isDictionary;
+                         withJavaUtilList:(id<JavaUtilList>)props;
 
 - (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
              withNSObjectArray:(IOSObjectArray *)params;
@@ -1130,11 +1164,11 @@ J2OBJC_EMPTY_STATIC_INIT(SMExpr_ObjectLiteral)
 J2OBJC_FIELD_SETTER(SMExpr_ObjectLiteral, opener_, SMToken *)
 J2OBJC_FIELD_SETTER(SMExpr_ObjectLiteral, props_, id<JavaUtilList>)
 
-FOUNDATION_EXPORT void SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMExpr_ObjectLiteral *self, SMToken *opener, id<JavaUtilList> props, jboolean isDictionary);
+FOUNDATION_EXPORT void SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_(SMExpr_ObjectLiteral *self, SMToken *opener, id<JavaUtilList> props);
 
-FOUNDATION_EXPORT SMExpr_ObjectLiteral *new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMExpr_ObjectLiteral *new_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_(SMToken *opener, id<JavaUtilList> props) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMExpr_ObjectLiteral *create_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_withBoolean_(SMToken *opener, id<JavaUtilList> props, jboolean isDictionary);
+FOUNDATION_EXPORT SMExpr_ObjectLiteral *create_SMExpr_ObjectLiteral_initWithSMToken_withJavaUtilList_(SMToken *opener, id<JavaUtilList> props);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectLiteral)
 
@@ -1158,6 +1192,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr_ObjectLiteral)
 }
 
 #pragma mark Public
+
+- (NSString *)getFileName;
 
 - (jint)getLineNumber;
 

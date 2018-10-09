@@ -74,6 +74,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   return -1;
 }
 
+- (NSString *)getFileName {
+  return nil;
+}
+
 - (jboolean)hasBreakPoint {
   return false;
 }
@@ -115,6 +119,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 5, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue_Number;", 0x1, -1, -1, -1, -1, -1, -1 },
@@ -131,14 +136,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[4].selector = @selector(setValueWithSMSimiValue:);
   methods[5].selector = @selector(getAnnotations);
   methods[6].selector = @selector(getLineNumber);
-  methods[7].selector = @selector(hasBreakPoint);
-  methods[8].selector = @selector(getString);
-  methods[9].selector = @selector(getNumber);
-  methods[10].selector = @selector(getObject);
-  methods[11].selector = @selector(getCallable);
+  methods[7].selector = @selector(getFileName);
+  methods[8].selector = @selector(hasBreakPoint);
+  methods[9].selector = @selector(getString);
+  methods[10].selector = @selector(getNumber);
+  methods[11].selector = @selector(getObject);
+  methods[12].selector = @selector(getCallable);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "copy", "clone", "Z", "setValue", "LSMSimiValue;", "()Ljava/util/List<LSimiObject;>;", "LSMSimiValue_String;LSMSimiValue_Number;LSMSimiValue_Object;LSMSimiValue_Callable;LSMSimiValue_IncompatibleValuesException;", "Ljava/lang/Object;LSimiProperty;LCodifiable;Ljava/lang/Comparable<LSimiValue;>;" };
-  static const J2ObjcClassInfo _SMSimiValue = { "SimiValue", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x401, 12, 0, -1, 6, -1, 7, -1 };
+  static const J2ObjcClassInfo _SMSimiValue = { "SimiValue", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x401, 13, 0, -1, 6, -1, 7, -1 };
   return &_SMSimiValue;
 }
 
@@ -536,7 +542,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiValue_Number)
 
 - (jint)compareToWithId:(SMSimiValue *)o {
   (void) cast_chk(o, [SMSimiValue class]);
-  @throw new_JavaLangRuntimeException_initWithNSString_(@"Unable to compare objects by default, implement in subclass!");
+  if (!([o isKindOfClass:[SMSimiValue_Object class]])) {
+    @throw new_JavaLangRuntimeException_initWithNSString_(JreStrcat("$@", @"Unable to compare Object with ", o));
+  }
+  return [((id<SMSimiObject>) nil_chk(value_)) compareToWithId:[((SMSimiValue *) nil_chk(o)) getObject]];
 }
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel

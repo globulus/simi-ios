@@ -25,12 +25,16 @@
 #define INCLUDE_SMCodifiable 1
 #include "Codifiable.h"
 
+#define RESTRICT_JavaLangComparable 1
+#define INCLUDE_JavaLangComparable 1
+#include "java/lang/Comparable.h"
+
 @protocol JavaUtilList;
 @protocol SMSimiClass;
 @protocol SMSimiEnvironment;
 @protocol SMSimiProperty;
 
-@protocol SMSimiObject < SMCodifiable, JavaObject >
+@protocol SMSimiObject < SMCodifiable, JavaLangComparable, JavaObject >
 
 - (id<SMSimiClass>)getSimiClass;
 

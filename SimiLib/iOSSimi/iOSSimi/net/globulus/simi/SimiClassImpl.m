@@ -62,6 +62,10 @@
 
 @end
 
+inline SMSimiClassImpl *SMSimiClassImpl_get_CLASS(void);
+static SMSimiClassImpl *SMSimiClassImpl_CLASS;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiClassImpl, CLASS, SMSimiClassImpl *)
+
 __attribute__((unused)) static void SMSimiClassImpl_initWithSMSimiClassImpl_Type_withNSString_(SMSimiClassImpl *self, SMSimiClassImpl_Type *type, NSString *name);
 
 __attribute__((unused)) static SMSimiClassImpl *new_SMSimiClassImpl_initWithSMSimiClassImpl_Type_withNSString_(SMSimiClassImpl_Type *type, NSString *name) NS_RETURNS_RETAINED;
@@ -273,13 +277,7 @@ __attribute__((unused)) static SMSimiClassImpl_$Lambda$11 *create_SMSimiClassImp
 
 J2OBJC_INITIALIZED_DEFN(SMSimiClassImpl)
 
-SMSimiClassImpl *SMSimiClassImpl_CLASS;
-
 @implementation SMSimiClassImpl
-
-+ (SMSimiClassImpl *)CLASS {
-  return SMSimiClassImpl_CLASS;
-}
 
 - (instancetype __nonnull)initWithSMSimiClassImpl_Type:(SMSimiClassImpl_Type *)type
                                           withNSString:(NSString *)name {
@@ -308,7 +306,7 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
   if (method != nil) {
     return new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_(method, name->lexeme_, self), ((SMSimiFunction *) nil_chk(method->function_))->annotations_);
   }
-  if (superclasses_ != nil) {
+  if (superclasses_ != nil && ![((NSString *) nil_chk(name->lexeme_)) java_hasPrefix:SMConstants_PRIVATE]) {
     for (SMSimiClassImpl * __strong superclass_ in superclasses_) {
       id<SMSimiProperty> superclassProp = [((SMSimiClassImpl *) nil_chk(superclass_)) getWithSMToken:name withJavaLangInteger:arity withSMEnvironment:environment];
       if (superclassProp != nil) {
@@ -335,7 +333,7 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
       return new_SMSimiMethod_initWithSMSimiClassImpl_withSMSimiFunction_(self, [((SMSimiFunction *) nil_chk([methods_ getWithId:of])) bindWithSMSimiObjectImpl:binder]);
     }
   }
-  if (superclasses_ != nil) {
+  if (superclasses_ != nil && ![((NSString *) nil_chk(name)) java_hasPrefix:SMConstants_PRIVATE]) {
     for (SMSimiClassImpl * __strong superclass_ in superclasses_) {
       SMSimiMethod *method = [((SMSimiClassImpl *) nil_chk(superclass_)) findMethodWithSMSimiObjectImpl:instance withNSString:name withJavaLangInteger:arity];
       if (method != nil) {
@@ -359,7 +357,7 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
 
 - (id<SMSimiProperty>)init__WithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter
                                   withJavaUtilList:(id<JavaUtilList>)arguments {
-  SMSimiObjectImpl *instance = new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(self, true, new_JavaUtilLinkedHashMap_init());
+  SMSimiObjectImpl *instance = SMSimiObjectImpl_instanceWithSMSimiClassImpl_withJavaUtilLinkedHashMap_(self, nil);
   SMSimiMethod *initializer = [self findMethodWithSMSimiObjectImpl:instance withNSString:SMConstants_INIT withJavaLangInteger:JavaLangInteger_valueOfWithInt_([((id<JavaUtilList>) nil_chk(arguments)) size])];
   if (initializer == nil) {
     initializer = [self findMethodWithSMSimiObjectImpl:instance withNSString:JreStrcat("$$", SMConstants_PRIVATE, SMConstants_INIT) withJavaLangInteger:JavaLangInteger_valueOfWithInt_([arguments size])];
@@ -382,7 +380,7 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
       }
     }
     else {
-      (void) [initializer->function_ callWithSMBlockInterpreter:interpreter withJavaUtilList:arguments withBoolean:false];
+      (void) [initializer->function_ callWithSMBlockInterpreter:interpreter withSMSimiEnvironment:nil withJavaUtilList:arguments withBoolean:false];
     }
   }
   return new_SMSimiValue_Object_initWithSMSimiObject_(instance);
@@ -416,7 +414,7 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
 - (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
   JavaUtilArrayList *values = [self getEnumeratedValuesWithSMSimiClassImpl:objectClass];
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((id<JavaUtilMap>) nil_chk(methods_)) entrySet])) {
-    [((JavaUtilArrayList *) nil_chk(values)) addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiValue_(objectClass, new_SMSimiValue_String_initWithNSString_(((SMOverloadableFunction *) nil_chk([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]))->name_), new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_([entry_ getValue], ((SMOverloadableFunction *) nil_chk([entry_ getKey]))->name_, self)))];
+    [((JavaUtilArrayList *) nil_chk(values)) addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_String_initWithNSString_(((SMOverloadableFunction *) nil_chk([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]))->name_), new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_([entry_ getValue], ((SMOverloadableFunction *) nil_chk([entry_ getKey]))->name_, self)))];
   }
   return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, values);
 }
@@ -480,7 +478,7 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
     { "superclasses_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 20, -1 },
     { "stmt_", "LSMStmt_Class;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "methods_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x10, -1, -1, 21, -1 },
-    { "CLASS", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x18, -1, 22, -1, -1 },
+    { "CLASS", "LSMSimiClassImpl;", .constantValue.asLong = 0, 0x1a, -1, 22, -1, -1 },
   };
   static const void *ptrTable[] = { "LSMSimiClassImpl_Type;LNSString;", "LSMSimiClassImpl_Type;LNSString;LJavaUtilList;LJavaUtilMap;LJavaUtilMap;LSMStmt_Class;", "(LSimiClassImpl$Type;Ljava/lang/String;Ljava/util/List<LSimiClassImpl;>;Ljava/util/Map<Ljava/lang/String;LSimiProperty;>;Ljava/util/Map<LOverloadableFunction;LSimiFunction;>;LStmt$Class;)V", "get", "LSMToken;LJavaLangInteger;LSMEnvironment;", "findMethod", "LSMSimiObjectImpl;LNSString;LJavaLangInteger;", "findClosestVarargMethod", "LSMSimiObjectImpl;LNSString;I", "init", "LSMBlockInterpreter;LJavaUtilList;", "(LBlockInterpreter;Ljava/util/List<LSimiProperty;>;)LSimiProperty;", "toString", "()Ljava/util/Set<LSimiFunction;>;", "enumerate", "LSMSimiClassImpl;", "()Ljava/util/Set<Ljava/lang/String;>;", "()Ljava/util/ArrayList<LSimiValue;>;", "toCode", "IZ", "Ljava/util/List<LSimiClassImpl;>;", "Ljava/util/Map<LOverloadableFunction;LSimiFunction;>;", &SMSimiClassImpl_CLASS, "LSMSimiClassImpl_SuperClassesList;LSMSimiClassImpl_Type;" };
   static const J2ObjcClassInfo _SMSimiClassImpl = { "SimiClassImpl", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 12, 6, -1, 23, -1, -1, -1 };
@@ -497,7 +495,7 @@ SMSimiClassImpl *SMSimiClassImpl_CLASS;
 @end
 
 void SMSimiClassImpl_initWithSMSimiClassImpl_Type_withNSString_(SMSimiClassImpl *self, SMSimiClassImpl_Type *type, NSString *name) {
-  SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(self, nil, true, new_JavaUtilLinkedHashMap_init());
+  SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(self, nil, true, new_JavaUtilLinkedHashMap_init(), nil);
   self->type_ = type;
   self->name_ = name;
   self->superclasses_ = nil;
@@ -514,7 +512,7 @@ SMSimiClassImpl *create_SMSimiClassImpl_initWithSMSimiClassImpl_Type_withNSStrin
 }
 
 void SMSimiClassImpl_initWithSMSimiClassImpl_Type_withNSString_withJavaUtilList_withJavaUtilMap_withJavaUtilMap_withSMStmt_Class_(SMSimiClassImpl *self, SMSimiClassImpl_Type *type, NSString *name, id<JavaUtilList> superclasses, id<JavaUtilMap> constants, id<JavaUtilMap> methods, SMStmt_Class *stmt) {
-  SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(self, SMSimiClassImpl_CLASS, type != JreLoadEnum(SMSimiClassImpl_Type, OPEN), new_JavaUtilLinkedHashMap_initWithJavaUtilMap_(constants));
+  SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(self, SMSimiClassImpl_CLASS, type != JreLoadEnum(SMSimiClassImpl_Type, OPEN), new_JavaUtilLinkedHashMap_initWithJavaUtilMap_(constants), nil);
   self->type_ = type;
   self->superclasses_ = superclasses;
   self->name_ = name;
@@ -560,7 +558,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiClassImpl)
 }
 
 - (SMSimiValue *)cloneWithBoolean:(jboolean)mutable_ {
-  @throw new_JavaLangAssertionError_init();
+  return [self copy__];
 }
 
 - (jint)compareToWithId:(SMSimiValue *)o {
@@ -575,7 +573,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMSimiClassImpl)
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, 1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
     { NULL, "LSMSimiValue;", 0x1, 2, -1, -1, -1, -1, -1 },
     { NULL, "LSMSimiValue;", 0x1, 3, 4, -1, -1, -1, -1 },
     { NULL, "I", 0x1, 5, 6, -1, -1, -1, -1 },

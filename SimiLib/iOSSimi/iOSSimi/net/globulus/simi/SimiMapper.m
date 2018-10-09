@@ -246,7 +246,7 @@ id<SMSimiObject> SMSimiMapper_toObjectWithJavaUtilMap_withBoolean_withSMSimiClas
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([map entrySet])) {
     (void) [propMap putWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey] withId:SMSimiMapper_toSimiPropertyWithId_withSMSimiClassImpl_([entry_ getValue], objectClass)];
   }
-  return new_SMSimiObjectImpl_Dictionary_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(objectClass, immutable, propMap);
+  return SMSimiObjectImpl_fromMapWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_(objectClass, immutable, propMap);
 }
 
 id<SMSimiObject> SMSimiMapper_toObjectWithJavaUtilList_withBoolean_(id<JavaUtilList> list, jboolean immutable) {
@@ -265,22 +265,13 @@ id<SMSimiObject> SMSimiMapper_toObjectWithJavaUtilList_withBoolean_withSMSimiCla
   for (id __strong item in list) {
     [propList addWithId:SMSimiMapper_toSimiPropertyWithId_withSMSimiClassImpl_(item, objectClass)];
   }
-  return new_SMSimiObjectImpl_Array_initWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, immutable, propList);
+  return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, immutable, propList);
 }
 
 id<JavaUtilMap> SMSimiMapper_fromObjectWithSMSimiObject_(id<SMSimiObject> object) {
   SMSimiMapper_initialize();
-  if ([((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk(object, [SMSimiObjectImpl class])))) isArray]) {
-    @throw new_JavaLangIllegalArgumentException_initWithNSString_(@"Expected a dictionary object!");
-  }
-  SMSimiObjectImpl_Dictionary *dict;
-  if ([object isKindOfClass:[SMSimiObjectImpl_Dictionary class]]) {
-    dict = (SMSimiObjectImpl_Dictionary *) cast_chk(object, [SMSimiObjectImpl_Dictionary class]);
-  }
-  else {
-    dict = [((SMSimiObjectImpl_InitiallyEmpty *) nil_chk(((SMSimiObjectImpl_InitiallyEmpty *) cast_chk(object, [SMSimiObjectImpl_InitiallyEmpty class])))) asDictionary];
-  }
-  id<JavaUtilMap> map = new_JavaUtilHashMap_initWithInt_([((JavaUtilLinkedHashMap *) nil_chk(((SMSimiObjectImpl_Dictionary *) nil_chk(dict))->fields_)) size]);
+  SMSimiObjectImpl *dict = (SMSimiObjectImpl *) cast_chk(object, [SMSimiObjectImpl class]);
+  id<JavaUtilMap> map = new_JavaUtilHashMap_initWithInt_([((JavaUtilLinkedHashMap *) nil_chk(((SMSimiObjectImpl *) nil_chk(dict))->fields_)) size]);
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([dict->fields_ entrySet])) {
     (void) [map putWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey] withId:SMSimiMapper_fromSimiValueWithSMSimiValue_([((id<SMSimiProperty>) nil_chk([entry_ getValue])) getValue])];
   }
@@ -289,17 +280,8 @@ id<JavaUtilMap> SMSimiMapper_fromObjectWithSMSimiObject_(id<SMSimiObject> object
 
 id<JavaUtilList> SMSimiMapper_fromArrayWithSMSimiObject_(id<SMSimiObject> object) {
   SMSimiMapper_initialize();
-  if (![((SMSimiObjectImpl *) nil_chk(((SMSimiObjectImpl *) cast_chk(object, [SMSimiObjectImpl class])))) isArray]) {
-    @throw new_JavaLangIllegalArgumentException_initWithNSString_(@"Expected an array object!");
-  }
-  SMSimiObjectImpl_Array *array;
-  if ([object isKindOfClass:[SMSimiObjectImpl_Array class]]) {
-    array = (SMSimiObjectImpl_Array *) cast_chk(object, [SMSimiObjectImpl_Array class]);
-  }
-  else {
-    array = [((SMSimiObjectImpl_InitiallyEmpty *) nil_chk(((SMSimiObjectImpl_InitiallyEmpty *) cast_chk(object, [SMSimiObjectImpl_InitiallyEmpty class])))) asArray];
-  }
-  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk(((SMSimiObjectImpl_Array *) nil_chk(array))->fields_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiMapper_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiMapper_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
+  SMSimiObjectImpl *array = (SMSimiObjectImpl *) cast_chk(object, [SMSimiObjectImpl class]);
+  return [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((JavaUtilArrayList *) nil_chk(((SMSimiObjectImpl *) nil_chk(array))->line_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiMapper_$Lambda$1, instance)])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMSimiMapper_$Lambda$2, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_toList()];
 }
 
 id<SMSimiProperty> SMSimiMapper_toSimiPropertyWithId_(id value) {

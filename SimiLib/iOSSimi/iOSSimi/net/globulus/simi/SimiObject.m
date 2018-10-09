@@ -31,8 +31,8 @@
   methods[4].selector = @selector(keys);
   methods[5].selector = @selector(values);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "get", "LNSString;LSMSimiEnvironment;", "set", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;" };
-  static const J2ObjcClassInfo _SMSimiObject = { "SimiObject", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 6, 0, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "get", "LNSString;LSMSimiEnvironment;", "set", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;", "Ljava/lang/Object;LCodifiable;Ljava/lang/Comparable<LSimiObject;>;" };
+  static const J2ObjcClassInfo _SMSimiObject = { "SimiObject", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 6, 0, -1, -1, -1, 7, -1 };
   return &_SMSimiObject;
 }
 

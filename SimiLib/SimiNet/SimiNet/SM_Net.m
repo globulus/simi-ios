@@ -83,7 +83,7 @@
                                       [props putWithId:@"body" withId:[[SMSimiValue_String alloc] initWithNSString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]]];
                                       SMSimiValue *simiResponse = [[SMSimiValue_Object alloc] initWithSMSimiObject:[interpeter newObjectWithBoolean:true withJavaUtilLinkedHashMap:props]];
                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                          [[[callback getValue] getCallable] callWithSMBlockInterpreter:interpeter withJavaUtilList:[JavaUtilCollections singletonListWithId:simiResponse] withBoolean:false];
+                                          [[[callback getValue] getCallable] callWithSMBlockInterpreter:interpeter withSMSimiEnvironment:nil withJavaUtilList:[JavaUtilCollections singletonListWithId:simiResponse] withBoolean:false];
                                       });
                                   }];
     [task resume];

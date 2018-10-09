@@ -58,6 +58,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     }
 
     @Override
+    public String getFileName() {
+      return expr.getFileName();
+    }
+
+    @Override
     public boolean hasBreakPoint() {
       return false;
     }
@@ -83,6 +88,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public int getLineNumber() {
       return name.line;
+    }
+
+    @Override
+    public String getFileName() {
+      return name.file;
     }
 
     @Override
@@ -158,6 +168,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     }
 
     @Override
+    public String getFileName() {
+      return opener.file;
+    }
+
+    @Override
     public boolean hasBreakPoint() {
       return opener.hasBreakpoint;
     }
@@ -186,6 +201,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     }
 
     @Override
+    public String getFileName() {
+      return name.file;
+    }
+
+    @Override
     public boolean hasBreakPoint() {
       return name.hasBreakpoint;
     }
@@ -211,6 +231,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public int getLineNumber() {
       return expression.getLineNumber();
+    }
+
+    @Override
+    public String getFileName() {
+      return expression.getFileName();
     }
 
     @Override
@@ -251,6 +276,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     }
 
     @Override
+    public String getFileName() {
+      return name.file;
+    }
+
+    @Override
     public boolean hasBreakPoint() {
       return name.hasBreakpoint;
     }
@@ -286,6 +316,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
       @Override
       public int getLineNumber() {
         return condition.getLineNumber();
+      }
+
+      @Override
+      public String getFileName() {
+        return condition.getFileName();
       }
 
       @Override
@@ -341,6 +376,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     }
 
     @Override
+    public String getFileName() {
+      return ifstmt.getFileName();
+    }
+
+    @Override
     public boolean hasBreakPoint() {
       return ifstmt.hasBreakPoint();
     }
@@ -366,6 +406,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public int getLineNumber() {
       return expression.getLineNumber();
+    }
+
+    @Override
+    public String getFileName() {
+      return expression.getFileName();
     }
 
     @Override
@@ -399,6 +444,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     }
 
     @Override
+    public String getFileName() {
+      return keyword.file;
+    }
+
+    @Override
     public boolean hasBreakPoint() {
       return keyword.hasBreakpoint;
     }
@@ -426,6 +476,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public int getLineNumber() {
       return keyword.line;
+    }
+
+    @Override
+    public String getFileName() {
+      return keyword.file;
     }
 
     @Override
@@ -458,6 +513,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public int getLineNumber() {
       return keyword.line;
+    }
+
+    @Override
+    public String getFileName() {
+      return keyword.file;
     }
 
     @Override
@@ -500,6 +560,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public int getLineNumber() {
       return condition.getLineNumber();
+    }
+
+    @Override
+    public String getFileName() {
+      return condition.getFileName();
     }
 
     @Override
@@ -549,6 +614,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     }
 
     @Override
+    public String getFileName() {
+      return var.getFileName();
+    }
+
+    @Override
     public boolean hasBreakPoint() {
       return var.hasBreakPoint();
     }
@@ -576,6 +646,11 @@ abstract class Stmt implements SimiStatement, Codifiable {
     @Override
     public int getLineNumber() {
       return keyword.line;
+    }
+
+    @Override
+    public String getFileName() {
+      return keyword.file;
     }
 
     @Override
