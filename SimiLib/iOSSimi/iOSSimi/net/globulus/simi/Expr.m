@@ -444,7 +444,12 @@ id<JavaUtilList> SMExpr_Block_processStatements(SMExpr_Block *self) {
       id<JavaUtilList> otherStmts = new_JavaUtilArrayList_initWithInt_(size - i + 1);
       [otherStmts addWithId:assignment];
       [otherStmts addAllWithJavaUtilCollection:[self->statements_ subListWithInt:i + 1 withInt:size]];
-      SMExpr_Call *call = new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(((SMExpr_Call *) nil_chk(expr->value_))->callee_, expr->value_->paren_, new_JavaUtilArrayList_initWithJavaUtilCollection_(expr->value_->arguments_));
+      SMExpr *callee = ((SMExpr_Call *) nil_chk(expr->value_))->callee_;
+      if ([callee isKindOfClass:[SMExpr_Get class]]) {
+        SMExpr_Get *get = (SMExpr_Get *) cast_chk(callee, [SMExpr_Get class]);
+        callee = new_SMExpr_Get_initWithSMToken_withSMExpr_withSMExpr_withJavaLangInteger_(((SMExpr_Get *) nil_chk(get))->origin_, get->object_, get->name_, JavaLangInteger_valueOfWithInt_([((JavaLangInteger *) nil_chk(get->arity_)) intValue] + 1));
+      }
+      SMExpr_Call *call = new_SMExpr_Call_initWithSMExpr_withSMToken_withJavaUtilList_(callee, expr->value_->paren_, new_JavaUtilArrayList_initWithJavaUtilCollection_(expr->value_->arguments_));
       [((id<JavaUtilList>) nil_chk(call->arguments_)) addWithId:new_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(JreLoadEnum(SMTokenType, DEF), nil, nil, ((SMToken *) nil_chk(expr->assign_))->line_, expr->assign_->file_), JavaUtilCollections_singletonListWithId_(response), otherStmts, true)];
       [localStatements addWithId:new_SMStmt_Expression_initWithSMExpr_(call)];
       break;
