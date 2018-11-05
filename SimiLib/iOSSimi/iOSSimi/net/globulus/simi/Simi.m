@@ -78,9 +78,10 @@ __attribute__((unused)) static id<JavaUtilList> SMSimi_scanImportsWithJavaUtilLi
 
 - (instancetype __nonnull)init;
 
-- (void)reportWithInt:(jint)line
-         withNSString:(NSString *)where
-         withNSString:(NSString *)message;
+- (void)reportWithNSString:(NSString *)file
+                   withInt:(jint)line
+              withNSString:(NSString *)where
+              withNSString:(NSString *)message;
 
 - (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error;
 
@@ -187,7 +188,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [SMSimi class]) {
-    SMSimi_debugger = new_SMDebugger_init();
+    SMSimi_debugger = new_SMDebugger_initWithSMDebugger_DebuggerInterface_(new_SMDebugger_ConsoleInterface_init());
     SMSimi_WATCHER = new_SMSimi_1_init();
     J2OBJC_SET_INITIALIZED(SMSimi)
   }
@@ -256,10 +257,11 @@ void SMSimi_runWithNSString_(NSString *source) {
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
   time = JavaLangSystem_currentTimeMillis();
   [JreLoadStatic(JavaLangSystem, out) printWithNSString:@"Parsing..."];
+  SMSimi_interpreter = new_SMInterpreter_initWithJavaUtilCollection_withSMDebugger_(JavaUtilCollections_singletonListWithId_(nativeModulesManager), SMSimi_debugger);
+  [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) setInterpreterWithSMBlockInterpreter:SMSimi_interpreter];
   SMParser *parser = new_SMParser_initWithJavaUtilList_withSMDebugger_(tokens, SMSimi_debugger);
   id<JavaUtilList> statements = [parser parse];
   if (SMSimi_hadError) return;
-  SMSimi_interpreter = new_SMInterpreter_initWithJavaUtilCollection_withSMDebugger_(JavaUtilCollections_singletonListWithId_(nativeModulesManager), SMSimi_debugger);
   SMResolver *resolver = new_SMResolver_initWithSMInterpreter_(SMSimi_interpreter);
   [resolver resolveWithJavaUtilList:statements];
   [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("CJ$", ' ', (JavaLangSystem_currentTimeMillis() - time), @" ms")];
@@ -311,15 +313,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)reportWithInt:(jint)line
-         withNSString:(NSString *)where
-         withNSString:(NSString *)message {
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$I$$$$", @"[line ", line, @"] Error", where, @": ", message)];
+- (void)reportWithNSString:(NSString *)file
+                   withInt:(jint)line
+              withNSString:(NSString *)where
+              withNSString:(NSString *)message {
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$$I$$$$", @"[\"", file, @"\" line ", line, @"] Error", where, @": ", message)];
   *JreLoadStaticRef(SMSimi, hadError) = true;
 }
 
 - (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error {
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$$$IC", [((SMRuntimeError *) nil_chk(error)) getMessage], @"\n[", ((SMToken *) nil_chk(error->token_))->file_, @" line ", error->token_->line_, ']')];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$$$IC", [((SMRuntimeError *) nil_chk(error)) getMessage], @"\n[\"", ((SMToken *) nil_chk(error->token_))->file_, @"\" line ", error->token_->line_, ']')];
   *JreLoadStaticRef(SMSimi, hadRuntimeError) = true;
 }
 
@@ -333,10 +336,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
-  methods[1].selector = @selector(reportWithInt:withNSString:withNSString:);
+  methods[1].selector = @selector(reportWithNSString:withInt:withNSString:withNSString:);
   methods[2].selector = @selector(runtimeErrorWithSMRuntimeError:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "report", "ILNSString;LNSString;", "runtimeError", "LSMRuntimeError;", "LSMSimi;" };
+  static const void *ptrTable[] = { "report", "LNSString;ILNSString;LNSString;", "runtimeError", "LSMRuntimeError;", "LSMSimi;" };
   static const J2ObjcClassInfo _SMSimi_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 4, -1, -1, -1, -1 };
   return &_SMSimi_1;
 }

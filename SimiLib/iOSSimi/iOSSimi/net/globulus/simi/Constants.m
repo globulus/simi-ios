@@ -44,6 +44,9 @@ NSString *SMConstants_GLOBALS_CLASS_NAME = @"Globals";
 NSString *SMConstants_CLASS_GLOBALS = @"Globals";
 NSString *SMConstants_PACKAGE_SIMI_API = @"net.globulus.simi.api";
 NSString *SMConstants_API_CLASS_NAME = @"JavaApi";
+NSString *SMConstants_EXCEPTION_SCANNER = @"ScannerException";
+NSString *SMConstants_EXCEPTION_PARSER = @"ParserException";
+NSString *SMConstants_EXCEPTION_INTERPRETER = @"InterpreterException";
 NSString *SMConstants_EXCEPTION_NUMBER_FORMAT = @"NumberFormatException";
 NSString *SMConstants_EXCEPTION_NIL_REFERENCE = @"NilReferenceException";
 NSString *SMConstants_EXCEPTION_TYPE_MISMATCH = @"TypeMismatchException";
@@ -154,6 +157,18 @@ NSString *SMConstants_EXCEPTION_TYPE_MISMATCH = @"TypeMismatchException";
   return SMConstants_API_CLASS_NAME;
 }
 
++ (NSString *)EXCEPTION_SCANNER {
+  return SMConstants_EXCEPTION_SCANNER;
+}
+
++ (NSString *)EXCEPTION_PARSER {
+  return SMConstants_EXCEPTION_PARSER;
+}
+
++ (NSString *)EXCEPTION_INTERPRETER {
+  return SMConstants_EXCEPTION_INTERPRETER;
+}
+
 + (NSString *)EXCEPTION_NUMBER_FORMAT {
   return SMConstants_EXCEPTION_NUMBER_FORMAT;
 }
@@ -209,12 +224,15 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "CLASS_GLOBALS", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 23, -1, -1 },
     { "PACKAGE_SIMI_API", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 24, -1, -1 },
     { "API_CLASS_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 25, -1, -1 },
-    { "EXCEPTION_NUMBER_FORMAT", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 26, -1, -1 },
-    { "EXCEPTION_NIL_REFERENCE", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 27, -1, -1 },
-    { "EXCEPTION_TYPE_MISMATCH", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 28, -1, -1 },
+    { "EXCEPTION_SCANNER", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 26, -1, -1 },
+    { "EXCEPTION_PARSER", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 27, -1, -1 },
+    { "EXCEPTION_INTERPRETER", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 28, -1, -1 },
+    { "EXCEPTION_NUMBER_FORMAT", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 29, -1, -1 },
+    { "EXCEPTION_NIL_REFERENCE", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 30, -1, -1 },
+    { "EXCEPTION_TYPE_MISMATCH", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
   };
-  static const void *ptrTable[] = { &SMConstants_PRIVATE, &SMConstants_IMPLICIT, &SMConstants_INIT, &SMConstants_SELF, &SMConstants_SELF_DEF, &SMConstants_SUPER, &SMConstants_KEY, &SMConstants_VALUE, &SMConstants_SET, &SMConstants_ITERATE, &SMConstants_NEXT, &SMConstants_HAS, &SMConstants_EQUALS, &SMConstants_COMPARE_TO, &SMConstants_TO_STRING, &SMConstants_RAISE, &SMConstants_CLASS_OBJECT, &SMConstants_CLASS_FUNCTION, &SMConstants_CLASS_STRING, &SMConstants_CLASS_NUMBER, &SMConstants_CLASS_CLASS, &SMConstants_CLASS_EXCEPTION, &SMConstants_GLOBALS_CLASS_NAME, &SMConstants_CLASS_GLOBALS, &SMConstants_PACKAGE_SIMI_API, &SMConstants_API_CLASS_NAME, &SMConstants_EXCEPTION_NUMBER_FORMAT, &SMConstants_EXCEPTION_NIL_REFERENCE, &SMConstants_EXCEPTION_TYPE_MISMATCH };
-  static const J2ObjcClassInfo _SMConstants = { "Constants", "net.globulus.simi", ptrTable, methods, fields, 7, 0x10, 1, 29, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { &SMConstants_PRIVATE, &SMConstants_IMPLICIT, &SMConstants_INIT, &SMConstants_SELF, &SMConstants_SELF_DEF, &SMConstants_SUPER, &SMConstants_KEY, &SMConstants_VALUE, &SMConstants_SET, &SMConstants_ITERATE, &SMConstants_NEXT, &SMConstants_HAS, &SMConstants_EQUALS, &SMConstants_COMPARE_TO, &SMConstants_TO_STRING, &SMConstants_RAISE, &SMConstants_CLASS_OBJECT, &SMConstants_CLASS_FUNCTION, &SMConstants_CLASS_STRING, &SMConstants_CLASS_NUMBER, &SMConstants_CLASS_CLASS, &SMConstants_CLASS_EXCEPTION, &SMConstants_GLOBALS_CLASS_NAME, &SMConstants_CLASS_GLOBALS, &SMConstants_PACKAGE_SIMI_API, &SMConstants_API_CLASS_NAME, &SMConstants_EXCEPTION_SCANNER, &SMConstants_EXCEPTION_PARSER, &SMConstants_EXCEPTION_INTERPRETER, &SMConstants_EXCEPTION_NUMBER_FORMAT, &SMConstants_EXCEPTION_NIL_REFERENCE, &SMConstants_EXCEPTION_TYPE_MISMATCH };
+  static const J2ObjcClassInfo _SMConstants = { "Constants", "net.globulus.simi", ptrTable, methods, fields, 7, 0x10, 1, 32, -1, -1, -1, -1, -1 };
   return &_SMConstants;
 }
 

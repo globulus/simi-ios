@@ -84,24 +84,6 @@ __attribute__((unused)) static SMExpr_Block_$Lambda$2 *new_SMExpr_Block_$Lambda$
 
 __attribute__((unused)) static SMExpr_Block_$Lambda$2 *create_SMExpr_Block_$Lambda$2_initWithInt_(jint capture$0);
 
-@interface SMExpr_Annotations_$Lambda$1 : NSObject < JavaUtilFunctionFunction >
-
-- (id)applyWithId:(SMToken *)t;
-
-@end
-
-J2OBJC_STATIC_INIT(SMExpr_Annotations_$Lambda$1)
-
-inline SMExpr_Annotations_$Lambda$1 *SMExpr_Annotations_$Lambda$1_get_instance(void);
-static SMExpr_Annotations_$Lambda$1 *SMExpr_Annotations_$Lambda$1_instance;
-J2OBJC_STATIC_FIELD_OBJ_FINAL(SMExpr_Annotations_$Lambda$1, instance, SMExpr_Annotations_$Lambda$1 *)
-
-__attribute__((unused)) static void SMExpr_Annotations_$Lambda$1_init(SMExpr_Annotations_$Lambda$1 *self);
-
-__attribute__((unused)) static SMExpr_Annotations_$Lambda$1 *new_SMExpr_Annotations_$Lambda$1_init(void) NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init(void);
-
 @interface SMExpr_Assign_$Lambda$1 : NSObject < JavaUtilFunctionFunction > {
  @public
   jint val$indentationLevel_;
@@ -199,7 +181,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr_Visitor;LSMExpr_Block;LSMExpr_Annotations;LSMExpr_Assign;LSMExpr_ObjectDecomp;LSMExpr_Binary;LSMExpr_Call;LSMExpr_Get;LSMExpr_Grouping;LSMExpr_Gu;LSMExpr_Ivic;LSMExpr_Literal;LSMExpr_Logical;LSMExpr_Set;LSMExpr_Super;LSMExpr_Self;LSMExpr_Unary;LSMExpr_Variable;LSMExpr_ObjectLiteral;LSMExpr_Yield;" };
+  static const void *ptrTable[] = { "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "LSMExpr_Visitor;LSMExpr_Block;LSMExpr_Assign;LSMExpr_ObjectDecomp;LSMExpr_Binary;LSMExpr_Call;LSMExpr_Get;LSMExpr_Grouping;LSMExpr_Gu;LSMExpr_Ivic;LSMExpr_Literal;LSMExpr_Logical;LSMExpr_Set;LSMExpr_Super;LSMExpr_Self;LSMExpr_Unary;LSMExpr_Variable;LSMExpr_ObjectLiteral;LSMExpr_Yield;" };
   static const J2ObjcClassInfo _SMExpr = { "Expr", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x400, 2, 0, -1, 3, -1, -1, -1 };
   return &_SMExpr;
 }
@@ -232,31 +214,29 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr)
     { NULL, "LNSObject;", 0x401, 39, 40, -1, 41, -1, -1 },
     { NULL, "LNSObject;", 0x401, 42, 43, -1, 44, -1, -1 },
     { NULL, "LNSObject;", 0x401, 45, 46, -1, 47, -1, -1 },
-    { NULL, "LNSObject;", 0x401, 48, 49, -1, 50, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(visitAnnotationsExprWithSMExpr_Annotations:);
-  methods[1].selector = @selector(visitAssignExprWithSMExpr_Assign:);
-  methods[2].selector = @selector(visitBinaryExprWithSMExpr_Binary:);
-  methods[3].selector = @selector(visitBlockExprWithSMExpr_Block:withBoolean:withBoolean:);
-  methods[4].selector = @selector(visitCallExprWithSMExpr_Call:);
-  methods[5].selector = @selector(visitGetExprWithSMExpr_Get:);
-  methods[6].selector = @selector(visitGroupingExprWithSMExpr_Grouping:);
-  methods[7].selector = @selector(visitGuExprWithSMExpr_Gu:);
-  methods[8].selector = @selector(visitIvicExprWithSMExpr_Ivic:);
-  methods[9].selector = @selector(visitLiteralExprWithSMExpr_Literal:);
-  methods[10].selector = @selector(visitLogicalExprWithSMExpr_Logical:);
-  methods[11].selector = @selector(visitSetExprWithSMExpr_Set:);
-  methods[12].selector = @selector(visitSuperExprWithSMExpr_Super:);
-  methods[13].selector = @selector(visitSelfExprWithSMExpr_Self:);
-  methods[14].selector = @selector(visitUnaryExprWithSMExpr_Unary:);
-  methods[15].selector = @selector(visitVariableExprWithSMExpr_Variable:);
-  methods[16].selector = @selector(visitObjectLiteralExprWithSMExpr_ObjectLiteral:);
+  methods[0].selector = @selector(visitAssignExprWithSMExpr_Assign:);
+  methods[1].selector = @selector(visitBinaryExprWithSMExpr_Binary:);
+  methods[2].selector = @selector(visitBlockExprWithSMExpr_Block:withBoolean:withBoolean:);
+  methods[3].selector = @selector(visitCallExprWithSMExpr_Call:);
+  methods[4].selector = @selector(visitGetExprWithSMExpr_Get:);
+  methods[5].selector = @selector(visitGroupingExprWithSMExpr_Grouping:);
+  methods[6].selector = @selector(visitGuExprWithSMExpr_Gu:);
+  methods[7].selector = @selector(visitIvicExprWithSMExpr_Ivic:);
+  methods[8].selector = @selector(visitLiteralExprWithSMExpr_Literal:);
+  methods[9].selector = @selector(visitLogicalExprWithSMExpr_Logical:);
+  methods[10].selector = @selector(visitSetExprWithSMExpr_Set:);
+  methods[11].selector = @selector(visitSuperExprWithSMExpr_Super:);
+  methods[12].selector = @selector(visitSelfExprWithSMExpr_Self:);
+  methods[13].selector = @selector(visitUnaryExprWithSMExpr_Unary:);
+  methods[14].selector = @selector(visitVariableExprWithSMExpr_Variable:);
+  methods[15].selector = @selector(visitObjectLiteralExprWithSMExpr_ObjectLiteral:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "visitAnnotationsExpr", "LSMExpr_Annotations;", "(LExpr$Annotations;)TR;", "visitAssignExpr", "LSMExpr_Assign;", "(LExpr$Assign;)TR;", "visitBinaryExpr", "LSMExpr_Binary;", "(LExpr$Binary;)TR;", "visitBlockExpr", "LSMExpr_Block;ZZ", "(LExpr$Block;ZZ)TR;", "visitCallExpr", "LSMExpr_Call;", "(LExpr$Call;)TR;", "visitGetExpr", "LSMExpr_Get;", "(LExpr$Get;)TR;", "visitGroupingExpr", "LSMExpr_Grouping;", "(LExpr$Grouping;)TR;", "visitGuExpr", "LSMExpr_Gu;", "(LExpr$Gu;)TR;", "visitIvicExpr", "LSMExpr_Ivic;", "(LExpr$Ivic;)TR;", "visitLiteralExpr", "LSMExpr_Literal;", "(LExpr$Literal;)TR;", "visitLogicalExpr", "LSMExpr_Logical;", "(LExpr$Logical;)TR;", "visitSetExpr", "LSMExpr_Set;", "(LExpr$Set;)TR;", "visitSuperExpr", "LSMExpr_Super;", "(LExpr$Super;)TR;", "visitSelfExpr", "LSMExpr_Self;", "(LExpr$Self;)TR;", "visitUnaryExpr", "LSMExpr_Unary;", "(LExpr$Unary;)TR;", "visitVariableExpr", "LSMExpr_Variable;", "(LExpr$Variable;)TR;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "(LExpr$ObjectLiteral;)TR;", "LSMExpr;", "<R:Ljava/lang/Object;>Ljava/lang/Object;" };
-  static const J2ObjcClassInfo _SMExpr_Visitor = { "Visitor", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 17, 0, 51, -1, -1, 52, -1 };
+  static const void *ptrTable[] = { "visitAssignExpr", "LSMExpr_Assign;", "(LExpr$Assign;)TR;", "visitBinaryExpr", "LSMExpr_Binary;", "(LExpr$Binary;)TR;", "visitBlockExpr", "LSMExpr_Block;ZZ", "(LExpr$Block;ZZ)TR;", "visitCallExpr", "LSMExpr_Call;", "(LExpr$Call;)TR;", "visitGetExpr", "LSMExpr_Get;", "(LExpr$Get;)TR;", "visitGroupingExpr", "LSMExpr_Grouping;", "(LExpr$Grouping;)TR;", "visitGuExpr", "LSMExpr_Gu;", "(LExpr$Gu;)TR;", "visitIvicExpr", "LSMExpr_Ivic;", "(LExpr$Ivic;)TR;", "visitLiteralExpr", "LSMExpr_Literal;", "(LExpr$Literal;)TR;", "visitLogicalExpr", "LSMExpr_Logical;", "(LExpr$Logical;)TR;", "visitSetExpr", "LSMExpr_Set;", "(LExpr$Set;)TR;", "visitSuperExpr", "LSMExpr_Super;", "(LExpr$Super;)TR;", "visitSelfExpr", "LSMExpr_Self;", "(LExpr$Self;)TR;", "visitUnaryExpr", "LSMExpr_Unary;", "(LExpr$Unary;)TR;", "visitVariableExpr", "LSMExpr_Variable;", "(LExpr$Variable;)TR;", "visitObjectLiteralExpr", "LSMExpr_ObjectLiteral;", "(LExpr$ObjectLiteral;)TR;", "LSMExpr;", "<R:Ljava/lang/Object;>Ljava/lang/Object;" };
+  static const J2ObjcClassInfo _SMExpr_Visitor = { "Visitor", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x608, 16, 0, 48, -1, -1, 49, -1 };
   return &_SMExpr_Visitor;
 }
 
@@ -527,116 +507,6 @@ SMExpr_Block_$Lambda$2 *new_SMExpr_Block_$Lambda$2_initWithInt_(jint capture$0) 
 
 SMExpr_Block_$Lambda$2 *create_SMExpr_Block_$Lambda$2_initWithInt_(jint capture$0) {
   J2OBJC_CREATE_IMPL(SMExpr_Block_$Lambda$2, initWithInt_, capture$0)
-}
-
-@implementation SMExpr_Annotations
-
-- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tokens {
-  SMExpr_Annotations_initWithJavaUtilList_(self, tokens);
-  return self;
-}
-
-- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
-             withNSObjectArray:(IOSObjectArray *)params {
-  return [((id<SMExpr_Visitor>) nil_chk(visitor)) visitAnnotationsExprWithSMExpr_Annotations:self];
-}
-
-- (NSString *)toCodeWithInt:(jint)indentationLevel
-                withBoolean:(jboolean)ignoreFirst {
-  return JreStrcat("$$", [((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, BANG_BANG))) toCodeWithInt:indentationLevel withBoolean:ignoreFirst], [((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilStreamStream>) nil_chk([((id<JavaUtilList>) nil_chk(tokens_)) stream])) mapWithJavaUtilFunctionFunction:JreLoadStatic(SMExpr_Annotations_$Lambda$1, instance)])) collectWithJavaUtilStreamCollector:JavaUtilStreamCollectors_joiningWithJavaLangCharSequence_([((SMTokenType *) nil_chk(JreLoadEnum(SMTokenType, DOT))) toCode])]);
-}
-
-- (jint)getLineNumber {
-  return ((SMToken *) nil_chk([((id<JavaUtilList>) nil_chk(tokens_)) getWithInt:0]))->line_;
-}
-
-- (NSString *)getFileName {
-  return ((SMToken *) nil_chk([((id<JavaUtilList>) nil_chk(tokens_)) getWithInt:0]))->file_;
-}
-
-- (jboolean)hasBreakPoint {
-  return false;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
-    { NULL, "LNSObject;", 0x80, 2, 3, -1, 4, -1, -1 },
-    { NULL, "LNSString;", 0x1, 5, 6, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithJavaUtilList:);
-  methods[1].selector = @selector(acceptWithSMExpr_Visitor:withNSObjectArray:);
-  methods[2].selector = @selector(toCodeWithInt:withBoolean:);
-  methods[3].selector = @selector(getLineNumber);
-  methods[4].selector = @selector(getFileName);
-  methods[5].selector = @selector(hasBreakPoint);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "tokens_", "LJavaUtilList;", .constantValue.asLong = 0, 0x10, -1, -1, 7, -1 },
-  };
-  static const void *ptrTable[] = { "LJavaUtilList;", "(Ljava/util/List<LToken;>;)V", "accept", "LSMExpr_Visitor;[LNSObject;", "<R:Ljava/lang/Object;>(LExpr$Visitor<TR;>;[Ljava/lang/Object;)TR;", "toCode", "IZ", "Ljava/util/List<LToken;>;", "LSMExpr;" };
-  static const J2ObjcClassInfo _SMExpr_Annotations = { "Annotations", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 6, 1, 8, -1, -1, -1, -1 };
-  return &_SMExpr_Annotations;
-}
-
-@end
-
-void SMExpr_Annotations_initWithJavaUtilList_(SMExpr_Annotations *self, id<JavaUtilList> tokens) {
-  SMExpr_init(self);
-  self->tokens_ = tokens;
-}
-
-SMExpr_Annotations *new_SMExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) {
-  J2OBJC_NEW_IMPL(SMExpr_Annotations, initWithJavaUtilList_, tokens)
-}
-
-SMExpr_Annotations *create_SMExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) {
-  J2OBJC_CREATE_IMPL(SMExpr_Annotations, initWithJavaUtilList_, tokens)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Annotations)
-
-J2OBJC_INITIALIZED_DEFN(SMExpr_Annotations_$Lambda$1)
-
-@implementation SMExpr_Annotations_$Lambda$1
-
-- (id)applyWithId:(SMToken *)t {
-  return ((SMToken *) nil_chk(t))->lexeme_;
-}
-
-- (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_composeWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-- (id<JavaUtilFunctionFunction>)andThenWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
-  return JavaUtilFunctionFunction_andThenWithJavaUtilFunctionFunction_(self, arg0);
-}
-
-+ (void)initialize {
-  if (self == [SMExpr_Annotations_$Lambda$1 class]) {
-    SMExpr_Annotations_$Lambda$1_instance = new_SMExpr_Annotations_$Lambda$1_init();
-    J2OBJC_SET_INITIALIZED(SMExpr_Annotations_$Lambda$1)
-  }
-}
-
-@end
-
-void SMExpr_Annotations_$Lambda$1_init(SMExpr_Annotations_$Lambda$1 *self) {
-  NSObject_init(self);
-}
-
-SMExpr_Annotations_$Lambda$1 *new_SMExpr_Annotations_$Lambda$1_init() {
-  J2OBJC_NEW_IMPL(SMExpr_Annotations_$Lambda$1, init)
-}
-
-SMExpr_Annotations_$Lambda$1 *create_SMExpr_Annotations_$Lambda$1_init() {
-  J2OBJC_CREATE_IMPL(SMExpr_Annotations_$Lambda$1, init)
 }
 
 @implementation SMExpr_Assign
@@ -1779,7 +1649,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMExpr_Self)
 
 - (NSString *)toCodeWithInt:(jint)indentationLevel
                 withBoolean:(jboolean)ignoreFirst {
-  return JreStrcat("$C$", [((SMTokenType *) nil_chk(((SMToken *) nil_chk(operator__))->type_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst], ' ', [((SMExpr *) nil_chk(right_)) toCodeWithInt:0 withBoolean:false]);
+  NSString *space = (((SMToken *) nil_chk(operator__))->type_ == JreLoadEnum(SMTokenType, MINUS) || operator__->type_ == JreLoadEnum(SMTokenType, QUESTION) || operator__->type_ == JreLoadEnum(SMTokenType, BANG_BANG)) ? @"" : @" ";
+  return JreStrcat("$$$", [((SMTokenType *) nil_chk(operator__->type_)) toCodeWithInt:indentationLevel withBoolean:ignoreFirst], space, [((SMExpr *) nil_chk(right_)) toCodeWithInt:0 withBoolean:false]);
 }
 
 - (jint)getLineNumber {

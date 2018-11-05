@@ -12,6 +12,9 @@
 #define INCLUDE_ALL_NetGlobulusSimiDebugger 1
 #endif
 #undef RESTRICT_NetGlobulusSimiDebugger
+#ifdef INCLUDE_SMDebugger_ConsoleInterface
+#define INCLUDE_SMDebugger_DebuggerInterface 1
+#endif
 
 #if __has_feature(nullability)
 #pragma clang diagnostic push
@@ -22,7 +25,9 @@
 #define SMDebugger_
 
 @class SMDebugger_Frame;
+@class SMSimiException;
 @class SMStmt;
+@protocol SMDebugger_DebuggerInterface;
 @protocol SMDebugger_Evaluator;
 
 @interface SMDebugger : NSObject
@@ -31,7 +36,7 @@
 
 #pragma mark Package-Private
 
-- (instancetype __nonnull)init;
+- (instancetype __nonnull)initWithSMDebugger_DebuggerInterface:(id<SMDebugger_DebuggerInterface>)debuggerInterface;
 
 - (void)popCall;
 
@@ -43,6 +48,14 @@
 
 - (void)triggerBreakpointWithSMStmt:(SMStmt *)stmt;
 
+- (void)triggerExceptionWithSMStmt:(SMStmt *)stmt
+               withSMSimiException:(SMSimiException *)e
+                       withBoolean:(jboolean)fatal;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype __nonnull)init NS_UNAVAILABLE;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(SMDebugger)
@@ -52,11 +65,11 @@ inline NSString *SMDebugger_get_BREAKPOINT_LEXEME(void);
 FOUNDATION_EXPORT NSString *SMDebugger_BREAKPOINT_LEXEME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMDebugger, BREAKPOINT_LEXEME, NSString *)
 
-FOUNDATION_EXPORT void SMDebugger_init(SMDebugger *self);
+FOUNDATION_EXPORT void SMDebugger_initWithSMDebugger_DebuggerInterface_(SMDebugger *self, id<SMDebugger_DebuggerInterface> debuggerInterface);
 
-FOUNDATION_EXPORT SMDebugger *new_SMDebugger_init(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMDebugger *new_SMDebugger_initWithSMDebugger_DebuggerInterface_(id<SMDebugger_DebuggerInterface> debuggerInterface) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMDebugger *create_SMDebugger_init(void);
+FOUNDATION_EXPORT SMDebugger *create_SMDebugger_initWithSMDebugger_DebuggerInterface_(id<SMDebugger_DebuggerInterface> debuggerInterface);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMDebugger)
 
@@ -71,10 +84,12 @@ J2OBJC_TYPE_LITERAL_HEADER(SMDebugger)
 @class JavaLangInteger;
 @class SMEnvironment;
 @protocol SMCodifiable;
+@protocol SMDebugger_DebuggerInterface;
 
 @interface SMDebugger_Frame : NSObject {
  @public
   SMEnvironment *environment_;
+  SMEnvironment *sourceEnvironment_;
   id<SMCodifiable> line_;
   IOSObjectArray *before_;
   IOSObjectArray *after_;
@@ -83,11 +98,13 @@ J2OBJC_TYPE_LITERAL_HEADER(SMDebugger)
 #pragma mark Package-Private
 
 - (instancetype __nonnull)initWithSMEnvironment:(SMEnvironment *)environment
+                              withSMEnvironment:(SMEnvironment *)sourceEnvironment
                                withSMCodifiable:(id<SMCodifiable>)line
                           withSMCodifiableArray:(IOSObjectArray *)before
                           withSMCodifiableArray:(IOSObjectArray *)after;
 
-- (void)printWithJavaLangInteger:(JavaLangInteger *)index;
+- (void)printWithJavaLangInteger:(JavaLangInteger *)index
+withSMDebugger_DebuggerInterface:(id<SMDebugger_DebuggerInterface>)debuggerInterface;
 
 // Disallowed inherited constructors, do not use.
 
@@ -98,15 +115,16 @@ J2OBJC_TYPE_LITERAL_HEADER(SMDebugger)
 J2OBJC_EMPTY_STATIC_INIT(SMDebugger_Frame)
 
 J2OBJC_FIELD_SETTER(SMDebugger_Frame, environment_, SMEnvironment *)
+J2OBJC_FIELD_SETTER(SMDebugger_Frame, sourceEnvironment_, SMEnvironment *)
 J2OBJC_FIELD_SETTER(SMDebugger_Frame, line_, id<SMCodifiable>)
 J2OBJC_FIELD_SETTER(SMDebugger_Frame, before_, IOSObjectArray *)
 J2OBJC_FIELD_SETTER(SMDebugger_Frame, after_, IOSObjectArray *)
 
-FOUNDATION_EXPORT void SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMDebugger_Frame *self, SMEnvironment *environment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after);
+FOUNDATION_EXPORT void SMDebugger_Frame_initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMDebugger_Frame *self, SMEnvironment *environment, SMEnvironment *sourceEnvironment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after);
 
-FOUNDATION_EXPORT SMDebugger_Frame *new_SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMEnvironment *environment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT SMDebugger_Frame *new_SMDebugger_Frame_initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMEnvironment *environment, SMEnvironment *sourceEnvironment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT SMDebugger_Frame *create_SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMEnvironment *environment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after);
+FOUNDATION_EXPORT SMDebugger_Frame *create_SMDebugger_Frame_initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMEnvironment *environment, SMEnvironment *sourceEnvironment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_Frame)
 
@@ -129,6 +147,62 @@ J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_Frame)
 J2OBJC_EMPTY_STATIC_INIT(SMDebugger_Evaluator)
 
 J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_Evaluator)
+
+#endif
+
+#if !defined (SMDebugger_DebuggerInterface_) && (INCLUDE_ALL_NetGlobulusSimiDebugger || defined(INCLUDE_SMDebugger_DebuggerInterface))
+#define SMDebugger_DebuggerInterface_
+
+@protocol SMDebugger_DebuggerInterface < JavaObject >
+
+- (void)printWithNSString:(NSString *)s;
+
+- (void)printlnWithNSString:(NSString *)s;
+
+- (NSString *)read;
+
+- (id)getLock;
+
+- (void)resume;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMDebugger_DebuggerInterface)
+
+J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_DebuggerInterface)
+
+#endif
+
+#if !defined (SMDebugger_ConsoleInterface_) && (INCLUDE_ALL_NetGlobulusSimiDebugger || defined(INCLUDE_SMDebugger_ConsoleInterface))
+#define SMDebugger_ConsoleInterface_
+
+@interface SMDebugger_ConsoleInterface : NSObject < SMDebugger_DebuggerInterface >
+
+#pragma mark Public
+
+- (instancetype __nonnull)init;
+
+- (id)getLock;
+
+- (void)printWithNSString:(NSString *)s;
+
+- (void)printlnWithNSString:(NSString *)s;
+
+- (NSString *)read;
+
+- (void)resume;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(SMDebugger_ConsoleInterface)
+
+FOUNDATION_EXPORT void SMDebugger_ConsoleInterface_init(SMDebugger_ConsoleInterface *self);
+
+FOUNDATION_EXPORT SMDebugger_ConsoleInterface *new_SMDebugger_ConsoleInterface_init(void) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT SMDebugger_ConsoleInterface *create_SMDebugger_ConsoleInterface_init(void);
+
+J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_ConsoleInterface)
 
 #endif
 

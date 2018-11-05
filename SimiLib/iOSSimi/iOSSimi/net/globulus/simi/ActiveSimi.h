@@ -25,6 +25,7 @@
 @class SMSimiClassImpl;
 @protocol SMActiveSimi_Callback;
 @protocol SMActiveSimi_ImportResolver;
+@protocol SMDebugger_DebuggerInterface;
 @protocol SMSimiProperty;
 
 @interface SMActiveSimi : NSObject
@@ -50,7 +51,8 @@
 
 + (void)load__WithNSStringArray:(IOSObjectArray *)files;
 
-+ (void)setDebugModeWithBoolean:(jboolean)debug;
++ (void)setDebugModeWithBoolean:(jboolean)debug
+withSMDebugger_DebuggerInterface:(id<SMDebugger_DebuggerInterface>)debuggerInterface;
 
 + (void)setImportResolverWithSMActiveSimi_ImportResolver:(id<SMActiveSimi_ImportResolver>)ir;
 
@@ -76,7 +78,7 @@ inline jboolean *SMActiveSimi_getRef_hadRuntimeError(void);
 FOUNDATION_EXPORT jboolean SMActiveSimi_hadRuntimeError;
 J2OBJC_STATIC_FIELD_PRIMITIVE(SMActiveSimi, hadRuntimeError, jboolean)
 
-FOUNDATION_EXPORT void SMActiveSimi_setDebugModeWithBoolean_(jboolean debug);
+FOUNDATION_EXPORT void SMActiveSimi_setDebugModeWithBoolean_withSMDebugger_DebuggerInterface_(jboolean debug, id<SMDebugger_DebuggerInterface> debuggerInterface);
 
 FOUNDATION_EXPORT void SMActiveSimi_load__WithNSStringArray_(IOSObjectArray *files);
 

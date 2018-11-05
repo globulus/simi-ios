@@ -101,9 +101,10 @@ __attribute__((unused)) static id<JavaUtilList> SMActiveSimi_scanImportsWithJava
 
 - (instancetype __nonnull)init;
 
-- (void)reportWithInt:(jint)line
-         withNSString:(NSString *)where
-         withNSString:(NSString *)message;
+- (void)reportWithNSString:(NSString *)file
+                   withInt:(jint)line
+              withNSString:(NSString *)where
+              withNSString:(NSString *)message;
 
 - (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error;
 
@@ -175,8 +176,9 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-+ (void)setDebugModeWithBoolean:(jboolean)debug {
-  SMActiveSimi_setDebugModeWithBoolean_(debug);
++ (void)setDebugModeWithBoolean:(jboolean)debug
+withSMDebugger_DebuggerInterface:(id<SMDebugger_DebuggerInterface>)debuggerInterface {
+  SMActiveSimi_setDebugModeWithBoolean_withSMDebugger_DebuggerInterface_(debug, debuggerInterface);
 }
 
 + (void)load__WithNSStringArray:(IOSObjectArray *)files {
@@ -240,7 +242,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
-  methods[1].selector = @selector(setDebugModeWithBoolean:);
+  methods[1].selector = @selector(setDebugModeWithBoolean:withSMDebugger_DebuggerInterface:);
   methods[2].selector = @selector(load__WithNSStringArray:);
   methods[3].selector = @selector(evalWithNSString:withNSString:withSMSimiPropertyArray:);
   methods[4].selector = @selector(evalAsyncWithSMActiveSimi_Callback:withNSString:withNSString:withSMSimiPropertyArray:);
@@ -261,7 +263,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "resolvedImports", "LJavaUtilList;", .constantValue.asLong = 0, 0xa, -1, 24, 25, -1 },
     { "WATCHER", "LSMErrorWatcher;", .constantValue.asLong = 0, 0x1a, -1, 26, -1, -1 },
   };
-  static const void *ptrTable[] = { "setDebugMode", "Z", "load", "[LNSString;", "eval", "LNSString;LNSString;[LSMSimiProperty;", "evalAsync", "LSMActiveSimi_Callback;LNSString;LNSString;[LSMSimiProperty;", "setImportResolver", "LSMActiveSimi_ImportResolver;", "readFile", "LNSString;", "run", "LNSString;Z", "runExpression", "scanImports", "LJavaUtilList;LJavaUtilMap;", "(Ljava/util/List<LToken;>;Ljava/util/Map<Ljava/lang/String;LNativeModulesManager;>;)Ljava/util/List<LToken;>;", &SMActiveSimi_FILE_ACTIVE_SIMI, &SMActiveSimi_interpreter, &SMActiveSimi_debugger, &SMActiveSimi_hadError, &SMActiveSimi_hadRuntimeError, &SMActiveSimi_importResolver, &SMActiveSimi_resolvedImports, "Ljava/util/List<Ljava/lang/String;>;", &SMActiveSimi_WATCHER, "LSMActiveSimi_ImportResolver;LSMActiveSimi_Callback;" };
+  static const void *ptrTable[] = { "setDebugMode", "ZLSMDebugger_DebuggerInterface;", "load", "[LNSString;", "eval", "LNSString;LNSString;[LSMSimiProperty;", "evalAsync", "LSMActiveSimi_Callback;LNSString;LNSString;[LSMSimiProperty;", "setImportResolver", "LSMActiveSimi_ImportResolver;", "readFile", "LNSString;", "run", "LNSString;Z", "runExpression", "scanImports", "LJavaUtilList;LJavaUtilMap;", "(Ljava/util/List<LToken;>;Ljava/util/Map<Ljava/lang/String;LNativeModulesManager;>;)Ljava/util/List<LToken;>;", &SMActiveSimi_FILE_ACTIVE_SIMI, &SMActiveSimi_interpreter, &SMActiveSimi_debugger, &SMActiveSimi_hadError, &SMActiveSimi_hadRuntimeError, &SMActiveSimi_importResolver, &SMActiveSimi_resolvedImports, "Ljava/util/List<Ljava/lang/String;>;", &SMActiveSimi_WATCHER, "LSMActiveSimi_ImportResolver;LSMActiveSimi_Callback;" };
   static const J2ObjcClassInfo _SMActiveSimi = { "ActiveSimi", "net.globulus.simi", ptrTable, methods, fields, 7, 0x1, 11, 8, -1, 27, -1, -1, -1 };
   return &_SMActiveSimi;
 }
@@ -288,10 +290,10 @@ SMActiveSimi *create_SMActiveSimi_init() {
   J2OBJC_CREATE_IMPL(SMActiveSimi, init)
 }
 
-void SMActiveSimi_setDebugModeWithBoolean_(jboolean debug) {
+void SMActiveSimi_setDebugModeWithBoolean_withSMDebugger_DebuggerInterface_(jboolean debug, id<SMDebugger_DebuggerInterface> debuggerInterface) {
   SMActiveSimi_initialize();
   if (debug) {
-    SMActiveSimi_debugger = new_SMDebugger_init();
+    SMActiveSimi_debugger = new_SMDebugger_initWithSMDebugger_DebuggerInterface_(debuggerInterface);
   }
   else {
     SMActiveSimi_debugger = nil;
@@ -369,6 +371,7 @@ void SMActiveSimi_runWithNSString_withBoolean_(NSString *source, jboolean isLoad
     (void) [nativeModulesManagers putWithId:@"jar" withId:new_SMJavaNativeModulesManager_init()];
     (void) [nativeModulesManagers putWithId:@"framework" withId:new_SMCocoaNativeModulesManager_init()];
     SMActiveSimi_interpreter = new_SMInterpreter_initWithJavaUtilCollection_withSMDebugger_([nativeModulesManagers values], SMActiveSimi_debugger);
+    [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) setInterpreterWithSMBlockInterpreter:SMActiveSimi_interpreter];
   }
   else {
     for (id<SMNativeModulesManager> __strong manager in nil_chk(SMActiveSimi_interpreter->nativeModulesManagers_)) {
@@ -415,7 +418,7 @@ id<JavaUtilList> SMActiveSimi_scanImportsWithJavaUtilList_withJavaUtilMap_(id<Ja
     NSString *location = [((SMSimiValue *) nil_chk(nextToken->literal_)) getString];
     if ([((id<JavaUtilList>) nil_chk(SMActiveSimi_resolvedImports)) containsWithId:location]) {
       continue;
-    }   
+    }
     [((id<JavaUtilList>) nil_chk(SMActiveSimi_resolvedImports)) addWithId:location];
     NSString *pathString = [((NSString *) nil_chk(location)) lowercaseString];
     if ([((NSString *) nil_chk(pathString)) java_hasSuffix:@".simi"]) {
@@ -453,15 +456,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)reportWithInt:(jint)line
-         withNSString:(NSString *)where
-         withNSString:(NSString *)message {
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$I$$$$", @"[line ", line, @"] Error", where, @": ", message)];
+- (void)reportWithNSString:(NSString *)file
+                   withInt:(jint)line
+              withNSString:(NSString *)where
+              withNSString:(NSString *)message {
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$$I$$$$", @"[\"", file, @"\" line ", line, @"] Error", where, @": ", message)];
   *JreLoadStaticRef(SMActiveSimi, hadError) = true;
 }
 
 - (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error {
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$$$IC", [((SMRuntimeError *) nil_chk(error)) getMessage], @"\n[", ((SMToken *) nil_chk(error->token_))->file_, @" line ", error->token_->line_, ']')];
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$$$IC", [((SMRuntimeError *) nil_chk(error)) getMessage], @"\n[\"", ((SMToken *) nil_chk(error->token_))->file_, @"\" line ", error->token_->line_, ']')];
   *JreLoadStaticRef(SMActiveSimi, hadRuntimeError) = true;
 }
 
@@ -475,10 +479,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
-  methods[1].selector = @selector(reportWithInt:withNSString:withNSString:);
+  methods[1].selector = @selector(reportWithNSString:withInt:withNSString:withNSString:);
   methods[2].selector = @selector(runtimeErrorWithSMRuntimeError:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "report", "ILNSString;LNSString;", "runtimeError", "LSMRuntimeError;", "LSMActiveSimi;" };
+  static const void *ptrTable[] = { "report", "LNSString;ILNSString;LNSString;", "runtimeError", "LSMRuntimeError;", "LSMActiveSimi;" };
   static const J2ObjcClassInfo _SMActiveSimi_1 = { "", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x8018, 3, 0, 4, -1, -1, -1, -1 };
   return &_SMActiveSimi_1;
 }

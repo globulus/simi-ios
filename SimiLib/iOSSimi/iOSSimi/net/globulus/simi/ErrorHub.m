@@ -3,25 +3,41 @@
 //  source: src/ErrorHub.java
 //
 
+#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
+#include "BlockInterpreter.h"
 #include "ErrorHub.h"
 #include "ErrorWatcher.h"
 #include "RuntimeError.h"
+#include "SimiClass.h"
+#include "SimiEnvironment.h"
+#include "SimiException.h"
+#include "SimiObject.h"
+#include "SimiProperty.h"
+#include "SimiValue.h"
 #include "Token.h"
 #include "TokenType.h"
 
 @interface SMErrorHub () {
  @public
   id<JavaUtilList> watchers_;
+  id<SMBlockInterpreter> interpreter_;
 }
 
 - (instancetype __nonnull)init;
 
+- (void)reportWithNSString:(NSString *)exceptionClass
+              withNSString:(NSString *)file
+                   withInt:(jint)line
+              withNSString:(NSString *)where
+              withNSString:(NSString *)message;
+
 @end
 
 J2OBJC_FIELD_SETTER(SMErrorHub, watchers_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(SMErrorHub, interpreter_, id<SMBlockInterpreter>)
 
 inline SMErrorHub *SMErrorHub_get_instance(void);
 static SMErrorHub *SMErrorHub_instance;
@@ -32,6 +48,8 @@ __attribute__((unused)) static void SMErrorHub_init(SMErrorHub *self);
 __attribute__((unused)) static SMErrorHub *new_SMErrorHub_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static SMErrorHub *create_SMErrorHub_init(void);
+
+__attribute__((unused)) static void SMErrorHub_reportWithNSString_withNSString_withInt_withNSString_withNSString_(SMErrorHub *self, NSString *exceptionClass, NSString *file, jint line, NSString *where, NSString *message);
 
 J2OBJC_INITIALIZED_DEFN(SMErrorHub)
 
@@ -48,27 +66,34 @@ J2OBJC_IGNORE_DESIGNATED_END
   return SMErrorHub_sharedInstance();
 }
 
-- (void)errorWithInt:(jint)line
-        withNSString:(NSString *)message {
-  [self reportWithInt:line withNSString:@"" withNSString:message];
+- (void)setInterpreterWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter {
+  self->interpreter_ = interpreter;
 }
 
-- (void)errorWithSMToken:(SMToken *)token
-            withNSString:(NSString *)message {
+- (void)errorWithNSString:(NSString *)exceptionClass
+             withNSString:(NSString *)file
+                  withInt:(jint)line
+             withNSString:(NSString *)message {
+  SMErrorHub_reportWithNSString_withNSString_withInt_withNSString_withNSString_(self, exceptionClass, file, line, @"", message);
+}
+
+- (void)errorWithNSString:(NSString *)exceptionClass
+              withSMToken:(SMToken *)token
+             withNSString:(NSString *)message {
   if (((SMToken *) nil_chk(token))->type_ == JreLoadEnum(SMTokenType, EOF)) {
-    [self reportWithInt:token->line_ withNSString:@" at end" withNSString:message];
+    SMErrorHub_reportWithNSString_withNSString_withInt_withNSString_withNSString_(self, exceptionClass, token->file_, token->line_, @" at end", message);
   }
   else {
-    [self reportWithInt:token->line_ withNSString:JreStrcat("$$C", @" at '", token->lexeme_, '\'') withNSString:message];
+    SMErrorHub_reportWithNSString_withNSString_withInt_withNSString_withNSString_(self, exceptionClass, token->file_, token->line_, JreStrcat("$$C", @" at '", token->lexeme_, '\''), message);
   }
 }
 
-- (void)reportWithInt:(jint)line
-         withNSString:(NSString *)where
-         withNSString:(NSString *)message {
-  for (id<SMErrorWatcher> __strong watcher in nil_chk(watchers_)) {
-    [((id<SMErrorWatcher>) nil_chk(watcher)) reportWithInt:line withNSString:where withNSString:message];
-  }
+- (void)reportWithNSString:(NSString *)exceptionClass
+              withNSString:(NSString *)file
+                   withInt:(jint)line
+              withNSString:(NSString *)where
+              withNSString:(NSString *)message {
+  SMErrorHub_reportWithNSString_withNSString_withInt_withNSString_withNSString_(self, exceptionClass, file, line, where, message);
 }
 
 - (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error {
@@ -90,30 +115,33 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMErrorHub;", 0x8, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x0, 0, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 0, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 3, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 5, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 2, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 2, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 5, 6, -1, -1, -1, -1 },
     { NULL, "V", 0x0, 7, 8, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 9, 8, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 9, 10, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 11, 10, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(sharedInstance);
-  methods[2].selector = @selector(errorWithInt:withNSString:);
-  methods[3].selector = @selector(errorWithSMToken:withNSString:);
-  methods[4].selector = @selector(reportWithInt:withNSString:withNSString:);
-  methods[5].selector = @selector(runtimeErrorWithSMRuntimeError:);
-  methods[6].selector = @selector(addWatcherWithSMErrorWatcher:);
-  methods[7].selector = @selector(removeWatcherWithSMErrorWatcher:);
+  methods[2].selector = @selector(setInterpreterWithSMBlockInterpreter:);
+  methods[3].selector = @selector(errorWithNSString:withNSString:withInt:withNSString:);
+  methods[4].selector = @selector(errorWithNSString:withSMToken:withNSString:);
+  methods[5].selector = @selector(reportWithNSString:withNSString:withInt:withNSString:withNSString:);
+  methods[6].selector = @selector(runtimeErrorWithSMRuntimeError:);
+  methods[7].selector = @selector(addWatcherWithSMErrorWatcher:);
+  methods[8].selector = @selector(removeWatcherWithSMErrorWatcher:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "watchers_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 10, -1 },
-    { "instance", "LSMErrorHub;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
+    { "watchers_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 12, -1 },
+    { "interpreter_", "LSMBlockInterpreter;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "instance", "LSMErrorHub;", .constantValue.asLong = 0, 0x1a, -1, 13, -1, -1 },
   };
-  static const void *ptrTable[] = { "error", "ILNSString;", "LSMToken;LNSString;", "report", "ILNSString;LNSString;", "runtimeError", "LSMRuntimeError;", "addWatcher", "LSMErrorWatcher;", "removeWatcher", "Ljava/util/List<LErrorWatcher;>;", &SMErrorHub_instance };
-  static const J2ObjcClassInfo _SMErrorHub = { "ErrorHub", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 8, 2, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "setInterpreter", "LSMBlockInterpreter;", "error", "LNSString;LNSString;ILNSString;", "LNSString;LSMToken;LNSString;", "report", "LNSString;LNSString;ILNSString;LNSString;", "runtimeError", "LSMRuntimeError;", "addWatcher", "LSMErrorWatcher;", "removeWatcher", "Ljava/util/List<LErrorWatcher;>;", &SMErrorHub_instance };
+  static const J2ObjcClassInfo _SMErrorHub = { "ErrorHub", "net.globulus.simi", ptrTable, methods, fields, 7, 0x0, 9, 3, -1, -1, -1, -1, -1 };
   return &_SMErrorHub;
 }
 
@@ -142,6 +170,20 @@ SMErrorHub *create_SMErrorHub_init() {
 SMErrorHub *SMErrorHub_sharedInstance() {
   SMErrorHub_initialize();
   return SMErrorHub_instance;
+}
+
+void SMErrorHub_reportWithNSString_withNSString_withInt_withNSString_withNSString_(SMErrorHub *self, NSString *exceptionClass, NSString *file, jint line, NSString *where, NSString *message) {
+  if (self->interpreter_ != nil) {
+    NSString *exceptionMessage = JreStrcat("$$$I$$$$", @"[\"", file, @"\" line ", line, @"] Error", where, @": ", message);
+    id<SMSimiProperty> exceptionClassProp = [((id<SMSimiEnvironment>) nil_chk([self->interpreter_ getEnvironment])) tryGetWithNSString:exceptionClass];
+    if (exceptionClassProp != nil) {
+      [((id<SMBlockInterpreter>) nil_chk(self->interpreter_)) raiseExceptionWithSMSimiException:new_SMSimiException_initWithSMSimiClass_withNSString_((id<SMSimiClass>) cast_check([((SMSimiValue *) nil_chk([exceptionClassProp getValue])) getObject], SMSimiClass_class_()), exceptionMessage)];
+      return;
+    }
+  }
+  for (id<SMErrorWatcher> __strong watcher in nil_chk(self->watchers_)) {
+    [((id<SMErrorWatcher>) nil_chk(watcher)) reportWithNSString:file withInt:line withNSString:where withNSString:message];
+  }
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMErrorHub)

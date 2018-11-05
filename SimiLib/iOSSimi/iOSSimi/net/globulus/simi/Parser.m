@@ -142,7 +142,7 @@
 
 + (SMToken *)operatorFromAssignWithSMToken:(SMToken *)assignOp;
 
-- (SMParser_ParseError *)errorWithSMToken:(SMToken *)token
++ (SMParser_ParseError *)errorWithSMToken:(SMToken *)token
                              withNSString:(NSString *)message;
 
 - (void)synchronize;
@@ -269,7 +269,7 @@ __attribute__((unused)) static SMToken *SMParser_previous(SMParser *self);
 
 __attribute__((unused)) static SMToken *SMParser_operatorFromAssignWithSMToken_(SMToken *assignOp);
 
-__attribute__((unused)) static SMParser_ParseError *SMParser_errorWithSMToken_withNSString_(SMParser *self, SMToken *token, NSString *message);
+__attribute__((unused)) static SMParser_ParseError *SMParser_errorWithSMToken_withNSString_(SMToken *token, NSString *message);
 
 __attribute__((unused)) static void SMParser_synchronize(SMParser *self);
 
@@ -525,9 +525,9 @@ J2OBJC_TYPE_LITERAL_HEADER(SMParser_ParseError)
   return SMParser_operatorFromAssignWithSMToken_(assignOp);
 }
 
-- (SMParser_ParseError *)errorWithSMToken:(SMToken *)token
++ (SMParser_ParseError *)errorWithSMToken:(SMToken *)token
                              withNSString:(NSString *)message {
-  return SMParser_errorWithSMToken_withNSString_(self, token, message);
+  return SMParser_errorWithSMToken_withNSString_(token, message);
 }
 
 - (void)synchronize {
@@ -607,7 +607,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMParser_ParseError)
     { NULL, "Z", 0x82, 34, 28, -1, -1, -1, -1 },
     { NULL, "LSMToken;", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LSMToken;", 0xa, 35, 36, -1, -1, -1, -1 },
-    { NULL, "LSMParser_ParseError;", 0x2, 37, 19, -1, -1, -1, -1 },
+    { NULL, "LSMParser_ParseError;", 0xa, 37, 19, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x2, -1, -1, -1, 38, -1, -1 },
     { NULL, "V", 0x2, 39, 40, -1, 41, -1, -1 },
@@ -770,7 +770,7 @@ SMStmt_Class *SMParser_classDeclaration(SMParser *self) {
         [mixins addWithId:expr];
       }
       else {
-        (void) SMParser_errorWithSMToken_withNSString_(self, SMParser_previous(self), @"Expected a get or variable expr after mixin import.");
+        (void) SMParser_errorWithSMToken_withNSString_(SMParser_previous(self), @"Expected a get or variable expr after mixin import.");
       }
     }
     else if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, BANG) } count:1 type:SMTokenType_class_()])) {
@@ -797,7 +797,7 @@ SMStmt_Annotation *SMParser_annotation(SMParser *self) {
     expr = SMParser_call(self);
   }
   else {
-    [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:SMParser_peek(self) withNSString:@"Annotation expect either an object literal or a constructor invocation!"];
+    (void) SMParser_errorWithSMToken_withNSString_(SMParser_peek(self), @"Annotation expect either an object literal or a constructor invocation!");
   }
   SMParser_checkStatementEndWithBoolean_(self, false);
   return new_SMStmt_Annotation_initWithSMExpr_(expr);
@@ -849,7 +849,7 @@ SMStmt *SMParser_forStatement(SMParser *self) {
     decompExpr = SMParser_objectLiteral(self);
   }
   else {
-    (void) SMParser_errorWithSMToken_withNSString_(self, SMParser_peek(self), @"Expected identifier or object decomp in for loop.");
+    (void) SMParser_errorWithSMToken_withNSString_(SMParser_peek(self), @"Expected identifier or object decomp in for loop.");
   }
   (void) SMParser_consumeWithSMTokenType_withNSString_(self, JreLoadEnum(SMTokenType, IN), @"Expected 'in'.");
   SMExpr *iterable = SMParser_expression(self);
@@ -974,7 +974,7 @@ SMStmt *SMParser_rescueStatement(SMParser *self) {
   SMToken *keyword = SMParser_previous(self);
   SMExpr_Block *block = SMParser_blockWithNSString_withBoolean_(self, @"rescue", true);
   if ([((id<JavaUtilList>) nil_chk(((SMExpr_Block *) nil_chk(block))->params_)) size] != 1) {
-    [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:keyword withNSString:@"Rescue block expects exactly 1 parameter!"];
+    (void) SMParser_errorWithSMToken_withNSString_(keyword, @"Rescue block expects exactly 1 parameter!");
   }
   return new_SMStmt_Rescue_initWithSMToken_withSMExpr_Block_(keyword, block);
 }
@@ -997,7 +997,7 @@ void SMParser_checkStatementEndWithBoolean_(SMParser *self, jboolean lambda) {
       return;
     }
   }
-  (void) SMParser_errorWithSMToken_withNSString_(self, SMParser_peek(self), @"Unterminated lambda expression!");
+  (void) SMParser_errorWithSMToken_withNSString_(SMParser_peek(self), @"Unterminated lambda expression!");
 }
 
 SMStmt_Function *SMParser_functionWithNSString_(SMParser *self, NSString *kind) {
@@ -1151,7 +1151,7 @@ SMExpr *SMParser_assignment(SMParser *self) {
         return new_SMExpr_Yield_initWithSMExpr_withSMToken_withSMToken_withSMExpr_Call_(expr, equals, keyword, (SMExpr_Call *) cast_chk(call, [SMExpr_Call class]));
       }
       else {
-        [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:keyword withNSString:@"yield expressions must involve a call!"];
+        (void) SMParser_errorWithSMToken_withNSString_(keyword, @"yield expressions must involve a call!");
       }
     }
     SMExpr *value = SMParser_assignment(self);
@@ -1231,7 +1231,7 @@ SMExpr *SMParser_nilCoalescence(SMParser *self) {
 }
 
 SMExpr *SMParser_unary(SMParser *self) {
-  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NOT), JreLoadEnum(SMTokenType, MINUS) } count:2 type:SMTokenType_class_()])) {
+  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, NOT), JreLoadEnum(SMTokenType, MINUS), JreLoadEnum(SMTokenType, BANG_BANG) } count:3 type:SMTokenType_class_()])) {
     SMToken *operator_ = SMParser_previous(self);
     SMExpr *right = SMParser_unary(self);
     return new_SMExpr_Unary_initWithSMToken_withSMExpr_(operator_, right);
@@ -1241,17 +1241,6 @@ SMExpr *SMParser_unary(SMParser *self) {
   }
   if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IVIC) } count:1 type:SMTokenType_class_()])) {
     return new_SMExpr_Ivic_initWithSMExpr_(SMParser_unary(self));
-  }
-  if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, BANG_BANG) } count:1 type:SMTokenType_class_()])) {
-    id<JavaUtilList> tokens = new_JavaUtilArrayList_init();
-    while (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, IDENTIFIER) } count:1 type:SMTokenType_class_()])) {
-      [tokens addWithId:SMParser_previous(self)];
-      SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, DOT) } count:1 type:SMTokenType_class_()]);
-    }
-    if ([tokens isEmpty]) {
-      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:SMParser_peek(self) withNSString:@"Annotations operator needs params!"];
-    }
-    return new_SMExpr_Annotations_initWithJavaUtilList_(tokens);
   }
   return SMParser_call(self);
 }
@@ -1364,7 +1353,7 @@ SMExpr *SMParser_primary(SMParser *self) {
   if (SMParser_matchWithSMTokenTypeArray_(self, [IOSObjectArray newArrayWithObjects:(id[]){ JreLoadEnum(SMTokenType, QUESTION) } count:1 type:SMTokenType_class_()])) {
     return new_SMExpr_Unary_initWithSMToken_withSMExpr_(SMParser_previous(self), SMParser_primary(self));
   }
-  @throw nil_chk(SMParser_errorWithSMToken_withNSString_(self, SMParser_peek(self), @"Expect expression."));
+  @throw nil_chk(SMParser_errorWithSMToken_withNSString_(SMParser_peek(self), @"Expect expression."));
 }
 
 SMExpr *SMParser_objectLiteral(SMParser *self) {
@@ -1423,7 +1412,7 @@ jboolean SMParser_matchWithSMTokenTypeArray_(SMParser *self, IOSObjectArray *typ
 
 SMToken *SMParser_consumeWithSMTokenType_withNSString_(SMParser *self, SMTokenType *type, NSString *message) {
   if (SMParser_checkWithSMTokenType_(self, type)) return SMParser_advance(self);
-  @throw nil_chk(SMParser_errorWithSMToken_withNSString_(self, SMParser_peek(self), message));
+  @throw nil_chk(SMParser_errorWithSMToken_withNSString_(SMParser_peek(self), message));
 }
 
 jboolean SMParser_checkWithSMTokenType_(SMParser *self, SMTokenType *tokenType) {
@@ -1491,8 +1480,9 @@ SMToken *SMParser_operatorFromAssignWithSMToken_(SMToken *assignOp) {
   return new_SMToken_initWithSMTokenType_withNSString_withSMSimiValue_withInt_withNSString_(type, assignOp->lexeme_, nil, assignOp->line_, assignOp->file_);
 }
 
-SMParser_ParseError *SMParser_errorWithSMToken_withNSString_(SMParser *self, SMToken *token, NSString *message) {
-  [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:token withNSString:message];
+SMParser_ParseError *SMParser_errorWithSMToken_withNSString_(SMToken *token, NSString *message) {
+  SMParser_initialize();
+  [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithNSString:SMConstants_EXCEPTION_PARSER withSMToken:token withNSString:message];
   return new_SMParser_ParseError_init();
 }
 
@@ -1558,13 +1548,13 @@ SMExpr *SMParser_getAssignExprWithSMParser_withSMExpr_withSMToken_withSMExpr_(SM
       return new_SMExpr_Set_initWithSMToken_withSMExpr_withSMExpr_withSMExpr_(((SMExpr_Get *) nil_chk(get))->origin_, get->object_, get->name_, value);
     }
     else {
-      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:equals withNSString:@"Cannot use compound assignment operators with setters!"];
+      (void) SMParser_errorWithSMToken_withNSString_(equals, @"Cannot use compound assignment operators with setters!");
     }
   }
   else if ([expr isKindOfClass:[SMExpr_ObjectLiteral class]]) {
     SMExpr_ObjectLiteral *objectLiteral = (SMExpr_ObjectLiteral *) cast_chk(expr, [SMExpr_ObjectLiteral class]);
     if (((SMToken *) nil_chk(((SMExpr_ObjectLiteral *) nil_chk(objectLiteral))->opener_))->type_ == JreLoadEnum(SMTokenType, DOLLAR_LEFT_BRACKET)) {
-      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithInt:((SMToken *) nil_chk(equals))->line_ withNSString:@"Invalid object decomposition syntax."];
+      [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithNSString:SMConstants_EXCEPTION_PARSER withNSString:((SMToken *) nil_chk(equals))->file_ withInt:equals->line_ withNSString:@"Invalid object decomposition syntax."];
     }
     id<JavaUtilList> assigns = new_JavaUtilArrayList_init();
     id<JavaUtilList> annotations = (parser != nil) ? SMParser_getAnnotations(nil_chk(parser)) : nil;
@@ -1578,7 +1568,7 @@ SMExpr *SMParser_getAssignExprWithSMParser_withSMExpr_withSMToken_withSMExpr_(SM
     }
     return new_SMExpr_ObjectDecomp_initWithJavaUtilList_(assigns);
   }
-  [((SMErrorHub *) nil_chk(SMErrorHub_sharedInstance())) errorWithSMToken:equals withNSString:@"Invalid assignment target."];
+  (void) SMParser_errorWithSMToken_withNSString_(equals, @"Invalid assignment target.");
   return nil;
 }
 

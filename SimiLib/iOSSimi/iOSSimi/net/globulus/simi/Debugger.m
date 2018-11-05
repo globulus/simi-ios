@@ -8,32 +8,49 @@
 #include "J2ObjC_source.h"
 #include "java/io/InputStream.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Enum.h"
+#include "java/lang/IllegalArgumentException.h"
 #include "java/lang/IllegalStateException.h"
 #include "java/lang/Integer.h"
+#include "java/lang/InterruptedException.h"
 #include "java/lang/System.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Collections.h"
+#include "java/util/HashMap.h"
 #include "java/util/HashSet.h"
 #include "java/util/List.h"
+#include "java/util/Map.h"
 #include "java/util/Scanner.h"
 #include "java/util/Set.h"
 #include "Codifiable.h"
 #include "Debugger.h"
 #include "Environment.h"
+#include "SimiException.h"
+#include "SimiProperty.h"
 #include "Stmt.h"
 
+@class SMDebugger_DebuggerState;
 @class SMDebugger_FrameStack;
+@class SMDebugger_StepState;
 
 @interface SMDebugger () {
  @public
+  SMDebugger_DebuggerState *state_;
   SMDebugger_FrameStack *lineStack_;
   SMDebugger_FrameStack *callStack_;
-  JavaUtilScanner *scanner_;
+  id<SMDebugger_DebuggerInterface> debuggerInterface_;
   id<SMDebugger_Evaluator> evaluator_;
-  SMEnvironment *inspectingEnvironment_;
+  SMDebugger_Frame *focusFrame_;
   id<JavaUtilSet> ignoredBreakpoints_;
+  id<JavaUtilSet> addedBreakpoints_;
+  id<JavaUtilMap> watch_;
+  jboolean allExceptions_;
+  jboolean debuggingOff_;
+  jboolean firstHelp_;
   SMStmt *currentBreakpoint_;
   SMDebugger_FrameStack *currentStack_;
+  SMDebugger_StepState *stepState_;
+  jint stepOverDepth_;
 }
 
 - (void)printWithInt:(jint)frameIndex
@@ -43,22 +60,118 @@
 
 - (void)scanInput;
 
+- (void)parseInputWithNSString:(NSString *)input;
+
 @end
 
+J2OBJC_FIELD_SETTER(SMDebugger, state_, SMDebugger_DebuggerState *)
 J2OBJC_FIELD_SETTER(SMDebugger, lineStack_, SMDebugger_FrameStack *)
 J2OBJC_FIELD_SETTER(SMDebugger, callStack_, SMDebugger_FrameStack *)
-J2OBJC_FIELD_SETTER(SMDebugger, scanner_, JavaUtilScanner *)
+J2OBJC_FIELD_SETTER(SMDebugger, debuggerInterface_, id<SMDebugger_DebuggerInterface>)
 J2OBJC_FIELD_SETTER(SMDebugger, evaluator_, id<SMDebugger_Evaluator>)
-J2OBJC_FIELD_SETTER(SMDebugger, inspectingEnvironment_, SMEnvironment *)
+J2OBJC_FIELD_SETTER(SMDebugger, focusFrame_, SMDebugger_Frame *)
 J2OBJC_FIELD_SETTER(SMDebugger, ignoredBreakpoints_, id<JavaUtilSet>)
+J2OBJC_FIELD_SETTER(SMDebugger, addedBreakpoints_, id<JavaUtilSet>)
+J2OBJC_FIELD_SETTER(SMDebugger, watch_, id<JavaUtilMap>)
 J2OBJC_FIELD_SETTER(SMDebugger, currentBreakpoint_, SMStmt *)
 J2OBJC_FIELD_SETTER(SMDebugger, currentStack_, SMDebugger_FrameStack *)
+J2OBJC_FIELD_SETTER(SMDebugger, stepState_, SMDebugger_StepState *)
+
+inline NSString *SMDebugger_get_HELP(void);
+static NSString *SMDebugger_HELP = @"\nCommands:\nc: Print call stack\nl: Print line stack\ni [index]: Inspect environment at stack index\ne [expr]: Evaluates expression within current environment\nw [name]: Adds variable in the current environment to Watch\nn: Step into - trigger breakpoint at next line\nv: Step over - trigger breakpoint at next line skipping calls\na: Add current line as breakpoint for this debugger session\nr: Remove current breakpoint for this debugger session\nx: Toggles catching all exceptions on/off (default off)\no: Toggles debugging on/off (default on)\nh: Print help\ng: Prints global environment\nanything else: continue with program execution\n";
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMDebugger, HELP, NSString *)
 
 __attribute__((unused)) static void SMDebugger_printWithInt_withBoolean_(SMDebugger *self, jint frameIndex, jboolean printLine);
 
 __attribute__((unused)) static void SMDebugger_printHelp(SMDebugger *self);
 
 __attribute__((unused)) static void SMDebugger_scanInput(SMDebugger *self);
+
+__attribute__((unused)) static void SMDebugger_parseInputWithNSString_(SMDebugger *self, NSString *input);
+
+typedef NS_ENUM(NSUInteger, SMDebugger_DebuggerState_Enum) {
+  SMDebugger_DebuggerState_Enum_OUTPUT = 0,
+  SMDebugger_DebuggerState_Enum_INPUT = 1,
+};
+
+@interface SMDebugger_DebuggerState : JavaLangEnum
+
++ (IOSObjectArray *)values;
+
++ (SMDebugger_DebuggerState *)valueOfWithNSString:(NSString *)name;
+
+- (SMDebugger_DebuggerState_Enum)toNSEnum;
+
+@end
+
+J2OBJC_STATIC_INIT(SMDebugger_DebuggerState)
+
+/*! INTERNAL ONLY - Use enum accessors declared below. */
+FOUNDATION_EXPORT SMDebugger_DebuggerState *SMDebugger_DebuggerState_values_[];
+
+inline SMDebugger_DebuggerState *SMDebugger_DebuggerState_get_OUTPUT(void);
+J2OBJC_ENUM_CONSTANT(SMDebugger_DebuggerState, OUTPUT)
+
+inline SMDebugger_DebuggerState *SMDebugger_DebuggerState_get_INPUT(void);
+J2OBJC_ENUM_CONSTANT(SMDebugger_DebuggerState, INPUT)
+
+__attribute__((unused)) static void SMDebugger_DebuggerState_initWithNSString_withInt_(SMDebugger_DebuggerState *self, NSString *__name, jint __ordinal);
+
+__attribute__((unused)) static SMDebugger_DebuggerState *new_SMDebugger_DebuggerState_initWithNSString_withInt_(NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static IOSObjectArray *SMDebugger_DebuggerState_values(void);
+
+__attribute__((unused)) static SMDebugger_DebuggerState *SMDebugger_DebuggerState_valueOfWithNSString_(NSString *name);
+
+FOUNDATION_EXPORT SMDebugger_DebuggerState *SMDebugger_DebuggerState_fromOrdinal(NSUInteger ordinal);
+
+J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_DebuggerState)
+
+typedef NS_ENUM(NSUInteger, SMDebugger_StepState_Enum) {
+  SMDebugger_StepState_Enum_NONE = 0,
+  SMDebugger_StepState_Enum_STEP_INTO = 1,
+  SMDebugger_StepState_Enum_STEP_OVER = 2,
+  SMDebugger_StepState_Enum_STEP_OVER_SUSPENDED = 3,
+};
+
+@interface SMDebugger_StepState : JavaLangEnum
+
++ (IOSObjectArray *)values;
+
++ (SMDebugger_StepState *)valueOfWithNSString:(NSString *)name;
+
+- (SMDebugger_StepState_Enum)toNSEnum;
+
+@end
+
+J2OBJC_STATIC_INIT(SMDebugger_StepState)
+
+/*! INTERNAL ONLY - Use enum accessors declared below. */
+FOUNDATION_EXPORT SMDebugger_StepState *SMDebugger_StepState_values_[];
+
+inline SMDebugger_StepState *SMDebugger_StepState_get_NONE(void);
+J2OBJC_ENUM_CONSTANT(SMDebugger_StepState, NONE)
+
+inline SMDebugger_StepState *SMDebugger_StepState_get_STEP_INTO(void);
+J2OBJC_ENUM_CONSTANT(SMDebugger_StepState, STEP_INTO)
+
+inline SMDebugger_StepState *SMDebugger_StepState_get_STEP_OVER(void);
+J2OBJC_ENUM_CONSTANT(SMDebugger_StepState, STEP_OVER)
+
+inline SMDebugger_StepState *SMDebugger_StepState_get_STEP_OVER_SUSPENDED(void);
+J2OBJC_ENUM_CONSTANT(SMDebugger_StepState, STEP_OVER_SUSPENDED)
+
+__attribute__((unused)) static void SMDebugger_StepState_initWithNSString_withInt_(SMDebugger_StepState *self, NSString *__name, jint __ordinal);
+
+__attribute__((unused)) static SMDebugger_StepState *new_SMDebugger_StepState_initWithNSString_withInt_(NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static IOSObjectArray *SMDebugger_StepState_values(void);
+
+__attribute__((unused)) static SMDebugger_StepState *SMDebugger_StepState_valueOfWithNSString_(NSString *name);
+
+FOUNDATION_EXPORT SMDebugger_StepState *SMDebugger_StepState_fromOrdinal(NSUInteger ordinal);
+
+J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_StepState)
 
 @interface SMDebugger_FrameStack : NSObject {
  @public
@@ -96,6 +209,19 @@ J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_FrameStack)
 
 @end
 
+@interface SMDebugger_DebuggerInterface : NSObject
+
+@end
+
+@interface SMDebugger_ConsoleInterface () {
+ @public
+  JavaUtilScanner *scanner_;
+}
+
+@end
+
+J2OBJC_FIELD_SETTER(SMDebugger_ConsoleInterface, scanner_, JavaUtilScanner *)
+
 NSString *SMDebugger_BREAKPOINT_LEXEME = @"BP";
 
 @implementation SMDebugger
@@ -104,12 +230,10 @@ NSString *SMDebugger_BREAKPOINT_LEXEME = @"BP";
   return SMDebugger_BREAKPOINT_LEXEME;
 }
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype __nonnull)init {
-  SMDebugger_init(self);
+- (instancetype __nonnull)initWithSMDebugger_DebuggerInterface:(id<SMDebugger_DebuggerInterface>)debuggerInterface {
+  SMDebugger_initWithSMDebugger_DebuggerInterface_(self, debuggerInterface);
   return self;
 }
-J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setEvaluatorWithSMDebugger_Evaluator:(id<SMDebugger_Evaluator>)evaluator {
   self->evaluator_ = evaluator;
@@ -121,19 +245,62 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)pushCallWithSMDebugger_Frame:(SMDebugger_Frame *)frame {
   [((SMDebugger_FrameStack *) nil_chk(callStack_)) pushWithSMDebugger_Frame:frame];
+  if (stepState_ == JreLoadEnum(SMDebugger_StepState, STEP_OVER)) {
+    stepState_ = JreLoadEnum(SMDebugger_StepState, STEP_OVER_SUSPENDED);
+    stepOverDepth_++;
+  }
+  else if (stepState_ == JreLoadEnum(SMDebugger_StepState, STEP_OVER_SUSPENDED)) {
+    stepOverDepth_++;
+  }
 }
 
 - (void)popCall {
   (void) [((SMDebugger_FrameStack *) nil_chk(callStack_)) pop];
+  if (stepState_ == JreLoadEnum(SMDebugger_StepState, STEP_OVER_SUSPENDED)) {
+    stepOverDepth_--;
+    if (stepOverDepth_ == 0) {
+      stepState_ = JreLoadEnum(SMDebugger_StepState, STEP_OVER);
+    }
+  }
 }
 
 - (void)triggerBreakpointWithSMStmt:(SMStmt *)stmt {
-  if ([((id<JavaUtilSet>) nil_chk(ignoredBreakpoints_)) containsWithId:stmt]) {
+  if (debuggingOff_) {
+    return;
+  }
+  if ([((SMStmt *) nil_chk(stmt)) hasBreakPoint]) {
+    if ([((id<JavaUtilSet>) nil_chk(ignoredBreakpoints_)) containsWithId:stmt]) {
+      return;
+    }
+  }
+  else if (![((id<JavaUtilSet>) nil_chk(addedBreakpoints_)) containsWithId:stmt]) {
+    switch ([stepState_ ordinal]) {
+      case SMDebugger_StepState_Enum_NONE:
+      case SMDebugger_StepState_Enum_STEP_OVER_SUSPENDED:
+      return;
+      case SMDebugger_StepState_Enum_STEP_INTO:
+      case SMDebugger_StepState_Enum_STEP_OVER:
+      stepState_ = JreLoadEnum(SMDebugger_StepState, NONE);
+      break;
+    }
+  }
+  currentBreakpoint_ = stmt;
+  currentStack_ = callStack_;
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(debuggerInterface_)) printWithNSString:@"***** BREAKPOINT *****\n"];
+  SMDebugger_printWithInt_withBoolean_(self, 0, true);
+  SMDebugger_scanInput(self);
+}
+
+- (void)triggerExceptionWithSMStmt:(SMStmt *)stmt
+               withSMSimiException:(SMSimiException *)e
+                       withBoolean:(jboolean)fatal {
+  if (debuggingOff_ || !(allExceptions_ || fatal)) {
     return;
   }
   currentBreakpoint_ = stmt;
   currentStack_ = callStack_;
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"***** BREAKPOINT *****\n"];
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(debuggerInterface_)) printlnWithNSString:JreStrcat("$$$", @"***** ", (fatal ? @"FATAL " : @""), @"EXCEPTION *****\n")];
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(debuggerInterface_)) printlnWithNSString:JreStrcat("$C", [((SMSimiException *) nil_chk(e)) getMessage], 0x000a)];
   SMDebugger_printWithInt_withBoolean_(self, 0, true);
   SMDebugger_scanInput(self);
 }
@@ -151,115 +318,173 @@ J2OBJC_IGNORE_DESIGNATED_END
   SMDebugger_scanInput(self);
 }
 
+- (void)parseInputWithNSString:(NSString *)input {
+  SMDebugger_parseInputWithNSString_(self, input);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 0, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 2, 3, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 4, 3, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 1, 2, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 3, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 5, 4, -1, -1, -1, -1 },
     { NULL, "V", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 5, 6, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 7, 8, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 6, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 8, 9, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 10, 11, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 12, 13, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(init);
+  methods[0].selector = @selector(initWithSMDebugger_DebuggerInterface:);
   methods[1].selector = @selector(setEvaluatorWithSMDebugger_Evaluator:);
   methods[2].selector = @selector(pushLineWithSMDebugger_Frame:);
   methods[3].selector = @selector(pushCallWithSMDebugger_Frame:);
   methods[4].selector = @selector(popCall);
   methods[5].selector = @selector(triggerBreakpointWithSMStmt:);
-  methods[6].selector = @selector(printWithInt:withBoolean:);
-  methods[7].selector = @selector(printHelp);
-  methods[8].selector = @selector(scanInput);
+  methods[6].selector = @selector(triggerExceptionWithSMStmt:withSMSimiException:withBoolean:);
+  methods[7].selector = @selector(printWithInt:withBoolean:);
+  methods[8].selector = @selector(printHelp);
+  methods[9].selector = @selector(scanInput);
+  methods[10].selector = @selector(parseInputWithNSString:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "BREAKPOINT_LEXEME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 9, -1, -1 },
+    { "BREAKPOINT_LEXEME", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 14, -1, -1 },
+    { "HELP", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 15, -1, -1 },
+    { "state_", "LSMDebugger_DebuggerState;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "lineStack_", "LSMDebugger_FrameStack;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "callStack_", "LSMDebugger_FrameStack;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "scanner_", "LJavaUtilScanner;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "debuggerInterface_", "LSMDebugger_DebuggerInterface;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "evaluator_", "LSMDebugger_Evaluator;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "inspectingEnvironment_", "LSMEnvironment;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "ignoredBreakpoints_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x2, -1, -1, 10, -1 },
+    { "focusFrame_", "LSMDebugger_Frame;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "ignoredBreakpoints_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x2, -1, -1, 16, -1 },
+    { "addedBreakpoints_", "LJavaUtilSet;", .constantValue.asLong = 0, 0x2, -1, -1, 16, -1 },
+    { "watch_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 17, -1 },
+    { "allExceptions_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "debuggingOff_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "firstHelp_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "currentBreakpoint_", "LSMStmt;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "currentStack_", "LSMDebugger_FrameStack;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "stepState_", "LSMDebugger_StepState;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "stepOverDepth_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "setEvaluator", "LSMDebugger_Evaluator;", "pushLine", "LSMDebugger_Frame;", "pushCall", "triggerBreakpoint", "LSMStmt;", "print", "IZ", &SMDebugger_BREAKPOINT_LEXEME, "Ljava/util/Set<LStmt;>;", "LSMDebugger_Frame;LSMDebugger_FrameStack;LSMDebugger_Evaluator;" };
-  static const J2ObjcClassInfo _SMDebugger = { "Debugger", "net.globulus.simi", ptrTable, methods, fields, 7, 0x10, 9, 9, -1, 11, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMDebugger_DebuggerInterface;", "setEvaluator", "LSMDebugger_Evaluator;", "pushLine", "LSMDebugger_Frame;", "pushCall", "triggerBreakpoint", "LSMStmt;", "triggerException", "LSMStmt;LSMSimiException;Z", "print", "IZ", "parseInput", "LNSString;", &SMDebugger_BREAKPOINT_LEXEME, &SMDebugger_HELP, "Ljava/util/Set<LStmt;>;", "Ljava/util/Map<Ljava/lang/String;LEnvironment;>;", "LSMDebugger_DebuggerState;LSMDebugger_StepState;LSMDebugger_Frame;LSMDebugger_FrameStack;LSMDebugger_Evaluator;LSMDebugger_DebuggerInterface;LSMDebugger_ConsoleInterface;" };
+  static const J2ObjcClassInfo _SMDebugger = { "Debugger", "net.globulus.simi", ptrTable, methods, fields, 7, 0x11, 11, 18, -1, 18, -1, -1, -1 };
   return &_SMDebugger;
 }
 
 @end
 
-void SMDebugger_init(SMDebugger *self) {
+void SMDebugger_initWithSMDebugger_DebuggerInterface_(SMDebugger *self, id<SMDebugger_DebuggerInterface> debuggerInterface) {
   NSObject_init(self);
+  self->state_ = JreLoadEnum(SMDebugger_DebuggerState, OUTPUT);
   self->lineStack_ = new_SMDebugger_FrameStack_init();
   self->callStack_ = new_SMDebugger_FrameStack_init();
-  self->scanner_ = new_JavaUtilScanner_initWithJavaIoInputStream_(JreLoadStatic(JavaLangSystem, in));
+  self->debuggerInterface_ = debuggerInterface;
   self->ignoredBreakpoints_ = new_JavaUtilHashSet_init();
+  self->addedBreakpoints_ = new_JavaUtilHashSet_init();
+  self->watch_ = new_JavaUtilHashMap_init();
+  self->allExceptions_ = false;
+  self->debuggingOff_ = false;
+  self->firstHelp_ = true;
+  self->stepState_ = JreLoadEnum(SMDebugger_StepState, NONE);
 }
 
-SMDebugger *new_SMDebugger_init() {
-  J2OBJC_NEW_IMPL(SMDebugger, init)
+SMDebugger *new_SMDebugger_initWithSMDebugger_DebuggerInterface_(id<SMDebugger_DebuggerInterface> debuggerInterface) {
+  J2OBJC_NEW_IMPL(SMDebugger, initWithSMDebugger_DebuggerInterface_, debuggerInterface)
 }
 
-SMDebugger *create_SMDebugger_init() {
-  J2OBJC_CREATE_IMPL(SMDebugger, init)
+SMDebugger *create_SMDebugger_initWithSMDebugger_DebuggerInterface_(id<SMDebugger_DebuggerInterface> debuggerInterface) {
+  J2OBJC_CREATE_IMPL(SMDebugger, initWithSMDebugger_DebuggerInterface_, debuggerInterface)
 }
 
 void SMDebugger_printWithInt_withBoolean_(SMDebugger *self, jint frameIndex, jboolean printLine) {
   id<JavaUtilList> frames = [((SMDebugger_FrameStack *) nil_chk(self->currentStack_)) toList];
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"============================"];
-  SMDebugger_Frame *focusFrame;
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:@"============================"];
   if (printLine && self->currentStack_ != self->lineStack_) {
-    focusFrame = [((id<JavaUtilList>) nil_chk([((SMDebugger_FrameStack *) nil_chk(self->lineStack_)) toList])) getWithInt:frameIndex];
+    self->focusFrame_ = [((id<JavaUtilList>) nil_chk([((SMDebugger_FrameStack *) nil_chk(self->lineStack_)) toList])) getWithInt:frameIndex];
   }
   else {
-    focusFrame = [((id<JavaUtilList>) nil_chk(frames)) getWithInt:frameIndex];
+    self->focusFrame_ = [((id<JavaUtilList>) nil_chk(frames)) getWithInt:frameIndex];
   }
-  self->inspectingEnvironment_ = ((SMDebugger_Frame *) nil_chk(focusFrame))->environment_;
-  if (focusFrame->before_ != nil) {
+  if (((SMDebugger_Frame *) nil_chk(self->focusFrame_))->before_ != nil) {
     {
-      IOSObjectArray *a__ = focusFrame->before_;
+      IOSObjectArray *a__ = self->focusFrame_->before_;
       id<SMCodifiable> const *b__ = a__->buffer_;
       id<SMCodifiable> const *e__ = b__ + a__->size_;
       while (b__ < e__) {
         id<SMCodifiable> codifiable = *b__++;
-        [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:[((id<SMCodifiable>) nil_chk(codifiable)) toCodeWithInt:0 withBoolean:true]];
+        [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:[((id<SMCodifiable>) nil_chk(codifiable)) toCodeWithInt:0 withBoolean:true]];
       }
     }
   }
-  [focusFrame printWithJavaLangInteger:nil];
-  if (focusFrame->after_ != nil) {
+  [((SMDebugger_Frame *) nil_chk(self->focusFrame_)) printWithJavaLangInteger:nil withSMDebugger_DebuggerInterface:self->debuggerInterface_];
+  if (((SMDebugger_Frame *) nil_chk(self->focusFrame_))->after_ != nil) {
     {
-      IOSObjectArray *a__ = focusFrame->after_;
+      IOSObjectArray *a__ = self->focusFrame_->after_;
       id<SMCodifiable> const *b__ = a__->buffer_;
       id<SMCodifiable> const *e__ = b__ + a__->size_;
       while (b__ < e__) {
         id<SMCodifiable> codifiable = *b__++;
-        [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:[((id<SMCodifiable>) nil_chk(codifiable)) toCodeWithInt:0 withBoolean:true]];
+        [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:[((id<SMCodifiable>) nil_chk(codifiable)) toCodeWithInt:0 withBoolean:true]];
       }
     }
   }
-  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:@"============================"];
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:@"============================"];
   for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(frames)) size]; i++) {
     SMDebugger_Frame *frame = [frames getWithInt:i];
-    [((SMDebugger_Frame *) nil_chk(frame)) printWithJavaLangInteger:JavaLangInteger_valueOfWithInt_(i)];
+    [((SMDebugger_Frame *) nil_chk(frame)) printWithJavaLangInteger:JavaLangInteger_valueOfWithInt_(i) withSMDebugger_DebuggerInterface:self->debuggerInterface_];
   }
-  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:@"\n#### ENVIRONMENT ####\n"];
-  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:[((SMEnvironment *) nil_chk(focusFrame->environment_)) toStringWithoutValuesOrGlobal]];
-  SMDebugger_printHelp(self);
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:@"\n#### ENVIRONMENT ####\n"];
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:[((SMEnvironment *) nil_chk(((SMDebugger_Frame *) nil_chk(self->focusFrame_))->environment_)) toStringWithoutValuesOrGlobal]];
+  if (![((id<JavaUtilMap>) nil_chk(self->watch_)) isEmpty]) {
+    [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:@"\n#### WATCH ####\n"];
+    for (id<JavaUtilMap_Entry> __strong watched in nil_chk([((id<JavaUtilMap>) nil_chk(self->watch_)) entrySet])) {
+      NSString *name = [((id<JavaUtilMap_Entry>) nil_chk(watched)) getKey];
+      id<SMSimiProperty> value = [((SMEnvironment *) nil_chk([watched getValue])) tryGetWithNSString:name];
+      [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:JreStrcat("$$$", name, @" = ", ((value != nil) ? [((id<SMSimiProperty>) nil_chk(value)) description] : @"nil"))];
+    }
+  }
+  if (self->firstHelp_) {
+    self->firstHelp_ = false;
+    SMDebugger_printHelp(self);
+  }
 }
 
 void SMDebugger_printHelp(SMDebugger *self) {
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"\nCommands:\nc: Print call stack\nl: Print line stack\ni [index]: Inspect environment at stack index\ne [expr]: Evaluates expression within current environment\nr: Remove current breakpoint for this debugger session\ng: Prints global environment\nanything else: continue with program execution\n"];
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:SMDebugger_HELP];
 }
 
 void SMDebugger_scanInput(SMDebugger *self) {
-  NSString *input = [((JavaUtilScanner *) nil_chk(self->scanner_)) nextLine];
+  self->state_ = JreLoadEnum(SMDebugger_DebuggerState, INPUT);
+  NSString *syncInput = [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) read];
+  if (syncInput != nil) {
+    SMDebugger_parseInputWithNSString_(self, syncInput);
+  }
+  else {
+    @synchronized([((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) getLock]) {
+      @try {
+        [nil_chk([((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) getLock]) java_wait];
+      }
+      @catch (JavaLangInterruptedException *e) {
+        [e printStackTrace];
+        NSString *asyncInput = [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) read];
+        SMDebugger_parseInputWithNSString_(self, asyncInput);
+      }
+      NSString *asyncInput = [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) read];
+      SMDebugger_parseInputWithNSString_(self, asyncInput);
+    }
+  }
+}
+
+void SMDebugger_parseInputWithNSString_(SMDebugger *self, NSString *input) {
+  if (self->state_ == JreLoadEnum(SMDebugger_DebuggerState, OUTPUT)) {
+    return;
+  }
+  self->state_ = JreLoadEnum(SMDebugger_DebuggerState, OUTPUT);
   if ([((NSString *) nil_chk(input)) java_isEmpty]) {
     return;
   }
@@ -287,17 +512,64 @@ void SMDebugger_scanInput(SMDebugger *self) {
       if (self->evaluator_ == nil) {
         @throw new_JavaLangIllegalStateException_initWithNSString_(@"Evaluator not set!");
       }
-      [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:[self->evaluator_ evalWithNSString:[input java_substring:2] withSMEnvironment:self->inspectingEnvironment_]];
-      SMDebugger_printHelp(self);
+      [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:[self->evaluator_ evalWithNSString:[input java_substring:2] withSMEnvironment:((SMDebugger_Frame *) nil_chk(self->focusFrame_))->environment_]];
+    }
+    break;
+    case 'w':
+    {
+      NSString *name = [input java_substring:2];
+      (void) [((id<JavaUtilMap>) nil_chk(self->watch_)) putWithId:name withId:((SMDebugger_Frame *) nil_chk(self->focusFrame_))->sourceEnvironment_];
+      [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:JreStrcat("$$", @"Added to watch: ", name)];
+    }
+    break;
+    case 'n':
+    self->stepState_ = JreLoadEnum(SMDebugger_StepState, STEP_INTO);
+    return;
+    case 'v':
+    self->stepState_ = JreLoadEnum(SMDebugger_StepState, STEP_OVER);
+    self->stepOverDepth_ = 0;
+    return;
+    case 'a':
+    {
+      if (self->currentBreakpoint_ != nil) {
+        if ([((id<JavaUtilSet>) nil_chk(self->ignoredBreakpoints_)) containsWithId:self->currentBreakpoint_]) {
+          [((id<JavaUtilSet>) nil_chk(self->ignoredBreakpoints_)) removeWithId:self->currentBreakpoint_];
+        }
+        else {
+          [((id<JavaUtilSet>) nil_chk(self->addedBreakpoints_)) addWithId:self->currentBreakpoint_];
+        }
+      }
+      [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:@"Breakpoint added."];
     }
     break;
     case 'r':
     {
       if (self->currentBreakpoint_ != nil) {
-        [((id<JavaUtilSet>) nil_chk(self->ignoredBreakpoints_)) addWithId:self->currentBreakpoint_];
+        if ([((id<JavaUtilSet>) nil_chk(self->addedBreakpoints_)) containsWithId:self->currentBreakpoint_]) {
+          [((id<JavaUtilSet>) nil_chk(self->addedBreakpoints_)) removeWithId:self->currentBreakpoint_];
+        }
+        else {
+          [((id<JavaUtilSet>) nil_chk(self->ignoredBreakpoints_)) addWithId:self->currentBreakpoint_];
+        }
         self->currentBreakpoint_ = nil;
       }
-      [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"Breakpoint removed."];
+      [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:@"Breakpoint removed."];
+    }
+    break;
+    case 'x':
+    {
+      self->allExceptions_ = !self->allExceptions_;
+      [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:JreStrcat("$Z", @"All exceptions will be caught: ", self->allExceptions_)];
+    }
+    break;
+    case 'o':
+    {
+      self->debuggingOff_ = !self->debuggingOff_;
+      [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:JreStrcat("$Z", @"Debugging turned off: ", self->debuggingOff_)];
+    }
+    break;
+    case 'h':
+    {
       SMDebugger_printHelp(self);
     }
     break;
@@ -306,11 +578,11 @@ void SMDebugger_scanInput(SMDebugger *self) {
       if (self->evaluator_ == nil) {
         @throw new_JavaLangIllegalStateException_initWithNSString_(@"Evaluator not set!");
       }
-      [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:[((SMEnvironment *) nil_chk([self->evaluator_ getGlobalEnvironment])) description]];
-      SMDebugger_printHelp(self);
+      [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) printlnWithNSString:[((SMEnvironment *) nil_chk([self->evaluator_ getGlobalEnvironment])) description]];
     }
     break;
     default:
+    [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) resume];
     return;
   }
   SMDebugger_scanInput(self);
@@ -318,22 +590,218 @@ void SMDebugger_scanInput(SMDebugger *self) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMDebugger)
 
+J2OBJC_INITIALIZED_DEFN(SMDebugger_DebuggerState)
+
+SMDebugger_DebuggerState *SMDebugger_DebuggerState_values_[2];
+
+@implementation SMDebugger_DebuggerState
+
++ (SMDebugger_DebuggerState *)OUTPUT {
+  return JreEnum(SMDebugger_DebuggerState, OUTPUT);
+}
+
++ (SMDebugger_DebuggerState *)INPUT {
+  return JreEnum(SMDebugger_DebuggerState, INPUT);
+}
+
++ (IOSObjectArray *)values {
+  return SMDebugger_DebuggerState_values();
+}
+
++ (SMDebugger_DebuggerState *)valueOfWithNSString:(NSString *)name {
+  return SMDebugger_DebuggerState_valueOfWithNSString_(name);
+}
+
+- (SMDebugger_DebuggerState_Enum)toNSEnum {
+  return (SMDebugger_DebuggerState_Enum)[self ordinal];
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "[LSMDebugger_DebuggerState;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMDebugger_DebuggerState;", 0x9, 0, 1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(values);
+  methods[1].selector = @selector(valueOfWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "OUTPUT", "LSMDebugger_DebuggerState;", .constantValue.asLong = 0, 0x4019, -1, 2, -1, -1 },
+    { "INPUT", "LSMDebugger_DebuggerState;", .constantValue.asLong = 0, 0x4019, -1, 3, -1, -1 },
+  };
+  static const void *ptrTable[] = { "valueOf", "LNSString;", &JreEnum(SMDebugger_DebuggerState, OUTPUT), &JreEnum(SMDebugger_DebuggerState, INPUT), "LSMDebugger;", "Ljava/lang/Enum<LDebugger$DebuggerState;>;" };
+  static const J2ObjcClassInfo _SMDebugger_DebuggerState = { "DebuggerState", "net.globulus.simi", ptrTable, methods, fields, 7, 0x401a, 2, 2, 4, -1, -1, 5, -1 };
+  return &_SMDebugger_DebuggerState;
+}
+
++ (void)initialize {
+  if (self == [SMDebugger_DebuggerState class]) {
+    JreEnum(SMDebugger_DebuggerState, OUTPUT) = new_SMDebugger_DebuggerState_initWithNSString_withInt_(JreEnumConstantName(SMDebugger_DebuggerState_class_(), 0), 0);
+    JreEnum(SMDebugger_DebuggerState, INPUT) = new_SMDebugger_DebuggerState_initWithNSString_withInt_(JreEnumConstantName(SMDebugger_DebuggerState_class_(), 1), 1);
+    J2OBJC_SET_INITIALIZED(SMDebugger_DebuggerState)
+  }
+}
+
+@end
+
+void SMDebugger_DebuggerState_initWithNSString_withInt_(SMDebugger_DebuggerState *self, NSString *__name, jint __ordinal) {
+  JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
+}
+
+SMDebugger_DebuggerState *new_SMDebugger_DebuggerState_initWithNSString_withInt_(NSString *__name, jint __ordinal) {
+  J2OBJC_NEW_IMPL(SMDebugger_DebuggerState, initWithNSString_withInt_, __name, __ordinal)
+}
+
+IOSObjectArray *SMDebugger_DebuggerState_values() {
+  SMDebugger_DebuggerState_initialize();
+  return [IOSObjectArray arrayWithObjects:SMDebugger_DebuggerState_values_ count:2 type:SMDebugger_DebuggerState_class_()];
+}
+
+SMDebugger_DebuggerState *SMDebugger_DebuggerState_valueOfWithNSString_(NSString *name) {
+  SMDebugger_DebuggerState_initialize();
+  for (int i = 0; i < 2; i++) {
+    SMDebugger_DebuggerState *e = SMDebugger_DebuggerState_values_[i];
+    if ([name isEqual:[e name]]) {
+      return e;
+    }
+  }
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
+  return nil;
+}
+
+SMDebugger_DebuggerState *SMDebugger_DebuggerState_fromOrdinal(NSUInteger ordinal) {
+  SMDebugger_DebuggerState_initialize();
+  if (ordinal >= 2) {
+    return nil;
+  }
+  return SMDebugger_DebuggerState_values_[ordinal];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMDebugger_DebuggerState)
+
+J2OBJC_INITIALIZED_DEFN(SMDebugger_StepState)
+
+SMDebugger_StepState *SMDebugger_StepState_values_[4];
+
+@implementation SMDebugger_StepState
+
++ (SMDebugger_StepState *)NONE {
+  return JreEnum(SMDebugger_StepState, NONE);
+}
+
++ (SMDebugger_StepState *)STEP_INTO {
+  return JreEnum(SMDebugger_StepState, STEP_INTO);
+}
+
++ (SMDebugger_StepState *)STEP_OVER {
+  return JreEnum(SMDebugger_StepState, STEP_OVER);
+}
+
++ (SMDebugger_StepState *)STEP_OVER_SUSPENDED {
+  return JreEnum(SMDebugger_StepState, STEP_OVER_SUSPENDED);
+}
+
++ (IOSObjectArray *)values {
+  return SMDebugger_StepState_values();
+}
+
++ (SMDebugger_StepState *)valueOfWithNSString:(NSString *)name {
+  return SMDebugger_StepState_valueOfWithNSString_(name);
+}
+
+- (SMDebugger_StepState_Enum)toNSEnum {
+  return (SMDebugger_StepState_Enum)[self ordinal];
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "[LSMDebugger_StepState;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LSMDebugger_StepState;", 0x9, 0, 1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(values);
+  methods[1].selector = @selector(valueOfWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "NONE", "LSMDebugger_StepState;", .constantValue.asLong = 0, 0x4019, -1, 2, -1, -1 },
+    { "STEP_INTO", "LSMDebugger_StepState;", .constantValue.asLong = 0, 0x4019, -1, 3, -1, -1 },
+    { "STEP_OVER", "LSMDebugger_StepState;", .constantValue.asLong = 0, 0x4019, -1, 4, -1, -1 },
+    { "STEP_OVER_SUSPENDED", "LSMDebugger_StepState;", .constantValue.asLong = 0, 0x4019, -1, 5, -1, -1 },
+  };
+  static const void *ptrTable[] = { "valueOf", "LNSString;", &JreEnum(SMDebugger_StepState, NONE), &JreEnum(SMDebugger_StepState, STEP_INTO), &JreEnum(SMDebugger_StepState, STEP_OVER), &JreEnum(SMDebugger_StepState, STEP_OVER_SUSPENDED), "LSMDebugger;", "Ljava/lang/Enum<LDebugger$StepState;>;" };
+  static const J2ObjcClassInfo _SMDebugger_StepState = { "StepState", "net.globulus.simi", ptrTable, methods, fields, 7, 0x401a, 2, 4, 6, -1, -1, 7, -1 };
+  return &_SMDebugger_StepState;
+}
+
++ (void)initialize {
+  if (self == [SMDebugger_StepState class]) {
+    JreEnum(SMDebugger_StepState, NONE) = new_SMDebugger_StepState_initWithNSString_withInt_(JreEnumConstantName(SMDebugger_StepState_class_(), 0), 0);
+    JreEnum(SMDebugger_StepState, STEP_INTO) = new_SMDebugger_StepState_initWithNSString_withInt_(JreEnumConstantName(SMDebugger_StepState_class_(), 1), 1);
+    JreEnum(SMDebugger_StepState, STEP_OVER) = new_SMDebugger_StepState_initWithNSString_withInt_(JreEnumConstantName(SMDebugger_StepState_class_(), 2), 2);
+    JreEnum(SMDebugger_StepState, STEP_OVER_SUSPENDED) = new_SMDebugger_StepState_initWithNSString_withInt_(JreEnumConstantName(SMDebugger_StepState_class_(), 3), 3);
+    J2OBJC_SET_INITIALIZED(SMDebugger_StepState)
+  }
+}
+
+@end
+
+void SMDebugger_StepState_initWithNSString_withInt_(SMDebugger_StepState *self, NSString *__name, jint __ordinal) {
+  JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
+}
+
+SMDebugger_StepState *new_SMDebugger_StepState_initWithNSString_withInt_(NSString *__name, jint __ordinal) {
+  J2OBJC_NEW_IMPL(SMDebugger_StepState, initWithNSString_withInt_, __name, __ordinal)
+}
+
+IOSObjectArray *SMDebugger_StepState_values() {
+  SMDebugger_StepState_initialize();
+  return [IOSObjectArray arrayWithObjects:SMDebugger_StepState_values_ count:4 type:SMDebugger_StepState_class_()];
+}
+
+SMDebugger_StepState *SMDebugger_StepState_valueOfWithNSString_(NSString *name) {
+  SMDebugger_StepState_initialize();
+  for (int i = 0; i < 4; i++) {
+    SMDebugger_StepState *e = SMDebugger_StepState_values_[i];
+    if ([name isEqual:[e name]]) {
+      return e;
+    }
+  }
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
+  return nil;
+}
+
+SMDebugger_StepState *SMDebugger_StepState_fromOrdinal(NSUInteger ordinal) {
+  SMDebugger_StepState_initialize();
+  if (ordinal >= 4) {
+    return nil;
+  }
+  return SMDebugger_StepState_values_[ordinal];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMDebugger_StepState)
+
 @implementation SMDebugger_Frame
 
 - (instancetype __nonnull)initWithSMEnvironment:(SMEnvironment *)environment
+                              withSMEnvironment:(SMEnvironment *)sourceEnvironment
                                withSMCodifiable:(id<SMCodifiable>)line
                           withSMCodifiableArray:(IOSObjectArray *)before
                           withSMCodifiableArray:(IOSObjectArray *)after {
-  SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(self, environment, line, before, after);
+  SMDebugger_Frame_initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(self, environment, sourceEnvironment, line, before, after);
   return self;
 }
 
-- (void)printWithJavaLangInteger:(JavaLangInteger *)index {
+- (void)printWithJavaLangInteger:(JavaLangInteger *)index
+withSMDebugger_DebuggerInterface:(id<SMDebugger_DebuggerInterface>)debuggerInterface {
   if (index != nil) {
-    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:JreStrcat("C@$", '[', index, @"] ")];
+    [((id<SMDebugger_DebuggerInterface>) nil_chk(debuggerInterface)) printWithNSString:JreStrcat("C@$", '[', index, @"] ")];
   }
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:JreStrcat("C$$I$", '"', [((id<SMCodifiable>) nil_chk(line_)) getFileName], @"\" line ", [line_ getLineNumber], @": ")];
-  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:[line_ toCodeWithInt:0 withBoolean:true]];
+  [((id<SMDebugger_DebuggerInterface>) nil_chk(debuggerInterface)) printWithNSString:JreStrcat("C$$I$", '"', [((id<SMCodifiable>) nil_chk(line_)) getFileName], @"\" line ", [line_ getLineNumber], @": ")];
+  [debuggerInterface printlnWithNSString:[line_ toCodeWithInt:0 withBoolean:true]];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -344,36 +812,38 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMDebugger)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithSMEnvironment:withSMCodifiable:withSMCodifiableArray:withSMCodifiableArray:);
-  methods[1].selector = @selector(printWithJavaLangInteger:);
+  methods[0].selector = @selector(initWithSMEnvironment:withSMEnvironment:withSMCodifiable:withSMCodifiableArray:withSMCodifiableArray:);
+  methods[1].selector = @selector(printWithJavaLangInteger:withSMDebugger_DebuggerInterface:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "environment_", "LSMEnvironment;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "sourceEnvironment_", "LSMEnvironment;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "line_", "LSMCodifiable;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "before_", "[LSMCodifiable;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
     { "after_", "[LSMCodifiable;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMEnvironment;LSMCodifiable;[LSMCodifiable;[LSMCodifiable;", "print", "LJavaLangInteger;", "LSMDebugger;" };
-  static const J2ObjcClassInfo _SMDebugger_Frame = { "Frame", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 4, 3, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMEnvironment;LSMEnvironment;LSMCodifiable;[LSMCodifiable;[LSMCodifiable;", "print", "LJavaLangInteger;LSMDebugger_DebuggerInterface;", "LSMDebugger;" };
+  static const J2ObjcClassInfo _SMDebugger_Frame = { "Frame", "net.globulus.simi", ptrTable, methods, fields, 7, 0x8, 2, 5, 3, -1, -1, -1, -1 };
   return &_SMDebugger_Frame;
 }
 
 @end
 
-void SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMDebugger_Frame *self, SMEnvironment *environment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after) {
+void SMDebugger_Frame_initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMDebugger_Frame *self, SMEnvironment *environment, SMEnvironment *sourceEnvironment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after) {
   NSObject_init(self);
   self->environment_ = environment;
+  self->sourceEnvironment_ = sourceEnvironment;
   self->line_ = line;
   self->before_ = before;
   self->after_ = after;
 }
 
-SMDebugger_Frame *new_SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMEnvironment *environment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after) {
-  J2OBJC_NEW_IMPL(SMDebugger_Frame, initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_, environment, line, before, after)
+SMDebugger_Frame *new_SMDebugger_Frame_initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMEnvironment *environment, SMEnvironment *sourceEnvironment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after) {
+  J2OBJC_NEW_IMPL(SMDebugger_Frame, initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_, environment, sourceEnvironment, line, before, after)
 }
 
-SMDebugger_Frame *create_SMDebugger_Frame_initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMEnvironment *environment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after) {
-  J2OBJC_CREATE_IMPL(SMDebugger_Frame, initWithSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_, environment, line, before, after)
+SMDebugger_Frame *create_SMDebugger_Frame_initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_(SMEnvironment *environment, SMEnvironment *sourceEnvironment, id<SMCodifiable> line, IOSObjectArray *before, IOSObjectArray *after) {
+  J2OBJC_CREATE_IMPL(SMDebugger_Frame, initWithSMEnvironment_withSMEnvironment_withSMCodifiable_withSMCodifiableArray_withSMCodifiableArray_, environment, sourceEnvironment, line, before, after)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMDebugger_Frame)
@@ -490,3 +960,103 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMDebugger_FrameStack)
 @end
 
 J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMDebugger_Evaluator)
+
+@implementation SMDebugger_DebuggerInterface
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "V", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(printWithNSString:);
+  methods[1].selector = @selector(printlnWithNSString:);
+  methods[2].selector = @selector(read);
+  methods[3].selector = @selector(getLock);
+  methods[4].selector = @selector(resume);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "print", "LNSString;", "println", "LSMDebugger;" };
+  static const J2ObjcClassInfo _SMDebugger_DebuggerInterface = { "DebuggerInterface", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 5, 0, 3, -1, -1, -1, -1 };
+  return &_SMDebugger_DebuggerInterface;
+}
+
+@end
+
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMDebugger_DebuggerInterface)
+
+@implementation SMDebugger_ConsoleInterface
+
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype __nonnull)init {
+  SMDebugger_ConsoleInterface_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
+- (void)printWithNSString:(NSString *)s {
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:s];
+}
+
+- (void)printlnWithNSString:(NSString *)s {
+  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:s];
+}
+
+- (NSString *)read {
+  return [((JavaUtilScanner *) nil_chk(scanner_)) nextLine];
+}
+
+- (id)getLock {
+  return nil;
+}
+
+- (void)resume {
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(printWithNSString:);
+  methods[2].selector = @selector(printlnWithNSString:);
+  methods[3].selector = @selector(read);
+  methods[4].selector = @selector(getLock);
+  methods[5].selector = @selector(resume);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "scanner_", "LJavaUtilScanner;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "print", "LNSString;", "println", "LSMDebugger;" };
+  static const J2ObjcClassInfo _SMDebugger_ConsoleInterface = { "ConsoleInterface", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 3, -1, -1, -1, -1 };
+  return &_SMDebugger_ConsoleInterface;
+}
+
+@end
+
+void SMDebugger_ConsoleInterface_init(SMDebugger_ConsoleInterface *self) {
+  NSObject_init(self);
+  self->scanner_ = new_JavaUtilScanner_initWithJavaIoInputStream_(JreLoadStatic(JavaLangSystem, in));
+}
+
+SMDebugger_ConsoleInterface *new_SMDebugger_ConsoleInterface_init() {
+  J2OBJC_NEW_IMPL(SMDebugger_ConsoleInterface, init)
+}
+
+SMDebugger_ConsoleInterface *create_SMDebugger_ConsoleInterface_init() {
+  J2OBJC_CREATE_IMPL(SMDebugger_ConsoleInterface, init)
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(SMDebugger_ConsoleInterface)

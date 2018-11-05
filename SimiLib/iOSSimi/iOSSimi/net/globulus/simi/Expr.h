@@ -63,9 +63,6 @@
 #ifdef INCLUDE_SMExpr_Assign
 #define INCLUDE_SMExpr 1
 #endif
-#ifdef INCLUDE_SMExpr_Annotations
-#define INCLUDE_SMExpr 1
-#endif
 #ifdef INCLUDE_SMExpr_Block
 #define INCLUDE_SMExpr 1
 #endif
@@ -109,7 +106,6 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr)
 #if !defined (SMExpr_Visitor_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Visitor))
 #define SMExpr_Visitor_
 
-@class SMExpr_Annotations;
 @class SMExpr_Assign;
 @class SMExpr_Binary;
 @class SMExpr_Block;
@@ -128,8 +124,6 @@ J2OBJC_TYPE_LITERAL_HEADER(SMExpr)
 @class SMExpr_Variable;
 
 @protocol SMExpr_Visitor < JavaObject >
-
-- (id)visitAnnotationsExprWithSMExpr_Annotations:(SMExpr_Annotations *)expr;
 
 - (id)visitAssignExprWithSMExpr_Assign:(SMExpr_Assign *)expr;
 
@@ -246,56 +240,6 @@ FOUNDATION_EXPORT SMExpr_Block *new_SMExpr_Block_initWithSMToken_withJavaUtilLis
 FOUNDATION_EXPORT SMExpr_Block *create_SMExpr_Block_initWithSMToken_withJavaUtilList_withJavaUtilList_withBoolean_(SMToken *declaration, id<JavaUtilList> params, id<JavaUtilList> statements, jboolean canReturn);
 
 J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Block)
-
-#endif
-
-#if !defined (SMExpr_Annotations_) && (INCLUDE_ALL_NetGlobulusSimiExpr || defined(INCLUDE_SMExpr_Annotations))
-#define SMExpr_Annotations_
-
-@class IOSObjectArray;
-@protocol JavaUtilList;
-@protocol SMExpr_Visitor;
-
-@interface SMExpr_Annotations : SMExpr {
- @public
-  id<JavaUtilList> tokens_;
-}
-
-#pragma mark Public
-
-- (NSString *)getFileName;
-
-- (jint)getLineNumber;
-
-- (jboolean)hasBreakPoint;
-
-- (NSString *)toCodeWithInt:(jint)indentationLevel
-                withBoolean:(jboolean)ignoreFirst;
-
-#pragma mark Package-Private
-
-- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tokens;
-
-- (id)acceptWithSMExpr_Visitor:(id<SMExpr_Visitor>)visitor
-             withNSObjectArray:(IOSObjectArray *)params;
-
-// Disallowed inherited constructors, do not use.
-
-- (instancetype __nonnull)init NS_UNAVAILABLE;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(SMExpr_Annotations)
-
-J2OBJC_FIELD_SETTER(SMExpr_Annotations, tokens_, id<JavaUtilList>)
-
-FOUNDATION_EXPORT void SMExpr_Annotations_initWithJavaUtilList_(SMExpr_Annotations *self, id<JavaUtilList> tokens);
-
-FOUNDATION_EXPORT SMExpr_Annotations *new_SMExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens) NS_RETURNS_RETAINED;
-
-FOUNDATION_EXPORT SMExpr_Annotations *create_SMExpr_Annotations_initWithJavaUtilList_(id<JavaUtilList> tokens);
-
-J2OBJC_TYPE_LITERAL_HEADER(SMExpr_Annotations)
 
 #endif
 

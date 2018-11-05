@@ -25,9 +25,10 @@
 
 @protocol SMErrorWatcher < JavaObject >
 
-- (void)reportWithInt:(jint)line
-         withNSString:(NSString *)where
-         withNSString:(NSString *)message;
+- (void)reportWithNSString:(NSString *)file
+                   withInt:(jint)line
+              withNSString:(NSString *)where
+              withNSString:(NSString *)message;
 
 - (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error;
 

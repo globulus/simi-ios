@@ -43,7 +43,6 @@
 @class SMDebugger;
 @class SMEnvironment;
 @class SMExpr;
-@class SMExpr_Annotations;
 @class SMExpr_Assign;
 @class SMExpr_Binary;
 @class SMExpr_Block;
@@ -124,13 +123,11 @@
 
 - (void)undefineTempVarsWithJavaUtilList:(id<JavaUtilList>)names;
 
-- (SMSimiValue *)visitAnnotationsExprWithSMExpr_Annotations:(SMExpr_Annotations *)expr;
-
 - (id<SMSimiProperty>)visitAnnotationStmtWithSMStmt_Annotation:(SMStmt_Annotation *)stmt;
 
 - (id<SMSimiProperty>)visitAssignExprWithSMExpr_Assign:(SMExpr_Assign *)expr;
 
-- (SMSimiValue *)visitBinaryExprWithSMExpr_Binary:(SMExpr_Binary *)expr;
+- (id<SMSimiProperty>)visitBinaryExprWithSMExpr_Binary:(SMExpr_Binary *)expr;
 
 - (SMSimiValue *)visitBlockExprWithSMExpr_Block:(SMExpr_Block *)stmt
                                     withBoolean:(jboolean)newScope

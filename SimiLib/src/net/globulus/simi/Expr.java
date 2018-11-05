@@ -11,7 +11,6 @@ abstract class Expr implements Codifiable {
   abstract <R> R accept(Visitor<R> visitor, Object... params);
 
   interface Visitor<R> {
-    R visitAnnotationsExpr(Annotations expr);
     R visitAssignExpr(Assign expr);
     R visitBinaryExpr(Binary expr);
     R visitBlockExpr(Block expr, boolean newScope, boolean execute);
@@ -189,42 +188,6 @@ abstract class Expr implements Codifiable {
           }
           return localStatements;
       }
-    }
-
-    static class Annotations extends Expr {
-
-      final List<Token> tokens;
-
-      Annotations(List<Token> tokens) {
-        this.tokens = tokens;
-      }
-
-      <R> R accept(Visitor<R> visitor, Object... params) {
-        return visitor.visitAnnotationsExpr(this);
-      }
-
-      @Override
-      public String toCode(int indentationLevel, boolean ignoreFirst) {
-        return TokenType.BANG_BANG.toCode(indentationLevel, ignoreFirst)
-                  + tokens.stream()
-                      .map(t -> t.lexeme)
-                      .collect(Collectors.joining(TokenType.DOT.toCode()));
-      }
-
-      @Override
-      public int getLineNumber() {
-        return tokens.get(0).line;
-      }
-
-      @Override
-      public String getFileName() {
-        return tokens.get(0).file;
-      }
-
-      @Override
-        public boolean hasBreakPoint() {
-            return false;
-        }
     }
 
   static class Assign extends Expr {
@@ -775,7 +738,10 @@ abstract class Expr implements Codifiable {
 
     @Override
     public String toCode(int indentationLevel, boolean ignoreFirst) {
-      return  operator.type.toCode(indentationLevel, ignoreFirst) + " " + right.toCode(0, false);
+      String space = (operator.type == TokenType.MINUS
+              || operator.type == TokenType.QUESTION
+              || operator.type == TokenType.BANG_BANG) ? "" : " ";
+      return  operator.type.toCode(indentationLevel, ignoreFirst) + space + right.toCode(0, false);
     }
 
     @Override

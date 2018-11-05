@@ -33,6 +33,9 @@ final class Constants {
     public static final String PACKAGE_SIMI_API = "net.globulus.simi.api";
     public static final String API_CLASS_NAME = "JavaApi";
 
+    public static final String EXCEPTION_SCANNER = "ScannerException";
+    public static final String EXCEPTION_PARSER = "ParserException";
+    public static final String EXCEPTION_INTERPRETER = "InterpreterException";
     public static final String EXCEPTION_NUMBER_FORMAT = "NumberFormatException";
     public static final String EXCEPTION_NIL_REFERENCE = "NilReferenceException";
     public static final String EXCEPTION_TYPE_MISMATCH = "TypeMismatchException";

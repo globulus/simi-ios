@@ -3,6 +3,7 @@ package net.globulus.simi;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.*;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -83,18 +84,6 @@ class BaseClassesNativeImpl {
                 return new SimiValue.Object(SimiObjectImpl.fromArray(getObjectClass(interpreter), true, self.values()));
             }
         });
-        methods.put(new OverloadableFunction("enumerate", 0), new SimiCallable() {
-            @Override
-            public int arity() {
-                return 0;
-            }
-
-            @Override
-            public SimiProperty call(BlockInterpreter interpreter, SimiEnvironment env, List<SimiProperty> arguments, boolean rethrow) {
-                SimiObjectImpl self = (SimiObjectImpl) arguments.get(0).getValue().getObject();
-                return new SimiValue.Object(self.enumerate(getObjectClass(interpreter)));
-            }
-        });
         methods.put(new OverloadableFunction("zip", 0), new SimiCallable() {
             @Override
             public int arity() {
@@ -104,7 +93,7 @@ class BaseClassesNativeImpl {
             @Override
             public SimiProperty call(BlockInterpreter interpreter, SimiEnvironment env, List<SimiProperty> arguments, boolean rethrow) {
                 SimiObjectImpl self = (SimiObjectImpl) arguments.get(0).getValue().getObject();
-                return new SimiValue.Object(self.zip(getObjectClass(interpreter)));
+                return new SimiValue.Object(self.enumerate(getObjectClass(interpreter)));
             }
         });
         methods.put(new OverloadableFunction("ruler", 0), new SimiCallable() {
@@ -117,6 +106,29 @@ class BaseClassesNativeImpl {
             public SimiProperty call(BlockInterpreter interpreter, SimiEnvironment env, List<SimiProperty> arguments, boolean rethrow) {
                 SimiObjectImpl self = (SimiObjectImpl) arguments.get(0).getValue().getObject();
                 return new SimiValue.Object(self.getLine());
+            }
+        });
+        methods.put(new OverloadableFunction("className", 0), new SimiCallable() {
+            @Override
+            public int arity() {
+                return 0;
+            }
+
+            @Override
+            public SimiProperty call(BlockInterpreter interpreter, SimiEnvironment env, List<SimiProperty> arguments, boolean rethrow) {
+                SimiObjectImpl self = (SimiObjectImpl) arguments.get(0).getValue().getObject();
+                String name;
+                if (self instanceof SimiClassImpl) {
+                    name = ((SimiClassImpl) self).name;
+                } else {
+                    SimiClassImpl clazz = self.clazz;
+                    if (clazz == null) {
+                        return null;
+                    } else {
+                        name = clazz.name;
+                    }
+                }
+                return new SimiValue.String(name);
             }
         });
         methods.put(new OverloadableFunction("append", 1), new SimiCallable() {
@@ -542,9 +554,9 @@ class BaseClassesNativeImpl {
                 int i = 0;
                 for (SimiValue simiValue : argsObject.values()) {
                     if (simiValue instanceof SimiValue.Number) {
-                        args[i] = simiValue.getNumber().asDouble();
+                        args[i] = simiValue.getNumber().getJavaValue();
                     } else {
-                        args[1] = simiValue.toString();
+                        args[i] = simiValue.toString();
                     }
                     i++;
                 }
@@ -735,6 +747,18 @@ class BaseClassesNativeImpl {
 
             private boolean isDigit(char c) {
                 return c >= '0' && c <= '9';
+            }
+        });
+        methods.put(new OverloadableFunction("unicode", 0), new SimiCallable() {
+            @Override
+            public int arity() {
+                return 0;
+            }
+
+            @Override
+            public SimiProperty call(BlockInterpreter interpreter, SimiEnvironment env, List<SimiProperty> arguments, boolean rethrow) {
+                String value = prepareValueNativeCall(interpreter, arguments).getString();
+                return new SimiValue.Number(value.charAt(0));
             }
         });
         methods.put(new OverloadableFunction(Constants.ITERATE, 0), new SimiCallable() {
@@ -1022,6 +1046,21 @@ class BaseClassesNativeImpl {
                 return new SimiValue.Number(value >>> other);
             }
         });
+        methods.put(new OverloadableFunction("char", 0), new SimiCallable() {
+            @Override
+            public int arity() {
+                return 0;
+            }
+
+            @Override
+            public SimiProperty call(BlockInterpreter interpreter, SimiEnvironment env, List<SimiProperty> arguments, boolean rethrow) {
+                SimiValue.Number value = prepareValueNativeCall(interpreter, arguments).getNumber();
+                if (value.isInteger()) {
+                    return new SimiValue.String(new String(Character.toChars(Math.toIntExact(value.asLong()))));
+                }
+                return null;
+            }
+        });
         return new SimiNativeClass(Constants.CLASS_NUMBER, methods);
     }
 
@@ -1110,6 +1149,19 @@ class BaseClassesNativeImpl {
             public SimiProperty call(BlockInterpreter interpreter, SimiEnvironment env, List<SimiProperty> arguments, boolean rethrow) {
                 double a = arguments.get(1).getValue().getNumber().asDouble();
                 return new SimiValue.Number(Math.round(a));
+            }
+        });
+        methods.put(new OverloadableFunction("read", 0), new SimiCallable() {
+            @Override
+            public int arity() {
+                return 0;
+            }
+
+            @Override
+            public SimiProperty call(BlockInterpreter interpreter, SimiEnvironment environment, List<SimiProperty> arguments, boolean rethrow) {
+                try (Scanner scanner = new Scanner(System.in)) {
+                    return new SimiValue.String(scanner.nextLine());
+                }
             }
         });
         return new SimiNativeClass(Constants.CLASS_GLOBALS, methods);

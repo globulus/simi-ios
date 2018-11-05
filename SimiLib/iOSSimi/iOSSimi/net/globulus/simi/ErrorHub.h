@@ -23,6 +23,7 @@
 
 @class SMRuntimeError;
 @class SMToken;
+@protocol SMBlockInterpreter;
 @protocol SMErrorWatcher;
 
 @interface SMErrorHub : NSObject
@@ -31,19 +32,20 @@
 
 - (void)addWatcherWithSMErrorWatcher:(id<SMErrorWatcher>)watcher;
 
-- (void)errorWithInt:(jint)line
-        withNSString:(NSString *)message;
+- (void)errorWithNSString:(NSString *)exceptionClass
+             withNSString:(NSString *)file
+                  withInt:(jint)line
+             withNSString:(NSString *)message;
 
-- (void)errorWithSMToken:(SMToken *)token
-            withNSString:(NSString *)message;
+- (void)errorWithNSString:(NSString *)exceptionClass
+              withSMToken:(SMToken *)token
+             withNSString:(NSString *)message;
 
 - (void)removeWatcherWithSMErrorWatcher:(id<SMErrorWatcher>)watcher;
 
-- (void)reportWithInt:(jint)line
-         withNSString:(NSString *)where
-         withNSString:(NSString *)message;
-
 - (void)runtimeErrorWithSMRuntimeError:(SMRuntimeError *)error;
+
+- (void)setInterpreterWithSMBlockInterpreter:(id<SMBlockInterpreter>)interpreter;
 
 + (SMErrorHub *)sharedInstance;
 

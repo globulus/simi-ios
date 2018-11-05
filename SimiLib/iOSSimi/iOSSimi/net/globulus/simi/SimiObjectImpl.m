@@ -396,8 +396,11 @@ __attribute__((unused)) static SMSimiObjectImpl_$Lambda$12 *create_SMSimiObjectI
 - (void)setWithSMToken:(SMToken *)name
     withSMSimiProperty:(id<SMSimiProperty>)prop
      withSMEnvironment:(SMEnvironment *)environment {
+  if (name == nil) {
+    return;
+  }
   SMSimiObjectImpl_checkMutabilityWithSMToken_withSMSimiEnvironment_(self, name, environment);
-  NSString *key = ((SMToken *) nil_chk(name))->lexeme_;
+  NSString *key = name->lexeme_;
   if ([((NSString *) nil_chk(key)) isEqual:SMConstants_PRIVATE] && clazz_ != nil && ([((NSString *) nil_chk(clazz_->name_)) isEqual:SMConstants_CLASS_STRING] || [clazz_->name_ isEqual:SMConstants_CLASS_NUMBER])) {
     @throw new_SMRuntimeError_initWithSMToken_withNSString_(name, @"Cannot modify self._ of Strings and Numbers!");
   }
@@ -520,11 +523,11 @@ __attribute__((unused)) static SMSimiObjectImpl_$Lambda$12 *create_SMSimiObjectI
 - (JavaUtilArrayList *)getEnumeratedValuesWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
   JavaUtilArrayList *values = new_JavaUtilArrayList_initWithInt_([self length]);
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((JavaUtilLinkedHashMap *) nil_chk(fields_)) entrySet])) {
-    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]), [((id<SMSimiProperty>) nil_chk([entry_ getValue])) getValue]))];
+    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_String_initWithNSString_([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]), [entry_ getValue]))];
   }
   jint lineSize = [((JavaUtilArrayList *) nil_chk(line_)) size];
   for (jint i = 0; i < lineSize; i++) {
-    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_Number_initWithLong_(i), [((id<SMSimiProperty>) nil_chk([line_ getWithInt:i])) getValue]))];
+    [values addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_Number_initWithLong_(i), [line_ getWithInt:i]))];
   }
   return values;
 }
@@ -668,7 +671,7 @@ __attribute__((unused)) static SMSimiObjectImpl_$Lambda$12 *create_SMSimiObjectI
   }
   JavaUtilArrayList *lineClone = new_JavaUtilArrayList_init();
   for (id<SMSimiProperty> __strong field in nil_chk(line_)) {
-    [lineClone addWithId:[((id<SMSimiProperty>) nil_chk(field)) cloneWithBoolean:mutable_]];
+    [lineClone addWithId:(field != nil) ? [((id<SMSimiProperty>) nil_chk(field)) cloneWithBoolean:mutable_] : nil];
   }
   return new_SMSimiObjectImpl_initWithSMSimiClassImpl_withBoolean_withJavaUtilLinkedHashMap_withJavaUtilArrayList_(clazz_, mutable_, fieldsClone, lineClone);
 }
@@ -1367,7 +1370,7 @@ SMSimiObjectImpl_$Lambda$11 *create_SMSimiObjectImpl_$Lambda$11_initWithNSString
 @implementation SMSimiObjectImpl_$Lambda$12
 
 - (id)applyWithId:(id<SMSimiProperty>)i {
-  return [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(i)) getValue])) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
+  return (i == nil) ? @"nil" : [((SMSimiValue *) nil_chk([((id<SMSimiProperty>) nil_chk(i)) getValue])) toCodeWithInt:val$indentationLevel_ + 1 withBoolean:false];
 }
 
 - (id<JavaUtilFunctionFunction>)composeWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {

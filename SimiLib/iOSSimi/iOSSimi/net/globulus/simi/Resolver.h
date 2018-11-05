@@ -30,7 +30,6 @@
 #include "Stmt.h"
 
 @class JavaLangVoid;
-@class SMExpr_Annotations;
 @class SMExpr_Assign;
 @class SMExpr_Binary;
 @class SMExpr_Block;
@@ -72,8 +71,6 @@
 }
 
 #pragma mark Public
-
-- (JavaLangVoid *)visitAnnotationsExprWithSMExpr_Annotations:(SMExpr_Annotations *)expr;
 
 - (JavaLangVoid *)visitAnnotationStmtWithSMStmt_Annotation:(SMStmt_Annotation *)stmt;
 

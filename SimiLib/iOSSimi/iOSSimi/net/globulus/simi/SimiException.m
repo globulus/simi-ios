@@ -24,6 +24,10 @@
 
 J2OBJC_FIELD_SETTER(SMSimiException, clazz_, id<SMSimiClass>)
 
+inline NSString *SMSimiException_get_MESSAGE(void);
+static NSString *SMSimiException_MESSAGE = @"message";
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMSimiException, MESSAGE, NSString *)
+
 @implementation SMSimiException
 
 - (instancetype __nonnull)initWithSMSimiClass:(id<SMSimiClass>)clazz
@@ -38,7 +42,7 @@ J2OBJC_FIELD_SETTER(SMSimiException, clazz_, id<SMSimiClass>)
 
 - (id<SMSimiProperty>)getWithNSString:(NSString *)key
                 withSMSimiEnvironment:(id<SMSimiEnvironment>)environment {
-  if ([((NSString *) nil_chk(key)) isEqual:@"message"]) {
+  if ([((NSString *) nil_chk(key)) isEqual:SMSimiException_MESSAGE]) {
     return new_SMSimiValue_String_initWithNSString_([self getMessage]);
   }
   return nil;
@@ -116,10 +120,11 @@ J2OBJC_FIELD_SETTER(SMSimiException, clazz_, id<SMSimiClass>)
   methods[11].selector = @selector(compareToWithId:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
+    { "MESSAGE", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 12, -1, -1 },
     { "clazz_", "LSMSimiClass;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LSMSimiClass;LNSString;", "get", "LNSString;LSMSimiEnvironment;", "set", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;", "toCode", "IZ", "compareTo", "LSMSimiObject;" };
-  static const J2ObjcClassInfo _SMSimiException = { "SimiException", "net.globulus.simi", ptrTable, methods, fields, 7, 0x11, 12, 1, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LSMSimiClass;LNSString;", "get", "LNSString;LSMSimiEnvironment;", "set", "LNSString;LSMSimiProperty;LSMSimiEnvironment;", "clone", "Z", "()Ljava/util/List<LSimiValue;>;", "toCode", "IZ", "compareTo", "LSMSimiObject;", &SMSimiException_MESSAGE };
+  static const J2ObjcClassInfo _SMSimiException = { "SimiException", "net.globulus.simi", ptrTable, methods, fields, 7, 0x11, 12, 2, -1, -1, -1, -1, -1 };
   return &_SMSimiException;
 }
 

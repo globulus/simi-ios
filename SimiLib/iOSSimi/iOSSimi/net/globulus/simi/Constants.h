@@ -75,6 +75,12 @@
 
 + (NSString *)API_CLASS_NAME;
 
++ (NSString *)EXCEPTION_SCANNER;
+
++ (NSString *)EXCEPTION_PARSER;
+
++ (NSString *)EXCEPTION_INTERPRETER;
+
 + (NSString *)EXCEPTION_NUMBER_FORMAT;
 
 + (NSString *)EXCEPTION_NIL_REFERENCE;
@@ -214,6 +220,21 @@ inline NSString *SMConstants_get_API_CLASS_NAME(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *SMConstants_API_CLASS_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, API_CLASS_NAME, NSString *)
+
+inline NSString *SMConstants_get_EXCEPTION_SCANNER(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_SCANNER;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_SCANNER, NSString *)
+
+inline NSString *SMConstants_get_EXCEPTION_PARSER(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_PARSER;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_PARSER, NSString *)
+
+inline NSString *SMConstants_get_EXCEPTION_INTERPRETER(void);
+/*! INTERNAL ONLY - Use accessor function from above. */
+FOUNDATION_EXPORT NSString *SMConstants_EXCEPTION_INTERPRETER;
+J2OBJC_STATIC_FIELD_OBJ_FINAL(SMConstants, EXCEPTION_INTERPRETER, NSString *)
 
 inline NSString *SMConstants_get_EXCEPTION_NUMBER_FORMAT(void);
 /*! INTERNAL ONLY - Use accessor function from above. */

@@ -414,7 +414,7 @@ J2OBJC_INITIALIZED_DEFN(SMSimiClassImpl)
 - (SMSimiObjectImpl *)enumerateWithSMSimiClassImpl:(SMSimiClassImpl *)objectClass {
   JavaUtilArrayList *values = [self getEnumeratedValuesWithSMSimiClassImpl:objectClass];
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((id<JavaUtilMap>) nil_chk(methods_)) entrySet])) {
-    [((JavaUtilArrayList *) nil_chk(values)) addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_String_initWithNSString_(((SMOverloadableFunction *) nil_chk([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]))->name_), new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_([entry_ getValue], ((SMOverloadableFunction *) nil_chk([entry_ getKey]))->name_, self)))];
+    [((JavaUtilArrayList *) nil_chk(values)) addWithId:new_SMSimiValue_Object_initWithSMSimiObject_(SMSimiObjectImpl_decomposedPairWithSMSimiClassImpl_withSMSimiValue_withSMSimiProperty_(objectClass, new_SMSimiValue_String_initWithNSString_(((SMOverloadableFunction *) nil_chk([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]))->name_), new_SMSimiPropertyImpl_initWithSMSimiValue_withJavaUtilList_(new_SMSimiValue_Callable_initWithSMSimiCallable_withNSString_withSMSimiObject_([entry_ getValue], ((SMOverloadableFunction *) nil_chk([entry_ getKey]))->name_, self), ((SMSimiFunction *) nil_chk([entry_ getValue]))->annotations_)))];
   }
   return SMSimiObjectImpl_fromArrayWithSMSimiClassImpl_withBoolean_withJavaUtilArrayList_(objectClass, true, values);
 }
