@@ -22,6 +22,7 @@
 #include "java/util/Map.h"
 #include "java/util/Scanner.h"
 #include "java/util/Set.h"
+#include "java/util/concurrent/BlockingQueue.h"
 #include "Codifiable.h"
 #include "Debugger.h"
 #include "Environment.h"
@@ -465,17 +466,12 @@ void SMDebugger_scanInput(SMDebugger *self) {
     SMDebugger_parseInputWithNSString_(self, syncInput);
   }
   else {
-    @synchronized([((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) getLock]) {
-      @try {
-        [nil_chk([((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) getLock]) java_wait];
-      }
-      @catch (JavaLangInterruptedException *e) {
-        [e printStackTrace];
-        NSString *asyncInput = [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) read];
-        SMDebugger_parseInputWithNSString_(self, asyncInput);
-      }
-      NSString *asyncInput = [((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) read];
+    @try {
+      NSString *asyncInput = [((id<JavaUtilConcurrentBlockingQueue>) nil_chk([((id<SMDebugger_DebuggerInterface>) nil_chk(self->debuggerInterface_)) getQueue])) take];
       SMDebugger_parseInputWithNSString_(self, asyncInput);
+    }
+    @catch (JavaLangInterruptedException *e) {
+      [e printStackTrace];
     }
   }
 }
@@ -968,7 +964,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMDebugger_Evaluator)
     { NULL, "V", 0x401, 0, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x401, 2, 1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x401, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilConcurrentBlockingQueue;", 0x401, -1, -1, -1, 3, -1, -1 },
     { NULL, "V", 0x401, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -977,11 +973,11 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(SMDebugger_Evaluator)
   methods[0].selector = @selector(printWithNSString:);
   methods[1].selector = @selector(printlnWithNSString:);
   methods[2].selector = @selector(read);
-  methods[3].selector = @selector(getLock);
+  methods[3].selector = @selector(getQueue);
   methods[4].selector = @selector(resume);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "print", "LNSString;", "println", "LSMDebugger;" };
-  static const J2ObjcClassInfo _SMDebugger_DebuggerInterface = { "DebuggerInterface", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 5, 0, 3, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "print", "LNSString;", "println", "()Ljava/util/concurrent/BlockingQueue<Ljava/lang/String;>;", "LSMDebugger;" };
+  static const J2ObjcClassInfo _SMDebugger_DebuggerInterface = { "DebuggerInterface", "net.globulus.simi", ptrTable, methods, NULL, 7, 0x609, 5, 0, 4, -1, -1, -1, -1 };
   return &_SMDebugger_DebuggerInterface;
 }
 
@@ -1010,7 +1006,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [((JavaUtilScanner *) nil_chk(scanner_)) nextLine];
 }
 
-- (id)getLock {
+- (id<JavaUtilConcurrentBlockingQueue>)getQueue {
   return nil;
 }
 
@@ -1023,7 +1019,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 2, 1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilConcurrentBlockingQueue;", 0x1, -1, -1, -1, 3, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1033,14 +1029,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[1].selector = @selector(printWithNSString:);
   methods[2].selector = @selector(printlnWithNSString:);
   methods[3].selector = @selector(read);
-  methods[4].selector = @selector(getLock);
+  methods[4].selector = @selector(getQueue);
   methods[5].selector = @selector(resume);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "scanner_", "LJavaUtilScanner;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "print", "LNSString;", "println", "LSMDebugger;" };
-  static const J2ObjcClassInfo _SMDebugger_ConsoleInterface = { "ConsoleInterface", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 3, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "print", "LNSString;", "println", "()Ljava/util/concurrent/BlockingQueue<Ljava/lang/String;>;", "LSMDebugger;" };
+  static const J2ObjcClassInfo _SMDebugger_ConsoleInterface = { "ConsoleInterface", "net.globulus.simi", ptrTable, methods, fields, 7, 0x9, 6, 1, 4, -1, -1, -1, -1 };
   return &_SMDebugger_ConsoleInterface;
 }
 

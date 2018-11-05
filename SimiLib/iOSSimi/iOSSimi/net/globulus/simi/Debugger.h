@@ -153,6 +153,8 @@ J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_Evaluator)
 #if !defined (SMDebugger_DebuggerInterface_) && (INCLUDE_ALL_NetGlobulusSimiDebugger || defined(INCLUDE_SMDebugger_DebuggerInterface))
 #define SMDebugger_DebuggerInterface_
 
+@protocol JavaUtilConcurrentBlockingQueue;
+
 @protocol SMDebugger_DebuggerInterface < JavaObject >
 
 - (void)printWithNSString:(NSString *)s;
@@ -161,7 +163,7 @@ J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_Evaluator)
 
 - (NSString *)read;
 
-- (id)getLock;
+- (id<JavaUtilConcurrentBlockingQueue>)getQueue;
 
 - (void)resume;
 
@@ -176,13 +178,15 @@ J2OBJC_TYPE_LITERAL_HEADER(SMDebugger_DebuggerInterface)
 #if !defined (SMDebugger_ConsoleInterface_) && (INCLUDE_ALL_NetGlobulusSimiDebugger || defined(INCLUDE_SMDebugger_ConsoleInterface))
 #define SMDebugger_ConsoleInterface_
 
+@protocol JavaUtilConcurrentBlockingQueue;
+
 @interface SMDebugger_ConsoleInterface : NSObject < SMDebugger_DebuggerInterface >
 
 #pragma mark Public
 
 - (instancetype __nonnull)init;
 
-- (id)getLock;
+- (id<JavaUtilConcurrentBlockingQueue>)getQueue;
 
 - (void)printWithNSString:(NSString *)s;
 

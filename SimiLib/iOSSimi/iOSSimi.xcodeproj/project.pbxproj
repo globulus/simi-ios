@@ -134,6 +134,8 @@
 		6AB171FD21246AEF00F32968 /* Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB171FB21246AEE00F32968 /* Native.m */; };
 		6ACE44242126E8D400113E98 /* iOSSimi_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACE44232126E8D400113E98 /* iOSSimi_Mac.h */; };
 		6ACE44262126E8D400113E98 /* iOSSimi_Mac.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACE44252126E8D400113E98 /* iOSSimi_Mac.m */; };
+		6AE705ED219041AA009C54CE /* SimiDebuggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE705EB219041AA009C54CE /* SimiDebuggerViewController.m */; };
+		6AE705F32190448F009C54CE /* IOSDebugger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE705F22190448F009C54CE /* IOSDebugger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -335,6 +337,11 @@
 		6ACE44212126E8D400113E98 /* libiOSSimi Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libiOSSimi Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACE44232126E8D400113E98 /* iOSSimi_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSSimi_Mac.h; sourceTree = "<group>"; };
 		6ACE44252126E8D400113E98 /* iOSSimi_Mac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSSimi_Mac.m; sourceTree = "<group>"; };
+		6AE705EA219041AA009C54CE /* SimiDebuggerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimiDebuggerViewController.h; sourceTree = "<group>"; };
+		6AE705EB219041AA009C54CE /* SimiDebuggerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimiDebuggerViewController.m; sourceTree = "<group>"; };
+		6AE705EC219041AA009C54CE /* SimiDebuggerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimiDebuggerViewController.xib; sourceTree = "<group>"; };
+		6AE705F12190448F009C54CE /* IOSDebugger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSDebugger.h; sourceTree = "<group>"; };
+		6AE705F22190448F009C54CE /* IOSDebugger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSDebugger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +388,11 @@
 				6A59D5C620E7D1CA008FB2AB /* IOSObjectArray+Simi.h */,
 				6A59D5C720E7D1CA008FB2AB /* IOSObjectArray+Simi.m */,
 				6A59D5C920E7D1CA008FB2AB /* net */,
+				6AE705EA219041AA009C54CE /* SimiDebuggerViewController.h */,
+				6AE705EB219041AA009C54CE /* SimiDebuggerViewController.m */,
+				6AE705EC219041AA009C54CE /* SimiDebuggerViewController.xib */,
+				6AE705F12190448F009C54CE /* IOSDebugger.h */,
+				6AE705F22190448F009C54CE /* IOSDebugger.m */,
 			);
 			path = iOSSimi;
 			sourceTree = "<group>";
@@ -645,6 +657,7 @@
 				6A59D65720E7D1CA008FB2AB /* ErrorWatcher.m in Sources */,
 				6A59D63520E7D1CA008FB2AB /* SimiEnvironment.m in Sources */,
 				6A59D64220E7D1CA008FB2AB /* OverloadableFunction.m in Sources */,
+				6AE705F32190448F009C54CE /* IOSDebugger.m in Sources */,
 				6A59D66220E7D1CA008FB2AB /* SimiProperty.m in Sources */,
 				6A59D66320E7D1CA008FB2AB /* Return.m in Sources */,
 				6AB171FA21246AD500F32968 /* JavaNativeModulesManager.m in Sources */,
@@ -663,6 +676,7 @@
 				6A731F1920E80C7600F11E94 /* JavaNativeModulesManager.m in Sources */,
 				6A59D64420E7D1CA008FB2AB /* SimiJavaGlobal.m in Sources */,
 				6A59D65F20E7D1CA008FB2AB /* TempNull.m in Sources */,
+				6AE705ED219041AA009C54CE /* SimiDebuggerViewController.m in Sources */,
 				6A59D63920E7D1CA008FB2AB /* TokenType.m in Sources */,
 				6A59D63E20E7D1CA008FB2AB /* SparseArray.m in Sources */,
 				6A59D65E20E7D1CA008FB2AB /* ActiveSimi.m in Sources */,
